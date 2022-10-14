@@ -76,6 +76,8 @@ Class | Method | HTTP request | Description
 *EmailsApi* | [**send**](docs/Api/EmailsApi.md#send) | **POST** /emails | Send an email
 *SmsApi* | [**list**](docs/Api/SmsApi.md#list) | **GET** /sms | List SMS records
 *SmsApi* | [**send**](docs/Api/SmsApi.md#send) | **POST** /sms | Send an SMS
+*VerifyApi* | [**check**](docs/Api/VerifyApi.md#check) | **POST** /verify/verificationChecks | Check a verification
+*VerifyApi* | [**send**](docs/Api/VerifyApi.md#send) | **POST** /verify/verifications | Start a verification
 *VoicesApi* | [**list**](docs/Api/VoicesApi.md#list) | **GET** /voices | List voice records
 *VoicesApi* | [**send**](docs/Api/VoicesApi.md#send) | **POST** /voices | Send a voice code
 *WebhookEndpointsApi* | [**create**](docs/Api/WebhookEndpointsApi.md#create) | **POST** /webhookEndpoints | Create a webhook endpoint
@@ -84,6 +86,7 @@ Class | Method | HTTP request | Description
 *WebhookEndpointsApi* | [**retrieve**](docs/Api/WebhookEndpointsApi.md#retrieve) | **GET** /webhookEndpoints/{id} | Retrieve a webhook endpoint
 *WebhookEndpointsApi* | [**rotateSecret**](docs/Api/WebhookEndpointsApi.md#rotatesecret) | **POST** /webhookEndpoints/{id}/rotateSecret | Rotate a webhook endpoint secret
 *WebhookEndpointsApi* | [**update**](docs/Api/WebhookEndpointsApi.md#update) | **PATCH** /webhookEndpoints/{id} | Update a webhook endpoint
+*WhatsappMessagesApi* | [**send**](docs/Api/WhatsappMessagesApi.md#send) | **POST** /whatsapp/messages | Send a WhatsApp message
 
 ## Models
 
@@ -101,6 +104,12 @@ Class | Method | HTTP request | Description
 - [Sms](docs/Model/Sms.md)
 - [SmsPage](docs/Model/SmsPage.md)
 - [SmsSendRequest](docs/Model/SmsSendRequest.md)
+- [Verification](docs/Model/Verification.md)
+- [VerificationChannel](docs/Model/VerificationChannel.md)
+- [VerificationCheck](docs/Model/VerificationCheck.md)
+- [VerificationCheckRequest](docs/Model/VerificationCheckRequest.md)
+- [VerificationSendRequest](docs/Model/VerificationSendRequest.md)
+- [VerificationStatus](docs/Model/VerificationStatus.md)
 - [Voice](docs/Model/Voice.md)
 - [VoicePage](docs/Model/VoicePage.md)
 - [VoiceSendRequest](docs/Model/VoiceSendRequest.md)
@@ -109,6 +118,50 @@ Class | Method | HTTP request | Description
 - [WebhookEndpointPage](docs/Model/WebhookEndpointPage.md)
 - [WebhookEndpointStatus](docs/Model/WebhookEndpointStatus.md)
 - [WebhookEndpointUpdateRequest](docs/Model/WebhookEndpointUpdateRequest.md)
+- [WhatsappInboundMessage](docs/Model/WhatsappInboundMessage.md)
+- [WhatsappInboundMessageButton](docs/Model/WhatsappInboundMessageButton.md)
+- [WhatsappInboundMessageInteractive](docs/Model/WhatsappInboundMessageInteractive.md)
+- [WhatsappInboundMessageInteractiveButtonReply](docs/Model/WhatsappInboundMessageInteractiveButtonReply.md)
+- [WhatsappInboundMessageInteractiveListReply](docs/Model/WhatsappInboundMessageInteractiveListReply.md)
+- [WhatsappInboundMessageLocation](docs/Model/WhatsappInboundMessageLocation.md)
+- [WhatsappInboundMessageMedia](docs/Model/WhatsappInboundMessageMedia.md)
+- [WhatsappInboundMessageText](docs/Model/WhatsappInboundMessageText.md)
+- [WhatsappInboundMessageType](docs/Model/WhatsappInboundMessageType.md)
+- [WhatsappMessage](docs/Model/WhatsappMessage.md)
+- [WhatsappMessageContact](docs/Model/WhatsappMessageContact.md)
+- [WhatsappMessageContactAddressesInner](docs/Model/WhatsappMessageContactAddressesInner.md)
+- [WhatsappMessageContactEmailsInner](docs/Model/WhatsappMessageContactEmailsInner.md)
+- [WhatsappMessageContactName](docs/Model/WhatsappMessageContactName.md)
+- [WhatsappMessageContactOrg](docs/Model/WhatsappMessageContactOrg.md)
+- [WhatsappMessageContactPhonesInner](docs/Model/WhatsappMessageContactPhonesInner.md)
+- [WhatsappMessageContactUrlsInner](docs/Model/WhatsappMessageContactUrlsInner.md)
+- [WhatsappMessageInteractive](docs/Model/WhatsappMessageInteractive.md)
+- [WhatsappMessageInteractiveAction](docs/Model/WhatsappMessageInteractiveAction.md)
+- [WhatsappMessageInteractiveActionButtonsInner](docs/Model/WhatsappMessageInteractiveActionButtonsInner.md)
+- [WhatsappMessageInteractiveActionButtonsInnerReply](docs/Model/WhatsappMessageInteractiveActionButtonsInnerReply.md)
+- [WhatsappMessageInteractiveActionSectionsInner](docs/Model/WhatsappMessageInteractiveActionSectionsInner.md)
+- [WhatsappMessageInteractiveActionSectionsInnerRowsInner](docs/Model/WhatsappMessageInteractiveActionSectionsInnerRowsInner.md)
+- [WhatsappMessageInteractiveBody](docs/Model/WhatsappMessageInteractiveBody.md)
+- [WhatsappMessageInteractiveFooter](docs/Model/WhatsappMessageInteractiveFooter.md)
+- [WhatsappMessageInteractiveHeader](docs/Model/WhatsappMessageInteractiveHeader.md)
+- [WhatsappMessageLocation](docs/Model/WhatsappMessageLocation.md)
+- [WhatsappMessageMedia](docs/Model/WhatsappMessageMedia.md)
+- [WhatsappMessageSendRequest](docs/Model/WhatsappMessageSendRequest.md)
+- [WhatsappMessageTemplate](docs/Model/WhatsappMessageTemplate.md)
+- [WhatsappMessageTemplateComponentsInner](docs/Model/WhatsappMessageTemplateComponentsInner.md)
+- [WhatsappMessageTemplateComponentsInnerParametersInner](docs/Model/WhatsappMessageTemplateComponentsInnerParametersInner.md)
+- [WhatsappMessageTemplateLanguage](docs/Model/WhatsappMessageTemplateLanguage.md)
+- [WhatsappMessageText](docs/Model/WhatsappMessageText.md)
+- [WhatsappMessageType](docs/Model/WhatsappMessageType.md)
+- [WhatsappTemplate](docs/Model/WhatsappTemplate.md)
+- [WhatsappTemplateCategory](docs/Model/WhatsappTemplateCategory.md)
+- [WhatsappTemplateComponent](docs/Model/WhatsappTemplateComponent.md)
+- [WhatsappTemplateComponentButton](docs/Model/WhatsappTemplateComponentButton.md)
+- [WhatsappTemplateComponentButtonType](docs/Model/WhatsappTemplateComponentButtonType.md)
+- [WhatsappTemplateComponentExample](docs/Model/WhatsappTemplateComponentExample.md)
+- [WhatsappTemplateCreateRequest](docs/Model/WhatsappTemplateCreateRequest.md)
+- [WhatsappTemplatePage](docs/Model/WhatsappTemplatePage.md)
+- [WhatsappTemplateStatus](docs/Model/WhatsappTemplateStatus.md)
 
 ## Authorization
 

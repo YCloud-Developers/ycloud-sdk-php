@@ -13,3 +13,9 @@ composer.phar
 
 # PHPUnit cache
 .phpunit.result.cache
+
+# misc
+.idea
+.openapi-generator
+.openapi-generator-ignore
+git_push.sh
