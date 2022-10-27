@@ -86,7 +86,14 @@ Class | Method | HTTP request | Description
 *WebhookEndpointsApi* | [**retrieve**](docs/Api/WebhookEndpointsApi.md#retrieve) | **GET** /webhookEndpoints/{id} | Retrieve a webhook endpoint
 *WebhookEndpointsApi* | [**rotateSecret**](docs/Api/WebhookEndpointsApi.md#rotatesecret) | **POST** /webhookEndpoints/{id}/rotateSecret | Rotate a webhook endpoint secret
 *WebhookEndpointsApi* | [**update**](docs/Api/WebhookEndpointsApi.md#update) | **PATCH** /webhookEndpoints/{id} | Update a webhook endpoint
+*WhatsappMessagesApi* | [**retrieve**](docs/Api/WhatsappMessagesApi.md#retrieve) | **GET** /whatsapp/messages/{id} | Retrieve a WhatsApp message
 *WhatsappMessagesApi* | [**send**](docs/Api/WhatsappMessagesApi.md#send) | **POST** /whatsapp/messages | Send a WhatsApp message
+*WhatsappPhoneNumbersApi* | [**list**](docs/Api/WhatsappPhoneNumbersApi.md#list) | **GET** /whatsapp/phoneNumbers | List WhatsApp phone numbers
+*WhatsappPhoneNumbersApi* | [**retrieve**](docs/Api/WhatsappPhoneNumbersApi.md#retrieve) | **GET** /whatsapp/phoneNumbers/{wabaId}/{phoneNumber} | Retrieve a WhatsApp phone number
+*WhatsappTemplatesApi* | [**create**](docs/Api/WhatsappTemplatesApi.md#create) | **POST** /whatsapp/templates | Create a WhatsApp template
+*WhatsappTemplatesApi* | [**deleteByName**](docs/Api/WhatsappTemplatesApi.md#deletebyname) | **DELETE** /whatsapp/templates/{wabaId}/{name} | Delete WhatsApp templates by name
+*WhatsappTemplatesApi* | [**list**](docs/Api/WhatsappTemplatesApi.md#list) | **GET** /whatsapp/templates | List WhatsApp templates
+*WhatsappTemplatesApi* | [**retrieveByNameAndLanguage**](docs/Api/WhatsappTemplatesApi.md#retrievebynameandlanguage) | **GET** /whatsapp/templates/{wabaId}/{name}/{language} | Retrieve a WhatsApp template
 
 ## Models
 
@@ -147,12 +154,19 @@ Class | Method | HTTP request | Description
 - [WhatsappMessageLocation](docs/Model/WhatsappMessageLocation.md)
 - [WhatsappMessageMedia](docs/Model/WhatsappMessageMedia.md)
 - [WhatsappMessageSendRequest](docs/Model/WhatsappMessageSendRequest.md)
+- [WhatsappMessageStatus](docs/Model/WhatsappMessageStatus.md)
 - [WhatsappMessageTemplate](docs/Model/WhatsappMessageTemplate.md)
 - [WhatsappMessageTemplateComponentsInner](docs/Model/WhatsappMessageTemplateComponentsInner.md)
 - [WhatsappMessageTemplateComponentsInnerParametersInner](docs/Model/WhatsappMessageTemplateComponentsInnerParametersInner.md)
 - [WhatsappMessageTemplateLanguage](docs/Model/WhatsappMessageTemplateLanguage.md)
 - [WhatsappMessageText](docs/Model/WhatsappMessageText.md)
 - [WhatsappMessageType](docs/Model/WhatsappMessageType.md)
+- [WhatsappPhoneNumber](docs/Model/WhatsappPhoneNumber.md)
+- [WhatsappPhoneNumberCodeVerificationStatus](docs/Model/WhatsappPhoneNumberCodeVerificationStatus.md)
+- [WhatsappPhoneNumberNameStatus](docs/Model/WhatsappPhoneNumberNameStatus.md)
+- [WhatsappPhoneNumberPage](docs/Model/WhatsappPhoneNumberPage.md)
+- [WhatsappPhoneNumberQualityRating](docs/Model/WhatsappPhoneNumberQualityRating.md)
+- [WhatsappPhoneNumberStatus](docs/Model/WhatsappPhoneNumberStatus.md)
 - [WhatsappTemplate](docs/Model/WhatsappTemplate.md)
 - [WhatsappTemplateCategory](docs/Model/WhatsappTemplateCategory.md)
 - [WhatsappTemplateComponent](docs/Model/WhatsappTemplateComponent.md)

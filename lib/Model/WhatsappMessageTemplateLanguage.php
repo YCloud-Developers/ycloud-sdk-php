@@ -221,7 +221,7 @@ class WhatsappMessageTemplateLanguage implements ModelInterface, ArrayAccess, \J
     /**
      * Sets code
      *
-     * @param string $code The code of the language or locale to use. Accepts both language and language_locale formats (e.g., en and en_US). See [Supported Languages](https://developers.facebook.com/docs/whatsapp/api/messages/message-templates#supported-languages) for all codes.
+     * @param string $code The code of the language or locale to use. Accepts both language and language_locale formats (e.g., en and en_US). See [Supported Languages](https://developers.facebook.com/docs/whatsapp/api/messages/message-templates#supported-languages-) for all codes.
      *
      * @return self
      */

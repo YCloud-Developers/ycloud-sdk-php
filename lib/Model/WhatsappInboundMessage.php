@@ -60,6 +60,7 @@ class WhatsappInboundMessage implements ModelInterface, ArrayAccess, \JsonSerial
       */
     protected static $openAPITypes = [
         'id' => 'string',
+        'waba_id' => 'string',
         'from' => 'string',
         'to' => 'string',
         'send_time' => '\DateTime',
@@ -85,6 +86,7 @@ class WhatsappInboundMessage implements ModelInterface, ArrayAccess, \JsonSerial
       */
     protected static $openAPIFormats = [
         'id' => null,
+        'waba_id' => null,
         'from' => null,
         'to' => null,
         'send_time' => 'date-time',
@@ -129,6 +131,7 @@ class WhatsappInboundMessage implements ModelInterface, ArrayAccess, \JsonSerial
      */
     protected static $attributeMap = [
         'id' => 'id',
+        'waba_id' => 'wabaId',
         'from' => 'from',
         'to' => 'to',
         'send_time' => 'sendTime',
@@ -152,6 +155,7 @@ class WhatsappInboundMessage implements ModelInterface, ArrayAccess, \JsonSerial
      */
     protected static $setters = [
         'id' => 'setId',
+        'waba_id' => 'setWabaId',
         'from' => 'setFrom',
         'to' => 'setTo',
         'send_time' => 'setSendTime',
@@ -175,6 +179,7 @@ class WhatsappInboundMessage implements ModelInterface, ArrayAccess, \JsonSerial
      */
     protected static $getters = [
         'id' => 'getId',
+        'waba_id' => 'getWabaId',
         'from' => 'getFrom',
         'to' => 'getTo',
         'send_time' => 'getSendTime',
@@ -249,6 +254,7 @@ class WhatsappInboundMessage implements ModelInterface, ArrayAccess, \JsonSerial
     public function __construct(array $data = null)
     {
         $this->container['id'] = $data['id'] ?? null;
+        $this->container['waba_id'] = $data['waba_id'] ?? null;
         $this->container['from'] = $data['from'] ?? null;
         $this->container['to'] = $data['to'] ?? null;
         $this->container['send_time'] = $data['send_time'] ?? null;
@@ -312,6 +318,30 @@ class WhatsappInboundMessage implements ModelInterface, ArrayAccess, \JsonSerial
     public function setId($id)
     {
         $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Gets waba_id
+     *
+     * @return string|null
+     */
+    public function getWabaId()
+    {
+        return $this->container['waba_id'];
+    }
+
+    /**
+     * Sets waba_id
+     *
+     * @param string|null $waba_id WhatsApp Business Account ID.
+     *
+     * @return self
+     */
+    public function setWabaId($waba_id)
+    {
+        $this->container['waba_id'] = $waba_id;
 
         return $this;
     }

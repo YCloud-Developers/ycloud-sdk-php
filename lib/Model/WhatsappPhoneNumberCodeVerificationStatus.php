@@ -1,6 +1,6 @@
 <?php
 /**
- * EventType
+ * WhatsappPhoneNumberCodeVerificationStatus
  *
  * PHP version 7.4
  *
@@ -31,34 +31,22 @@ namespace YCloud\Client\Model;
 use \YCloud\Client\ObjectSerializer;
 
 /**
- * EventType Class Doc Comment
+ * WhatsappPhoneNumberCodeVerificationStatus Class Doc Comment
  *
  * @category Class
- * @description Type of webhook events.
+ * @description To see if a phone number has been verified via OTP (one-time password), check that number&#39;s &#x60;code_verification_status&#x60; field.
  * @package  YCloud\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class EventType
+class WhatsappPhoneNumberCodeVerificationStatus
 {
     /**
      * Possible values of this enum
      */
-    public const EMAIL_DELIVERY_UPDATED = 'email.delivery.updated';
+    public const VERIFIED = 'VERIFIED';
 
-    public const SMS_MESSAGE_UPDATED = 'sms.message.updated';
-
-    public const VOICE_MESSAGE_UPDATED = 'voice.message.updated';
-
-    public const WHATSAPP_INBOUND_MESSAGE_RECEIVED = 'whatsapp.inbound_message.received';
-
-    public const WHATSAPP_MESSAGE_UPDATED = 'whatsapp.message.updated';
-
-    public const WHATSAPP_PHONE_NUMBER_NAME_UPDATED = 'whatsapp.phone_number.name_updated';
-
-    public const WHATSAPP_PHONE_NUMBER_QUALITY_UPDATED = 'whatsapp.phone_number.quality_updated';
-
-    public const WHATSAPP_TEMPLATE_REVIEWED = 'whatsapp.template.reviewed';
+    public const NOT_VERIFIED = 'NOT_VERIFIED';
 
     /**
      * Gets allowable values of the enum
@@ -67,14 +55,8 @@ class EventType
     public static function getAllowableEnumValues()
     {
         return [
-            self::EMAIL_DELIVERY_UPDATED,
-            self::SMS_MESSAGE_UPDATED,
-            self::VOICE_MESSAGE_UPDATED,
-            self::WHATSAPP_INBOUND_MESSAGE_RECEIVED,
-            self::WHATSAPP_MESSAGE_UPDATED,
-            self::WHATSAPP_PHONE_NUMBER_NAME_UPDATED,
-            self::WHATSAPP_PHONE_NUMBER_QUALITY_UPDATED,
-            self::WHATSAPP_TEMPLATE_REVIEWED
+            self::VERIFIED,
+            self::NOT_VERIFIED
         ];
     }
 }

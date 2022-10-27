@@ -1,6 +1,6 @@
 <?php
 /**
- * WhatsappMessageLocation
+ * WhatsappPhoneNumberPage
  *
  * PHP version 7.4
  *
@@ -33,16 +33,16 @@ use \ArrayAccess;
 use \YCloud\Client\ObjectSerializer;
 
 /**
- * WhatsappMessageLocation Class Doc Comment
+ * WhatsappPhoneNumberPage Class Doc Comment
  *
  * @category Class
- * @description [WhatsApp Location Object](https://developers.facebook.com/docs/whatsapp/cloud-api/reference/messages#location-object).
+ * @description Represents a given page of WhatsApp phone numbers.
  * @package  YCloud\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class WhatsappMessageLocation implements ModelInterface, ArrayAccess, \JsonSerializable
+class WhatsappPhoneNumberPage implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +51,7 @@ class WhatsappMessageLocation implements ModelInterface, ArrayAccess, \JsonSeria
       *
       * @var string
       */
-    protected static $openAPIModelName = 'WhatsappMessageLocation';
+    protected static $openAPIModelName = 'WhatsappPhoneNumberPage';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,10 +59,11 @@ class WhatsappMessageLocation implements ModelInterface, ArrayAccess, \JsonSeria
       * @var string[]
       */
     protected static $openAPITypes = [
-        'latitude' => 'double',
-        'longitude' => 'double',
-        'name' => 'string',
-        'address' => 'string'
+        'items' => '\YCloud\Client\Model\WhatsappPhoneNumber[]',
+        'offset' => 'int',
+        'limit' => 'int',
+        'length' => 'int',
+        'total' => 'int'
     ];
 
     /**
@@ -73,10 +74,11 @@ class WhatsappMessageLocation implements ModelInterface, ArrayAccess, \JsonSeria
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'latitude' => 'double',
-        'longitude' => 'double',
-        'name' => null,
-        'address' => null
+        'items' => null,
+        'offset' => 'int32',
+        'limit' => 'int32',
+        'length' => 'int32',
+        'total' => 'int32'
     ];
 
     /**
@@ -106,10 +108,11 @@ class WhatsappMessageLocation implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $attributeMap = [
-        'latitude' => 'latitude',
-        'longitude' => 'longitude',
-        'name' => 'name',
-        'address' => 'address'
+        'items' => 'items',
+        'offset' => 'offset',
+        'limit' => 'limit',
+        'length' => 'length',
+        'total' => 'total'
     ];
 
     /**
@@ -118,10 +121,11 @@ class WhatsappMessageLocation implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $setters = [
-        'latitude' => 'setLatitude',
-        'longitude' => 'setLongitude',
-        'name' => 'setName',
-        'address' => 'setAddress'
+        'items' => 'setItems',
+        'offset' => 'setOffset',
+        'limit' => 'setLimit',
+        'length' => 'setLength',
+        'total' => 'setTotal'
     ];
 
     /**
@@ -130,10 +134,11 @@ class WhatsappMessageLocation implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $getters = [
-        'latitude' => 'getLatitude',
-        'longitude' => 'getLongitude',
-        'name' => 'getName',
-        'address' => 'getAddress'
+        'items' => 'getItems',
+        'offset' => 'getOffset',
+        'limit' => 'getLimit',
+        'length' => 'getLength',
+        'total' => 'getTotal'
     ];
 
     /**
@@ -193,10 +198,11 @@ class WhatsappMessageLocation implements ModelInterface, ArrayAccess, \JsonSeria
      */
     public function __construct(array $data = null)
     {
-        $this->container['latitude'] = $data['latitude'] ?? null;
-        $this->container['longitude'] = $data['longitude'] ?? null;
-        $this->container['name'] = $data['name'] ?? null;
-        $this->container['address'] = $data['address'] ?? null;
+        $this->container['items'] = $data['items'] ?? null;
+        $this->container['offset'] = $data['offset'] ?? null;
+        $this->container['limit'] = $data['limit'] ?? null;
+        $this->container['length'] = $data['length'] ?? null;
+        $this->container['total'] = $data['total'] ?? null;
     }
 
     /**
@@ -208,12 +214,31 @@ class WhatsappMessageLocation implements ModelInterface, ArrayAccess, \JsonSeria
     {
         $invalidProperties = [];
 
-        if ($this->container['latitude'] === null) {
-            $invalidProperties[] = "'latitude' can't be null";
+        if ($this->container['offset'] === null) {
+            $invalidProperties[] = "'offset' can't be null";
         }
-        if ($this->container['longitude'] === null) {
-            $invalidProperties[] = "'longitude' can't be null";
+        if (($this->container['offset'] < 0)) {
+            $invalidProperties[] = "invalid value for 'offset', must be bigger than or equal to 0.";
         }
+
+        if ($this->container['limit'] === null) {
+            $invalidProperties[] = "'limit' can't be null";
+        }
+        if (($this->container['limit'] < 1)) {
+            $invalidProperties[] = "invalid value for 'limit', must be bigger than or equal to 1.";
+        }
+
+        if ($this->container['length'] === null) {
+            $invalidProperties[] = "'length' can't be null";
+        }
+        if (($this->container['length'] < 0)) {
+            $invalidProperties[] = "invalid value for 'length', must be bigger than or equal to 0.";
+        }
+
+        if (!is_null($this->container['total']) && ($this->container['total'] < 0)) {
+            $invalidProperties[] = "invalid value for 'total', must be bigger than or equal to 0.";
+        }
+
         return $invalidProperties;
     }
 
@@ -230,97 +255,141 @@ class WhatsappMessageLocation implements ModelInterface, ArrayAccess, \JsonSeria
 
 
     /**
-     * Gets latitude
+     * Gets items
      *
-     * @return double
+     * @return \YCloud\Client\Model\WhatsappPhoneNumber[]|null
      */
-    public function getLatitude()
+    public function getItems()
     {
-        return $this->container['latitude'];
+        return $this->container['items'];
     }
 
     /**
-     * Sets latitude
+     * Sets items
      *
-     * @param double $latitude Latitude of the location.
+     * @param \YCloud\Client\Model\WhatsappPhoneNumber[]|null $items An array containing WhatsApp phone number objects.
      *
      * @return self
      */
-    public function setLatitude($latitude)
+    public function setItems($items)
     {
-        $this->container['latitude'] = $latitude;
+        $this->container['items'] = $items;
 
         return $this;
     }
 
     /**
-     * Gets longitude
+     * Gets offset
      *
-     * @return double
+     * @return int
      */
-    public function getLongitude()
+    public function getOffset()
     {
-        return $this->container['longitude'];
+        return $this->container['offset'];
     }
 
     /**
-     * Sets longitude
+     * Sets offset
      *
-     * @param double $longitude Longitude of the location.
+     * @param int $offset The position of the item this page starts from, zero-based. e.g., the 11th item is at offset 10.
      *
      * @return self
      */
-    public function setLongitude($longitude)
+    public function setOffset($offset)
     {
-        $this->container['longitude'] = $longitude;
+
+        if (($offset < 0)) {
+            throw new \InvalidArgumentException('invalid value for $offset when calling WhatsappPhoneNumberPage., must be bigger than or equal to 0.');
+        }
+
+        $this->container['offset'] = $offset;
 
         return $this;
     }
 
     /**
-     * Gets name
+     * Gets limit
      *
-     * @return string|null
+     * @return int
      */
-    public function getName()
+    public function getLimit()
     {
-        return $this->container['name'];
+        return $this->container['limit'];
     }
 
     /**
-     * Sets name
+     * Sets limit
      *
-     * @param string|null $name Name of the location.
+     * @param int $limit A limit on the number of items to be returned, between 1 and 100, defaults to 10.
      *
      * @return self
      */
-    public function setName($name)
+    public function setLimit($limit)
     {
-        $this->container['name'] = $name;
+
+        if (($limit < 1)) {
+            throw new \InvalidArgumentException('invalid value for $limit when calling WhatsappPhoneNumberPage., must be bigger than or equal to 1.');
+        }
+
+        $this->container['limit'] = $limit;
 
         return $this;
     }
 
     /**
-     * Gets address
+     * Gets length
      *
-     * @return string|null
+     * @return int
      */
-    public function getAddress()
+    public function getLength()
     {
-        return $this->container['address'];
+        return $this->container['length'];
     }
 
     /**
-     * Sets address
+     * Sets length
      *
-     * @param string|null $address Address of the location. Only displayed if `name` is present.
+     * @param int $length The actual number of items in the page.
      *
      * @return self
      */
-    public function setAddress($address)
+    public function setLength($length)
     {
-        $this->container['address'] = $address;
+
+        if (($length < 0)) {
+            throw new \InvalidArgumentException('invalid value for $length when calling WhatsappPhoneNumberPage., must be bigger than or equal to 0.');
+        }
+
+        $this->container['length'] = $length;
+
+        return $this;
+    }
+
+    /**
+     * Gets total
+     *
+     * @return int|null
+     */
+    public function getTotal()
+    {
+        return $this->container['total'];
+    }
+
+    /**
+     * Sets total
+     *
+     * @param int|null $total The total number of items. This field is returned only when the request parameter `includeTotal` is set to `true`.
+     *
+     * @return self
+     */
+    public function setTotal($total)
+    {
+
+        if (!is_null($total) && ($total < 0)) {
+            throw new \InvalidArgumentException('invalid value for $total when calling WhatsappPhoneNumberPage., must be bigger than or equal to 0.');
+        }
+
+        $this->container['total'] = $total;
 
         return $this;
     }

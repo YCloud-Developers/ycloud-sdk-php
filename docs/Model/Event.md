@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **voice** | [**\YCloud\Client\Model\Voice**](Voice.md) |  | [optional]
 **whatsapp_inbound_message** | [**\YCloud\Client\Model\WhatsappInboundMessage**](WhatsappInboundMessage.md) |  | [optional]
 **whatsapp_message** | [**\YCloud\Client\Model\WhatsappMessage**](WhatsappMessage.md) |  | [optional]
+**whatsapp_phone_number** | [**\YCloud\Client\Model\WhatsappPhoneNumber**](WhatsappPhoneNumber.md) |  | [optional]
 **whatsapp_template** | [**\YCloud\Client\Model\WhatsappTemplate**](WhatsappTemplate.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

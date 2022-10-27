@@ -1,6 +1,6 @@
 <?php
 /**
- * EventType
+ * WhatsappMessageStatus
  *
  * PHP version 7.4
  *
@@ -31,34 +31,28 @@ namespace YCloud\Client\Model;
 use \YCloud\Client\ObjectSerializer;
 
 /**
- * EventType Class Doc Comment
+ * WhatsappMessageStatus Class Doc Comment
  *
  * @category Class
- * @description Type of webhook events.
+ * @description WhatsApp message status. One of &#x60;accepted&#x60;, &#x60;failed&#x60;, &#x60;sent&#x60;, &#x60;delivered&#x60;, &#x60;read&#x60;. - &#x60;accepted&#x60;: The messaging request is accepted by our system. - &#x60;failed&#x60;: A message sent by your business failed to send. - &#x60;sent&#x60;: A message sent by your business is in transit within WhatsApp&#39;s systems. - &#x60;delivered&#x60;: A message sent by your business was delivered to the user&#39;s device. - &#x60;read&#x60;: A message sent by your business was read by the user.
  * @package  YCloud\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class EventType
+class WhatsappMessageStatus
 {
     /**
      * Possible values of this enum
      */
-    public const EMAIL_DELIVERY_UPDATED = 'email.delivery.updated';
+    public const ACCEPTED = 'accepted';
 
-    public const SMS_MESSAGE_UPDATED = 'sms.message.updated';
+    public const FAILED = 'failed';
 
-    public const VOICE_MESSAGE_UPDATED = 'voice.message.updated';
+    public const SENT = 'sent';
 
-    public const WHATSAPP_INBOUND_MESSAGE_RECEIVED = 'whatsapp.inbound_message.received';
+    public const DELIVERED = 'delivered';
 
-    public const WHATSAPP_MESSAGE_UPDATED = 'whatsapp.message.updated';
-
-    public const WHATSAPP_PHONE_NUMBER_NAME_UPDATED = 'whatsapp.phone_number.name_updated';
-
-    public const WHATSAPP_PHONE_NUMBER_QUALITY_UPDATED = 'whatsapp.phone_number.quality_updated';
-
-    public const WHATSAPP_TEMPLATE_REVIEWED = 'whatsapp.template.reviewed';
+    public const READ = 'read';
 
     /**
      * Gets allowable values of the enum
@@ -67,14 +61,11 @@ class EventType
     public static function getAllowableEnumValues()
     {
         return [
-            self::EMAIL_DELIVERY_UPDATED,
-            self::SMS_MESSAGE_UPDATED,
-            self::VOICE_MESSAGE_UPDATED,
-            self::WHATSAPP_INBOUND_MESSAGE_RECEIVED,
-            self::WHATSAPP_MESSAGE_UPDATED,
-            self::WHATSAPP_PHONE_NUMBER_NAME_UPDATED,
-            self::WHATSAPP_PHONE_NUMBER_QUALITY_UPDATED,
-            self::WHATSAPP_TEMPLATE_REVIEWED
+            self::ACCEPTED,
+            self::FAILED,
+            self::SENT,
+            self::DELIVERED,
+            self::READ
         ];
     }
 }

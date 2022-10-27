@@ -1,6 +1,6 @@
 <?php
 /**
- * VerifyApi
+ * WhatsappPhoneNumbersApi
  * PHP version 7.4
  *
  * @category Class
@@ -41,14 +41,14 @@ use YCloud\Client\HeaderSelector;
 use YCloud\Client\ObjectSerializer;
 
 /**
- * VerifyApi Class Doc Comment
+ * WhatsappPhoneNumbersApi Class Doc Comment
  *
  * @category Class
  * @package  YCloud\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class VerifyApi
+class WhatsappPhoneNumbersApi
 {
     /**
      * @var ClientInterface
@@ -117,36 +117,46 @@ class VerifyApi
     }
 
     /**
-     * Operation check
+     * Operation list
      *
-     * Check a verification
+     * List WhatsApp phone numbers
      *
-     * @param  \YCloud\Client\Model\VerificationCheckRequest $verification_check_request verification_check_request (required)
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  int $page Page number of the results to be returned, 1-based. (optional, default to 1)
+     * @param  int $limit A limit on the number of results to be returned, or number of results per page, between 1 and 100, defaults to 10. (optional, default to 10)
+     * @param  bool $include_total Return results inside an object that contains the total result count or not. (optional, default to false)
+     * @param  string $filter_waba_id WhatsApp Business Account ID. (optional)
      *
      * @throws \YCloud\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \YCloud\Client\Model\VerificationCheck
+     * @return \YCloud\Client\Model\WhatsappPhoneNumberPage
      */
-    public function check($verification_check_request)
+    public function list($associative_array)
     {
-        list($response) = $this->checkWithHttpInfo($verification_check_request);
+        list($response) = $this->listWithHttpInfo($associative_array);
         return $response;
     }
 
     /**
-     * Operation checkWithHttpInfo
+     * Operation listWithHttpInfo
      *
-     * Check a verification
+     * List WhatsApp phone numbers
      *
-     * @param  \YCloud\Client\Model\VerificationCheckRequest $verification_check_request (required)
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  int $page Page number of the results to be returned, 1-based. (optional, default to 1)
+     * @param  int $limit A limit on the number of results to be returned, or number of results per page, between 1 and 100, defaults to 10. (optional, default to 10)
+     * @param  bool $include_total Return results inside an object that contains the total result count or not. (optional, default to false)
+     * @param  string $filter_waba_id WhatsApp Business Account ID. (optional)
      *
      * @throws \YCloud\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \YCloud\Client\Model\VerificationCheck, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \YCloud\Client\Model\WhatsappPhoneNumberPage, HTTP status code, HTTP response headers (array of strings)
      */
-    public function checkWithHttpInfo($verification_check_request)
+    public function listWithHttpInfo($associative_array)
     {
-        $request = $this->checkRequest($verification_check_request);
+        $request = $this->listRequest($associative_array);
 
         try {
             $options = $this->createHttpClientOption();
@@ -185,23 +195,23 @@ class VerifyApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\YCloud\Client\Model\VerificationCheck' === '\SplFileObject') {
+                    if ('\YCloud\Client\Model\WhatsappPhoneNumberPage' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\YCloud\Client\Model\VerificationCheck' !== 'string') {
+                        if ('\YCloud\Client\Model\WhatsappPhoneNumberPage' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\YCloud\Client\Model\VerificationCheck', []),
+                        ObjectSerializer::deserialize($content, '\YCloud\Client\Model\WhatsappPhoneNumberPage', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\YCloud\Client\Model\VerificationCheck';
+            $returnType = '\YCloud\Client\Model\WhatsappPhoneNumberPage';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -222,7 +232,7 @@ class VerifyApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\YCloud\Client\Model\VerificationCheck',
+                        '\YCloud\Client\Model\WhatsappPhoneNumberPage',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -233,18 +243,23 @@ class VerifyApi
     }
 
     /**
-     * Operation checkAsync
+     * Operation listAsync
      *
-     * Check a verification
+     * List WhatsApp phone numbers
      *
-     * @param  \YCloud\Client\Model\VerificationCheckRequest $verification_check_request (required)
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  int $page Page number of the results to be returned, 1-based. (optional, default to 1)
+     * @param  int $limit A limit on the number of results to be returned, or number of results per page, between 1 and 100, defaults to 10. (optional, default to 10)
+     * @param  bool $include_total Return results inside an object that contains the total result count or not. (optional, default to false)
+     * @param  string $filter_waba_id WhatsApp Business Account ID. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function checkAsync($verification_check_request)
+    public function listAsync($associative_array)
     {
-        return $this->checkAsyncWithHttpInfo($verification_check_request)
+        return $this->listAsyncWithHttpInfo($associative_array)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -253,19 +268,24 @@ class VerifyApi
     }
 
     /**
-     * Operation checkAsyncWithHttpInfo
+     * Operation listAsyncWithHttpInfo
      *
-     * Check a verification
+     * List WhatsApp phone numbers
      *
-     * @param  \YCloud\Client\Model\VerificationCheckRequest $verification_check_request (required)
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  int $page Page number of the results to be returned, 1-based. (optional, default to 1)
+     * @param  int $limit A limit on the number of results to be returned, or number of results per page, between 1 and 100, defaults to 10. (optional, default to 10)
+     * @param  bool $include_total Return results inside an object that contains the total result count or not. (optional, default to false)
+     * @param  string $filter_waba_id WhatsApp Business Account ID. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function checkAsyncWithHttpInfo($verification_check_request)
+    public function listAsyncWithHttpInfo($associative_array)
     {
-        $returnType = '\YCloud\Client\Model\VerificationCheck';
-        $request = $this->checkRequest($verification_check_request);
+        $returnType = '\YCloud\Client\Model\WhatsappPhoneNumberPage';
+        $request = $this->listRequest($associative_array);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -304,29 +324,84 @@ class VerifyApi
     }
 
     /**
-     * Create request for operation 'check'
+     * Create request for operation 'list'
      *
-     * @param  \YCloud\Client\Model\VerificationCheckRequest $verification_check_request (required)
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  int $page Page number of the results to be returned, 1-based. (optional, default to 1)
+     * @param  int $limit A limit on the number of results to be returned, or number of results per page, between 1 and 100, defaults to 10. (optional, default to 10)
+     * @param  bool $include_total Return results inside an object that contains the total result count or not. (optional, default to false)
+     * @param  string $filter_waba_id WhatsApp Business Account ID. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function checkRequest($verification_check_request)
+    public function listRequest($associative_array)
     {
-        // verify the required parameter 'verification_check_request' is set
-        if ($verification_check_request === null || (is_array($verification_check_request) && count($verification_check_request) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $verification_check_request when calling check'
-            );
+        // unbox the parameters from the associative array
+        $page = array_key_exists('page', $associative_array) ? $associative_array['page'] : 1;
+        $limit = array_key_exists('limit', $associative_array) ? $associative_array['limit'] : 10;
+        $include_total = array_key_exists('include_total', $associative_array) ? $associative_array['include_total'] : false;
+        $filter_waba_id = array_key_exists('filter_waba_id', $associative_array) ? $associative_array['filter_waba_id'] : null;
+
+        if ($page !== null && $page > 100) {
+            throw new \InvalidArgumentException('invalid value for "$page" when calling WhatsappPhoneNumbersApi.list, must be smaller than or equal to 100.');
+        }
+        if ($page !== null && $page < 1) {
+            throw new \InvalidArgumentException('invalid value for "$page" when calling WhatsappPhoneNumbersApi.list, must be bigger than or equal to 1.');
         }
 
-        $resourcePath = '/verify/verificationChecks';
+        if ($limit !== null && $limit > 100) {
+            throw new \InvalidArgumentException('invalid value for "$limit" when calling WhatsappPhoneNumbersApi.list, must be smaller than or equal to 100.');
+        }
+        if ($limit !== null && $limit < 1) {
+            throw new \InvalidArgumentException('invalid value for "$limit" when calling WhatsappPhoneNumbersApi.list, must be bigger than or equal to 1.');
+        }
+
+
+        $resourcePath = '/whatsapp/phoneNumbers';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $page,
+            'page', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $limit,
+            'limit', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $include_total,
+            'includeTotal', // param base name
+            'boolean', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $filter_waba_id,
+            'filter.wabaId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
 
 
 
@@ -338,18 +413,12 @@ class VerifyApi
         } else {
             $headers = $this->headerSelector->selectHeaders(
                 ['application/json'],
-                ['application/json']
+                []
             );
         }
 
         // for model (json/xml)
-        if (isset($verification_check_request)) {
-            if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($verification_check_request));
-            } else {
-                $httpBody = $verification_check_request;
-            }
-        } elseif (count($formParams) > 0) {
+        if (count($formParams) > 0) {
             if ($multipart) {
                 $multipartContents = [];
                 foreach ($formParams as $formParamName => $formParamValue) {
@@ -392,7 +461,7 @@ class VerifyApi
 
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
-            'POST',
+            'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
@@ -400,36 +469,38 @@ class VerifyApi
     }
 
     /**
-     * Operation send
+     * Operation retrieve
      *
-     * Start a verification
+     * Retrieve a WhatsApp phone number
      *
-     * @param  \YCloud\Client\Model\VerificationSendRequest $verification_send_request Verification request that needs to be sent. (required)
+     * @param  string $waba_id WhatsApp Business Account ID. (required)
+     * @param  string $phone_number Phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format. (required)
      *
      * @throws \YCloud\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \YCloud\Client\Model\Verification
+     * @return \YCloud\Client\Model\WhatsappPhoneNumber
      */
-    public function send($verification_send_request)
+    public function retrieve($waba_id, $phone_number)
     {
-        list($response) = $this->sendWithHttpInfo($verification_send_request);
+        list($response) = $this->retrieveWithHttpInfo($waba_id, $phone_number);
         return $response;
     }
 
     /**
-     * Operation sendWithHttpInfo
+     * Operation retrieveWithHttpInfo
      *
-     * Start a verification
+     * Retrieve a WhatsApp phone number
      *
-     * @param  \YCloud\Client\Model\VerificationSendRequest $verification_send_request Verification request that needs to be sent. (required)
+     * @param  string $waba_id WhatsApp Business Account ID. (required)
+     * @param  string $phone_number Phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format. (required)
      *
      * @throws \YCloud\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \YCloud\Client\Model\Verification, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \YCloud\Client\Model\WhatsappPhoneNumber, HTTP status code, HTTP response headers (array of strings)
      */
-    public function sendWithHttpInfo($verification_send_request)
+    public function retrieveWithHttpInfo($waba_id, $phone_number)
     {
-        $request = $this->sendRequest($verification_send_request);
+        $request = $this->retrieveRequest($waba_id, $phone_number);
 
         try {
             $options = $this->createHttpClientOption();
@@ -468,23 +539,23 @@ class VerifyApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\YCloud\Client\Model\Verification' === '\SplFileObject') {
+                    if ('\YCloud\Client\Model\WhatsappPhoneNumber' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\YCloud\Client\Model\Verification' !== 'string') {
+                        if ('\YCloud\Client\Model\WhatsappPhoneNumber' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\YCloud\Client\Model\Verification', []),
+                        ObjectSerializer::deserialize($content, '\YCloud\Client\Model\WhatsappPhoneNumber', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\YCloud\Client\Model\Verification';
+            $returnType = '\YCloud\Client\Model\WhatsappPhoneNumber';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -505,7 +576,7 @@ class VerifyApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\YCloud\Client\Model\Verification',
+                        '\YCloud\Client\Model\WhatsappPhoneNumber',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -516,18 +587,19 @@ class VerifyApi
     }
 
     /**
-     * Operation sendAsync
+     * Operation retrieveAsync
      *
-     * Start a verification
+     * Retrieve a WhatsApp phone number
      *
-     * @param  \YCloud\Client\Model\VerificationSendRequest $verification_send_request Verification request that needs to be sent. (required)
+     * @param  string $waba_id WhatsApp Business Account ID. (required)
+     * @param  string $phone_number Phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function sendAsync($verification_send_request)
+    public function retrieveAsync($waba_id, $phone_number)
     {
-        return $this->sendAsyncWithHttpInfo($verification_send_request)
+        return $this->retrieveAsyncWithHttpInfo($waba_id, $phone_number)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -536,19 +608,20 @@ class VerifyApi
     }
 
     /**
-     * Operation sendAsyncWithHttpInfo
+     * Operation retrieveAsyncWithHttpInfo
      *
-     * Start a verification
+     * Retrieve a WhatsApp phone number
      *
-     * @param  \YCloud\Client\Model\VerificationSendRequest $verification_send_request Verification request that needs to be sent. (required)
+     * @param  string $waba_id WhatsApp Business Account ID. (required)
+     * @param  string $phone_number Phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function sendAsyncWithHttpInfo($verification_send_request)
+    public function retrieveAsyncWithHttpInfo($waba_id, $phone_number)
     {
-        $returnType = '\YCloud\Client\Model\Verification';
-        $request = $this->sendRequest($verification_send_request);
+        $returnType = '\YCloud\Client\Model\WhatsappPhoneNumber';
+        $request = $this->retrieveRequest($waba_id, $phone_number);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -587,23 +660,30 @@ class VerifyApi
     }
 
     /**
-     * Create request for operation 'send'
+     * Create request for operation 'retrieve'
      *
-     * @param  \YCloud\Client\Model\VerificationSendRequest $verification_send_request Verification request that needs to be sent. (required)
+     * @param  string $waba_id WhatsApp Business Account ID. (required)
+     * @param  string $phone_number Phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function sendRequest($verification_send_request)
+    public function retrieveRequest($waba_id, $phone_number)
     {
-        // verify the required parameter 'verification_send_request' is set
-        if ($verification_send_request === null || (is_array($verification_send_request) && count($verification_send_request) === 0)) {
+        // verify the required parameter 'waba_id' is set
+        if ($waba_id === null || (is_array($waba_id) && count($waba_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $verification_send_request when calling send'
+                'Missing the required parameter $waba_id when calling retrieve'
+            );
+        }
+        // verify the required parameter 'phone_number' is set
+        if ($phone_number === null || (is_array($phone_number) && count($phone_number) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $phone_number when calling retrieve'
             );
         }
 
-        $resourcePath = '/verify/verifications';
+        $resourcePath = '/whatsapp/phoneNumbers/{wabaId}/{phoneNumber}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -612,6 +692,22 @@ class VerifyApi
 
 
 
+        // path params
+        if ($waba_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'wabaId' . '}',
+                ObjectSerializer::toPathValue($waba_id),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($phone_number !== null) {
+            $resourcePath = str_replace(
+                '{' . 'phoneNumber' . '}',
+                ObjectSerializer::toPathValue($phone_number),
+                $resourcePath
+            );
+        }
 
 
         if ($multipart) {
@@ -621,18 +717,12 @@ class VerifyApi
         } else {
             $headers = $this->headerSelector->selectHeaders(
                 ['application/json'],
-                ['application/json']
+                []
             );
         }
 
         // for model (json/xml)
-        if (isset($verification_send_request)) {
-            if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($verification_send_request));
-            } else {
-                $httpBody = $verification_send_request;
-            }
-        } elseif (count($formParams) > 0) {
+        if (count($formParams) > 0) {
             if ($multipart) {
                 $multipartContents = [];
                 foreach ($formParams as $formParamName => $formParamValue) {
@@ -675,7 +765,7 @@ class VerifyApi
 
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
-            'POST',
+            'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody

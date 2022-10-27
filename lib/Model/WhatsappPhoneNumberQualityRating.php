@@ -1,6 +1,6 @@
 <?php
 /**
- * EventType
+ * WhatsappPhoneNumberQualityRating
  *
  * PHP version 7.4
  *
@@ -31,34 +31,26 @@ namespace YCloud\Client\Model;
 use \YCloud\Client\ObjectSerializer;
 
 /**
- * EventType Class Doc Comment
+ * WhatsappPhoneNumberQualityRating Class Doc Comment
  *
  * @category Class
- * @description Type of webhook events.
+ * @description Quality rating. One of &#x60;GREEN&#x60;, &#x60;YELLOW&#x60;, &#x60;RED&#x60;, or &#x60;UNKNOWN&#x60;. See also [Quality Rating](https://developers.facebook.com/docs/whatsapp/messaging-limits#quality-rating-and-messaging-limits). - &#x60;GREEN&#x60;: High quality. - &#x60;YELLOW&#x60;: Medium quality. - &#x60;RED&#x60;: Low quality. - &#x60;UNKNOWN&#x60;: Unknown quality.
  * @package  YCloud\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class EventType
+class WhatsappPhoneNumberQualityRating
 {
     /**
      * Possible values of this enum
      */
-    public const EMAIL_DELIVERY_UPDATED = 'email.delivery.updated';
+    public const GREEN = 'GREEN';
 
-    public const SMS_MESSAGE_UPDATED = 'sms.message.updated';
+    public const YELLOW = 'YELLOW';
 
-    public const VOICE_MESSAGE_UPDATED = 'voice.message.updated';
+    public const RED = 'RED';
 
-    public const WHATSAPP_INBOUND_MESSAGE_RECEIVED = 'whatsapp.inbound_message.received';
-
-    public const WHATSAPP_MESSAGE_UPDATED = 'whatsapp.message.updated';
-
-    public const WHATSAPP_PHONE_NUMBER_NAME_UPDATED = 'whatsapp.phone_number.name_updated';
-
-    public const WHATSAPP_PHONE_NUMBER_QUALITY_UPDATED = 'whatsapp.phone_number.quality_updated';
-
-    public const WHATSAPP_TEMPLATE_REVIEWED = 'whatsapp.template.reviewed';
+    public const UNKNOWN = 'UNKNOWN';
 
     /**
      * Gets allowable values of the enum
@@ -67,14 +59,10 @@ class EventType
     public static function getAllowableEnumValues()
     {
         return [
-            self::EMAIL_DELIVERY_UPDATED,
-            self::SMS_MESSAGE_UPDATED,
-            self::VOICE_MESSAGE_UPDATED,
-            self::WHATSAPP_INBOUND_MESSAGE_RECEIVED,
-            self::WHATSAPP_MESSAGE_UPDATED,
-            self::WHATSAPP_PHONE_NUMBER_NAME_UPDATED,
-            self::WHATSAPP_PHONE_NUMBER_QUALITY_UPDATED,
-            self::WHATSAPP_TEMPLATE_REVIEWED
+            self::GREEN,
+            self::YELLOW,
+            self::RED,
+            self::UNKNOWN
         ];
     }
 }

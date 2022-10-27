@@ -1,6 +1,6 @@
 <?php
 /**
- * EventType
+ * WhatsappPhoneNumberNameStatus
  *
  * PHP version 7.4
  *
@@ -31,34 +31,30 @@ namespace YCloud\Client\Model;
 use \YCloud\Client\ObjectSerializer;
 
 /**
- * EventType Class Doc Comment
+ * WhatsappPhoneNumberNameStatus Class Doc Comment
  *
  * @category Class
- * @description Type of webhook events.
+ * @description The review status of the current display name request. See also [Get Display Name Status](https://developers.facebook.com/docs/whatsapp/business-management-api/manage-phone-numbers#get-display-name-status--beta-).
  * @package  YCloud\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class EventType
+class WhatsappPhoneNumberNameStatus
 {
     /**
      * Possible values of this enum
      */
-    public const EMAIL_DELIVERY_UPDATED = 'email.delivery.updated';
+    public const APPROVED = 'APPROVED';
 
-    public const SMS_MESSAGE_UPDATED = 'sms.message.updated';
+    public const AVAILABLE_WITHOUT_REVIEW = 'AVAILABLE_WITHOUT_REVIEW';
 
-    public const VOICE_MESSAGE_UPDATED = 'voice.message.updated';
+    public const DECLINED = 'DECLINED';
 
-    public const WHATSAPP_INBOUND_MESSAGE_RECEIVED = 'whatsapp.inbound_message.received';
+    public const EXPIRED = 'EXPIRED';
 
-    public const WHATSAPP_MESSAGE_UPDATED = 'whatsapp.message.updated';
+    public const PENDING_REVIEW = 'PENDING_REVIEW';
 
-    public const WHATSAPP_PHONE_NUMBER_NAME_UPDATED = 'whatsapp.phone_number.name_updated';
-
-    public const WHATSAPP_PHONE_NUMBER_QUALITY_UPDATED = 'whatsapp.phone_number.quality_updated';
-
-    public const WHATSAPP_TEMPLATE_REVIEWED = 'whatsapp.template.reviewed';
+    public const NONE = 'NONE';
 
     /**
      * Gets allowable values of the enum
@@ -67,14 +63,12 @@ class EventType
     public static function getAllowableEnumValues()
     {
         return [
-            self::EMAIL_DELIVERY_UPDATED,
-            self::SMS_MESSAGE_UPDATED,
-            self::VOICE_MESSAGE_UPDATED,
-            self::WHATSAPP_INBOUND_MESSAGE_RECEIVED,
-            self::WHATSAPP_MESSAGE_UPDATED,
-            self::WHATSAPP_PHONE_NUMBER_NAME_UPDATED,
-            self::WHATSAPP_PHONE_NUMBER_QUALITY_UPDATED,
-            self::WHATSAPP_TEMPLATE_REVIEWED
+            self::APPROVED,
+            self::AVAILABLE_WITHOUT_REVIEW,
+            self::DECLINED,
+            self::EXPIRED,
+            self::PENDING_REVIEW,
+            self::NONE
         ];
     }
 }

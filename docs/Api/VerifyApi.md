@@ -49,7 +49,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **verification_check_request** | [**\YCloud\Client\Model\VerificationCheckRequest**](../Model/VerificationCheckRequest.md)|  | [optional]
+ **verification_check_request** | [**\YCloud\Client\Model\VerificationCheckRequest**](../Model/VerificationCheckRequest.md)|  |
 
 ### Return type
 

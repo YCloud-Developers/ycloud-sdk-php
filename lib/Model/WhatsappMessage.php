@@ -60,6 +60,7 @@ class WhatsappMessage implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPITypes = [
         'id' => 'string',
+        'waba_id' => 'string',
         'from' => 'string',
         'to' => 'string',
         'type' => '\YCloud\Client\Model\WhatsappMessageType',
@@ -73,7 +74,7 @@ class WhatsappMessage implements ModelInterface, ArrayAccess, \JsonSerializable
         'interactive' => '\YCloud\Client\Model\WhatsappMessageInteractive',
         'contacts' => '\YCloud\Client\Model\WhatsappMessageContact[]',
         'external_id' => 'string',
-        'status' => 'string',
+        'status' => '\YCloud\Client\Model\WhatsappMessageStatus',
         'error_code' => 'string',
         'error_message' => 'string',
         'create_time' => '\DateTime',
@@ -89,6 +90,7 @@ class WhatsappMessage implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPIFormats = [
         'id' => null,
+        'waba_id' => null,
         'from' => null,
         'to' => null,
         'type' => null,
@@ -137,6 +139,7 @@ class WhatsappMessage implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $attributeMap = [
         'id' => 'id',
+        'waba_id' => 'wabaId',
         'from' => 'from',
         'to' => 'to',
         'type' => 'type',
@@ -164,6 +167,7 @@ class WhatsappMessage implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $setters = [
         'id' => 'setId',
+        'waba_id' => 'setWabaId',
         'from' => 'setFrom',
         'to' => 'setTo',
         'type' => 'setType',
@@ -191,6 +195,7 @@ class WhatsappMessage implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $getters = [
         'id' => 'getId',
+        'waba_id' => 'getWabaId',
         'from' => 'getFrom',
         'to' => 'getTo',
         'type' => 'getType',
@@ -269,6 +274,7 @@ class WhatsappMessage implements ModelInterface, ArrayAccess, \JsonSerializable
     public function __construct(array $data = null)
     {
         $this->container['id'] = $data['id'] ?? null;
+        $this->container['waba_id'] = $data['waba_id'] ?? null;
         $this->container['from'] = $data['from'] ?? null;
         $this->container['to'] = $data['to'] ?? null;
         $this->container['type'] = $data['type'] ?? null;
@@ -345,6 +351,30 @@ class WhatsappMessage implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setId($id)
     {
         $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Gets waba_id
+     *
+     * @return string|null
+     */
+    public function getWabaId()
+    {
+        return $this->container['waba_id'];
+    }
+
+    /**
+     * Sets waba_id
+     *
+     * @param string|null $waba_id WhatsApp Business Account ID.
+     *
+     * @return self
+     */
+    public function setWabaId($waba_id)
+    {
+        $this->container['waba_id'] = $waba_id;
 
         return $this;
     }
@@ -664,7 +694,7 @@ class WhatsappMessage implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets status
      *
-     * @return string|null
+     * @return \YCloud\Client\Model\WhatsappMessageStatus|null
      */
     public function getStatus()
     {
@@ -674,7 +704,7 @@ class WhatsappMessage implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets status
      *
-     * @param string|null $status One of `accepted`, `sent`, `failed`, `delivered`, `read`. - `accepted`: The messaging request is accepted by our system. - `sent`: A message sent by your business is in transit within WhatsApp's systems. - `failed`: A message sent by your business failed to send. - `delivered`: A message sent by your business was delivered to the user's device. - `read`: A message sent by your business was read by the user.
+     * @param \YCloud\Client\Model\WhatsappMessageStatus|null $status status
      *
      * @return self
      */

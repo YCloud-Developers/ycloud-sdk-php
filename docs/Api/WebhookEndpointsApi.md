@@ -361,7 +361,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**| ID of the webhook endpoint. |
- **webhook_endpoint_update_request** | [**\YCloud\Client\Model\WebhookEndpointUpdateRequest**](../Model/WebhookEndpointUpdateRequest.md)|  | [optional]
+ **webhook_endpoint_update_request** | [**\YCloud\Client\Model\WebhookEndpointUpdateRequest**](../Model/WebhookEndpointUpdateRequest.md)|  |
 
 ### Return type
 

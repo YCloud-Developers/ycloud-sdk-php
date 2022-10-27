@@ -59,6 +59,7 @@ class WhatsappTemplate implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
+        'waba_id' => 'string',
         'name' => 'string',
         'language' => 'string',
         'category' => '\YCloud\Client\Model\WhatsappTemplateCategory',
@@ -77,6 +78,7 @@ class WhatsappTemplate implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'waba_id' => null,
         'name' => null,
         'language' => null,
         'category' => null,
@@ -114,6 +116,7 @@ class WhatsappTemplate implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
+        'waba_id' => 'wabaId',
         'name' => 'name',
         'language' => 'language',
         'category' => 'category',
@@ -130,6 +133,7 @@ class WhatsappTemplate implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
+        'waba_id' => 'setWabaId',
         'name' => 'setName',
         'language' => 'setLanguage',
         'category' => 'setCategory',
@@ -146,6 +150,7 @@ class WhatsappTemplate implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
+        'waba_id' => 'getWabaId',
         'name' => 'getName',
         'language' => 'getLanguage',
         'category' => 'getCategory',
@@ -213,6 +218,7 @@ class WhatsappTemplate implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
+        $this->container['waba_id'] = $data['waba_id'] ?? null;
         $this->container['name'] = $data['name'] ?? null;
         $this->container['language'] = $data['language'] ?? null;
         $this->container['category'] = $data['category'] ?? null;
@@ -268,6 +274,30 @@ class WhatsappTemplate implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
+     * Gets waba_id
+     *
+     * @return string|null
+     */
+    public function getWabaId()
+    {
+        return $this->container['waba_id'];
+    }
+
+    /**
+     * Sets waba_id
+     *
+     * @param string|null $waba_id WhatsApp Business Account ID.
+     *
+     * @return self
+     */
+    public function setWabaId($waba_id)
+    {
+        $this->container['waba_id'] = $waba_id;
+
+        return $this;
+    }
+
+    /**
      * Gets name
      *
      * @return string
@@ -311,7 +341,7 @@ class WhatsappTemplate implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets language
      *
-     * @param string $language Language code of the template. See [Supported Languages](https://developers.facebook.com/docs/whatsapp/api/messages/message-templates#supported-languages) for all codes.
+     * @param string $language Language code of the template. See [Supported Languages](https://developers.facebook.com/docs/whatsapp/api/messages/message-templates#supported-languages-) for all codes.
      *
      * @return self
      */

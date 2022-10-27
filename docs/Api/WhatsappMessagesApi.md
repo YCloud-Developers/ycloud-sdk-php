@@ -4,8 +4,69 @@ All URIs are relative to https://api.ycloud.com/v2.
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**retrieve()**](WhatsappMessagesApi.md#retrieve) | **GET** /whatsapp/messages/{id} | Retrieve a WhatsApp message
 [**send()**](WhatsappMessagesApi.md#send) | **POST** /whatsapp/messages | Send a WhatsApp message
 
+
+## `retrieve()`
+
+```php
+retrieve($id): \YCloud\Client\Model\WhatsappMessage
+```
+
+Retrieve a WhatsApp message
+
+Retrieves a WhatsApp message you've previously sent.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: api_key
+$config = YCloud\Client\Configuration::getDefaultConfiguration()->setApiKey('X-API-Key', 'YOUR_API_KEY');
+
+
+$apiInstance = new YCloud\Client\Api\WhatsappMessagesApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$id = 627c8640675de8fc689ab9d9; // string | ID of the object.
+
+try {
+    $result = $apiInstance->retrieve($id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling WhatsappMessagesApi->retrieve: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **string**| ID of the object. |
+
+### Return type
+
+[**\YCloud\Client\Model\WhatsappMessage**](../Model/WhatsappMessage.md)
+
+### Authorization
+
+[api_key](../../README.md#api_key)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
 
 ## `send()`
 
@@ -48,7 +109,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **whatsapp_message_send_request** | [**\YCloud\Client\Model\WhatsappMessageSendRequest**](../Model/WhatsappMessageSendRequest.md)|  | [optional]
+ **whatsapp_message_send_request** | [**\YCloud\Client\Model\WhatsappMessageSendRequest**](../Model/WhatsappMessageSendRequest.md)|  |
 
 ### Return type
 

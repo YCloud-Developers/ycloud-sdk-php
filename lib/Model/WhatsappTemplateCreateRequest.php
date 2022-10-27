@@ -59,6 +59,7 @@ class WhatsappTemplateCreateRequest implements ModelInterface, ArrayAccess, \Jso
       * @var string[]
       */
     protected static $openAPITypes = [
+        'waba_id' => 'string',
         'name' => 'string',
         'language' => 'string',
         'category' => '\YCloud\Client\Model\WhatsappTemplateCategory',
@@ -73,6 +74,7 @@ class WhatsappTemplateCreateRequest implements ModelInterface, ArrayAccess, \Jso
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'waba_id' => null,
         'name' => null,
         'language' => null,
         'category' => null,
@@ -106,6 +108,7 @@ class WhatsappTemplateCreateRequest implements ModelInterface, ArrayAccess, \Jso
      * @var string[]
      */
     protected static $attributeMap = [
+        'waba_id' => 'wabaId',
         'name' => 'name',
         'language' => 'language',
         'category' => 'category',
@@ -118,6 +121,7 @@ class WhatsappTemplateCreateRequest implements ModelInterface, ArrayAccess, \Jso
      * @var string[]
      */
     protected static $setters = [
+        'waba_id' => 'setWabaId',
         'name' => 'setName',
         'language' => 'setLanguage',
         'category' => 'setCategory',
@@ -130,6 +134,7 @@ class WhatsappTemplateCreateRequest implements ModelInterface, ArrayAccess, \Jso
      * @var string[]
      */
     protected static $getters = [
+        'waba_id' => 'getWabaId',
         'name' => 'getName',
         'language' => 'getLanguage',
         'category' => 'getCategory',
@@ -193,6 +198,7 @@ class WhatsappTemplateCreateRequest implements ModelInterface, ArrayAccess, \Jso
      */
     public function __construct(array $data = null)
     {
+        $this->container['waba_id'] = $data['waba_id'] ?? null;
         $this->container['name'] = $data['name'] ?? null;
         $this->container['language'] = $data['language'] ?? null;
         $this->container['category'] = $data['category'] ?? null;
@@ -208,6 +214,9 @@ class WhatsappTemplateCreateRequest implements ModelInterface, ArrayAccess, \Jso
     {
         $invalidProperties = [];
 
+        if ($this->container['waba_id'] === null) {
+            $invalidProperties[] = "'waba_id' can't be null";
+        }
         if ($this->container['name'] === null) {
             $invalidProperties[] = "'name' can't be null";
         }
@@ -242,6 +251,30 @@ class WhatsappTemplateCreateRequest implements ModelInterface, ArrayAccess, \Jso
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets waba_id
+     *
+     * @return string
+     */
+    public function getWabaId()
+    {
+        return $this->container['waba_id'];
+    }
+
+    /**
+     * Sets waba_id
+     *
+     * @param string $waba_id WhatsApp Business Account ID.
+     *
+     * @return self
+     */
+    public function setWabaId($waba_id)
+    {
+        $this->container['waba_id'] = $waba_id;
+
+        return $this;
+    }
 
     /**
      * Gets name
@@ -287,7 +320,7 @@ class WhatsappTemplateCreateRequest implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets language
      *
-     * @param string $language Language code of the template. See [Supported Languages](https://developers.facebook.com/docs/whatsapp/api/messages/message-templates#supported-languages) for all codes.
+     * @param string $language Language code of the template. See [Supported Languages](https://developers.facebook.com/docs/whatsapp/api/messages/message-templates#supported-languages-) for all codes.
      *
      * @return self
      */

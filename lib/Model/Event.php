@@ -68,6 +68,7 @@ class Event implements ModelInterface, ArrayAccess, \JsonSerializable
         'voice' => '\YCloud\Client\Model\Voice',
         'whatsapp_inbound_message' => '\YCloud\Client\Model\WhatsappInboundMessage',
         'whatsapp_message' => '\YCloud\Client\Model\WhatsappMessage',
+        'whatsapp_phone_number' => '\YCloud\Client\Model\WhatsappPhoneNumber',
         'whatsapp_template' => '\YCloud\Client\Model\WhatsappTemplate'
     ];
 
@@ -88,6 +89,7 @@ class Event implements ModelInterface, ArrayAccess, \JsonSerializable
         'voice' => null,
         'whatsapp_inbound_message' => null,
         'whatsapp_message' => null,
+        'whatsapp_phone_number' => null,
         'whatsapp_template' => null
     ];
 
@@ -127,6 +129,7 @@ class Event implements ModelInterface, ArrayAccess, \JsonSerializable
         'voice' => 'voice',
         'whatsapp_inbound_message' => 'whatsappInboundMessage',
         'whatsapp_message' => 'whatsappMessage',
+        'whatsapp_phone_number' => 'whatsappPhoneNumber',
         'whatsapp_template' => 'whatsappTemplate'
     ];
 
@@ -145,6 +148,7 @@ class Event implements ModelInterface, ArrayAccess, \JsonSerializable
         'voice' => 'setVoice',
         'whatsapp_inbound_message' => 'setWhatsappInboundMessage',
         'whatsapp_message' => 'setWhatsappMessage',
+        'whatsapp_phone_number' => 'setWhatsappPhoneNumber',
         'whatsapp_template' => 'setWhatsappTemplate'
     ];
 
@@ -163,6 +167,7 @@ class Event implements ModelInterface, ArrayAccess, \JsonSerializable
         'voice' => 'getVoice',
         'whatsapp_inbound_message' => 'getWhatsappInboundMessage',
         'whatsapp_message' => 'getWhatsappMessage',
+        'whatsapp_phone_number' => 'getWhatsappPhoneNumber',
         'whatsapp_template' => 'getWhatsappTemplate'
     ];
 
@@ -232,6 +237,7 @@ class Event implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['voice'] = $data['voice'] ?? null;
         $this->container['whatsapp_inbound_message'] = $data['whatsapp_inbound_message'] ?? null;
         $this->container['whatsapp_message'] = $data['whatsapp_message'] ?? null;
+        $this->container['whatsapp_phone_number'] = $data['whatsapp_phone_number'] ?? null;
         $this->container['whatsapp_template'] = $data['whatsapp_template'] ?? null;
     }
 
@@ -498,6 +504,30 @@ class Event implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setWhatsappMessage($whatsapp_message)
     {
         $this->container['whatsapp_message'] = $whatsapp_message;
+
+        return $this;
+    }
+
+    /**
+     * Gets whatsapp_phone_number
+     *
+     * @return \YCloud\Client\Model\WhatsappPhoneNumber|null
+     */
+    public function getWhatsappPhoneNumber()
+    {
+        return $this->container['whatsapp_phone_number'];
+    }
+
+    /**
+     * Sets whatsapp_phone_number
+     *
+     * @param \YCloud\Client\Model\WhatsappPhoneNumber|null $whatsapp_phone_number whatsapp_phone_number
+     *
+     * @return self
+     */
+    public function setWhatsappPhoneNumber($whatsapp_phone_number)
+    {
+        $this->container['whatsapp_phone_number'] = $whatsapp_phone_number;
 
         return $this;
     }
