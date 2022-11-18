@@ -247,7 +247,7 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets status
      *
-     * @param int $status HTTP status code, [RFC 7231, Section 6](https://datatracker.ietf.org/doc/html/rfc7231#section-6).
+     * @param int $status HTTP status code, [RFC 7231, Section 6](https://datatracker.ietf.org/doc/html/rfc7231#section-6). It conveys the HTTP status code used for the convenience of the consumer.
      *
      * @return self
      */
@@ -273,7 +273,7 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets code
      *
-     * @param string $code One of a server-defined set of error codes, which could be handled programmatically.
+     * @param string $code One of a server-defined error codes. Some `4xx` errors that could be handled programmatically include an error code that briefly explains the error reported.
      *
      * @return self
      */

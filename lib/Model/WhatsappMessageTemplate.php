@@ -208,9 +208,6 @@ class WhatsappMessageTemplate implements ModelInterface, ArrayAccess, \JsonSeria
         if ($this->container['language'] === null) {
             $invalidProperties[] = "'language' can't be null";
         }
-        if ($this->container['components'] === null) {
-            $invalidProperties[] = "'components' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -277,7 +274,7 @@ class WhatsappMessageTemplate implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets components
      *
-     * @return \YCloud\Client\Model\WhatsappMessageTemplateComponentsInner[]
+     * @return \YCloud\Client\Model\WhatsappMessageTemplateComponentsInner[]|null
      */
     public function getComponents()
     {
@@ -287,7 +284,7 @@ class WhatsappMessageTemplate implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets components
      *
-     * @param \YCloud\Client\Model\WhatsappMessageTemplateComponentsInner[] $components Array of components objects containing the parameters of the message.
+     * @param \YCloud\Client\Model\WhatsappMessageTemplateComponentsInner[]|null $components Array of components objects containing the parameters of the message.
      *
      * @return self
      */

@@ -59,11 +59,11 @@ class WhatsappInboundMessageMedia implements ModelInterface, ArrayAccess, \JsonS
       * @var string[]
       */
     protected static $openAPITypes = [
+        'id' => 'string',
         'link' => 'string',
         'caption' => 'string',
         'filename' => 'string',
-        'id' => 'string',
-        'metadata' => 'string',
+        'metadata' => 'array<string,object>',
         'mime_type' => 'string',
         'sha256' => 'string'
     ];
@@ -76,10 +76,10 @@ class WhatsappInboundMessageMedia implements ModelInterface, ArrayAccess, \JsonS
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'id' => null,
         'link' => null,
         'caption' => null,
         'filename' => null,
-        'id' => null,
         'metadata' => null,
         'mime_type' => null,
         'sha256' => null
@@ -112,10 +112,10 @@ class WhatsappInboundMessageMedia implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $attributeMap = [
+        'id' => 'id',
         'link' => 'link',
         'caption' => 'caption',
         'filename' => 'filename',
-        'id' => 'id',
         'metadata' => 'metadata',
         'mime_type' => 'mime_type',
         'sha256' => 'sha256'
@@ -127,10 +127,10 @@ class WhatsappInboundMessageMedia implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $setters = [
+        'id' => 'setId',
         'link' => 'setLink',
         'caption' => 'setCaption',
         'filename' => 'setFilename',
-        'id' => 'setId',
         'metadata' => 'setMetadata',
         'mime_type' => 'setMimeType',
         'sha256' => 'setSha256'
@@ -142,10 +142,10 @@ class WhatsappInboundMessageMedia implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $getters = [
+        'id' => 'getId',
         'link' => 'getLink',
         'caption' => 'getCaption',
         'filename' => 'getFilename',
-        'id' => 'getId',
         'metadata' => 'getMetadata',
         'mime_type' => 'getMimeType',
         'sha256' => 'getSha256'
@@ -208,10 +208,10 @@ class WhatsappInboundMessageMedia implements ModelInterface, ArrayAccess, \JsonS
      */
     public function __construct(array $data = null)
     {
+        $this->container['id'] = $data['id'] ?? null;
         $this->container['link'] = $data['link'] ?? null;
         $this->container['caption'] = $data['caption'] ?? null;
         $this->container['filename'] = $data['filename'] ?? null;
-        $this->container['id'] = $data['id'] ?? null;
         $this->container['metadata'] = $data['metadata'] ?? null;
         $this->container['mime_type'] = $data['mime_type'] ?? null;
         $this->container['sha256'] = $data['sha256'] ?? null;
@@ -242,6 +242,30 @@ class WhatsappInboundMessageMedia implements ModelInterface, ArrayAccess, \JsonS
 
 
     /**
+     * Gets id
+     *
+     * @return string|null
+     */
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * Sets id
+     *
+     * @param string|null $id ID of the media. Can be used to delete the media if stored locally on the client.
+     *
+     * @return self
+     */
+    public function setId($id)
+    {
+        $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
      * Gets link
      *
      * @return string|null
@@ -254,7 +278,7 @@ class WhatsappInboundMessageMedia implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets link
      *
-     * @param string|null $link The protocol and URL of the media.
+     * @param string|null $link The url to download the media file. Note that This link can be directly accessed in a few minutes for the convenience of the consumer, but you should always include an `X-API-Key` header to download this file within a month.
      *
      * @return self
      */
@@ -314,33 +338,9 @@ class WhatsappInboundMessageMedia implements ModelInterface, ArrayAccess, \JsonS
     }
 
     /**
-     * Gets id
-     *
-     * @return string|null
-     */
-    public function getId()
-    {
-        return $this->container['id'];
-    }
-
-    /**
-     * Sets id
-     *
-     * @param string|null $id ID of the media. Can be used to delete the media if stored locally on the client.
-     *
-     * @return self
-     */
-    public function setId($id)
-    {
-        $this->container['id'] = $id;
-
-        return $this;
-    }
-
-    /**
      * Gets metadata
      *
-     * @return string|null
+     * @return array<string,object>|null
      */
     public function getMetadata()
     {
@@ -350,7 +350,7 @@ class WhatsappInboundMessageMedia implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets metadata
      *
-     * @param string|null $metadata Metadata pertaining to `sticker` media.
+     * @param array<string,object>|null $metadata Metadata pertaining to `sticker` media.
      *
      * @return self
      */

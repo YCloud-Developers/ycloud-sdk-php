@@ -238,6 +238,9 @@ class WhatsappTemplate implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if ($this->container['waba_id'] === null) {
+            $invalidProperties[] = "'waba_id' can't be null";
+        }
         if ($this->container['name'] === null) {
             $invalidProperties[] = "'name' can't be null";
         }
@@ -276,7 +279,7 @@ class WhatsappTemplate implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets waba_id
      *
-     * @return string|null
+     * @return string
      */
     public function getWabaId()
     {
@@ -286,7 +289,7 @@ class WhatsappTemplate implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets waba_id
      *
-     * @param string|null $waba_id WhatsApp Business Account ID.
+     * @param string $waba_id WhatsApp Business Account ID.
      *
      * @return self
      */

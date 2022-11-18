@@ -62,6 +62,7 @@ class WhatsappInboundMessage implements ModelInterface, ArrayAccess, \JsonSerial
         'id' => 'string',
         'waba_id' => 'string',
         'from' => 'string',
+        'customer_profile' => '\YCloud\Client\Model\WhatsappProfile',
         'to' => 'string',
         'send_time' => '\DateTime',
         'type' => '\YCloud\Client\Model\WhatsappInboundMessageType',
@@ -88,6 +89,7 @@ class WhatsappInboundMessage implements ModelInterface, ArrayAccess, \JsonSerial
         'id' => null,
         'waba_id' => null,
         'from' => null,
+        'customer_profile' => null,
         'to' => null,
         'send_time' => 'date-time',
         'type' => null,
@@ -133,6 +135,7 @@ class WhatsappInboundMessage implements ModelInterface, ArrayAccess, \JsonSerial
         'id' => 'id',
         'waba_id' => 'wabaId',
         'from' => 'from',
+        'customer_profile' => 'customerProfile',
         'to' => 'to',
         'send_time' => 'sendTime',
         'type' => 'type',
@@ -157,6 +160,7 @@ class WhatsappInboundMessage implements ModelInterface, ArrayAccess, \JsonSerial
         'id' => 'setId',
         'waba_id' => 'setWabaId',
         'from' => 'setFrom',
+        'customer_profile' => 'setCustomerProfile',
         'to' => 'setTo',
         'send_time' => 'setSendTime',
         'type' => 'setType',
@@ -181,6 +185,7 @@ class WhatsappInboundMessage implements ModelInterface, ArrayAccess, \JsonSerial
         'id' => 'getId',
         'waba_id' => 'getWabaId',
         'from' => 'getFrom',
+        'customer_profile' => 'getCustomerProfile',
         'to' => 'getTo',
         'send_time' => 'getSendTime',
         'type' => 'getType',
@@ -256,6 +261,7 @@ class WhatsappInboundMessage implements ModelInterface, ArrayAccess, \JsonSerial
         $this->container['id'] = $data['id'] ?? null;
         $this->container['waba_id'] = $data['waba_id'] ?? null;
         $this->container['from'] = $data['from'] ?? null;
+        $this->container['customer_profile'] = $data['customer_profile'] ?? null;
         $this->container['to'] = $data['to'] ?? null;
         $this->container['send_time'] = $data['send_time'] ?? null;
         $this->container['type'] = $data['type'] ?? null;
@@ -359,13 +365,37 @@ class WhatsappInboundMessage implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets from
      *
-     * @param string|null $from The sender's phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format.
+     * @param string|null $from The customer's phone number who sent the message to the business, formatted in [E.164](https://en.wikipedia.org/wiki/E.164) format.
      *
      * @return self
      */
     public function setFrom($from)
     {
         $this->container['from'] = $from;
+
+        return $this;
+    }
+
+    /**
+     * Gets customer_profile
+     *
+     * @return \YCloud\Client\Model\WhatsappProfile|null
+     */
+    public function getCustomerProfile()
+    {
+        return $this->container['customer_profile'];
+    }
+
+    /**
+     * Sets customer_profile
+     *
+     * @param \YCloud\Client\Model\WhatsappProfile|null $customer_profile customer_profile
+     *
+     * @return self
+     */
+    public function setCustomerProfile($customer_profile)
+    {
+        $this->container['customer_profile'] = $customer_profile;
 
         return $this;
     }

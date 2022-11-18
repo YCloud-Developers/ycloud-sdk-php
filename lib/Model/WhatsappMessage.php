@@ -63,6 +63,7 @@ class WhatsappMessage implements ModelInterface, ArrayAccess, \JsonSerializable
         'waba_id' => 'string',
         'from' => 'string',
         'to' => 'string',
+        'conversation' => '\YCloud\Client\Model\WhatsappConversation',
         'type' => '\YCloud\Client\Model\WhatsappMessageType',
         'template' => '\YCloud\Client\Model\WhatsappMessageTemplate',
         'text' => '\YCloud\Client\Model\WhatsappMessageText',
@@ -93,6 +94,7 @@ class WhatsappMessage implements ModelInterface, ArrayAccess, \JsonSerializable
         'waba_id' => null,
         'from' => null,
         'to' => null,
+        'conversation' => null,
         'type' => null,
         'template' => null,
         'text' => null,
@@ -142,6 +144,7 @@ class WhatsappMessage implements ModelInterface, ArrayAccess, \JsonSerializable
         'waba_id' => 'wabaId',
         'from' => 'from',
         'to' => 'to',
+        'conversation' => 'conversation',
         'type' => 'type',
         'template' => 'template',
         'text' => 'text',
@@ -170,6 +173,7 @@ class WhatsappMessage implements ModelInterface, ArrayAccess, \JsonSerializable
         'waba_id' => 'setWabaId',
         'from' => 'setFrom',
         'to' => 'setTo',
+        'conversation' => 'setConversation',
         'type' => 'setType',
         'template' => 'setTemplate',
         'text' => 'setText',
@@ -198,6 +202,7 @@ class WhatsappMessage implements ModelInterface, ArrayAccess, \JsonSerializable
         'waba_id' => 'getWabaId',
         'from' => 'getFrom',
         'to' => 'getTo',
+        'conversation' => 'getConversation',
         'type' => 'getType',
         'template' => 'getTemplate',
         'text' => 'getText',
@@ -277,6 +282,7 @@ class WhatsappMessage implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['waba_id'] = $data['waba_id'] ?? null;
         $this->container['from'] = $data['from'] ?? null;
         $this->container['to'] = $data['to'] ?? null;
+        $this->container['conversation'] = $data['conversation'] ?? null;
         $this->container['type'] = $data['type'] ?? null;
         $this->container['template'] = $data['template'] ?? null;
         $this->container['text'] = $data['text'] ?? null;
@@ -306,6 +312,9 @@ class WhatsappMessage implements ModelInterface, ArrayAccess, \JsonSerializable
 
         if ($this->container['id'] === null) {
             $invalidProperties[] = "'id' can't be null";
+        }
+        if ($this->container['waba_id'] === null) {
+            $invalidProperties[] = "'waba_id' can't be null";
         }
         if ($this->container['from'] === null) {
             $invalidProperties[] = "'from' can't be null";
@@ -358,7 +367,7 @@ class WhatsappMessage implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets waba_id
      *
-     * @return string|null
+     * @return string
      */
     public function getWabaId()
     {
@@ -368,7 +377,7 @@ class WhatsappMessage implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets waba_id
      *
-     * @param string|null $waba_id WhatsApp Business Account ID.
+     * @param string $waba_id WhatsApp Business Account ID.
      *
      * @return self
      */
@@ -423,6 +432,30 @@ class WhatsappMessage implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setTo($to)
     {
         $this->container['to'] = $to;
+
+        return $this;
+    }
+
+    /**
+     * Gets conversation
+     *
+     * @return \YCloud\Client\Model\WhatsappConversation|null
+     */
+    public function getConversation()
+    {
+        return $this->container['conversation'];
+    }
+
+    /**
+     * Sets conversation
+     *
+     * @param \YCloud\Client\Model\WhatsappConversation|null $conversation conversation
+     *
+     * @return self
+     */
+    public function setConversation($conversation)
+    {
+        $this->container['conversation'] = $conversation;
 
         return $this;
     }

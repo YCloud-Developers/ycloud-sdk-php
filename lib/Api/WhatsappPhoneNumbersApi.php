@@ -478,7 +478,7 @@ class WhatsappPhoneNumbersApi
      *
      * @throws \YCloud\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \YCloud\Client\Model\WhatsappPhoneNumber
+     * @return \YCloud\Client\Model\WhatsappPhoneNumber|\YCloud\Client\Model\ErrorResponse
      */
     public function retrieve($waba_id, $phone_number)
     {
@@ -496,7 +496,7 @@ class WhatsappPhoneNumbersApi
      *
      * @throws \YCloud\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \YCloud\Client\Model\WhatsappPhoneNumber, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \YCloud\Client\Model\WhatsappPhoneNumber|\YCloud\Client\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function retrieveWithHttpInfo($waba_id, $phone_number)
     {
@@ -553,6 +553,21 @@ class WhatsappPhoneNumbersApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+                case 404:
+                    if ('\YCloud\Client\Model\ErrorResponse' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\YCloud\Client\Model\ErrorResponse' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\YCloud\Client\Model\ErrorResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
             }
 
             $returnType = '\YCloud\Client\Model\WhatsappPhoneNumber';
@@ -577,6 +592,14 @@ class WhatsappPhoneNumbersApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\YCloud\Client\Model\WhatsappPhoneNumber',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\YCloud\Client\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);

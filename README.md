@@ -92,6 +92,7 @@ Class | Method | HTTP request | Description
 *WhatsappPhoneNumbersApi* | [**retrieve**](docs/Api/WhatsappPhoneNumbersApi.md#retrieve) | **GET** /whatsapp/phoneNumbers/{wabaId}/{phoneNumber} | Retrieve a WhatsApp phone number
 *WhatsappTemplatesApi* | [**create**](docs/Api/WhatsappTemplatesApi.md#create) | **POST** /whatsapp/templates | Create a WhatsApp template
 *WhatsappTemplatesApi* | [**deleteByName**](docs/Api/WhatsappTemplatesApi.md#deletebyname) | **DELETE** /whatsapp/templates/{wabaId}/{name} | Delete WhatsApp templates by name
+*WhatsappTemplatesApi* | [**editByNameAndLanguage**](docs/Api/WhatsappTemplatesApi.md#editbynameandlanguage) | **PATCH** /whatsapp/templates/{wabaId}/{name}/{language} | Edit a WhatsApp template
 *WhatsappTemplatesApi* | [**list**](docs/Api/WhatsappTemplatesApi.md#list) | **GET** /whatsapp/templates | List WhatsApp templates
 *WhatsappTemplatesApi* | [**retrieveByNameAndLanguage**](docs/Api/WhatsappTemplatesApi.md#retrievebynameandlanguage) | **GET** /whatsapp/templates/{wabaId}/{name}/{language} | Retrieve a WhatsApp template
 
@@ -125,6 +126,8 @@ Class | Method | HTTP request | Description
 - [WebhookEndpointPage](docs/Model/WebhookEndpointPage.md)
 - [WebhookEndpointStatus](docs/Model/WebhookEndpointStatus.md)
 - [WebhookEndpointUpdateRequest](docs/Model/WebhookEndpointUpdateRequest.md)
+- [WhatsappConversation](docs/Model/WhatsappConversation.md)
+- [WhatsappConversationOriginType](docs/Model/WhatsappConversationOriginType.md)
 - [WhatsappInboundMessage](docs/Model/WhatsappInboundMessage.md)
 - [WhatsappInboundMessageButton](docs/Model/WhatsappInboundMessageButton.md)
 - [WhatsappInboundMessageInteractive](docs/Model/WhatsappInboundMessageInteractive.md)
@@ -167,6 +170,7 @@ Class | Method | HTTP request | Description
 - [WhatsappPhoneNumberPage](docs/Model/WhatsappPhoneNumberPage.md)
 - [WhatsappPhoneNumberQualityRating](docs/Model/WhatsappPhoneNumberQualityRating.md)
 - [WhatsappPhoneNumberStatus](docs/Model/WhatsappPhoneNumberStatus.md)
+- [WhatsappProfile](docs/Model/WhatsappProfile.md)
 - [WhatsappTemplate](docs/Model/WhatsappTemplate.md)
 - [WhatsappTemplateCategory](docs/Model/WhatsappTemplateCategory.md)
 - [WhatsappTemplateComponent](docs/Model/WhatsappTemplateComponent.md)
@@ -174,6 +178,7 @@ Class | Method | HTTP request | Description
 - [WhatsappTemplateComponentButtonType](docs/Model/WhatsappTemplateComponentButtonType.md)
 - [WhatsappTemplateComponentExample](docs/Model/WhatsappTemplateComponentExample.md)
 - [WhatsappTemplateCreateRequest](docs/Model/WhatsappTemplateCreateRequest.md)
+- [WhatsappTemplateEditRequest](docs/Model/WhatsappTemplateEditRequest.md)
 - [WhatsappTemplatePage](docs/Model/WhatsappTemplatePage.md)
 - [WhatsappTemplateStatus](docs/Model/WhatsappTemplateStatus.md)
 

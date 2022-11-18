@@ -409,7 +409,7 @@ class WhatsappTemplatesApi
      *
      * @throws \YCloud\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \YCloud\Client\Model\WhatsappTemplate[]
+     * @return \YCloud\Client\Model\WhatsappTemplate[]|\YCloud\Client\Model\ErrorResponse
      */
     public function deleteByName($waba_id, $name)
     {
@@ -427,7 +427,7 @@ class WhatsappTemplatesApi
      *
      * @throws \YCloud\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \YCloud\Client\Model\WhatsappTemplate[], HTTP status code, HTTP response headers (array of strings)
+     * @return array of \YCloud\Client\Model\WhatsappTemplate[]|\YCloud\Client\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function deleteByNameWithHttpInfo($waba_id, $name)
     {
@@ -484,6 +484,21 @@ class WhatsappTemplatesApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+                case 404:
+                    if ('\YCloud\Client\Model\ErrorResponse' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\YCloud\Client\Model\ErrorResponse' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\YCloud\Client\Model\ErrorResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
             }
 
             $returnType = '\YCloud\Client\Model\WhatsappTemplate[]';
@@ -508,6 +523,14 @@ class WhatsappTemplatesApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\YCloud\Client\Model\WhatsappTemplate[]',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\YCloud\Client\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -701,6 +724,367 @@ class WhatsappTemplatesApi
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'DELETE',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation editByNameAndLanguage
+     *
+     * Edit a WhatsApp template
+     *
+     * @param  string $waba_id WhatsApp Business Account ID. (required)
+     * @param  string $name Name of the template. (required)
+     * @param  string $language Language code of the template. See [Supported Languages](https://developers.facebook.com/docs/whatsapp/api/messages/message-templates#supported-languages-) for all codes. (required)
+     * @param  \YCloud\Client\Model\WhatsappTemplateEditRequest $whatsapp_template_edit_request whatsapp_template_edit_request (optional)
+     *
+     * @throws \YCloud\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \YCloud\Client\Model\WhatsappTemplate|\YCloud\Client\Model\ErrorResponse
+     */
+    public function editByNameAndLanguage($waba_id, $name, $language, $whatsapp_template_edit_request = null)
+    {
+        list($response) = $this->editByNameAndLanguageWithHttpInfo($waba_id, $name, $language, $whatsapp_template_edit_request);
+        return $response;
+    }
+
+    /**
+     * Operation editByNameAndLanguageWithHttpInfo
+     *
+     * Edit a WhatsApp template
+     *
+     * @param  string $waba_id WhatsApp Business Account ID. (required)
+     * @param  string $name Name of the template. (required)
+     * @param  string $language Language code of the template. See [Supported Languages](https://developers.facebook.com/docs/whatsapp/api/messages/message-templates#supported-languages-) for all codes. (required)
+     * @param  \YCloud\Client\Model\WhatsappTemplateEditRequest $whatsapp_template_edit_request (optional)
+     *
+     * @throws \YCloud\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \YCloud\Client\Model\WhatsappTemplate|\YCloud\Client\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function editByNameAndLanguageWithHttpInfo($waba_id, $name, $language, $whatsapp_template_edit_request = null)
+    {
+        $request = $this->editByNameAndLanguageRequest($waba_id, $name, $language, $whatsapp_template_edit_request);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\YCloud\Client\Model\WhatsappTemplate' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\YCloud\Client\Model\WhatsappTemplate' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\YCloud\Client\Model\WhatsappTemplate', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 404:
+                    if ('\YCloud\Client\Model\ErrorResponse' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\YCloud\Client\Model\ErrorResponse' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\YCloud\Client\Model\ErrorResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\YCloud\Client\Model\WhatsappTemplate';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\YCloud\Client\Model\WhatsappTemplate',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\YCloud\Client\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation editByNameAndLanguageAsync
+     *
+     * Edit a WhatsApp template
+     *
+     * @param  string $waba_id WhatsApp Business Account ID. (required)
+     * @param  string $name Name of the template. (required)
+     * @param  string $language Language code of the template. See [Supported Languages](https://developers.facebook.com/docs/whatsapp/api/messages/message-templates#supported-languages-) for all codes. (required)
+     * @param  \YCloud\Client\Model\WhatsappTemplateEditRequest $whatsapp_template_edit_request (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function editByNameAndLanguageAsync($waba_id, $name, $language, $whatsapp_template_edit_request = null)
+    {
+        return $this->editByNameAndLanguageAsyncWithHttpInfo($waba_id, $name, $language, $whatsapp_template_edit_request)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation editByNameAndLanguageAsyncWithHttpInfo
+     *
+     * Edit a WhatsApp template
+     *
+     * @param  string $waba_id WhatsApp Business Account ID. (required)
+     * @param  string $name Name of the template. (required)
+     * @param  string $language Language code of the template. See [Supported Languages](https://developers.facebook.com/docs/whatsapp/api/messages/message-templates#supported-languages-) for all codes. (required)
+     * @param  \YCloud\Client\Model\WhatsappTemplateEditRequest $whatsapp_template_edit_request (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function editByNameAndLanguageAsyncWithHttpInfo($waba_id, $name, $language, $whatsapp_template_edit_request = null)
+    {
+        $returnType = '\YCloud\Client\Model\WhatsappTemplate';
+        $request = $this->editByNameAndLanguageRequest($waba_id, $name, $language, $whatsapp_template_edit_request);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'editByNameAndLanguage'
+     *
+     * @param  string $waba_id WhatsApp Business Account ID. (required)
+     * @param  string $name Name of the template. (required)
+     * @param  string $language Language code of the template. See [Supported Languages](https://developers.facebook.com/docs/whatsapp/api/messages/message-templates#supported-languages-) for all codes. (required)
+     * @param  \YCloud\Client\Model\WhatsappTemplateEditRequest $whatsapp_template_edit_request (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function editByNameAndLanguageRequest($waba_id, $name, $language, $whatsapp_template_edit_request = null)
+    {
+        // verify the required parameter 'waba_id' is set
+        if ($waba_id === null || (is_array($waba_id) && count($waba_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $waba_id when calling editByNameAndLanguage'
+            );
+        }
+        // verify the required parameter 'name' is set
+        if ($name === null || (is_array($name) && count($name) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $name when calling editByNameAndLanguage'
+            );
+        }
+        if (!preg_match("/[a-z0-9]{1,512}/", $name)) {
+            throw new \InvalidArgumentException("invalid value for \"name\" when calling WhatsappTemplatesApi.editByNameAndLanguage, must conform to the pattern /[a-z0-9]{1,512}/.");
+        }
+
+        // verify the required parameter 'language' is set
+        if ($language === null || (is_array($language) && count($language) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $language when calling editByNameAndLanguage'
+            );
+        }
+
+        $resourcePath = '/whatsapp/templates/{wabaId}/{name}/{language}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($waba_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'wabaId' . '}',
+                ObjectSerializer::toPathValue($waba_id),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($name !== null) {
+            $resourcePath = str_replace(
+                '{' . 'name' . '}',
+                ObjectSerializer::toPathValue($name),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($language !== null) {
+            $resourcePath = str_replace(
+                '{' . 'language' . '}',
+                ObjectSerializer::toPathValue($language),
+                $resourcePath
+            );
+        }
+
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                ['application/json']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($whatsapp_template_edit_request)) {
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($whatsapp_template_edit_request));
+            } else {
+                $httpBody = $whatsapp_template_edit_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('X-API-Key');
+        if ($apiKey !== null) {
+            $headers['X-API-Key'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'PATCH',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
@@ -1107,7 +1491,7 @@ class WhatsappTemplatesApi
      *
      * @throws \YCloud\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \YCloud\Client\Model\WhatsappTemplate
+     * @return \YCloud\Client\Model\WhatsappTemplate|\YCloud\Client\Model\ErrorResponse
      */
     public function retrieveByNameAndLanguage($waba_id, $name, $language)
     {
@@ -1126,7 +1510,7 @@ class WhatsappTemplatesApi
      *
      * @throws \YCloud\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \YCloud\Client\Model\WhatsappTemplate, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \YCloud\Client\Model\WhatsappTemplate|\YCloud\Client\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function retrieveByNameAndLanguageWithHttpInfo($waba_id, $name, $language)
     {
@@ -1183,6 +1567,21 @@ class WhatsappTemplatesApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+                case 404:
+                    if ('\YCloud\Client\Model\ErrorResponse' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\YCloud\Client\Model\ErrorResponse' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\YCloud\Client\Model\ErrorResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
             }
 
             $returnType = '\YCloud\Client\Model\WhatsappTemplate';
@@ -1207,6 +1606,14 @@ class WhatsappTemplatesApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\YCloud\Client\Model\WhatsappTemplate',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\YCloud\Client\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);

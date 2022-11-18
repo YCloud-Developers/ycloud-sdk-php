@@ -6,6 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**create()**](WhatsappTemplatesApi.md#create) | **POST** /whatsapp/templates | Create a WhatsApp template
 [**deleteByName()**](WhatsappTemplatesApi.md#deleteByName) | **DELETE** /whatsapp/templates/{wabaId}/{name} | Delete WhatsApp templates by name
+[**editByNameAndLanguage()**](WhatsappTemplatesApi.md#editByNameAndLanguage) | **PATCH** /whatsapp/templates/{wabaId}/{name}/{language} | Edit a WhatsApp template
 [**list()**](WhatsappTemplatesApi.md#list) | **GET** /whatsapp/templates | List WhatsApp templates
 [**retrieveByNameAndLanguage()**](WhatsappTemplatesApi.md#retrieveByNameAndLanguage) | **GET** /whatsapp/templates/{wabaId}/{name}/{language} | Retrieve a WhatsApp template
 
@@ -126,6 +127,72 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `editByNameAndLanguage()`
+
+```php
+editByNameAndLanguage($waba_id, $name, $language, $whatsapp_template_edit_request): \YCloud\Client\Model\WhatsappTemplate
+```
+
+Edit a WhatsApp template
+
+Edits a WhatsApp template by name and language. Editing a template replaces its old contents entirely, so include any components you wish to preserve as well as components you wish to update using the components parameter. See also [Edit a Message Template](https://developers.facebook.com/docs/whatsapp/business-management-api/message-templates#edit-a-message-template).
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: api_key
+$config = YCloud\Client\Configuration::getDefaultConfiguration()->setApiKey('X-API-Key', 'YOUR_API_KEY');
+
+
+$apiInstance = new YCloud\Client\Api\WhatsappTemplatesApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$waba_id = whatsapp-business-account-id; // string | WhatsApp Business Account ID.
+$name = sample_whatsapp_template; // string | Name of the template.
+$language = en; // string | Language code of the template. See [Supported Languages](https://developers.facebook.com/docs/whatsapp/api/messages/message-templates#supported-languages-) for all codes.
+$whatsapp_template_edit_request = new \YCloud\Client\Model\WhatsappTemplateEditRequest(); // \YCloud\Client\Model\WhatsappTemplateEditRequest
+
+try {
+    $result = $apiInstance->editByNameAndLanguage($waba_id, $name, $language, $whatsapp_template_edit_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling WhatsappTemplatesApi->editByNameAndLanguage: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **waba_id** | **string**| WhatsApp Business Account ID. |
+ **name** | **string**| Name of the template. |
+ **language** | **string**| Language code of the template. See [Supported Languages](https://developers.facebook.com/docs/whatsapp/api/messages/message-templates#supported-languages-) for all codes. |
+ **whatsapp_template_edit_request** | [**\YCloud\Client\Model\WhatsappTemplateEditRequest**](../Model/WhatsappTemplateEditRequest.md)|  | [optional]
+
+### Return type
+
+[**\YCloud\Client\Model\WhatsappTemplate**](../Model/WhatsappTemplate.md)
+
+### Authorization
+
+[api_key](../../README.md#api_key)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)

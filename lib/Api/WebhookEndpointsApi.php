@@ -408,7 +408,7 @@ class WebhookEndpointsApi
      *
      * @throws \YCloud\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \YCloud\Client\Model\WebhookEndpoint
+     * @return \YCloud\Client\Model\WebhookEndpoint|\YCloud\Client\Model\ErrorResponse
      */
     public function delete($id)
     {
@@ -425,7 +425,7 @@ class WebhookEndpointsApi
      *
      * @throws \YCloud\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \YCloud\Client\Model\WebhookEndpoint, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \YCloud\Client\Model\WebhookEndpoint|\YCloud\Client\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function deleteWithHttpInfo($id)
     {
@@ -482,6 +482,21 @@ class WebhookEndpointsApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+                case 404:
+                    if ('\YCloud\Client\Model\ErrorResponse' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\YCloud\Client\Model\ErrorResponse' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\YCloud\Client\Model\ErrorResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
             }
 
             $returnType = '\YCloud\Client\Model\WebhookEndpoint';
@@ -506,6 +521,14 @@ class WebhookEndpointsApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\YCloud\Client\Model\WebhookEndpoint',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\YCloud\Client\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1030,7 +1053,7 @@ class WebhookEndpointsApi
      *
      * @throws \YCloud\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \YCloud\Client\Model\WebhookEndpoint
+     * @return \YCloud\Client\Model\WebhookEndpoint|\YCloud\Client\Model\ErrorResponse
      */
     public function retrieve($id)
     {
@@ -1047,7 +1070,7 @@ class WebhookEndpointsApi
      *
      * @throws \YCloud\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \YCloud\Client\Model\WebhookEndpoint, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \YCloud\Client\Model\WebhookEndpoint|\YCloud\Client\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function retrieveWithHttpInfo($id)
     {
@@ -1104,6 +1127,21 @@ class WebhookEndpointsApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+                case 404:
+                    if ('\YCloud\Client\Model\ErrorResponse' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\YCloud\Client\Model\ErrorResponse' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\YCloud\Client\Model\ErrorResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
             }
 
             $returnType = '\YCloud\Client\Model\WebhookEndpoint';
@@ -1128,6 +1166,14 @@ class WebhookEndpointsApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\YCloud\Client\Model\WebhookEndpoint',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\YCloud\Client\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1315,7 +1361,7 @@ class WebhookEndpointsApi
      *
      * @throws \YCloud\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \YCloud\Client\Model\WebhookEndpoint
+     * @return \YCloud\Client\Model\WebhookEndpoint|\YCloud\Client\Model\ErrorResponse
      */
     public function rotateSecret($id)
     {
@@ -1332,7 +1378,7 @@ class WebhookEndpointsApi
      *
      * @throws \YCloud\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \YCloud\Client\Model\WebhookEndpoint, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \YCloud\Client\Model\WebhookEndpoint|\YCloud\Client\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function rotateSecretWithHttpInfo($id)
     {
@@ -1389,6 +1435,21 @@ class WebhookEndpointsApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+                case 404:
+                    if ('\YCloud\Client\Model\ErrorResponse' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\YCloud\Client\Model\ErrorResponse' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\YCloud\Client\Model\ErrorResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
             }
 
             $returnType = '\YCloud\Client\Model\WebhookEndpoint';
@@ -1413,6 +1474,14 @@ class WebhookEndpointsApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\YCloud\Client\Model\WebhookEndpoint',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\YCloud\Client\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1601,7 +1670,7 @@ class WebhookEndpointsApi
      *
      * @throws \YCloud\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \YCloud\Client\Model\WebhookEndpoint
+     * @return \YCloud\Client\Model\WebhookEndpoint|\YCloud\Client\Model\ErrorResponse
      */
     public function update($id, $webhook_endpoint_update_request)
     {
@@ -1619,7 +1688,7 @@ class WebhookEndpointsApi
      *
      * @throws \YCloud\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \YCloud\Client\Model\WebhookEndpoint, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \YCloud\Client\Model\WebhookEndpoint|\YCloud\Client\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function updateWithHttpInfo($id, $webhook_endpoint_update_request)
     {
@@ -1676,6 +1745,21 @@ class WebhookEndpointsApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+                case 404:
+                    if ('\YCloud\Client\Model\ErrorResponse' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\YCloud\Client\Model\ErrorResponse' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\YCloud\Client\Model\ErrorResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
             }
 
             $returnType = '\YCloud\Client\Model\WebhookEndpoint';
@@ -1700,6 +1784,14 @@ class WebhookEndpointsApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\YCloud\Client\Model\WebhookEndpoint',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\YCloud\Client\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);

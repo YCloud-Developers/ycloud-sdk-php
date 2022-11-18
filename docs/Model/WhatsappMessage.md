@@ -5,9 +5,10 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **string** | Unique ID for the object. |
-**waba_id** | **string** | WhatsApp Business Account ID. | [optional]
+**waba_id** | **string** | WhatsApp Business Account ID. |
 **from** | **string** | The sender&#39;s phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format. |
 **to** | **string** | The recipient&#39;s phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format. |
+**conversation** | [**\YCloud\Client\Model\WhatsappConversation**](WhatsappConversation.md) |  | [optional]
 **type** | [**\YCloud\Client\Model\WhatsappMessageType**](WhatsappMessageType.md) |  |
 **template** | [**\YCloud\Client\Model\WhatsappMessageTemplate**](WhatsappMessageTemplate.md) |  | [optional]
 **text** | [**\YCloud\Client\Model\WhatsappMessageText**](WhatsappMessageText.md) |  | [optional]

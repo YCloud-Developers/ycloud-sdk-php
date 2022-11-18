@@ -124,7 +124,7 @@ class BalanceApi
      *
      * @throws \YCloud\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \YCloud\Client\Model\Balance|\YCloud\Client\Model\ErrorResponse
+     * @return \YCloud\Client\Model\Balance
      */
     public function retrieve()
     {
@@ -140,7 +140,7 @@ class BalanceApi
      *
      * @throws \YCloud\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \YCloud\Client\Model\Balance|\YCloud\Client\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \YCloud\Client\Model\Balance, HTTP status code, HTTP response headers (array of strings)
      */
     public function retrieveWithHttpInfo()
     {
@@ -197,21 +197,6 @@ class BalanceApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
-                case 401:
-                    if ('\YCloud\Client\Model\ErrorResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\YCloud\Client\Model\ErrorResponse' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\YCloud\Client\Model\ErrorResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
             }
 
             $returnType = '\YCloud\Client\Model\Balance';
@@ -236,14 +221,6 @@ class BalanceApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\YCloud\Client\Model\Balance',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 401:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\YCloud\Client\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
