@@ -1,6 +1,6 @@
 <?php
 /**
- * Balance
+ * WhatsappInboundMessageOrderProductItem
  *
  * PHP version 7.4
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \YCloud\Client\ObjectSerializer;
 
 /**
- * Balance Class Doc Comment
+ * WhatsappInboundMessageOrderProductItem Class Doc Comment
  *
  * @category Class
  * @package  YCloud\Client
@@ -41,7 +41,7 @@ use \YCloud\Client\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class Balance implements ModelInterface, ArrayAccess, \JsonSerializable
+class WhatsappInboundMessageOrderProductItem implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class Balance implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'Balance';
+    protected static $openAPIModelName = 'WhatsappInboundMessageOrderProductItem';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,7 +58,9 @@ class Balance implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'amount' => 'double',
+        'product_retailer_id' => 'string',
+        'quantity' => 'int',
+        'item_price' => 'string',
         'currency' => 'string'
     ];
 
@@ -70,7 +72,9 @@ class Balance implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'amount' => 'double',
+        'product_retailer_id' => null,
+        'quantity' => 'int32',
+        'item_price' => null,
         'currency' => null
     ];
 
@@ -101,7 +105,9 @@ class Balance implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'amount' => 'amount',
+        'product_retailer_id' => 'product_retailer_id',
+        'quantity' => 'quantity',
+        'item_price' => 'item_price',
         'currency' => 'currency'
     ];
 
@@ -111,7 +117,9 @@ class Balance implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'amount' => 'setAmount',
+        'product_retailer_id' => 'setProductRetailerId',
+        'quantity' => 'setQuantity',
+        'item_price' => 'setItemPrice',
         'currency' => 'setCurrency'
     ];
 
@@ -121,7 +129,9 @@ class Balance implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'amount' => 'getAmount',
+        'product_retailer_id' => 'getProductRetailerId',
+        'quantity' => 'getQuantity',
+        'item_price' => 'getItemPrice',
         'currency' => 'getCurrency'
     ];
 
@@ -182,7 +192,9 @@ class Balance implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['amount'] = $data['amount'] ?? null;
+        $this->container['product_retailer_id'] = $data['product_retailer_id'] ?? null;
+        $this->container['quantity'] = $data['quantity'] ?? null;
+        $this->container['item_price'] = $data['item_price'] ?? null;
         $this->container['currency'] = $data['currency'] ?? null;
     }
 
@@ -195,12 +207,6 @@ class Balance implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['amount'] === null) {
-            $invalidProperties[] = "'amount' can't be null";
-        }
-        if ($this->container['currency'] === null) {
-            $invalidProperties[] = "'currency' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -217,25 +223,73 @@ class Balance implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets amount
+     * Gets product_retailer_id
      *
-     * @return double
+     * @return string|null
      */
-    public function getAmount()
+    public function getProductRetailerId()
     {
-        return $this->container['amount'];
+        return $this->container['product_retailer_id'];
     }
 
     /**
-     * Sets amount
+     * Sets product_retailer_id
      *
-     * @param double $amount Balance of current account.
+     * @param string|null $product_retailer_id The product SKU identifier.
      *
      * @return self
      */
-    public function setAmount($amount)
+    public function setProductRetailerId($product_retailer_id)
     {
-        $this->container['amount'] = $amount;
+        $this->container['product_retailer_id'] = $product_retailer_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets quantity
+     *
+     * @return int|null
+     */
+    public function getQuantity()
+    {
+        return $this->container['quantity'];
+    }
+
+    /**
+     * Sets quantity
+     *
+     * @param int|null $quantity Number of item.
+     *
+     * @return self
+     */
+    public function setQuantity($quantity)
+    {
+        $this->container['quantity'] = $quantity;
+
+        return $this;
+    }
+
+    /**
+     * Gets item_price
+     *
+     * @return string|null
+     */
+    public function getItemPrice()
+    {
+        return $this->container['item_price'];
+    }
+
+    /**
+     * Sets item_price
+     *
+     * @param string|null $item_price Unitary price of item.
+     *
+     * @return self
+     */
+    public function setItemPrice($item_price)
+    {
+        $this->container['item_price'] = $item_price;
 
         return $this;
     }
@@ -243,7 +297,7 @@ class Balance implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets currency
      *
-     * @return string
+     * @return string|null
      */
     public function getCurrency()
     {
@@ -253,7 +307,7 @@ class Balance implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets currency
      *
-     * @param string $currency Price currency. [ISO 4217 currency code](https://en.wikipedia.org/wiki/ISO_4217).
+     * @param string|null $currency Price currency. [ISO 4217 currency code](https://en.wikipedia.org/wiki/ISO_4217).
      *
      * @return self
      */

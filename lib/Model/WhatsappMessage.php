@@ -60,6 +60,7 @@ class WhatsappMessage implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPITypes = [
         'id' => 'string',
+        'wamid' => 'string',
         'waba_id' => 'string',
         'from' => 'string',
         'to' => 'string',
@@ -79,7 +80,9 @@ class WhatsappMessage implements ModelInterface, ArrayAccess, \JsonSerializable
         'error_code' => 'string',
         'error_message' => 'string',
         'create_time' => '\DateTime',
-        'update_time' => '\DateTime'
+        'update_time' => '\DateTime',
+        'total_price' => 'double',
+        'currency' => 'string'
     ];
 
     /**
@@ -91,6 +94,7 @@ class WhatsappMessage implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPIFormats = [
         'id' => null,
+        'wamid' => null,
         'waba_id' => null,
         'from' => null,
         'to' => null,
@@ -110,7 +114,9 @@ class WhatsappMessage implements ModelInterface, ArrayAccess, \JsonSerializable
         'error_code' => null,
         'error_message' => null,
         'create_time' => 'date-time',
-        'update_time' => 'date-time'
+        'update_time' => 'date-time',
+        'total_price' => 'double',
+        'currency' => null
     ];
 
     /**
@@ -141,6 +147,7 @@ class WhatsappMessage implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $attributeMap = [
         'id' => 'id',
+        'wamid' => 'wamid',
         'waba_id' => 'wabaId',
         'from' => 'from',
         'to' => 'to',
@@ -160,7 +167,9 @@ class WhatsappMessage implements ModelInterface, ArrayAccess, \JsonSerializable
         'error_code' => 'errorCode',
         'error_message' => 'errorMessage',
         'create_time' => 'createTime',
-        'update_time' => 'updateTime'
+        'update_time' => 'updateTime',
+        'total_price' => 'totalPrice',
+        'currency' => 'currency'
     ];
 
     /**
@@ -170,6 +179,7 @@ class WhatsappMessage implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $setters = [
         'id' => 'setId',
+        'wamid' => 'setWamid',
         'waba_id' => 'setWabaId',
         'from' => 'setFrom',
         'to' => 'setTo',
@@ -189,7 +199,9 @@ class WhatsappMessage implements ModelInterface, ArrayAccess, \JsonSerializable
         'error_code' => 'setErrorCode',
         'error_message' => 'setErrorMessage',
         'create_time' => 'setCreateTime',
-        'update_time' => 'setUpdateTime'
+        'update_time' => 'setUpdateTime',
+        'total_price' => 'setTotalPrice',
+        'currency' => 'setCurrency'
     ];
 
     /**
@@ -199,6 +211,7 @@ class WhatsappMessage implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $getters = [
         'id' => 'getId',
+        'wamid' => 'getWamid',
         'waba_id' => 'getWabaId',
         'from' => 'getFrom',
         'to' => 'getTo',
@@ -218,7 +231,9 @@ class WhatsappMessage implements ModelInterface, ArrayAccess, \JsonSerializable
         'error_code' => 'getErrorCode',
         'error_message' => 'getErrorMessage',
         'create_time' => 'getCreateTime',
-        'update_time' => 'getUpdateTime'
+        'update_time' => 'getUpdateTime',
+        'total_price' => 'getTotalPrice',
+        'currency' => 'getCurrency'
     ];
 
     /**
@@ -279,6 +294,7 @@ class WhatsappMessage implements ModelInterface, ArrayAccess, \JsonSerializable
     public function __construct(array $data = null)
     {
         $this->container['id'] = $data['id'] ?? null;
+        $this->container['wamid'] = $data['wamid'] ?? null;
         $this->container['waba_id'] = $data['waba_id'] ?? null;
         $this->container['from'] = $data['from'] ?? null;
         $this->container['to'] = $data['to'] ?? null;
@@ -299,6 +315,8 @@ class WhatsappMessage implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['error_message'] = $data['error_message'] ?? null;
         $this->container['create_time'] = $data['create_time'] ?? null;
         $this->container['update_time'] = $data['update_time'] ?? null;
+        $this->container['total_price'] = $data['total_price'] ?? null;
+        $this->container['currency'] = $data['currency'] ?? null;
     }
 
     /**
@@ -360,6 +378,30 @@ class WhatsappMessage implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setId($id)
     {
         $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Gets wamid
+     *
+     * @return string|null
+     */
+    public function getWamid()
+    {
+        return $this->container['wamid'];
+    }
+
+    /**
+     * Sets wamid
+     *
+     * @param string|null $wamid The native WhatsApp message ID.
+     *
+     * @return self
+     */
+    public function setWamid($wamid)
+    {
+        $this->container['wamid'] = $wamid;
 
         return $this;
     }
@@ -840,6 +882,54 @@ class WhatsappMessage implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setUpdateTime($update_time)
     {
         $this->container['update_time'] = $update_time;
+
+        return $this;
+    }
+
+    /**
+     * Gets total_price
+     *
+     * @return double|null
+     */
+    public function getTotalPrice()
+    {
+        return $this->container['total_price'];
+    }
+
+    /**
+     * Sets total_price
+     *
+     * @param double|null $total_price Total price of this message.
+     *
+     * @return self
+     */
+    public function setTotalPrice($total_price)
+    {
+        $this->container['total_price'] = $total_price;
+
+        return $this;
+    }
+
+    /**
+     * Gets currency
+     *
+     * @return string|null
+     */
+    public function getCurrency()
+    {
+        return $this->container['currency'];
+    }
+
+    /**
+     * Sets currency
+     *
+     * @param string|null $currency Price currency. [ISO 4217 currency code](https://en.wikipedia.org/wiki/ISO_4217).
+     *
+     * @return self
+     */
+    public function setCurrency($currency)
+    {
+        $this->container['currency'] = $currency;
 
         return $this;
     }

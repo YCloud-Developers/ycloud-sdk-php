@@ -86,6 +86,8 @@ Class | Method | HTTP request | Description
 *WebhookEndpointsApi* | [**retrieve**](docs/Api/WebhookEndpointsApi.md#retrieve) | **GET** /webhookEndpoints/{id} | Retrieve a webhook endpoint
 *WebhookEndpointsApi* | [**rotateSecret**](docs/Api/WebhookEndpointsApi.md#rotatesecret) | **POST** /webhookEndpoints/{id}/rotateSecret | Rotate a webhook endpoint secret
 *WebhookEndpointsApi* | [**update**](docs/Api/WebhookEndpointsApi.md#update) | **PATCH** /webhookEndpoints/{id} | Update a webhook endpoint
+*WhatsappBusinessAccountsApi* | [**list**](docs/Api/WhatsappBusinessAccountsApi.md#list) | **GET** /whatsapp/businessAccounts | List WABAs
+*WhatsappBusinessAccountsApi* | [**retrieve**](docs/Api/WhatsappBusinessAccountsApi.md#retrieve) | **GET** /whatsapp/businessAccounts/{id} | Retrieve a WABA
 *WhatsappMessagesApi* | [**retrieve**](docs/Api/WhatsappMessagesApi.md#retrieve) | **GET** /whatsapp/messages/{id} | Retrieve a WhatsApp message
 *WhatsappMessagesApi* | [**send**](docs/Api/WhatsappMessagesApi.md#send) | **POST** /whatsapp/messages | Send a WhatsApp message
 *WhatsappPhoneNumbersApi* | [**list**](docs/Api/WhatsappPhoneNumbersApi.md#list) | **GET** /whatsapp/phoneNumbers | List WhatsApp phone numbers
@@ -108,6 +110,7 @@ Class | Method | HTTP request | Description
 - [Event](docs/Model/Event.md)
 - [EventType](docs/Model/EventType.md)
 - [Mailbox](docs/Model/Mailbox.md)
+- [MetaBusinessAccountVerificationStatus](docs/Model/MetaBusinessAccountVerificationStatus.md)
 - [Page](docs/Model/Page.md)
 - [Sms](docs/Model/Sms.md)
 - [SmsPage](docs/Model/SmsPage.md)
@@ -126,15 +129,28 @@ Class | Method | HTTP request | Description
 - [WebhookEndpointPage](docs/Model/WebhookEndpointPage.md)
 - [WebhookEndpointStatus](docs/Model/WebhookEndpointStatus.md)
 - [WebhookEndpointUpdateRequest](docs/Model/WebhookEndpointUpdateRequest.md)
+- [WhatsappBusinessAccount](docs/Model/WhatsappBusinessAccount.md)
+- [WhatsappBusinessAccountBanState](docs/Model/WhatsappBusinessAccountBanState.md)
+- [WhatsappBusinessAccountRestrictionInfo](docs/Model/WhatsappBusinessAccountRestrictionInfo.md)
+- [WhatsappBusinessAccountReviewStatus](docs/Model/WhatsappBusinessAccountReviewStatus.md)
+- [WhatsappBusinessAccountUpdateEventEnum](docs/Model/WhatsappBusinessAccountUpdateEventEnum.md)
 - [WhatsappConversation](docs/Model/WhatsappConversation.md)
 - [WhatsappConversationOriginType](docs/Model/WhatsappConversationOriginType.md)
 - [WhatsappInboundMessage](docs/Model/WhatsappInboundMessage.md)
 - [WhatsappInboundMessageButton](docs/Model/WhatsappInboundMessageButton.md)
+- [WhatsappInboundMessageContext](docs/Model/WhatsappInboundMessageContext.md)
+- [WhatsappInboundMessageError](docs/Model/WhatsappInboundMessageError.md)
 - [WhatsappInboundMessageInteractive](docs/Model/WhatsappInboundMessageInteractive.md)
 - [WhatsappInboundMessageInteractiveButtonReply](docs/Model/WhatsappInboundMessageInteractiveButtonReply.md)
 - [WhatsappInboundMessageInteractiveListReply](docs/Model/WhatsappInboundMessageInteractiveListReply.md)
 - [WhatsappInboundMessageLocation](docs/Model/WhatsappInboundMessageLocation.md)
 - [WhatsappInboundMessageMedia](docs/Model/WhatsappInboundMessageMedia.md)
+- [WhatsappInboundMessageOrder](docs/Model/WhatsappInboundMessageOrder.md)
+- [WhatsappInboundMessageOrderProductItem](docs/Model/WhatsappInboundMessageOrderProductItem.md)
+- [WhatsappInboundMessageReaction](docs/Model/WhatsappInboundMessageReaction.md)
+- [WhatsappInboundMessageReferral](docs/Model/WhatsappInboundMessageReferral.md)
+- [WhatsappInboundMessageReferredProduct](docs/Model/WhatsappInboundMessageReferredProduct.md)
+- [WhatsappInboundMessageSystem](docs/Model/WhatsappInboundMessageSystem.md)
 - [WhatsappInboundMessageText](docs/Model/WhatsappInboundMessageText.md)
 - [WhatsappInboundMessageType](docs/Model/WhatsappInboundMessageType.md)
 - [WhatsappMessage](docs/Model/WhatsappMessage.md)
@@ -171,6 +187,7 @@ Class | Method | HTTP request | Description
 - [WhatsappPhoneNumberQualityRating](docs/Model/WhatsappPhoneNumberQualityRating.md)
 - [WhatsappPhoneNumberStatus](docs/Model/WhatsappPhoneNumberStatus.md)
 - [WhatsappProfile](docs/Model/WhatsappProfile.md)
+- [WhatsappReviewDecision](docs/Model/WhatsappReviewDecision.md)
 - [WhatsappTemplate](docs/Model/WhatsappTemplate.md)
 - [WhatsappTemplateCategory](docs/Model/WhatsappTemplateCategory.md)
 - [WhatsappTemplateComponent](docs/Model/WhatsappTemplateComponent.md)
@@ -181,6 +198,7 @@ Class | Method | HTTP request | Description
 - [WhatsappTemplateEditRequest](docs/Model/WhatsappTemplateEditRequest.md)
 - [WhatsappTemplatePage](docs/Model/WhatsappTemplatePage.md)
 - [WhatsappTemplateStatus](docs/Model/WhatsappTemplateStatus.md)
+- [WhatsappTemplateStatusUpdateEventEnum](docs/Model/WhatsappTemplateStatusUpdateEventEnum.md)
 
 ## Authorization
 

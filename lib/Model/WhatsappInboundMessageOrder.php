@@ -1,6 +1,6 @@
 <?php
 /**
- * Balance
+ * WhatsappInboundMessageOrder
  *
  * PHP version 7.4
  *
@@ -33,15 +33,16 @@ use \ArrayAccess;
 use \YCloud\Client\ObjectSerializer;
 
 /**
- * Balance Class Doc Comment
+ * WhatsappInboundMessageOrder Class Doc Comment
  *
  * @category Class
+ * @description When a customer places an order, the message type is set to &#x60;order&#x60;, and this field is included.
  * @package  YCloud\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class Balance implements ModelInterface, ArrayAccess, \JsonSerializable
+class WhatsappInboundMessageOrder implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +51,7 @@ class Balance implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'Balance';
+    protected static $openAPIModelName = 'WhatsappInboundMessageOrder';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,8 +59,9 @@ class Balance implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'amount' => 'double',
-        'currency' => 'string'
+        'catalog_id' => 'string',
+        'product_items' => '\YCloud\Client\Model\WhatsappInboundMessageOrderProductItem[]',
+        'text' => 'string'
     ];
 
     /**
@@ -70,8 +72,9 @@ class Balance implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'amount' => 'double',
-        'currency' => null
+        'catalog_id' => null,
+        'product_items' => null,
+        'text' => null
     ];
 
     /**
@@ -101,8 +104,9 @@ class Balance implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'amount' => 'amount',
-        'currency' => 'currency'
+        'catalog_id' => 'catalog_id',
+        'product_items' => 'product_items',
+        'text' => 'text'
     ];
 
     /**
@@ -111,8 +115,9 @@ class Balance implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'amount' => 'setAmount',
-        'currency' => 'setCurrency'
+        'catalog_id' => 'setCatalogId',
+        'product_items' => 'setProductItems',
+        'text' => 'setText'
     ];
 
     /**
@@ -121,8 +126,9 @@ class Balance implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'amount' => 'getAmount',
-        'currency' => 'getCurrency'
+        'catalog_id' => 'getCatalogId',
+        'product_items' => 'getProductItems',
+        'text' => 'getText'
     ];
 
     /**
@@ -182,8 +188,9 @@ class Balance implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['amount'] = $data['amount'] ?? null;
-        $this->container['currency'] = $data['currency'] ?? null;
+        $this->container['catalog_id'] = $data['catalog_id'] ?? null;
+        $this->container['product_items'] = $data['product_items'] ?? null;
+        $this->container['text'] = $data['text'] ?? null;
     }
 
     /**
@@ -195,12 +202,6 @@ class Balance implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['amount'] === null) {
-            $invalidProperties[] = "'amount' can't be null";
-        }
-        if ($this->container['currency'] === null) {
-            $invalidProperties[] = "'currency' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -217,49 +218,73 @@ class Balance implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets amount
+     * Gets catalog_id
      *
-     * @return double
+     * @return string|null
      */
-    public function getAmount()
+    public function getCatalogId()
     {
-        return $this->container['amount'];
+        return $this->container['catalog_id'];
     }
 
     /**
-     * Sets amount
+     * Sets catalog_id
      *
-     * @param double $amount Balance of current account.
+     * @param string|null $catalog_id The catalog ID.
      *
      * @return self
      */
-    public function setAmount($amount)
+    public function setCatalogId($catalog_id)
     {
-        $this->container['amount'] = $amount;
+        $this->container['catalog_id'] = $catalog_id;
 
         return $this;
     }
 
     /**
-     * Gets currency
+     * Gets product_items
      *
-     * @return string
+     * @return \YCloud\Client\Model\WhatsappInboundMessageOrderProductItem[]|null
      */
-    public function getCurrency()
+    public function getProductItems()
     {
-        return $this->container['currency'];
+        return $this->container['product_items'];
     }
 
     /**
-     * Sets currency
+     * Sets product_items
      *
-     * @param string $currency Price currency. [ISO 4217 currency code](https://en.wikipedia.org/wiki/ISO_4217).
+     * @param \YCloud\Client\Model\WhatsappInboundMessageOrderProductItem[]|null $product_items product_items
      *
      * @return self
      */
-    public function setCurrency($currency)
+    public function setProductItems($product_items)
     {
-        $this->container['currency'] = $currency;
+        $this->container['product_items'] = $product_items;
+
+        return $this;
+    }
+
+    /**
+     * Gets text
+     *
+     * @return string|null
+     */
+    public function getText()
+    {
+        return $this->container['text'];
+    }
+
+    /**
+     * Sets text
+     *
+     * @param string|null $text Text message sent along with the order.
+     *
+     * @return self
+     */
+    public function setText($text)
+    {
+        $this->container['text'] = $text;
 
         return $this;
     }

@@ -66,6 +66,7 @@ class Event implements ModelInterface, ArrayAccess, \JsonSerializable
         'email_delivery' => '\YCloud\Client\Model\EmailDelivery',
         'sms' => '\YCloud\Client\Model\Sms',
         'voice' => '\YCloud\Client\Model\Voice',
+        'whatsapp_business_account' => '\YCloud\Client\Model\WhatsappBusinessAccount',
         'whatsapp_inbound_message' => '\YCloud\Client\Model\WhatsappInboundMessage',
         'whatsapp_message' => '\YCloud\Client\Model\WhatsappMessage',
         'whatsapp_phone_number' => '\YCloud\Client\Model\WhatsappPhoneNumber',
@@ -87,6 +88,7 @@ class Event implements ModelInterface, ArrayAccess, \JsonSerializable
         'email_delivery' => null,
         'sms' => null,
         'voice' => null,
+        'whatsapp_business_account' => null,
         'whatsapp_inbound_message' => null,
         'whatsapp_message' => null,
         'whatsapp_phone_number' => null,
@@ -127,6 +129,7 @@ class Event implements ModelInterface, ArrayAccess, \JsonSerializable
         'email_delivery' => 'emailDelivery',
         'sms' => 'sms',
         'voice' => 'voice',
+        'whatsapp_business_account' => 'whatsappBusinessAccount',
         'whatsapp_inbound_message' => 'whatsappInboundMessage',
         'whatsapp_message' => 'whatsappMessage',
         'whatsapp_phone_number' => 'whatsappPhoneNumber',
@@ -146,6 +149,7 @@ class Event implements ModelInterface, ArrayAccess, \JsonSerializable
         'email_delivery' => 'setEmailDelivery',
         'sms' => 'setSms',
         'voice' => 'setVoice',
+        'whatsapp_business_account' => 'setWhatsappBusinessAccount',
         'whatsapp_inbound_message' => 'setWhatsappInboundMessage',
         'whatsapp_message' => 'setWhatsappMessage',
         'whatsapp_phone_number' => 'setWhatsappPhoneNumber',
@@ -165,6 +169,7 @@ class Event implements ModelInterface, ArrayAccess, \JsonSerializable
         'email_delivery' => 'getEmailDelivery',
         'sms' => 'getSms',
         'voice' => 'getVoice',
+        'whatsapp_business_account' => 'getWhatsappBusinessAccount',
         'whatsapp_inbound_message' => 'getWhatsappInboundMessage',
         'whatsapp_message' => 'getWhatsappMessage',
         'whatsapp_phone_number' => 'getWhatsappPhoneNumber',
@@ -235,6 +240,7 @@ class Event implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['email_delivery'] = $data['email_delivery'] ?? null;
         $this->container['sms'] = $data['sms'] ?? null;
         $this->container['voice'] = $data['voice'] ?? null;
+        $this->container['whatsapp_business_account'] = $data['whatsapp_business_account'] ?? null;
         $this->container['whatsapp_inbound_message'] = $data['whatsapp_inbound_message'] ?? null;
         $this->container['whatsapp_message'] = $data['whatsapp_message'] ?? null;
         $this->container['whatsapp_phone_number'] = $data['whatsapp_phone_number'] ?? null;
@@ -456,6 +462,30 @@ class Event implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setVoice($voice)
     {
         $this->container['voice'] = $voice;
+
+        return $this;
+    }
+
+    /**
+     * Gets whatsapp_business_account
+     *
+     * @return \YCloud\Client\Model\WhatsappBusinessAccount|null
+     */
+    public function getWhatsappBusinessAccount()
+    {
+        return $this->container['whatsapp_business_account'];
+    }
+
+    /**
+     * Sets whatsapp_business_account
+     *
+     * @param \YCloud\Client\Model\WhatsappBusinessAccount|null $whatsapp_business_account whatsapp_business_account
+     *
+     * @return self
+     */
+    public function setWhatsappBusinessAccount($whatsapp_business_account)
+    {
+        $this->container['whatsapp_business_account'] = $whatsapp_business_account;
 
         return $this;
     }

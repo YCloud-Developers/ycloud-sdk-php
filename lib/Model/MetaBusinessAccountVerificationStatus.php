@@ -1,6 +1,6 @@
 <?php
 /**
- * WhatsappTemplateStatus
+ * MetaBusinessAccountVerificationStatus
  *
  * PHP version 7.4
  *
@@ -31,32 +31,38 @@ namespace YCloud\Client\Model;
 use \YCloud\Client\ObjectSerializer;
 
 /**
- * WhatsappTemplateStatus Class Doc Comment
+ * MetaBusinessAccountVerificationStatus Class Doc Comment
  *
  * @category Class
- * @description One of &#x60;APPROVED&#x60;, &#x60;PENDING&#x60;, &#x60;REJECTED&#x60;, &#x60;PAUSED&#x60;, and &#x60;DISABLED&#x60;.
+ * @description Current status of business verification of Meta Business Account which owns this WhatsApp Business Account.
  * @package  YCloud\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class WhatsappTemplateStatus
+class MetaBusinessAccountVerificationStatus
 {
     /**
      * Possible values of this enum
      */
-    public const PENDING = 'PENDING';
+    public const EXPIRED = 'expired';
 
-    public const REJECTED = 'REJECTED';
+    public const FAILED = 'failed';
 
-    public const APPROVED = 'APPROVED';
+    public const INELIGIBLE = 'ineligible';
 
-    public const PAUSED = 'PAUSED';
+    public const NOT_VERIFIED = 'not_verified';
 
-    public const DISABLED = 'DISABLED';
+    public const PENDING = 'pending';
 
-    public const IN_APPEAL = 'IN_APPEAL';
+    public const PENDING_NEED_MORE_INFO = 'pending_need_more_info';
 
-    public const PENDING_DELETION = 'PENDING_DELETION';
+    public const PENDING_SUBMISSION = 'pending_submission';
+
+    public const REJECTED = 'rejected';
+
+    public const REVOKED = 'revoked';
+
+    public const VERIFIED = 'verified';
 
     /**
      * Gets allowable values of the enum
@@ -65,13 +71,16 @@ class WhatsappTemplateStatus
     public static function getAllowableEnumValues()
     {
         return [
+            self::EXPIRED,
+            self::FAILED,
+            self::INELIGIBLE,
+            self::NOT_VERIFIED,
             self::PENDING,
+            self::PENDING_NEED_MORE_INFO,
+            self::PENDING_SUBMISSION,
             self::REJECTED,
-            self::APPROVED,
-            self::PAUSED,
-            self::DISABLED,
-            self::IN_APPEAL,
-            self::PENDING_DELETION
+            self::REVOKED,
+            self::VERIFIED
         ];
     }
 }

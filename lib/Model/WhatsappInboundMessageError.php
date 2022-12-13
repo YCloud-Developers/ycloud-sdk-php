@@ -1,6 +1,6 @@
 <?php
 /**
- * Balance
+ * WhatsappInboundMessageError
  *
  * PHP version 7.4
  *
@@ -33,15 +33,16 @@ use \ArrayAccess;
 use \YCloud\Client\ObjectSerializer;
 
 /**
- * Balance Class Doc Comment
+ * WhatsappInboundMessageError Class Doc Comment
  *
  * @category Class
+ * @description When the message type field is set to &#x60;unknown&#x60; or &#x60;unsupported&#x60;, this object is included.
  * @package  YCloud\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class Balance implements ModelInterface, ArrayAccess, \JsonSerializable
+class WhatsappInboundMessageError implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +51,7 @@ class Balance implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'Balance';
+    protected static $openAPIModelName = 'WhatsappInboundMessageError';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,8 +59,8 @@ class Balance implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'amount' => 'double',
-        'currency' => 'string'
+        'code' => 'string',
+        'title' => 'string'
     ];
 
     /**
@@ -70,8 +71,8 @@ class Balance implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'amount' => 'double',
-        'currency' => null
+        'code' => null,
+        'title' => null
     ];
 
     /**
@@ -101,8 +102,8 @@ class Balance implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'amount' => 'amount',
-        'currency' => 'currency'
+        'code' => 'code',
+        'title' => 'title'
     ];
 
     /**
@@ -111,8 +112,8 @@ class Balance implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'amount' => 'setAmount',
-        'currency' => 'setCurrency'
+        'code' => 'setCode',
+        'title' => 'setTitle'
     ];
 
     /**
@@ -121,8 +122,8 @@ class Balance implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'amount' => 'getAmount',
-        'currency' => 'getCurrency'
+        'code' => 'getCode',
+        'title' => 'getTitle'
     ];
 
     /**
@@ -182,8 +183,8 @@ class Balance implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['amount'] = $data['amount'] ?? null;
-        $this->container['currency'] = $data['currency'] ?? null;
+        $this->container['code'] = $data['code'] ?? null;
+        $this->container['title'] = $data['title'] ?? null;
     }
 
     /**
@@ -195,12 +196,6 @@ class Balance implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['amount'] === null) {
-            $invalidProperties[] = "'amount' can't be null";
-        }
-        if ($this->container['currency'] === null) {
-            $invalidProperties[] = "'currency' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -217,49 +212,49 @@ class Balance implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets amount
+     * Gets code
      *
-     * @return double
+     * @return string|null
      */
-    public function getAmount()
+    public function getCode()
     {
-        return $this->container['amount'];
+        return $this->container['code'];
     }
 
     /**
-     * Sets amount
+     * Sets code
      *
-     * @param double $amount Balance of current account.
+     * @param string|null $code The error code.
      *
      * @return self
      */
-    public function setAmount($amount)
+    public function setCode($code)
     {
-        $this->container['amount'] = $amount;
+        $this->container['code'] = $code;
 
         return $this;
     }
 
     /**
-     * Gets currency
+     * Gets title
      *
-     * @return string
+     * @return string|null
      */
-    public function getCurrency()
+    public function getTitle()
     {
-        return $this->container['currency'];
+        return $this->container['title'];
     }
 
     /**
-     * Sets currency
+     * Sets title
      *
-     * @param string $currency Price currency. [ISO 4217 currency code](https://en.wikipedia.org/wiki/ISO_4217).
+     * @param string|null $title The error title.
      *
      * @return self
      */
-    public function setCurrency($currency)
+    public function setTitle($title)
     {
-        $this->container['currency'] = $currency;
+        $this->container['title'] = $title;
 
         return $this;
     }

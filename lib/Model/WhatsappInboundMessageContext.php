@@ -1,6 +1,6 @@
 <?php
 /**
- * Balance
+ * WhatsappInboundMessageContext
  *
  * PHP version 7.4
  *
@@ -33,15 +33,16 @@ use \ArrayAccess;
 use \YCloud\Client\ObjectSerializer;
 
 /**
- * Balance Class Doc Comment
+ * WhatsappInboundMessageContext Class Doc Comment
  *
  * @category Class
+ * @description Message context.
  * @package  YCloud\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class Balance implements ModelInterface, ArrayAccess, \JsonSerializable
+class WhatsappInboundMessageContext implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +51,7 @@ class Balance implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'Balance';
+    protected static $openAPIModelName = 'WhatsappInboundMessageContext';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,8 +59,11 @@ class Balance implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'amount' => 'double',
-        'currency' => 'string'
+        'forwarded' => 'bool',
+        'frequently_forwarded' => 'bool',
+        'from' => 'string',
+        'id' => 'string',
+        'referred_product' => '\YCloud\Client\Model\WhatsappInboundMessageReferredProduct'
     ];
 
     /**
@@ -70,8 +74,11 @@ class Balance implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'amount' => 'double',
-        'currency' => null
+        'forwarded' => null,
+        'frequently_forwarded' => null,
+        'from' => null,
+        'id' => null,
+        'referred_product' => null
     ];
 
     /**
@@ -101,8 +108,11 @@ class Balance implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'amount' => 'amount',
-        'currency' => 'currency'
+        'forwarded' => 'forwarded',
+        'frequently_forwarded' => 'frequently_forwarded',
+        'from' => 'from',
+        'id' => 'id',
+        'referred_product' => 'referred_product'
     ];
 
     /**
@@ -111,8 +121,11 @@ class Balance implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'amount' => 'setAmount',
-        'currency' => 'setCurrency'
+        'forwarded' => 'setForwarded',
+        'frequently_forwarded' => 'setFrequentlyForwarded',
+        'from' => 'setFrom',
+        'id' => 'setId',
+        'referred_product' => 'setReferredProduct'
     ];
 
     /**
@@ -121,8 +134,11 @@ class Balance implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'amount' => 'getAmount',
-        'currency' => 'getCurrency'
+        'forwarded' => 'getForwarded',
+        'frequently_forwarded' => 'getFrequentlyForwarded',
+        'from' => 'getFrom',
+        'id' => 'getId',
+        'referred_product' => 'getReferredProduct'
     ];
 
     /**
@@ -182,8 +198,11 @@ class Balance implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['amount'] = $data['amount'] ?? null;
-        $this->container['currency'] = $data['currency'] ?? null;
+        $this->container['forwarded'] = $data['forwarded'] ?? null;
+        $this->container['frequently_forwarded'] = $data['frequently_forwarded'] ?? null;
+        $this->container['from'] = $data['from'] ?? null;
+        $this->container['id'] = $data['id'] ?? null;
+        $this->container['referred_product'] = $data['referred_product'] ?? null;
     }
 
     /**
@@ -195,12 +214,6 @@ class Balance implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['amount'] === null) {
-            $invalidProperties[] = "'amount' can't be null";
-        }
-        if ($this->container['currency'] === null) {
-            $invalidProperties[] = "'currency' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -217,49 +230,121 @@ class Balance implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets amount
+     * Gets forwarded
      *
-     * @return double
+     * @return bool|null
      */
-    public function getAmount()
+    public function getForwarded()
     {
-        return $this->container['amount'];
+        return $this->container['forwarded'];
     }
 
     /**
-     * Sets amount
+     * Sets forwarded
      *
-     * @param double $amount Balance of current account.
+     * @param bool|null $forwarded **Added to Webhooks if message was forwarded.**  Set to `true` if the received message has been forwarded.
      *
      * @return self
      */
-    public function setAmount($amount)
+    public function setForwarded($forwarded)
     {
-        $this->container['amount'] = $amount;
+        $this->container['forwarded'] = $forwarded;
 
         return $this;
     }
 
     /**
-     * Gets currency
+     * Gets frequently_forwarded
      *
-     * @return string
+     * @return bool|null
      */
-    public function getCurrency()
+    public function getFrequentlyForwarded()
     {
-        return $this->container['currency'];
+        return $this->container['frequently_forwarded'];
     }
 
     /**
-     * Sets currency
+     * Sets frequently_forwarded
      *
-     * @param string $currency Price currency. [ISO 4217 currency code](https://en.wikipedia.org/wiki/ISO_4217).
+     * @param bool|null $frequently_forwarded **Added to Webhooks if message has been frequently forwarded.**  Set to `true` if the received message has been forwarded more than five times.
      *
      * @return self
      */
-    public function setCurrency($currency)
+    public function setFrequentlyForwarded($frequently_forwarded)
     {
-        $this->container['currency'] = $currency;
+        $this->container['frequently_forwarded'] = $frequently_forwarded;
+
+        return $this;
+    }
+
+    /**
+     * Gets from
+     *
+     * @return string|null
+     */
+    public function getFrom()
+    {
+        return $this->container['from'];
+    }
+
+    /**
+     * Sets from
+     *
+     * @param string|null $from **Added to Webhooks if message is an inbound reply to a sent message.**  The WhatsApp ID (a phone number without the '+' prefix) of the sender of the sent message.
+     *
+     * @return self
+     */
+    public function setFrom($from)
+    {
+        $this->container['from'] = $from;
+
+        return $this;
+    }
+
+    /**
+     * Gets id
+     *
+     * @return string|null
+     */
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * Sets id
+     *
+     * @param string|null $id **Optional.**  The `wamid` for the sent message for an inbound reply.
+     *
+     * @return self
+     */
+    public function setId($id)
+    {
+        $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Gets referred_product
+     *
+     * @return \YCloud\Client\Model\WhatsappInboundMessageReferredProduct|null
+     */
+    public function getReferredProduct()
+    {
+        return $this->container['referred_product'];
+    }
+
+    /**
+     * Sets referred_product
+     *
+     * @param \YCloud\Client\Model\WhatsappInboundMessageReferredProduct|null $referred_product referred_product
+     *
+     * @return self
+     */
+    public function setReferredProduct($referred_product)
+    {
+        $this->container['referred_product'] = $referred_product;
 
         return $this;
     }

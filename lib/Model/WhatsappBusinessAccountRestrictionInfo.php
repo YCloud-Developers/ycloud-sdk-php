@@ -1,6 +1,6 @@
 <?php
 /**
- * Balance
+ * WhatsappBusinessAccountRestrictionInfo
  *
  * PHP version 7.4
  *
@@ -33,15 +33,16 @@ use \ArrayAccess;
 use \YCloud\Client\ObjectSerializer;
 
 /**
- * Balance Class Doc Comment
+ * WhatsappBusinessAccountRestrictionInfo Class Doc Comment
  *
  * @category Class
+ * @description Used to report restrictions imposed on a specific WABA, when that WABA violates [WhatsApp Business Platform policies](https://developers.facebook.com/docs/whatsapp/overview/policy-enforcement).
  * @package  YCloud\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class Balance implements ModelInterface, ArrayAccess, \JsonSerializable
+class WhatsappBusinessAccountRestrictionInfo implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +51,7 @@ class Balance implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'Balance';
+    protected static $openAPIModelName = 'WhatsappBusinessAccountRestrictionInfo';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,8 +59,8 @@ class Balance implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'amount' => 'double',
-        'currency' => 'string'
+        'restriction_type' => 'string',
+        'expiration' => '\DateTime'
     ];
 
     /**
@@ -70,8 +71,8 @@ class Balance implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'amount' => 'double',
-        'currency' => null
+        'restriction_type' => null,
+        'expiration' => 'date-time'
     ];
 
     /**
@@ -101,8 +102,8 @@ class Balance implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'amount' => 'amount',
-        'currency' => 'currency'
+        'restriction_type' => 'restrictionType',
+        'expiration' => 'expiration'
     ];
 
     /**
@@ -111,8 +112,8 @@ class Balance implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'amount' => 'setAmount',
-        'currency' => 'setCurrency'
+        'restriction_type' => 'setRestrictionType',
+        'expiration' => 'setExpiration'
     ];
 
     /**
@@ -121,8 +122,8 @@ class Balance implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'amount' => 'getAmount',
-        'currency' => 'getCurrency'
+        'restriction_type' => 'getRestrictionType',
+        'expiration' => 'getExpiration'
     ];
 
     /**
@@ -166,6 +167,23 @@ class Balance implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
+    public const RESTRICTION_TYPE_ADD_PHONE_NUMBER_ACTION = 'RESTRICTED_ADD_PHONE_NUMBER_ACTION';
+    public const RESTRICTION_TYPE_BIZ_INITIATED_MESSAGING = 'RESTRICTED_BIZ_INITIATED_MESSAGING';
+    public const RESTRICTION_TYPE_CUSTOMER_INITIATED_MESSAGING = 'RESTRICTED_CUSTOMER_INITIATED_MESSAGING';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getRestrictionTypeAllowableValues()
+    {
+        return [
+            self::RESTRICTION_TYPE_ADD_PHONE_NUMBER_ACTION,
+            self::RESTRICTION_TYPE_BIZ_INITIATED_MESSAGING,
+            self::RESTRICTION_TYPE_CUSTOMER_INITIATED_MESSAGING,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -182,8 +200,8 @@ class Balance implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['amount'] = $data['amount'] ?? null;
-        $this->container['currency'] = $data['currency'] ?? null;
+        $this->container['restriction_type'] = $data['restriction_type'] ?? null;
+        $this->container['expiration'] = $data['expiration'] ?? null;
     }
 
     /**
@@ -195,12 +213,15 @@ class Balance implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['amount'] === null) {
-            $invalidProperties[] = "'amount' can't be null";
+        $allowedValues = $this->getRestrictionTypeAllowableValues();
+        if (!is_null($this->container['restriction_type']) && !in_array($this->container['restriction_type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'restriction_type', must be one of '%s'",
+                $this->container['restriction_type'],
+                implode("', '", $allowedValues)
+            );
         }
-        if ($this->container['currency'] === null) {
-            $invalidProperties[] = "'currency' can't be null";
-        }
+
         return $invalidProperties;
     }
 
@@ -217,49 +238,59 @@ class Balance implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets amount
+     * Gets restriction_type
      *
-     * @return double
+     * @return string|null
      */
-    public function getAmount()
+    public function getRestrictionType()
     {
-        return $this->container['amount'];
+        return $this->container['restriction_type'];
     }
 
     /**
-     * Sets amount
+     * Sets restriction_type
      *
-     * @param double $amount Balance of current account.
+     * @param string|null $restriction_type Restriction type.
      *
      * @return self
      */
-    public function setAmount($amount)
+    public function setRestrictionType($restriction_type)
     {
-        $this->container['amount'] = $amount;
+        $allowedValues = $this->getRestrictionTypeAllowableValues();
+        if (!is_null($restriction_type) && !in_array($restriction_type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'restriction_type', must be one of '%s'",
+                    $restriction_type,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['restriction_type'] = $restriction_type;
 
         return $this;
     }
 
     /**
-     * Gets currency
+     * Gets expiration
      *
-     * @return string
+     * @return \DateTime|null
      */
-    public function getCurrency()
+    public function getExpiration()
     {
-        return $this->container['currency'];
+        return $this->container['expiration'];
     }
 
     /**
-     * Sets currency
+     * Sets expiration
      *
-     * @param string $currency Price currency. [ISO 4217 currency code](https://en.wikipedia.org/wiki/ISO_4217).
+     * @param \DateTime|null $expiration The time at which this restriction expires, formatted in [RFC 3339](https://datatracker.ietf.org/doc/html/rfc3339). e.g., `2022-06-01T12:00:00.000Z`.
      *
      * @return self
      */
-    public function setCurrency($currency)
+    public function setExpiration($expiration)
     {
-        $this->container['currency'] = $currency;
+        $this->container['expiration'] = $expiration;
 
         return $this;
     }

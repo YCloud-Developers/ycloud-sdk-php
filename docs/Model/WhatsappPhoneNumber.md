@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **status** | [**\YCloud\Client\Model\WhatsappPhoneNumberStatus**](WhatsappPhoneNumberStatus.md) |  | [optional]
 **name_status** | [**\YCloud\Client\Model\WhatsappPhoneNumberNameStatus**](WhatsappPhoneNumberNameStatus.md) |  | [optional]
 **new_name_status** | [**\YCloud\Client\Model\WhatsappPhoneNumberNameStatus**](WhatsappPhoneNumberNameStatus.md) |  | [optional]
-**decision** | **string** | Decision. See [Phone Number Name Update](https://developers.facebook.com/docs/graph-api/webhooks/reference/whatsapp-business-account/#phone_number_name_update). | [optional]
+**decision** | [**\YCloud\Client\Model\WhatsappReviewDecision**](WhatsappReviewDecision.md) |  | [optional]
 **requested_verified_name** | **string** | Last requested verified name. See [Phone Number Name Update](https://developers.facebook.com/docs/graph-api/webhooks/reference/whatsapp-business-account/#phone_number_name_update). | [optional]
 **rejection_reason** | **string** | Rejection reason. See [Phone Number Name Update](https://developers.facebook.com/docs/graph-api/webhooks/reference/whatsapp-business-account/#phone_number_name_update). | [optional]
 

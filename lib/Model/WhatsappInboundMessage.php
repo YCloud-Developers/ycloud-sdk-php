@@ -60,6 +60,7 @@ class WhatsappInboundMessage implements ModelInterface, ArrayAccess, \JsonSerial
       */
     protected static $openAPITypes = [
         'id' => 'string',
+        'wamid' => 'string',
         'waba_id' => 'string',
         'from' => 'string',
         'customer_profile' => '\YCloud\Client\Model\WhatsappProfile',
@@ -75,7 +76,13 @@ class WhatsappInboundMessage implements ModelInterface, ArrayAccess, \JsonSerial
         'interactive' => '\YCloud\Client\Model\WhatsappInboundMessageInteractive',
         'location' => '\YCloud\Client\Model\WhatsappInboundMessageLocation',
         'button' => '\YCloud\Client\Model\WhatsappInboundMessageButton',
-        'contacts' => '\YCloud\Client\Model\WhatsappMessageContact[]'
+        'contacts' => '\YCloud\Client\Model\WhatsappMessageContact[]',
+        'reaction' => '\YCloud\Client\Model\WhatsappInboundMessageReaction',
+        'order' => '\YCloud\Client\Model\WhatsappInboundMessageOrder',
+        'system' => '\YCloud\Client\Model\WhatsappInboundMessageSystem',
+        'errors' => '\YCloud\Client\Model\WhatsappInboundMessageError[]',
+        'context' => '\YCloud\Client\Model\WhatsappInboundMessageContext',
+        'referral' => '\YCloud\Client\Model\WhatsappInboundMessageReferral'
     ];
 
     /**
@@ -87,6 +94,7 @@ class WhatsappInboundMessage implements ModelInterface, ArrayAccess, \JsonSerial
       */
     protected static $openAPIFormats = [
         'id' => null,
+        'wamid' => null,
         'waba_id' => null,
         'from' => null,
         'customer_profile' => null,
@@ -102,7 +110,13 @@ class WhatsappInboundMessage implements ModelInterface, ArrayAccess, \JsonSerial
         'interactive' => null,
         'location' => null,
         'button' => null,
-        'contacts' => null
+        'contacts' => null,
+        'reaction' => null,
+        'order' => null,
+        'system' => null,
+        'errors' => null,
+        'context' => null,
+        'referral' => null
     ];
 
     /**
@@ -133,6 +147,7 @@ class WhatsappInboundMessage implements ModelInterface, ArrayAccess, \JsonSerial
      */
     protected static $attributeMap = [
         'id' => 'id',
+        'wamid' => 'wamid',
         'waba_id' => 'wabaId',
         'from' => 'from',
         'customer_profile' => 'customerProfile',
@@ -148,7 +163,13 @@ class WhatsappInboundMessage implements ModelInterface, ArrayAccess, \JsonSerial
         'interactive' => 'interactive',
         'location' => 'location',
         'button' => 'button',
-        'contacts' => 'contacts'
+        'contacts' => 'contacts',
+        'reaction' => 'reaction',
+        'order' => 'order',
+        'system' => 'system',
+        'errors' => 'errors',
+        'context' => 'context',
+        'referral' => 'referral'
     ];
 
     /**
@@ -158,6 +179,7 @@ class WhatsappInboundMessage implements ModelInterface, ArrayAccess, \JsonSerial
      */
     protected static $setters = [
         'id' => 'setId',
+        'wamid' => 'setWamid',
         'waba_id' => 'setWabaId',
         'from' => 'setFrom',
         'customer_profile' => 'setCustomerProfile',
@@ -173,7 +195,13 @@ class WhatsappInboundMessage implements ModelInterface, ArrayAccess, \JsonSerial
         'interactive' => 'setInteractive',
         'location' => 'setLocation',
         'button' => 'setButton',
-        'contacts' => 'setContacts'
+        'contacts' => 'setContacts',
+        'reaction' => 'setReaction',
+        'order' => 'setOrder',
+        'system' => 'setSystem',
+        'errors' => 'setErrors',
+        'context' => 'setContext',
+        'referral' => 'setReferral'
     ];
 
     /**
@@ -183,6 +211,7 @@ class WhatsappInboundMessage implements ModelInterface, ArrayAccess, \JsonSerial
      */
     protected static $getters = [
         'id' => 'getId',
+        'wamid' => 'getWamid',
         'waba_id' => 'getWabaId',
         'from' => 'getFrom',
         'customer_profile' => 'getCustomerProfile',
@@ -198,7 +227,13 @@ class WhatsappInboundMessage implements ModelInterface, ArrayAccess, \JsonSerial
         'interactive' => 'getInteractive',
         'location' => 'getLocation',
         'button' => 'getButton',
-        'contacts' => 'getContacts'
+        'contacts' => 'getContacts',
+        'reaction' => 'getReaction',
+        'order' => 'getOrder',
+        'system' => 'getSystem',
+        'errors' => 'getErrors',
+        'context' => 'getContext',
+        'referral' => 'getReferral'
     ];
 
     /**
@@ -259,6 +294,7 @@ class WhatsappInboundMessage implements ModelInterface, ArrayAccess, \JsonSerial
     public function __construct(array $data = null)
     {
         $this->container['id'] = $data['id'] ?? null;
+        $this->container['wamid'] = $data['wamid'] ?? null;
         $this->container['waba_id'] = $data['waba_id'] ?? null;
         $this->container['from'] = $data['from'] ?? null;
         $this->container['customer_profile'] = $data['customer_profile'] ?? null;
@@ -275,6 +311,12 @@ class WhatsappInboundMessage implements ModelInterface, ArrayAccess, \JsonSerial
         $this->container['location'] = $data['location'] ?? null;
         $this->container['button'] = $data['button'] ?? null;
         $this->container['contacts'] = $data['contacts'] ?? null;
+        $this->container['reaction'] = $data['reaction'] ?? null;
+        $this->container['order'] = $data['order'] ?? null;
+        $this->container['system'] = $data['system'] ?? null;
+        $this->container['errors'] = $data['errors'] ?? null;
+        $this->container['context'] = $data['context'] ?? null;
+        $this->container['referral'] = $data['referral'] ?? null;
     }
 
     /**
@@ -324,6 +366,30 @@ class WhatsappInboundMessage implements ModelInterface, ArrayAccess, \JsonSerial
     public function setId($id)
     {
         $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Gets wamid
+     *
+     * @return string|null
+     */
+    public function getWamid()
+    {
+        return $this->container['wamid'];
+    }
+
+    /**
+     * Sets wamid
+     *
+     * @param string|null $wamid The native WhatsApp message ID.
+     *
+     * @return self
+     */
+    public function setWamid($wamid)
+    {
+        $this->container['wamid'] = $wamid;
 
         return $this;
     }
@@ -708,6 +774,150 @@ class WhatsappInboundMessage implements ModelInterface, ArrayAccess, \JsonSerial
     public function setContacts($contacts)
     {
         $this->container['contacts'] = $contacts;
+
+        return $this;
+    }
+
+    /**
+     * Gets reaction
+     *
+     * @return \YCloud\Client\Model\WhatsappInboundMessageReaction|null
+     */
+    public function getReaction()
+    {
+        return $this->container['reaction'];
+    }
+
+    /**
+     * Sets reaction
+     *
+     * @param \YCloud\Client\Model\WhatsappInboundMessageReaction|null $reaction reaction
+     *
+     * @return self
+     */
+    public function setReaction($reaction)
+    {
+        $this->container['reaction'] = $reaction;
+
+        return $this;
+    }
+
+    /**
+     * Gets order
+     *
+     * @return \YCloud\Client\Model\WhatsappInboundMessageOrder|null
+     */
+    public function getOrder()
+    {
+        return $this->container['order'];
+    }
+
+    /**
+     * Sets order
+     *
+     * @param \YCloud\Client\Model\WhatsappInboundMessageOrder|null $order order
+     *
+     * @return self
+     */
+    public function setOrder($order)
+    {
+        $this->container['order'] = $order;
+
+        return $this;
+    }
+
+    /**
+     * Gets system
+     *
+     * @return \YCloud\Client\Model\WhatsappInboundMessageSystem|null
+     */
+    public function getSystem()
+    {
+        return $this->container['system'];
+    }
+
+    /**
+     * Sets system
+     *
+     * @param \YCloud\Client\Model\WhatsappInboundMessageSystem|null $system system
+     *
+     * @return self
+     */
+    public function setSystem($system)
+    {
+        $this->container['system'] = $system;
+
+        return $this;
+    }
+
+    /**
+     * Gets errors
+     *
+     * @return \YCloud\Client\Model\WhatsappInboundMessageError[]|null
+     */
+    public function getErrors()
+    {
+        return $this->container['errors'];
+    }
+
+    /**
+     * Sets errors
+     *
+     * @param \YCloud\Client\Model\WhatsappInboundMessageError[]|null $errors errors
+     *
+     * @return self
+     */
+    public function setErrors($errors)
+    {
+        $this->container['errors'] = $errors;
+
+        return $this;
+    }
+
+    /**
+     * Gets context
+     *
+     * @return \YCloud\Client\Model\WhatsappInboundMessageContext|null
+     */
+    public function getContext()
+    {
+        return $this->container['context'];
+    }
+
+    /**
+     * Sets context
+     *
+     * @param \YCloud\Client\Model\WhatsappInboundMessageContext|null $context context
+     *
+     * @return self
+     */
+    public function setContext($context)
+    {
+        $this->container['context'] = $context;
+
+        return $this;
+    }
+
+    /**
+     * Gets referral
+     *
+     * @return \YCloud\Client\Model\WhatsappInboundMessageReferral|null
+     */
+    public function getReferral()
+    {
+        return $this->container['referral'];
+    }
+
+    /**
+     * Sets referral
+     *
+     * @param \YCloud\Client\Model\WhatsappInboundMessageReferral|null $referral referral
+     *
+     * @return self
+     */
+    public function setReferral($referral)
+    {
+        $this->container['referral'] = $referral;
 
         return $this;
     }

@@ -1,6 +1,6 @@
 <?php
 /**
- * Balance
+ * WhatsappInboundMessageSystem
  *
  * PHP version 7.4
  *
@@ -33,15 +33,16 @@ use \ArrayAccess;
 use \YCloud\Client\ObjectSerializer;
 
 /**
- * Balance Class Doc Comment
+ * WhatsappInboundMessageSystem Class Doc Comment
  *
  * @category Class
+ * @description When the message type is set to &#x60;system&#x60;, this field is included. This object is added to Webhooks if a user has changed their phone number and if a user’s identity has potentially changed on WhatsApp.
  * @package  YCloud\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class Balance implements ModelInterface, ArrayAccess, \JsonSerializable
+class WhatsappInboundMessageSystem implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +51,7 @@ class Balance implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'Balance';
+    protected static $openAPIModelName = 'WhatsappInboundMessageSystem';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,8 +59,11 @@ class Balance implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'amount' => 'double',
-        'currency' => 'string'
+        'body' => 'string',
+        'new_wa_id' => 'string',
+        'identity' => 'string',
+        'type' => 'string',
+        'user' => 'string'
     ];
 
     /**
@@ -70,8 +74,11 @@ class Balance implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'amount' => 'double',
-        'currency' => null
+        'body' => null,
+        'new_wa_id' => null,
+        'identity' => null,
+        'type' => null,
+        'user' => null
     ];
 
     /**
@@ -101,8 +108,11 @@ class Balance implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'amount' => 'amount',
-        'currency' => 'currency'
+        'body' => 'body',
+        'new_wa_id' => 'new_wa_id',
+        'identity' => 'identity',
+        'type' => 'type',
+        'user' => 'user'
     ];
 
     /**
@@ -111,8 +121,11 @@ class Balance implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'amount' => 'setAmount',
-        'currency' => 'setCurrency'
+        'body' => 'setBody',
+        'new_wa_id' => 'setNewWaId',
+        'identity' => 'setIdentity',
+        'type' => 'setType',
+        'user' => 'setUser'
     ];
 
     /**
@@ -121,8 +134,11 @@ class Balance implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'amount' => 'getAmount',
-        'currency' => 'getCurrency'
+        'body' => 'getBody',
+        'new_wa_id' => 'getNewWaId',
+        'identity' => 'getIdentity',
+        'type' => 'getType',
+        'user' => 'getUser'
     ];
 
     /**
@@ -182,8 +198,11 @@ class Balance implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['amount'] = $data['amount'] ?? null;
-        $this->container['currency'] = $data['currency'] ?? null;
+        $this->container['body'] = $data['body'] ?? null;
+        $this->container['new_wa_id'] = $data['new_wa_id'] ?? null;
+        $this->container['identity'] = $data['identity'] ?? null;
+        $this->container['type'] = $data['type'] ?? null;
+        $this->container['user'] = $data['user'] ?? null;
     }
 
     /**
@@ -195,12 +214,6 @@ class Balance implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['amount'] === null) {
-            $invalidProperties[] = "'amount' can't be null";
-        }
-        if ($this->container['currency'] === null) {
-            $invalidProperties[] = "'currency' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -217,49 +230,121 @@ class Balance implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets amount
+     * Gets body
      *
-     * @return double
+     * @return string|null
      */
-    public function getAmount()
+    public function getBody()
     {
-        return $this->container['amount'];
+        return $this->container['body'];
     }
 
     /**
-     * Sets amount
+     * Sets body
      *
-     * @param double $amount Balance of current account.
+     * @param string|null $body Describes the system message event. Supported use cases are: - Phone number update: for when a user changes from an old number to a new number. - Identity update: for when a user identity has changed.
      *
      * @return self
      */
-    public function setAmount($amount)
+    public function setBody($body)
     {
-        $this->container['amount'] = $amount;
+        $this->container['body'] = $body;
 
         return $this;
     }
 
     /**
-     * Gets currency
+     * Gets new_wa_id
      *
-     * @return string
+     * @return string|null
      */
-    public function getCurrency()
+    public function getNewWaId()
     {
-        return $this->container['currency'];
+        return $this->container['new_wa_id'];
     }
 
     /**
-     * Sets currency
+     * Sets new_wa_id
      *
-     * @param string $currency Price currency. [ISO 4217 currency code](https://en.wikipedia.org/wiki/ISO_4217).
+     * @param string|null $new_wa_id **Added to Webhooks for phone number updates.**  New WhatsApp ID of the customer.
      *
      * @return self
      */
-    public function setCurrency($currency)
+    public function setNewWaId($new_wa_id)
     {
-        $this->container['currency'] = $currency;
+        $this->container['new_wa_id'] = $new_wa_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets identity
+     *
+     * @return string|null
+     */
+    public function getIdentity()
+    {
+        return $this->container['identity'];
+    }
+
+    /**
+     * Sets identity
+     *
+     * @param string|null $identity **Added to Webhooks for identity updates.**  New WhatsApp ID of the customer.
+     *
+     * @return self
+     */
+    public function setIdentity($identity)
+    {
+        $this->container['identity'] = $identity;
+
+        return $this;
+    }
+
+    /**
+     * Gets type
+     *
+     * @return string|null
+     */
+    public function getType()
+    {
+        return $this->container['type'];
+    }
+
+    /**
+     * Sets type
+     *
+     * @param string|null $type Supported types are: - `user_changed_number`: for a user changed number notification. - `user_identity_changed`: for user identity changed notification.
+     *
+     * @return self
+     */
+    public function setType($type)
+    {
+        $this->container['type'] = $type;
+
+        return $this;
+    }
+
+    /**
+     * Gets user
+     *
+     * @return string|null
+     */
+    public function getUser()
+    {
+        return $this->container['user'];
+    }
+
+    /**
+     * Sets user
+     *
+     * @param string|null $user **Added to Webhooks for identity updates.**  The new WhatsApp user ID of the customer.
+     *
+     * @return self
+     */
+    public function setUser($user)
+    {
+        $this->container['user'] = $user;
 
         return $this;
     }

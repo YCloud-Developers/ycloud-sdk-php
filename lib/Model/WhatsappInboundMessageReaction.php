@@ -1,6 +1,6 @@
 <?php
 /**
- * Balance
+ * WhatsappInboundMessageReaction
  *
  * PHP version 7.4
  *
@@ -33,15 +33,16 @@ use \ArrayAccess;
 use \YCloud\Client\ObjectSerializer;
 
 /**
- * Balance Class Doc Comment
+ * WhatsappInboundMessageReaction Class Doc Comment
  *
  * @category Class
+ * @description When a user reacts to messages with an emoji, the message type is set to &#x60;reaction&#x60;, and this field is included.
  * @package  YCloud\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class Balance implements ModelInterface, ArrayAccess, \JsonSerializable
+class WhatsappInboundMessageReaction implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +51,7 @@ class Balance implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'Balance';
+    protected static $openAPIModelName = 'WhatsappInboundMessageReaction';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,8 +59,8 @@ class Balance implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'amount' => 'double',
-        'currency' => 'string'
+        'message_id' => 'string',
+        'emoji' => 'string'
     ];
 
     /**
@@ -70,8 +71,8 @@ class Balance implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'amount' => 'double',
-        'currency' => null
+        'message_id' => null,
+        'emoji' => null
     ];
 
     /**
@@ -101,8 +102,8 @@ class Balance implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'amount' => 'amount',
-        'currency' => 'currency'
+        'message_id' => 'message_id',
+        'emoji' => 'emoji'
     ];
 
     /**
@@ -111,8 +112,8 @@ class Balance implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'amount' => 'setAmount',
-        'currency' => 'setCurrency'
+        'message_id' => 'setMessageId',
+        'emoji' => 'setEmoji'
     ];
 
     /**
@@ -121,8 +122,8 @@ class Balance implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'amount' => 'getAmount',
-        'currency' => 'getCurrency'
+        'message_id' => 'getMessageId',
+        'emoji' => 'getEmoji'
     ];
 
     /**
@@ -182,8 +183,8 @@ class Balance implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['amount'] = $data['amount'] ?? null;
-        $this->container['currency'] = $data['currency'] ?? null;
+        $this->container['message_id'] = $data['message_id'] ?? null;
+        $this->container['emoji'] = $data['emoji'] ?? null;
     }
 
     /**
@@ -195,12 +196,6 @@ class Balance implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['amount'] === null) {
-            $invalidProperties[] = "'amount' can't be null";
-        }
-        if ($this->container['currency'] === null) {
-            $invalidProperties[] = "'currency' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -217,49 +212,49 @@ class Balance implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets amount
+     * Gets message_id
      *
-     * @return double
+     * @return string|null
      */
-    public function getAmount()
+    public function getMessageId()
     {
-        return $this->container['amount'];
+        return $this->container['message_id'];
     }
 
     /**
-     * Sets amount
+     * Sets message_id
      *
-     * @param double $amount Balance of current account.
+     * @param string|null $message_id Specifies the `wamid` of the message received that contained the reaction.
      *
      * @return self
      */
-    public function setAmount($amount)
+    public function setMessageId($message_id)
     {
-        $this->container['amount'] = $amount;
+        $this->container['message_id'] = $message_id;
 
         return $this;
     }
 
     /**
-     * Gets currency
+     * Gets emoji
      *
-     * @return string
+     * @return string|null
      */
-    public function getCurrency()
+    public function getEmoji()
     {
-        return $this->container['currency'];
+        return $this->container['emoji'];
     }
 
     /**
-     * Sets currency
+     * Sets emoji
      *
-     * @param string $currency Price currency. [ISO 4217 currency code](https://en.wikipedia.org/wiki/ISO_4217).
+     * @param string|null $emoji This field is included when a user reacts to messages with an emoji. Otherwise, it indicates a user removed the emoji.
      *
      * @return self
      */
-    public function setCurrency($currency)
+    public function setEmoji($emoji)
     {
-        $this->container['currency'] = $currency;
+        $this->container['emoji'] = $emoji;
 
         return $this;
     }

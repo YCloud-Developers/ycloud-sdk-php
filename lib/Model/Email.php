@@ -70,7 +70,7 @@ class Email implements ModelInterface, ArrayAccess, \JsonSerializable
         'external_id' => 'string',
         'callback_url' => 'string',
         'create_time' => '\DateTime',
-        'total_recipients' => 'float',
+        'total_recipients' => 'int',
         'total_price' => 'double',
         'currency' => 'string'
     ];
@@ -613,7 +613,7 @@ class Email implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets total_recipients
      *
-     * @return float|null
+     * @return int|null
      */
     public function getTotalRecipients()
     {
@@ -623,7 +623,7 @@ class Email implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets total_recipients
      *
-     * @param float|null $total_recipients Total recipients of this message, including `to`, `cc` and `bcc`.
+     * @param int|null $total_recipients Total recipients of this message, including `to`, `cc` and `bcc`.
      *
      * @return self
      */
@@ -671,7 +671,7 @@ class Email implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets currency
      *
-     * @param string|null $currency [ISO 4217 currency code](https://en.wikipedia.org/wiki/ISO_4217)
+     * @param string|null $currency Price currency. [ISO 4217 currency code](https://en.wikipedia.org/wiki/ISO_4217).
      *
      * @return self
      */

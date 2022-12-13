@@ -67,7 +67,9 @@ class WhatsappTemplate implements ModelInterface, ArrayAccess, \JsonSerializable
         'status' => '\YCloud\Client\Model\WhatsappTemplateStatus',
         'reason' => 'string',
         'create_time' => '\DateTime',
-        'update_time' => '\DateTime'
+        'update_time' => '\DateTime',
+        'status_update_event' => '\YCloud\Client\Model\WhatsappTemplateStatusUpdateEventEnum',
+        'disable_date' => 'string'
     ];
 
     /**
@@ -86,7 +88,9 @@ class WhatsappTemplate implements ModelInterface, ArrayAccess, \JsonSerializable
         'status' => null,
         'reason' => null,
         'create_time' => 'date-time',
-        'update_time' => 'date-time'
+        'update_time' => 'date-time',
+        'status_update_event' => null,
+        'disable_date' => null
     ];
 
     /**
@@ -124,7 +128,9 @@ class WhatsappTemplate implements ModelInterface, ArrayAccess, \JsonSerializable
         'status' => 'status',
         'reason' => 'reason',
         'create_time' => 'createTime',
-        'update_time' => 'updateTime'
+        'update_time' => 'updateTime',
+        'status_update_event' => 'statusUpdateEvent',
+        'disable_date' => 'disableDate'
     ];
 
     /**
@@ -141,7 +147,9 @@ class WhatsappTemplate implements ModelInterface, ArrayAccess, \JsonSerializable
         'status' => 'setStatus',
         'reason' => 'setReason',
         'create_time' => 'setCreateTime',
-        'update_time' => 'setUpdateTime'
+        'update_time' => 'setUpdateTime',
+        'status_update_event' => 'setStatusUpdateEvent',
+        'disable_date' => 'setDisableDate'
     ];
 
     /**
@@ -158,7 +166,9 @@ class WhatsappTemplate implements ModelInterface, ArrayAccess, \JsonSerializable
         'status' => 'getStatus',
         'reason' => 'getReason',
         'create_time' => 'getCreateTime',
-        'update_time' => 'getUpdateTime'
+        'update_time' => 'getUpdateTime',
+        'status_update_event' => 'getStatusUpdateEvent',
+        'disable_date' => 'getDisableDate'
     ];
 
     /**
@@ -227,6 +237,8 @@ class WhatsappTemplate implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['reason'] = $data['reason'] ?? null;
         $this->container['create_time'] = $data['create_time'] ?? null;
         $this->container['update_time'] = $data['update_time'] ?? null;
+        $this->container['status_update_event'] = $data['status_update_event'] ?? null;
+        $this->container['disable_date'] = $data['disable_date'] ?? null;
     }
 
     /**
@@ -495,6 +507,54 @@ class WhatsappTemplate implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setUpdateTime($update_time)
     {
         $this->container['update_time'] = $update_time;
+
+        return $this;
+    }
+
+    /**
+     * Gets status_update_event
+     *
+     * @return \YCloud\Client\Model\WhatsappTemplateStatusUpdateEventEnum|null
+     */
+    public function getStatusUpdateEvent()
+    {
+        return $this->container['status_update_event'];
+    }
+
+    /**
+     * Sets status_update_event
+     *
+     * @param \YCloud\Client\Model\WhatsappTemplateStatusUpdateEventEnum|null $status_update_event status_update_event
+     *
+     * @return self
+     */
+    public function setStatusUpdateEvent($status_update_event)
+    {
+        $this->container['status_update_event'] = $status_update_event;
+
+        return $this;
+    }
+
+    /**
+     * Gets disable_date
+     *
+     * @return string|null
+     */
+    public function getDisableDate()
+    {
+        return $this->container['disable_date'];
+    }
+
+    /**
+     * Sets disable_date
+     *
+     * @param string|null $disable_date The date at which the template will be disabled. When a WhatsApp template `FLAGGED` event is received, this field is set.
+     *
+     * @return self
+     */
+    public function setDisableDate($disable_date)
+    {
+        $this->container['disable_date'] = $disable_date;
 
         return $this;
     }

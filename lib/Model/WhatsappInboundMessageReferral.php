@@ -1,6 +1,6 @@
 <?php
 /**
- * Verification
+ * WhatsappInboundMessageReferral
  *
  * PHP version 7.4
  *
@@ -33,15 +33,16 @@ use \ArrayAccess;
 use \YCloud\Client\ObjectSerializer;
 
 /**
- * Verification Class Doc Comment
+ * WhatsappInboundMessageReferral Class Doc Comment
  *
  * @category Class
+ * @description When a user messages businesses using call-to-actions buttons on [Ads that Click to WhatsApp](https://www.facebook.com/business/help/447934475640650) or a [Facebook Page call-to-action buttons](https://www.facebook.com/help/977869848936797), this field is included as an attachment.
  * @package  YCloud\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class Verification implements ModelInterface, ArrayAccess, \JsonSerializable
+class WhatsappInboundMessageReferral implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +51,7 @@ class Verification implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'Verification';
+    protected static $openAPIModelName = 'WhatsappInboundMessageReferral';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,13 +59,15 @@ class Verification implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'id' => 'string',
-        'status' => '\YCloud\Client\Model\VerificationStatus',
-        'to' => 'string',
-        'channel' => '\YCloud\Client\Model\VerificationChannel',
-        'send_time' => '\DateTime',
-        'total_price' => 'double',
-        'currency' => 'string'
+        'source_url' => 'string',
+        'source_type' => 'string',
+        'source_id' => 'string',
+        'headline' => 'string',
+        'body' => 'string',
+        'media_type' => 'string',
+        'image_url' => 'string',
+        'video_url' => 'string',
+        'thumbnail_url' => 'string'
     ];
 
     /**
@@ -75,13 +78,15 @@ class Verification implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'id' => null,
-        'status' => null,
-        'to' => null,
-        'channel' => null,
-        'send_time' => 'date-time',
-        'total_price' => 'double',
-        'currency' => null
+        'source_url' => null,
+        'source_type' => null,
+        'source_id' => null,
+        'headline' => null,
+        'body' => null,
+        'media_type' => null,
+        'image_url' => null,
+        'video_url' => null,
+        'thumbnail_url' => null
     ];
 
     /**
@@ -111,13 +116,15 @@ class Verification implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
-        'status' => 'status',
-        'to' => 'to',
-        'channel' => 'channel',
-        'send_time' => 'sendTime',
-        'total_price' => 'totalPrice',
-        'currency' => 'currency'
+        'source_url' => 'source_url',
+        'source_type' => 'source_type',
+        'source_id' => 'source_id',
+        'headline' => 'headline',
+        'body' => 'body',
+        'media_type' => 'media_type',
+        'image_url' => 'image_url',
+        'video_url' => 'video_url',
+        'thumbnail_url' => 'thumbnail_url'
     ];
 
     /**
@@ -126,13 +133,15 @@ class Verification implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
-        'status' => 'setStatus',
-        'to' => 'setTo',
-        'channel' => 'setChannel',
-        'send_time' => 'setSendTime',
-        'total_price' => 'setTotalPrice',
-        'currency' => 'setCurrency'
+        'source_url' => 'setSourceUrl',
+        'source_type' => 'setSourceType',
+        'source_id' => 'setSourceId',
+        'headline' => 'setHeadline',
+        'body' => 'setBody',
+        'media_type' => 'setMediaType',
+        'image_url' => 'setImageUrl',
+        'video_url' => 'setVideoUrl',
+        'thumbnail_url' => 'setThumbnailUrl'
     ];
 
     /**
@@ -141,13 +150,15 @@ class Verification implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
-        'status' => 'getStatus',
-        'to' => 'getTo',
-        'channel' => 'getChannel',
-        'send_time' => 'getSendTime',
-        'total_price' => 'getTotalPrice',
-        'currency' => 'getCurrency'
+        'source_url' => 'getSourceUrl',
+        'source_type' => 'getSourceType',
+        'source_id' => 'getSourceId',
+        'headline' => 'getHeadline',
+        'body' => 'getBody',
+        'media_type' => 'getMediaType',
+        'image_url' => 'getImageUrl',
+        'video_url' => 'getVideoUrl',
+        'thumbnail_url' => 'getThumbnailUrl'
     ];
 
     /**
@@ -207,13 +218,15 @@ class Verification implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['id'] = $data['id'] ?? null;
-        $this->container['status'] = $data['status'] ?? null;
-        $this->container['to'] = $data['to'] ?? null;
-        $this->container['channel'] = $data['channel'] ?? null;
-        $this->container['send_time'] = $data['send_time'] ?? null;
-        $this->container['total_price'] = $data['total_price'] ?? null;
-        $this->container['currency'] = $data['currency'] ?? null;
+        $this->container['source_url'] = $data['source_url'] ?? null;
+        $this->container['source_type'] = $data['source_type'] ?? null;
+        $this->container['source_id'] = $data['source_id'] ?? null;
+        $this->container['headline'] = $data['headline'] ?? null;
+        $this->container['body'] = $data['body'] ?? null;
+        $this->container['media_type'] = $data['media_type'] ?? null;
+        $this->container['image_url'] = $data['image_url'] ?? null;
+        $this->container['video_url'] = $data['video_url'] ?? null;
+        $this->container['thumbnail_url'] = $data['thumbnail_url'] ?? null;
     }
 
     /**
@@ -225,9 +238,6 @@ class Verification implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['id'] === null) {
-            $invalidProperties[] = "'id' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -244,169 +254,217 @@ class Verification implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets id
-     *
-     * @return string
-     */
-    public function getId()
-    {
-        return $this->container['id'];
-    }
-
-    /**
-     * Sets id
-     *
-     * @param string $id ID of the verification.
-     *
-     * @return self
-     */
-    public function setId($id)
-    {
-        $this->container['id'] = $id;
-
-        return $this;
-    }
-
-    /**
-     * Gets status
-     *
-     * @return \YCloud\Client\Model\VerificationStatus|null
-     */
-    public function getStatus()
-    {
-        return $this->container['status'];
-    }
-
-    /**
-     * Sets status
-     *
-     * @param \YCloud\Client\Model\VerificationStatus|null $status status
-     *
-     * @return self
-     */
-    public function setStatus($status)
-    {
-        $this->container['status'] = $status;
-
-        return $this;
-    }
-
-    /**
-     * Gets to
+     * Gets source_url
      *
      * @return string|null
      */
-    public function getTo()
+    public function getSourceUrl()
     {
-        return $this->container['to'];
+        return $this->container['source_url'];
     }
 
     /**
-     * Sets to
+     * Sets source_url
      *
-     * @param string|null $to Recipient of the verification.
+     * @param string|null $source_url Specifies the URL that leads to the ad or post clicked by the user. Opening this URL takes you to the ad viewed by your user.
      *
      * @return self
      */
-    public function setTo($to)
+    public function setSourceUrl($source_url)
     {
-        $this->container['to'] = $to;
+        $this->container['source_url'] = $source_url;
 
         return $this;
     }
 
     /**
-     * Gets channel
-     *
-     * @return \YCloud\Client\Model\VerificationChannel|null
-     */
-    public function getChannel()
-    {
-        return $this->container['channel'];
-    }
-
-    /**
-     * Sets channel
-     *
-     * @param \YCloud\Client\Model\VerificationChannel|null $channel channel
-     *
-     * @return self
-     */
-    public function setChannel($channel)
-    {
-        $this->container['channel'] = $channel;
-
-        return $this;
-    }
-
-    /**
-     * Gets send_time
-     *
-     * @return \DateTime|null
-     */
-    public function getSendTime()
-    {
-        return $this->container['send_time'];
-    }
-
-    /**
-     * Sets send_time
-     *
-     * @param \DateTime|null $send_time The time at which this verification was sent, formatted in [RFC 3339](https://datatracker.ietf.org/doc/html/rfc3339). e.g., `2022-06-01T12:00:00.000Z`.
-     *
-     * @return self
-     */
-    public function setSendTime($send_time)
-    {
-        $this->container['send_time'] = $send_time;
-
-        return $this;
-    }
-
-    /**
-     * Gets total_price
-     *
-     * @return double|null
-     */
-    public function getTotalPrice()
-    {
-        return $this->container['total_price'];
-    }
-
-    /**
-     * Sets total_price
-     *
-     * @param double|null $total_price Total price of this verification.
-     *
-     * @return self
-     */
-    public function setTotalPrice($total_price)
-    {
-        $this->container['total_price'] = $total_price;
-
-        return $this;
-    }
-
-    /**
-     * Gets currency
+     * Gets source_type
      *
      * @return string|null
      */
-    public function getCurrency()
+    public function getSourceType()
     {
-        return $this->container['currency'];
+        return $this->container['source_type'];
     }
 
     /**
-     * Sets currency
+     * Sets source_type
      *
-     * @param string|null $currency Price currency. [ISO 4217 currency code](https://en.wikipedia.org/wiki/ISO_4217).
+     * @param string|null $source_type Specifies the type of the ad's source. Supported values are \"ad\" or \"post\".
      *
      * @return self
      */
-    public function setCurrency($currency)
+    public function setSourceType($source_type)
     {
-        $this->container['currency'] = $currency;
+        $this->container['source_type'] = $source_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets source_id
+     *
+     * @return string|null
+     */
+    public function getSourceId()
+    {
+        return $this->container['source_id'];
+    }
+
+    /**
+     * Sets source_id
+     *
+     * @param string|null $source_id Specifies the Meta ID for an ad or post.
+     *
+     * @return self
+     */
+    public function setSourceId($source_id)
+    {
+        $this->container['source_id'] = $source_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets headline
+     *
+     * @return string|null
+     */
+    public function getHeadline()
+    {
+        return $this->container['headline'];
+    }
+
+    /**
+     * Sets headline
+     *
+     * @param string|null $headline Specifies the headline used in the ad or post that generated the message.
+     *
+     * @return self
+     */
+    public function setHeadline($headline)
+    {
+        $this->container['headline'] = $headline;
+
+        return $this;
+    }
+
+    /**
+     * Gets body
+     *
+     * @return string|null
+     */
+    public function getBody()
+    {
+        return $this->container['body'];
+    }
+
+    /**
+     * Sets body
+     *
+     * @param string|null $body The description, or body, from the ad or post that generated the message.
+     *
+     * @return self
+     */
+    public function setBody($body)
+    {
+        $this->container['body'] = $body;
+
+        return $this;
+    }
+
+    /**
+     * Gets media_type
+     *
+     * @return string|null
+     */
+    public function getMediaType()
+    {
+        return $this->container['media_type'];
+    }
+
+    /**
+     * Sets media_type
+     *
+     * @param string|null $media_type Media present in the ad or post the user clicked. Supported values are \"image\" or \"video\".
+     *
+     * @return self
+     */
+    public function setMediaType($media_type)
+    {
+        $this->container['media_type'] = $media_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets image_url
+     *
+     * @return string|null
+     */
+    public function getImageUrl()
+    {
+        return $this->container['image_url'];
+    }
+
+    /**
+     * Sets image_url
+     *
+     * @param string|null $image_url **Added if media_type is \"image\".**  Contains a URL to the raw image.
+     *
+     * @return self
+     */
+    public function setImageUrl($image_url)
+    {
+        $this->container['image_url'] = $image_url;
+
+        return $this;
+    }
+
+    /**
+     * Gets video_url
+     *
+     * @return string|null
+     */
+    public function getVideoUrl()
+    {
+        return $this->container['video_url'];
+    }
+
+    /**
+     * Sets video_url
+     *
+     * @param string|null $video_url **Added if media_type is \"video\".**  Contains a URL to the video.
+     *
+     * @return self
+     */
+    public function setVideoUrl($video_url)
+    {
+        $this->container['video_url'] = $video_url;
+
+        return $this;
+    }
+
+    /**
+     * Gets thumbnail_url
+     *
+     * @return string|null
+     */
+    public function getThumbnailUrl()
+    {
+        return $this->container['thumbnail_url'];
+    }
+
+    /**
+     * Sets thumbnail_url
+     *
+     * @param string|null $thumbnail_url **Added if media_type is \"video\".**  Contains a URL to the thumbnail image of the clicked video.
+     *
+     * @return self
+     */
+    public function setThumbnailUrl($thumbnail_url)
+    {
+        $this->container['thumbnail_url'] = $thumbnail_url;
 
         return $this;
     }

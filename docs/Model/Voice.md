@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **region_code** | **string** | [ISO 3166-1 alpha-2 country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2). | [optional]
 **total_segments** | **int** | Number of message segments. It&#39;s always 1 for voice calls. | [optional]
 **total_price** | **double** | Total price of this message. | [optional]
-**currency** | **string** | [ISO 4217 currency code](https://en.wikipedia.org/wiki/ISO_4217) | [optional]
+**currency** | **string** | Price currency. [ISO 4217 currency code](https://en.wikipedia.org/wiki/ISO_4217). | [optional]
 **status** | **string** | Delivery status. One of &#x60;accepted&#x60;, &#x60;sent&#x60;, &#x60;delivered&#x60;, &#x60;undelivered&#x60;. | [optional]
 **error_code** | **string** | Error code when the message is undeliverable. | [optional]
 **create_time** | **\DateTime** | The time at which this message was created, formatted in [RFC 3339](https://datatracker.ietf.org/doc/html/rfc3339). e.g., &#x60;2022-03-01T12:00:00.000Z&#x60;. | [optional]

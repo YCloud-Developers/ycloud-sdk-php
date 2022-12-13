@@ -50,6 +50,10 @@ class EventType
 
     public const VOICE_MESSAGE_UPDATED = 'voice.message.updated';
 
+    public const WHATSAPP_BUSINESS_ACCOUNT_REVIEWED = 'whatsapp.business_account.reviewed';
+
+    public const WHATSAPP_BUSINESS_ACCOUNT_UPDATED = 'whatsapp.business_account.updated';
+
     public const WHATSAPP_INBOUND_MESSAGE_RECEIVED = 'whatsapp.inbound_message.received';
 
     public const WHATSAPP_MESSAGE_UPDATED = 'whatsapp.message.updated';
@@ -70,6 +74,8 @@ class EventType
             self::EMAIL_DELIVERY_UPDATED,
             self::SMS_MESSAGE_UPDATED,
             self::VOICE_MESSAGE_UPDATED,
+            self::WHATSAPP_BUSINESS_ACCOUNT_REVIEWED,
+            self::WHATSAPP_BUSINESS_ACCOUNT_UPDATED,
             self::WHATSAPP_INBOUND_MESSAGE_RECEIVED,
             self::WHATSAPP_MESSAGE_UPDATED,
             self::WHATSAPP_PHONE_NUMBER_NAME_UPDATED,

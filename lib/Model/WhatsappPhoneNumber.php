@@ -69,7 +69,7 @@ class WhatsappPhoneNumber implements ModelInterface, ArrayAccess, \JsonSerializa
         'status' => '\YCloud\Client\Model\WhatsappPhoneNumberStatus',
         'name_status' => '\YCloud\Client\Model\WhatsappPhoneNumberNameStatus',
         'new_name_status' => '\YCloud\Client\Model\WhatsappPhoneNumberNameStatus',
-        'decision' => 'string',
+        'decision' => '\YCloud\Client\Model\WhatsappReviewDecision',
         'requested_verified_name' => 'string',
         'rejection_reason' => 'string'
     ];
@@ -520,7 +520,7 @@ class WhatsappPhoneNumber implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets decision
      *
-     * @return string|null
+     * @return \YCloud\Client\Model\WhatsappReviewDecision|null
      */
     public function getDecision()
     {
@@ -530,7 +530,7 @@ class WhatsappPhoneNumber implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets decision
      *
-     * @param string|null $decision Decision. See [Phone Number Name Update](https://developers.facebook.com/docs/graph-api/webhooks/reference/whatsapp-business-account/#phone_number_name_update).
+     * @param \YCloud\Client\Model\WhatsappReviewDecision|null $decision decision
      *
      * @return self
      */

@@ -521,7 +521,7 @@ class Sms implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets currency
      *
-     * @param string|null $currency [ISO 4217 currency code](https://en.wikipedia.org/wiki/ISO_4217)
+     * @param string|null $currency Price currency. [ISO 4217 currency code](https://en.wikipedia.org/wiki/ISO_4217).
      *
      * @return self
      */

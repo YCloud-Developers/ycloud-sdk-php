@@ -1,6 +1,6 @@
 <?php
 /**
- * WhatsappTemplateStatus
+ * WhatsappBusinessAccountReviewStatus
  *
  * PHP version 7.4
  *
@@ -31,32 +31,24 @@ namespace YCloud\Client\Model;
 use \YCloud\Client\ObjectSerializer;
 
 /**
- * WhatsappTemplateStatus Class Doc Comment
+ * WhatsappBusinessAccountReviewStatus Class Doc Comment
  *
  * @category Class
- * @description One of &#x60;APPROVED&#x60;, &#x60;PENDING&#x60;, &#x60;REJECTED&#x60;, &#x60;PAUSED&#x60;, and &#x60;DISABLED&#x60;.
+ * @description WhatsApp Business Account review status.
  * @package  YCloud\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class WhatsappTemplateStatus
+class WhatsappBusinessAccountReviewStatus
 {
     /**
      * Possible values of this enum
      */
     public const PENDING = 'PENDING';
 
-    public const REJECTED = 'REJECTED';
-
     public const APPROVED = 'APPROVED';
 
-    public const PAUSED = 'PAUSED';
-
-    public const DISABLED = 'DISABLED';
-
-    public const IN_APPEAL = 'IN_APPEAL';
-
-    public const PENDING_DELETION = 'PENDING_DELETION';
+    public const REJECTED = 'REJECTED';
 
     /**
      * Gets allowable values of the enum
@@ -66,12 +58,8 @@ class WhatsappTemplateStatus
     {
         return [
             self::PENDING,
-            self::REJECTED,
             self::APPROVED,
-            self::PAUSED,
-            self::DISABLED,
-            self::IN_APPEAL,
-            self::PENDING_DELETION
+            self::REJECTED
         ];
     }
 }

@@ -64,7 +64,13 @@ class WhatsappInboundMessageType
 
     public const BUTTON = 'button';
 
+    public const REACTION = 'reaction';
+
+    public const ORDER = 'order';
+
     public const SYSTEM = 'system';
+
+    public const UNSUPPORTED = 'unsupported';
 
     public const UNKNOWN = 'unknown';
 
@@ -85,7 +91,10 @@ class WhatsappInboundMessageType
             self::LOCATION,
             self::INTERACTIVE,
             self::BUTTON,
+            self::REACTION,
+            self::ORDER,
             self::SYSTEM,
+            self::UNSUPPORTED,
             self::UNKNOWN
         ];
     }

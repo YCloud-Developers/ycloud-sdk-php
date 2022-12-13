@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **email_delivery** | [**\YCloud\Client\Model\EmailDelivery**](EmailDelivery.md) |  | [optional]
 **sms** | [**\YCloud\Client\Model\Sms**](Sms.md) |  | [optional]
 **voice** | [**\YCloud\Client\Model\Voice**](Voice.md) |  | [optional]
+**whatsapp_business_account** | [**\YCloud\Client\Model\WhatsappBusinessAccount**](WhatsappBusinessAccount.md) |  | [optional]
 **whatsapp_inbound_message** | [**\YCloud\Client\Model\WhatsappInboundMessage**](WhatsappInboundMessage.md) |  | [optional]
 **whatsapp_message** | [**\YCloud\Client\Model\WhatsappMessage**](WhatsappMessage.md) |  | [optional]
 **whatsapp_phone_number** | [**\YCloud\Client\Model\WhatsappPhoneNumber**](WhatsappPhoneNumber.md) |  | [optional]

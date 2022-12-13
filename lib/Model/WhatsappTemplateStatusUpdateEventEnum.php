@@ -1,6 +1,6 @@
 <?php
 /**
- * WhatsappTemplateStatus
+ * WhatsappTemplateStatusUpdateEventEnum
  *
  * PHP version 7.4
  *
@@ -31,30 +31,34 @@ namespace YCloud\Client\Model;
 use \YCloud\Client\ObjectSerializer;
 
 /**
- * WhatsappTemplateStatus Class Doc Comment
+ * WhatsappTemplateStatusUpdateEventEnum Class Doc Comment
  *
  * @category Class
- * @description One of &#x60;APPROVED&#x60;, &#x60;PENDING&#x60;, &#x60;REJECTED&#x60;, &#x60;PAUSED&#x60;, and &#x60;DISABLED&#x60;.
+ * @description Used when an event happened on WhatsApp template status updates.
  * @package  YCloud\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class WhatsappTemplateStatus
+class WhatsappTemplateStatusUpdateEventEnum
 {
     /**
      * Possible values of this enum
      */
     public const PENDING = 'PENDING';
 
+    public const APPROVED = 'APPROVED';
+
     public const REJECTED = 'REJECTED';
 
-    public const APPROVED = 'APPROVED';
+    public const IN_APPEAL = 'IN_APPEAL';
 
     public const PAUSED = 'PAUSED';
 
+    public const FLAGGED = 'FLAGGED';
+
     public const DISABLED = 'DISABLED';
 
-    public const IN_APPEAL = 'IN_APPEAL';
+    public const REINSTATED = 'REINSTATED';
 
     public const PENDING_DELETION = 'PENDING_DELETION';
 
@@ -66,11 +70,13 @@ class WhatsappTemplateStatus
     {
         return [
             self::PENDING,
-            self::REJECTED,
             self::APPROVED,
-            self::PAUSED,
-            self::DISABLED,
+            self::REJECTED,
             self::IN_APPEAL,
+            self::PAUSED,
+            self::FLAGGED,
+            self::DISABLED,
+            self::REINSTATED,
             self::PENDING_DELETION
         ];
     }
