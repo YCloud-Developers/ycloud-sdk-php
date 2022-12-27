@@ -46,13 +46,9 @@ class WhatsappBusinessAccountUpdateEventEnum
      */
     public const DISABLED_UPDATE = 'DISABLED_UPDATE';
 
-    public const VERIFIED_ACCOUNT = 'VERIFIED_ACCOUNT';
-
     public const ACCOUNT_RESTRICTION = 'ACCOUNT_RESTRICTION';
 
     public const ACCOUNT_VIOLATION = 'ACCOUNT_VIOLATION';
-
-    public const ACCOUNT_DELETED = 'ACCOUNT_DELETED';
 
     /**
      * Gets allowable values of the enum
@@ -62,10 +58,8 @@ class WhatsappBusinessAccountUpdateEventEnum
     {
         return [
             self::DISABLED_UPDATE,
-            self::VERIFIED_ACCOUNT,
             self::ACCOUNT_RESTRICTION,
-            self::ACCOUNT_VIOLATION,
-            self::ACCOUNT_DELETED
+            self::ACCOUNT_VIOLATION
         ];
     }
 }

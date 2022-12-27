@@ -554,7 +554,7 @@ class WhatsappBusinessAccount implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets timezone_id
      *
-     * @param string|null $timezone_id The timezone of the WhatsApp Business Account.
+     * @param string|null $timezone_id The timezone ID of the WhatsApp Business Account. See [Timezone IDs](https://developers.facebook.com/docs/marketing-api/reference/ad-account/timezone-ids).
      *
      * @return self
      */

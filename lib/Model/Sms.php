@@ -230,6 +230,7 @@ class Sms implements ModelInterface, ArrayAccess, \JsonSerializable
     public const STATUS_SENT = 'sent';
     public const STATUS_DELIVERED = 'delivered';
     public const STATUS_UNDELIVERED = 'undelivered';
+    public const STATUS_FAILED = 'failed';
 
     /**
      * Gets allowable values of the enum
@@ -243,6 +244,7 @@ class Sms implements ModelInterface, ArrayAccess, \JsonSerializable
             self::STATUS_SENT,
             self::STATUS_DELIVERED,
             self::STATUS_UNDELIVERED,
+            self::STATUS_FAILED,
         ];
     }
 
@@ -545,7 +547,7 @@ class Sms implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets status
      *
-     * @param string|null $status Delivery status. One of `accepted`, `sent`, `delivered`, `undelivered`.
+     * @param string|null $status Delivery status. One of `accepted`, `sent`, `delivered`, `undelivered`, or `failed`.
      *
      * @return self
      */

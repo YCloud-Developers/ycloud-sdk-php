@@ -48,6 +48,8 @@ class WebhookEndpointStatus
 
     public const DISABLED = 'disabled';
 
+    public const PENDING = 'pending';
+
     /**
      * Gets allowable values of the enum
      * @return string[]
@@ -56,7 +58,8 @@ class WebhookEndpointStatus
     {
         return [
             self::ACTIVE,
-            self::DISABLED
+            self::DISABLED,
+            self::PENDING
         ];
     }
 }

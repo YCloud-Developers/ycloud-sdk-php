@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **ownership_type** | **string** | Ownership type of the WhatsApp Business Account. | [optional]
 **primary_funding_id** | **string** | Primary funding ID for the WhatsApp Business Account paid service. | [optional]
 **purchase_order_number** | **string** | The purchase order number supplied by the business for payment management purposes. | [optional]
-**timezone_id** | **string** | The timezone of the WhatsApp Business Account. | [optional]
+**timezone_id** | **string** | The timezone ID of the WhatsApp Business Account. See [Timezone IDs](https://developers.facebook.com/docs/marketing-api/reference/ad-account/timezone-ids). | [optional]
 **decision** | [**\YCloud\Client\Model\WhatsappReviewDecision**](WhatsappReviewDecision.md) |  | [optional]
 **update_event** | [**\YCloud\Client\Model\WhatsappBusinessAccountUpdateEventEnum**](WhatsappBusinessAccountUpdateEventEnum.md) |  | [optional]
 **ban_state** | [**\YCloud\Client\Model\WhatsappBusinessAccountBanState**](WhatsappBusinessAccountBanState.md) |  | [optional]
