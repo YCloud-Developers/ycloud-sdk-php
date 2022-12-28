@@ -123,11 +123,14 @@ class WhatsappBusinessAccountsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
+     * @param  int $page Page number of the results to be returned, 1-based. (optional, default to 1)
+     * @param  int $limit A limit on the number of results to be returned, or number of results per page, between 1 and 100, defaults to 10. (optional, default to 10)
+     * @param  bool $include_total Return results inside an object that contains the total result count or not. (optional, default to false)
      * @param  string $filter_account_review_status WhatsApp Business Account review status. (optional)
      *
      * @throws \YCloud\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \YCloud\Client\Model\WhatsappBusinessAccount
+     * @return \YCloud\Client\Model\WhatsappBusinessAccountPage
      */
     public function list($associative_array)
     {
@@ -142,11 +145,14 @@ class WhatsappBusinessAccountsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
+     * @param  int $page Page number of the results to be returned, 1-based. (optional, default to 1)
+     * @param  int $limit A limit on the number of results to be returned, or number of results per page, between 1 and 100, defaults to 10. (optional, default to 10)
+     * @param  bool $include_total Return results inside an object that contains the total result count or not. (optional, default to false)
      * @param  string $filter_account_review_status WhatsApp Business Account review status. (optional)
      *
      * @throws \YCloud\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \YCloud\Client\Model\WhatsappBusinessAccount, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \YCloud\Client\Model\WhatsappBusinessAccountPage, HTTP status code, HTTP response headers (array of strings)
      */
     public function listWithHttpInfo($associative_array)
     {
@@ -189,23 +195,23 @@ class WhatsappBusinessAccountsApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\YCloud\Client\Model\WhatsappBusinessAccount' === '\SplFileObject') {
+                    if ('\YCloud\Client\Model\WhatsappBusinessAccountPage' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\YCloud\Client\Model\WhatsappBusinessAccount' !== 'string') {
+                        if ('\YCloud\Client\Model\WhatsappBusinessAccountPage' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\YCloud\Client\Model\WhatsappBusinessAccount', []),
+                        ObjectSerializer::deserialize($content, '\YCloud\Client\Model\WhatsappBusinessAccountPage', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\YCloud\Client\Model\WhatsappBusinessAccount';
+            $returnType = '\YCloud\Client\Model\WhatsappBusinessAccountPage';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -226,7 +232,7 @@ class WhatsappBusinessAccountsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\YCloud\Client\Model\WhatsappBusinessAccount',
+                        '\YCloud\Client\Model\WhatsappBusinessAccountPage',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -243,6 +249,9 @@ class WhatsappBusinessAccountsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
+     * @param  int $page Page number of the results to be returned, 1-based. (optional, default to 1)
+     * @param  int $limit A limit on the number of results to be returned, or number of results per page, between 1 and 100, defaults to 10. (optional, default to 10)
+     * @param  bool $include_total Return results inside an object that contains the total result count or not. (optional, default to false)
      * @param  string $filter_account_review_status WhatsApp Business Account review status. (optional)
      *
      * @throws \InvalidArgumentException
@@ -265,6 +274,9 @@ class WhatsappBusinessAccountsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
+     * @param  int $page Page number of the results to be returned, 1-based. (optional, default to 1)
+     * @param  int $limit A limit on the number of results to be returned, or number of results per page, between 1 and 100, defaults to 10. (optional, default to 10)
+     * @param  bool $include_total Return results inside an object that contains the total result count or not. (optional, default to false)
      * @param  string $filter_account_review_status WhatsApp Business Account review status. (optional)
      *
      * @throws \InvalidArgumentException
@@ -272,7 +284,7 @@ class WhatsappBusinessAccountsApi
      */
     public function listAsyncWithHttpInfo($associative_array)
     {
-        $returnType = '\YCloud\Client\Model\WhatsappBusinessAccount';
+        $returnType = '\YCloud\Client\Model\WhatsappBusinessAccountPage';
         $request = $this->listRequest($associative_array);
 
         return $this->client
@@ -316,6 +328,9 @@ class WhatsappBusinessAccountsApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
+     * @param  int $page Page number of the results to be returned, 1-based. (optional, default to 1)
+     * @param  int $limit A limit on the number of results to be returned, or number of results per page, between 1 and 100, defaults to 10. (optional, default to 10)
+     * @param  bool $include_total Return results inside an object that contains the total result count or not. (optional, default to false)
      * @param  string $filter_account_review_status WhatsApp Business Account review status. (optional)
      *
      * @throws \InvalidArgumentException
@@ -324,7 +339,24 @@ class WhatsappBusinessAccountsApi
     public function listRequest($associative_array)
     {
         // unbox the parameters from the associative array
+        $page = array_key_exists('page', $associative_array) ? $associative_array['page'] : 1;
+        $limit = array_key_exists('limit', $associative_array) ? $associative_array['limit'] : 10;
+        $include_total = array_key_exists('include_total', $associative_array) ? $associative_array['include_total'] : false;
         $filter_account_review_status = array_key_exists('filter_account_review_status', $associative_array) ? $associative_array['filter_account_review_status'] : null;
+
+        if ($page !== null && $page > 100) {
+            throw new \InvalidArgumentException('invalid value for "$page" when calling WhatsappBusinessAccountsApi.list, must be smaller than or equal to 100.');
+        }
+        if ($page !== null && $page < 1) {
+            throw new \InvalidArgumentException('invalid value for "$page" when calling WhatsappBusinessAccountsApi.list, must be bigger than or equal to 1.');
+        }
+
+        if ($limit !== null && $limit > 100) {
+            throw new \InvalidArgumentException('invalid value for "$limit" when calling WhatsappBusinessAccountsApi.list, must be smaller than or equal to 100.');
+        }
+        if ($limit !== null && $limit < 1) {
+            throw new \InvalidArgumentException('invalid value for "$limit" when calling WhatsappBusinessAccountsApi.list, must be bigger than or equal to 1.');
+        }
 
 
         $resourcePath = '/whatsapp/businessAccounts';
@@ -334,6 +366,33 @@ class WhatsappBusinessAccountsApi
         $httpBody = '';
         $multipart = false;
 
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $page,
+            'page', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $limit,
+            'limit', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $include_total,
+            'includeTotal', // param base name
+            'boolean', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $filter_account_review_status,

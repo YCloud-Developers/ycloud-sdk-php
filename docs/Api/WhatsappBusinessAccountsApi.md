@@ -11,7 +11,7 @@ Method | HTTP request | Description
 ## `list()`
 
 ```php
-list($filter_account_review_status): \YCloud\Client\Model\WhatsappBusinessAccount
+list($page, $limit, $include_total, $filter_account_review_status): \YCloud\Client\Model\WhatsappBusinessAccountPage
 ```
 
 List WABAs
@@ -35,6 +35,9 @@ $apiInstance = new YCloud\Client\Api\WhatsappBusinessAccountsApi(
     new GuzzleHttp\Client(),
     $config
 );
+$associate_array['page'] = 1; // int | Page number of the results to be returned, 1-based.
+$associate_array['limit'] = 10; // int | A limit on the number of results to be returned, or number of results per page, between 1 and 100, defaults to 10.
+$associate_array['include_total'] = false; // bool | Return results inside an object that contains the total result count or not.
 $associate_array['filter_account_review_status'] = APPROVED; // string | WhatsApp Business Account review status.
 
 try {
@@ -51,11 +54,14 @@ Note: the input parameter is an associative array with the keys listed as the pa
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **page** | **int**| Page number of the results to be returned, 1-based. | [optional] [default to 1]
+ **limit** | **int**| A limit on the number of results to be returned, or number of results per page, between 1 and 100, defaults to 10. | [optional] [default to 10]
+ **include_total** | **bool**| Return results inside an object that contains the total result count or not. | [optional] [default to false]
  **filter_account_review_status** | **string**| WhatsApp Business Account review status. | [optional]
 
 ### Return type
 
-[**\YCloud\Client\Model\WhatsappBusinessAccount**](../Model/WhatsappBusinessAccount.md)
+[**\YCloud\Client\Model\WhatsappBusinessAccountPage**](../Model/WhatsappBusinessAccountPage.md)
 
 ### Authorization
 

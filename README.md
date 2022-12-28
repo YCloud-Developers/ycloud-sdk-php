@@ -131,6 +131,7 @@ Class | Method | HTTP request | Description
 - [WebhookEndpointUpdateRequest](docs/Model/WebhookEndpointUpdateRequest.md)
 - [WhatsappBusinessAccount](docs/Model/WhatsappBusinessAccount.md)
 - [WhatsappBusinessAccountBanState](docs/Model/WhatsappBusinessAccountBanState.md)
+- [WhatsappBusinessAccountPage](docs/Model/WhatsappBusinessAccountPage.md)
 - [WhatsappBusinessAccountRestrictionInfo](docs/Model/WhatsappBusinessAccountRestrictionInfo.md)
 - [WhatsappBusinessAccountReviewStatus](docs/Model/WhatsappBusinessAccountReviewStatus.md)
 - [WhatsappBusinessAccountUpdateEventEnum](docs/Model/WhatsappBusinessAccountUpdateEventEnum.md)
