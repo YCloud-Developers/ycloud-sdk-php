@@ -65,6 +65,7 @@ class Event implements ModelInterface, ArrayAccess, \JsonSerializable
         'create_time' => '\DateTime',
         'email_delivery' => '\YCloud\Client\Model\EmailDelivery',
         'sms' => '\YCloud\Client\Model\Sms',
+        'sms_inbound' => '\YCloud\Client\Model\SmsInbound',
         'voice' => '\YCloud\Client\Model\Voice',
         'whatsapp_business_account' => '\YCloud\Client\Model\WhatsappBusinessAccount',
         'whatsapp_inbound_message' => '\YCloud\Client\Model\WhatsappInboundMessage',
@@ -87,6 +88,7 @@ class Event implements ModelInterface, ArrayAccess, \JsonSerializable
         'create_time' => 'date-time',
         'email_delivery' => null,
         'sms' => null,
+        'sms_inbound' => null,
         'voice' => null,
         'whatsapp_business_account' => null,
         'whatsapp_inbound_message' => null,
@@ -128,6 +130,7 @@ class Event implements ModelInterface, ArrayAccess, \JsonSerializable
         'create_time' => 'createTime',
         'email_delivery' => 'emailDelivery',
         'sms' => 'sms',
+        'sms_inbound' => 'smsInbound',
         'voice' => 'voice',
         'whatsapp_business_account' => 'whatsappBusinessAccount',
         'whatsapp_inbound_message' => 'whatsappInboundMessage',
@@ -148,6 +151,7 @@ class Event implements ModelInterface, ArrayAccess, \JsonSerializable
         'create_time' => 'setCreateTime',
         'email_delivery' => 'setEmailDelivery',
         'sms' => 'setSms',
+        'sms_inbound' => 'setSmsInbound',
         'voice' => 'setVoice',
         'whatsapp_business_account' => 'setWhatsappBusinessAccount',
         'whatsapp_inbound_message' => 'setWhatsappInboundMessage',
@@ -168,6 +172,7 @@ class Event implements ModelInterface, ArrayAccess, \JsonSerializable
         'create_time' => 'getCreateTime',
         'email_delivery' => 'getEmailDelivery',
         'sms' => 'getSms',
+        'sms_inbound' => 'getSmsInbound',
         'voice' => 'getVoice',
         'whatsapp_business_account' => 'getWhatsappBusinessAccount',
         'whatsapp_inbound_message' => 'getWhatsappInboundMessage',
@@ -239,6 +244,7 @@ class Event implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['create_time'] = $data['create_time'] ?? null;
         $this->container['email_delivery'] = $data['email_delivery'] ?? null;
         $this->container['sms'] = $data['sms'] ?? null;
+        $this->container['sms_inbound'] = $data['sms_inbound'] ?? null;
         $this->container['voice'] = $data['voice'] ?? null;
         $this->container['whatsapp_business_account'] = $data['whatsapp_business_account'] ?? null;
         $this->container['whatsapp_inbound_message'] = $data['whatsapp_inbound_message'] ?? null;
@@ -438,6 +444,30 @@ class Event implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setSms($sms)
     {
         $this->container['sms'] = $sms;
+
+        return $this;
+    }
+
+    /**
+     * Gets sms_inbound
+     *
+     * @return \YCloud\Client\Model\SmsInbound|null
+     */
+    public function getSmsInbound()
+    {
+        return $this->container['sms_inbound'];
+    }
+
+    /**
+     * Sets sms_inbound
+     *
+     * @param \YCloud\Client\Model\SmsInbound|null $sms_inbound sms_inbound
+     *
+     * @return self
+     */
+    public function setSmsInbound($sms_inbound)
+    {
+        $this->container['sms_inbound'] = $sms_inbound;
 
         return $this;
     }

@@ -82,7 +82,8 @@ class WhatsappMessage implements ModelInterface, ArrayAccess, \JsonSerializable
         'create_time' => '\DateTime',
         'update_time' => '\DateTime',
         'total_price' => 'double',
-        'currency' => 'string'
+        'currency' => 'string',
+        'whatsapp_api_error' => '\YCloud\Client\Model\WhatsappApiError'
     ];
 
     /**
@@ -116,7 +117,8 @@ class WhatsappMessage implements ModelInterface, ArrayAccess, \JsonSerializable
         'create_time' => 'date-time',
         'update_time' => 'date-time',
         'total_price' => 'double',
-        'currency' => null
+        'currency' => null,
+        'whatsapp_api_error' => null
     ];
 
     /**
@@ -169,7 +171,8 @@ class WhatsappMessage implements ModelInterface, ArrayAccess, \JsonSerializable
         'create_time' => 'createTime',
         'update_time' => 'updateTime',
         'total_price' => 'totalPrice',
-        'currency' => 'currency'
+        'currency' => 'currency',
+        'whatsapp_api_error' => 'whatsappApiError'
     ];
 
     /**
@@ -201,7 +204,8 @@ class WhatsappMessage implements ModelInterface, ArrayAccess, \JsonSerializable
         'create_time' => 'setCreateTime',
         'update_time' => 'setUpdateTime',
         'total_price' => 'setTotalPrice',
-        'currency' => 'setCurrency'
+        'currency' => 'setCurrency',
+        'whatsapp_api_error' => 'setWhatsappApiError'
     ];
 
     /**
@@ -233,7 +237,8 @@ class WhatsappMessage implements ModelInterface, ArrayAccess, \JsonSerializable
         'create_time' => 'getCreateTime',
         'update_time' => 'getUpdateTime',
         'total_price' => 'getTotalPrice',
-        'currency' => 'getCurrency'
+        'currency' => 'getCurrency',
+        'whatsapp_api_error' => 'getWhatsappApiError'
     ];
 
     /**
@@ -317,6 +322,7 @@ class WhatsappMessage implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['update_time'] = $data['update_time'] ?? null;
         $this->container['total_price'] = $data['total_price'] ?? null;
         $this->container['currency'] = $data['currency'] ?? null;
+        $this->container['whatsapp_api_error'] = $data['whatsapp_api_error'] ?? null;
     }
 
     /**
@@ -930,6 +936,30 @@ class WhatsappMessage implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setCurrency($currency)
     {
         $this->container['currency'] = $currency;
+
+        return $this;
+    }
+
+    /**
+     * Gets whatsapp_api_error
+     *
+     * @return \YCloud\Client\Model\WhatsappApiError|null
+     */
+    public function getWhatsappApiError()
+    {
+        return $this->container['whatsapp_api_error'];
+    }
+
+    /**
+     * Sets whatsapp_api_error
+     *
+     * @param \YCloud\Client\Model\WhatsappApiError|null $whatsapp_api_error whatsapp_api_error
+     *
+     * @return self
+     */
+    public function setWhatsappApiError($whatsapp_api_error)
+    {
+        $this->container['whatsapp_api_error'] = $whatsapp_api_error;
 
         return $this;
     }

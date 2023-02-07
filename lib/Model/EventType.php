@@ -48,6 +48,8 @@ class EventType
 
     public const SMS_MESSAGE_UPDATED = 'sms.message.updated';
 
+    public const SMS_INBOUND_RECEIVED = 'sms.inbound.received';
+
     public const VOICE_MESSAGE_UPDATED = 'voice.message.updated';
 
     public const WHATSAPP_BUSINESS_ACCOUNT_REVIEWED = 'whatsapp.business_account.reviewed';
@@ -73,6 +75,7 @@ class EventType
         return [
             self::EMAIL_DELIVERY_UPDATED,
             self::SMS_MESSAGE_UPDATED,
+            self::SMS_INBOUND_RECEIVED,
             self::VOICE_MESSAGE_UPDATED,
             self::WHATSAPP_BUSINESS_ACCOUNT_REVIEWED,
             self::WHATSAPP_BUSINESS_ACCOUNT_UPDATED,

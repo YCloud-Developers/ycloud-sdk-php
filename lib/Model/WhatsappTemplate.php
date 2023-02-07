@@ -69,7 +69,8 @@ class WhatsappTemplate implements ModelInterface, ArrayAccess, \JsonSerializable
         'create_time' => '\DateTime',
         'update_time' => '\DateTime',
         'status_update_event' => '\YCloud\Client\Model\WhatsappTemplateStatusUpdateEventEnum',
-        'disable_date' => 'string'
+        'disable_date' => 'string',
+        'whatsapp_api_error' => '\YCloud\Client\Model\WhatsappApiError'
     ];
 
     /**
@@ -90,7 +91,8 @@ class WhatsappTemplate implements ModelInterface, ArrayAccess, \JsonSerializable
         'create_time' => 'date-time',
         'update_time' => 'date-time',
         'status_update_event' => null,
-        'disable_date' => null
+        'disable_date' => null,
+        'whatsapp_api_error' => null
     ];
 
     /**
@@ -130,7 +132,8 @@ class WhatsappTemplate implements ModelInterface, ArrayAccess, \JsonSerializable
         'create_time' => 'createTime',
         'update_time' => 'updateTime',
         'status_update_event' => 'statusUpdateEvent',
-        'disable_date' => 'disableDate'
+        'disable_date' => 'disableDate',
+        'whatsapp_api_error' => 'whatsappApiError'
     ];
 
     /**
@@ -149,7 +152,8 @@ class WhatsappTemplate implements ModelInterface, ArrayAccess, \JsonSerializable
         'create_time' => 'setCreateTime',
         'update_time' => 'setUpdateTime',
         'status_update_event' => 'setStatusUpdateEvent',
-        'disable_date' => 'setDisableDate'
+        'disable_date' => 'setDisableDate',
+        'whatsapp_api_error' => 'setWhatsappApiError'
     ];
 
     /**
@@ -168,7 +172,8 @@ class WhatsappTemplate implements ModelInterface, ArrayAccess, \JsonSerializable
         'create_time' => 'getCreateTime',
         'update_time' => 'getUpdateTime',
         'status_update_event' => 'getStatusUpdateEvent',
-        'disable_date' => 'getDisableDate'
+        'disable_date' => 'getDisableDate',
+        'whatsapp_api_error' => 'getWhatsappApiError'
     ];
 
     /**
@@ -239,6 +244,7 @@ class WhatsappTemplate implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['update_time'] = $data['update_time'] ?? null;
         $this->container['status_update_event'] = $data['status_update_event'] ?? null;
         $this->container['disable_date'] = $data['disable_date'] ?? null;
+        $this->container['whatsapp_api_error'] = $data['whatsapp_api_error'] ?? null;
     }
 
     /**
@@ -555,6 +561,30 @@ class WhatsappTemplate implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setDisableDate($disable_date)
     {
         $this->container['disable_date'] = $disable_date;
+
+        return $this;
+    }
+
+    /**
+     * Gets whatsapp_api_error
+     *
+     * @return \YCloud\Client\Model\WhatsappApiError|null
+     */
+    public function getWhatsappApiError()
+    {
+        return $this->container['whatsapp_api_error'];
+    }
+
+    /**
+     * Sets whatsapp_api_error
+     *
+     * @param \YCloud\Client\Model\WhatsappApiError|null $whatsapp_api_error whatsapp_api_error
+     *
+     * @return self
+     */
+    public function setWhatsappApiError($whatsapp_api_error)
+    {
+        $this->container['whatsapp_api_error'] = $whatsapp_api_error;
 
         return $this;
     }
