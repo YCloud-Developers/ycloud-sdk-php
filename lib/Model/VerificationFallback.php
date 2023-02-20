@@ -1,6 +1,6 @@
 <?php
 /**
- * Verification
+ * VerificationFallback
  *
  * PHP version 7.4
  *
@@ -33,15 +33,16 @@ use \ArrayAccess;
 use \YCloud\Client\ObjectSerializer;
 
 /**
- * Verification Class Doc Comment
+ * VerificationFallback Class Doc Comment
  *
  * @category Class
+ * @description Contains information about verification fallback. For example, you can enable sms fallback for WhatsApp verification messages.
  * @package  YCloud\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class Verification implements ModelInterface, ArrayAccess, \JsonSerializable
+class VerificationFallback implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +51,7 @@ class Verification implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'Verification';
+    protected static $openAPIModelName = 'VerificationFallback';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,15 +59,9 @@ class Verification implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'id' => 'string',
-        'status' => '\YCloud\Client\Model\VerificationStatus',
-        'to' => 'string',
-        'channel' => '\YCloud\Client\Model\VerificationChannel',
-        'send_time' => '\DateTime',
-        'total_price' => 'double',
-        'currency' => 'string',
-        'sms_fallback_enabled' => 'bool',
-        'sms_fallback' => '\YCloud\Client\Model\VerificationFallback'
+        'supported' => 'bool',
+        'unsupported_reason' => 'string',
+        'unsupported_detail' => 'string'
     ];
 
     /**
@@ -77,15 +72,9 @@ class Verification implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'id' => null,
-        'status' => null,
-        'to' => null,
-        'channel' => null,
-        'send_time' => 'date-time',
-        'total_price' => 'double',
-        'currency' => null,
-        'sms_fallback_enabled' => null,
-        'sms_fallback' => null
+        'supported' => null,
+        'unsupported_reason' => null,
+        'unsupported_detail' => null
     ];
 
     /**
@@ -115,15 +104,9 @@ class Verification implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
-        'status' => 'status',
-        'to' => 'to',
-        'channel' => 'channel',
-        'send_time' => 'sendTime',
-        'total_price' => 'totalPrice',
-        'currency' => 'currency',
-        'sms_fallback_enabled' => 'smsFallbackEnabled',
-        'sms_fallback' => 'smsFallback'
+        'supported' => 'supported',
+        'unsupported_reason' => 'unsupportedReason',
+        'unsupported_detail' => 'unsupportedDetail'
     ];
 
     /**
@@ -132,15 +115,9 @@ class Verification implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
-        'status' => 'setStatus',
-        'to' => 'setTo',
-        'channel' => 'setChannel',
-        'send_time' => 'setSendTime',
-        'total_price' => 'setTotalPrice',
-        'currency' => 'setCurrency',
-        'sms_fallback_enabled' => 'setSmsFallbackEnabled',
-        'sms_fallback' => 'setSmsFallback'
+        'supported' => 'setSupported',
+        'unsupported_reason' => 'setUnsupportedReason',
+        'unsupported_detail' => 'setUnsupportedDetail'
     ];
 
     /**
@@ -149,15 +126,9 @@ class Verification implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
-        'status' => 'getStatus',
-        'to' => 'getTo',
-        'channel' => 'getChannel',
-        'send_time' => 'getSendTime',
-        'total_price' => 'getTotalPrice',
-        'currency' => 'getCurrency',
-        'sms_fallback_enabled' => 'getSmsFallbackEnabled',
-        'sms_fallback' => 'getSmsFallback'
+        'supported' => 'getSupported',
+        'unsupported_reason' => 'getUnsupportedReason',
+        'unsupported_detail' => 'getUnsupportedDetail'
     ];
 
     /**
@@ -217,15 +188,9 @@ class Verification implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['id'] = $data['id'] ?? null;
-        $this->container['status'] = $data['status'] ?? null;
-        $this->container['to'] = $data['to'] ?? null;
-        $this->container['channel'] = $data['channel'] ?? null;
-        $this->container['send_time'] = $data['send_time'] ?? null;
-        $this->container['total_price'] = $data['total_price'] ?? null;
-        $this->container['currency'] = $data['currency'] ?? null;
-        $this->container['sms_fallback_enabled'] = $data['sms_fallback_enabled'] ?? null;
-        $this->container['sms_fallback'] = $data['sms_fallback'] ?? null;
+        $this->container['supported'] = $data['supported'] ?? null;
+        $this->container['unsupported_reason'] = $data['unsupported_reason'] ?? null;
+        $this->container['unsupported_detail'] = $data['unsupported_detail'] ?? null;
     }
 
     /**
@@ -237,9 +202,6 @@ class Verification implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['id'] === null) {
-            $invalidProperties[] = "'id' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -256,217 +218,73 @@ class Verification implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets id
-     *
-     * @return string
-     */
-    public function getId()
-    {
-        return $this->container['id'];
-    }
-
-    /**
-     * Sets id
-     *
-     * @param string $id ID of the verification.
-     *
-     * @return self
-     */
-    public function setId($id)
-    {
-        $this->container['id'] = $id;
-
-        return $this;
-    }
-
-    /**
-     * Gets status
-     *
-     * @return \YCloud\Client\Model\VerificationStatus|null
-     */
-    public function getStatus()
-    {
-        return $this->container['status'];
-    }
-
-    /**
-     * Sets status
-     *
-     * @param \YCloud\Client\Model\VerificationStatus|null $status status
-     *
-     * @return self
-     */
-    public function setStatus($status)
-    {
-        $this->container['status'] = $status;
-
-        return $this;
-    }
-
-    /**
-     * Gets to
-     *
-     * @return string|null
-     */
-    public function getTo()
-    {
-        return $this->container['to'];
-    }
-
-    /**
-     * Sets to
-     *
-     * @param string|null $to Recipient of the verification.
-     *
-     * @return self
-     */
-    public function setTo($to)
-    {
-        $this->container['to'] = $to;
-
-        return $this;
-    }
-
-    /**
-     * Gets channel
-     *
-     * @return \YCloud\Client\Model\VerificationChannel|null
-     */
-    public function getChannel()
-    {
-        return $this->container['channel'];
-    }
-
-    /**
-     * Sets channel
-     *
-     * @param \YCloud\Client\Model\VerificationChannel|null $channel channel
-     *
-     * @return self
-     */
-    public function setChannel($channel)
-    {
-        $this->container['channel'] = $channel;
-
-        return $this;
-    }
-
-    /**
-     * Gets send_time
-     *
-     * @return \DateTime|null
-     */
-    public function getSendTime()
-    {
-        return $this->container['send_time'];
-    }
-
-    /**
-     * Sets send_time
-     *
-     * @param \DateTime|null $send_time The time at which this verification was sent, formatted in [RFC 3339](https://datatracker.ietf.org/doc/html/rfc3339). e.g., `2022-06-01T12:00:00.000Z`.
-     *
-     * @return self
-     */
-    public function setSendTime($send_time)
-    {
-        $this->container['send_time'] = $send_time;
-
-        return $this;
-    }
-
-    /**
-     * Gets total_price
-     *
-     * @return double|null
-     */
-    public function getTotalPrice()
-    {
-        return $this->container['total_price'];
-    }
-
-    /**
-     * Sets total_price
-     *
-     * @param double|null $total_price Total price of this verification.
-     *
-     * @return self
-     */
-    public function setTotalPrice($total_price)
-    {
-        $this->container['total_price'] = $total_price;
-
-        return $this;
-    }
-
-    /**
-     * Gets currency
-     *
-     * @return string|null
-     */
-    public function getCurrency()
-    {
-        return $this->container['currency'];
-    }
-
-    /**
-     * Sets currency
-     *
-     * @param string|null $currency Price currency. [ISO 4217 currency code](https://en.wikipedia.org/wiki/ISO_4217).
-     *
-     * @return self
-     */
-    public function setCurrency($currency)
-    {
-        $this->container['currency'] = $currency;
-
-        return $this;
-    }
-
-    /**
-     * Gets sms_fallback_enabled
+     * Gets supported
      *
      * @return bool|null
      */
-    public function getSmsFallbackEnabled()
+    public function getSupported()
     {
-        return $this->container['sms_fallback_enabled'];
+        return $this->container['supported'];
     }
 
     /**
-     * Sets sms_fallback_enabled
+     * Sets supported
      *
-     * @param bool|null $sms_fallback_enabled Whether sms fallback is enabled or not. Applicable when `channel` is `whatsapp`. If enabled, YCloud will try to send the verification code via sms when the WhatsApp message is failed.
+     * @param bool|null $supported Whether this fallback you requested is supported. If `false` is returned, it means that there are errors for this fallback, and this fallback will not be triggered.
      *
      * @return self
      */
-    public function setSmsFallbackEnabled($sms_fallback_enabled)
+    public function setSupported($supported)
     {
-        $this->container['sms_fallback_enabled'] = $sms_fallback_enabled;
+        $this->container['supported'] = $supported;
 
         return $this;
     }
 
     /**
-     * Gets sms_fallback
+     * Gets unsupported_reason
      *
-     * @return \YCloud\Client\Model\VerificationFallback|null
+     * @return string|null
      */
-    public function getSmsFallback()
+    public function getUnsupportedReason()
     {
-        return $this->container['sms_fallback'];
+        return $this->container['unsupported_reason'];
     }
 
     /**
-     * Sets sms_fallback
+     * Sets unsupported_reason
      *
-     * @param \YCloud\Client\Model\VerificationFallback|null $sms_fallback sms_fallback
+     * @param string|null $unsupported_reason The reason why the fallback is unsupported, e.g, `PARAM_INVALID`, `SMS_SIGNATURE_UNAVAILABLE`, `SENDER_ID_UNAVAILABLE`, or `MESSAGING_REGION_UNSUPPORTED`.
      *
      * @return self
      */
-    public function setSmsFallback($sms_fallback)
+    public function setUnsupportedReason($unsupported_reason)
     {
-        $this->container['sms_fallback'] = $sms_fallback;
+        $this->container['unsupported_reason'] = $unsupported_reason;
+
+        return $this;
+    }
+
+    /**
+     * Gets unsupported_detail
+     *
+     * @return string|null
+     */
+    public function getUnsupportedDetail()
+    {
+        return $this->container['unsupported_detail'];
+    }
+
+    /**
+     * Sets unsupported_detail
+     *
+     * @param string|null $unsupported_detail The detail message why the fallback is unsupported.
+     *
+     * @return self
+     */
+    public function setUnsupportedDetail($unsupported_detail)
+    {
+        $this->container['unsupported_detail'] = $unsupported_detail;
 
         return $this;
     }

@@ -92,6 +92,8 @@ Class | Method | HTTP request | Description
 *WhatsappMessagesApi* | [**send**](docs/Api/WhatsappMessagesApi.md#send) | **POST** /whatsapp/messages | Send a WhatsApp message
 *WhatsappPhoneNumbersApi* | [**list**](docs/Api/WhatsappPhoneNumbersApi.md#list) | **GET** /whatsapp/phoneNumbers | List WhatsApp phone numbers
 *WhatsappPhoneNumbersApi* | [**retrieve**](docs/Api/WhatsappPhoneNumbersApi.md#retrieve) | **GET** /whatsapp/phoneNumbers/{wabaId}/{phoneNumber} | Retrieve a WhatsApp phone number
+*WhatsappPhoneNumbersApi* | [**retrieveProfile**](docs/Api/WhatsappPhoneNumbersApi.md#retrieveprofile) | **GET** /whatsapp/phoneNumbers/{wabaId}/{phoneNumber}/profile | Retrieve a WhatsApp phone number profile
+*WhatsappPhoneNumbersApi* | [**updateProfile**](docs/Api/WhatsappPhoneNumbersApi.md#updateprofile) | **PATCH** /whatsapp/phoneNumbers/{wabaId}/{phoneNumber}/profile | Update a WhatsApp phone number profile
 *WhatsappTemplatesApi* | [**create**](docs/Api/WhatsappTemplatesApi.md#create) | **POST** /whatsapp/templates | Create a WhatsApp template
 *WhatsappTemplatesApi* | [**deleteByName**](docs/Api/WhatsappTemplatesApi.md#deletebyname) | **DELETE** /whatsapp/templates/{wabaId}/{name} | Delete WhatsApp templates by name
 *WhatsappTemplatesApi* | [**editByNameAndLanguage**](docs/Api/WhatsappTemplatesApi.md#editbynameandlanguage) | **PATCH** /whatsapp/templates/{wabaId}/{name}/{language} | Edit a WhatsApp template
@@ -120,6 +122,7 @@ Class | Method | HTTP request | Description
 - [VerificationChannel](docs/Model/VerificationChannel.md)
 - [VerificationCheck](docs/Model/VerificationCheck.md)
 - [VerificationCheckRequest](docs/Model/VerificationCheckRequest.md)
+- [VerificationFallback](docs/Model/VerificationFallback.md)
 - [VerificationSendRequest](docs/Model/VerificationSendRequest.md)
 - [VerificationStatus](docs/Model/VerificationStatus.md)
 - [Voice](docs/Model/Voice.md)
@@ -187,6 +190,9 @@ Class | Method | HTTP request | Description
 - [WhatsappPhoneNumberCodeVerificationStatus](docs/Model/WhatsappPhoneNumberCodeVerificationStatus.md)
 - [WhatsappPhoneNumberNameStatus](docs/Model/WhatsappPhoneNumberNameStatus.md)
 - [WhatsappPhoneNumberPage](docs/Model/WhatsappPhoneNumberPage.md)
+- [WhatsappPhoneNumberProfile](docs/Model/WhatsappPhoneNumberProfile.md)
+- [WhatsappPhoneNumberProfileUpdateRequest](docs/Model/WhatsappPhoneNumberProfileUpdateRequest.md)
+- [WhatsappPhoneNumberProfileVertical](docs/Model/WhatsappPhoneNumberProfileVertical.md)
 - [WhatsappPhoneNumberQualityRating](docs/Model/WhatsappPhoneNumberQualityRating.md)
 - [WhatsappPhoneNumberStatus](docs/Model/WhatsappPhoneNumberStatus.md)
 - [WhatsappProfile](docs/Model/WhatsappProfile.md)

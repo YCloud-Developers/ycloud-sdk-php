@@ -1,6 +1,6 @@
 <?php
 /**
- * Verification
+ * WhatsappPhoneNumberProfile
  *
  * PHP version 7.4
  *
@@ -33,15 +33,16 @@ use \ArrayAccess;
 use \YCloud\Client\ObjectSerializer;
 
 /**
- * Verification Class Doc Comment
+ * WhatsappPhoneNumberProfile Class Doc Comment
  *
  * @category Class
+ * @description WhatsApp Phone Number Business Profile. Customers can view your business profile by clicking your business&#39;s name or number in a conversation thread. See also [Business Profiles](https://developers.facebook.com/docs/whatsapp/cloud-api/reference/business-profiles).
  * @package  YCloud\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class Verification implements ModelInterface, ArrayAccess, \JsonSerializable
+class WhatsappPhoneNumberProfile implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +51,7 @@ class Verification implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'Verification';
+    protected static $openAPIModelName = 'WhatsappPhoneNumberProfile';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,15 +59,13 @@ class Verification implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'id' => 'string',
-        'status' => '\YCloud\Client\Model\VerificationStatus',
-        'to' => 'string',
-        'channel' => '\YCloud\Client\Model\VerificationChannel',
-        'send_time' => '\DateTime',
-        'total_price' => 'double',
-        'currency' => 'string',
-        'sms_fallback_enabled' => 'bool',
-        'sms_fallback' => '\YCloud\Client\Model\VerificationFallback'
+        'about' => 'string',
+        'address' => 'string',
+        'description' => 'string',
+        'email' => 'string',
+        'profile_picture_url' => 'string',
+        'vertical' => '\YCloud\Client\Model\WhatsappPhoneNumberProfileVertical',
+        'websites' => 'string[]'
     ];
 
     /**
@@ -77,15 +76,13 @@ class Verification implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'id' => null,
-        'status' => null,
-        'to' => null,
-        'channel' => null,
-        'send_time' => 'date-time',
-        'total_price' => 'double',
-        'currency' => null,
-        'sms_fallback_enabled' => null,
-        'sms_fallback' => null
+        'about' => null,
+        'address' => null,
+        'description' => null,
+        'email' => null,
+        'profile_picture_url' => null,
+        'vertical' => null,
+        'websites' => null
     ];
 
     /**
@@ -115,15 +112,13 @@ class Verification implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
-        'status' => 'status',
-        'to' => 'to',
-        'channel' => 'channel',
-        'send_time' => 'sendTime',
-        'total_price' => 'totalPrice',
-        'currency' => 'currency',
-        'sms_fallback_enabled' => 'smsFallbackEnabled',
-        'sms_fallback' => 'smsFallback'
+        'about' => 'about',
+        'address' => 'address',
+        'description' => 'description',
+        'email' => 'email',
+        'profile_picture_url' => 'profilePictureUrl',
+        'vertical' => 'vertical',
+        'websites' => 'websites'
     ];
 
     /**
@@ -132,15 +127,13 @@ class Verification implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
-        'status' => 'setStatus',
-        'to' => 'setTo',
-        'channel' => 'setChannel',
-        'send_time' => 'setSendTime',
-        'total_price' => 'setTotalPrice',
-        'currency' => 'setCurrency',
-        'sms_fallback_enabled' => 'setSmsFallbackEnabled',
-        'sms_fallback' => 'setSmsFallback'
+        'about' => 'setAbout',
+        'address' => 'setAddress',
+        'description' => 'setDescription',
+        'email' => 'setEmail',
+        'profile_picture_url' => 'setProfilePictureUrl',
+        'vertical' => 'setVertical',
+        'websites' => 'setWebsites'
     ];
 
     /**
@@ -149,15 +142,13 @@ class Verification implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
-        'status' => 'getStatus',
-        'to' => 'getTo',
-        'channel' => 'getChannel',
-        'send_time' => 'getSendTime',
-        'total_price' => 'getTotalPrice',
-        'currency' => 'getCurrency',
-        'sms_fallback_enabled' => 'getSmsFallbackEnabled',
-        'sms_fallback' => 'getSmsFallback'
+        'about' => 'getAbout',
+        'address' => 'getAddress',
+        'description' => 'getDescription',
+        'email' => 'getEmail',
+        'profile_picture_url' => 'getProfilePictureUrl',
+        'vertical' => 'getVertical',
+        'websites' => 'getWebsites'
     ];
 
     /**
@@ -217,15 +208,13 @@ class Verification implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['id'] = $data['id'] ?? null;
-        $this->container['status'] = $data['status'] ?? null;
-        $this->container['to'] = $data['to'] ?? null;
-        $this->container['channel'] = $data['channel'] ?? null;
-        $this->container['send_time'] = $data['send_time'] ?? null;
-        $this->container['total_price'] = $data['total_price'] ?? null;
-        $this->container['currency'] = $data['currency'] ?? null;
-        $this->container['sms_fallback_enabled'] = $data['sms_fallback_enabled'] ?? null;
-        $this->container['sms_fallback'] = $data['sms_fallback'] ?? null;
+        $this->container['about'] = $data['about'] ?? null;
+        $this->container['address'] = $data['address'] ?? null;
+        $this->container['description'] = $data['description'] ?? null;
+        $this->container['email'] = $data['email'] ?? null;
+        $this->container['profile_picture_url'] = $data['profile_picture_url'] ?? null;
+        $this->container['vertical'] = $data['vertical'] ?? null;
+        $this->container['websites'] = $data['websites'] ?? null;
     }
 
     /**
@@ -237,9 +226,22 @@ class Verification implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['id'] === null) {
-            $invalidProperties[] = "'id' can't be null";
+        if (!is_null($this->container['address']) && (mb_strlen($this->container['address']) > 256)) {
+            $invalidProperties[] = "invalid value for 'address', the character length must be smaller than or equal to 256.";
         }
+
+        if (!is_null($this->container['description']) && (mb_strlen($this->container['description']) > 512)) {
+            $invalidProperties[] = "invalid value for 'description', the character length must be smaller than or equal to 512.";
+        }
+
+        if (!is_null($this->container['email']) && (mb_strlen($this->container['email']) > 128)) {
+            $invalidProperties[] = "invalid value for 'email', the character length must be smaller than or equal to 128.";
+        }
+
+        if (!is_null($this->container['websites']) && (count($this->container['websites']) > 2)) {
+            $invalidProperties[] = "invalid value for 'websites', number of items must be less than or equal to 2.";
+        }
+
         return $invalidProperties;
     }
 
@@ -256,217 +258,185 @@ class Verification implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets id
-     *
-     * @return string
-     */
-    public function getId()
-    {
-        return $this->container['id'];
-    }
-
-    /**
-     * Sets id
-     *
-     * @param string $id ID of the verification.
-     *
-     * @return self
-     */
-    public function setId($id)
-    {
-        $this->container['id'] = $id;
-
-        return $this;
-    }
-
-    /**
-     * Gets status
-     *
-     * @return \YCloud\Client\Model\VerificationStatus|null
-     */
-    public function getStatus()
-    {
-        return $this->container['status'];
-    }
-
-    /**
-     * Sets status
-     *
-     * @param \YCloud\Client\Model\VerificationStatus|null $status status
-     *
-     * @return self
-     */
-    public function setStatus($status)
-    {
-        $this->container['status'] = $status;
-
-        return $this;
-    }
-
-    /**
-     * Gets to
+     * Gets about
      *
      * @return string|null
      */
-    public function getTo()
+    public function getAbout()
     {
-        return $this->container['to'];
+        return $this->container['about'];
     }
 
     /**
-     * Sets to
+     * Sets about
      *
-     * @param string|null $to Recipient of the verification.
+     * @param string|null $about The business's **About** text. This text appears in the business's profile, beneath its profile image, phone number, and contact buttons.
      *
      * @return self
      */
-    public function setTo($to)
+    public function setAbout($about)
     {
-        $this->container['to'] = $to;
+        $this->container['about'] = $about;
 
         return $this;
     }
 
     /**
-     * Gets channel
-     *
-     * @return \YCloud\Client\Model\VerificationChannel|null
-     */
-    public function getChannel()
-    {
-        return $this->container['channel'];
-    }
-
-    /**
-     * Sets channel
-     *
-     * @param \YCloud\Client\Model\VerificationChannel|null $channel channel
-     *
-     * @return self
-     */
-    public function setChannel($channel)
-    {
-        $this->container['channel'] = $channel;
-
-        return $this;
-    }
-
-    /**
-     * Gets send_time
-     *
-     * @return \DateTime|null
-     */
-    public function getSendTime()
-    {
-        return $this->container['send_time'];
-    }
-
-    /**
-     * Sets send_time
-     *
-     * @param \DateTime|null $send_time The time at which this verification was sent, formatted in [RFC 3339](https://datatracker.ietf.org/doc/html/rfc3339). e.g., `2022-06-01T12:00:00.000Z`.
-     *
-     * @return self
-     */
-    public function setSendTime($send_time)
-    {
-        $this->container['send_time'] = $send_time;
-
-        return $this;
-    }
-
-    /**
-     * Gets total_price
-     *
-     * @return double|null
-     */
-    public function getTotalPrice()
-    {
-        return $this->container['total_price'];
-    }
-
-    /**
-     * Sets total_price
-     *
-     * @param double|null $total_price Total price of this verification.
-     *
-     * @return self
-     */
-    public function setTotalPrice($total_price)
-    {
-        $this->container['total_price'] = $total_price;
-
-        return $this;
-    }
-
-    /**
-     * Gets currency
+     * Gets address
      *
      * @return string|null
      */
-    public function getCurrency()
+    public function getAddress()
     {
-        return $this->container['currency'];
+        return $this->container['address'];
     }
 
     /**
-     * Sets currency
+     * Sets address
      *
-     * @param string|null $currency Price currency. [ISO 4217 currency code](https://en.wikipedia.org/wiki/ISO_4217).
+     * @param string|null $address Address of the business. Character limit 256.
      *
      * @return self
      */
-    public function setCurrency($currency)
+    public function setAddress($address)
     {
-        $this->container['currency'] = $currency;
+        if (!is_null($address) && (mb_strlen($address) > 256)) {
+            throw new \InvalidArgumentException('invalid length for $address when calling WhatsappPhoneNumberProfile., must be smaller than or equal to 256.');
+        }
+
+        $this->container['address'] = $address;
 
         return $this;
     }
 
     /**
-     * Gets sms_fallback_enabled
+     * Gets description
      *
-     * @return bool|null
+     * @return string|null
      */
-    public function getSmsFallbackEnabled()
+    public function getDescription()
     {
-        return $this->container['sms_fallback_enabled'];
+        return $this->container['description'];
     }
 
     /**
-     * Sets sms_fallback_enabled
+     * Sets description
      *
-     * @param bool|null $sms_fallback_enabled Whether sms fallback is enabled or not. Applicable when `channel` is `whatsapp`. If enabled, YCloud will try to send the verification code via sms when the WhatsApp message is failed.
+     * @param string|null $description Description of the business. Character limit 512.
      *
      * @return self
      */
-    public function setSmsFallbackEnabled($sms_fallback_enabled)
+    public function setDescription($description)
     {
-        $this->container['sms_fallback_enabled'] = $sms_fallback_enabled;
+        if (!is_null($description) && (mb_strlen($description) > 512)) {
+            throw new \InvalidArgumentException('invalid length for $description when calling WhatsappPhoneNumberProfile., must be smaller than or equal to 512.');
+        }
+
+        $this->container['description'] = $description;
 
         return $this;
     }
 
     /**
-     * Gets sms_fallback
+     * Gets email
      *
-     * @return \YCloud\Client\Model\VerificationFallback|null
+     * @return string|null
      */
-    public function getSmsFallback()
+    public function getEmail()
     {
-        return $this->container['sms_fallback'];
+        return $this->container['email'];
     }
 
     /**
-     * Sets sms_fallback
+     * Sets email
      *
-     * @param \YCloud\Client\Model\VerificationFallback|null $sms_fallback sms_fallback
+     * @param string|null $email The contact email address (in valid email format) of the business. Character limit 128.
      *
      * @return self
      */
-    public function setSmsFallback($sms_fallback)
+    public function setEmail($email)
     {
-        $this->container['sms_fallback'] = $sms_fallback;
+        if (!is_null($email) && (mb_strlen($email) > 128)) {
+            throw new \InvalidArgumentException('invalid length for $email when calling WhatsappPhoneNumberProfile., must be smaller than or equal to 128.');
+        }
+
+        $this->container['email'] = $email;
+
+        return $this;
+    }
+
+    /**
+     * Gets profile_picture_url
+     *
+     * @return string|null
+     */
+    public function getProfilePictureUrl()
+    {
+        return $this->container['profile_picture_url'];
+    }
+
+    /**
+     * Sets profile_picture_url
+     *
+     * @param string|null $profile_picture_url URL of the profile picture used to upload to Meta.
+     *
+     * @return self
+     */
+    public function setProfilePictureUrl($profile_picture_url)
+    {
+        $this->container['profile_picture_url'] = $profile_picture_url;
+
+        return $this;
+    }
+
+    /**
+     * Gets vertical
+     *
+     * @return \YCloud\Client\Model\WhatsappPhoneNumberProfileVertical|null
+     */
+    public function getVertical()
+    {
+        return $this->container['vertical'];
+    }
+
+    /**
+     * Sets vertical
+     *
+     * @param \YCloud\Client\Model\WhatsappPhoneNumberProfileVertical|null $vertical vertical
+     *
+     * @return self
+     */
+    public function setVertical($vertical)
+    {
+        $this->container['vertical'] = $vertical;
+
+        return $this;
+    }
+
+    /**
+     * Gets websites
+     *
+     * @return string[]|null
+     */
+    public function getWebsites()
+    {
+        return $this->container['websites'];
+    }
+
+    /**
+     * Sets websites
+     *
+     * @param string[]|null $websites The URLs associated with the business. For instance, a website, Facebook Page, or Instagram. You must include the http:// or https:// portion of the URL. There is a maximum of 2 websites with a maximum of 256 characters each.
+     *
+     * @return self
+     */
+    public function setWebsites($websites)
+    {
+
+        if (!is_null($websites) && (count($websites) > 2)) {
+            throw new \InvalidArgumentException('invalid value for $websites when calling WhatsappPhoneNumberProfile., number of items must be less than or equal to 2.');
+        }
+        $this->container['websites'] = $websites;
 
         return $this;
     }

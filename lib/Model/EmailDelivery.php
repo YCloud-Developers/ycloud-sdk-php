@@ -64,7 +64,9 @@ class EmailDelivery implements ModelInterface, ArrayAccess, \JsonSerializable
         'status' => 'string',
         'error_code' => 'string',
         'error_message' => 'string',
-        'external_id' => 'string'
+        'external_id' => 'string',
+        'biz_type' => 'string',
+        'verification_id' => 'string'
     ];
 
     /**
@@ -80,7 +82,9 @@ class EmailDelivery implements ModelInterface, ArrayAccess, \JsonSerializable
         'status' => null,
         'error_code' => null,
         'error_message' => null,
-        'external_id' => null
+        'external_id' => null,
+        'biz_type' => null,
+        'verification_id' => null
     ];
 
     /**
@@ -115,7 +119,9 @@ class EmailDelivery implements ModelInterface, ArrayAccess, \JsonSerializable
         'status' => 'status',
         'error_code' => 'errorCode',
         'error_message' => 'errorMessage',
-        'external_id' => 'externalId'
+        'external_id' => 'externalId',
+        'biz_type' => 'bizType',
+        'verification_id' => 'verificationId'
     ];
 
     /**
@@ -129,7 +135,9 @@ class EmailDelivery implements ModelInterface, ArrayAccess, \JsonSerializable
         'status' => 'setStatus',
         'error_code' => 'setErrorCode',
         'error_message' => 'setErrorMessage',
-        'external_id' => 'setExternalId'
+        'external_id' => 'setExternalId',
+        'biz_type' => 'setBizType',
+        'verification_id' => 'setVerificationId'
     ];
 
     /**
@@ -143,7 +151,9 @@ class EmailDelivery implements ModelInterface, ArrayAccess, \JsonSerializable
         'status' => 'getStatus',
         'error_code' => 'getErrorCode',
         'error_message' => 'getErrorMessage',
-        'external_id' => 'getExternalId'
+        'external_id' => 'getExternalId',
+        'biz_type' => 'getBizType',
+        'verification_id' => 'getVerificationId'
     ];
 
     /**
@@ -188,10 +198,10 @@ class EmailDelivery implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     public const STATUS_SENDING = 'sending';
+    public const STATUS_FAILED = 'failed';
     public const STATUS_SENT = 'sent';
     public const STATUS_DELIVERED = 'delivered';
     public const STATUS_UNDELIVERED = 'undelivered';
-    public const STATUS_FAILED = 'failed';
 
     /**
      * Gets allowable values of the enum
@@ -202,10 +212,10 @@ class EmailDelivery implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         return [
             self::STATUS_SENDING,
+            self::STATUS_FAILED,
             self::STATUS_SENT,
             self::STATUS_DELIVERED,
             self::STATUS_UNDELIVERED,
-            self::STATUS_FAILED,
         ];
     }
 
@@ -230,6 +240,8 @@ class EmailDelivery implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['error_code'] = $data['error_code'] ?? null;
         $this->container['error_message'] = $data['error_message'] ?? null;
         $this->container['external_id'] = $data['external_id'] ?? null;
+        $this->container['biz_type'] = $data['biz_type'] ?? null;
+        $this->container['verification_id'] = $data['verification_id'] ?? null;
     }
 
     /**
@@ -347,7 +359,7 @@ class EmailDelivery implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets status
      *
-     * @param string|null $status Delivery status of the email to the specific recipient address.
+     * @param string|null $status Delivery status of the email to the specific recipient address. - `sending`: The messaging request is accepted by our system. - `failed`: The message failed to be sent from our system. - `sent`: The message has been sent from YCloud. - `delivered`: YCloud has received a delivery receipt indicating that message is delivered. - `undelivered`: YCloud has received a delivery receipt indicating that message is not delivered.
      *
      * @return self
      */
@@ -436,6 +448,54 @@ class EmailDelivery implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setExternalId($external_id)
     {
         $this->container['external_id'] = $external_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets biz_type
+     *
+     * @return string|null
+     */
+    public function getBizType()
+    {
+        return $this->container['biz_type'];
+    }
+
+    /**
+     * Sets biz_type
+     *
+     * @param string|null $biz_type This can be either empty or one of `email`, or `verify`. Defaults to `email`. - `email`: Indicates that the message is sent via [Email](https://www.ycloud.com/email) product. - `verify`: Indicates that the message is sent via [Verify](https://www.ycloud.com/verify) product.
+     *
+     * @return self
+     */
+    public function setBizType($biz_type)
+    {
+        $this->container['biz_type'] = $biz_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets verification_id
+     *
+     * @return string|null
+     */
+    public function getVerificationId()
+    {
+        return $this->container['verification_id'];
+    }
+
+    /**
+     * Sets verification_id
+     *
+     * @param string|null $verification_id The verification ID. Included only when `bizType` is `verify`.
+     *
+     * @return self
+     */
+    public function setVerificationId($verification_id)
+    {
+        $this->container['verification_id'] = $verification_id;
 
         return $this;
     }

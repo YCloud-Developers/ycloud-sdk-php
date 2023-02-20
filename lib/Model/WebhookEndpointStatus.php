@@ -34,7 +34,7 @@ use \YCloud\Client\ObjectSerializer;
  * WebhookEndpointStatus Class Doc Comment
  *
  * @category Class
- * @description Webhook endpoint status.
+ * @description Webhook endpoint status. - &#x60;active&#x60;: Indicates that the webhook endpoint is active, and will receive notifications of events monitored. - &#x60;disabled&#x60;: Indicates that the webhook endpoint is disabled, and will not receive notifications. - &#x60;pending&#x60;: Indicates that the webhook endpoint is pending, and will not receive notifications. If a webhook endpoint fails to receive notifications frequently, it changes to pending.
  * @package  YCloud\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

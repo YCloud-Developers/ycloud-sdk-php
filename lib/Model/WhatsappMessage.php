@@ -83,7 +83,9 @@ class WhatsappMessage implements ModelInterface, ArrayAccess, \JsonSerializable
         'update_time' => '\DateTime',
         'total_price' => 'double',
         'currency' => 'string',
-        'whatsapp_api_error' => '\YCloud\Client\Model\WhatsappApiError'
+        'whatsapp_api_error' => '\YCloud\Client\Model\WhatsappApiError',
+        'biz_type' => 'string',
+        'verification_id' => 'string'
     ];
 
     /**
@@ -118,7 +120,9 @@ class WhatsappMessage implements ModelInterface, ArrayAccess, \JsonSerializable
         'update_time' => 'date-time',
         'total_price' => 'double',
         'currency' => null,
-        'whatsapp_api_error' => null
+        'whatsapp_api_error' => null,
+        'biz_type' => null,
+        'verification_id' => null
     ];
 
     /**
@@ -172,7 +176,9 @@ class WhatsappMessage implements ModelInterface, ArrayAccess, \JsonSerializable
         'update_time' => 'updateTime',
         'total_price' => 'totalPrice',
         'currency' => 'currency',
-        'whatsapp_api_error' => 'whatsappApiError'
+        'whatsapp_api_error' => 'whatsappApiError',
+        'biz_type' => 'bizType',
+        'verification_id' => 'verificationId'
     ];
 
     /**
@@ -205,7 +211,9 @@ class WhatsappMessage implements ModelInterface, ArrayAccess, \JsonSerializable
         'update_time' => 'setUpdateTime',
         'total_price' => 'setTotalPrice',
         'currency' => 'setCurrency',
-        'whatsapp_api_error' => 'setWhatsappApiError'
+        'whatsapp_api_error' => 'setWhatsappApiError',
+        'biz_type' => 'setBizType',
+        'verification_id' => 'setVerificationId'
     ];
 
     /**
@@ -238,7 +246,9 @@ class WhatsappMessage implements ModelInterface, ArrayAccess, \JsonSerializable
         'update_time' => 'getUpdateTime',
         'total_price' => 'getTotalPrice',
         'currency' => 'getCurrency',
-        'whatsapp_api_error' => 'getWhatsappApiError'
+        'whatsapp_api_error' => 'getWhatsappApiError',
+        'biz_type' => 'getBizType',
+        'verification_id' => 'getVerificationId'
     ];
 
     /**
@@ -323,6 +333,8 @@ class WhatsappMessage implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['total_price'] = $data['total_price'] ?? null;
         $this->container['currency'] = $data['currency'] ?? null;
         $this->container['whatsapp_api_error'] = $data['whatsapp_api_error'] ?? null;
+        $this->container['biz_type'] = $data['biz_type'] ?? null;
+        $this->container['verification_id'] = $data['verification_id'] ?? null;
     }
 
     /**
@@ -960,6 +972,54 @@ class WhatsappMessage implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setWhatsappApiError($whatsapp_api_error)
     {
         $this->container['whatsapp_api_error'] = $whatsapp_api_error;
+
+        return $this;
+    }
+
+    /**
+     * Gets biz_type
+     *
+     * @return string|null
+     */
+    public function getBizType()
+    {
+        return $this->container['biz_type'];
+    }
+
+    /**
+     * Sets biz_type
+     *
+     * @param string|null $biz_type This can be either empty or one of `whatsapp`, or `verify`. Defaults to `whatsapp`. - `whatsapp`: Indicates that the message is sent via [WhatsApp](https://www.ycloud.com/whatsapp) product. - `verify`: Indicates that the message is sent via [Verify](https://www.ycloud.com/verify) product.
+     *
+     * @return self
+     */
+    public function setBizType($biz_type)
+    {
+        $this->container['biz_type'] = $biz_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets verification_id
+     *
+     * @return string|null
+     */
+    public function getVerificationId()
+    {
+        return $this->container['verification_id'];
+    }
+
+    /**
+     * Sets verification_id
+     *
+     * @param string|null $verification_id The verification ID. Included only when `bizType` is `verify`.
+     *
+     * @return self
+     */
+    public function setVerificationId($verification_id)
+    {
+        $this->container['verification_id'] = $verification_id;
 
         return $this;
     }

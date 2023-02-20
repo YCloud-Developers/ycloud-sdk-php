@@ -11,5 +11,7 @@ Name | Type | Description | Notes
 **send_time** | **\DateTime** | The time at which this verification was sent, formatted in [RFC 3339](https://datatracker.ietf.org/doc/html/rfc3339). e.g., &#x60;2022-06-01T12:00:00.000Z&#x60;. | [optional]
 **total_price** | **double** | Total price of this verification. | [optional]
 **currency** | **string** | Price currency. [ISO 4217 currency code](https://en.wikipedia.org/wiki/ISO_4217). | [optional]
+**sms_fallback_enabled** | **bool** | Whether sms fallback is enabled or not. Applicable when &#x60;channel&#x60; is &#x60;whatsapp&#x60;. If enabled, YCloud will try to send the verification code via sms when the WhatsApp message is failed. | [optional]
+**sms_fallback** | [**\YCloud\Client\Model\VerificationFallback**](VerificationFallback.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

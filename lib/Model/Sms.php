@@ -71,7 +71,9 @@ class Sms implements ModelInterface, ArrayAccess, \JsonSerializable
         'create_time' => '\DateTime',
         'update_time' => '\DateTime',
         'external_id' => 'string',
-        'callback_url' => 'string'
+        'callback_url' => 'string',
+        'biz_type' => 'string',
+        'verification_id' => 'string'
     ];
 
     /**
@@ -95,7 +97,9 @@ class Sms implements ModelInterface, ArrayAccess, \JsonSerializable
         'create_time' => 'date-time',
         'update_time' => 'date-time',
         'external_id' => null,
-        'callback_url' => null
+        'callback_url' => null,
+        'biz_type' => null,
+        'verification_id' => null
     ];
 
     /**
@@ -138,7 +142,9 @@ class Sms implements ModelInterface, ArrayAccess, \JsonSerializable
         'create_time' => 'createTime',
         'update_time' => 'updateTime',
         'external_id' => 'externalId',
-        'callback_url' => 'callbackUrl'
+        'callback_url' => 'callbackUrl',
+        'biz_type' => 'bizType',
+        'verification_id' => 'verificationId'
     ];
 
     /**
@@ -160,7 +166,9 @@ class Sms implements ModelInterface, ArrayAccess, \JsonSerializable
         'create_time' => 'setCreateTime',
         'update_time' => 'setUpdateTime',
         'external_id' => 'setExternalId',
-        'callback_url' => 'setCallbackUrl'
+        'callback_url' => 'setCallbackUrl',
+        'biz_type' => 'setBizType',
+        'verification_id' => 'setVerificationId'
     ];
 
     /**
@@ -182,7 +190,9 @@ class Sms implements ModelInterface, ArrayAccess, \JsonSerializable
         'create_time' => 'getCreateTime',
         'update_time' => 'getUpdateTime',
         'external_id' => 'getExternalId',
-        'callback_url' => 'getCallbackUrl'
+        'callback_url' => 'getCallbackUrl',
+        'biz_type' => 'getBizType',
+        'verification_id' => 'getVerificationId'
     ];
 
     /**
@@ -227,10 +237,10 @@ class Sms implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     public const STATUS_ACCEPTED = 'accepted';
+    public const STATUS_FAILED = 'failed';
     public const STATUS_SENT = 'sent';
     public const STATUS_DELIVERED = 'delivered';
     public const STATUS_UNDELIVERED = 'undelivered';
-    public const STATUS_FAILED = 'failed';
 
     /**
      * Gets allowable values of the enum
@@ -241,10 +251,10 @@ class Sms implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         return [
             self::STATUS_ACCEPTED,
+            self::STATUS_FAILED,
             self::STATUS_SENT,
             self::STATUS_DELIVERED,
             self::STATUS_UNDELIVERED,
-            self::STATUS_FAILED,
         ];
     }
 
@@ -277,6 +287,8 @@ class Sms implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['update_time'] = $data['update_time'] ?? null;
         $this->container['external_id'] = $data['external_id'] ?? null;
         $this->container['callback_url'] = $data['callback_url'] ?? null;
+        $this->container['biz_type'] = $data['biz_type'] ?? null;
+        $this->container['verification_id'] = $data['verification_id'] ?? null;
     }
 
     /**
@@ -547,7 +559,7 @@ class Sms implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets status
      *
-     * @param string|null $status Delivery status. One of `accepted`, `sent`, `delivered`, `undelivered`, or `failed`.
+     * @param string|null $status Delivery status. One of `accepted`, `sent`, `delivered`, `undelivered`, or `failed`. - `accepted`: The messaging request is accepted by our system. - `failed`: The message failed to be sent from our system. - `sent`: The message has been sent from our system. - `delivered`: YCloud has received a delivery receipt indicating that message is delivered. - `undelivered`: YCloud has received a delivery receipt indicating that message is not delivered.
      *
      * @return self
      */
@@ -684,6 +696,54 @@ class Sms implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setCallbackUrl($callback_url)
     {
         $this->container['callback_url'] = $callback_url;
+
+        return $this;
+    }
+
+    /**
+     * Gets biz_type
+     *
+     * @return string|null
+     */
+    public function getBizType()
+    {
+        return $this->container['biz_type'];
+    }
+
+    /**
+     * Sets biz_type
+     *
+     * @param string|null $biz_type This can be either empty or one of `sms`, or `verify`. Defaults to `sms`. - `sms`: Indicates that the message is sent via [Email](https://www.ycloud.com/sms) product. - `verify`: Indicates that the message is sent via [Verify](https://www.ycloud.com/verify) product.
+     *
+     * @return self
+     */
+    public function setBizType($biz_type)
+    {
+        $this->container['biz_type'] = $biz_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets verification_id
+     *
+     * @return string|null
+     */
+    public function getVerificationId()
+    {
+        return $this->container['verification_id'];
+    }
+
+    /**
+     * Sets verification_id
+     *
+     * @param string|null $verification_id The verification ID. Included only when `bizType` is `verify`.
+     *
+     * @return self
+     */
+    public function setVerificationId($verification_id)
+    {
+        $this->container['verification_id'] = $verification_id;
 
         return $this;
     }
