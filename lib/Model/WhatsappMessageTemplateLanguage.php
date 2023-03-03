@@ -59,7 +59,8 @@ class WhatsappMessageTemplateLanguage implements ModelInterface, ArrayAccess, \J
       * @var string[]
       */
     protected static $openAPITypes = [
-        'code' => 'string'
+        'code' => 'string',
+        'policy' => 'string'
     ];
 
     /**
@@ -70,7 +71,8 @@ class WhatsappMessageTemplateLanguage implements ModelInterface, ArrayAccess, \J
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'code' => null
+        'code' => null,
+        'policy' => null
     ];
 
     /**
@@ -100,7 +102,8 @@ class WhatsappMessageTemplateLanguage implements ModelInterface, ArrayAccess, \J
      * @var string[]
      */
     protected static $attributeMap = [
-        'code' => 'code'
+        'code' => 'code',
+        'policy' => 'policy'
     ];
 
     /**
@@ -109,7 +112,8 @@ class WhatsappMessageTemplateLanguage implements ModelInterface, ArrayAccess, \J
      * @var string[]
      */
     protected static $setters = [
-        'code' => 'setCode'
+        'code' => 'setCode',
+        'policy' => 'setPolicy'
     ];
 
     /**
@@ -118,7 +122,8 @@ class WhatsappMessageTemplateLanguage implements ModelInterface, ArrayAccess, \J
      * @var string[]
      */
     protected static $getters = [
-        'code' => 'getCode'
+        'code' => 'getCode',
+        'policy' => 'getPolicy'
     ];
 
     /**
@@ -179,6 +184,7 @@ class WhatsappMessageTemplateLanguage implements ModelInterface, ArrayAccess, \J
     public function __construct(array $data = null)
     {
         $this->container['code'] = $data['code'] ?? null;
+        $this->container['policy'] = $data['policy'] ?? null;
     }
 
     /**
@@ -228,6 +234,30 @@ class WhatsappMessageTemplateLanguage implements ModelInterface, ArrayAccess, \J
     public function setCode($code)
     {
         $this->container['code'] = $code;
+
+        return $this;
+    }
+
+    /**
+     * Gets policy
+     *
+     * @return string|null
+     */
+    public function getPolicy()
+    {
+        return $this->container['policy'];
+    }
+
+    /**
+     * Sets policy
+     *
+     * @param string|null $policy Default (and only supported option): `deterministic`.
+     *
+     * @return self
+     */
+    public function setPolicy($policy)
+    {
+        $this->container['policy'] = $policy;
 
         return $this;
     }

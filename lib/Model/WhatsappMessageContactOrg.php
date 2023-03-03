@@ -51,7 +51,7 @@ class WhatsappMessageContactOrg implements ModelInterface, ArrayAccess, \JsonSer
       *
       * @var string
       */
-    protected static $openAPIModelName = 'WhatsappMessageContact_org';
+    protected static $openAPIModelName = 'WhatsappMessageContactOrg';
 
     /**
       * Array of property to type mappings. Used for (de)serialization

@@ -36,7 +36,7 @@ use \YCloud\Client\ObjectSerializer;
  * WhatsappMessageInteractiveBody Class Doc Comment
  *
  * @category Class
- * @description [WhatsApp Body Object](https://developers.facebook.com/docs/whatsapp/cloud-api/reference/messages#body-object).
+ * @description Optional for type &#x60;product&#x60;. Required for other message types. See also [WhatsApp Interactive Object](https://developers.facebook.com/docs/whatsapp/cloud-api/reference/messages#interactive-object).
  * @package  YCloud\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -51,7 +51,7 @@ class WhatsappMessageInteractiveBody implements ModelInterface, ArrayAccess, \Js
       *
       * @var string
       */
-    protected static $openAPIModelName = 'WhatsappMessageInteractive_body';
+    protected static $openAPIModelName = 'WhatsappMessageInteractiveBody';
 
     /**
       * Array of property to type mappings. Used for (de)serialization

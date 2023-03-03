@@ -36,7 +36,7 @@ use \YCloud\Client\ObjectSerializer;
  * WhatsappMessageInteractiveFooter Class Doc Comment
  *
  * @category Class
- * @description [WhatsApp Footer Object](https://developers.facebook.com/docs/whatsapp/cloud-api/reference/messages#footer-object).
+ * @description Optional. An object with the footer of the message. See also [WhatsApp Footer Object](https://developers.facebook.com/docs/whatsapp/cloud-api/reference/messages#footer-object).
  * @package  YCloud\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -51,7 +51,7 @@ class WhatsappMessageInteractiveFooter implements ModelInterface, ArrayAccess, \
       *
       * @var string
       */
-    protected static $openAPIModelName = 'WhatsappMessageInteractive_footer';
+    protected static $openAPIModelName = 'WhatsappMessageInteractiveFooter';
 
     /**
       * Array of property to type mappings. Used for (de)serialization

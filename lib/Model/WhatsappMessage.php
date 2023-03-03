@@ -72,9 +72,12 @@ class WhatsappMessage implements ModelInterface, ArrayAccess, \JsonSerializable
         'video' => '\YCloud\Client\Model\WhatsappMessageMedia',
         'audio' => '\YCloud\Client\Model\WhatsappMessageMedia',
         'document' => '\YCloud\Client\Model\WhatsappMessageMedia',
+        'sticker' => '\YCloud\Client\Model\WhatsappMessageMedia',
         'location' => '\YCloud\Client\Model\WhatsappMessageLocation',
         'interactive' => '\YCloud\Client\Model\WhatsappMessageInteractive',
         'contacts' => '\YCloud\Client\Model\WhatsappMessageContact[]',
+        'reaction' => '\YCloud\Client\Model\WhatsappMessageReaction',
+        'context' => '\YCloud\Client\Model\WhatsappMessageContext',
         'external_id' => 'string',
         'status' => '\YCloud\Client\Model\WhatsappMessageStatus',
         'error_code' => 'string',
@@ -109,9 +112,12 @@ class WhatsappMessage implements ModelInterface, ArrayAccess, \JsonSerializable
         'video' => null,
         'audio' => null,
         'document' => null,
+        'sticker' => null,
         'location' => null,
         'interactive' => null,
         'contacts' => null,
+        'reaction' => null,
+        'context' => null,
         'external_id' => null,
         'status' => null,
         'error_code' => null,
@@ -165,9 +171,12 @@ class WhatsappMessage implements ModelInterface, ArrayAccess, \JsonSerializable
         'video' => 'video',
         'audio' => 'audio',
         'document' => 'document',
+        'sticker' => 'sticker',
         'location' => 'location',
         'interactive' => 'interactive',
         'contacts' => 'contacts',
+        'reaction' => 'reaction',
+        'context' => 'context',
         'external_id' => 'externalId',
         'status' => 'status',
         'error_code' => 'errorCode',
@@ -200,9 +209,12 @@ class WhatsappMessage implements ModelInterface, ArrayAccess, \JsonSerializable
         'video' => 'setVideo',
         'audio' => 'setAudio',
         'document' => 'setDocument',
+        'sticker' => 'setSticker',
         'location' => 'setLocation',
         'interactive' => 'setInteractive',
         'contacts' => 'setContacts',
+        'reaction' => 'setReaction',
+        'context' => 'setContext',
         'external_id' => 'setExternalId',
         'status' => 'setStatus',
         'error_code' => 'setErrorCode',
@@ -235,9 +247,12 @@ class WhatsappMessage implements ModelInterface, ArrayAccess, \JsonSerializable
         'video' => 'getVideo',
         'audio' => 'getAudio',
         'document' => 'getDocument',
+        'sticker' => 'getSticker',
         'location' => 'getLocation',
         'interactive' => 'getInteractive',
         'contacts' => 'getContacts',
+        'reaction' => 'getReaction',
+        'context' => 'getContext',
         'external_id' => 'getExternalId',
         'status' => 'getStatus',
         'error_code' => 'getErrorCode',
@@ -321,9 +336,12 @@ class WhatsappMessage implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['video'] = $data['video'] ?? null;
         $this->container['audio'] = $data['audio'] ?? null;
         $this->container['document'] = $data['document'] ?? null;
+        $this->container['sticker'] = $data['sticker'] ?? null;
         $this->container['location'] = $data['location'] ?? null;
         $this->container['interactive'] = $data['interactive'] ?? null;
         $this->container['contacts'] = $data['contacts'] ?? null;
+        $this->container['reaction'] = $data['reaction'] ?? null;
+        $this->container['context'] = $data['context'] ?? null;
         $this->container['external_id'] = $data['external_id'] ?? null;
         $this->container['status'] = $data['status'] ?? null;
         $this->container['error_code'] = $data['error_code'] ?? null;
@@ -413,7 +431,7 @@ class WhatsappMessage implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets wamid
      *
-     * @param string|null $wamid The native WhatsApp message ID.
+     * @param string|null $wamid The original message ID on WhatsApp's platform.
      *
      * @return self
      */
@@ -689,6 +707,30 @@ class WhatsappMessage implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
+     * Gets sticker
+     *
+     * @return \YCloud\Client\Model\WhatsappMessageMedia|null
+     */
+    public function getSticker()
+    {
+        return $this->container['sticker'];
+    }
+
+    /**
+     * Sets sticker
+     *
+     * @param \YCloud\Client\Model\WhatsappMessageMedia|null $sticker sticker
+     *
+     * @return self
+     */
+    public function setSticker($sticker)
+    {
+        $this->container['sticker'] = $sticker;
+
+        return $this;
+    }
+
+    /**
      * Gets location
      *
      * @return \YCloud\Client\Model\WhatsappMessageLocation|null
@@ -756,6 +798,54 @@ class WhatsappMessage implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setContacts($contacts)
     {
         $this->container['contacts'] = $contacts;
+
+        return $this;
+    }
+
+    /**
+     * Gets reaction
+     *
+     * @return \YCloud\Client\Model\WhatsappMessageReaction|null
+     */
+    public function getReaction()
+    {
+        return $this->container['reaction'];
+    }
+
+    /**
+     * Sets reaction
+     *
+     * @param \YCloud\Client\Model\WhatsappMessageReaction|null $reaction reaction
+     *
+     * @return self
+     */
+    public function setReaction($reaction)
+    {
+        $this->container['reaction'] = $reaction;
+
+        return $this;
+    }
+
+    /**
+     * Gets context
+     *
+     * @return \YCloud\Client\Model\WhatsappMessageContext|null
+     */
+    public function getContext()
+    {
+        return $this->container['context'];
+    }
+
+    /**
+     * Sets context
+     *
+     * @param \YCloud\Client\Model\WhatsappMessageContext|null $context context
+     *
+     * @return self
+     */
+    public function setContext($context)
+    {
+        $this->container['context'] = $context;
 
         return $this;
     }

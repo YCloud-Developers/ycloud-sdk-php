@@ -36,7 +36,7 @@ use \YCloud\Client\ObjectSerializer;
  * WhatsappMessageTemplate Class Doc Comment
  *
  * @category Class
- * @description Template object when sending a WhatsApp template message. See also [WhatsApp Template Object](https://developers.facebook.com/docs/whatsapp/cloud-api/reference/messages#template-object).
+ * @description Use for sending a WhatsApp &#x60;template&#x60; message. See also [WhatsApp Template Object](https://developers.facebook.com/docs/whatsapp/cloud-api/reference/messages#template-object).
  * @package  YCloud\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -61,7 +61,7 @@ class WhatsappMessageTemplate implements ModelInterface, ArrayAccess, \JsonSeria
     protected static $openAPITypes = [
         'name' => 'string',
         'language' => '\YCloud\Client\Model\WhatsappMessageTemplateLanguage',
-        'components' => '\YCloud\Client\Model\WhatsappMessageTemplateComponentsInner[]'
+        'components' => '\YCloud\Client\Model\WhatsappMessageTemplateComponent[]'
     ];
 
     /**
@@ -274,7 +274,7 @@ class WhatsappMessageTemplate implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets components
      *
-     * @return \YCloud\Client\Model\WhatsappMessageTemplateComponentsInner[]|null
+     * @return \YCloud\Client\Model\WhatsappMessageTemplateComponent[]|null
      */
     public function getComponents()
     {
@@ -284,7 +284,7 @@ class WhatsappMessageTemplate implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets components
      *
-     * @param \YCloud\Client\Model\WhatsappMessageTemplateComponentsInner[]|null $components Array of components objects containing the parameters of the message.
+     * @param \YCloud\Client\Model\WhatsappMessageTemplateComponent[]|null $components **Required when the specified template contains variables or media.** Array of components objects containing the parameters of the message.
      *
      * @return self
      */

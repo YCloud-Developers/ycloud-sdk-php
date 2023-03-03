@@ -36,7 +36,7 @@ use \YCloud\Client\ObjectSerializer;
  * WhatsappMessageInteractiveAction Class Doc Comment
  *
  * @category Class
- * @description [WhatsApp Interactive Action Object](https://developers.facebook.com/docs/whatsapp/cloud-api/reference/messages#action-object).
+ * @description Action you want the user to perform after reading the &#x60;interactive&#x60; message. See also [WhatsApp Interactive Action Object](https://developers.facebook.com/docs/whatsapp/cloud-api/reference/messages#action-object).
  * @package  YCloud\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -51,7 +51,7 @@ class WhatsappMessageInteractiveAction implements ModelInterface, ArrayAccess, \
       *
       * @var string
       */
-    protected static $openAPIModelName = 'WhatsappMessageInteractive_action';
+    protected static $openAPIModelName = 'WhatsappMessageInteractiveAction';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,9 +59,11 @@ class WhatsappMessageInteractiveAction implements ModelInterface, ArrayAccess, \
       * @var string[]
       */
     protected static $openAPITypes = [
-        'buttons' => '\YCloud\Client\Model\WhatsappMessageInteractiveActionButtonsInner[]',
+        'buttons' => '\YCloud\Client\Model\WhatsappMessageInteractiveActionButton[]',
         'button' => 'string',
-        'sections' => '\YCloud\Client\Model\WhatsappMessageInteractiveActionSectionsInner[]'
+        'catalog_id' => 'string',
+        'product_retailer_id' => 'string',
+        'sections' => '\YCloud\Client\Model\WhatsappMessageInteractiveActionSection[]'
     ];
 
     /**
@@ -74,6 +76,8 @@ class WhatsappMessageInteractiveAction implements ModelInterface, ArrayAccess, \
     protected static $openAPIFormats = [
         'buttons' => null,
         'button' => null,
+        'catalog_id' => null,
+        'product_retailer_id' => null,
         'sections' => null
     ];
 
@@ -106,6 +110,8 @@ class WhatsappMessageInteractiveAction implements ModelInterface, ArrayAccess, \
     protected static $attributeMap = [
         'buttons' => 'buttons',
         'button' => 'button',
+        'catalog_id' => 'catalog_id',
+        'product_retailer_id' => 'product_retailer_id',
         'sections' => 'sections'
     ];
 
@@ -117,6 +123,8 @@ class WhatsappMessageInteractiveAction implements ModelInterface, ArrayAccess, \
     protected static $setters = [
         'buttons' => 'setButtons',
         'button' => 'setButton',
+        'catalog_id' => 'setCatalogId',
+        'product_retailer_id' => 'setProductRetailerId',
         'sections' => 'setSections'
     ];
 
@@ -128,6 +136,8 @@ class WhatsappMessageInteractiveAction implements ModelInterface, ArrayAccess, \
     protected static $getters = [
         'buttons' => 'getButtons',
         'button' => 'getButton',
+        'catalog_id' => 'getCatalogId',
+        'product_retailer_id' => 'getProductRetailerId',
         'sections' => 'getSections'
     ];
 
@@ -190,6 +200,8 @@ class WhatsappMessageInteractiveAction implements ModelInterface, ArrayAccess, \
     {
         $this->container['buttons'] = $data['buttons'] ?? null;
         $this->container['button'] = $data['button'] ?? null;
+        $this->container['catalog_id'] = $data['catalog_id'] ?? null;
+        $this->container['product_retailer_id'] = $data['product_retailer_id'] ?? null;
         $this->container['sections'] = $data['sections'] ?? null;
     }
 
@@ -236,7 +248,7 @@ class WhatsappMessageInteractiveAction implements ModelInterface, ArrayAccess, \
     /**
      * Gets buttons
      *
-     * @return \YCloud\Client\Model\WhatsappMessageInteractiveActionButtonsInner[]|null
+     * @return \YCloud\Client\Model\WhatsappMessageInteractiveActionButton[]|null
      */
     public function getButtons()
     {
@@ -246,7 +258,7 @@ class WhatsappMessageInteractiveAction implements ModelInterface, ArrayAccess, \
     /**
      * Sets buttons
      *
-     * @param \YCloud\Client\Model\WhatsappMessageInteractiveActionButtonsInner[]|null $buttons Required for Reply Buttons.
+     * @param \YCloud\Client\Model\WhatsappMessageInteractiveActionButton[]|null $buttons Required for Reply Buttons.
      *
      * @return self
      */
@@ -290,9 +302,57 @@ class WhatsappMessageInteractiveAction implements ModelInterface, ArrayAccess, \
     }
 
     /**
+     * Gets catalog_id
+     *
+     * @return string|null
+     */
+    public function getCatalogId()
+    {
+        return $this->container['catalog_id'];
+    }
+
+    /**
+     * Sets catalog_id
+     *
+     * @param string|null $catalog_id Required for Single Product Messages and Multi-Product Messages. Unique identifier of the Facebook catalog linked to your WhatsApp Business Account. This ID can be retrieved via the [Meta Commerce Manager](https://business.facebook.com/commerce/).
+     *
+     * @return self
+     */
+    public function setCatalogId($catalog_id)
+    {
+        $this->container['catalog_id'] = $catalog_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets product_retailer_id
+     *
+     * @return string|null
+     */
+    public function getProductRetailerId()
+    {
+        return $this->container['product_retailer_id'];
+    }
+
+    /**
+     * Sets product_retailer_id
+     *
+     * @param string|null $product_retailer_id Required for Single Product Messages and Multi-Product Messages. Unique identifier of the product in a catalog.
+     *
+     * @return self
+     */
+    public function setProductRetailerId($product_retailer_id)
+    {
+        $this->container['product_retailer_id'] = $product_retailer_id;
+
+        return $this;
+    }
+
+    /**
      * Gets sections
      *
-     * @return \YCloud\Client\Model\WhatsappMessageInteractiveActionSectionsInner[]|null
+     * @return \YCloud\Client\Model\WhatsappMessageInteractiveActionSection[]|null
      */
     public function getSections()
     {
@@ -302,7 +362,7 @@ class WhatsappMessageInteractiveAction implements ModelInterface, ArrayAccess, \
     /**
      * Sets sections
      *
-     * @param \YCloud\Client\Model\WhatsappMessageInteractiveActionSectionsInner[]|null $sections Required for List Messages.
+     * @param \YCloud\Client\Model\WhatsappMessageInteractiveActionSection[]|null $sections Required for List Messages and Multi-Product Messages. Array of section objects. Minimum of 1, maximum of 10.
      *
      * @return self
      */

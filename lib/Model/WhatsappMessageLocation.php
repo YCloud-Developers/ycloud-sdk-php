@@ -36,7 +36,7 @@ use \YCloud\Client\ObjectSerializer;
  * WhatsappMessageLocation Class Doc Comment
  *
  * @category Class
- * @description [WhatsApp Location Object](https://developers.facebook.com/docs/whatsapp/cloud-api/reference/messages#location-object).
+ * @description Use for &#x60;location&#x60; messages. See also [WhatsApp Location Object](https://developers.facebook.com/docs/whatsapp/cloud-api/reference/messages#location-object).
  * @package  YCloud\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

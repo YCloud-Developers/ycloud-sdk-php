@@ -1,6 +1,6 @@
 <?php
 /**
- * WhatsappTemplateComponent
+ * WhatsappMessageTemplateComponentParameter
  *
  * PHP version 7.4
  *
@@ -33,15 +33,16 @@ use \ArrayAccess;
 use \YCloud\Client\ObjectSerializer;
 
 /**
- * WhatsappTemplateComponent Class Doc Comment
+ * WhatsappMessageTemplateComponentParameter Class Doc Comment
  *
  * @category Class
+ * @description See [Parameter Object](https://developers.facebook.com/docs/whatsapp/cloud-api/reference/messages#parameter-object), [Button Parameter Object](https://developers.facebook.com/docs/whatsapp/cloud-api/reference/messages#button-parameter-object.
  * @package  YCloud\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class WhatsappTemplateComponent implements ModelInterface, ArrayAccess, \JsonSerializable
+class WhatsappMessageTemplateComponentParameter implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +51,7 @@ class WhatsappTemplateComponent implements ModelInterface, ArrayAccess, \JsonSer
       *
       * @var string
       */
-    protected static $openAPIModelName = 'WhatsappTemplateComponent';
+    protected static $openAPIModelName = 'WhatsappMessageTemplateComponentParameter';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,10 +60,11 @@ class WhatsappTemplateComponent implements ModelInterface, ArrayAccess, \JsonSer
       */
     protected static $openAPITypes = [
         'type' => 'string',
-        'format' => 'string',
         'text' => 'string',
-        'buttons' => '\YCloud\Client\Model\WhatsappTemplateComponentButton[]',
-        'example' => '\YCloud\Client\Model\WhatsappTemplateComponentExample'
+        'payload' => 'string',
+        'image' => '\YCloud\Client\Model\WhatsappMessageMedia',
+        'video' => '\YCloud\Client\Model\WhatsappMessageMedia',
+        'document' => '\YCloud\Client\Model\WhatsappMessageMedia'
     ];
 
     /**
@@ -74,10 +76,11 @@ class WhatsappTemplateComponent implements ModelInterface, ArrayAccess, \JsonSer
       */
     protected static $openAPIFormats = [
         'type' => null,
-        'format' => null,
         'text' => null,
-        'buttons' => null,
-        'example' => null
+        'payload' => null,
+        'image' => null,
+        'video' => null,
+        'document' => null
     ];
 
     /**
@@ -108,10 +111,11 @@ class WhatsappTemplateComponent implements ModelInterface, ArrayAccess, \JsonSer
      */
     protected static $attributeMap = [
         'type' => 'type',
-        'format' => 'format',
         'text' => 'text',
-        'buttons' => 'buttons',
-        'example' => 'example'
+        'payload' => 'payload',
+        'image' => 'image',
+        'video' => 'video',
+        'document' => 'document'
     ];
 
     /**
@@ -121,10 +125,11 @@ class WhatsappTemplateComponent implements ModelInterface, ArrayAccess, \JsonSer
      */
     protected static $setters = [
         'type' => 'setType',
-        'format' => 'setFormat',
         'text' => 'setText',
-        'buttons' => 'setButtons',
-        'example' => 'setExample'
+        'payload' => 'setPayload',
+        'image' => 'setImage',
+        'video' => 'setVideo',
+        'document' => 'setDocument'
     ];
 
     /**
@@ -134,10 +139,11 @@ class WhatsappTemplateComponent implements ModelInterface, ArrayAccess, \JsonSer
      */
     protected static $getters = [
         'type' => 'getType',
-        'format' => 'getFormat',
         'text' => 'getText',
-        'buttons' => 'getButtons',
-        'example' => 'getExample'
+        'payload' => 'getPayload',
+        'image' => 'getImage',
+        'video' => 'getVideo',
+        'document' => 'getDocument'
     ];
 
     /**
@@ -181,14 +187,11 @@ class WhatsappTemplateComponent implements ModelInterface, ArrayAccess, \JsonSer
         return self::$openAPIModelName;
     }
 
-    public const TYPE_BODY = 'BODY';
-    public const TYPE_HEADER = 'HEADER';
-    public const TYPE_FOOTER = 'FOOTER';
-    public const TYPE_BUTTONS = 'BUTTONS';
-    public const FORMAT_TEXT = 'TEXT';
-    public const FORMAT_IMAGE = 'IMAGE';
-    public const FORMAT_VIDEO = 'VIDEO';
-    public const FORMAT_DOCUMENT = 'DOCUMENT';
+    public const TYPE_TEXT = 'text';
+    public const TYPE_IMAGE = 'image';
+    public const TYPE_VIDEO = 'video';
+    public const TYPE_DOCUMENT = 'document';
+    public const TYPE_PAYLOAD = 'payload';
 
     /**
      * Gets allowable values of the enum
@@ -198,25 +201,11 @@ class WhatsappTemplateComponent implements ModelInterface, ArrayAccess, \JsonSer
     public function getTypeAllowableValues()
     {
         return [
-            self::TYPE_BODY,
-            self::TYPE_HEADER,
-            self::TYPE_FOOTER,
-            self::TYPE_BUTTONS,
-        ];
-    }
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getFormatAllowableValues()
-    {
-        return [
-            self::FORMAT_TEXT,
-            self::FORMAT_IMAGE,
-            self::FORMAT_VIDEO,
-            self::FORMAT_DOCUMENT,
+            self::TYPE_TEXT,
+            self::TYPE_IMAGE,
+            self::TYPE_VIDEO,
+            self::TYPE_DOCUMENT,
+            self::TYPE_PAYLOAD,
         ];
     }
 
@@ -236,10 +225,11 @@ class WhatsappTemplateComponent implements ModelInterface, ArrayAccess, \JsonSer
     public function __construct(array $data = null)
     {
         $this->container['type'] = $data['type'] ?? null;
-        $this->container['format'] = $data['format'] ?? null;
         $this->container['text'] = $data['text'] ?? null;
-        $this->container['buttons'] = $data['buttons'] ?? null;
-        $this->container['example'] = $data['example'] ?? null;
+        $this->container['payload'] = $data['payload'] ?? null;
+        $this->container['image'] = $data['image'] ?? null;
+        $this->container['video'] = $data['video'] ?? null;
+        $this->container['document'] = $data['document'] ?? null;
     }
 
     /**
@@ -258,19 +248,6 @@ class WhatsappTemplateComponent implements ModelInterface, ArrayAccess, \JsonSer
                 $this->container['type'],
                 implode("', '", $allowedValues)
             );
-        }
-
-        $allowedValues = $this->getFormatAllowableValues();
-        if (!is_null($this->container['format']) && !in_array($this->container['format'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'format', must be one of '%s'",
-                $this->container['format'],
-                implode("', '", $allowedValues)
-            );
-        }
-
-        if (!is_null($this->container['buttons']) && (count($this->container['buttons']) > 3)) {
-            $invalidProperties[] = "invalid value for 'buttons', number of items must be less than or equal to 3.";
         }
 
         return $invalidProperties;
@@ -301,7 +278,7 @@ class WhatsappTemplateComponent implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets type
      *
-     * @param string|null $type **Required.** Template component type.
+     * @param string|null $type **Required.** Describes the parameter type. - `text`: Used when the template component type is `BODY`, or the `HEADER` component format is `TEXT`. - `image`: Used when the template `HEADER` component is `IMAGE`. - `video`: Used when the template `HEADER` component is `VIDEO`. - `document`: Used when the template `HEADER` component is `DOCUMENT`. - `payload`: Used when the template component button type is `QUICK_REPLY`.
      *
      * @return self
      */
@@ -323,40 +300,6 @@ class WhatsappTemplateComponent implements ModelInterface, ArrayAccess, \JsonSer
     }
 
     /**
-     * Gets format
-     *
-     * @return string|null
-     */
-    public function getFormat()
-    {
-        return $this->container['format'];
-    }
-
-    /**
-     * Sets format
-     *
-     * @param string|null $format **Required for type `HEADER`.**
-     *
-     * @return self
-     */
-    public function setFormat($format)
-    {
-        $allowedValues = $this->getFormatAllowableValues();
-        if (!is_null($format) && !in_array($format, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'format', must be one of '%s'",
-                    $format,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['format'] = $format;
-
-        return $this;
-    }
-
-    /**
      * Gets text
      *
      * @return string|null
@@ -369,7 +312,7 @@ class WhatsappTemplateComponent implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets text
      *
-     * @param string|null $text **Required for type `BODY`, `FOOTER`, and format `TEXT`.**
+     * @param string|null $text **Required when `type` = `text`.** The message's text. For the header component, the character limit is 60 characters. For the body component, the character limit is 1024 characters. For url buttons, it indicates the developer-provided suffix that is appended to the predefined prefix URL in the template.
      *
      * @return self
      */
@@ -381,53 +324,97 @@ class WhatsappTemplateComponent implements ModelInterface, ArrayAccess, \JsonSer
     }
 
     /**
-     * Gets buttons
+     * Gets payload
      *
-     * @return \YCloud\Client\Model\WhatsappTemplateComponentButton[]|null
+     * @return string|null
      */
-    public function getButtons()
+    public function getPayload()
     {
-        return $this->container['buttons'];
+        return $this->container['payload'];
     }
 
     /**
-     * Sets buttons
+     * Sets payload
      *
-     * @param \YCloud\Client\Model\WhatsappTemplateComponentButton[]|null $buttons **Required for type `BUTTONS`.** The `BUTTONS` component has two types of buttons: Quick Reply, and Call To Action. These button types are exclusive, which means you cannot use both of them in one template. Quick Reply buttons are limited to 3. Call To Actions buttons have at most 1 PHONE_NUMBER button, and at most 1 URL button.
+     * @param string|null $payload Required for `quick_reply` buttons. Developer-defined payload that is returned when the button is clicked in addition to the display text on the button.
      *
      * @return self
      */
-    public function setButtons($buttons)
+    public function setPayload($payload)
     {
-
-        if (!is_null($buttons) && (count($buttons) > 3)) {
-            throw new \InvalidArgumentException('invalid value for $buttons when calling WhatsappTemplateComponent., number of items must be less than or equal to 3.');
-        }
-        $this->container['buttons'] = $buttons;
+        $this->container['payload'] = $payload;
 
         return $this;
     }
 
     /**
-     * Gets example
+     * Gets image
      *
-     * @return \YCloud\Client\Model\WhatsappTemplateComponentExample|null
+     * @return \YCloud\Client\Model\WhatsappMessageMedia|null
      */
-    public function getExample()
+    public function getImage()
     {
-        return $this->container['example'];
+        return $this->container['image'];
     }
 
     /**
-     * Sets example
+     * Sets image
      *
-     * @param \YCloud\Client\Model\WhatsappTemplateComponentExample|null $example example
+     * @param \YCloud\Client\Model\WhatsappMessageMedia|null $image image
      *
      * @return self
      */
-    public function setExample($example)
+    public function setImage($image)
     {
-        $this->container['example'] = $example;
+        $this->container['image'] = $image;
+
+        return $this;
+    }
+
+    /**
+     * Gets video
+     *
+     * @return \YCloud\Client\Model\WhatsappMessageMedia|null
+     */
+    public function getVideo()
+    {
+        return $this->container['video'];
+    }
+
+    /**
+     * Sets video
+     *
+     * @param \YCloud\Client\Model\WhatsappMessageMedia|null $video video
+     *
+     * @return self
+     */
+    public function setVideo($video)
+    {
+        $this->container['video'] = $video;
+
+        return $this;
+    }
+
+    /**
+     * Gets document
+     *
+     * @return \YCloud\Client\Model\WhatsappMessageMedia|null
+     */
+    public function getDocument()
+    {
+        return $this->container['document'];
+    }
+
+    /**
+     * Sets document
+     *
+     * @param \YCloud\Client\Model\WhatsappMessageMedia|null $document document
+     *
+     * @return self
+     */
+    public function setDocument($document)
+    {
+        $this->container['document'] = $document;
 
         return $this;
     }

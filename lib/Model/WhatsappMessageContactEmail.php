@@ -1,6 +1,6 @@
 <?php
 /**
- * WhatsappMessageContactUrlsInner
+ * WhatsappMessageContactEmail
  *
  * PHP version 7.4
  *
@@ -33,15 +33,16 @@ use \ArrayAccess;
 use \YCloud\Client\ObjectSerializer;
 
 /**
- * WhatsappMessageContactUrlsInner Class Doc Comment
+ * WhatsappMessageContactEmail Class Doc Comment
  *
  * @category Class
+ * @description Contact email address(es) formatted as an emails object.
  * @package  YCloud\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class WhatsappMessageContactUrlsInner implements ModelInterface, ArrayAccess, \JsonSerializable
+class WhatsappMessageContactEmail implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +51,7 @@ class WhatsappMessageContactUrlsInner implements ModelInterface, ArrayAccess, \J
       *
       * @var string
       */
-    protected static $openAPIModelName = 'WhatsappMessageContact_urls_inner';
+    protected static $openAPIModelName = 'WhatsappMessageContactEmail';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,7 +59,7 @@ class WhatsappMessageContactUrlsInner implements ModelInterface, ArrayAccess, \J
       * @var string[]
       */
     protected static $openAPITypes = [
-        'url' => 'string',
+        'email' => 'string',
         'type' => 'string'
     ];
 
@@ -70,7 +71,7 @@ class WhatsappMessageContactUrlsInner implements ModelInterface, ArrayAccess, \J
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'url' => null,
+        'email' => null,
         'type' => null
     ];
 
@@ -101,7 +102,7 @@ class WhatsappMessageContactUrlsInner implements ModelInterface, ArrayAccess, \J
      * @var string[]
      */
     protected static $attributeMap = [
-        'url' => 'url',
+        'email' => 'email',
         'type' => 'type'
     ];
 
@@ -111,7 +112,7 @@ class WhatsappMessageContactUrlsInner implements ModelInterface, ArrayAccess, \J
      * @var string[]
      */
     protected static $setters = [
-        'url' => 'setUrl',
+        'email' => 'setEmail',
         'type' => 'setType'
     ];
 
@@ -121,7 +122,7 @@ class WhatsappMessageContactUrlsInner implements ModelInterface, ArrayAccess, \J
      * @var string[]
      */
     protected static $getters = [
-        'url' => 'getUrl',
+        'email' => 'getEmail',
         'type' => 'getType'
     ];
 
@@ -182,7 +183,7 @@ class WhatsappMessageContactUrlsInner implements ModelInterface, ArrayAccess, \J
      */
     public function __construct(array $data = null)
     {
-        $this->container['url'] = $data['url'] ?? null;
+        $this->container['email'] = $data['email'] ?? null;
         $this->container['type'] = $data['type'] ?? null;
     }
 
@@ -211,25 +212,25 @@ class WhatsappMessageContactUrlsInner implements ModelInterface, ArrayAccess, \J
 
 
     /**
-     * Gets url
+     * Gets email
      *
      * @return string|null
      */
-    public function getUrl()
+    public function getEmail()
     {
-        return $this->container['url'];
+        return $this->container['email'];
     }
 
     /**
-     * Sets url
+     * Sets email
      *
-     * @param string|null $url URL.
+     * @param string|null $email Email address.
      *
      * @return self
      */
-    public function setUrl($url)
+    public function setEmail($email)
     {
-        $this->container['url'] = $url;
+        $this->container['email'] = $email;
 
         return $this;
     }

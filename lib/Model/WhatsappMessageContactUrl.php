@@ -1,6 +1,6 @@
 <?php
 /**
- * WhatsappInboundMessageReaction
+ * WhatsappMessageContactUrl
  *
  * PHP version 7.4
  *
@@ -33,16 +33,15 @@ use \ArrayAccess;
 use \YCloud\Client\ObjectSerializer;
 
 /**
- * WhatsappInboundMessageReaction Class Doc Comment
+ * WhatsappMessageContactUrl Class Doc Comment
  *
  * @category Class
- * @description When a user reacts to messages with an emoji, the message type is set to &#x60;reaction&#x60;, and this field is included.
  * @package  YCloud\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class WhatsappInboundMessageReaction implements ModelInterface, ArrayAccess, \JsonSerializable
+class WhatsappMessageContactUrl implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +50,7 @@ class WhatsappInboundMessageReaction implements ModelInterface, ArrayAccess, \Js
       *
       * @var string
       */
-    protected static $openAPIModelName = 'WhatsappInboundMessageReaction';
+    protected static $openAPIModelName = 'WhatsappMessageContactUrl';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,8 +58,8 @@ class WhatsappInboundMessageReaction implements ModelInterface, ArrayAccess, \Js
       * @var string[]
       */
     protected static $openAPITypes = [
-        'message_id' => 'string',
-        'emoji' => 'string'
+        'url' => 'string',
+        'type' => 'string'
     ];
 
     /**
@@ -71,8 +70,8 @@ class WhatsappInboundMessageReaction implements ModelInterface, ArrayAccess, \Js
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'message_id' => null,
-        'emoji' => null
+        'url' => null,
+        'type' => null
     ];
 
     /**
@@ -102,8 +101,8 @@ class WhatsappInboundMessageReaction implements ModelInterface, ArrayAccess, \Js
      * @var string[]
      */
     protected static $attributeMap = [
-        'message_id' => 'message_id',
-        'emoji' => 'emoji'
+        'url' => 'url',
+        'type' => 'type'
     ];
 
     /**
@@ -112,8 +111,8 @@ class WhatsappInboundMessageReaction implements ModelInterface, ArrayAccess, \Js
      * @var string[]
      */
     protected static $setters = [
-        'message_id' => 'setMessageId',
-        'emoji' => 'setEmoji'
+        'url' => 'setUrl',
+        'type' => 'setType'
     ];
 
     /**
@@ -122,8 +121,8 @@ class WhatsappInboundMessageReaction implements ModelInterface, ArrayAccess, \Js
      * @var string[]
      */
     protected static $getters = [
-        'message_id' => 'getMessageId',
-        'emoji' => 'getEmoji'
+        'url' => 'getUrl',
+        'type' => 'getType'
     ];
 
     /**
@@ -183,8 +182,8 @@ class WhatsappInboundMessageReaction implements ModelInterface, ArrayAccess, \Js
      */
     public function __construct(array $data = null)
     {
-        $this->container['message_id'] = $data['message_id'] ?? null;
-        $this->container['emoji'] = $data['emoji'] ?? null;
+        $this->container['url'] = $data['url'] ?? null;
+        $this->container['type'] = $data['type'] ?? null;
     }
 
     /**
@@ -212,49 +211,49 @@ class WhatsappInboundMessageReaction implements ModelInterface, ArrayAccess, \Js
 
 
     /**
-     * Gets message_id
+     * Gets url
      *
      * @return string|null
      */
-    public function getMessageId()
+    public function getUrl()
     {
-        return $this->container['message_id'];
+        return $this->container['url'];
     }
 
     /**
-     * Sets message_id
+     * Sets url
      *
-     * @param string|null $message_id Specifies the `wamid` of the message received that contained the reaction.
+     * @param string|null $url URL.
      *
      * @return self
      */
-    public function setMessageId($message_id)
+    public function setUrl($url)
     {
-        $this->container['message_id'] = $message_id;
+        $this->container['url'] = $url;
 
         return $this;
     }
 
     /**
-     * Gets emoji
+     * Gets type
      *
      * @return string|null
      */
-    public function getEmoji()
+    public function getType()
     {
-        return $this->container['emoji'];
+        return $this->container['type'];
     }
 
     /**
-     * Sets emoji
+     * Sets type
      *
-     * @param string|null $emoji This field is included when a user reacts to messages with an emoji. Otherwise, it indicates a user removed the emoji.
+     * @param string|null $type Standard values are `HOME` and `WORK`.
      *
      * @return self
      */
-    public function setEmoji($emoji)
+    public function setType($type)
     {
-        $this->container['emoji'] = $emoji;
+        $this->container['type'] = $type;
 
         return $this;
     }

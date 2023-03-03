@@ -1,6 +1,6 @@
 <?php
 /**
- * WhatsappMessageTemplateComponentsInnerParametersInner
+ * WhatsappMessageInteractiveActionButtonReply
  *
  * PHP version 7.4
  *
@@ -33,16 +33,15 @@ use \ArrayAccess;
 use \YCloud\Client\ObjectSerializer;
 
 /**
- * WhatsappMessageTemplateComponentsInnerParametersInner Class Doc Comment
+ * WhatsappMessageInteractiveActionButtonReply Class Doc Comment
  *
  * @category Class
- * @description See [Parameter Object](https://developers.facebook.com/docs/whatsapp/cloud-api/reference/messages#parameter-object), [Button Parameter Object](https://developers.facebook.com/docs/whatsapp/cloud-api/reference/messages#button-parameter-object.
  * @package  YCloud\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class WhatsappMessageTemplateComponentsInnerParametersInner implements ModelInterface, ArrayAccess, \JsonSerializable
+class WhatsappMessageInteractiveActionButtonReply implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +50,7 @@ class WhatsappMessageTemplateComponentsInnerParametersInner implements ModelInte
       *
       * @var string
       */
-    protected static $openAPIModelName = 'WhatsappMessageTemplate_components_inner_parameters_inner';
+    protected static $openAPIModelName = 'WhatsappMessageInteractiveActionButton_reply';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,12 +58,8 @@ class WhatsappMessageTemplateComponentsInnerParametersInner implements ModelInte
       * @var string[]
       */
     protected static $openAPITypes = [
-        'type' => 'string',
-        'text' => 'string',
-        'payload' => 'string',
-        'image' => '\YCloud\Client\Model\WhatsappMessageMedia',
-        'video' => '\YCloud\Client\Model\WhatsappMessageMedia',
-        'document' => '\YCloud\Client\Model\WhatsappMessageMedia'
+        'title' => 'string',
+        'id' => 'string'
     ];
 
     /**
@@ -75,12 +70,8 @@ class WhatsappMessageTemplateComponentsInnerParametersInner implements ModelInte
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'type' => null,
-        'text' => null,
-        'payload' => null,
-        'image' => null,
-        'video' => null,
-        'document' => null
+        'title' => null,
+        'id' => null
     ];
 
     /**
@@ -110,12 +101,8 @@ class WhatsappMessageTemplateComponentsInnerParametersInner implements ModelInte
      * @var string[]
      */
     protected static $attributeMap = [
-        'type' => 'type',
-        'text' => 'text',
-        'payload' => 'payload',
-        'image' => 'image',
-        'video' => 'video',
-        'document' => 'document'
+        'title' => 'title',
+        'id' => 'id'
     ];
 
     /**
@@ -124,12 +111,8 @@ class WhatsappMessageTemplateComponentsInnerParametersInner implements ModelInte
      * @var string[]
      */
     protected static $setters = [
-        'type' => 'setType',
-        'text' => 'setText',
-        'payload' => 'setPayload',
-        'image' => 'setImage',
-        'video' => 'setVideo',
-        'document' => 'setDocument'
+        'title' => 'setTitle',
+        'id' => 'setId'
     ];
 
     /**
@@ -138,12 +121,8 @@ class WhatsappMessageTemplateComponentsInnerParametersInner implements ModelInte
      * @var string[]
      */
     protected static $getters = [
-        'type' => 'getType',
-        'text' => 'getText',
-        'payload' => 'getPayload',
-        'image' => 'getImage',
-        'video' => 'getVideo',
-        'document' => 'getDocument'
+        'title' => 'getTitle',
+        'id' => 'getId'
     ];
 
     /**
@@ -187,27 +166,6 @@ class WhatsappMessageTemplateComponentsInnerParametersInner implements ModelInte
         return self::$openAPIModelName;
     }
 
-    public const TYPE_TEXT = 'text';
-    public const TYPE_IMAGE = 'image';
-    public const TYPE_VIDEO = 'video';
-    public const TYPE_DOCUMENT = 'document';
-    public const TYPE_PAYLOAD = 'payload';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getTypeAllowableValues()
-    {
-        return [
-            self::TYPE_TEXT,
-            self::TYPE_IMAGE,
-            self::TYPE_VIDEO,
-            self::TYPE_DOCUMENT,
-            self::TYPE_PAYLOAD,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -224,12 +182,8 @@ class WhatsappMessageTemplateComponentsInnerParametersInner implements ModelInte
      */
     public function __construct(array $data = null)
     {
-        $this->container['type'] = $data['type'] ?? null;
-        $this->container['text'] = $data['text'] ?? null;
-        $this->container['payload'] = $data['payload'] ?? null;
-        $this->container['image'] = $data['image'] ?? null;
-        $this->container['video'] = $data['video'] ?? null;
-        $this->container['document'] = $data['document'] ?? null;
+        $this->container['title'] = $data['title'] ?? null;
+        $this->container['id'] = $data['id'] ?? null;
     }
 
     /**
@@ -241,13 +195,12 @@ class WhatsappMessageTemplateComponentsInnerParametersInner implements ModelInte
     {
         $invalidProperties = [];
 
-        $allowedValues = $this->getTypeAllowableValues();
-        if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'type', must be one of '%s'",
-                $this->container['type'],
-                implode("', '", $allowedValues)
-            );
+        if (!is_null($this->container['title']) && (mb_strlen($this->container['title']) > 20)) {
+            $invalidProperties[] = "invalid value for 'title', the character length must be smaller than or equal to 20.";
+        }
+
+        if (!is_null($this->container['id']) && (mb_strlen($this->container['id']) > 20)) {
+            $invalidProperties[] = "invalid value for 'id', the character length must be smaller than or equal to 20.";
         }
 
         return $invalidProperties;
@@ -266,155 +219,57 @@ class WhatsappMessageTemplateComponentsInnerParametersInner implements ModelInte
 
 
     /**
-     * Gets type
+     * Gets title
      *
      * @return string|null
      */
-    public function getType()
+    public function getTitle()
     {
-        return $this->container['type'];
+        return $this->container['title'];
     }
 
     /**
-     * Sets type
+     * Sets title
      *
-     * @param string|null $type Describes the parameter type.
+     * @param string|null $title Button title. It cannot be an empty string and must be unique within the message. Emojis are supported, markdown is not.
      *
      * @return self
      */
-    public function setType($type)
+    public function setTitle($title)
     {
-        $allowedValues = $this->getTypeAllowableValues();
-        if (!is_null($type) && !in_array($type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'type', must be one of '%s'",
-                    $type,
-                    implode("', '", $allowedValues)
-                )
-            );
+        if (!is_null($title) && (mb_strlen($title) > 20)) {
+            throw new \InvalidArgumentException('invalid length for $title when calling WhatsappMessageInteractiveActionButtonReply., must be smaller than or equal to 20.');
         }
-        $this->container['type'] = $type;
+
+        $this->container['title'] = $title;
 
         return $this;
     }
 
     /**
-     * Gets text
+     * Gets id
      *
      * @return string|null
      */
-    public function getText()
+    public function getId()
     {
-        return $this->container['text'];
+        return $this->container['id'];
     }
 
     /**
-     * Sets text
+     * Sets id
      *
-     * @param string|null $text Required when `type` = `text`. The message's text. For the header component, the character limit is 60 characters. For the body component, the character limit is 1024 characters. For url buttons, it indicates the developer-provided suffix that is appended to the predefined prefix URL in the template.
+     * @param string|null $id Unique identifier for your button. This ID is returned in the webhook when the button is clicked by the user.
      *
      * @return self
      */
-    public function setText($text)
+    public function setId($id)
     {
-        $this->container['text'] = $text;
+        if (!is_null($id) && (mb_strlen($id) > 20)) {
+            throw new \InvalidArgumentException('invalid length for $id when calling WhatsappMessageInteractiveActionButtonReply., must be smaller than or equal to 20.');
+        }
 
-        return $this;
-    }
-
-    /**
-     * Gets payload
-     *
-     * @return string|null
-     */
-    public function getPayload()
-    {
-        return $this->container['payload'];
-    }
-
-    /**
-     * Sets payload
-     *
-     * @param string|null $payload Required for `quick_reply` buttons. Developer-defined payload that is returned when the button is clicked in addition to the display text on the button.
-     *
-     * @return self
-     */
-    public function setPayload($payload)
-    {
-        $this->container['payload'] = $payload;
-
-        return $this;
-    }
-
-    /**
-     * Gets image
-     *
-     * @return \YCloud\Client\Model\WhatsappMessageMedia|null
-     */
-    public function getImage()
-    {
-        return $this->container['image'];
-    }
-
-    /**
-     * Sets image
-     *
-     * @param \YCloud\Client\Model\WhatsappMessageMedia|null $image image
-     *
-     * @return self
-     */
-    public function setImage($image)
-    {
-        $this->container['image'] = $image;
-
-        return $this;
-    }
-
-    /**
-     * Gets video
-     *
-     * @return \YCloud\Client\Model\WhatsappMessageMedia|null
-     */
-    public function getVideo()
-    {
-        return $this->container['video'];
-    }
-
-    /**
-     * Sets video
-     *
-     * @param \YCloud\Client\Model\WhatsappMessageMedia|null $video video
-     *
-     * @return self
-     */
-    public function setVideo($video)
-    {
-        $this->container['video'] = $video;
-
-        return $this;
-    }
-
-    /**
-     * Gets document
-     *
-     * @return \YCloud\Client\Model\WhatsappMessageMedia|null
-     */
-    public function getDocument()
-    {
-        return $this->container['document'];
-    }
-
-    /**
-     * Sets document
-     *
-     * @param \YCloud\Client\Model\WhatsappMessageMedia|null $document document
-     *
-     * @return self
-     */
-    public function setDocument($document)
-    {
-        $this->container['document'] = $document;
+        $this->container['id'] = $id;
 
         return $this;
     }

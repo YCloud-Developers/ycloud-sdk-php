@@ -77,7 +77,7 @@ class WhatsappInboundMessage implements ModelInterface, ArrayAccess, \JsonSerial
         'location' => '\YCloud\Client\Model\WhatsappInboundMessageLocation',
         'button' => '\YCloud\Client\Model\WhatsappInboundMessageButton',
         'contacts' => '\YCloud\Client\Model\WhatsappMessageContact[]',
-        'reaction' => '\YCloud\Client\Model\WhatsappInboundMessageReaction',
+        'reaction' => '\YCloud\Client\Model\WhatsappMessageReaction',
         'order' => '\YCloud\Client\Model\WhatsappInboundMessageOrder',
         'system' => '\YCloud\Client\Model\WhatsappInboundMessageSystem',
         'errors' => '\YCloud\Client\Model\WhatsappInboundMessageError[]',
@@ -383,7 +383,7 @@ class WhatsappInboundMessage implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets wamid
      *
-     * @param string|null $wamid The native WhatsApp message ID.
+     * @param string|null $wamid The original message ID on WhatsApp's platform.
      *
      * @return self
      */
@@ -781,7 +781,7 @@ class WhatsappInboundMessage implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets reaction
      *
-     * @return \YCloud\Client\Model\WhatsappInboundMessageReaction|null
+     * @return \YCloud\Client\Model\WhatsappMessageReaction|null
      */
     public function getReaction()
     {
@@ -791,7 +791,7 @@ class WhatsappInboundMessage implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets reaction
      *
-     * @param \YCloud\Client\Model\WhatsappInboundMessageReaction|null $reaction reaction
+     * @param \YCloud\Client\Model\WhatsappMessageReaction|null $reaction reaction
      *
      * @return self
      */

@@ -1,6 +1,6 @@
 <?php
 /**
- * WhatsappMessageMedia
+ * WhatsappMessageReaction
  *
  * PHP version 7.4
  *
@@ -33,16 +33,16 @@ use \ArrayAccess;
 use \YCloud\Client\ObjectSerializer;
 
 /**
- * WhatsappMessageMedia Class Doc Comment
+ * WhatsappMessageReaction Class Doc Comment
  *
  * @category Class
- * @description Use for &#x60;image&#x60;, &#x60;video&#x60;, &#x60;audio&#x60;, &#x60;document&#x60;, or &#x60;sticker&#x60; messages.  See also [Supported Media Types](https://developers.facebook.com/docs/whatsapp/cloud-api/reference/media#supported-media-types).
+ * @description When a user reacts to messages with an emoji, the message type is set to &#x60;reaction&#x60;, and this field is included.
  * @package  YCloud\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class WhatsappMessageMedia implements ModelInterface, ArrayAccess, \JsonSerializable
+class WhatsappMessageReaction implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +51,7 @@ class WhatsappMessageMedia implements ModelInterface, ArrayAccess, \JsonSerializ
       *
       * @var string
       */
-    protected static $openAPIModelName = 'WhatsappMessageMedia';
+    protected static $openAPIModelName = 'WhatsappMessageReaction';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,9 +59,8 @@ class WhatsappMessageMedia implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var string[]
       */
     protected static $openAPITypes = [
-        'link' => 'string',
-        'caption' => 'string',
-        'filename' => 'string'
+        'message_id' => 'string',
+        'emoji' => 'string'
     ];
 
     /**
@@ -72,9 +71,8 @@ class WhatsappMessageMedia implements ModelInterface, ArrayAccess, \JsonSerializ
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'link' => null,
-        'caption' => null,
-        'filename' => null
+        'message_id' => null,
+        'emoji' => null
     ];
 
     /**
@@ -104,9 +102,8 @@ class WhatsappMessageMedia implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $attributeMap = [
-        'link' => 'link',
-        'caption' => 'caption',
-        'filename' => 'filename'
+        'message_id' => 'message_id',
+        'emoji' => 'emoji'
     ];
 
     /**
@@ -115,9 +112,8 @@ class WhatsappMessageMedia implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $setters = [
-        'link' => 'setLink',
-        'caption' => 'setCaption',
-        'filename' => 'setFilename'
+        'message_id' => 'setMessageId',
+        'emoji' => 'setEmoji'
     ];
 
     /**
@@ -126,9 +122,8 @@ class WhatsappMessageMedia implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $getters = [
-        'link' => 'getLink',
-        'caption' => 'getCaption',
-        'filename' => 'getFilename'
+        'message_id' => 'getMessageId',
+        'emoji' => 'getEmoji'
     ];
 
     /**
@@ -188,9 +183,8 @@ class WhatsappMessageMedia implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     public function __construct(array $data = null)
     {
-        $this->container['link'] = $data['link'] ?? null;
-        $this->container['caption'] = $data['caption'] ?? null;
-        $this->container['filename'] = $data['filename'] ?? null;
+        $this->container['message_id'] = $data['message_id'] ?? null;
+        $this->container['emoji'] = $data['emoji'] ?? null;
     }
 
     /**
@@ -202,8 +196,8 @@ class WhatsappMessageMedia implements ModelInterface, ArrayAccess, \JsonSerializ
     {
         $invalidProperties = [];
 
-        if ($this->container['link'] === null) {
-            $invalidProperties[] = "'link' can't be null";
+        if ($this->container['message_id'] === null) {
+            $invalidProperties[] = "'message_id' can't be null";
         }
         return $invalidProperties;
     }
@@ -221,73 +215,49 @@ class WhatsappMessageMedia implements ModelInterface, ArrayAccess, \JsonSerializ
 
 
     /**
-     * Gets link
+     * Gets message_id
      *
      * @return string
      */
-    public function getLink()
+    public function getMessageId()
     {
-        return $this->container['link'];
+        return $this->container['message_id'];
     }
 
     /**
-     * Sets link
+     * Sets message_id
      *
-     * @param string $link The protocol and URL of the media to be sent. Use only with HTTP/HTTPS URLs.
+     * @param string $message_id Specifies the `wamid` of the message received that contained the reaction.
      *
      * @return self
      */
-    public function setLink($link)
+    public function setMessageId($message_id)
     {
-        $this->container['link'] = $link;
+        $this->container['message_id'] = $message_id;
 
         return $this;
     }
 
     /**
-     * Gets caption
+     * Gets emoji
      *
      * @return string|null
      */
-    public function getCaption()
+    public function getEmoji()
     {
-        return $this->container['caption'];
+        return $this->container['emoji'];
     }
 
     /**
-     * Sets caption
+     * Sets emoji
      *
-     * @param string|null $caption Describes the specified `image`, `video`, or `document` media. Not applicable in the `header` of `interactive` messages.
+     * @param string|null $emoji **Required** when you send a `reaction` message. Set it to `\"\"` if you want to remove the emoji. **Optional** when you received a message from a user. This field is included when a user reacts to messages with an emoji. Otherwise, it indicates a user removed the emoji.
      *
      * @return self
      */
-    public function setCaption($caption)
+    public function setEmoji($emoji)
     {
-        $this->container['caption'] = $caption;
-
-        return $this;
-    }
-
-    /**
-     * Gets filename
-     *
-     * @return string|null
-     */
-    public function getFilename()
-    {
-        return $this->container['filename'];
-    }
-
-    /**
-     * Sets filename
-     *
-     * @param string|null $filename Describes the filename for the specific document. Use only with `document` media.
-     *
-     * @return self
-     */
-    public function setFilename($filename)
-    {
-        $this->container['filename'] = $filename;
+        $this->container['emoji'] = $emoji;
 
         return $this;
     }

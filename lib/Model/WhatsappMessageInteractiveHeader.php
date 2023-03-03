@@ -36,7 +36,7 @@ use \YCloud\Client\ObjectSerializer;
  * WhatsappMessageInteractiveHeader Class Doc Comment
  *
  * @category Class
- * @description [WhatsApp Header Object](https://developers.facebook.com/docs/whatsapp/cloud-api/reference/messages#header-object).
+ * @description Required for type &#x60;product_list&#x60;. Optional for other types. See also [WhatsApp Header Object](https://developers.facebook.com/docs/whatsapp/cloud-api/reference/messages#header-object).
  * @package  YCloud\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -51,7 +51,7 @@ class WhatsappMessageInteractiveHeader implements ModelInterface, ArrayAccess, \
       *
       * @var string
       */
-    protected static $openAPIModelName = 'WhatsappMessageInteractive_header';
+    protected static $openAPIModelName = 'WhatsappMessageInteractiveHeader';
 
     /**
       * Array of property to type mappings. Used for (de)serialization

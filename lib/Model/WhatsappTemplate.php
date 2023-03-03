@@ -279,6 +279,10 @@ class WhatsappTemplate implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['components'] === null) {
             $invalidProperties[] = "'components' can't be null";
         }
+        if ((count($this->container['components']) < 1)) {
+            $invalidProperties[] = "invalid value for 'components', number of items must be greater than or equal to 1.";
+        }
+
         return $invalidProperties;
     }
 
@@ -410,12 +414,17 @@ class WhatsappTemplate implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets components
      *
-     * @param \YCloud\Client\Model\WhatsappTemplateComponent[] $components components
+     * @param \YCloud\Client\Model\WhatsappTemplateComponent[] $components Template components. A template consists of `HEADER`, `BODY`, `FOOTER`, and `BUTTONS` components. `BODY` component is required, the other types are optional.
      *
      * @return self
      */
     public function setComponents($components)
     {
+
+
+        if ((count($components) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $components when calling WhatsappTemplate., number of items must be greater than or equal to 1.');
+        }
         $this->container['components'] = $components;
 
         return $this;

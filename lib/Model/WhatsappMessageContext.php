@@ -1,6 +1,6 @@
 <?php
 /**
- * WhatsappMessageInteractiveActionSectionsInnerRowsInner
+ * WhatsappMessageContext
  *
  * PHP version 7.4
  *
@@ -33,15 +33,16 @@ use \ArrayAccess;
 use \YCloud\Client\ObjectSerializer;
 
 /**
- * WhatsappMessageInteractiveActionSectionsInnerRowsInner Class Doc Comment
+ * WhatsappMessageContext Class Doc Comment
  *
  * @category Class
+ * @description Used to mention a specific message you are replying to. The reply can be any message type.
  * @package  YCloud\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class WhatsappMessageInteractiveActionSectionsInnerRowsInner implements ModelInterface, ArrayAccess, \JsonSerializable
+class WhatsappMessageContext implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +51,7 @@ class WhatsappMessageInteractiveActionSectionsInnerRowsInner implements ModelInt
       *
       * @var string
       */
-    protected static $openAPIModelName = 'WhatsappMessageInteractive_action_sections_inner_rows_inner';
+    protected static $openAPIModelName = 'WhatsappMessageContext';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,9 +59,7 @@ class WhatsappMessageInteractiveActionSectionsInnerRowsInner implements ModelInt
       * @var string[]
       */
     protected static $openAPITypes = [
-        'id' => 'string',
-        'title' => 'string',
-        'description' => 'string'
+        'message_id' => 'string'
     ];
 
     /**
@@ -71,9 +70,7 @@ class WhatsappMessageInteractiveActionSectionsInnerRowsInner implements ModelInt
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'id' => null,
-        'title' => null,
-        'description' => null
+        'message_id' => null
     ];
 
     /**
@@ -103,9 +100,7 @@ class WhatsappMessageInteractiveActionSectionsInnerRowsInner implements ModelInt
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
-        'title' => 'title',
-        'description' => 'description'
+        'message_id' => 'message_id'
     ];
 
     /**
@@ -114,9 +109,7 @@ class WhatsappMessageInteractiveActionSectionsInnerRowsInner implements ModelInt
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
-        'title' => 'setTitle',
-        'description' => 'setDescription'
+        'message_id' => 'setMessageId'
     ];
 
     /**
@@ -125,9 +118,7 @@ class WhatsappMessageInteractiveActionSectionsInnerRowsInner implements ModelInt
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
-        'title' => 'getTitle',
-        'description' => 'getDescription'
+        'message_id' => 'getMessageId'
     ];
 
     /**
@@ -187,9 +178,7 @@ class WhatsappMessageInteractiveActionSectionsInnerRowsInner implements ModelInt
      */
     public function __construct(array $data = null)
     {
-        $this->container['id'] = $data['id'] ?? null;
-        $this->container['title'] = $data['title'] ?? null;
-        $this->container['description'] = $data['description'] ?? null;
+        $this->container['message_id'] = $data['message_id'] ?? null;
     }
 
     /**
@@ -217,73 +206,25 @@ class WhatsappMessageInteractiveActionSectionsInnerRowsInner implements ModelInt
 
 
     /**
-     * Gets id
+     * Gets message_id
      *
      * @return string|null
      */
-    public function getId()
+    public function getMessageId()
     {
-        return $this->container['id'];
+        return $this->container['message_id'];
     }
 
     /**
-     * Sets id
+     * Sets message_id
      *
-     * @param string|null $id Unique row ID.
+     * @param string|null $message_id Specifies the `wamid` of the message your are replying to. `wamid` is the original message ID on WhatsApp’s platform.
      *
      * @return self
      */
-    public function setId($id)
+    public function setMessageId($message_id)
     {
-        $this->container['id'] = $id;
-
-        return $this;
-    }
-
-    /**
-     * Gets title
-     *
-     * @return string|null
-     */
-    public function getTitle()
-    {
-        return $this->container['title'];
-    }
-
-    /**
-     * Sets title
-     *
-     * @param string|null $title Row title content.
-     *
-     * @return self
-     */
-    public function setTitle($title)
-    {
-        $this->container['title'] = $title;
-
-        return $this;
-    }
-
-    /**
-     * Gets description
-     *
-     * @return string|null
-     */
-    public function getDescription()
-    {
-        return $this->container['description'];
-    }
-
-    /**
-     * Sets description
-     *
-     * @param string|null $description Row description content.
-     *
-     * @return self
-     */
-    public function setDescription($description)
-    {
-        $this->container['description'] = $description;
+        $this->container['message_id'] = $message_id;
 
         return $this;
     }

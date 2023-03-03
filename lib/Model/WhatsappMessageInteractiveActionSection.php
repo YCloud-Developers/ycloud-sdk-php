@@ -1,6 +1,6 @@
 <?php
 /**
- * WhatsappMessageContactAddressesInner
+ * WhatsappMessageInteractiveActionSection
  *
  * PHP version 7.4
  *
@@ -33,16 +33,16 @@ use \ArrayAccess;
 use \YCloud\Client\ObjectSerializer;
 
 /**
- * WhatsappMessageContactAddressesInner Class Doc Comment
+ * WhatsappMessageInteractiveActionSection Class Doc Comment
  *
  * @category Class
- * @description Full contact address(es) formatted as an addresses object.
+ * @description [WhatsApp Section Object](https://developers.facebook.com/docs/whatsapp/cloud-api/reference/messages#section-object).
  * @package  YCloud\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class WhatsappMessageContactAddressesInner implements ModelInterface, ArrayAccess, \JsonSerializable
+class WhatsappMessageInteractiveActionSection implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +51,7 @@ class WhatsappMessageContactAddressesInner implements ModelInterface, ArrayAcces
       *
       * @var string
       */
-    protected static $openAPIModelName = 'WhatsappMessageContact_addresses_inner';
+    protected static $openAPIModelName = 'WhatsappMessageInteractiveActionSection';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,13 +59,9 @@ class WhatsappMessageContactAddressesInner implements ModelInterface, ArrayAcces
       * @var string[]
       */
     protected static $openAPITypes = [
-        'street' => 'string',
-        'city' => 'string',
-        'state' => 'string',
-        'zip' => 'string',
-        'country' => 'string',
-        'country_code' => 'string',
-        'type' => 'string'
+        'title' => 'string',
+        'rows' => '\YCloud\Client\Model\WhatsappMessageInteractiveActionSectionRow[]',
+        'product_items' => '\YCloud\Client\Model\WhatsappMessageInteractiveActionSectionProductItem[]'
     ];
 
     /**
@@ -76,13 +72,9 @@ class WhatsappMessageContactAddressesInner implements ModelInterface, ArrayAcces
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'street' => null,
-        'city' => null,
-        'state' => null,
-        'zip' => null,
-        'country' => null,
-        'country_code' => null,
-        'type' => null
+        'title' => null,
+        'rows' => null,
+        'product_items' => null
     ];
 
     /**
@@ -112,13 +104,9 @@ class WhatsappMessageContactAddressesInner implements ModelInterface, ArrayAcces
      * @var string[]
      */
     protected static $attributeMap = [
-        'street' => 'street',
-        'city' => 'city',
-        'state' => 'state',
-        'zip' => 'zip',
-        'country' => 'country',
-        'country_code' => 'country_code',
-        'type' => 'type'
+        'title' => 'title',
+        'rows' => 'rows',
+        'product_items' => 'product_items'
     ];
 
     /**
@@ -127,13 +115,9 @@ class WhatsappMessageContactAddressesInner implements ModelInterface, ArrayAcces
      * @var string[]
      */
     protected static $setters = [
-        'street' => 'setStreet',
-        'city' => 'setCity',
-        'state' => 'setState',
-        'zip' => 'setZip',
-        'country' => 'setCountry',
-        'country_code' => 'setCountryCode',
-        'type' => 'setType'
+        'title' => 'setTitle',
+        'rows' => 'setRows',
+        'product_items' => 'setProductItems'
     ];
 
     /**
@@ -142,13 +126,9 @@ class WhatsappMessageContactAddressesInner implements ModelInterface, ArrayAcces
      * @var string[]
      */
     protected static $getters = [
-        'street' => 'getStreet',
-        'city' => 'getCity',
-        'state' => 'getState',
-        'zip' => 'getZip',
-        'country' => 'getCountry',
-        'country_code' => 'getCountryCode',
-        'type' => 'getType'
+        'title' => 'getTitle',
+        'rows' => 'getRows',
+        'product_items' => 'getProductItems'
     ];
 
     /**
@@ -208,13 +188,9 @@ class WhatsappMessageContactAddressesInner implements ModelInterface, ArrayAcces
      */
     public function __construct(array $data = null)
     {
-        $this->container['street'] = $data['street'] ?? null;
-        $this->container['city'] = $data['city'] ?? null;
-        $this->container['state'] = $data['state'] ?? null;
-        $this->container['zip'] = $data['zip'] ?? null;
-        $this->container['country'] = $data['country'] ?? null;
-        $this->container['country_code'] = $data['country_code'] ?? null;
-        $this->container['type'] = $data['type'] ?? null;
+        $this->container['title'] = $data['title'] ?? null;
+        $this->container['rows'] = $data['rows'] ?? null;
+        $this->container['product_items'] = $data['product_items'] ?? null;
     }
 
     /**
@@ -225,6 +201,22 @@ class WhatsappMessageContactAddressesInner implements ModelInterface, ArrayAcces
     public function listInvalidProperties()
     {
         $invalidProperties = [];
+
+        if (!is_null($this->container['title']) && (mb_strlen($this->container['title']) > 24)) {
+            $invalidProperties[] = "invalid value for 'title', the character length must be smaller than or equal to 24.";
+        }
+
+        if (!is_null($this->container['rows']) && (count($this->container['rows']) > 10)) {
+            $invalidProperties[] = "invalid value for 'rows', number of items must be less than or equal to 10.";
+        }
+
+        if (!is_null($this->container['product_items']) && (count($this->container['product_items']) > 30)) {
+            $invalidProperties[] = "invalid value for 'product_items', number of items must be less than or equal to 30.";
+        }
+
+        if (!is_null($this->container['product_items']) && (count($this->container['product_items']) < 1)) {
+            $invalidProperties[] = "invalid value for 'product_items', number of items must be greater than or equal to 1.";
+        }
 
         return $invalidProperties;
     }
@@ -242,169 +234,88 @@ class WhatsappMessageContactAddressesInner implements ModelInterface, ArrayAcces
 
 
     /**
-     * Gets street
+     * Gets title
      *
      * @return string|null
      */
-    public function getStreet()
+    public function getTitle()
     {
-        return $this->container['street'];
+        return $this->container['title'];
     }
 
     /**
-     * Sets street
+     * Sets title
      *
-     * @param string|null $street Street number and name.
+     * @param string|null $title Title of the section.
      *
      * @return self
      */
-    public function setStreet($street)
+    public function setTitle($title)
     {
-        $this->container['street'] = $street;
+        if (!is_null($title) && (mb_strlen($title) > 24)) {
+            throw new \InvalidArgumentException('invalid length for $title when calling WhatsappMessageInteractiveActionSection., must be smaller than or equal to 24.');
+        }
+
+        $this->container['title'] = $title;
 
         return $this;
     }
 
     /**
-     * Gets city
+     * Gets rows
      *
-     * @return string|null
+     * @return \YCloud\Client\Model\WhatsappMessageInteractiveActionSectionRow[]|null
      */
-    public function getCity()
+    public function getRows()
     {
-        return $this->container['city'];
+        return $this->container['rows'];
     }
 
     /**
-     * Sets city
+     * Sets rows
      *
-     * @param string|null $city City name.
+     * @param \YCloud\Client\Model\WhatsappMessageInteractiveActionSectionRow[]|null $rows Contains a list of rows. You can have a total of 10 rows across your sections. Each row must have a title (Maximum length: 24 characters) and an ID (Maximum length: 200 characters). You can add a description (Maximum length: 72 characters), but it is optional.
      *
      * @return self
      */
-    public function setCity($city)
+    public function setRows($rows)
     {
-        $this->container['city'] = $city;
+
+        if (!is_null($rows) && (count($rows) > 10)) {
+            throw new \InvalidArgumentException('invalid value for $rows when calling WhatsappMessageInteractiveActionSection., number of items must be less than or equal to 10.');
+        }
+        $this->container['rows'] = $rows;
 
         return $this;
     }
 
     /**
-     * Gets state
+     * Gets product_items
      *
-     * @return string|null
+     * @return \YCloud\Client\Model\WhatsappMessageInteractiveActionSectionProductItem[]|null
      */
-    public function getState()
+    public function getProductItems()
     {
-        return $this->container['state'];
+        return $this->container['product_items'];
     }
 
     /**
-     * Sets state
+     * Sets product_items
      *
-     * @param string|null $state State abbreviation.
+     * @param \YCloud\Client\Model\WhatsappMessageInteractiveActionSectionProductItem[]|null $product_items Required for Multi-Product Messages. Array of product objects. There is a minimum of 1 product per section and a maximum of 30 products across all sections.
      *
      * @return self
      */
-    public function setState($state)
+    public function setProductItems($product_items)
     {
-        $this->container['state'] = $state;
 
-        return $this;
-    }
-
-    /**
-     * Gets zip
-     *
-     * @return string|null
-     */
-    public function getZip()
-    {
-        return $this->container['zip'];
-    }
-
-    /**
-     * Sets zip
-     *
-     * @param string|null $zip ZIP code.
-     *
-     * @return self
-     */
-    public function setZip($zip)
-    {
-        $this->container['zip'] = $zip;
-
-        return $this;
-    }
-
-    /**
-     * Gets country
-     *
-     * @return string|null
-     */
-    public function getCountry()
-    {
-        return $this->container['country'];
-    }
-
-    /**
-     * Sets country
-     *
-     * @param string|null $country Full country name.
-     *
-     * @return self
-     */
-    public function setCountry($country)
-    {
-        $this->container['country'] = $country;
-
-        return $this;
-    }
-
-    /**
-     * Gets country_code
-     *
-     * @return string|null
-     */
-    public function getCountryCode()
-    {
-        return $this->container['country_code'];
-    }
-
-    /**
-     * Sets country_code
-     *
-     * @param string|null $country_code Two-letter country abbreviation.
-     *
-     * @return self
-     */
-    public function setCountryCode($country_code)
-    {
-        $this->container['country_code'] = $country_code;
-
-        return $this;
-    }
-
-    /**
-     * Gets type
-     *
-     * @return string|null
-     */
-    public function getType()
-    {
-        return $this->container['type'];
-    }
-
-    /**
-     * Sets type
-     *
-     * @param string|null $type Standard values are `HOME` and `WORK`.
-     *
-     * @return self
-     */
-    public function setType($type)
-    {
-        $this->container['type'] = $type;
+        if (!is_null($product_items) && (count($product_items) > 30)) {
+            throw new \InvalidArgumentException('invalid value for $product_items when calling WhatsappMessageInteractiveActionSection., number of items must be less than or equal to 30.');
+        }
+        if (!is_null($product_items) && (count($product_items) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $product_items when calling WhatsappMessageInteractiveActionSection., number of items must be greater than or equal to 1.');
+        }
+        $this->container['product_items'] = $product_items;
 
         return $this;
     }

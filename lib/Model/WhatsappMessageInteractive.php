@@ -36,7 +36,7 @@ use \YCloud\Client\ObjectSerializer;
  * WhatsappMessageInteractive Class Doc Comment
  *
  * @category Class
- * @description [WhatsApp Interactive Object](https://developers.facebook.com/docs/whatsapp/cloud-api/reference/messages#interactive-object).
+ * @description Use for &#x60;interactive&#x60; messages. See also [WhatsApp Interactive Object](https://developers.facebook.com/docs/whatsapp/cloud-api/reference/messages#interactive-object).
  * @package  YCloud\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -184,6 +184,8 @@ class WhatsappMessageInteractive implements ModelInterface, ArrayAccess, \JsonSe
 
     public const TYPE_BUTTON = 'button';
     public const TYPE__LIST = 'list';
+    public const TYPE_PRODUCT = 'product';
+    public const TYPE_PRODUCT_LIST = 'product_list';
 
     /**
      * Gets allowable values of the enum
@@ -195,6 +197,8 @@ class WhatsappMessageInteractive implements ModelInterface, ArrayAccess, \JsonSe
         return [
             self::TYPE_BUTTON,
             self::TYPE__LIST,
+            self::TYPE_PRODUCT,
+            self::TYPE_PRODUCT_LIST,
         ];
     }
 
@@ -244,9 +248,6 @@ class WhatsappMessageInteractive implements ModelInterface, ArrayAccess, \JsonSe
         if ($this->container['action'] === null) {
             $invalidProperties[] = "'action' can't be null";
         }
-        if ($this->container['body'] === null) {
-            $invalidProperties[] = "'body' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -275,7 +276,7 @@ class WhatsappMessageInteractive implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets type
      *
-     * @param string $type The type of interactive message you want to send. - `list`: Use it for List Messages. - `button`: Use it for Reply Buttons.
+     * @param string $type The type of interactive message you want to send. - `list`: Use it for List Messages. - `button`: Use it for Reply Buttons. - `product`: Use for Single Product Messages. - `product_list`: Use for Multi-Product Messages.
      *
      * @return self
      */
@@ -323,7 +324,7 @@ class WhatsappMessageInteractive implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Gets body
      *
-     * @return \YCloud\Client\Model\WhatsappMessageInteractiveBody
+     * @return \YCloud\Client\Model\WhatsappMessageInteractiveBody|null
      */
     public function getBody()
     {
@@ -333,7 +334,7 @@ class WhatsappMessageInteractive implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets body
      *
-     * @param \YCloud\Client\Model\WhatsappMessageInteractiveBody $body body
+     * @param \YCloud\Client\Model\WhatsappMessageInteractiveBody|null $body body
      *
      * @return self
      */

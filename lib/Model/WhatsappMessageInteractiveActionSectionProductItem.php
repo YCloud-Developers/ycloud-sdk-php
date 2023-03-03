@@ -1,6 +1,6 @@
 <?php
 /**
- * WhatsappMessageContactPhonesInner
+ * WhatsappMessageInteractiveActionSectionProductItem
  *
  * PHP version 7.4
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \YCloud\Client\ObjectSerializer;
 
 /**
- * WhatsappMessageContactPhonesInner Class Doc Comment
+ * WhatsappMessageInteractiveActionSectionProductItem Class Doc Comment
  *
  * @category Class
  * @package  YCloud\Client
@@ -41,7 +41,7 @@ use \YCloud\Client\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class WhatsappMessageContactPhonesInner implements ModelInterface, ArrayAccess, \JsonSerializable
+class WhatsappMessageInteractiveActionSectionProductItem implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class WhatsappMessageContactPhonesInner implements ModelInterface, ArrayAccess, 
       *
       * @var string
       */
-    protected static $openAPIModelName = 'WhatsappMessageContact_phones_inner';
+    protected static $openAPIModelName = 'WhatsappMessageInteractiveActionSectionProductItem';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,9 +58,7 @@ class WhatsappMessageContactPhonesInner implements ModelInterface, ArrayAccess, 
       * @var string[]
       */
     protected static $openAPITypes = [
-        'phone' => 'string',
-        'type' => 'string',
-        'wa_id' => 'string'
+        'product_retailer_id' => 'string'
     ];
 
     /**
@@ -71,9 +69,7 @@ class WhatsappMessageContactPhonesInner implements ModelInterface, ArrayAccess, 
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'phone' => null,
-        'type' => null,
-        'wa_id' => null
+        'product_retailer_id' => null
     ];
 
     /**
@@ -103,9 +99,7 @@ class WhatsappMessageContactPhonesInner implements ModelInterface, ArrayAccess, 
      * @var string[]
      */
     protected static $attributeMap = [
-        'phone' => 'phone',
-        'type' => 'type',
-        'wa_id' => 'wa_id'
+        'product_retailer_id' => 'product_retailer_id'
     ];
 
     /**
@@ -114,9 +108,7 @@ class WhatsappMessageContactPhonesInner implements ModelInterface, ArrayAccess, 
      * @var string[]
      */
     protected static $setters = [
-        'phone' => 'setPhone',
-        'type' => 'setType',
-        'wa_id' => 'setWaId'
+        'product_retailer_id' => 'setProductRetailerId'
     ];
 
     /**
@@ -125,9 +117,7 @@ class WhatsappMessageContactPhonesInner implements ModelInterface, ArrayAccess, 
      * @var string[]
      */
     protected static $getters = [
-        'phone' => 'getPhone',
-        'type' => 'getType',
-        'wa_id' => 'getWaId'
+        'product_retailer_id' => 'getProductRetailerId'
     ];
 
     /**
@@ -187,9 +177,7 @@ class WhatsappMessageContactPhonesInner implements ModelInterface, ArrayAccess, 
      */
     public function __construct(array $data = null)
     {
-        $this->container['phone'] = $data['phone'] ?? null;
-        $this->container['type'] = $data['type'] ?? null;
-        $this->container['wa_id'] = $data['wa_id'] ?? null;
+        $this->container['product_retailer_id'] = $data['product_retailer_id'] ?? null;
     }
 
     /**
@@ -217,73 +205,25 @@ class WhatsappMessageContactPhonesInner implements ModelInterface, ArrayAccess, 
 
 
     /**
-     * Gets phone
+     * Gets product_retailer_id
      *
      * @return string|null
      */
-    public function getPhone()
+    public function getProductRetailerId()
     {
-        return $this->container['phone'];
+        return $this->container['product_retailer_id'];
     }
 
     /**
-     * Sets phone
+     * Sets product_retailer_id
      *
-     * @param string|null $phone Automatically populated with the `wa_id` value as a formatted phone number.
+     * @param string|null $product_retailer_id Required for Multi-Product Messages. Unique identifier of the product in a catalog.
      *
      * @return self
      */
-    public function setPhone($phone)
+    public function setProductRetailerId($product_retailer_id)
     {
-        $this->container['phone'] = $phone;
-
-        return $this;
-    }
-
-    /**
-     * Gets type
-     *
-     * @return string|null
-     */
-    public function getType()
-    {
-        return $this->container['type'];
-    }
-
-    /**
-     * Sets type
-     *
-     * @param string|null $type Standard Values are `CELL`, `MAIN`, `IPHONE`, `HOME`, and `WORK`.
-     *
-     * @return self
-     */
-    public function setType($type)
-    {
-        $this->container['type'] = $type;
-
-        return $this;
-    }
-
-    /**
-     * Gets wa_id
-     *
-     * @return string|null
-     */
-    public function getWaId()
-    {
-        return $this->container['wa_id'];
-    }
-
-    /**
-     * Sets wa_id
-     *
-     * @param string|null $wa_id WhatsApp ID.
-     *
-     * @return self
-     */
-    public function setWaId($wa_id)
-    {
-        $this->container['wa_id'] = $wa_id;
+        $this->container['product_retailer_id'] = $product_retailer_id;
 
         return $this;
     }

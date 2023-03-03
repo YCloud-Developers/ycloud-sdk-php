@@ -1,4 +1,4 @@
-# # WhatsappMessageInteractiveActionButtonsInnerReply
+# # WhatsappMessageInteractiveActionButtonReply
 
 ## Properties
 

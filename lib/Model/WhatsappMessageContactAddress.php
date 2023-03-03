@@ -1,6 +1,6 @@
 <?php
 /**
- * WhatsappMessageInteractiveActionButtonsInnerReply
+ * WhatsappMessageContactAddress
  *
  * PHP version 7.4
  *
@@ -33,15 +33,16 @@ use \ArrayAccess;
 use \YCloud\Client\ObjectSerializer;
 
 /**
- * WhatsappMessageInteractiveActionButtonsInnerReply Class Doc Comment
+ * WhatsappMessageContactAddress Class Doc Comment
  *
  * @category Class
+ * @description Full contact address(es) formatted as an addresses object.
  * @package  YCloud\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class WhatsappMessageInteractiveActionButtonsInnerReply implements ModelInterface, ArrayAccess, \JsonSerializable
+class WhatsappMessageContactAddress implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +51,7 @@ class WhatsappMessageInteractiveActionButtonsInnerReply implements ModelInterfac
       *
       * @var string
       */
-    protected static $openAPIModelName = 'WhatsappMessageInteractive_action_buttons_inner_reply';
+    protected static $openAPIModelName = 'WhatsappMessageContactAddress';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,8 +59,13 @@ class WhatsappMessageInteractiveActionButtonsInnerReply implements ModelInterfac
       * @var string[]
       */
     protected static $openAPITypes = [
-        'title' => 'string',
-        'id' => 'string'
+        'street' => 'string',
+        'city' => 'string',
+        'state' => 'string',
+        'zip' => 'string',
+        'country' => 'string',
+        'country_code' => 'string',
+        'type' => 'string'
     ];
 
     /**
@@ -70,8 +76,13 @@ class WhatsappMessageInteractiveActionButtonsInnerReply implements ModelInterfac
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'title' => null,
-        'id' => null
+        'street' => null,
+        'city' => null,
+        'state' => null,
+        'zip' => null,
+        'country' => null,
+        'country_code' => null,
+        'type' => null
     ];
 
     /**
@@ -101,8 +112,13 @@ class WhatsappMessageInteractiveActionButtonsInnerReply implements ModelInterfac
      * @var string[]
      */
     protected static $attributeMap = [
-        'title' => 'title',
-        'id' => 'id'
+        'street' => 'street',
+        'city' => 'city',
+        'state' => 'state',
+        'zip' => 'zip',
+        'country' => 'country',
+        'country_code' => 'country_code',
+        'type' => 'type'
     ];
 
     /**
@@ -111,8 +127,13 @@ class WhatsappMessageInteractiveActionButtonsInnerReply implements ModelInterfac
      * @var string[]
      */
     protected static $setters = [
-        'title' => 'setTitle',
-        'id' => 'setId'
+        'street' => 'setStreet',
+        'city' => 'setCity',
+        'state' => 'setState',
+        'zip' => 'setZip',
+        'country' => 'setCountry',
+        'country_code' => 'setCountryCode',
+        'type' => 'setType'
     ];
 
     /**
@@ -121,8 +142,13 @@ class WhatsappMessageInteractiveActionButtonsInnerReply implements ModelInterfac
      * @var string[]
      */
     protected static $getters = [
-        'title' => 'getTitle',
-        'id' => 'getId'
+        'street' => 'getStreet',
+        'city' => 'getCity',
+        'state' => 'getState',
+        'zip' => 'getZip',
+        'country' => 'getCountry',
+        'country_code' => 'getCountryCode',
+        'type' => 'getType'
     ];
 
     /**
@@ -182,8 +208,13 @@ class WhatsappMessageInteractiveActionButtonsInnerReply implements ModelInterfac
      */
     public function __construct(array $data = null)
     {
-        $this->container['title'] = $data['title'] ?? null;
-        $this->container['id'] = $data['id'] ?? null;
+        $this->container['street'] = $data['street'] ?? null;
+        $this->container['city'] = $data['city'] ?? null;
+        $this->container['state'] = $data['state'] ?? null;
+        $this->container['zip'] = $data['zip'] ?? null;
+        $this->container['country'] = $data['country'] ?? null;
+        $this->container['country_code'] = $data['country_code'] ?? null;
+        $this->container['type'] = $data['type'] ?? null;
     }
 
     /**
@@ -194,14 +225,6 @@ class WhatsappMessageInteractiveActionButtonsInnerReply implements ModelInterfac
     public function listInvalidProperties()
     {
         $invalidProperties = [];
-
-        if (!is_null($this->container['title']) && (mb_strlen($this->container['title']) > 20)) {
-            $invalidProperties[] = "invalid value for 'title', the character length must be smaller than or equal to 20.";
-        }
-
-        if (!is_null($this->container['id']) && (mb_strlen($this->container['id']) > 20)) {
-            $invalidProperties[] = "invalid value for 'id', the character length must be smaller than or equal to 20.";
-        }
 
         return $invalidProperties;
     }
@@ -219,57 +242,169 @@ class WhatsappMessageInteractiveActionButtonsInnerReply implements ModelInterfac
 
 
     /**
-     * Gets title
+     * Gets street
      *
      * @return string|null
      */
-    public function getTitle()
+    public function getStreet()
     {
-        return $this->container['title'];
+        return $this->container['street'];
     }
 
     /**
-     * Sets title
+     * Sets street
      *
-     * @param string|null $title Button title. It cannot be an empty string and must be unique within the message. Emojis are supported, markdown is not.
+     * @param string|null $street Street number and name.
      *
      * @return self
      */
-    public function setTitle($title)
+    public function setStreet($street)
     {
-        if (!is_null($title) && (mb_strlen($title) > 20)) {
-            throw new \InvalidArgumentException('invalid length for $title when calling WhatsappMessageInteractiveActionButtonsInnerReply., must be smaller than or equal to 20.');
-        }
-
-        $this->container['title'] = $title;
+        $this->container['street'] = $street;
 
         return $this;
     }
 
     /**
-     * Gets id
+     * Gets city
      *
      * @return string|null
      */
-    public function getId()
+    public function getCity()
     {
-        return $this->container['id'];
+        return $this->container['city'];
     }
 
     /**
-     * Sets id
+     * Sets city
      *
-     * @param string|null $id Unique identifier for your button. This ID is returned in the webhook when the button is clicked by the user.
+     * @param string|null $city City name.
      *
      * @return self
      */
-    public function setId($id)
+    public function setCity($city)
     {
-        if (!is_null($id) && (mb_strlen($id) > 20)) {
-            throw new \InvalidArgumentException('invalid length for $id when calling WhatsappMessageInteractiveActionButtonsInnerReply., must be smaller than or equal to 20.');
-        }
+        $this->container['city'] = $city;
 
-        $this->container['id'] = $id;
+        return $this;
+    }
+
+    /**
+     * Gets state
+     *
+     * @return string|null
+     */
+    public function getState()
+    {
+        return $this->container['state'];
+    }
+
+    /**
+     * Sets state
+     *
+     * @param string|null $state State abbreviation.
+     *
+     * @return self
+     */
+    public function setState($state)
+    {
+        $this->container['state'] = $state;
+
+        return $this;
+    }
+
+    /**
+     * Gets zip
+     *
+     * @return string|null
+     */
+    public function getZip()
+    {
+        return $this->container['zip'];
+    }
+
+    /**
+     * Sets zip
+     *
+     * @param string|null $zip ZIP code.
+     *
+     * @return self
+     */
+    public function setZip($zip)
+    {
+        $this->container['zip'] = $zip;
+
+        return $this;
+    }
+
+    /**
+     * Gets country
+     *
+     * @return string|null
+     */
+    public function getCountry()
+    {
+        return $this->container['country'];
+    }
+
+    /**
+     * Sets country
+     *
+     * @param string|null $country Full country name.
+     *
+     * @return self
+     */
+    public function setCountry($country)
+    {
+        $this->container['country'] = $country;
+
+        return $this;
+    }
+
+    /**
+     * Gets country_code
+     *
+     * @return string|null
+     */
+    public function getCountryCode()
+    {
+        return $this->container['country_code'];
+    }
+
+    /**
+     * Sets country_code
+     *
+     * @param string|null $country_code Two-letter country abbreviation.
+     *
+     * @return self
+     */
+    public function setCountryCode($country_code)
+    {
+        $this->container['country_code'] = $country_code;
+
+        return $this;
+    }
+
+    /**
+     * Gets type
+     *
+     * @return string|null
+     */
+    public function getType()
+    {
+        return $this->container['type'];
+    }
+
+    /**
+     * Sets type
+     *
+     * @param string|null $type Standard values are `HOME` and `WORK`.
+     *
+     * @return self
+     */
+    public function setType($type)
+    {
+        $this->container['type'] = $type;
 
         return $this;
     }

@@ -1,6 +1,6 @@
 <?php
 /**
- * WhatsappMessageInteractiveActionSectionsInner
+ * WhatsappMessageInteractiveActionButton
  *
  * PHP version 7.4
  *
@@ -33,16 +33,15 @@ use \ArrayAccess;
 use \YCloud\Client\ObjectSerializer;
 
 /**
- * WhatsappMessageInteractiveActionSectionsInner Class Doc Comment
+ * WhatsappMessageInteractiveActionButton Class Doc Comment
  *
  * @category Class
- * @description [WhatsApp Section Object](https://developers.facebook.com/docs/whatsapp/cloud-api/reference/messages#section-object).
  * @package  YCloud\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class WhatsappMessageInteractiveActionSectionsInner implements ModelInterface, ArrayAccess, \JsonSerializable
+class WhatsappMessageInteractiveActionButton implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +50,7 @@ class WhatsappMessageInteractiveActionSectionsInner implements ModelInterface, A
       *
       * @var string
       */
-    protected static $openAPIModelName = 'WhatsappMessageInteractive_action_sections_inner';
+    protected static $openAPIModelName = 'WhatsappMessageInteractiveActionButton';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,8 +58,8 @@ class WhatsappMessageInteractiveActionSectionsInner implements ModelInterface, A
       * @var string[]
       */
     protected static $openAPITypes = [
-        'title' => 'string',
-        'rows' => '\YCloud\Client\Model\WhatsappMessageInteractiveActionSectionsInnerRowsInner[]'
+        'type' => 'string',
+        'reply' => '\YCloud\Client\Model\WhatsappMessageInteractiveActionButtonReply'
     ];
 
     /**
@@ -71,8 +70,8 @@ class WhatsappMessageInteractiveActionSectionsInner implements ModelInterface, A
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'title' => null,
-        'rows' => null
+        'type' => null,
+        'reply' => null
     ];
 
     /**
@@ -102,8 +101,8 @@ class WhatsappMessageInteractiveActionSectionsInner implements ModelInterface, A
      * @var string[]
      */
     protected static $attributeMap = [
-        'title' => 'title',
-        'rows' => 'rows'
+        'type' => 'type',
+        'reply' => 'reply'
     ];
 
     /**
@@ -112,8 +111,8 @@ class WhatsappMessageInteractiveActionSectionsInner implements ModelInterface, A
      * @var string[]
      */
     protected static $setters = [
-        'title' => 'setTitle',
-        'rows' => 'setRows'
+        'type' => 'setType',
+        'reply' => 'setReply'
     ];
 
     /**
@@ -122,8 +121,8 @@ class WhatsappMessageInteractiveActionSectionsInner implements ModelInterface, A
      * @var string[]
      */
     protected static $getters = [
-        'title' => 'getTitle',
-        'rows' => 'getRows'
+        'type' => 'getType',
+        'reply' => 'getReply'
     ];
 
     /**
@@ -167,6 +166,19 @@ class WhatsappMessageInteractiveActionSectionsInner implements ModelInterface, A
         return self::$openAPIModelName;
     }
 
+    public const TYPE_REPLY = 'reply';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getTypeAllowableValues()
+    {
+        return [
+            self::TYPE_REPLY,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -183,8 +195,8 @@ class WhatsappMessageInteractiveActionSectionsInner implements ModelInterface, A
      */
     public function __construct(array $data = null)
     {
-        $this->container['title'] = $data['title'] ?? null;
-        $this->container['rows'] = $data['rows'] ?? null;
+        $this->container['type'] = $data['type'] ?? null;
+        $this->container['reply'] = $data['reply'] ?? null;
     }
 
     /**
@@ -196,12 +208,13 @@ class WhatsappMessageInteractiveActionSectionsInner implements ModelInterface, A
     {
         $invalidProperties = [];
 
-        if (!is_null($this->container['title']) && (mb_strlen($this->container['title']) > 24)) {
-            $invalidProperties[] = "invalid value for 'title', the character length must be smaller than or equal to 24.";
-        }
-
-        if (!is_null($this->container['rows']) && (count($this->container['rows']) > 10)) {
-            $invalidProperties[] = "invalid value for 'rows', number of items must be less than or equal to 10.";
+        $allowedValues = $this->getTypeAllowableValues();
+        if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'type', must be one of '%s'",
+                $this->container['type'],
+                implode("', '", $allowedValues)
+            );
         }
 
         return $invalidProperties;
@@ -220,57 +233,59 @@ class WhatsappMessageInteractiveActionSectionsInner implements ModelInterface, A
 
 
     /**
-     * Gets title
+     * Gets type
      *
      * @return string|null
      */
-    public function getTitle()
+    public function getType()
     {
-        return $this->container['title'];
+        return $this->container['type'];
     }
 
     /**
-     * Sets title
+     * Sets type
      *
-     * @param string|null $title Title of the section.
+     * @param string|null $type Only supported type is `reply` (for Reply Button).
      *
      * @return self
      */
-    public function setTitle($title)
+    public function setType($type)
     {
-        if (!is_null($title) && (mb_strlen($title) > 24)) {
-            throw new \InvalidArgumentException('invalid length for $title when calling WhatsappMessageInteractiveActionSectionsInner., must be smaller than or equal to 24.');
+        $allowedValues = $this->getTypeAllowableValues();
+        if (!is_null($type) && !in_array($type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'type', must be one of '%s'",
+                    $type,
+                    implode("', '", $allowedValues)
+                )
+            );
         }
-
-        $this->container['title'] = $title;
+        $this->container['type'] = $type;
 
         return $this;
     }
 
     /**
-     * Gets rows
+     * Gets reply
      *
-     * @return \YCloud\Client\Model\WhatsappMessageInteractiveActionSectionsInnerRowsInner[]|null
+     * @return \YCloud\Client\Model\WhatsappMessageInteractiveActionButtonReply|null
      */
-    public function getRows()
+    public function getReply()
     {
-        return $this->container['rows'];
+        return $this->container['reply'];
     }
 
     /**
-     * Sets rows
+     * Sets reply
      *
-     * @param \YCloud\Client\Model\WhatsappMessageInteractiveActionSectionsInnerRowsInner[]|null $rows Contains a list of rows. You can have a total of 10 rows across your sections. Each row must have a title (Maximum length: 24 characters) and an ID (Maximum length: 200 characters). You can add a description (Maximum length: 72 characters), but it is optional.
+     * @param \YCloud\Client\Model\WhatsappMessageInteractiveActionButtonReply|null $reply reply
      *
      * @return self
      */
-    public function setRows($rows)
+    public function setReply($reply)
     {
-
-        if (!is_null($rows) && (count($rows) > 10)) {
-            throw new \InvalidArgumentException('invalid value for $rows when calling WhatsappMessageInteractiveActionSectionsInner., number of items must be less than or equal to 10.');
-        }
-        $this->container['rows'] = $rows;
+        $this->container['reply'] = $reply;
 
         return $this;
     }

@@ -51,7 +51,7 @@ class WhatsappMessageContactName implements ModelInterface, ArrayAccess, \JsonSe
       *
       * @var string
       */
-    protected static $openAPIModelName = 'WhatsappMessageContact_name';
+    protected static $openAPIModelName = 'WhatsappMessageContactName';
 
     /**
       * Array of property to type mappings. Used for (de)serialization

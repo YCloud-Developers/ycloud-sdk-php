@@ -1,6 +1,6 @@
 <?php
 /**
- * WhatsappMessageInteractiveActionButtonsInner
+ * WhatsappMessageInteractiveActionSectionRow
  *
  * PHP version 7.4
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \YCloud\Client\ObjectSerializer;
 
 /**
- * WhatsappMessageInteractiveActionButtonsInner Class Doc Comment
+ * WhatsappMessageInteractiveActionSectionRow Class Doc Comment
  *
  * @category Class
  * @package  YCloud\Client
@@ -41,7 +41,7 @@ use \YCloud\Client\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class WhatsappMessageInteractiveActionButtonsInner implements ModelInterface, ArrayAccess, \JsonSerializable
+class WhatsappMessageInteractiveActionSectionRow implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class WhatsappMessageInteractiveActionButtonsInner implements ModelInterface, Ar
       *
       * @var string
       */
-    protected static $openAPIModelName = 'WhatsappMessageInteractive_action_buttons_inner';
+    protected static $openAPIModelName = 'WhatsappMessageInteractiveActionSectionRow';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,8 +58,9 @@ class WhatsappMessageInteractiveActionButtonsInner implements ModelInterface, Ar
       * @var string[]
       */
     protected static $openAPITypes = [
-        'type' => 'string',
-        'reply' => '\YCloud\Client\Model\WhatsappMessageInteractiveActionButtonsInnerReply'
+        'id' => 'string',
+        'title' => 'string',
+        'description' => 'string'
     ];
 
     /**
@@ -70,8 +71,9 @@ class WhatsappMessageInteractiveActionButtonsInner implements ModelInterface, Ar
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'type' => null,
-        'reply' => null
+        'id' => null,
+        'title' => null,
+        'description' => null
     ];
 
     /**
@@ -101,8 +103,9 @@ class WhatsappMessageInteractiveActionButtonsInner implements ModelInterface, Ar
      * @var string[]
      */
     protected static $attributeMap = [
-        'type' => 'type',
-        'reply' => 'reply'
+        'id' => 'id',
+        'title' => 'title',
+        'description' => 'description'
     ];
 
     /**
@@ -111,8 +114,9 @@ class WhatsappMessageInteractiveActionButtonsInner implements ModelInterface, Ar
      * @var string[]
      */
     protected static $setters = [
-        'type' => 'setType',
-        'reply' => 'setReply'
+        'id' => 'setId',
+        'title' => 'setTitle',
+        'description' => 'setDescription'
     ];
 
     /**
@@ -121,8 +125,9 @@ class WhatsappMessageInteractiveActionButtonsInner implements ModelInterface, Ar
      * @var string[]
      */
     protected static $getters = [
-        'type' => 'getType',
-        'reply' => 'getReply'
+        'id' => 'getId',
+        'title' => 'getTitle',
+        'description' => 'getDescription'
     ];
 
     /**
@@ -166,19 +171,6 @@ class WhatsappMessageInteractiveActionButtonsInner implements ModelInterface, Ar
         return self::$openAPIModelName;
     }
 
-    public const TYPE_REPLY = 'reply';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getTypeAllowableValues()
-    {
-        return [
-            self::TYPE_REPLY,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -195,8 +187,9 @@ class WhatsappMessageInteractiveActionButtonsInner implements ModelInterface, Ar
      */
     public function __construct(array $data = null)
     {
-        $this->container['type'] = $data['type'] ?? null;
-        $this->container['reply'] = $data['reply'] ?? null;
+        $this->container['id'] = $data['id'] ?? null;
+        $this->container['title'] = $data['title'] ?? null;
+        $this->container['description'] = $data['description'] ?? null;
     }
 
     /**
@@ -207,15 +200,6 @@ class WhatsappMessageInteractiveActionButtonsInner implements ModelInterface, Ar
     public function listInvalidProperties()
     {
         $invalidProperties = [];
-
-        $allowedValues = $this->getTypeAllowableValues();
-        if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'type', must be one of '%s'",
-                $this->container['type'],
-                implode("', '", $allowedValues)
-            );
-        }
 
         return $invalidProperties;
     }
@@ -233,59 +217,73 @@ class WhatsappMessageInteractiveActionButtonsInner implements ModelInterface, Ar
 
 
     /**
-     * Gets type
+     * Gets id
      *
      * @return string|null
      */
-    public function getType()
+    public function getId()
     {
-        return $this->container['type'];
+        return $this->container['id'];
     }
 
     /**
-     * Sets type
+     * Sets id
      *
-     * @param string|null $type Only supported type is `reply` (for Reply Button).
+     * @param string|null $id Unique row ID.
      *
      * @return self
      */
-    public function setType($type)
+    public function setId($id)
     {
-        $allowedValues = $this->getTypeAllowableValues();
-        if (!is_null($type) && !in_array($type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'type', must be one of '%s'",
-                    $type,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['type'] = $type;
+        $this->container['id'] = $id;
 
         return $this;
     }
 
     /**
-     * Gets reply
+     * Gets title
      *
-     * @return \YCloud\Client\Model\WhatsappMessageInteractiveActionButtonsInnerReply|null
+     * @return string|null
      */
-    public function getReply()
+    public function getTitle()
     {
-        return $this->container['reply'];
+        return $this->container['title'];
     }
 
     /**
-     * Sets reply
+     * Sets title
      *
-     * @param \YCloud\Client\Model\WhatsappMessageInteractiveActionButtonsInnerReply|null $reply reply
+     * @param string|null $title Row title content.
      *
      * @return self
      */
-    public function setReply($reply)
+    public function setTitle($title)
     {
-        $this->container['reply'] = $reply;
+        $this->container['title'] = $title;
+
+        return $this;
+    }
+
+    /**
+     * Gets description
+     *
+     * @return string|null
+     */
+    public function getDescription()
+    {
+        return $this->container['description'];
+    }
+
+    /**
+     * Sets description
+     *
+     * @param string|null $description Row description content.
+     *
+     * @return self
+     */
+    public function setDescription($description)
+    {
+        $this->container['description'] = $description;
 
         return $this;
     }

@@ -59,13 +59,13 @@ class WhatsappMessageContact implements ModelInterface, ArrayAccess, \JsonSerial
       * @var string[]
       */
     protected static $openAPITypes = [
-        'addresses' => '\YCloud\Client\Model\WhatsappMessageContactAddressesInner[]',
+        'addresses' => '\YCloud\Client\Model\WhatsappMessageContactAddress[]',
         'birthday' => 'string',
-        'emails' => '\YCloud\Client\Model\WhatsappMessageContactEmailsInner[]',
+        'emails' => '\YCloud\Client\Model\WhatsappMessageContactEmail[]',
         'name' => '\YCloud\Client\Model\WhatsappMessageContactName',
         'org' => '\YCloud\Client\Model\WhatsappMessageContactOrg',
-        'phones' => '\YCloud\Client\Model\WhatsappMessageContactPhonesInner[]',
-        'urls' => '\YCloud\Client\Model\WhatsappMessageContactUrlsInner[]'
+        'phones' => '\YCloud\Client\Model\WhatsappMessageContactPhone[]',
+        'urls' => '\YCloud\Client\Model\WhatsappMessageContactUrl[]'
     ];
 
     /**
@@ -226,6 +226,9 @@ class WhatsappMessageContact implements ModelInterface, ArrayAccess, \JsonSerial
     {
         $invalidProperties = [];
 
+        if ($this->container['name'] === null) {
+            $invalidProperties[] = "'name' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -244,7 +247,7 @@ class WhatsappMessageContact implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets addresses
      *
-     * @return \YCloud\Client\Model\WhatsappMessageContactAddressesInner[]|null
+     * @return \YCloud\Client\Model\WhatsappMessageContactAddress[]|null
      */
     public function getAddresses()
     {
@@ -254,7 +257,7 @@ class WhatsappMessageContact implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets addresses
      *
-     * @param \YCloud\Client\Model\WhatsappMessageContactAddressesInner[]|null $addresses addresses
+     * @param \YCloud\Client\Model\WhatsappMessageContactAddress[]|null $addresses addresses
      *
      * @return self
      */
@@ -292,7 +295,7 @@ class WhatsappMessageContact implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets emails
      *
-     * @return \YCloud\Client\Model\WhatsappMessageContactEmailsInner[]|null
+     * @return \YCloud\Client\Model\WhatsappMessageContactEmail[]|null
      */
     public function getEmails()
     {
@@ -302,7 +305,7 @@ class WhatsappMessageContact implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets emails
      *
-     * @param \YCloud\Client\Model\WhatsappMessageContactEmailsInner[]|null $emails emails
+     * @param \YCloud\Client\Model\WhatsappMessageContactEmail[]|null $emails emails
      *
      * @return self
      */
@@ -316,7 +319,7 @@ class WhatsappMessageContact implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets name
      *
-     * @return \YCloud\Client\Model\WhatsappMessageContactName|null
+     * @return \YCloud\Client\Model\WhatsappMessageContactName
      */
     public function getName()
     {
@@ -326,7 +329,7 @@ class WhatsappMessageContact implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets name
      *
-     * @param \YCloud\Client\Model\WhatsappMessageContactName|null $name name
+     * @param \YCloud\Client\Model\WhatsappMessageContactName $name name
      *
      * @return self
      */
@@ -364,7 +367,7 @@ class WhatsappMessageContact implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets phones
      *
-     * @return \YCloud\Client\Model\WhatsappMessageContactPhonesInner[]|null
+     * @return \YCloud\Client\Model\WhatsappMessageContactPhone[]|null
      */
     public function getPhones()
     {
@@ -374,7 +377,7 @@ class WhatsappMessageContact implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets phones
      *
-     * @param \YCloud\Client\Model\WhatsappMessageContactPhonesInner[]|null $phones Contact phone number(s) formatted as a phone object.
+     * @param \YCloud\Client\Model\WhatsappMessageContactPhone[]|null $phones Contact phone number(s) formatted as a phone object.
      *
      * @return self
      */
@@ -388,7 +391,7 @@ class WhatsappMessageContact implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets urls
      *
-     * @return \YCloud\Client\Model\WhatsappMessageContactUrlsInner[]|null
+     * @return \YCloud\Client\Model\WhatsappMessageContactUrl[]|null
      */
     public function getUrls()
     {
@@ -398,7 +401,7 @@ class WhatsappMessageContact implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets urls
      *
-     * @param \YCloud\Client\Model\WhatsappMessageContactUrlsInner[]|null $urls Contact URL(s) formatted as a urls object.
+     * @param \YCloud\Client\Model\WhatsappMessageContactUrl[]|null $urls Contact URL(s) formatted as a urls object.
      *
      * @return self
      */

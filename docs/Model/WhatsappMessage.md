@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **string** | Unique ID for the object. |
-**wamid** | **string** | The native WhatsApp message ID. | [optional]
+**wamid** | **string** | The original message ID on WhatsApp&#39;s platform. | [optional]
 **waba_id** | **string** | WhatsApp Business Account ID. |
 **from** | **string** | The sender&#39;s phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format. |
 **to** | **string** | The recipient&#39;s phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format. |
@@ -17,9 +17,12 @@ Name | Type | Description | Notes
 **video** | [**\YCloud\Client\Model\WhatsappMessageMedia**](WhatsappMessageMedia.md) |  | [optional]
 **audio** | [**\YCloud\Client\Model\WhatsappMessageMedia**](WhatsappMessageMedia.md) |  | [optional]
 **document** | [**\YCloud\Client\Model\WhatsappMessageMedia**](WhatsappMessageMedia.md) |  | [optional]
+**sticker** | [**\YCloud\Client\Model\WhatsappMessageMedia**](WhatsappMessageMedia.md) |  | [optional]
 **location** | [**\YCloud\Client\Model\WhatsappMessageLocation**](WhatsappMessageLocation.md) |  | [optional]
 **interactive** | [**\YCloud\Client\Model\WhatsappMessageInteractive**](WhatsappMessageInteractive.md) |  | [optional]
 **contacts** | [**\YCloud\Client\Model\WhatsappMessageContact[]**](WhatsappMessageContact.md) |  | [optional]
+**reaction** | [**\YCloud\Client\Model\WhatsappMessageReaction**](WhatsappMessageReaction.md) |  | [optional]
+**context** | [**\YCloud\Client\Model\WhatsappMessageContext**](WhatsappMessageContext.md) |  | [optional]
 **external_id** | **string** | A unique string to reference the object. This can be an order number or similar, and can be used to reconcile the object with your internal systems. | [optional]
 **status** | [**\YCloud\Client\Model\WhatsappMessageStatus**](WhatsappMessageStatus.md) |  | [optional]
 **error_code** | **string** | Error code when the message status is &#x60;failed&#x60;. | [optional]

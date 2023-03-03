@@ -213,6 +213,12 @@ class WhatsappTemplateComponentButton implements ModelInterface, ArrayAccess, \J
     {
         $invalidProperties = [];
 
+        if ($this->container['type'] === null) {
+            $invalidProperties[] = "'type' can't be null";
+        }
+        if ($this->container['text'] === null) {
+            $invalidProperties[] = "'text' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -231,7 +237,7 @@ class WhatsappTemplateComponentButton implements ModelInterface, ArrayAccess, \J
     /**
      * Gets type
      *
-     * @return \YCloud\Client\Model\WhatsappTemplateComponentButtonType|null
+     * @return \YCloud\Client\Model\WhatsappTemplateComponentButtonType
      */
     public function getType()
     {
@@ -241,7 +247,7 @@ class WhatsappTemplateComponentButton implements ModelInterface, ArrayAccess, \J
     /**
      * Sets type
      *
-     * @param \YCloud\Client\Model\WhatsappTemplateComponentButtonType|null $type type
+     * @param \YCloud\Client\Model\WhatsappTemplateComponentButtonType $type type
      *
      * @return self
      */
@@ -255,7 +261,7 @@ class WhatsappTemplateComponentButton implements ModelInterface, ArrayAccess, \J
     /**
      * Gets text
      *
-     * @return string|null
+     * @return string
      */
     public function getText()
     {
@@ -265,7 +271,7 @@ class WhatsappTemplateComponentButton implements ModelInterface, ArrayAccess, \J
     /**
      * Sets text
      *
-     * @param string|null $text text
+     * @param string $text **Required.** Button text.
      *
      * @return self
      */
@@ -289,7 +295,7 @@ class WhatsappTemplateComponentButton implements ModelInterface, ArrayAccess, \J
     /**
      * Sets url
      *
-     * @param string|null $url url
+     * @param string|null $url **Required for button type `URL`.**  There can be at most 1 variable at the end of the URL.
      *
      * @return self
      */
@@ -313,7 +319,7 @@ class WhatsappTemplateComponentButton implements ModelInterface, ArrayAccess, \J
     /**
      * Sets phone_number
      *
-     * @param string|null $phone_number phone_number
+     * @param string|null $phone_number **Required for button type `PHONE_NUMBER`.**
      *
      * @return self
      */
@@ -337,7 +343,7 @@ class WhatsappTemplateComponentButton implements ModelInterface, ArrayAccess, \J
     /**
      * Sets example
      *
-     * @param string[]|null $example example
+     * @param string[]|null $example Sample full URL for a `URL` button with a variable.
      *
      * @return self
      */

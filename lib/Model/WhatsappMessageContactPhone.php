@@ -1,6 +1,6 @@
 <?php
 /**
- * WhatsappMessageContactEmailsInner
+ * WhatsappMessageContactPhone
  *
  * PHP version 7.4
  *
@@ -33,16 +33,15 @@ use \ArrayAccess;
 use \YCloud\Client\ObjectSerializer;
 
 /**
- * WhatsappMessageContactEmailsInner Class Doc Comment
+ * WhatsappMessageContactPhone Class Doc Comment
  *
  * @category Class
- * @description Contact email address(es) formatted as an emails object.
  * @package  YCloud\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class WhatsappMessageContactEmailsInner implements ModelInterface, ArrayAccess, \JsonSerializable
+class WhatsappMessageContactPhone implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +50,7 @@ class WhatsappMessageContactEmailsInner implements ModelInterface, ArrayAccess, 
       *
       * @var string
       */
-    protected static $openAPIModelName = 'WhatsappMessageContact_emails_inner';
+    protected static $openAPIModelName = 'WhatsappMessageContactPhone';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,8 +58,9 @@ class WhatsappMessageContactEmailsInner implements ModelInterface, ArrayAccess, 
       * @var string[]
       */
     protected static $openAPITypes = [
-        'email' => 'string',
-        'type' => 'string'
+        'phone' => 'string',
+        'type' => 'string',
+        'wa_id' => 'string'
     ];
 
     /**
@@ -71,8 +71,9 @@ class WhatsappMessageContactEmailsInner implements ModelInterface, ArrayAccess, 
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'email' => null,
-        'type' => null
+        'phone' => null,
+        'type' => null,
+        'wa_id' => null
     ];
 
     /**
@@ -102,8 +103,9 @@ class WhatsappMessageContactEmailsInner implements ModelInterface, ArrayAccess, 
      * @var string[]
      */
     protected static $attributeMap = [
-        'email' => 'email',
-        'type' => 'type'
+        'phone' => 'phone',
+        'type' => 'type',
+        'wa_id' => 'wa_id'
     ];
 
     /**
@@ -112,8 +114,9 @@ class WhatsappMessageContactEmailsInner implements ModelInterface, ArrayAccess, 
      * @var string[]
      */
     protected static $setters = [
-        'email' => 'setEmail',
-        'type' => 'setType'
+        'phone' => 'setPhone',
+        'type' => 'setType',
+        'wa_id' => 'setWaId'
     ];
 
     /**
@@ -122,8 +125,9 @@ class WhatsappMessageContactEmailsInner implements ModelInterface, ArrayAccess, 
      * @var string[]
      */
     protected static $getters = [
-        'email' => 'getEmail',
-        'type' => 'getType'
+        'phone' => 'getPhone',
+        'type' => 'getType',
+        'wa_id' => 'getWaId'
     ];
 
     /**
@@ -183,8 +187,9 @@ class WhatsappMessageContactEmailsInner implements ModelInterface, ArrayAccess, 
      */
     public function __construct(array $data = null)
     {
-        $this->container['email'] = $data['email'] ?? null;
+        $this->container['phone'] = $data['phone'] ?? null;
         $this->container['type'] = $data['type'] ?? null;
+        $this->container['wa_id'] = $data['wa_id'] ?? null;
     }
 
     /**
@@ -212,25 +217,25 @@ class WhatsappMessageContactEmailsInner implements ModelInterface, ArrayAccess, 
 
 
     /**
-     * Gets email
+     * Gets phone
      *
      * @return string|null
      */
-    public function getEmail()
+    public function getPhone()
     {
-        return $this->container['email'];
+        return $this->container['phone'];
     }
 
     /**
-     * Sets email
+     * Sets phone
      *
-     * @param string|null $email Email address.
+     * @param string|null $phone Automatically populated with the `wa_id` value as a formatted phone number.
      *
      * @return self
      */
-    public function setEmail($email)
+    public function setPhone($phone)
     {
-        $this->container['email'] = $email;
+        $this->container['phone'] = $phone;
 
         return $this;
     }
@@ -248,13 +253,37 @@ class WhatsappMessageContactEmailsInner implements ModelInterface, ArrayAccess, 
     /**
      * Sets type
      *
-     * @param string|null $type Standard values are `HOME` and `WORK`.
+     * @param string|null $type Standard Values are `CELL`, `MAIN`, `IPHONE`, `HOME`, and `WORK`.
      *
      * @return self
      */
     public function setType($type)
     {
         $this->container['type'] = $type;
+
+        return $this;
+    }
+
+    /**
+     * Gets wa_id
+     *
+     * @return string|null
+     */
+    public function getWaId()
+    {
+        return $this->container['wa_id'];
+    }
+
+    /**
+     * Sets wa_id
+     *
+     * @param string|null $wa_id WhatsApp ID.
+     *
+     * @return self
+     */
+    public function setWaId($wa_id)
+    {
+        $this->container['wa_id'] = $wa_id;
 
         return $this;
     }

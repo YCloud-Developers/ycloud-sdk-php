@@ -64,6 +64,8 @@ class WhatsappMessageType
 
     public const CONTACTS = 'contacts';
 
+    public const REACTION = 'reaction';
+
     /**
      * Gets allowable values of the enum
      * @return string[]
@@ -80,7 +82,8 @@ class WhatsappMessageType
             self::STICKER,
             self::LOCATION,
             self::INTERACTIVE,
-            self::CONTACTS
+            self::CONTACTS,
+            self::REACTION
         ];
     }
 }
