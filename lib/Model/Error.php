@@ -62,7 +62,8 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable
         'code' => 'string',
         'message' => 'string',
         'target' => 'string',
-        'doc_url' => 'string'
+        'doc_url' => 'string',
+        'request_id' => 'string'
     ];
 
     /**
@@ -77,7 +78,8 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable
         'code' => null,
         'message' => null,
         'target' => null,
-        'doc_url' => null
+        'doc_url' => null,
+        'request_id' => null
     ];
 
     /**
@@ -111,7 +113,8 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable
         'code' => 'code',
         'message' => 'message',
         'target' => 'target',
-        'doc_url' => 'docUrl'
+        'doc_url' => 'docUrl',
+        'request_id' => 'requestId'
     ];
 
     /**
@@ -124,7 +127,8 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable
         'code' => 'setCode',
         'message' => 'setMessage',
         'target' => 'setTarget',
-        'doc_url' => 'setDocUrl'
+        'doc_url' => 'setDocUrl',
+        'request_id' => 'setRequestId'
     ];
 
     /**
@@ -137,7 +141,8 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable
         'code' => 'getCode',
         'message' => 'getMessage',
         'target' => 'getTarget',
-        'doc_url' => 'getDocUrl'
+        'doc_url' => 'getDocUrl',
+        'request_id' => 'getRequestId'
     ];
 
     /**
@@ -202,6 +207,7 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['message'] = $data['message'] ?? null;
         $this->container['target'] = $data['target'] ?? null;
         $this->container['doc_url'] = $data['doc_url'] ?? null;
+        $this->container['request_id'] = $data['request_id'] ?? null;
     }
 
     /**
@@ -352,6 +358,30 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setDocUrl($doc_url)
     {
         $this->container['doc_url'] = $doc_url;
+
+        return $this;
+    }
+
+    /**
+     * Gets request_id
+     *
+     * @return string|null
+     */
+    public function getRequestId()
+    {
+        return $this->container['request_id'];
+    }
+
+    /**
+     * Sets request_id
+     *
+     * @param string|null $request_id Each API request has an associated request ID. It conveys the response header `YCloud-Request-ID` used for the convenience of the consumer.
+     *
+     * @return self
+     */
+    public function setRequestId($request_id)
+    {
+        $this->container['request_id'] = $request_id;
 
         return $this;
     }

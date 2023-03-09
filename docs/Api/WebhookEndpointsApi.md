@@ -20,7 +20,7 @@ create($webhook_endpoint_create_request): \YCloud\Client\Model\WebhookEndpoint
 
 Create a webhook endpoint
 
-Creates a webhook endpoint listening the specified events.
+Creates a webhook endpoint listening for specific events.
 
 ### Example
 

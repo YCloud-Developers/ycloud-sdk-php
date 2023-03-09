@@ -9,5 +9,6 @@ Name | Type | Description | Notes
 **message** | **string** | A human-readable representation of the error. It is intended as an aid to developers and is not suitable for exposure to end users. | [optional]
 **target** | **string** | The target of the error. | [optional]
 **doc_url** | **string** | A URL to more information about the error. | [optional]
+**request_id** | **string** | Each API request has an associated request ID. It conveys the response header &#x60;YCloud-Request-ID&#x60; used for the convenience of the consumer. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
