@@ -1,6 +1,6 @@
 <?php
 /**
- * WhatsappTemplateComponentButtonType
+ * WhatsappTemplateComponentButtonOtpType
  *
  * PHP version 7.4
  *
@@ -31,25 +31,22 @@ namespace YCloud\Client\Model;
 use \YCloud\Client\ObjectSerializer;
 
 /**
- * WhatsappTemplateComponentButtonType Class Doc Comment
+ * WhatsappTemplateComponentButtonOtpType Class Doc Comment
  *
  * @category Class
+ * @description Indicates button OTP type. Set to &#x60;COPY_CODE&#x60; if you want the template to use a copy code button, or &#x60;ONE_TAP&#x60; to have it use a one-tap autofill button.
  * @package  YCloud\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class WhatsappTemplateComponentButtonType
+class WhatsappTemplateComponentButtonOtpType
 {
     /**
      * Possible values of this enum
      */
-    public const PHONE_NUMBER = 'PHONE_NUMBER';
+    public const COPY_CODE = 'COPY_CODE';
 
-    public const URL = 'URL';
-
-    public const QUICK_REPLY = 'QUICK_REPLY';
-
-    public const OTP = 'OTP';
+    public const ONE_TAP = 'ONE_TAP';
 
     /**
      * Gets allowable values of the enum
@@ -58,10 +55,8 @@ class WhatsappTemplateComponentButtonType
     public static function getAllowableEnumValues()
     {
         return [
-            self::PHONE_NUMBER,
-            self::URL,
-            self::QUICK_REPLY,
-            self::OTP
+            self::COPY_CODE,
+            self::ONE_TAP
         ];
     }
 }

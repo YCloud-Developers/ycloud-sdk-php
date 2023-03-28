@@ -203,6 +203,7 @@ Class | Method | HTTP request | Description
 - [WhatsappTemplateCategory](docs/Model/WhatsappTemplateCategory.md)
 - [WhatsappTemplateComponent](docs/Model/WhatsappTemplateComponent.md)
 - [WhatsappTemplateComponentButton](docs/Model/WhatsappTemplateComponentButton.md)
+- [WhatsappTemplateComponentButtonOtpType](docs/Model/WhatsappTemplateComponentButtonOtpType.md)
 - [WhatsappTemplateComponentButtonType](docs/Model/WhatsappTemplateComponentButtonType.md)
 - [WhatsappTemplateComponentExample](docs/Model/WhatsappTemplateComponentExample.md)
 - [WhatsappTemplateCreateRequest](docs/Model/WhatsappTemplateCreateRequest.md)

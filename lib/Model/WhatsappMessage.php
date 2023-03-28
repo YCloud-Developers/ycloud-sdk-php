@@ -1007,7 +1007,7 @@ class WhatsappMessage implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets total_price
      *
-     * @param double|null $total_price Total price of this message.
+     * @param double|null $total_price Total price of this message. **Note: It's only an estimated price when the `status` is `accepted` or `sent`. It becomes the final price after the message is delivered, i.e., the `status` is `delivered` or `read`.**
      *
      * @return self
      */

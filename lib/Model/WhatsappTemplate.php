@@ -63,6 +63,7 @@ class WhatsappTemplate implements ModelInterface, ArrayAccess, \JsonSerializable
         'name' => 'string',
         'language' => 'string',
         'category' => '\YCloud\Client\Model\WhatsappTemplateCategory',
+        'previous_category' => 'string',
         'components' => '\YCloud\Client\Model\WhatsappTemplateComponent[]',
         'status' => '\YCloud\Client\Model\WhatsappTemplateStatus',
         'reason' => 'string',
@@ -85,6 +86,7 @@ class WhatsappTemplate implements ModelInterface, ArrayAccess, \JsonSerializable
         'name' => null,
         'language' => null,
         'category' => null,
+        'previous_category' => null,
         'components' => null,
         'status' => null,
         'reason' => null,
@@ -126,6 +128,7 @@ class WhatsappTemplate implements ModelInterface, ArrayAccess, \JsonSerializable
         'name' => 'name',
         'language' => 'language',
         'category' => 'category',
+        'previous_category' => 'previousCategory',
         'components' => 'components',
         'status' => 'status',
         'reason' => 'reason',
@@ -146,6 +149,7 @@ class WhatsappTemplate implements ModelInterface, ArrayAccess, \JsonSerializable
         'name' => 'setName',
         'language' => 'setLanguage',
         'category' => 'setCategory',
+        'previous_category' => 'setPreviousCategory',
         'components' => 'setComponents',
         'status' => 'setStatus',
         'reason' => 'setReason',
@@ -166,6 +170,7 @@ class WhatsappTemplate implements ModelInterface, ArrayAccess, \JsonSerializable
         'name' => 'getName',
         'language' => 'getLanguage',
         'category' => 'getCategory',
+        'previous_category' => 'getPreviousCategory',
         'components' => 'getComponents',
         'status' => 'getStatus',
         'reason' => 'getReason',
@@ -237,6 +242,7 @@ class WhatsappTemplate implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['name'] = $data['name'] ?? null;
         $this->container['language'] = $data['language'] ?? null;
         $this->container['category'] = $data['category'] ?? null;
+        $this->container['previous_category'] = $data['previous_category'] ?? null;
         $this->container['components'] = $data['components'] ?? null;
         $this->container['status'] = $data['status'] ?? null;
         $this->container['reason'] = $data['reason'] ?? null;
@@ -397,6 +403,30 @@ class WhatsappTemplate implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setCategory($category)
     {
         $this->container['category'] = $category;
+
+        return $this;
+    }
+
+    /**
+     * Gets previous_category
+     *
+     * @return string|null
+     */
+    public function getPreviousCategory()
+    {
+        return $this->container['previous_category'];
+    }
+
+    /**
+     * Sets previous_category
+     *
+     * @param string|null $previous_category This field indicates the template's previous category (or `null`, for newly created templates after April 1, 2023). Compare this value to the template's `category` field value, which indicates the template's current category. For more information about template category migration, see also [First template category migration](https://developers.facebook.com/docs/whatsapp/updates-to-pricing/launch-timeline#first-template-category-migration).
+     *
+     * @return self
+     */
+    public function setPreviousCategory($previous_category)
+    {
+        $this->container['previous_category'] = $previous_category;
 
         return $this;
     }

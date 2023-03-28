@@ -62,6 +62,8 @@ class WhatsappTemplateComponent implements ModelInterface, ArrayAccess, \JsonSer
         'format' => 'string',
         'text' => 'string',
         'buttons' => '\YCloud\Client\Model\WhatsappTemplateComponentButton[]',
+        'add_security_recommendation' => 'bool',
+        'code_expiration_minutes' => 'int',
         'example' => '\YCloud\Client\Model\WhatsappTemplateComponentExample'
     ];
 
@@ -77,6 +79,8 @@ class WhatsappTemplateComponent implements ModelInterface, ArrayAccess, \JsonSer
         'format' => null,
         'text' => null,
         'buttons' => null,
+        'add_security_recommendation' => null,
+        'code_expiration_minutes' => 'int32',
         'example' => null
     ];
 
@@ -111,6 +115,8 @@ class WhatsappTemplateComponent implements ModelInterface, ArrayAccess, \JsonSer
         'format' => 'format',
         'text' => 'text',
         'buttons' => 'buttons',
+        'add_security_recommendation' => 'add_security_recommendation',
+        'code_expiration_minutes' => 'code_expiration_minutes',
         'example' => 'example'
     ];
 
@@ -124,6 +130,8 @@ class WhatsappTemplateComponent implements ModelInterface, ArrayAccess, \JsonSer
         'format' => 'setFormat',
         'text' => 'setText',
         'buttons' => 'setButtons',
+        'add_security_recommendation' => 'setAddSecurityRecommendation',
+        'code_expiration_minutes' => 'setCodeExpirationMinutes',
         'example' => 'setExample'
     ];
 
@@ -137,6 +145,8 @@ class WhatsappTemplateComponent implements ModelInterface, ArrayAccess, \JsonSer
         'format' => 'getFormat',
         'text' => 'getText',
         'buttons' => 'getButtons',
+        'add_security_recommendation' => 'getAddSecurityRecommendation',
+        'code_expiration_minutes' => 'getCodeExpirationMinutes',
         'example' => 'getExample'
     ];
 
@@ -239,6 +249,8 @@ class WhatsappTemplateComponent implements ModelInterface, ArrayAccess, \JsonSer
         $this->container['format'] = $data['format'] ?? null;
         $this->container['text'] = $data['text'] ?? null;
         $this->container['buttons'] = $data['buttons'] ?? null;
+        $this->container['add_security_recommendation'] = $data['add_security_recommendation'] ?? null;
+        $this->container['code_expiration_minutes'] = $data['code_expiration_minutes'] ?? null;
         $this->container['example'] = $data['example'] ?? null;
     }
 
@@ -271,6 +283,14 @@ class WhatsappTemplateComponent implements ModelInterface, ArrayAccess, \JsonSer
 
         if (!is_null($this->container['buttons']) && (count($this->container['buttons']) > 3)) {
             $invalidProperties[] = "invalid value for 'buttons', number of items must be less than or equal to 3.";
+        }
+
+        if (!is_null($this->container['code_expiration_minutes']) && ($this->container['code_expiration_minutes'] > 90)) {
+            $invalidProperties[] = "invalid value for 'code_expiration_minutes', must be smaller than or equal to 90.";
+        }
+
+        if (!is_null($this->container['code_expiration_minutes']) && ($this->container['code_expiration_minutes'] < 1)) {
+            $invalidProperties[] = "invalid value for 'code_expiration_minutes', must be bigger than or equal to 1.";
         }
 
         return $invalidProperties;
@@ -404,6 +424,62 @@ class WhatsappTemplateComponent implements ModelInterface, ArrayAccess, \JsonSer
             throw new \InvalidArgumentException('invalid value for $buttons when calling WhatsappTemplateComponent., number of items must be less than or equal to 3.');
         }
         $this->container['buttons'] = $buttons;
+
+        return $this;
+    }
+
+    /**
+     * Gets add_security_recommendation
+     *
+     * @return bool|null
+     */
+    public function getAddSecurityRecommendation()
+    {
+        return $this->container['add_security_recommendation'];
+    }
+
+    /**
+     * Sets add_security_recommendation
+     *
+     * @param bool|null $add_security_recommendation **Optional. Only applicable in the `BODY` component of an AUTHENTICATION template.** Set to `true` if you want the template to include the string, *For your security, do not share this code.* Set to `false` to exclude the string.
+     *
+     * @return self
+     */
+    public function setAddSecurityRecommendation($add_security_recommendation)
+    {
+        $this->container['add_security_recommendation'] = $add_security_recommendation;
+
+        return $this;
+    }
+
+    /**
+     * Gets code_expiration_minutes
+     *
+     * @return int|null
+     */
+    public function getCodeExpirationMinutes()
+    {
+        return $this->container['code_expiration_minutes'];
+    }
+
+    /**
+     * Sets code_expiration_minutes
+     *
+     * @param int|null $code_expiration_minutes **Optional. Only applicable in the `FOOTER` component of an AUTHENTICATION template.** Indicates number of minutes the password or code is valid. If omitted, the code expiration warning will not be displayed in the delivered message. Minimum 1, maximum 90.
+     *
+     * @return self
+     */
+    public function setCodeExpirationMinutes($code_expiration_minutes)
+    {
+
+        if (!is_null($code_expiration_minutes) && ($code_expiration_minutes > 90)) {
+            throw new \InvalidArgumentException('invalid value for $code_expiration_minutes when calling WhatsappTemplateComponent., must be smaller than or equal to 90.');
+        }
+        if (!is_null($code_expiration_minutes) && ($code_expiration_minutes < 1)) {
+            throw new \InvalidArgumentException('invalid value for $code_expiration_minutes when calling WhatsappTemplateComponent., must be bigger than or equal to 1.');
+        }
+
+        $this->container['code_expiration_minutes'] = $code_expiration_minutes;
 
         return $this;
     }

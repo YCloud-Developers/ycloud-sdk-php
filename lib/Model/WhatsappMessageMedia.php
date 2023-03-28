@@ -257,7 +257,7 @@ class WhatsappMessageMedia implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets caption
      *
-     * @param string|null $caption Describes the specified `image`, `video`, or `document` media. Not applicable in the `header` of `interactive` messages.
+     * @param string|null $caption Describes the specified `image`, `video`, or `document` media. Not applicable in the `header` of `template` or `interactive` messages.
      *
      * @return self
      */

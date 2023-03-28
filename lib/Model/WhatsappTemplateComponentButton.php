@@ -62,6 +62,10 @@ class WhatsappTemplateComponentButton implements ModelInterface, ArrayAccess, \J
         'text' => 'string',
         'url' => 'string',
         'phone_number' => 'string',
+        'otp_type' => '\YCloud\Client\Model\WhatsappTemplateComponentButtonOtpType',
+        'autofill_text' => 'string',
+        'package_name' => 'string',
+        'signature_hash' => 'string',
         'example' => 'string[]'
     ];
 
@@ -77,6 +81,10 @@ class WhatsappTemplateComponentButton implements ModelInterface, ArrayAccess, \J
         'text' => null,
         'url' => null,
         'phone_number' => null,
+        'otp_type' => null,
+        'autofill_text' => null,
+        'package_name' => null,
+        'signature_hash' => null,
         'example' => null
     ];
 
@@ -111,6 +119,10 @@ class WhatsappTemplateComponentButton implements ModelInterface, ArrayAccess, \J
         'text' => 'text',
         'url' => 'url',
         'phone_number' => 'phone_number',
+        'otp_type' => 'otp_type',
+        'autofill_text' => 'autofill_text',
+        'package_name' => 'package_name',
+        'signature_hash' => 'signature_hash',
         'example' => 'example'
     ];
 
@@ -124,6 +136,10 @@ class WhatsappTemplateComponentButton implements ModelInterface, ArrayAccess, \J
         'text' => 'setText',
         'url' => 'setUrl',
         'phone_number' => 'setPhoneNumber',
+        'otp_type' => 'setOtpType',
+        'autofill_text' => 'setAutofillText',
+        'package_name' => 'setPackageName',
+        'signature_hash' => 'setSignatureHash',
         'example' => 'setExample'
     ];
 
@@ -137,6 +153,10 @@ class WhatsappTemplateComponentButton implements ModelInterface, ArrayAccess, \J
         'text' => 'getText',
         'url' => 'getUrl',
         'phone_number' => 'getPhoneNumber',
+        'otp_type' => 'getOtpType',
+        'autofill_text' => 'getAutofillText',
+        'package_name' => 'getPackageName',
+        'signature_hash' => 'getSignatureHash',
         'example' => 'getExample'
     ];
 
@@ -201,6 +221,10 @@ class WhatsappTemplateComponentButton implements ModelInterface, ArrayAccess, \J
         $this->container['text'] = $data['text'] ?? null;
         $this->container['url'] = $data['url'] ?? null;
         $this->container['phone_number'] = $data['phone_number'] ?? null;
+        $this->container['otp_type'] = $data['otp_type'] ?? null;
+        $this->container['autofill_text'] = $data['autofill_text'] ?? null;
+        $this->container['package_name'] = $data['package_name'] ?? null;
+        $this->container['signature_hash'] = $data['signature_hash'] ?? null;
         $this->container['example'] = $data['example'] ?? null;
     }
 
@@ -219,6 +243,10 @@ class WhatsappTemplateComponentButton implements ModelInterface, ArrayAccess, \J
         if ($this->container['text'] === null) {
             $invalidProperties[] = "'text' can't be null";
         }
+        if (!is_null($this->container['autofill_text']) && (mb_strlen($this->container['autofill_text']) > 25)) {
+            $invalidProperties[] = "invalid value for 'autofill_text', the character length must be smaller than or equal to 25.";
+        }
+
         return $invalidProperties;
     }
 
@@ -271,7 +299,7 @@ class WhatsappTemplateComponentButton implements ModelInterface, ArrayAccess, \J
     /**
      * Sets text
      *
-     * @param string $text **Required.** Button text.
+     * @param string $text **Required.** Button text. For `OTP` buttons, note that even if your template is using a one-tap autofill button, this value must still be supplied. If we are unable to validate your handshake the authentication template message will display a copy code button with this text instead. Maximum 25 characters.
      *
      * @return self
      */
@@ -326,6 +354,106 @@ class WhatsappTemplateComponentButton implements ModelInterface, ArrayAccess, \J
     public function setPhoneNumber($phone_number)
     {
         $this->container['phone_number'] = $phone_number;
+
+        return $this;
+    }
+
+    /**
+     * Gets otp_type
+     *
+     * @return \YCloud\Client\Model\WhatsappTemplateComponentButtonOtpType|null
+     */
+    public function getOtpType()
+    {
+        return $this->container['otp_type'];
+    }
+
+    /**
+     * Sets otp_type
+     *
+     * @param \YCloud\Client\Model\WhatsappTemplateComponentButtonOtpType|null $otp_type otp_type
+     *
+     * @return self
+     */
+    public function setOtpType($otp_type)
+    {
+        $this->container['otp_type'] = $otp_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets autofill_text
+     *
+     * @return string|null
+     */
+    public function getAutofillText()
+    {
+        return $this->container['autofill_text'];
+    }
+
+    /**
+     * Sets autofill_text
+     *
+     * @param string|null $autofill_text **One-tap buttons only.** One-tap button text. Maximum 25 characters.
+     *
+     * @return self
+     */
+    public function setAutofillText($autofill_text)
+    {
+        if (!is_null($autofill_text) && (mb_strlen($autofill_text) > 25)) {
+            throw new \InvalidArgumentException('invalid length for $autofill_text when calling WhatsappTemplateComponentButton., must be smaller than or equal to 25.');
+        }
+
+        $this->container['autofill_text'] = $autofill_text;
+
+        return $this;
+    }
+
+    /**
+     * Gets package_name
+     *
+     * @return string|null
+     */
+    public function getPackageName()
+    {
+        return $this->container['package_name'];
+    }
+
+    /**
+     * Sets package_name
+     *
+     * @param string|null $package_name **One-tap buttons only.** Your Android app's package name.
+     *
+     * @return self
+     */
+    public function setPackageName($package_name)
+    {
+        $this->container['package_name'] = $package_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets signature_hash
+     *
+     * @return string|null
+     */
+    public function getSignatureHash()
+    {
+        return $this->container['signature_hash'];
+    }
+
+    /**
+     * Sets signature_hash
+     *
+     * @param string|null $signature_hash **One-tap buttons only.** Your app signing key hash. See [App Signing Key Hash](https://developers.facebook.com/docs/whatsapp/business-management-api/authentication-templates#app-signing-key-hash).
+     *
+     * @return self
+     */
+    public function setSignatureHash($signature_hash)
+    {
+        $this->container['signature_hash'] = $signature_hash;
 
         return $this;
     }
