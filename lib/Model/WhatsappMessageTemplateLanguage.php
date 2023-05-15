@@ -227,7 +227,7 @@ class WhatsappMessageTemplateLanguage implements ModelInterface, ArrayAccess, \J
     /**
      * Sets code
      *
-     * @param string $code The code of the language or locale to use. Accepts both language and language_locale formats (e.g., en and en_US). See [Supported Languages](https://developers.facebook.com/docs/whatsapp/api/messages/message-templates#supported-languages-) for all codes.
+     * @param string $code The code of the language or locale to use. Accepts both language and language_locale formats (e.g., en and en_US). See [Supported Languages](https://developers.facebook.com/docs/whatsapp/api/messages/message-templates#supported-languages) for all codes.
      *
      * @return self
      */
@@ -251,7 +251,7 @@ class WhatsappMessageTemplateLanguage implements ModelInterface, ArrayAccess, \J
     /**
      * Sets policy
      *
-     * @param string|null $policy Default (and only supported option): `deterministic`.
+     * @param string|null $policy The language policy the message should follow. Default (and only supported option): `deterministic`, which means that WhatsApp delivers the message template in exactly the language and locale asked for.
      *
      * @return self
      */

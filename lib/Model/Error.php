@@ -63,7 +63,8 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable
         'message' => 'string',
         'target' => 'string',
         'doc_url' => 'string',
-        'request_id' => 'string'
+        'request_id' => 'string',
+        'whatsapp_api_error' => '\YCloud\Client\Model\WhatsappApiError'
     ];
 
     /**
@@ -79,7 +80,8 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable
         'message' => null,
         'target' => null,
         'doc_url' => null,
-        'request_id' => null
+        'request_id' => null,
+        'whatsapp_api_error' => null
     ];
 
     /**
@@ -114,7 +116,8 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable
         'message' => 'message',
         'target' => 'target',
         'doc_url' => 'docUrl',
-        'request_id' => 'requestId'
+        'request_id' => 'requestId',
+        'whatsapp_api_error' => 'whatsappApiError'
     ];
 
     /**
@@ -128,7 +131,8 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable
         'message' => 'setMessage',
         'target' => 'setTarget',
         'doc_url' => 'setDocUrl',
-        'request_id' => 'setRequestId'
+        'request_id' => 'setRequestId',
+        'whatsapp_api_error' => 'setWhatsappApiError'
     ];
 
     /**
@@ -142,7 +146,8 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable
         'message' => 'getMessage',
         'target' => 'getTarget',
         'doc_url' => 'getDocUrl',
-        'request_id' => 'getRequestId'
+        'request_id' => 'getRequestId',
+        'whatsapp_api_error' => 'getWhatsappApiError'
     ];
 
     /**
@@ -208,6 +213,7 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['target'] = $data['target'] ?? null;
         $this->container['doc_url'] = $data['doc_url'] ?? null;
         $this->container['request_id'] = $data['request_id'] ?? null;
+        $this->container['whatsapp_api_error'] = $data['whatsapp_api_error'] ?? null;
     }
 
     /**
@@ -382,6 +388,30 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setRequestId($request_id)
     {
         $this->container['request_id'] = $request_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets whatsapp_api_error
+     *
+     * @return \YCloud\Client\Model\WhatsappApiError|null
+     */
+    public function getWhatsappApiError()
+    {
+        return $this->container['whatsapp_api_error'];
+    }
+
+    /**
+     * Sets whatsapp_api_error
+     *
+     * @param \YCloud\Client\Model\WhatsappApiError|null $whatsapp_api_error whatsapp_api_error
+     *
+     * @return self
+     */
+    public function setWhatsappApiError($whatsapp_api_error)
+    {
+        $this->container['whatsapp_api_error'] = $whatsapp_api_error;
 
         return $this;
     }

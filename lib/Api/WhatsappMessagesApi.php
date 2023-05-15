@@ -427,7 +427,7 @@ class WhatsappMessagesApi
     /**
      * Operation send
      *
-     * Send a WhatsApp message
+     * Enqueue a WhatsApp message
      *
      * @param  \YCloud\Client\Model\WhatsappMessageSendRequest $whatsapp_message_send_request whatsapp_message_send_request (required)
      *
@@ -444,7 +444,7 @@ class WhatsappMessagesApi
     /**
      * Operation sendWithHttpInfo
      *
-     * Send a WhatsApp message
+     * Enqueue a WhatsApp message
      *
      * @param  \YCloud\Client\Model\WhatsappMessageSendRequest $whatsapp_message_send_request (required)
      *
@@ -543,7 +543,7 @@ class WhatsappMessagesApi
     /**
      * Operation sendAsync
      *
-     * Send a WhatsApp message
+     * Enqueue a WhatsApp message
      *
      * @param  \YCloud\Client\Model\WhatsappMessageSendRequest $whatsapp_message_send_request (required)
      *
@@ -563,7 +563,7 @@ class WhatsappMessagesApi
     /**
      * Operation sendAsyncWithHttpInfo
      *
-     * Send a WhatsApp message
+     * Enqueue a WhatsApp message
      *
      * @param  \YCloud\Client\Model\WhatsappMessageSendRequest $whatsapp_message_send_request (required)
      *
@@ -629,6 +629,289 @@ class WhatsappMessagesApi
         }
 
         $resourcePath = '/whatsapp/messages';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                ['application/json']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($whatsapp_message_send_request)) {
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($whatsapp_message_send_request));
+            } else {
+                $httpBody = $whatsapp_message_send_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('X-API-Key');
+        if ($apiKey !== null) {
+            $headers['X-API-Key'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation sendDirectly
+     *
+     * Send a WhatsApp message directly
+     *
+     * @param  \YCloud\Client\Model\WhatsappMessageSendRequest $whatsapp_message_send_request whatsapp_message_send_request (required)
+     *
+     * @throws \YCloud\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \YCloud\Client\Model\WhatsappMessage
+     */
+    public function sendDirectly($whatsapp_message_send_request)
+    {
+        list($response) = $this->sendDirectlyWithHttpInfo($whatsapp_message_send_request);
+        return $response;
+    }
+
+    /**
+     * Operation sendDirectlyWithHttpInfo
+     *
+     * Send a WhatsApp message directly
+     *
+     * @param  \YCloud\Client\Model\WhatsappMessageSendRequest $whatsapp_message_send_request (required)
+     *
+     * @throws \YCloud\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \YCloud\Client\Model\WhatsappMessage, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function sendDirectlyWithHttpInfo($whatsapp_message_send_request)
+    {
+        $request = $this->sendDirectlyRequest($whatsapp_message_send_request);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\YCloud\Client\Model\WhatsappMessage' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\YCloud\Client\Model\WhatsappMessage' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\YCloud\Client\Model\WhatsappMessage', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\YCloud\Client\Model\WhatsappMessage';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\YCloud\Client\Model\WhatsappMessage',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation sendDirectlyAsync
+     *
+     * Send a WhatsApp message directly
+     *
+     * @param  \YCloud\Client\Model\WhatsappMessageSendRequest $whatsapp_message_send_request (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function sendDirectlyAsync($whatsapp_message_send_request)
+    {
+        return $this->sendDirectlyAsyncWithHttpInfo($whatsapp_message_send_request)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation sendDirectlyAsyncWithHttpInfo
+     *
+     * Send a WhatsApp message directly
+     *
+     * @param  \YCloud\Client\Model\WhatsappMessageSendRequest $whatsapp_message_send_request (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function sendDirectlyAsyncWithHttpInfo($whatsapp_message_send_request)
+    {
+        $returnType = '\YCloud\Client\Model\WhatsappMessage';
+        $request = $this->sendDirectlyRequest($whatsapp_message_send_request);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'sendDirectly'
+     *
+     * @param  \YCloud\Client\Model\WhatsappMessageSendRequest $whatsapp_message_send_request (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function sendDirectlyRequest($whatsapp_message_send_request)
+    {
+        // verify the required parameter 'whatsapp_message_send_request' is set
+        if ($whatsapp_message_send_request === null || (is_array($whatsapp_message_send_request) && count($whatsapp_message_send_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $whatsapp_message_send_request when calling sendDirectly'
+            );
+        }
+
+        $resourcePath = '/whatsapp/messages/sendDirectly';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];

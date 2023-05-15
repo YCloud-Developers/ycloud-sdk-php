@@ -162,7 +162,7 @@ $apiInstance = new YCloud\Client\Api\WhatsappTemplatesApi(
 );
 $waba_id = whatsapp-business-account-id; // string | WhatsApp Business Account ID.
 $name = sample_whatsapp_template; // string | Name of the template.
-$language = en; // string | Language code of the template. See [Supported Languages](https://developers.facebook.com/docs/whatsapp/api/messages/message-templates#supported-languages-) for all codes.
+$language = en; // string | Language code of the template. See [Supported Languages](https://developers.facebook.com/docs/whatsapp/api/messages/message-templates#supported-languages) for all codes.
 $whatsapp_template_edit_request = new \YCloud\Client\Model\WhatsappTemplateEditRequest(); // \YCloud\Client\Model\WhatsappTemplateEditRequest
 
 try {
@@ -179,7 +179,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **waba_id** | **string**| WhatsApp Business Account ID. |
  **name** | **string**| Name of the template. |
- **language** | **string**| Language code of the template. See [Supported Languages](https://developers.facebook.com/docs/whatsapp/api/messages/message-templates#supported-languages-) for all codes. |
+ **language** | **string**| Language code of the template. See [Supported Languages](https://developers.facebook.com/docs/whatsapp/api/messages/message-templates#supported-languages) for all codes. |
  **whatsapp_template_edit_request** | [**\YCloud\Client\Model\WhatsappTemplateEditRequest**](../Model/WhatsappTemplateEditRequest.md)|  | [optional]
 
 ### Return type
@@ -300,7 +300,7 @@ $apiInstance = new YCloud\Client\Api\WhatsappTemplatesApi(
 );
 $waba_id = whatsapp-business-account-id; // string | WhatsApp Business Account ID.
 $name = sample_whatsapp_template; // string | Name of the template.
-$language = en; // string | Language code of the template. See [Supported Languages](https://developers.facebook.com/docs/whatsapp/api/messages/message-templates#supported-languages-) for all codes.
+$language = en; // string | Language code of the template. See [Supported Languages](https://developers.facebook.com/docs/whatsapp/api/messages/message-templates#supported-languages) for all codes.
 
 try {
     $result = $apiInstance->retrieveByNameAndLanguage($waba_id, $name, $language);
@@ -316,7 +316,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **waba_id** | **string**| WhatsApp Business Account ID. |
  **name** | **string**| Name of the template. |
- **language** | **string**| Language code of the template. See [Supported Languages](https://developers.facebook.com/docs/whatsapp/api/messages/message-templates#supported-languages-) for all codes. |
+ **language** | **string**| Language code of the template. See [Supported Languages](https://developers.facebook.com/docs/whatsapp/api/messages/message-templates#supported-languages) for all codes. |
 
 ### Return type
 

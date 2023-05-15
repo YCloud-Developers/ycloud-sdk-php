@@ -71,7 +71,8 @@ class WhatsappPhoneNumber implements ModelInterface, ArrayAccess, \JsonSerializa
         'new_name_status' => '\YCloud\Client\Model\WhatsappPhoneNumberNameStatus',
         'decision' => '\YCloud\Client\Model\WhatsappReviewDecision',
         'requested_verified_name' => 'string',
-        'rejection_reason' => 'string'
+        'rejection_reason' => 'string',
+        'quality_update_event' => '\YCloud\Client\Model\WhatsappPhoneNumberQualityUpdateEventEnum'
     ];
 
     /**
@@ -94,7 +95,8 @@ class WhatsappPhoneNumber implements ModelInterface, ArrayAccess, \JsonSerializa
         'new_name_status' => null,
         'decision' => null,
         'requested_verified_name' => null,
-        'rejection_reason' => null
+        'rejection_reason' => null,
+        'quality_update_event' => null
     ];
 
     /**
@@ -136,7 +138,8 @@ class WhatsappPhoneNumber implements ModelInterface, ArrayAccess, \JsonSerializa
         'new_name_status' => 'newNameStatus',
         'decision' => 'decision',
         'requested_verified_name' => 'requestedVerifiedName',
-        'rejection_reason' => 'rejectionReason'
+        'rejection_reason' => 'rejectionReason',
+        'quality_update_event' => 'qualityUpdateEvent'
     ];
 
     /**
@@ -157,7 +160,8 @@ class WhatsappPhoneNumber implements ModelInterface, ArrayAccess, \JsonSerializa
         'new_name_status' => 'setNewNameStatus',
         'decision' => 'setDecision',
         'requested_verified_name' => 'setRequestedVerifiedName',
-        'rejection_reason' => 'setRejectionReason'
+        'rejection_reason' => 'setRejectionReason',
+        'quality_update_event' => 'setQualityUpdateEvent'
     ];
 
     /**
@@ -178,7 +182,8 @@ class WhatsappPhoneNumber implements ModelInterface, ArrayAccess, \JsonSerializa
         'new_name_status' => 'getNewNameStatus',
         'decision' => 'getDecision',
         'requested_verified_name' => 'getRequestedVerifiedName',
-        'rejection_reason' => 'getRejectionReason'
+        'rejection_reason' => 'getRejectionReason',
+        'quality_update_event' => 'getQualityUpdateEvent'
     ];
 
     /**
@@ -251,6 +256,7 @@ class WhatsappPhoneNumber implements ModelInterface, ArrayAccess, \JsonSerializa
         $this->container['decision'] = $data['decision'] ?? null;
         $this->container['requested_verified_name'] = $data['requested_verified_name'] ?? null;
         $this->container['rejection_reason'] = $data['rejection_reason'] ?? null;
+        $this->container['quality_update_event'] = $data['quality_update_event'] ?? null;
     }
 
     /**
@@ -386,7 +392,7 @@ class WhatsappPhoneNumber implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets messaging_limit
      *
-     * @param string|null $messaging_limit Messaging limits determine the maximum number of business-initiated conversations each phone number can start in a rolling 24-hour period. See also [Messaging Limits](https://developers.facebook.com/docs/whatsapp/messaging-limits#messaging-limits). - `TIER_50`: 50 business-initiated conversations in a rolling 24-hour period. - `TIER_250`: 250 business-initiated conversations in a rolling 24-hour period. - `TIER_1K`: 1K business-initiated conversations with unique customers in a rolling 24-hour period. - `TIER_10K`: 10K business-initiated conversations with unique customers in a rolling 24-hour period. - `TIER_100K`: 100K business-initiated conversations with unique customers in a rolling 24-hour period. - `TIER_UNLIMITED`: An unlimited number of business-initiated conversations in a rolling 24-hour period.
+     * @param string|null $messaging_limit Messaging limits determine the maximum number of business-initiated conversations each phone number can start in a rolling 24-hour period. See also [Messaging Limits](https://developers.facebook.com/docs/whatsapp/messaging-limits#messaging-limits). - `TIER_NOT_SET`: Unknown limit. - `TIER_50`: 50 business-initiated conversations in a rolling 24-hour period. - `TIER_250`: 250 business-initiated conversations in a rolling 24-hour period. - `TIER_1K`: 1K business-initiated conversations with unique customers in a rolling 24-hour period. - `TIER_10K`: 10K business-initiated conversations with unique customers in a rolling 24-hour period. - `TIER_100K`: 100K business-initiated conversations with unique customers in a rolling 24-hour period. - `TIER_UNLIMITED`: An unlimited number of business-initiated conversations in a rolling 24-hour period.
      *
      * @return self
      */
@@ -585,6 +591,30 @@ class WhatsappPhoneNumber implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setRejectionReason($rejection_reason)
     {
         $this->container['rejection_reason'] = $rejection_reason;
+
+        return $this;
+    }
+
+    /**
+     * Gets quality_update_event
+     *
+     * @return \YCloud\Client\Model\WhatsappPhoneNumberQualityUpdateEventEnum|null
+     */
+    public function getQualityUpdateEvent()
+    {
+        return $this->container['quality_update_event'];
+    }
+
+    /**
+     * Sets quality_update_event
+     *
+     * @param \YCloud\Client\Model\WhatsappPhoneNumberQualityUpdateEventEnum|null $quality_update_event quality_update_event
+     *
+     * @return self
+     */
+    public function setQualityUpdateEvent($quality_update_event)
+    {
+        $this->container['quality_update_event'] = $quality_update_event;
 
         return $this;
     }

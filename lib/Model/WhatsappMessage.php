@@ -84,6 +84,9 @@ class WhatsappMessage implements ModelInterface, ArrayAccess, \JsonSerializable
         'error_message' => 'string',
         'create_time' => '\DateTime',
         'update_time' => '\DateTime',
+        'send_time' => '\DateTime',
+        'deliver_time' => '\DateTime',
+        'read_time' => '\DateTime',
         'total_price' => 'double',
         'currency' => 'string',
         'whatsapp_api_error' => '\YCloud\Client\Model\WhatsappApiError',
@@ -124,6 +127,9 @@ class WhatsappMessage implements ModelInterface, ArrayAccess, \JsonSerializable
         'error_message' => null,
         'create_time' => 'date-time',
         'update_time' => 'date-time',
+        'send_time' => 'date-time',
+        'deliver_time' => 'date-time',
+        'read_time' => 'date-time',
         'total_price' => 'double',
         'currency' => null,
         'whatsapp_api_error' => null,
@@ -183,6 +189,9 @@ class WhatsappMessage implements ModelInterface, ArrayAccess, \JsonSerializable
         'error_message' => 'errorMessage',
         'create_time' => 'createTime',
         'update_time' => 'updateTime',
+        'send_time' => 'sendTime',
+        'deliver_time' => 'deliverTime',
+        'read_time' => 'readTime',
         'total_price' => 'totalPrice',
         'currency' => 'currency',
         'whatsapp_api_error' => 'whatsappApiError',
@@ -221,6 +230,9 @@ class WhatsappMessage implements ModelInterface, ArrayAccess, \JsonSerializable
         'error_message' => 'setErrorMessage',
         'create_time' => 'setCreateTime',
         'update_time' => 'setUpdateTime',
+        'send_time' => 'setSendTime',
+        'deliver_time' => 'setDeliverTime',
+        'read_time' => 'setReadTime',
         'total_price' => 'setTotalPrice',
         'currency' => 'setCurrency',
         'whatsapp_api_error' => 'setWhatsappApiError',
@@ -259,6 +271,9 @@ class WhatsappMessage implements ModelInterface, ArrayAccess, \JsonSerializable
         'error_message' => 'getErrorMessage',
         'create_time' => 'getCreateTime',
         'update_time' => 'getUpdateTime',
+        'send_time' => 'getSendTime',
+        'deliver_time' => 'getDeliverTime',
+        'read_time' => 'getReadTime',
         'total_price' => 'getTotalPrice',
         'currency' => 'getCurrency',
         'whatsapp_api_error' => 'getWhatsappApiError',
@@ -348,6 +363,9 @@ class WhatsappMessage implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['error_message'] = $data['error_message'] ?? null;
         $this->container['create_time'] = $data['create_time'] ?? null;
         $this->container['update_time'] = $data['update_time'] ?? null;
+        $this->container['send_time'] = $data['send_time'] ?? null;
+        $this->container['deliver_time'] = $data['deliver_time'] ?? null;
+        $this->container['read_time'] = $data['read_time'] ?? null;
         $this->container['total_price'] = $data['total_price'] ?? null;
         $this->container['currency'] = $data['currency'] ?? null;
         $this->container['whatsapp_api_error'] = $data['whatsapp_api_error'] ?? null;
@@ -990,6 +1008,78 @@ class WhatsappMessage implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setUpdateTime($update_time)
     {
         $this->container['update_time'] = $update_time;
+
+        return $this;
+    }
+
+    /**
+     * Gets send_time
+     *
+     * @return \DateTime|null
+     */
+    public function getSendTime()
+    {
+        return $this->container['send_time'];
+    }
+
+    /**
+     * Sets send_time
+     *
+     * @param \DateTime|null $send_time The time at which this message `status` changed to `sent`, formatted in [RFC 3339](https://datatracker.ietf.org/doc/html/rfc3339). e.g., `2022-06-01T12:00:00.000Z`.
+     *
+     * @return self
+     */
+    public function setSendTime($send_time)
+    {
+        $this->container['send_time'] = $send_time;
+
+        return $this;
+    }
+
+    /**
+     * Gets deliver_time
+     *
+     * @return \DateTime|null
+     */
+    public function getDeliverTime()
+    {
+        return $this->container['deliver_time'];
+    }
+
+    /**
+     * Sets deliver_time
+     *
+     * @param \DateTime|null $deliver_time The time at which this message `status` changed to `delivered`, formatted in [RFC 3339](https://datatracker.ietf.org/doc/html/rfc3339). e.g., `2022-06-01T12:00:00.000Z`.
+     *
+     * @return self
+     */
+    public function setDeliverTime($deliver_time)
+    {
+        $this->container['deliver_time'] = $deliver_time;
+
+        return $this;
+    }
+
+    /**
+     * Gets read_time
+     *
+     * @return \DateTime|null
+     */
+    public function getReadTime()
+    {
+        return $this->container['read_time'];
+    }
+
+    /**
+     * Sets read_time
+     *
+     * @param \DateTime|null $read_time The time at which this message `status` changed to `read`, formatted in [RFC 3339](https://datatracker.ietf.org/doc/html/rfc3339). e.g., `2022-06-01T12:00:00.000Z`.
+     *
+     * @return self
+     */
+    public function setReadTime($read_time)
+    {
+        $this->container['read_time'] = $read_time;
 
         return $this;
     }
