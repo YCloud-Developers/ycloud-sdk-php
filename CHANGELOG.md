@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.8.1 (2023-05-16)
+
+- Support deleting a WhatsApp template by name and language.
+
 ## 1.8.0 (2023-05-15)
 
 - Add WhatsApp messaging API `/v2/whatsapp/messages/sendDirectly`.

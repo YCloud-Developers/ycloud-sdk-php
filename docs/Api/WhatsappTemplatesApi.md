@@ -6,6 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**create()**](WhatsappTemplatesApi.md#create) | **POST** /whatsapp/templates | Create a WhatsApp template
 [**deleteByName()**](WhatsappTemplatesApi.md#deleteByName) | **DELETE** /whatsapp/templates/{wabaId}/{name} | Delete WhatsApp templates by name
+[**deleteByNameAndLanguage()**](WhatsappTemplatesApi.md#deleteByNameAndLanguage) | **DELETE** /whatsapp/templates/{wabaId}/{name}/{language} | Delete a WhatsApp template
 [**editByNameAndLanguage()**](WhatsappTemplatesApi.md#editByNameAndLanguage) | **PATCH** /whatsapp/templates/{wabaId}/{name}/{language} | Edit a WhatsApp template
 [**list()**](WhatsappTemplatesApi.md#list) | **GET** /whatsapp/templates | List WhatsApp templates
 [**retrieveByNameAndLanguage()**](WhatsappTemplatesApi.md#retrieveByNameAndLanguage) | **GET** /whatsapp/templates/{wabaId}/{name}/{language} | Retrieve a WhatsApp template
@@ -119,6 +120,70 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**\YCloud\Client\Model\WhatsappTemplate[]**](../Model/WhatsappTemplate.md)
+
+### Authorization
+
+[api_key](../../README.md#api_key)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `deleteByNameAndLanguage()`
+
+```php
+deleteByNameAndLanguage($waba_id, $name, $language): \YCloud\Client\Model\WhatsappTemplate
+```
+
+Delete a WhatsApp template
+
+Deletes a WhatsApp template by name and language.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: api_key
+$config = YCloud\Client\Configuration::getDefaultConfiguration()->setApiKey('X-API-Key', 'YOUR_API_KEY');
+
+
+$apiInstance = new YCloud\Client\Api\WhatsappTemplatesApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$waba_id = whatsapp-business-account-id; // string | WhatsApp Business Account ID.
+$name = sample_whatsapp_template; // string | Name of the template.
+$language = en; // string | Language code of the template. See [Supported Languages](https://developers.facebook.com/docs/whatsapp/api/messages/message-templates#supported-languages) for all codes.
+
+try {
+    $result = $apiInstance->deleteByNameAndLanguage($waba_id, $name, $language);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling WhatsappTemplatesApi->deleteByNameAndLanguage: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **waba_id** | **string**| WhatsApp Business Account ID. |
+ **name** | **string**| Name of the template. |
+ **language** | **string**| Language code of the template. See [Supported Languages](https://developers.facebook.com/docs/whatsapp/api/messages/message-templates#supported-languages) for all codes. |
+
+### Return type
+
+[**\YCloud\Client\Model\WhatsappTemplate**](../Model/WhatsappTemplate.md)
 
 ### Authorization
 

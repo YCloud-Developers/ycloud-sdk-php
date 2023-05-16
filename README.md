@@ -97,6 +97,7 @@ Class | Method | HTTP request | Description
 *WhatsappPhoneNumbersApi* | [**updateProfile**](docs/Api/WhatsappPhoneNumbersApi.md#updateprofile) | **PATCH** /whatsapp/phoneNumbers/{wabaId}/{phoneNumber}/profile | Update a WhatsApp phone number profile
 *WhatsappTemplatesApi* | [**create**](docs/Api/WhatsappTemplatesApi.md#create) | **POST** /whatsapp/templates | Create a WhatsApp template
 *WhatsappTemplatesApi* | [**deleteByName**](docs/Api/WhatsappTemplatesApi.md#deletebyname) | **DELETE** /whatsapp/templates/{wabaId}/{name} | Delete WhatsApp templates by name
+*WhatsappTemplatesApi* | [**deleteByNameAndLanguage**](docs/Api/WhatsappTemplatesApi.md#deletebynameandlanguage) | **DELETE** /whatsapp/templates/{wabaId}/{name}/{language} | Delete a WhatsApp template
 *WhatsappTemplatesApi* | [**editByNameAndLanguage**](docs/Api/WhatsappTemplatesApi.md#editbynameandlanguage) | **PATCH** /whatsapp/templates/{wabaId}/{name}/{language} | Edit a WhatsApp template
 *WhatsappTemplatesApi* | [**list**](docs/Api/WhatsappTemplatesApi.md#list) | **GET** /whatsapp/templates | List WhatsApp templates
 *WhatsappTemplatesApi* | [**retrieveByNameAndLanguage**](docs/Api/WhatsappTemplatesApi.md#retrievebynameandlanguage) | **GET** /whatsapp/templates/{wabaId}/{name}/{language} | Retrieve a WhatsApp template
