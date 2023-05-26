@@ -66,6 +66,8 @@ class EventType
 
     public const WHATSAPP_TEMPLATE_CATEGORY_UPDATED = 'whatsapp.template.category_updated';
 
+    public const WHATSAPP_TEMPLATE_QUALITY_UPDATED = 'whatsapp.template.quality_updated';
+
     public const WHATSAPP_TEMPLATE_REVIEWED = 'whatsapp.template.reviewed';
 
     /**
@@ -86,6 +88,7 @@ class EventType
             self::WHATSAPP_PHONE_NUMBER_NAME_UPDATED,
             self::WHATSAPP_PHONE_NUMBER_QUALITY_UPDATED,
             self::WHATSAPP_TEMPLATE_CATEGORY_UPDATED,
+            self::WHATSAPP_TEMPLATE_QUALITY_UPDATED,
             self::WHATSAPP_TEMPLATE_REVIEWED
         ];
     }

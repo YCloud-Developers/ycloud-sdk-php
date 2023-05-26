@@ -66,6 +66,7 @@ class WhatsappTemplate implements ModelInterface, ArrayAccess, \JsonSerializable
         'previous_category' => 'string',
         'components' => '\YCloud\Client\Model\WhatsappTemplateComponent[]',
         'status' => '\YCloud\Client\Model\WhatsappTemplateStatus',
+        'quality_rating' => '\YCloud\Client\Model\WhatsappTemplateQualityRating',
         'reason' => 'string',
         'create_time' => '\DateTime',
         'update_time' => '\DateTime',
@@ -89,6 +90,7 @@ class WhatsappTemplate implements ModelInterface, ArrayAccess, \JsonSerializable
         'previous_category' => null,
         'components' => null,
         'status' => null,
+        'quality_rating' => null,
         'reason' => null,
         'create_time' => 'date-time',
         'update_time' => 'date-time',
@@ -131,6 +133,7 @@ class WhatsappTemplate implements ModelInterface, ArrayAccess, \JsonSerializable
         'previous_category' => 'previousCategory',
         'components' => 'components',
         'status' => 'status',
+        'quality_rating' => 'qualityRating',
         'reason' => 'reason',
         'create_time' => 'createTime',
         'update_time' => 'updateTime',
@@ -152,6 +155,7 @@ class WhatsappTemplate implements ModelInterface, ArrayAccess, \JsonSerializable
         'previous_category' => 'setPreviousCategory',
         'components' => 'setComponents',
         'status' => 'setStatus',
+        'quality_rating' => 'setQualityRating',
         'reason' => 'setReason',
         'create_time' => 'setCreateTime',
         'update_time' => 'setUpdateTime',
@@ -173,6 +177,7 @@ class WhatsappTemplate implements ModelInterface, ArrayAccess, \JsonSerializable
         'previous_category' => 'getPreviousCategory',
         'components' => 'getComponents',
         'status' => 'getStatus',
+        'quality_rating' => 'getQualityRating',
         'reason' => 'getReason',
         'create_time' => 'getCreateTime',
         'update_time' => 'getUpdateTime',
@@ -245,6 +250,7 @@ class WhatsappTemplate implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['previous_category'] = $data['previous_category'] ?? null;
         $this->container['components'] = $data['components'] ?? null;
         $this->container['status'] = $data['status'] ?? null;
+        $this->container['quality_rating'] = $data['quality_rating'] ?? null;
         $this->container['reason'] = $data['reason'] ?? null;
         $this->container['create_time'] = $data['create_time'] ?? null;
         $this->container['update_time'] = $data['update_time'] ?? null;
@@ -480,6 +486,30 @@ class WhatsappTemplate implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setStatus($status)
     {
         $this->container['status'] = $status;
+
+        return $this;
+    }
+
+    /**
+     * Gets quality_rating
+     *
+     * @return \YCloud\Client\Model\WhatsappTemplateQualityRating|null
+     */
+    public function getQualityRating()
+    {
+        return $this->container['quality_rating'];
+    }
+
+    /**
+     * Sets quality_rating
+     *
+     * @param \YCloud\Client\Model\WhatsappTemplateQualityRating|null $quality_rating quality_rating
+     *
+     * @return self
+     */
+    public function setQualityRating($quality_rating)
+    {
+        $this->container['quality_rating'] = $quality_rating;
 
         return $this;
     }

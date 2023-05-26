@@ -212,6 +212,7 @@ Class | Method | HTTP request | Description
 - [WhatsappTemplateCreateRequest](docs/Model/WhatsappTemplateCreateRequest.md)
 - [WhatsappTemplateEditRequest](docs/Model/WhatsappTemplateEditRequest.md)
 - [WhatsappTemplatePage](docs/Model/WhatsappTemplatePage.md)
+- [WhatsappTemplateQualityRating](docs/Model/WhatsappTemplateQualityRating.md)
 - [WhatsappTemplateStatus](docs/Model/WhatsappTemplateStatus.md)
 - [WhatsappTemplateStatusUpdateEventEnum](docs/Model/WhatsappTemplateStatusUpdateEventEnum.md)
 
