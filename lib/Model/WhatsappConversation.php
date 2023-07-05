@@ -60,6 +60,7 @@ class WhatsappConversation implements ModelInterface, ArrayAccess, \JsonSerializ
       */
     protected static $openAPITypes = [
         'id' => 'string',
+        'type' => '\YCloud\Client\Model\WhatsappConversationType',
         'origin_type' => '\YCloud\Client\Model\WhatsappConversationOriginType',
         'expire_time' => '\DateTime'
     ];
@@ -73,6 +74,7 @@ class WhatsappConversation implements ModelInterface, ArrayAccess, \JsonSerializ
       */
     protected static $openAPIFormats = [
         'id' => null,
+        'type' => null,
         'origin_type' => null,
         'expire_time' => 'date-time'
     ];
@@ -105,6 +107,7 @@ class WhatsappConversation implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     protected static $attributeMap = [
         'id' => 'id',
+        'type' => 'type',
         'origin_type' => 'originType',
         'expire_time' => 'expireTime'
     ];
@@ -116,6 +119,7 @@ class WhatsappConversation implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     protected static $setters = [
         'id' => 'setId',
+        'type' => 'setType',
         'origin_type' => 'setOriginType',
         'expire_time' => 'setExpireTime'
     ];
@@ -127,6 +131,7 @@ class WhatsappConversation implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     protected static $getters = [
         'id' => 'getId',
+        'type' => 'getType',
         'origin_type' => 'getOriginType',
         'expire_time' => 'getExpireTime'
     ];
@@ -189,6 +194,7 @@ class WhatsappConversation implements ModelInterface, ArrayAccess, \JsonSerializ
     public function __construct(array $data = null)
     {
         $this->container['id'] = $data['id'] ?? null;
+        $this->container['type'] = $data['type'] ?? null;
         $this->container['origin_type'] = $data['origin_type'] ?? null;
         $this->container['expire_time'] = $data['expire_time'] ?? null;
     }
@@ -237,6 +243,30 @@ class WhatsappConversation implements ModelInterface, ArrayAccess, \JsonSerializ
     public function setId($id)
     {
         $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Gets type
+     *
+     * @return \YCloud\Client\Model\WhatsappConversationType|null
+     */
+    public function getType()
+    {
+        return $this->container['type'];
+    }
+
+    /**
+     * Sets type
+     *
+     * @param \YCloud\Client\Model\WhatsappConversationType|null $type type
+     *
+     * @return self
+     */
+    public function setType($type)
+    {
+        $this->container['type'] = $type;
 
         return $this;
     }

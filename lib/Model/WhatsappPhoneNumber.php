@@ -66,6 +66,7 @@ class WhatsappPhoneNumber implements ModelInterface, ArrayAccess, \JsonSerializa
         'messaging_limit' => 'string',
         'verified_name' => 'string',
         'code_verification_status' => '\YCloud\Client\Model\WhatsappPhoneNumberCodeVerificationStatus',
+        'is_official_business_account' => 'bool',
         'status' => '\YCloud\Client\Model\WhatsappPhoneNumberStatus',
         'name_status' => '\YCloud\Client\Model\WhatsappPhoneNumberNameStatus',
         'new_name_status' => '\YCloud\Client\Model\WhatsappPhoneNumberNameStatus',
@@ -90,6 +91,7 @@ class WhatsappPhoneNumber implements ModelInterface, ArrayAccess, \JsonSerializa
         'messaging_limit' => null,
         'verified_name' => null,
         'code_verification_status' => null,
+        'is_official_business_account' => null,
         'status' => null,
         'name_status' => null,
         'new_name_status' => null,
@@ -133,6 +135,7 @@ class WhatsappPhoneNumber implements ModelInterface, ArrayAccess, \JsonSerializa
         'messaging_limit' => 'messagingLimit',
         'verified_name' => 'verifiedName',
         'code_verification_status' => 'codeVerificationStatus',
+        'is_official_business_account' => 'isOfficialBusinessAccount',
         'status' => 'status',
         'name_status' => 'nameStatus',
         'new_name_status' => 'newNameStatus',
@@ -155,6 +158,7 @@ class WhatsappPhoneNumber implements ModelInterface, ArrayAccess, \JsonSerializa
         'messaging_limit' => 'setMessagingLimit',
         'verified_name' => 'setVerifiedName',
         'code_verification_status' => 'setCodeVerificationStatus',
+        'is_official_business_account' => 'setIsOfficialBusinessAccount',
         'status' => 'setStatus',
         'name_status' => 'setNameStatus',
         'new_name_status' => 'setNewNameStatus',
@@ -177,6 +181,7 @@ class WhatsappPhoneNumber implements ModelInterface, ArrayAccess, \JsonSerializa
         'messaging_limit' => 'getMessagingLimit',
         'verified_name' => 'getVerifiedName',
         'code_verification_status' => 'getCodeVerificationStatus',
+        'is_official_business_account' => 'getIsOfficialBusinessAccount',
         'status' => 'getStatus',
         'name_status' => 'getNameStatus',
         'new_name_status' => 'getNewNameStatus',
@@ -250,6 +255,7 @@ class WhatsappPhoneNumber implements ModelInterface, ArrayAccess, \JsonSerializa
         $this->container['messaging_limit'] = $data['messaging_limit'] ?? null;
         $this->container['verified_name'] = $data['verified_name'] ?? null;
         $this->container['code_verification_status'] = $data['code_verification_status'] ?? null;
+        $this->container['is_official_business_account'] = $data['is_official_business_account'] ?? null;
         $this->container['status'] = $data['status'] ?? null;
         $this->container['name_status'] = $data['name_status'] ?? null;
         $this->container['new_name_status'] = $data['new_name_status'] ?? null;
@@ -447,6 +453,30 @@ class WhatsappPhoneNumber implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setCodeVerificationStatus($code_verification_status)
     {
         $this->container['code_verification_status'] = $code_verification_status;
+
+        return $this;
+    }
+
+    /**
+     * Gets is_official_business_account
+     *
+     * @return bool|null
+     */
+    public function getIsOfficialBusinessAccount()
+    {
+        return $this->container['is_official_business_account'];
+    }
+
+    /**
+     * Sets is_official_business_account
+     *
+     * @param bool|null $is_official_business_account Whether this phone number is an official business account or not. An official business account has a green checkmark badge in its profile and chat thread headers. See [Official Business Account](https://developers.facebook.com/docs/whatsapp/overview/business-accounts#official-business-account) for more information.
+     *
+     * @return self
+     */
+    public function setIsOfficialBusinessAccount($is_official_business_account)
+    {
+        $this->container['is_official_business_account'] = $is_official_business_account;
 
         return $this;
     }

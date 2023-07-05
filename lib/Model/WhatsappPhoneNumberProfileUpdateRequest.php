@@ -441,7 +441,7 @@ class WhatsappPhoneNumberProfileUpdateRequest implements ModelInterface, ArrayAc
     /**
      * Sets websites
      *
-     * @param string[]|null $websites The URLs associated with the business. For instance, a website, Facebook Page, or Instagram. You must include the http:// or https:// portion of the URL. There is a maximum of 2 websites with a maximum of 256 characters each.
+     * @param string[]|null $websites The URLs associated with the business. For instance, a website, Facebook Page, or Instagram. You must include the http:// or https:// portion of the URL. There is a maximum of 2 websites with a maximum of 255 characters each.
      *
      * @return self
      */

@@ -144,6 +144,7 @@ Class | Method | HTTP request | Description
 - [WhatsappBusinessAccountUpdateEventEnum](docs/Model/WhatsappBusinessAccountUpdateEventEnum.md)
 - [WhatsappConversation](docs/Model/WhatsappConversation.md)
 - [WhatsappConversationOriginType](docs/Model/WhatsappConversationOriginType.md)
+- [WhatsappConversationType](docs/Model/WhatsappConversationType.md)
 - [WhatsappInboundMessage](docs/Model/WhatsappInboundMessage.md)
 - [WhatsappInboundMessageButton](docs/Model/WhatsappInboundMessageButton.md)
 - [WhatsappInboundMessageContext](docs/Model/WhatsappInboundMessageContext.md)
