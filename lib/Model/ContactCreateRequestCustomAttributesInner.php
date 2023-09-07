@@ -1,6 +1,6 @@
 <?php
 /**
- * WhatsappMessageInteractiveFooter
+ * ContactCreateRequestCustomAttributesInner
  *
  * PHP version 7.4
  *
@@ -33,16 +33,15 @@ use \ArrayAccess;
 use \YCloud\Client\ObjectSerializer;
 
 /**
- * WhatsappMessageInteractiveFooter Class Doc Comment
+ * ContactCreateRequestCustomAttributesInner Class Doc Comment
  *
  * @category Class
- * @description Optional. An object with the footer of the message. See also [WhatsApp Footer Object](https://developers.facebook.com/docs/whatsapp/cloud-api/reference/messages#footer-object).
  * @package  YCloud\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class WhatsappMessageInteractiveFooter implements ModelInterface, ArrayAccess, \JsonSerializable
+class ContactCreateRequestCustomAttributesInner implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +50,7 @@ class WhatsappMessageInteractiveFooter implements ModelInterface, ArrayAccess, \
       *
       * @var string
       */
-    protected static $openAPIModelName = 'WhatsappMessageInteractiveFooter';
+    protected static $openAPIModelName = 'ContactCreateRequest_customAttributes_inner';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,7 +58,8 @@ class WhatsappMessageInteractiveFooter implements ModelInterface, ArrayAccess, \
       * @var string[]
       */
     protected static $openAPITypes = [
-        'text' => 'string'
+        'name' => 'string',
+        'value' => 'object'
     ];
 
     /**
@@ -70,7 +70,8 @@ class WhatsappMessageInteractiveFooter implements ModelInterface, ArrayAccess, \
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'text' => null
+        'name' => null,
+        'value' => null
     ];
 
     /**
@@ -100,7 +101,8 @@ class WhatsappMessageInteractiveFooter implements ModelInterface, ArrayAccess, \
      * @var string[]
      */
     protected static $attributeMap = [
-        'text' => 'text'
+        'name' => 'name',
+        'value' => 'value'
     ];
 
     /**
@@ -109,7 +111,8 @@ class WhatsappMessageInteractiveFooter implements ModelInterface, ArrayAccess, \
      * @var string[]
      */
     protected static $setters = [
-        'text' => 'setText'
+        'name' => 'setName',
+        'value' => 'setValue'
     ];
 
     /**
@@ -118,7 +121,8 @@ class WhatsappMessageInteractiveFooter implements ModelInterface, ArrayAccess, \
      * @var string[]
      */
     protected static $getters = [
-        'text' => 'getText'
+        'name' => 'getName',
+        'value' => 'getValue'
     ];
 
     /**
@@ -178,7 +182,8 @@ class WhatsappMessageInteractiveFooter implements ModelInterface, ArrayAccess, \
      */
     public function __construct(array $data = null)
     {
-        $this->container['text'] = $data['text'] ?? null;
+        $this->container['name'] = $data['name'] ?? null;
+        $this->container['value'] = $data['value'] ?? null;
     }
 
     /**
@@ -189,10 +194,6 @@ class WhatsappMessageInteractiveFooter implements ModelInterface, ArrayAccess, \
     public function listInvalidProperties()
     {
         $invalidProperties = [];
-
-        if (!is_null($this->container['text']) && (mb_strlen($this->container['text']) > 60)) {
-            $invalidProperties[] = "invalid value for 'text', the character length must be smaller than or equal to 60.";
-        }
 
         return $invalidProperties;
     }
@@ -210,29 +211,49 @@ class WhatsappMessageInteractiveFooter implements ModelInterface, ArrayAccess, \
 
 
     /**
-     * Gets text
+     * Gets name
      *
      * @return string|null
      */
-    public function getText()
+    public function getName()
     {
-        return $this->container['text'];
+        return $this->container['name'];
     }
 
     /**
-     * Sets text
+     * Sets name
      *
-     * @param string|null $text The footer content. Emojis and markdown are supported. Links are supported. Maximum length: 60 characters.
+     * @param string|null $name Name of the attribute that you've previously defined.
      *
      * @return self
      */
-    public function setText($text)
+    public function setName($name)
     {
-        if (!is_null($text) && (mb_strlen($text) > 60)) {
-            throw new \InvalidArgumentException('invalid length for $text when calling WhatsappMessageInteractiveFooter., must be smaller than or equal to 60.');
-        }
+        $this->container['name'] = $name;
 
-        $this->container['text'] = $text;
+        return $this;
+    }
+
+    /**
+     * Gets value
+     *
+     * @return object|null
+     */
+    public function getValue()
+    {
+        return $this->container['value'];
+    }
+
+    /**
+     * Sets value
+     *
+     * @param object|null $value Value of the attribute.
+     *
+     * @return self
+     */
+    public function setValue($value)
+    {
+        $this->container['value'] = $value;
 
         return $this;
     }

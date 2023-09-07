@@ -1,6 +1,6 @@
 <?php
 /**
- * WhatsappMessageInteractiveFooter
+ * ContactCreateRequest
  *
  * PHP version 7.4
  *
@@ -33,16 +33,16 @@ use \ArrayAccess;
 use \YCloud\Client\ObjectSerializer;
 
 /**
- * WhatsappMessageInteractiveFooter Class Doc Comment
+ * ContactCreateRequest Class Doc Comment
  *
  * @category Class
- * @description Optional. An object with the footer of the message. See also [WhatsApp Footer Object](https://developers.facebook.com/docs/whatsapp/cloud-api/reference/messages#footer-object).
+ * @description Contains the properties of the contact to be created.
  * @package  YCloud\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class WhatsappMessageInteractiveFooter implements ModelInterface, ArrayAccess, \JsonSerializable
+class ContactCreateRequest implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +51,7 @@ class WhatsappMessageInteractiveFooter implements ModelInterface, ArrayAccess, \
       *
       * @var string
       */
-    protected static $openAPIModelName = 'WhatsappMessageInteractiveFooter';
+    protected static $openAPIModelName = 'ContactCreateRequest';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,7 +59,12 @@ class WhatsappMessageInteractiveFooter implements ModelInterface, ArrayAccess, \
       * @var string[]
       */
     protected static $openAPITypes = [
-        'text' => 'string'
+        'nickname' => 'string',
+        'phone_number' => 'string',
+        'country_code' => 'string',
+        'email' => 'string',
+        'tags' => 'string[]',
+        'custom_attributes' => '\YCloud\Client\Model\ContactCreateRequestCustomAttributesInner[]'
     ];
 
     /**
@@ -70,7 +75,12 @@ class WhatsappMessageInteractiveFooter implements ModelInterface, ArrayAccess, \
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'text' => null
+        'nickname' => null,
+        'phone_number' => null,
+        'country_code' => null,
+        'email' => null,
+        'tags' => null,
+        'custom_attributes' => null
     ];
 
     /**
@@ -100,7 +110,12 @@ class WhatsappMessageInteractiveFooter implements ModelInterface, ArrayAccess, \
      * @var string[]
      */
     protected static $attributeMap = [
-        'text' => 'text'
+        'nickname' => 'nickname',
+        'phone_number' => 'phoneNumber',
+        'country_code' => 'countryCode',
+        'email' => 'email',
+        'tags' => 'tags',
+        'custom_attributes' => 'customAttributes'
     ];
 
     /**
@@ -109,7 +124,12 @@ class WhatsappMessageInteractiveFooter implements ModelInterface, ArrayAccess, \
      * @var string[]
      */
     protected static $setters = [
-        'text' => 'setText'
+        'nickname' => 'setNickname',
+        'phone_number' => 'setPhoneNumber',
+        'country_code' => 'setCountryCode',
+        'email' => 'setEmail',
+        'tags' => 'setTags',
+        'custom_attributes' => 'setCustomAttributes'
     ];
 
     /**
@@ -118,7 +138,12 @@ class WhatsappMessageInteractiveFooter implements ModelInterface, ArrayAccess, \
      * @var string[]
      */
     protected static $getters = [
-        'text' => 'getText'
+        'nickname' => 'getNickname',
+        'phone_number' => 'getPhoneNumber',
+        'country_code' => 'getCountryCode',
+        'email' => 'getEmail',
+        'tags' => 'getTags',
+        'custom_attributes' => 'getCustomAttributes'
     ];
 
     /**
@@ -178,7 +203,12 @@ class WhatsappMessageInteractiveFooter implements ModelInterface, ArrayAccess, \
      */
     public function __construct(array $data = null)
     {
-        $this->container['text'] = $data['text'] ?? null;
+        $this->container['nickname'] = $data['nickname'] ?? null;
+        $this->container['phone_number'] = $data['phone_number'] ?? null;
+        $this->container['country_code'] = $data['country_code'] ?? null;
+        $this->container['email'] = $data['email'] ?? null;
+        $this->container['tags'] = $data['tags'] ?? null;
+        $this->container['custom_attributes'] = $data['custom_attributes'] ?? null;
     }
 
     /**
@@ -190,8 +220,19 @@ class WhatsappMessageInteractiveFooter implements ModelInterface, ArrayAccess, \
     {
         $invalidProperties = [];
 
-        if (!is_null($this->container['text']) && (mb_strlen($this->container['text']) > 60)) {
-            $invalidProperties[] = "invalid value for 'text', the character length must be smaller than or equal to 60.";
+        if (!is_null($this->container['nickname']) && (mb_strlen($this->container['nickname']) > 250)) {
+            $invalidProperties[] = "invalid value for 'nickname', the character length must be smaller than or equal to 250.";
+        }
+
+        if ($this->container['phone_number'] === null) {
+            $invalidProperties[] = "'phone_number' can't be null";
+        }
+        if (!is_null($this->container['email']) && (mb_strlen($this->container['email']) > 250)) {
+            $invalidProperties[] = "invalid value for 'email', the character length must be smaller than or equal to 250.";
+        }
+
+        if (!is_null($this->container['tags']) && (count($this->container['tags']) > 50)) {
+            $invalidProperties[] = "invalid value for 'tags', number of items must be less than or equal to 50.";
         }
 
         return $invalidProperties;
@@ -210,29 +251,157 @@ class WhatsappMessageInteractiveFooter implements ModelInterface, ArrayAccess, \
 
 
     /**
-     * Gets text
+     * Gets nickname
      *
      * @return string|null
      */
-    public function getText()
+    public function getNickname()
     {
-        return $this->container['text'];
+        return $this->container['nickname'];
     }
 
     /**
-     * Sets text
+     * Sets nickname
      *
-     * @param string|null $text The footer content. Emojis and markdown are supported. Links are supported. Maximum length: 60 characters.
+     * @param string|null $nickname Contact's nickname. Maximum length: 250 characters.
      *
      * @return self
      */
-    public function setText($text)
+    public function setNickname($nickname)
     {
-        if (!is_null($text) && (mb_strlen($text) > 60)) {
-            throw new \InvalidArgumentException('invalid length for $text when calling WhatsappMessageInteractiveFooter., must be smaller than or equal to 60.');
+        if (!is_null($nickname) && (mb_strlen($nickname) > 250)) {
+            throw new \InvalidArgumentException('invalid length for $nickname when calling ContactCreateRequest., must be smaller than or equal to 250.');
         }
 
-        $this->container['text'] = $text;
+        $this->container['nickname'] = $nickname;
+
+        return $this;
+    }
+
+    /**
+     * Gets phone_number
+     *
+     * @return string
+     */
+    public function getPhoneNumber()
+    {
+        return $this->container['phone_number'];
+    }
+
+    /**
+     * Sets phone_number
+     *
+     * @param string $phone_number Unique Phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format.
+     *
+     * @return self
+     */
+    public function setPhoneNumber($phone_number)
+    {
+        $this->container['phone_number'] = $phone_number;
+
+        return $this;
+    }
+
+    /**
+     * Gets country_code
+     *
+     * @return string|null
+     */
+    public function getCountryCode()
+    {
+        return $this->container['country_code'];
+    }
+
+    /**
+     * Sets country_code
+     *
+     * @param string|null $country_code Two-letter country abbreviation. See [ISO 3166-1 alpha-2 country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).
+     *
+     * @return self
+     */
+    public function setCountryCode($country_code)
+    {
+        $this->container['country_code'] = $country_code;
+
+        return $this;
+    }
+
+    /**
+     * Gets email
+     *
+     * @return string|null
+     */
+    public function getEmail()
+    {
+        return $this->container['email'];
+    }
+
+    /**
+     * Sets email
+     *
+     * @param string|null $email Contact's email address. If present, the email address must be unique.
+     *
+     * @return self
+     */
+    public function setEmail($email)
+    {
+        if (!is_null($email) && (mb_strlen($email) > 250)) {
+            throw new \InvalidArgumentException('invalid length for $email when calling ContactCreateRequest., must be smaller than or equal to 250.');
+        }
+
+        $this->container['email'] = $email;
+
+        return $this;
+    }
+
+    /**
+     * Gets tags
+     *
+     * @return string[]|null
+     */
+    public function getTags()
+    {
+        return $this->container['tags'];
+    }
+
+    /**
+     * Sets tags
+     *
+     * @param string[]|null $tags Contact's tags. Max items: 50. Max characters per tag: 50.
+     *
+     * @return self
+     */
+    public function setTags($tags)
+    {
+
+        if (!is_null($tags) && (count($tags) > 50)) {
+            throw new \InvalidArgumentException('invalid value for $tags when calling ContactCreateRequest., number of items must be less than or equal to 50.');
+        }
+        $this->container['tags'] = $tags;
+
+        return $this;
+    }
+
+    /**
+     * Gets custom_attributes
+     *
+     * @return \YCloud\Client\Model\ContactCreateRequestCustomAttributesInner[]|null
+     */
+    public function getCustomAttributes()
+    {
+        return $this->container['custom_attributes'];
+    }
+
+    /**
+     * Sets custom_attributes
+     *
+     * @param \YCloud\Client\Model\ContactCreateRequestCustomAttributesInner[]|null $custom_attributes Contact's custom attributes.
+     *
+     * @return self
+     */
+    public function setCustomAttributes($custom_attributes)
+    {
+        $this->container['custom_attributes'] = $custom_attributes;
 
         return $this;
     }

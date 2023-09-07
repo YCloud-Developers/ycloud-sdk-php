@@ -201,6 +201,18 @@ class WhatsappMessageInteractiveActionSectionRow implements ModelInterface, Arra
     {
         $invalidProperties = [];
 
+        if (!is_null($this->container['id']) && (mb_strlen($this->container['id']) > 200)) {
+            $invalidProperties[] = "invalid value for 'id', the character length must be smaller than or equal to 200.";
+        }
+
+        if (!is_null($this->container['title']) && (mb_strlen($this->container['title']) > 24)) {
+            $invalidProperties[] = "invalid value for 'title', the character length must be smaller than or equal to 24.";
+        }
+
+        if (!is_null($this->container['description']) && (mb_strlen($this->container['description']) > 72)) {
+            $invalidProperties[] = "invalid value for 'description', the character length must be smaller than or equal to 72.";
+        }
+
         return $invalidProperties;
     }
 
@@ -229,12 +241,16 @@ class WhatsappMessageInteractiveActionSectionRow implements ModelInterface, Arra
     /**
      * Sets id
      *
-     * @param string|null $id Unique row ID.
+     * @param string|null $id Unique row ID. Maximum length: 200 characters.
      *
      * @return self
      */
     public function setId($id)
     {
+        if (!is_null($id) && (mb_strlen($id) > 200)) {
+            throw new \InvalidArgumentException('invalid length for $id when calling WhatsappMessageInteractiveActionSectionRow., must be smaller than or equal to 200.');
+        }
+
         $this->container['id'] = $id;
 
         return $this;
@@ -253,12 +269,16 @@ class WhatsappMessageInteractiveActionSectionRow implements ModelInterface, Arra
     /**
      * Sets title
      *
-     * @param string|null $title Row title content.
+     * @param string|null $title Row title content. Maximum length: 24 characters.
      *
      * @return self
      */
     public function setTitle($title)
     {
+        if (!is_null($title) && (mb_strlen($title) > 24)) {
+            throw new \InvalidArgumentException('invalid length for $title when calling WhatsappMessageInteractiveActionSectionRow., must be smaller than or equal to 24.');
+        }
+
         $this->container['title'] = $title;
 
         return $this;
@@ -277,12 +297,16 @@ class WhatsappMessageInteractiveActionSectionRow implements ModelInterface, Arra
     /**
      * Sets description
      *
-     * @param string|null $description Row description content.
+     * @param string|null $description Row description content. Maximum length: 72 characters.
      *
      * @return self
      */
     public function setDescription($description)
     {
+        if (!is_null($description) && (mb_strlen($description) > 72)) {
+            throw new \InvalidArgumentException('invalid length for $description when calling WhatsappMessageInteractiveActionSectionRow., must be smaller than or equal to 72.');
+        }
+
         $this->container['description'] = $description;
 
         return $this;

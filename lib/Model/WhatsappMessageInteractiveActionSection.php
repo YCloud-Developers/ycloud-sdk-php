@@ -246,7 +246,7 @@ class WhatsappMessageInteractiveActionSection implements ModelInterface, ArrayAc
     /**
      * Sets title
      *
-     * @param string|null $title Title of the section.
+     * @param string|null $title **Required if the message has more than one section.** Title of the section. Maximum length: 24 characters.
      *
      * @return self
      */

@@ -73,6 +73,11 @@ All URIs are relative to *https://api.ycloud.com/v2*
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *BalanceApi* | [**retrieve**](docs/Api/BalanceApi.md#retrieve) | **GET** /balance | Retrieve balance
+*ContactsApi* | [**create**](docs/Api/ContactsApi.md#create) | **POST** /contact/contacts | Create a contact
+*ContactsApi* | [**delete**](docs/Api/ContactsApi.md#delete) | **DELETE** /contact/contacts/{id} | Delete a contact
+*ContactsApi* | [**list**](docs/Api/ContactsApi.md#list) | **GET** /contact/contacts | List contacts
+*ContactsApi* | [**retrieve**](docs/Api/ContactsApi.md#retrieve) | **GET** /contact/contacts/{id} | Retrieve a contact
+*ContactsApi* | [**update**](docs/Api/ContactsApi.md#update) | **PATCH** /contact/contacts/{id} | Update a contact
 *EmailsApi* | [**send**](docs/Api/EmailsApi.md#send) | **POST** /emails | Send an email
 *SmsApi* | [**list**](docs/Api/SmsApi.md#list) | **GET** /sms | List SMS records
 *SmsApi* | [**send**](docs/Api/SmsApi.md#send) | **POST** /sms | Send an SMS
@@ -105,6 +110,12 @@ Class | Method | HTTP request | Description
 ## Models
 
 - [Balance](docs/Model/Balance.md)
+- [Contact](docs/Model/Contact.md)
+- [ContactCreateRequest](docs/Model/ContactCreateRequest.md)
+- [ContactCreateRequestCustomAttributesInner](docs/Model/ContactCreateRequestCustomAttributesInner.md)
+- [ContactCustomAttributesInner](docs/Model/ContactCustomAttributesInner.md)
+- [ContactPage](docs/Model/ContactPage.md)
+- [ContactUpdateRequest](docs/Model/ContactUpdateRequest.md)
 - [Email](docs/Model/Email.md)
 - [EmailContentType](docs/Model/EmailContentType.md)
 - [EmailDelivery](docs/Model/EmailDelivery.md)

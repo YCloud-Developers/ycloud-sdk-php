@@ -222,7 +222,7 @@ class WhatsappMessageInteractiveBody implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets text
      *
-     * @param string|null $text The body content of the message. Emojis and markdown are supported. Links are supported.
+     * @param string|null $text The body content of the message. Emojis and markdown are supported. Maximum length: 1024 characters.
      *
      * @return self
      */

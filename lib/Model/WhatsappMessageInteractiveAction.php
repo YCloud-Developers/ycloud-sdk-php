@@ -258,7 +258,7 @@ class WhatsappMessageInteractiveAction implements ModelInterface, ArrayAccess, \
     /**
      * Sets buttons
      *
-     * @param \YCloud\Client\Model\WhatsappMessageInteractiveActionButton[]|null $buttons Required for Reply Buttons.
+     * @param \YCloud\Client\Model\WhatsappMessageInteractiveActionButton[]|null $buttons Required for Reply Buttons. You can have up to 3 buttons.
      *
      * @return self
      */
@@ -286,7 +286,7 @@ class WhatsappMessageInteractiveAction implements ModelInterface, ArrayAccess, \
     /**
      * Sets button
      *
-     * @param string|null $button Required for List Messages. Button content. It cannot be an empty string and must be unique within the message. Emojis are supported, markdown is not.
+     * @param string|null $button Required for List Messages. Button content. It cannot be an empty string and must be unique within the message. Emojis are supported, markdown is not. Maximum length: 20 characters.
      *
      * @return self
      */

@@ -36,6 +36,7 @@ use \YCloud\Client\ObjectSerializer;
  * WhatsappMessageInteractiveActionButton Class Doc Comment
  *
  * @category Class
+ * @description A button object in &#x60;interactive&#x60; messages.
  * @package  YCloud\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

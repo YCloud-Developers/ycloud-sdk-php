@@ -77,7 +77,7 @@ send($whatsapp_message_send_request): \YCloud\Client\Model\WhatsappMessage
 
 Enqueue a WhatsApp message
 
-Enqueues an outbound WhatsApp message for sending.  Queued messages will be submitted to the Meta WhatsApp API asynchronously.
+Enqueues an outbound WhatsApp message for sending.  Queued messages will be submitted to the WhatsApp Business API asynchronously.
 
 ### Example
 
@@ -137,7 +137,7 @@ sendDirectly($whatsapp_message_send_request): \YCloud\Client\Model\WhatsappMessa
 
 Send a WhatsApp message directly
 
-Sends an outbound WhatsApp message directly.  The message is submitted to the Meta WhatsApp API synchronously. Typically used for sending OTP and instant messages.  The response body field `error.whatsappApiError` is included if we tried to request Meta WhatsApp API and got an error response.
+Sends an outbound WhatsApp message directly.  The message is submitted to the WhatsApp Business API synchronously. Typically used for sending OTP and instant messages.  The response body field `error.whatsappApiError` is included if we tried to request the WhatsApp Business API and got an error response.
 
 ### Example
 

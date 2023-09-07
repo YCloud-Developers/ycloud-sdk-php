@@ -1,6 +1,6 @@
 <?php
 /**
- * WhatsappMessageInteractiveFooter
+ * ContactPage
  *
  * PHP version 7.4
  *
@@ -33,16 +33,16 @@ use \ArrayAccess;
 use \YCloud\Client\ObjectSerializer;
 
 /**
- * WhatsappMessageInteractiveFooter Class Doc Comment
+ * ContactPage Class Doc Comment
  *
  * @category Class
- * @description Optional. An object with the footer of the message. See also [WhatsApp Footer Object](https://developers.facebook.com/docs/whatsapp/cloud-api/reference/messages#footer-object).
+ * @description Represents a given page of contacts.
  * @package  YCloud\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class WhatsappMessageInteractiveFooter implements ModelInterface, ArrayAccess, \JsonSerializable
+class ContactPage implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +51,7 @@ class WhatsappMessageInteractiveFooter implements ModelInterface, ArrayAccess, \
       *
       * @var string
       */
-    protected static $openAPIModelName = 'WhatsappMessageInteractiveFooter';
+    protected static $openAPIModelName = 'ContactPage';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,7 +59,11 @@ class WhatsappMessageInteractiveFooter implements ModelInterface, ArrayAccess, \
       * @var string[]
       */
     protected static $openAPITypes = [
-        'text' => 'string'
+        'items' => '\YCloud\Client\Model\Contact[]',
+        'offset' => 'int',
+        'limit' => 'int',
+        'length' => 'int',
+        'total' => 'int'
     ];
 
     /**
@@ -70,7 +74,11 @@ class WhatsappMessageInteractiveFooter implements ModelInterface, ArrayAccess, \
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'text' => null
+        'items' => null,
+        'offset' => 'int32',
+        'limit' => 'int32',
+        'length' => 'int32',
+        'total' => 'int32'
     ];
 
     /**
@@ -100,7 +108,11 @@ class WhatsappMessageInteractiveFooter implements ModelInterface, ArrayAccess, \
      * @var string[]
      */
     protected static $attributeMap = [
-        'text' => 'text'
+        'items' => 'items',
+        'offset' => 'offset',
+        'limit' => 'limit',
+        'length' => 'length',
+        'total' => 'total'
     ];
 
     /**
@@ -109,7 +121,11 @@ class WhatsappMessageInteractiveFooter implements ModelInterface, ArrayAccess, \
      * @var string[]
      */
     protected static $setters = [
-        'text' => 'setText'
+        'items' => 'setItems',
+        'offset' => 'setOffset',
+        'limit' => 'setLimit',
+        'length' => 'setLength',
+        'total' => 'setTotal'
     ];
 
     /**
@@ -118,7 +134,11 @@ class WhatsappMessageInteractiveFooter implements ModelInterface, ArrayAccess, \
      * @var string[]
      */
     protected static $getters = [
-        'text' => 'getText'
+        'items' => 'getItems',
+        'offset' => 'getOffset',
+        'limit' => 'getLimit',
+        'length' => 'getLength',
+        'total' => 'getTotal'
     ];
 
     /**
@@ -178,7 +198,11 @@ class WhatsappMessageInteractiveFooter implements ModelInterface, ArrayAccess, \
      */
     public function __construct(array $data = null)
     {
-        $this->container['text'] = $data['text'] ?? null;
+        $this->container['items'] = $data['items'] ?? null;
+        $this->container['offset'] = $data['offset'] ?? null;
+        $this->container['limit'] = $data['limit'] ?? null;
+        $this->container['length'] = $data['length'] ?? null;
+        $this->container['total'] = $data['total'] ?? null;
     }
 
     /**
@@ -190,8 +214,29 @@ class WhatsappMessageInteractiveFooter implements ModelInterface, ArrayAccess, \
     {
         $invalidProperties = [];
 
-        if (!is_null($this->container['text']) && (mb_strlen($this->container['text']) > 60)) {
-            $invalidProperties[] = "invalid value for 'text', the character length must be smaller than or equal to 60.";
+        if ($this->container['offset'] === null) {
+            $invalidProperties[] = "'offset' can't be null";
+        }
+        if (($this->container['offset'] < 0)) {
+            $invalidProperties[] = "invalid value for 'offset', must be bigger than or equal to 0.";
+        }
+
+        if ($this->container['limit'] === null) {
+            $invalidProperties[] = "'limit' can't be null";
+        }
+        if (($this->container['limit'] < 1)) {
+            $invalidProperties[] = "invalid value for 'limit', must be bigger than or equal to 1.";
+        }
+
+        if ($this->container['length'] === null) {
+            $invalidProperties[] = "'length' can't be null";
+        }
+        if (($this->container['length'] < 0)) {
+            $invalidProperties[] = "invalid value for 'length', must be bigger than or equal to 0.";
+        }
+
+        if (!is_null($this->container['total']) && ($this->container['total'] < 0)) {
+            $invalidProperties[] = "invalid value for 'total', must be bigger than or equal to 0.";
         }
 
         return $invalidProperties;
@@ -210,29 +255,141 @@ class WhatsappMessageInteractiveFooter implements ModelInterface, ArrayAccess, \
 
 
     /**
-     * Gets text
+     * Gets items
      *
-     * @return string|null
+     * @return \YCloud\Client\Model\Contact[]|null
      */
-    public function getText()
+    public function getItems()
     {
-        return $this->container['text'];
+        return $this->container['items'];
     }
 
     /**
-     * Sets text
+     * Sets items
      *
-     * @param string|null $text The footer content. Emojis and markdown are supported. Links are supported. Maximum length: 60 characters.
+     * @param \YCloud\Client\Model\Contact[]|null $items An array containing contact objects.
      *
      * @return self
      */
-    public function setText($text)
+    public function setItems($items)
     {
-        if (!is_null($text) && (mb_strlen($text) > 60)) {
-            throw new \InvalidArgumentException('invalid length for $text when calling WhatsappMessageInteractiveFooter., must be smaller than or equal to 60.');
+        $this->container['items'] = $items;
+
+        return $this;
+    }
+
+    /**
+     * Gets offset
+     *
+     * @return int
+     */
+    public function getOffset()
+    {
+        return $this->container['offset'];
+    }
+
+    /**
+     * Sets offset
+     *
+     * @param int $offset The position of the item this page starts from, zero-based. e.g., the 11th item is at offset 10.
+     *
+     * @return self
+     */
+    public function setOffset($offset)
+    {
+
+        if (($offset < 0)) {
+            throw new \InvalidArgumentException('invalid value for $offset when calling ContactPage., must be bigger than or equal to 0.');
         }
 
-        $this->container['text'] = $text;
+        $this->container['offset'] = $offset;
+
+        return $this;
+    }
+
+    /**
+     * Gets limit
+     *
+     * @return int
+     */
+    public function getLimit()
+    {
+        return $this->container['limit'];
+    }
+
+    /**
+     * Sets limit
+     *
+     * @param int $limit A limit on the number of items to be returned, between 1 and 100, defaults to 10.
+     *
+     * @return self
+     */
+    public function setLimit($limit)
+    {
+
+        if (($limit < 1)) {
+            throw new \InvalidArgumentException('invalid value for $limit when calling ContactPage., must be bigger than or equal to 1.');
+        }
+
+        $this->container['limit'] = $limit;
+
+        return $this;
+    }
+
+    /**
+     * Gets length
+     *
+     * @return int
+     */
+    public function getLength()
+    {
+        return $this->container['length'];
+    }
+
+    /**
+     * Sets length
+     *
+     * @param int $length The actual number of items in the page.
+     *
+     * @return self
+     */
+    public function setLength($length)
+    {
+
+        if (($length < 0)) {
+            throw new \InvalidArgumentException('invalid value for $length when calling ContactPage., must be bigger than or equal to 0.');
+        }
+
+        $this->container['length'] = $length;
+
+        return $this;
+    }
+
+    /**
+     * Gets total
+     *
+     * @return int|null
+     */
+    public function getTotal()
+    {
+        return $this->container['total'];
+    }
+
+    /**
+     * Sets total
+     *
+     * @param int|null $total The total number of items. This field is returned only when the request parameter `includeTotal` is set to `true`.
+     *
+     * @return self
+     */
+    public function setTotal($total)
+    {
+
+        if (!is_null($total) && ($total < 0)) {
+            throw new \InvalidArgumentException('invalid value for $total when calling ContactPage., must be bigger than or equal to 0.');
+        }
+
+        $this->container['total'] = $total;
 
         return $this;
     }

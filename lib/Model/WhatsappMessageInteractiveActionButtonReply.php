@@ -199,8 +199,8 @@ class WhatsappMessageInteractiveActionButtonReply implements ModelInterface, Arr
             $invalidProperties[] = "invalid value for 'title', the character length must be smaller than or equal to 20.";
         }
 
-        if (!is_null($this->container['id']) && (mb_strlen($this->container['id']) > 20)) {
-            $invalidProperties[] = "invalid value for 'id', the character length must be smaller than or equal to 20.";
+        if (!is_null($this->container['id']) && (mb_strlen($this->container['id']) > 256)) {
+            $invalidProperties[] = "invalid value for 'id', the character length must be smaller than or equal to 256.";
         }
 
         return $invalidProperties;
@@ -231,7 +231,7 @@ class WhatsappMessageInteractiveActionButtonReply implements ModelInterface, Arr
     /**
      * Sets title
      *
-     * @param string|null $title Button title. It cannot be an empty string and must be unique within the message. Emojis are supported, markdown is not.
+     * @param string|null $title Button title. It cannot be an empty string and must be unique within the message. Emojis are supported, markdown is not. Maximum length: 20 characters.
      *
      * @return self
      */
@@ -259,14 +259,14 @@ class WhatsappMessageInteractiveActionButtonReply implements ModelInterface, Arr
     /**
      * Sets id
      *
-     * @param string|null $id Unique identifier for your button. This ID is returned in the webhook when the button is clicked by the user.
+     * @param string|null $id Unique identifier for your button. This ID is returned in the webhook when the button is clicked by the user. Maximum length: 256 characters. You cannot have leading or trailing spaces when setting the ID.
      *
      * @return self
      */
     public function setId($id)
     {
-        if (!is_null($id) && (mb_strlen($id) > 20)) {
-            throw new \InvalidArgumentException('invalid length for $id when calling WhatsappMessageInteractiveActionButtonReply., must be smaller than or equal to 20.');
+        if (!is_null($id) && (mb_strlen($id) > 256)) {
+            throw new \InvalidArgumentException('invalid length for $id when calling WhatsappMessageInteractiveActionButtonReply., must be smaller than or equal to 256.');
         }
 
         $this->container['id'] = $id;
