@@ -13,6 +13,6 @@ Name | Type | Description | Notes
 **last_seen** | **\DateTime** | The time at which the latest inbound message was created, formatted in [RFC 3339](https://datatracker.ietf.org/doc/html/rfc3339). e.g., &#x60;2022-06-01T12:00:00.000Z&#x60;. | [optional]
 **tags** | **string[]** | Contact&#39;s tags. | [optional]
 **create_time** | **\DateTime** | The time at which the contact was created, formatted in [RFC 3339](https://datatracker.ietf.org/doc/html/rfc3339). e.g., &#x60;2022-06-01T12:00:00.000Z&#x60;. | [optional]
-**custom_attributes** | [**\YCloud\Client\Model\ContactCustomAttributesInner[]**](ContactCustomAttributesInner.md) | Contact&#39;s custom attributes. | [optional]
+**custom_attributes** | [**\YCloud\Client\Model\ContactCustomAttribute[]**](ContactCustomAttribute.md) | Contact&#39;s custom attributes. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

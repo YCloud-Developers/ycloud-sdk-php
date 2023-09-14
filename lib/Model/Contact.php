@@ -68,7 +68,7 @@ class Contact implements ModelInterface, ArrayAccess, \JsonSerializable
         'last_seen' => '\DateTime',
         'tags' => 'string[]',
         'create_time' => '\DateTime',
-        'custom_attributes' => '\YCloud\Client\Model\ContactCustomAttributesInner[]'
+        'custom_attributes' => '\YCloud\Client\Model\ContactCustomAttribute[]'
     ];
 
     /**
@@ -497,7 +497,7 @@ class Contact implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets custom_attributes
      *
-     * @return \YCloud\Client\Model\ContactCustomAttributesInner[]|null
+     * @return \YCloud\Client\Model\ContactCustomAttribute[]|null
      */
     public function getCustomAttributes()
     {
@@ -507,7 +507,7 @@ class Contact implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets custom_attributes
      *
-     * @param \YCloud\Client\Model\ContactCustomAttributesInner[]|null $custom_attributes Contact's custom attributes.
+     * @param \YCloud\Client\Model\ContactCustomAttribute[]|null $custom_attributes Contact's custom attributes.
      *
      * @return self
      */

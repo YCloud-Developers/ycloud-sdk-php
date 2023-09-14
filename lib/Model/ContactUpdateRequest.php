@@ -64,7 +64,7 @@ class ContactUpdateRequest implements ModelInterface, ArrayAccess, \JsonSerializ
         'country_code' => 'string',
         'email' => 'string',
         'tags' => 'string[]',
-        'custom_attributes' => '\YCloud\Client\Model\ContactCreateRequestCustomAttributesInner[]'
+        'custom_attributes' => '\YCloud\Client\Model\ContactCustomAttribute[]'
     ];
 
     /**
@@ -382,7 +382,7 @@ class ContactUpdateRequest implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets custom_attributes
      *
-     * @return \YCloud\Client\Model\ContactCreateRequestCustomAttributesInner[]|null
+     * @return \YCloud\Client\Model\ContactCustomAttribute[]|null
      */
     public function getCustomAttributes()
     {
@@ -392,7 +392,7 @@ class ContactUpdateRequest implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets custom_attributes
      *
-     * @param \YCloud\Client\Model\ContactCreateRequestCustomAttributesInner[]|null $custom_attributes Contact's custom attributes. If present (i.e., not `null`), all previous attributes of this contact will be replaced.
+     * @param \YCloud\Client\Model\ContactCustomAttribute[]|null $custom_attributes Contact's custom attributes. If present (i.e., not `null`), all previous attributes of this contact will be replaced.
      *
      * @return self
      */

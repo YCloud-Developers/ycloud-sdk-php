@@ -9,6 +9,6 @@ Name | Type | Description | Notes
 **country_code** | **string** | Two-letter country abbreviation. See [ISO 3166-1 alpha-2 country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2). | [optional]
 **email** | **string** | The contact&#39;s email address. If present, the email address must be unique. | [optional]
 **tags** | **string[]** | Contact&#39;s tags. Maximum items: 50. | [optional]
-**custom_attributes** | [**\YCloud\Client\Model\ContactCreateRequestCustomAttributesInner[]**](ContactCreateRequestCustomAttributesInner.md) | Contact&#39;s custom attributes. If present (i.e., not &#x60;null&#x60;), all previous attributes of this contact will be replaced. | [optional]
+**custom_attributes** | [**\YCloud\Client\Model\ContactCustomAttribute[]**](ContactCustomAttribute.md) | Contact&#39;s custom attributes. If present (i.e., not &#x60;null&#x60;), all previous attributes of this contact will be replaced. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
