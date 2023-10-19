@@ -184,6 +184,7 @@ class WhatsappMessageInteractive implements ModelInterface, ArrayAccess, \JsonSe
 
     public const TYPE_BUTTON = 'button';
     public const TYPE__LIST = 'list';
+    public const TYPE_CTA_URL = 'cta_url';
     public const TYPE_PRODUCT = 'product';
     public const TYPE_PRODUCT_LIST = 'product_list';
 
@@ -197,6 +198,7 @@ class WhatsappMessageInteractive implements ModelInterface, ArrayAccess, \JsonSe
         return [
             self::TYPE_BUTTON,
             self::TYPE__LIST,
+            self::TYPE_CTA_URL,
             self::TYPE_PRODUCT,
             self::TYPE_PRODUCT_LIST,
         ];
@@ -276,7 +278,7 @@ class WhatsappMessageInteractive implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets type
      *
-     * @param string $type The type of interactive message you want to send. - `list`: Use it for List Messages. - `button`: Use it for Reply Buttons. - `product`: Use for Single Product Messages. - `product_list`: Use for Multi-Product Messages.
+     * @param string $type The type of interactive message you want to send. - `button`: Use for Reply Buttons. - `list`: Use for List Messages. - `cta_url`: Use for Call-To-Action (CTA) URL Button Messages. - `product`: Use for Single Product Messages. - `product_list`: Use for Multi-Product Messages.
      *
      * @return self
      */

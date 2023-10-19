@@ -62,6 +62,7 @@ class WhatsappMessageTemplateComponentParameter implements ModelInterface, Array
         'type' => 'string',
         'text' => 'string',
         'payload' => 'string',
+        'coupon_code' => 'string',
         'image' => '\YCloud\Client\Model\WhatsappMessageMedia',
         'video' => '\YCloud\Client\Model\WhatsappMessageMedia',
         'document' => '\YCloud\Client\Model\WhatsappMessageMedia'
@@ -78,6 +79,7 @@ class WhatsappMessageTemplateComponentParameter implements ModelInterface, Array
         'type' => null,
         'text' => null,
         'payload' => null,
+        'coupon_code' => null,
         'image' => null,
         'video' => null,
         'document' => null
@@ -113,6 +115,7 @@ class WhatsappMessageTemplateComponentParameter implements ModelInterface, Array
         'type' => 'type',
         'text' => 'text',
         'payload' => 'payload',
+        'coupon_code' => 'coupon_code',
         'image' => 'image',
         'video' => 'video',
         'document' => 'document'
@@ -127,6 +130,7 @@ class WhatsappMessageTemplateComponentParameter implements ModelInterface, Array
         'type' => 'setType',
         'text' => 'setText',
         'payload' => 'setPayload',
+        'coupon_code' => 'setCouponCode',
         'image' => 'setImage',
         'video' => 'setVideo',
         'document' => 'setDocument'
@@ -141,6 +145,7 @@ class WhatsappMessageTemplateComponentParameter implements ModelInterface, Array
         'type' => 'getType',
         'text' => 'getText',
         'payload' => 'getPayload',
+        'coupon_code' => 'getCouponCode',
         'image' => 'getImage',
         'video' => 'getVideo',
         'document' => 'getDocument'
@@ -192,6 +197,7 @@ class WhatsappMessageTemplateComponentParameter implements ModelInterface, Array
     public const TYPE_VIDEO = 'video';
     public const TYPE_DOCUMENT = 'document';
     public const TYPE_PAYLOAD = 'payload';
+    public const TYPE_COUPON_CODE = 'coupon_code';
 
     /**
      * Gets allowable values of the enum
@@ -206,6 +212,7 @@ class WhatsappMessageTemplateComponentParameter implements ModelInterface, Array
             self::TYPE_VIDEO,
             self::TYPE_DOCUMENT,
             self::TYPE_PAYLOAD,
+            self::TYPE_COUPON_CODE,
         ];
     }
 
@@ -227,6 +234,7 @@ class WhatsappMessageTemplateComponentParameter implements ModelInterface, Array
         $this->container['type'] = $data['type'] ?? null;
         $this->container['text'] = $data['text'] ?? null;
         $this->container['payload'] = $data['payload'] ?? null;
+        $this->container['coupon_code'] = $data['coupon_code'] ?? null;
         $this->container['image'] = $data['image'] ?? null;
         $this->container['video'] = $data['video'] ?? null;
         $this->container['document'] = $data['document'] ?? null;
@@ -278,7 +286,7 @@ class WhatsappMessageTemplateComponentParameter implements ModelInterface, Array
     /**
      * Sets type
      *
-     * @param string|null $type **Required.** Describes the parameter type. - `text`: Used when the template component type is `BODY`, or the `HEADER` component format is `TEXT`. - `image`: Used when the template `HEADER` component is `IMAGE`. - `video`: Used when the template `HEADER` component is `VIDEO`. - `document`: Used when the template `HEADER` component is `DOCUMENT`. - `payload`: Used when the template component button type is `QUICK_REPLY`.
+     * @param string|null $type **Required.** Describes the parameter type. - `text`: Used when the template component type is `BODY`, or the `HEADER` component format is `TEXT`. - `image`: Used when the template `HEADER` component is `IMAGE`. - `video`: Used when the template `HEADER` component is `VIDEO`. - `document`: Used when the template `HEADER` component is `DOCUMENT`. - `payload`: Used when the template component button type is `QUICK_REPLY`. - `coupon_code`: Used when the template component button type is `COPY_CODE`.
      *
      * @return self
      */
@@ -343,6 +351,30 @@ class WhatsappMessageTemplateComponentParameter implements ModelInterface, Array
     public function setPayload($payload)
     {
         $this->container['payload'] = $payload;
+
+        return $this;
+    }
+
+    /**
+     * Gets coupon_code
+     *
+     * @return string|null
+     */
+    public function getCouponCode()
+    {
+        return $this->container['coupon_code'];
+    }
+
+    /**
+     * Sets coupon_code
+     *
+     * @param string|null $coupon_code **Required when `type` = `coupon_code`.** The coupon code to be copied when the customer taps the button.
+     *
+     * @return self
+     */
+    public function setCouponCode($coupon_code)
+    {
+        $this->container['coupon_code'] = $coupon_code;
 
         return $this;
     }

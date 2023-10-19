@@ -281,8 +281,8 @@ class WhatsappTemplateComponent implements ModelInterface, ArrayAccess, \JsonSer
             );
         }
 
-        if (!is_null($this->container['buttons']) && (count($this->container['buttons']) > 3)) {
-            $invalidProperties[] = "invalid value for 'buttons', number of items must be less than or equal to 3.";
+        if (!is_null($this->container['buttons']) && (count($this->container['buttons']) > 10)) {
+            $invalidProperties[] = "invalid value for 'buttons', number of items must be less than or equal to 10.";
         }
 
         if (!is_null($this->container['code_expiration_minutes']) && ($this->container['code_expiration_minutes'] > 90)) {
@@ -413,15 +413,15 @@ class WhatsappTemplateComponent implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets buttons
      *
-     * @param \YCloud\Client\Model\WhatsappTemplateComponentButton[]|null $buttons **Required for type `BUTTONS`.** The `BUTTONS` component has two types of buttons: Quick Reply, and Call To Action. These button types are exclusive, which means you cannot use both of them in one template. Quick Reply buttons are limited to 3. Call To Actions buttons have at most 1 PHONE_NUMBER button, and at most 1 URL button.
+     * @param \YCloud\Client\Model\WhatsappTemplateComponentButton[]|null $buttons **Required for type `BUTTONS`.** Buttons are optional interactive components that perform specific actions when tapped. Templates can have a mixture of up to 10 button components total, although there are limits to individual buttons of the same type as well as combination limits. If a template has more than three buttons, two buttons will appear in the delivered message and the remaining buttons will be replaced with a **See all options** button. Tapping the **See all options** button reveals the remaining buttons.
      *
      * @return self
      */
     public function setButtons($buttons)
     {
 
-        if (!is_null($buttons) && (count($buttons) > 3)) {
-            throw new \InvalidArgumentException('invalid value for $buttons when calling WhatsappTemplateComponent., number of items must be less than or equal to 3.');
+        if (!is_null($buttons) && (count($buttons) > 10)) {
+            throw new \InvalidArgumentException('invalid value for $buttons when calling WhatsappTemplateComponent., number of items must be less than or equal to 10.');
         }
         $this->container['buttons'] = $buttons;
 

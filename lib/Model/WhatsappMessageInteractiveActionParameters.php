@@ -1,6 +1,6 @@
 <?php
 /**
- * WhatsappInboundMessageError
+ * WhatsappMessageInteractiveActionParameters
  *
  * PHP version 7.4
  *
@@ -33,16 +33,16 @@ use \ArrayAccess;
 use \YCloud\Client\ObjectSerializer;
 
 /**
- * WhatsappInboundMessageError Class Doc Comment
+ * WhatsappMessageInteractiveActionParameters Class Doc Comment
  *
  * @category Class
- * @description When the message type field is set to &#x60;unknown&#x60; or &#x60;unsupported&#x60;, this object is included.
+ * @description Action parameters. Required for Call-To-Action (CTA) URL Button Messages.
  * @package  YCloud\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class WhatsappInboundMessageError implements ModelInterface, ArrayAccess, \JsonSerializable
+class WhatsappMessageInteractiveActionParameters implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +51,7 @@ class WhatsappInboundMessageError implements ModelInterface, ArrayAccess, \JsonS
       *
       * @var string
       */
-    protected static $openAPIModelName = 'WhatsappInboundMessageError';
+    protected static $openAPIModelName = 'WhatsappMessageInteractiveActionParameters';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,10 +59,8 @@ class WhatsappInboundMessageError implements ModelInterface, ArrayAccess, \JsonS
       * @var string[]
       */
     protected static $openAPITypes = [
-        'code' => 'string',
-        'title' => 'string',
-        'message' => 'string',
-        'error_data' => 'object'
+        'display_text' => 'string',
+        'url' => 'string'
     ];
 
     /**
@@ -73,10 +71,8 @@ class WhatsappInboundMessageError implements ModelInterface, ArrayAccess, \JsonS
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'code' => null,
-        'title' => null,
-        'message' => null,
-        'error_data' => null
+        'display_text' => null,
+        'url' => null
     ];
 
     /**
@@ -106,10 +102,8 @@ class WhatsappInboundMessageError implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $attributeMap = [
-        'code' => 'code',
-        'title' => 'title',
-        'message' => 'message',
-        'error_data' => 'error_data'
+        'display_text' => 'display_text',
+        'url' => 'url'
     ];
 
     /**
@@ -118,10 +112,8 @@ class WhatsappInboundMessageError implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $setters = [
-        'code' => 'setCode',
-        'title' => 'setTitle',
-        'message' => 'setMessage',
-        'error_data' => 'setErrorData'
+        'display_text' => 'setDisplayText',
+        'url' => 'setUrl'
     ];
 
     /**
@@ -130,10 +122,8 @@ class WhatsappInboundMessageError implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $getters = [
-        'code' => 'getCode',
-        'title' => 'getTitle',
-        'message' => 'getMessage',
-        'error_data' => 'getErrorData'
+        'display_text' => 'getDisplayText',
+        'url' => 'getUrl'
     ];
 
     /**
@@ -193,10 +183,8 @@ class WhatsappInboundMessageError implements ModelInterface, ArrayAccess, \JsonS
      */
     public function __construct(array $data = null)
     {
-        $this->container['code'] = $data['code'] ?? null;
-        $this->container['title'] = $data['title'] ?? null;
-        $this->container['message'] = $data['message'] ?? null;
-        $this->container['error_data'] = $data['error_data'] ?? null;
+        $this->container['display_text'] = $data['display_text'] ?? null;
+        $this->container['url'] = $data['url'] ?? null;
     }
 
     /**
@@ -207,6 +195,10 @@ class WhatsappInboundMessageError implements ModelInterface, ArrayAccess, \JsonS
     public function listInvalidProperties()
     {
         $invalidProperties = [];
+
+        if (!is_null($this->container['display_text']) && (mb_strlen($this->container['display_text']) > 20)) {
+            $invalidProperties[] = "invalid value for 'display_text', the character length must be smaller than or equal to 20.";
+        }
 
         return $invalidProperties;
     }
@@ -224,97 +216,53 @@ class WhatsappInboundMessageError implements ModelInterface, ArrayAccess, \JsonS
 
 
     /**
-     * Gets code
+     * Gets display_text
      *
      * @return string|null
      */
-    public function getCode()
+    public function getDisplayText()
     {
-        return $this->container['code'];
+        return $this->container['display_text'];
     }
 
     /**
-     * Sets code
+     * Sets display_text
      *
-     * @param string|null $code The error code.
+     * @param string|null $display_text Text of the CTA URL button. Maximum length: 20 bytes.
      *
      * @return self
      */
-    public function setCode($code)
+    public function setDisplayText($display_text)
     {
-        $this->container['code'] = $code;
+        if (!is_null($display_text) && (mb_strlen($display_text) > 20)) {
+            throw new \InvalidArgumentException('invalid length for $display_text when calling WhatsappMessageInteractiveActionParameters., must be smaller than or equal to 20.');
+        }
+
+        $this->container['display_text'] = $display_text;
 
         return $this;
     }
 
     /**
-     * Gets title
+     * Gets url
      *
      * @return string|null
      */
-    public function getTitle()
+    public function getUrl()
     {
-        return $this->container['title'];
+        return $this->container['url'];
     }
 
     /**
-     * Sets title
+     * Sets url
      *
-     * @param string|null $title The error title.
+     * @param string|null $url URL of the CTA URL button.
      *
      * @return self
      */
-    public function setTitle($title)
+    public function setUrl($url)
     {
-        $this->container['title'] = $title;
-
-        return $this;
-    }
-
-    /**
-     * Gets message
-     *
-     * @return string|null
-     */
-    public function getMessage()
-    {
-        return $this->container['message'];
-    }
-
-    /**
-     * Sets message
-     *
-     * @param string|null $message The error message.
-     *
-     * @return self
-     */
-    public function setMessage($message)
-    {
-        $this->container['message'] = $message;
-
-        return $this;
-    }
-
-    /**
-     * Gets error_data
-     *
-     * @return object|null
-     */
-    public function getErrorData()
-    {
-        return $this->container['error_data'];
-    }
-
-    /**
-     * Sets error_data
-     *
-     * @param object|null $error_data An error data object with the following properties: - `details`: A string describing the reason for the error. Example: `Message type is currently not supported.`.
-     *
-     * @return self
-     */
-    public function setErrorData($error_data)
-    {
-        $this->container['error_data'] = $error_data;
+        $this->container['url'] = $url;
 
         return $this;
     }

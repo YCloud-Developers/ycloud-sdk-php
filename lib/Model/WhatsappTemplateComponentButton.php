@@ -240,9 +240,18 @@ class WhatsappTemplateComponentButton implements ModelInterface, ArrayAccess, \J
         if ($this->container['type'] === null) {
             $invalidProperties[] = "'type' can't be null";
         }
-        if ($this->container['text'] === null) {
-            $invalidProperties[] = "'text' can't be null";
+        if (!is_null($this->container['text']) && (mb_strlen($this->container['text']) > 25)) {
+            $invalidProperties[] = "invalid value for 'text', the character length must be smaller than or equal to 25.";
         }
+
+        if (!is_null($this->container['url']) && (mb_strlen($this->container['url']) > 2000)) {
+            $invalidProperties[] = "invalid value for 'url', the character length must be smaller than or equal to 2000.";
+        }
+
+        if (!is_null($this->container['phone_number']) && (mb_strlen($this->container['phone_number']) > 20)) {
+            $invalidProperties[] = "invalid value for 'phone_number', the character length must be smaller than or equal to 20.";
+        }
+
         if (!is_null($this->container['autofill_text']) && (mb_strlen($this->container['autofill_text']) > 25)) {
             $invalidProperties[] = "invalid value for 'autofill_text', the character length must be smaller than or equal to 25.";
         }
@@ -289,7 +298,7 @@ class WhatsappTemplateComponentButton implements ModelInterface, ArrayAccess, \J
     /**
      * Gets text
      *
-     * @return string
+     * @return string|null
      */
     public function getText()
     {
@@ -299,12 +308,16 @@ class WhatsappTemplateComponentButton implements ModelInterface, ArrayAccess, \J
     /**
      * Sets text
      *
-     * @param string $text **Required.** Button text. For `OTP` buttons, note that even if your template is using a one-tap autofill button, this value must still be supplied. If we are unable to validate your handshake the authentication template message will display a copy code button with this text instead. Maximum 25 characters.
+     * @param string|null $text **Required for button type `PHONE_NUMBER` or `URL`.** Button text. For `CODE_CODE` buttons, the text is a pre-set value and cannot be customized. For `OTP` buttons, if omitted, the text will default to a pre-set value localized to the template's language. For example, `Copy Code` for English (US). If your template is using a one-tap autofill button and you supply this value, the authentication template message will display a copy code button with this text if we are unable to validate your [handshake](https://developers.facebook.com/docs/whatsapp/business-management-api/authentication-templates#handshake). Maximum 25 characters.
      *
      * @return self
      */
     public function setText($text)
     {
+        if (!is_null($text) && (mb_strlen($text) > 25)) {
+            throw new \InvalidArgumentException('invalid length for $text when calling WhatsappTemplateComponentButton., must be smaller than or equal to 25.');
+        }
+
         $this->container['text'] = $text;
 
         return $this;
@@ -323,12 +336,16 @@ class WhatsappTemplateComponentButton implements ModelInterface, ArrayAccess, \J
     /**
      * Sets url
      *
-     * @param string|null $url **Required for button type `URL`.**  There can be at most 1 variable at the end of the URL.
+     * @param string|null $url **Required for button type `URL`.** URL of website. There can be at most 1 variable at the end of the URL. Example: `https://www.luckyshrub.com/shop?promo={{1}}`. 2000 characters maximum.
      *
      * @return self
      */
     public function setUrl($url)
     {
+        if (!is_null($url) && (mb_strlen($url) > 2000)) {
+            throw new \InvalidArgumentException('invalid length for $url when calling WhatsappTemplateComponentButton., must be smaller than or equal to 2000.');
+        }
+
         $this->container['url'] = $url;
 
         return $this;
@@ -347,12 +364,16 @@ class WhatsappTemplateComponentButton implements ModelInterface, ArrayAccess, \J
     /**
      * Sets phone_number
      *
-     * @param string|null $phone_number **Required for button type `PHONE_NUMBER`.**
+     * @param string|null $phone_number **Required for button type `PHONE_NUMBER`.** Alphanumeric string. Business phone number to be (display phone number) called when the user taps the button. 20 characters maximum.
      *
      * @return self
      */
     public function setPhoneNumber($phone_number)
     {
+        if (!is_null($phone_number) && (mb_strlen($phone_number) > 20)) {
+            throw new \InvalidArgumentException('invalid length for $phone_number when calling WhatsappTemplateComponentButton., must be smaller than or equal to 20.');
+        }
+
         $this->container['phone_number'] = $phone_number;
 
         return $this;

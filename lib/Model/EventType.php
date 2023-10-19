@@ -52,6 +52,8 @@ class EventType
 
     public const VOICE_MESSAGE_UPDATED = 'voice.message.updated';
 
+    public const WHATSAPP_BUSINESS_ACCOUNT_DELETED = 'whatsapp.business_account.deleted';
+
     public const WHATSAPP_BUSINESS_ACCOUNT_REVIEWED = 'whatsapp.business_account.reviewed';
 
     public const WHATSAPP_BUSINESS_ACCOUNT_UPDATED = 'whatsapp.business_account.updated';
@@ -59,6 +61,8 @@ class EventType
     public const WHATSAPP_INBOUND_MESSAGE_RECEIVED = 'whatsapp.inbound_message.received';
 
     public const WHATSAPP_MESSAGE_UPDATED = 'whatsapp.message.updated';
+
+    public const WHATSAPP_PHONE_NUMBER_DELETED = 'whatsapp.phone_number.deleted';
 
     public const WHATSAPP_PHONE_NUMBER_NAME_UPDATED = 'whatsapp.phone_number.name_updated';
 
@@ -81,10 +85,12 @@ class EventType
             self::SMS_MESSAGE_UPDATED,
             self::SMS_INBOUND_RECEIVED,
             self::VOICE_MESSAGE_UPDATED,
+            self::WHATSAPP_BUSINESS_ACCOUNT_DELETED,
             self::WHATSAPP_BUSINESS_ACCOUNT_REVIEWED,
             self::WHATSAPP_BUSINESS_ACCOUNT_UPDATED,
             self::WHATSAPP_INBOUND_MESSAGE_RECEIVED,
             self::WHATSAPP_MESSAGE_UPDATED,
+            self::WHATSAPP_PHONE_NUMBER_DELETED,
             self::WHATSAPP_PHONE_NUMBER_NAME_UPDATED,
             self::WHATSAPP_PHONE_NUMBER_QUALITY_UPDATED,
             self::WHATSAPP_TEMPLATE_CATEGORY_UPDATED,

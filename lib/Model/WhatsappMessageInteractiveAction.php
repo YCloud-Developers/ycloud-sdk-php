@@ -63,7 +63,9 @@ class WhatsappMessageInteractiveAction implements ModelInterface, ArrayAccess, \
         'button' => 'string',
         'catalog_id' => 'string',
         'product_retailer_id' => 'string',
-        'sections' => '\YCloud\Client\Model\WhatsappMessageInteractiveActionSection[]'
+        'sections' => '\YCloud\Client\Model\WhatsappMessageInteractiveActionSection[]',
+        'name' => 'string',
+        'parameters' => '\YCloud\Client\Model\WhatsappMessageInteractiveActionParameters'
     ];
 
     /**
@@ -78,7 +80,9 @@ class WhatsappMessageInteractiveAction implements ModelInterface, ArrayAccess, \
         'button' => null,
         'catalog_id' => null,
         'product_retailer_id' => null,
-        'sections' => null
+        'sections' => null,
+        'name' => null,
+        'parameters' => null
     ];
 
     /**
@@ -112,7 +116,9 @@ class WhatsappMessageInteractiveAction implements ModelInterface, ArrayAccess, \
         'button' => 'button',
         'catalog_id' => 'catalog_id',
         'product_retailer_id' => 'product_retailer_id',
-        'sections' => 'sections'
+        'sections' => 'sections',
+        'name' => 'name',
+        'parameters' => 'parameters'
     ];
 
     /**
@@ -125,7 +131,9 @@ class WhatsappMessageInteractiveAction implements ModelInterface, ArrayAccess, \
         'button' => 'setButton',
         'catalog_id' => 'setCatalogId',
         'product_retailer_id' => 'setProductRetailerId',
-        'sections' => 'setSections'
+        'sections' => 'setSections',
+        'name' => 'setName',
+        'parameters' => 'setParameters'
     ];
 
     /**
@@ -138,7 +146,9 @@ class WhatsappMessageInteractiveAction implements ModelInterface, ArrayAccess, \
         'button' => 'getButton',
         'catalog_id' => 'getCatalogId',
         'product_retailer_id' => 'getProductRetailerId',
-        'sections' => 'getSections'
+        'sections' => 'getSections',
+        'name' => 'getName',
+        'parameters' => 'getParameters'
     ];
 
     /**
@@ -182,6 +192,19 @@ class WhatsappMessageInteractiveAction implements ModelInterface, ArrayAccess, \
         return self::$openAPIModelName;
     }
 
+    public const NAME_CTA_URL = 'cta_url';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getNameAllowableValues()
+    {
+        return [
+            self::NAME_CTA_URL,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -203,6 +226,8 @@ class WhatsappMessageInteractiveAction implements ModelInterface, ArrayAccess, \
         $this->container['catalog_id'] = $data['catalog_id'] ?? null;
         $this->container['product_retailer_id'] = $data['product_retailer_id'] ?? null;
         $this->container['sections'] = $data['sections'] ?? null;
+        $this->container['name'] = $data['name'] ?? null;
+        $this->container['parameters'] = $data['parameters'] ?? null;
     }
 
     /**
@@ -228,6 +253,15 @@ class WhatsappMessageInteractiveAction implements ModelInterface, ArrayAccess, \
 
         if (!is_null($this->container['sections']) && (count($this->container['sections']) < 1)) {
             $invalidProperties[] = "invalid value for 'sections', number of items must be greater than or equal to 1.";
+        }
+
+        $allowedValues = $this->getNameAllowableValues();
+        if (!is_null($this->container['name']) && !in_array($this->container['name'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'name', must be one of '%s'",
+                $this->container['name'],
+                implode("', '", $allowedValues)
+            );
         }
 
         return $invalidProperties;
@@ -376,6 +410,64 @@ class WhatsappMessageInteractiveAction implements ModelInterface, ArrayAccess, \
             throw new \InvalidArgumentException('invalid length for $sections when calling WhatsappMessageInteractiveAction., number of items must be greater than or equal to 1.');
         }
         $this->container['sections'] = $sections;
+
+        return $this;
+    }
+
+    /**
+     * Gets name
+     *
+     * @return string|null
+     */
+    public function getName()
+    {
+        return $this->container['name'];
+    }
+
+    /**
+     * Sets name
+     *
+     * @param string|null $name Action name. Required for Call-To-Action (CTA) URL Button Messages.
+     *
+     * @return self
+     */
+    public function setName($name)
+    {
+        $allowedValues = $this->getNameAllowableValues();
+        if (!is_null($name) && !in_array($name, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'name', must be one of '%s'",
+                    $name,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
+     * Gets parameters
+     *
+     * @return \YCloud\Client\Model\WhatsappMessageInteractiveActionParameters|null
+     */
+    public function getParameters()
+    {
+        return $this->container['parameters'];
+    }
+
+    /**
+     * Sets parameters
+     *
+     * @param \YCloud\Client\Model\WhatsappMessageInteractiveActionParameters|null $parameters parameters
+     *
+     * @return self
+     */
+    public function setParameters($parameters)
+    {
+        $this->container['parameters'] = $parameters;
 
         return $this;
     }

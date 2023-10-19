@@ -9,6 +9,8 @@
 
 * `QUICK_REPLY` (value: `'QUICK_REPLY'`)
 
+* `COPY_CODE` (value: `'COPY_CODE'`)
+
 * `OTP` (value: `'OTP'`)
 
 

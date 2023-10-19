@@ -34,6 +34,7 @@ use \YCloud\Client\ObjectSerializer;
  * WhatsappTemplateComponentButtonType Class Doc Comment
  *
  * @category Class
+ * @description Button type. - &#x60;PHONE_NUMBER&#x60;: Phone number buttons call the specified business phone number when tapped by the app user. Templates are limited to one phone number button. - &#x60;URL&#x60;: URL buttons load the specified URL in the device&#39;s default web browser when tapped by the app user. Templates are limited to two URL buttons. - &#x60;QUICK_REPLY&#x60;: Quick reply buttons are custom text-only buttons that immediately message you with the specified text string when tapped by the app user. Templates are limited to 10 quick reply buttons. If using quick reply buttons with other buttons, buttons must be organized into two groups: quick reply buttons and non-quick reply buttons. - &#x60;COPY_CODE&#x60;: Copy code buttons copy a text string (defined when the template is sent in a template message) to the device&#39;s clipboard when tapped by the app user. Templates are limited to one copy code button. - &#x60;OTP&#x60;: One-time password (OTP) buttons are a special type of URL button component used with authentication templates.
  * @package  YCloud\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -49,6 +50,8 @@ class WhatsappTemplateComponentButtonType
 
     public const QUICK_REPLY = 'QUICK_REPLY';
 
+    public const COPY_CODE = 'COPY_CODE';
+
     public const OTP = 'OTP';
 
     /**
@@ -61,6 +64,7 @@ class WhatsappTemplateComponentButtonType
             self::PHONE_NUMBER,
             self::URL,
             self::QUICK_REPLY,
+            self::COPY_CODE,
             self::OTP
         ];
     }

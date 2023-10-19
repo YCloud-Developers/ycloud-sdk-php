@@ -61,7 +61,6 @@ class WhatsappInboundMessageSystem implements ModelInterface, ArrayAccess, \Json
     protected static $openAPITypes = [
         'body' => 'string',
         'new_wa_id' => 'string',
-        'identity' => 'string',
         'type' => 'string',
         'user' => 'string'
     ];
@@ -76,7 +75,6 @@ class WhatsappInboundMessageSystem implements ModelInterface, ArrayAccess, \Json
     protected static $openAPIFormats = [
         'body' => null,
         'new_wa_id' => null,
-        'identity' => null,
         'type' => null,
         'user' => null
     ];
@@ -110,7 +108,6 @@ class WhatsappInboundMessageSystem implements ModelInterface, ArrayAccess, \Json
     protected static $attributeMap = [
         'body' => 'body',
         'new_wa_id' => 'new_wa_id',
-        'identity' => 'identity',
         'type' => 'type',
         'user' => 'user'
     ];
@@ -123,7 +120,6 @@ class WhatsappInboundMessageSystem implements ModelInterface, ArrayAccess, \Json
     protected static $setters = [
         'body' => 'setBody',
         'new_wa_id' => 'setNewWaId',
-        'identity' => 'setIdentity',
         'type' => 'setType',
         'user' => 'setUser'
     ];
@@ -136,7 +132,6 @@ class WhatsappInboundMessageSystem implements ModelInterface, ArrayAccess, \Json
     protected static $getters = [
         'body' => 'getBody',
         'new_wa_id' => 'getNewWaId',
-        'identity' => 'getIdentity',
         'type' => 'getType',
         'user' => 'getUser'
     ];
@@ -200,7 +195,6 @@ class WhatsappInboundMessageSystem implements ModelInterface, ArrayAccess, \Json
     {
         $this->container['body'] = $data['body'] ?? null;
         $this->container['new_wa_id'] = $data['new_wa_id'] ?? null;
-        $this->container['identity'] = $data['identity'] ?? null;
         $this->container['type'] = $data['type'] ?? null;
         $this->container['user'] = $data['user'] ?? null;
     }
@@ -273,30 +267,6 @@ class WhatsappInboundMessageSystem implements ModelInterface, ArrayAccess, \Json
     public function setNewWaId($new_wa_id)
     {
         $this->container['new_wa_id'] = $new_wa_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets identity
-     *
-     * @return string|null
-     */
-    public function getIdentity()
-    {
-        return $this->container['identity'];
-    }
-
-    /**
-     * Sets identity
-     *
-     * @param string|null $identity **Added to Webhooks for identity updates.**  New WhatsApp ID of the customer.
-     *
-     * @return self
-     */
-    public function setIdentity($identity)
-    {
-        $this->container['identity'] = $identity;
 
         return $this;
     }
