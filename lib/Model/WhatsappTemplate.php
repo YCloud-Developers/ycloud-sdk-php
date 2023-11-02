@@ -64,6 +64,7 @@ class WhatsappTemplate implements ModelInterface, ArrayAccess, \JsonSerializable
         'language' => 'string',
         'category' => '\YCloud\Client\Model\WhatsappTemplateCategory',
         'previous_category' => 'string',
+        'message_send_ttl_seconds' => 'int',
         'components' => '\YCloud\Client\Model\WhatsappTemplateComponent[]',
         'status' => '\YCloud\Client\Model\WhatsappTemplateStatus',
         'quality_rating' => '\YCloud\Client\Model\WhatsappTemplateQualityRating',
@@ -88,6 +89,7 @@ class WhatsappTemplate implements ModelInterface, ArrayAccess, \JsonSerializable
         'language' => null,
         'category' => null,
         'previous_category' => null,
+        'message_send_ttl_seconds' => 'int32',
         'components' => null,
         'status' => null,
         'quality_rating' => null,
@@ -131,6 +133,7 @@ class WhatsappTemplate implements ModelInterface, ArrayAccess, \JsonSerializable
         'language' => 'language',
         'category' => 'category',
         'previous_category' => 'previousCategory',
+        'message_send_ttl_seconds' => 'messageSendTtlSeconds',
         'components' => 'components',
         'status' => 'status',
         'quality_rating' => 'qualityRating',
@@ -153,6 +156,7 @@ class WhatsappTemplate implements ModelInterface, ArrayAccess, \JsonSerializable
         'language' => 'setLanguage',
         'category' => 'setCategory',
         'previous_category' => 'setPreviousCategory',
+        'message_send_ttl_seconds' => 'setMessageSendTtlSeconds',
         'components' => 'setComponents',
         'status' => 'setStatus',
         'quality_rating' => 'setQualityRating',
@@ -175,6 +179,7 @@ class WhatsappTemplate implements ModelInterface, ArrayAccess, \JsonSerializable
         'language' => 'getLanguage',
         'category' => 'getCategory',
         'previous_category' => 'getPreviousCategory',
+        'message_send_ttl_seconds' => 'getMessageSendTtlSeconds',
         'components' => 'getComponents',
         'status' => 'getStatus',
         'quality_rating' => 'getQualityRating',
@@ -248,6 +253,7 @@ class WhatsappTemplate implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['language'] = $data['language'] ?? null;
         $this->container['category'] = $data['category'] ?? null;
         $this->container['previous_category'] = $data['previous_category'] ?? null;
+        $this->container['message_send_ttl_seconds'] = $data['message_send_ttl_seconds'] ?? null;
         $this->container['components'] = $data['components'] ?? null;
         $this->container['status'] = $data['status'] ?? null;
         $this->container['quality_rating'] = $data['quality_rating'] ?? null;
@@ -285,13 +291,7 @@ class WhatsappTemplate implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['language'] === null) {
             $invalidProperties[] = "'language' can't be null";
         }
-        if ($this->container['category'] === null) {
-            $invalidProperties[] = "'category' can't be null";
-        }
-        if ($this->container['components'] === null) {
-            $invalidProperties[] = "'components' can't be null";
-        }
-        if ((count($this->container['components']) < 1)) {
+        if (!is_null($this->container['components']) && (count($this->container['components']) < 1)) {
             $invalidProperties[] = "invalid value for 'components', number of items must be greater than or equal to 1.";
         }
 
@@ -392,7 +392,7 @@ class WhatsappTemplate implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets category
      *
-     * @return \YCloud\Client\Model\WhatsappTemplateCategory
+     * @return \YCloud\Client\Model\WhatsappTemplateCategory|null
      */
     public function getCategory()
     {
@@ -402,7 +402,7 @@ class WhatsappTemplate implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets category
      *
-     * @param \YCloud\Client\Model\WhatsappTemplateCategory $category category
+     * @param \YCloud\Client\Model\WhatsappTemplateCategory|null $category category
      *
      * @return self
      */
@@ -438,9 +438,33 @@ class WhatsappTemplate implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
+     * Gets message_send_ttl_seconds
+     *
+     * @return int|null
+     */
+    public function getMessageSendTtlSeconds()
+    {
+        return $this->container['message_send_ttl_seconds'];
+    }
+
+    /**
+     * Sets message_send_ttl_seconds
+     *
+     * @param int|null $message_send_ttl_seconds **Use only for template category is `AUTHENTICATION`.** If we are unable to deliver an authentication template for an amount of time that exceeds its time-to-live, we will stop retrying and drop the message. Defaults to `600` seconds for newly created authentication templates. To override the default value, set this field to a value between `60` and `600` seconds. Or set it to `-1` resulting in a 24-hour time-to-live.
+     *
+     * @return self
+     */
+    public function setMessageSendTtlSeconds($message_send_ttl_seconds)
+    {
+        $this->container['message_send_ttl_seconds'] = $message_send_ttl_seconds;
+
+        return $this;
+    }
+
+    /**
      * Gets components
      *
-     * @return \YCloud\Client\Model\WhatsappTemplateComponent[]
+     * @return \YCloud\Client\Model\WhatsappTemplateComponent[]|null
      */
     public function getComponents()
     {
@@ -450,7 +474,7 @@ class WhatsappTemplate implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets components
      *
-     * @param \YCloud\Client\Model\WhatsappTemplateComponent[] $components Template components. A template consists of `HEADER`, `BODY`, `FOOTER`, and `BUTTONS` components. `BODY` component is required, the other types are optional.
+     * @param \YCloud\Client\Model\WhatsappTemplateComponent[]|null $components Template components. A template consists of `HEADER`, `BODY`, `FOOTER`, and `BUTTONS` components. `BODY` component is required, the other types are optional.
      *
      * @return self
      */
@@ -458,7 +482,7 @@ class WhatsappTemplate implements ModelInterface, ArrayAccess, \JsonSerializable
     {
 
 
-        if ((count($components) < 1)) {
+        if (!is_null($components) && (count($components) < 1)) {
             throw new \InvalidArgumentException('invalid length for $components when calling WhatsappTemplate., number of items must be greater than or equal to 1.');
         }
         $this->container['components'] = $components;

@@ -394,9 +394,6 @@ class WhatsappMessage implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['to'] === null) {
             $invalidProperties[] = "'to' can't be null";
         }
-        if ($this->container['type'] === null) {
-            $invalidProperties[] = "'type' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -559,7 +556,7 @@ class WhatsappMessage implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets type
      *
-     * @return \YCloud\Client\Model\WhatsappMessageType
+     * @return \YCloud\Client\Model\WhatsappMessageType|null
      */
     public function getType()
     {
@@ -569,7 +566,7 @@ class WhatsappMessage implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets type
      *
-     * @param \YCloud\Client\Model\WhatsappMessageType $type type
+     * @param \YCloud\Client\Model\WhatsappMessageType|null $type type
      *
      * @return self
      */

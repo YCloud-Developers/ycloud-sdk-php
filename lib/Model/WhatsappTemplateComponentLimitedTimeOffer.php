@@ -1,6 +1,6 @@
 <?php
 /**
- * WhatsappMessageInteractiveHeader
+ * WhatsappTemplateComponentLimitedTimeOffer
  *
  * PHP version 7.4
  *
@@ -33,16 +33,16 @@ use \ArrayAccess;
 use \YCloud\Client\ObjectSerializer;
 
 /**
- * WhatsappMessageInteractiveHeader Class Doc Comment
+ * WhatsappTemplateComponentLimitedTimeOffer Class Doc Comment
  *
  * @category Class
- * @description Required for type &#x60;product_list&#x60;. Optional for other types. See also [WhatsApp Header Object](https://developers.facebook.com/docs/whatsapp/cloud-api/reference/messages#header-object).
+ * @description Use for &#x60;LIMITED_TIME_OFFER&#x60; components.
  * @package  YCloud\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class WhatsappMessageInteractiveHeader implements ModelInterface, ArrayAccess, \JsonSerializable
+class WhatsappTemplateComponentLimitedTimeOffer implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +51,7 @@ class WhatsappMessageInteractiveHeader implements ModelInterface, ArrayAccess, \
       *
       * @var string
       */
-    protected static $openAPIModelName = 'WhatsappMessageInteractiveHeader';
+    protected static $openAPIModelName = 'WhatsappTemplateComponentLimitedTimeOffer';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,11 +59,8 @@ class WhatsappMessageInteractiveHeader implements ModelInterface, ArrayAccess, \
       * @var string[]
       */
     protected static $openAPITypes = [
-        'type' => 'string',
         'text' => 'string',
-        'image' => '\YCloud\Client\Model\WhatsappMessageMedia',
-        'video' => '\YCloud\Client\Model\WhatsappMessageMedia',
-        'document' => '\YCloud\Client\Model\WhatsappMessageMedia'
+        'has_expiration' => 'bool'
     ];
 
     /**
@@ -74,11 +71,8 @@ class WhatsappMessageInteractiveHeader implements ModelInterface, ArrayAccess, \
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'type' => null,
         'text' => null,
-        'image' => null,
-        'video' => null,
-        'document' => null
+        'has_expiration' => null
     ];
 
     /**
@@ -108,11 +102,8 @@ class WhatsappMessageInteractiveHeader implements ModelInterface, ArrayAccess, \
      * @var string[]
      */
     protected static $attributeMap = [
-        'type' => 'type',
         'text' => 'text',
-        'image' => 'image',
-        'video' => 'video',
-        'document' => 'document'
+        'has_expiration' => 'has_expiration'
     ];
 
     /**
@@ -121,11 +112,8 @@ class WhatsappMessageInteractiveHeader implements ModelInterface, ArrayAccess, \
      * @var string[]
      */
     protected static $setters = [
-        'type' => 'setType',
         'text' => 'setText',
-        'image' => 'setImage',
-        'video' => 'setVideo',
-        'document' => 'setDocument'
+        'has_expiration' => 'setHasExpiration'
     ];
 
     /**
@@ -134,11 +122,8 @@ class WhatsappMessageInteractiveHeader implements ModelInterface, ArrayAccess, \
      * @var string[]
      */
     protected static $getters = [
-        'type' => 'getType',
         'text' => 'getText',
-        'image' => 'getImage',
-        'video' => 'getVideo',
-        'document' => 'getDocument'
+        'has_expiration' => 'getHasExpiration'
     ];
 
     /**
@@ -182,25 +167,6 @@ class WhatsappMessageInteractiveHeader implements ModelInterface, ArrayAccess, \
         return self::$openAPIModelName;
     }
 
-    public const TYPE_TEXT = 'text';
-    public const TYPE_IMAGE = 'image';
-    public const TYPE_VIDEO = 'video';
-    public const TYPE_DOCUMENT = 'document';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getTypeAllowableValues()
-    {
-        return [
-            self::TYPE_TEXT,
-            self::TYPE_IMAGE,
-            self::TYPE_VIDEO,
-            self::TYPE_DOCUMENT,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -217,11 +183,8 @@ class WhatsappMessageInteractiveHeader implements ModelInterface, ArrayAccess, \
      */
     public function __construct(array $data = null)
     {
-        $this->container['type'] = $data['type'] ?? null;
         $this->container['text'] = $data['text'] ?? null;
-        $this->container['image'] = $data['image'] ?? null;
-        $this->container['video'] = $data['video'] ?? null;
-        $this->container['document'] = $data['document'] ?? null;
+        $this->container['has_expiration'] = $data['has_expiration'] ?? null;
     }
 
     /**
@@ -233,17 +196,8 @@ class WhatsappMessageInteractiveHeader implements ModelInterface, ArrayAccess, \
     {
         $invalidProperties = [];
 
-        $allowedValues = $this->getTypeAllowableValues();
-        if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'type', must be one of '%s'",
-                $this->container['type'],
-                implode("', '", $allowedValues)
-            );
-        }
-
-        if (!is_null($this->container['text']) && (mb_strlen($this->container['text']) > 60)) {
-            $invalidProperties[] = "invalid value for 'text', the character length must be smaller than or equal to 60.";
+        if (!is_null($this->container['text']) && (mb_strlen($this->container['text']) > 16)) {
+            $invalidProperties[] = "invalid value for 'text', the character length must be smaller than or equal to 16.";
         }
 
         return $invalidProperties;
@@ -262,40 +216,6 @@ class WhatsappMessageInteractiveHeader implements ModelInterface, ArrayAccess, \
 
 
     /**
-     * Gets type
-     *
-     * @return string|null
-     */
-    public function getType()
-    {
-        return $this->container['type'];
-    }
-
-    /**
-     * Sets type
-     *
-     * @param string|null $type **Required.** The header type you would like to use. - `text`: Used for List Messages and Reply Buttons. - `video`: Used for Reply Buttons. - `image`: Used for Reply Buttons. - `document`: Used for Reply Buttons.
-     *
-     * @return self
-     */
-    public function setType($type)
-    {
-        $allowedValues = $this->getTypeAllowableValues();
-        if (!is_null($type) && !in_array($type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'type', must be one of '%s'",
-                    $type,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['type'] = $type;
-
-        return $this;
-    }
-
-    /**
      * Gets text
      *
      * @return string|null
@@ -308,14 +228,14 @@ class WhatsappMessageInteractiveHeader implements ModelInterface, ArrayAccess, \
     /**
      * Sets text
      *
-     * @param string|null $text Text for the header. Formatting allows emojis, but not markdown.
+     * @param string|null $text **Required.** Offer details text. Maximum 16 characters.
      *
      * @return self
      */
     public function setText($text)
     {
-        if (!is_null($text) && (mb_strlen($text) > 60)) {
-            throw new \InvalidArgumentException('invalid length for $text when calling WhatsappMessageInteractiveHeader., must be smaller than or equal to 60.');
+        if (!is_null($text) && (mb_strlen($text) > 16)) {
+            throw new \InvalidArgumentException('invalid length for $text when calling WhatsappTemplateComponentLimitedTimeOffer., must be smaller than or equal to 16.');
         }
 
         $this->container['text'] = $text;
@@ -324,73 +244,25 @@ class WhatsappMessageInteractiveHeader implements ModelInterface, ArrayAccess, \
     }
 
     /**
-     * Gets image
+     * Gets has_expiration
      *
-     * @return \YCloud\Client\Model\WhatsappMessageMedia|null
+     * @return bool|null
      */
-    public function getImage()
+    public function getHasExpiration()
     {
-        return $this->container['image'];
+        return $this->container['has_expiration'];
     }
 
     /**
-     * Sets image
+     * Sets has_expiration
      *
-     * @param \YCloud\Client\Model\WhatsappMessageMedia|null $image image
+     * @param bool|null $has_expiration **Optional.** Set to `true` to have the [offer expiration details](https://developers.facebook.com/docs/whatsapp/business-management-api/message-templates/limited-time-offer-templates#offer-expiration-details) appear in the delivered message. If set to `true`, the copy code button component must be included in the `buttons` array, and must appear first in the array. If set to `false`, offer expiration details will not appear in the delivered message and the copy code button component is optional. If including the copy code button, it must appear first in the `buttons` array.
      *
      * @return self
      */
-    public function setImage($image)
+    public function setHasExpiration($has_expiration)
     {
-        $this->container['image'] = $image;
-
-        return $this;
-    }
-
-    /**
-     * Gets video
-     *
-     * @return \YCloud\Client\Model\WhatsappMessageMedia|null
-     */
-    public function getVideo()
-    {
-        return $this->container['video'];
-    }
-
-    /**
-     * Sets video
-     *
-     * @param \YCloud\Client\Model\WhatsappMessageMedia|null $video video
-     *
-     * @return self
-     */
-    public function setVideo($video)
-    {
-        $this->container['video'] = $video;
-
-        return $this;
-    }
-
-    /**
-     * Gets document
-     *
-     * @return \YCloud\Client\Model\WhatsappMessageMedia|null
-     */
-    public function getDocument()
-    {
-        return $this->container['document'];
-    }
-
-    /**
-     * Sets document
-     *
-     * @param \YCloud\Client\Model\WhatsappMessageMedia|null $document document
-     *
-     * @return self
-     */
-    public function setDocument($document)
-    {
-        $this->container['document'] = $document;
+        $this->container['has_expiration'] = $has_expiration;
 
         return $this;
     }

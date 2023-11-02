@@ -235,9 +235,6 @@ class WhatsappMessageInteractive implements ModelInterface, ArrayAccess, \JsonSe
     {
         $invalidProperties = [];
 
-        if ($this->container['type'] === null) {
-            $invalidProperties[] = "'type' can't be null";
-        }
         $allowedValues = $this->getTypeAllowableValues();
         if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
@@ -247,9 +244,6 @@ class WhatsappMessageInteractive implements ModelInterface, ArrayAccess, \JsonSe
             );
         }
 
-        if ($this->container['action'] === null) {
-            $invalidProperties[] = "'action' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -268,7 +262,7 @@ class WhatsappMessageInteractive implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Gets type
      *
-     * @return string
+     * @return string|null
      */
     public function getType()
     {
@@ -278,14 +272,14 @@ class WhatsappMessageInteractive implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets type
      *
-     * @param string $type The type of interactive message you want to send. - `button`: Use for Reply Buttons. - `list`: Use for List Messages. - `cta_url`: Use for Call-To-Action (CTA) URL Button Messages. - `product`: Use for Single Product Messages. - `product_list`: Use for Multi-Product Messages.
+     * @param string|null $type **Required.** The type of interactive message you want to send. - `button`: Use for Reply Buttons. - `list`: Use for List Messages. - `cta_url`: Use for Call-To-Action (CTA) URL Button Messages. - `product`: Use for Single Product Messages. - `product_list`: Use for Multi-Product Messages.
      *
      * @return self
      */
     public function setType($type)
     {
         $allowedValues = $this->getTypeAllowableValues();
-        if (!in_array($type, $allowedValues, true)) {
+        if (!is_null($type) && !in_array($type, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
                     "Invalid value '%s' for 'type', must be one of '%s'",
@@ -302,7 +296,7 @@ class WhatsappMessageInteractive implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Gets action
      *
-     * @return \YCloud\Client\Model\WhatsappMessageInteractiveAction
+     * @return \YCloud\Client\Model\WhatsappMessageInteractiveAction|null
      */
     public function getAction()
     {
@@ -312,7 +306,7 @@ class WhatsappMessageInteractive implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets action
      *
-     * @param \YCloud\Client\Model\WhatsappMessageInteractiveAction $action action
+     * @param \YCloud\Client\Model\WhatsappMessageInteractiveAction|null $action action
      *
      * @return self
      */

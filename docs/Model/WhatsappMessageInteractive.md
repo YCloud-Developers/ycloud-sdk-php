@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | **string** | The type of interactive message you want to send. - &#x60;button&#x60;: Use for Reply Buttons. - &#x60;list&#x60;: Use for List Messages. - &#x60;cta_url&#x60;: Use for Call-To-Action (CTA) URL Button Messages. - &#x60;product&#x60;: Use for Single Product Messages. - &#x60;product_list&#x60;: Use for Multi-Product Messages. |
-**action** | [**\YCloud\Client\Model\WhatsappMessageInteractiveAction**](WhatsappMessageInteractiveAction.md) |  |
+**type** | **string** | **Required.** The type of interactive message you want to send. - &#x60;button&#x60;: Use for Reply Buttons. - &#x60;list&#x60;: Use for List Messages. - &#x60;cta_url&#x60;: Use for Call-To-Action (CTA) URL Button Messages. - &#x60;product&#x60;: Use for Single Product Messages. - &#x60;product_list&#x60;: Use for Multi-Product Messages. | [optional]
+**action** | [**\YCloud\Client\Model\WhatsappMessageInteractiveAction**](WhatsappMessageInteractiveAction.md) |  | [optional]
 **body** | [**\YCloud\Client\Model\WhatsappMessageInteractiveBody**](WhatsappMessageInteractiveBody.md) |  | [optional]
 **header** | [**\YCloud\Client\Model\WhatsappMessageInteractiveHeader**](WhatsappMessageInteractiveHeader.md) |  | [optional]
 **footer** | [**\YCloud\Client\Model\WhatsappMessageInteractiveFooter**](WhatsappMessageInteractiveFooter.md) |  | [optional]

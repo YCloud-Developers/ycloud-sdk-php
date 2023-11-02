@@ -66,6 +66,7 @@ class WhatsappTemplateComponentButton implements ModelInterface, ArrayAccess, \J
         'autofill_text' => 'string',
         'package_name' => 'string',
         'signature_hash' => 'string',
+        'zero_tap_terms_accepted' => 'bool',
         'example' => 'string[]'
     ];
 
@@ -85,6 +86,7 @@ class WhatsappTemplateComponentButton implements ModelInterface, ArrayAccess, \J
         'autofill_text' => null,
         'package_name' => null,
         'signature_hash' => null,
+        'zero_tap_terms_accepted' => null,
         'example' => null
     ];
 
@@ -123,6 +125,7 @@ class WhatsappTemplateComponentButton implements ModelInterface, ArrayAccess, \J
         'autofill_text' => 'autofill_text',
         'package_name' => 'package_name',
         'signature_hash' => 'signature_hash',
+        'zero_tap_terms_accepted' => 'zero_tap_terms_accepted',
         'example' => 'example'
     ];
 
@@ -140,6 +143,7 @@ class WhatsappTemplateComponentButton implements ModelInterface, ArrayAccess, \J
         'autofill_text' => 'setAutofillText',
         'package_name' => 'setPackageName',
         'signature_hash' => 'setSignatureHash',
+        'zero_tap_terms_accepted' => 'setZeroTapTermsAccepted',
         'example' => 'setExample'
     ];
 
@@ -157,6 +161,7 @@ class WhatsappTemplateComponentButton implements ModelInterface, ArrayAccess, \J
         'autofill_text' => 'getAutofillText',
         'package_name' => 'getPackageName',
         'signature_hash' => 'getSignatureHash',
+        'zero_tap_terms_accepted' => 'getZeroTapTermsAccepted',
         'example' => 'getExample'
     ];
 
@@ -225,6 +230,7 @@ class WhatsappTemplateComponentButton implements ModelInterface, ArrayAccess, \J
         $this->container['autofill_text'] = $data['autofill_text'] ?? null;
         $this->container['package_name'] = $data['package_name'] ?? null;
         $this->container['signature_hash'] = $data['signature_hash'] ?? null;
+        $this->container['zero_tap_terms_accepted'] = $data['zero_tap_terms_accepted'] ?? null;
         $this->container['example'] = $data['example'] ?? null;
     }
 
@@ -475,6 +481,30 @@ class WhatsappTemplateComponentButton implements ModelInterface, ArrayAccess, \J
     public function setSignatureHash($signature_hash)
     {
         $this->container['signature_hash'] = $signature_hash;
+
+        return $this;
+    }
+
+    /**
+     * Gets zero_tap_terms_accepted
+     *
+     * @return bool|null
+     */
+    public function getZeroTapTermsAccepted()
+    {
+        return $this->container['zero_tap_terms_accepted'];
+    }
+
+    /**
+     * Sets zero_tap_terms_accepted
+     *
+     * @param bool|null $zero_tap_terms_accepted **Zero-tap buttons only.** Set to `true` to indicate that you understand that your use of zero-tap authentication is subject to the WhatsApp Business Terms of Service, and that it's your responsibility to ensure your customers expect that the code will be automatically filled in on their behalf when they choose to receive the zero-tap code through WhatsApp. If set to `false`, the template will not be created as you need to accept zero-tap terms before creating zero-tap enabled message templates.
+     *
+     * @return self
+     */
+    public function setZeroTapTermsAccepted($zero_tap_terms_accepted)
+    {
+        $this->container['zero_tap_terms_accepted'] = $zero_tap_terms_accepted;
 
         return $this;
     }

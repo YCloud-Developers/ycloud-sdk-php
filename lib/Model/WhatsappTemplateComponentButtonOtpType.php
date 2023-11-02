@@ -34,7 +34,7 @@ use \YCloud\Client\ObjectSerializer;
  * WhatsappTemplateComponentButtonOtpType Class Doc Comment
  *
  * @category Class
- * @description Indicates button OTP type. Set to &#x60;COPY_CODE&#x60; if you want the template to use a copy code button, or &#x60;ONE_TAP&#x60; to have it use a one-tap autofill button.
+ * @description Indicates button OTP type. Set to &#x60;COPY_CODE&#x60; if you want the template to use a copy code button, &#x60;ONE_TAP&#x60; to have it use a one-tap autofill button, or &#x60;ZERO_TAP&#x60; to have no button at all.
  * @package  YCloud\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -48,6 +48,8 @@ class WhatsappTemplateComponentButtonOtpType
 
     public const ONE_TAP = 'ONE_TAP';
 
+    public const ZERO_TAP = 'ZERO_TAP';
+
     /**
      * Gets allowable values of the enum
      * @return string[]
@@ -56,7 +58,8 @@ class WhatsappTemplateComponentButtonOtpType
     {
         return [
             self::COPY_CODE,
-            self::ONE_TAP
+            self::ONE_TAP,
+            self::ZERO_TAP
         ];
     }
 }

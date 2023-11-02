@@ -59,7 +59,8 @@ class WhatsappTemplateEditRequest implements ModelInterface, ArrayAccess, \JsonS
       * @var string[]
       */
     protected static $openAPITypes = [
-        'components' => '\YCloud\Client\Model\WhatsappTemplateComponent[]'
+        'components' => '\YCloud\Client\Model\WhatsappTemplateComponent[]',
+        'message_send_ttl_seconds' => 'int'
     ];
 
     /**
@@ -70,7 +71,8 @@ class WhatsappTemplateEditRequest implements ModelInterface, ArrayAccess, \JsonS
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'components' => null
+        'components' => null,
+        'message_send_ttl_seconds' => 'int32'
     ];
 
     /**
@@ -100,7 +102,8 @@ class WhatsappTemplateEditRequest implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $attributeMap = [
-        'components' => 'components'
+        'components' => 'components',
+        'message_send_ttl_seconds' => 'messageSendTtlSeconds'
     ];
 
     /**
@@ -109,7 +112,8 @@ class WhatsappTemplateEditRequest implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $setters = [
-        'components' => 'setComponents'
+        'components' => 'setComponents',
+        'message_send_ttl_seconds' => 'setMessageSendTtlSeconds'
     ];
 
     /**
@@ -118,7 +122,8 @@ class WhatsappTemplateEditRequest implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $getters = [
-        'components' => 'getComponents'
+        'components' => 'getComponents',
+        'message_send_ttl_seconds' => 'getMessageSendTtlSeconds'
     ];
 
     /**
@@ -179,6 +184,7 @@ class WhatsappTemplateEditRequest implements ModelInterface, ArrayAccess, \JsonS
     public function __construct(array $data = null)
     {
         $this->container['components'] = $data['components'] ?? null;
+        $this->container['message_send_ttl_seconds'] = $data['message_send_ttl_seconds'] ?? null;
     }
 
     /**
@@ -228,6 +234,30 @@ class WhatsappTemplateEditRequest implements ModelInterface, ArrayAccess, \JsonS
     public function setComponents($components)
     {
         $this->container['components'] = $components;
+
+        return $this;
+    }
+
+    /**
+     * Gets message_send_ttl_seconds
+     *
+     * @return int|null
+     */
+    public function getMessageSendTtlSeconds()
+    {
+        return $this->container['message_send_ttl_seconds'];
+    }
+
+    /**
+     * Sets message_send_ttl_seconds
+     *
+     * @param int|null $message_send_ttl_seconds **Use only for template category is `AUTHENTICATION`.** If we are unable to deliver an authentication template for an amount of time that exceeds its time-to-live, we will stop retrying and drop the message. Defaults to `600` seconds for newly created authentication templates. To override the default value, set this field to a value between `60` and `600` seconds. Or set it to `-1` resulting in a 24-hour time-to-live.
+     *
+     * @return self
+     */
+    public function setMessageSendTtlSeconds($message_send_ttl_seconds)
+    {
+        $this->container['message_send_ttl_seconds'] = $message_send_ttl_seconds;
 
         return $this;
     }

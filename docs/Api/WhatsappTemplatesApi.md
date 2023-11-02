@@ -163,7 +163,7 @@ $apiInstance = new YCloud\Client\Api\WhatsappTemplatesApi(
 );
 $waba_id = whatsapp-business-account-id; // string | WhatsApp Business Account ID.
 $name = sample_whatsapp_template; // string | Name of the template.
-$language = en; // string | Language code of the template. See [Supported Languages](https://developers.facebook.com/docs/whatsapp/api/messages/message-templates#supported-languages) for all codes.
+$language = en_US; // string | Language code of the template. See [Supported Languages](https://developers.facebook.com/docs/whatsapp/api/messages/message-templates#supported-languages) for all codes.
 
 try {
     $result = $apiInstance->deleteByNameAndLanguage($waba_id, $name, $language);
@@ -227,7 +227,7 @@ $apiInstance = new YCloud\Client\Api\WhatsappTemplatesApi(
 );
 $waba_id = whatsapp-business-account-id; // string | WhatsApp Business Account ID.
 $name = sample_whatsapp_template; // string | Name of the template.
-$language = en; // string | Language code of the template. See [Supported Languages](https://developers.facebook.com/docs/whatsapp/api/messages/message-templates#supported-languages) for all codes.
+$language = en_US; // string | Language code of the template. See [Supported Languages](https://developers.facebook.com/docs/whatsapp/api/messages/message-templates#supported-languages) for all codes.
 $whatsapp_template_edit_request = new \YCloud\Client\Model\WhatsappTemplateEditRequest(); // \YCloud\Client\Model\WhatsappTemplateEditRequest
 
 try {
@@ -296,7 +296,7 @@ $associate_array['limit'] = 10; // int | A limit on the number of results to be 
 $associate_array['include_total'] = false; // bool | Return results inside an object that contains the total result count or not.
 $associate_array['filter_waba_id'] = whatsapp-business-account-id; // string | WhatsApp Business Account ID.
 $associate_array['filter_name'] = sample_whatsapp_template; // string | Name of the template.
-$associate_array['filter_language'] = en; // string | Language of the template.
+$associate_array['filter_language'] = en_US; // string | Language code of the template. See [Supported Languages](https://developers.facebook.com/docs/whatsapp/api/messages/message-templates#supported-languages) for all codes.
 
 try {
     $result = $apiInstance->list($associate_array);
@@ -317,7 +317,7 @@ Name | Type | Description  | Notes
  **include_total** | **bool**| Return results inside an object that contains the total result count or not. | [optional] [default to false]
  **filter_waba_id** | **string**| WhatsApp Business Account ID. | [optional]
  **filter_name** | **string**| Name of the template. | [optional]
- **filter_language** | **string**| Language of the template. | [optional]
+ **filter_language** | **string**| Language code of the template. See [Supported Languages](https://developers.facebook.com/docs/whatsapp/api/messages/message-templates#supported-languages) for all codes. | [optional]
 
 ### Return type
 
@@ -365,7 +365,7 @@ $apiInstance = new YCloud\Client\Api\WhatsappTemplatesApi(
 );
 $waba_id = whatsapp-business-account-id; // string | WhatsApp Business Account ID.
 $name = sample_whatsapp_template; // string | Name of the template.
-$language = en; // string | Language code of the template. See [Supported Languages](https://developers.facebook.com/docs/whatsapp/api/messages/message-templates#supported-languages) for all codes.
+$language = en_US; // string | Language code of the template. See [Supported Languages](https://developers.facebook.com/docs/whatsapp/api/messages/message-templates#supported-languages) for all codes.
 
 try {
     $result = $apiInstance->retrieveByNameAndLanguage($waba_id, $name, $language);

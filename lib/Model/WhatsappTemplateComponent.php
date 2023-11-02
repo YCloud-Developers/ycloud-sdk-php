@@ -64,7 +64,9 @@ class WhatsappTemplateComponent implements ModelInterface, ArrayAccess, \JsonSer
         'buttons' => '\YCloud\Client\Model\WhatsappTemplateComponentButton[]',
         'add_security_recommendation' => 'bool',
         'code_expiration_minutes' => 'int',
-        'example' => '\YCloud\Client\Model\WhatsappTemplateComponentExample'
+        'limited_time_offer' => '\YCloud\Client\Model\WhatsappTemplateComponentLimitedTimeOffer',
+        'example' => '\YCloud\Client\Model\WhatsappTemplateComponentExample',
+        'cards' => '\YCloud\Client\Model\WhatsappTemplateComponentCard[]'
     ];
 
     /**
@@ -81,7 +83,9 @@ class WhatsappTemplateComponent implements ModelInterface, ArrayAccess, \JsonSer
         'buttons' => null,
         'add_security_recommendation' => null,
         'code_expiration_minutes' => 'int32',
-        'example' => null
+        'limited_time_offer' => null,
+        'example' => null,
+        'cards' => null
     ];
 
     /**
@@ -117,7 +121,9 @@ class WhatsappTemplateComponent implements ModelInterface, ArrayAccess, \JsonSer
         'buttons' => 'buttons',
         'add_security_recommendation' => 'add_security_recommendation',
         'code_expiration_minutes' => 'code_expiration_minutes',
-        'example' => 'example'
+        'limited_time_offer' => 'limited_time_offer',
+        'example' => 'example',
+        'cards' => 'cards'
     ];
 
     /**
@@ -132,7 +138,9 @@ class WhatsappTemplateComponent implements ModelInterface, ArrayAccess, \JsonSer
         'buttons' => 'setButtons',
         'add_security_recommendation' => 'setAddSecurityRecommendation',
         'code_expiration_minutes' => 'setCodeExpirationMinutes',
-        'example' => 'setExample'
+        'limited_time_offer' => 'setLimitedTimeOffer',
+        'example' => 'setExample',
+        'cards' => 'setCards'
     ];
 
     /**
@@ -147,7 +155,9 @@ class WhatsappTemplateComponent implements ModelInterface, ArrayAccess, \JsonSer
         'buttons' => 'getButtons',
         'add_security_recommendation' => 'getAddSecurityRecommendation',
         'code_expiration_minutes' => 'getCodeExpirationMinutes',
-        'example' => 'getExample'
+        'limited_time_offer' => 'getLimitedTimeOffer',
+        'example' => 'getExample',
+        'cards' => 'getCards'
     ];
 
     /**
@@ -195,6 +205,8 @@ class WhatsappTemplateComponent implements ModelInterface, ArrayAccess, \JsonSer
     public const TYPE_HEADER = 'HEADER';
     public const TYPE_FOOTER = 'FOOTER';
     public const TYPE_BUTTONS = 'BUTTONS';
+    public const TYPE_LIMITED_TIME_OFFER = 'LIMITED_TIME_OFFER';
+    public const TYPE_CAROUSEL = 'CAROUSEL';
     public const FORMAT_TEXT = 'TEXT';
     public const FORMAT_IMAGE = 'IMAGE';
     public const FORMAT_VIDEO = 'VIDEO';
@@ -212,6 +224,8 @@ class WhatsappTemplateComponent implements ModelInterface, ArrayAccess, \JsonSer
             self::TYPE_HEADER,
             self::TYPE_FOOTER,
             self::TYPE_BUTTONS,
+            self::TYPE_LIMITED_TIME_OFFER,
+            self::TYPE_CAROUSEL,
         ];
     }
 
@@ -251,7 +265,9 @@ class WhatsappTemplateComponent implements ModelInterface, ArrayAccess, \JsonSer
         $this->container['buttons'] = $data['buttons'] ?? null;
         $this->container['add_security_recommendation'] = $data['add_security_recommendation'] ?? null;
         $this->container['code_expiration_minutes'] = $data['code_expiration_minutes'] ?? null;
+        $this->container['limited_time_offer'] = $data['limited_time_offer'] ?? null;
         $this->container['example'] = $data['example'] ?? null;
+        $this->container['cards'] = $data['cards'] ?? null;
     }
 
     /**
@@ -281,6 +297,10 @@ class WhatsappTemplateComponent implements ModelInterface, ArrayAccess, \JsonSer
             );
         }
 
+        if (!is_null($this->container['text']) && (mb_strlen($this->container['text']) > 1024)) {
+            $invalidProperties[] = "invalid value for 'text', the character length must be smaller than or equal to 1024.";
+        }
+
         if (!is_null($this->container['buttons']) && (count($this->container['buttons']) > 10)) {
             $invalidProperties[] = "invalid value for 'buttons', number of items must be less than or equal to 10.";
         }
@@ -291,6 +311,10 @@ class WhatsappTemplateComponent implements ModelInterface, ArrayAccess, \JsonSer
 
         if (!is_null($this->container['code_expiration_minutes']) && ($this->container['code_expiration_minutes'] < 1)) {
             $invalidProperties[] = "invalid value for 'code_expiration_minutes', must be bigger than or equal to 1.";
+        }
+
+        if (!is_null($this->container['cards']) && (count($this->container['cards']) > 10)) {
+            $invalidProperties[] = "invalid value for 'cards', number of items must be less than or equal to 10.";
         }
 
         return $invalidProperties;
@@ -321,7 +345,7 @@ class WhatsappTemplateComponent implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets type
      *
-     * @param string|null $type **Required.** Template component type.
+     * @param string|null $type **Required.** Template component type. - `BODY`: Body components are text-only components and are required by all templates. Templates are limited to one body component. - `HEADER`: Headers are optional components that appear at the top of template messages. Headers support text, media (images, videos, documents). Templates are limited to one header component. - `FOOTER`: Footers are optional text-only components that appear immediately after the body component. Templates are limited to one footer component. - `BUTTONS`: Buttons are optional interactive components that perform specific actions when tapped. - `LIMITED_TIME_OFFER`: Use for limited-time offer templates. The delivered message can display an offer expiration details section with a heading, an optional expiration timer, and the offer code itself. - `CAROUSEL`: Carousel templates allow you to send a single text message (1), accompanied by a set of up to 10 carousel cards (2) in a horizontally scrollable view.
      *
      * @return self
      */
@@ -389,12 +413,16 @@ class WhatsappTemplateComponent implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets text
      *
-     * @param string|null $text **Required for type `BODY`, `FOOTER`, and format `TEXT`.**
+     * @param string|null $text For body text (type = `BODY`), maximum 1024 characters. For header text (type = `HEADER`, format = `TEXT`), maximum 60 characters. For footer text (type = `FOOTER`), maximum 60 characters. For card body text (`CAROUSEL` card component type = `BODY`), maximum 160 characters.
      *
      * @return self
      */
     public function setText($text)
     {
+        if (!is_null($text) && (mb_strlen($text) > 1024)) {
+            throw new \InvalidArgumentException('invalid length for $text when calling WhatsappTemplateComponent., must be smaller than or equal to 1024.');
+        }
+
         $this->container['text'] = $text;
 
         return $this;
@@ -485,6 +513,30 @@ class WhatsappTemplateComponent implements ModelInterface, ArrayAccess, \JsonSer
     }
 
     /**
+     * Gets limited_time_offer
+     *
+     * @return \YCloud\Client\Model\WhatsappTemplateComponentLimitedTimeOffer|null
+     */
+    public function getLimitedTimeOffer()
+    {
+        return $this->container['limited_time_offer'];
+    }
+
+    /**
+     * Sets limited_time_offer
+     *
+     * @param \YCloud\Client\Model\WhatsappTemplateComponentLimitedTimeOffer|null $limited_time_offer limited_time_offer
+     *
+     * @return self
+     */
+    public function setLimitedTimeOffer($limited_time_offer)
+    {
+        $this->container['limited_time_offer'] = $limited_time_offer;
+
+        return $this;
+    }
+
+    /**
      * Gets example
      *
      * @return \YCloud\Client\Model\WhatsappTemplateComponentExample|null
@@ -504,6 +556,34 @@ class WhatsappTemplateComponent implements ModelInterface, ArrayAccess, \JsonSer
     public function setExample($example)
     {
         $this->container['example'] = $example;
+
+        return $this;
+    }
+
+    /**
+     * Gets cards
+     *
+     * @return \YCloud\Client\Model\WhatsappTemplateComponentCard[]|null
+     */
+    public function getCards()
+    {
+        return $this->container['cards'];
+    }
+
+    /**
+     * Sets cards
+     *
+     * @param \YCloud\Client\Model\WhatsappTemplateComponentCard[]|null $cards **Required for type `CAROUSEL`.** Carousel templates support up to 10 carousel cards.
+     *
+     * @return self
+     */
+    public function setCards($cards)
+    {
+
+        if (!is_null($cards) && (count($cards) > 10)) {
+            throw new \InvalidArgumentException('invalid value for $cards when calling WhatsappTemplateComponent., number of items must be less than or equal to 10.');
+        }
+        $this->container['cards'] = $cards;
 
         return $this;
     }

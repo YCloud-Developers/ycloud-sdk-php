@@ -1,6 +1,6 @@
 <?php
 /**
- * WhatsappMessageInteractiveHeader
+ * WhatsappMessageTemplateComponentParameterLimitedTimeOffer
  *
  * PHP version 7.4
  *
@@ -33,16 +33,16 @@ use \ArrayAccess;
 use \YCloud\Client\ObjectSerializer;
 
 /**
- * WhatsappMessageInteractiveHeader Class Doc Comment
+ * WhatsappMessageTemplateComponentParameterLimitedTimeOffer Class Doc Comment
  *
  * @category Class
- * @description Required for type &#x60;product_list&#x60;. Optional for other types. See also [WhatsApp Header Object](https://developers.facebook.com/docs/whatsapp/cloud-api/reference/messages#header-object).
+ * @description Required if template uses offer expiration details.
  * @package  YCloud\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class WhatsappMessageInteractiveHeader implements ModelInterface, ArrayAccess, \JsonSerializable
+class WhatsappMessageTemplateComponentParameterLimitedTimeOffer implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +51,7 @@ class WhatsappMessageInteractiveHeader implements ModelInterface, ArrayAccess, \
       *
       * @var string
       */
-    protected static $openAPIModelName = 'WhatsappMessageInteractiveHeader';
+    protected static $openAPIModelName = 'WhatsappMessageTemplateComponentParameterLimitedTimeOffer';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,11 +59,7 @@ class WhatsappMessageInteractiveHeader implements ModelInterface, ArrayAccess, \
       * @var string[]
       */
     protected static $openAPITypes = [
-        'type' => 'string',
-        'text' => 'string',
-        'image' => '\YCloud\Client\Model\WhatsappMessageMedia',
-        'video' => '\YCloud\Client\Model\WhatsappMessageMedia',
-        'document' => '\YCloud\Client\Model\WhatsappMessageMedia'
+        'expiration_time_ms' => 'int'
     ];
 
     /**
@@ -74,11 +70,7 @@ class WhatsappMessageInteractiveHeader implements ModelInterface, ArrayAccess, \
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'type' => null,
-        'text' => null,
-        'image' => null,
-        'video' => null,
-        'document' => null
+        'expiration_time_ms' => 'int64'
     ];
 
     /**
@@ -108,11 +100,7 @@ class WhatsappMessageInteractiveHeader implements ModelInterface, ArrayAccess, \
      * @var string[]
      */
     protected static $attributeMap = [
-        'type' => 'type',
-        'text' => 'text',
-        'image' => 'image',
-        'video' => 'video',
-        'document' => 'document'
+        'expiration_time_ms' => 'expiration_time_ms'
     ];
 
     /**
@@ -121,11 +109,7 @@ class WhatsappMessageInteractiveHeader implements ModelInterface, ArrayAccess, \
      * @var string[]
      */
     protected static $setters = [
-        'type' => 'setType',
-        'text' => 'setText',
-        'image' => 'setImage',
-        'video' => 'setVideo',
-        'document' => 'setDocument'
+        'expiration_time_ms' => 'setExpirationTimeMs'
     ];
 
     /**
@@ -134,11 +118,7 @@ class WhatsappMessageInteractiveHeader implements ModelInterface, ArrayAccess, \
      * @var string[]
      */
     protected static $getters = [
-        'type' => 'getType',
-        'text' => 'getText',
-        'image' => 'getImage',
-        'video' => 'getVideo',
-        'document' => 'getDocument'
+        'expiration_time_ms' => 'getExpirationTimeMs'
     ];
 
     /**
@@ -182,25 +162,6 @@ class WhatsappMessageInteractiveHeader implements ModelInterface, ArrayAccess, \
         return self::$openAPIModelName;
     }
 
-    public const TYPE_TEXT = 'text';
-    public const TYPE_IMAGE = 'image';
-    public const TYPE_VIDEO = 'video';
-    public const TYPE_DOCUMENT = 'document';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getTypeAllowableValues()
-    {
-        return [
-            self::TYPE_TEXT,
-            self::TYPE_IMAGE,
-            self::TYPE_VIDEO,
-            self::TYPE_DOCUMENT,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -217,11 +178,7 @@ class WhatsappMessageInteractiveHeader implements ModelInterface, ArrayAccess, \
      */
     public function __construct(array $data = null)
     {
-        $this->container['type'] = $data['type'] ?? null;
-        $this->container['text'] = $data['text'] ?? null;
-        $this->container['image'] = $data['image'] ?? null;
-        $this->container['video'] = $data['video'] ?? null;
-        $this->container['document'] = $data['document'] ?? null;
+        $this->container['expiration_time_ms'] = $data['expiration_time_ms'] ?? null;
     }
 
     /**
@@ -232,19 +189,6 @@ class WhatsappMessageInteractiveHeader implements ModelInterface, ArrayAccess, \
     public function listInvalidProperties()
     {
         $invalidProperties = [];
-
-        $allowedValues = $this->getTypeAllowableValues();
-        if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'type', must be one of '%s'",
-                $this->container['type'],
-                implode("', '", $allowedValues)
-            );
-        }
-
-        if (!is_null($this->container['text']) && (mb_strlen($this->container['text']) > 60)) {
-            $invalidProperties[] = "invalid value for 'text', the character length must be smaller than or equal to 60.";
-        }
 
         return $invalidProperties;
     }
@@ -262,135 +206,25 @@ class WhatsappMessageInteractiveHeader implements ModelInterface, ArrayAccess, \
 
 
     /**
-     * Gets type
+     * Gets expiration_time_ms
      *
-     * @return string|null
+     * @return int|null
      */
-    public function getType()
+    public function getExpirationTimeMs()
     {
-        return $this->container['type'];
+        return $this->container['expiration_time_ms'];
     }
 
     /**
-     * Sets type
+     * Sets expiration_time_ms
      *
-     * @param string|null $type **Required.** The header type you would like to use. - `text`: Used for List Messages and Reply Buttons. - `video`: Used for Reply Buttons. - `image`: Used for Reply Buttons. - `document`: Used for Reply Buttons.
+     * @param int|null $expiration_time_ms **Required.** Offer code expiration time as a UNIX timestamp in milliseconds.
      *
      * @return self
      */
-    public function setType($type)
+    public function setExpirationTimeMs($expiration_time_ms)
     {
-        $allowedValues = $this->getTypeAllowableValues();
-        if (!is_null($type) && !in_array($type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'type', must be one of '%s'",
-                    $type,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['type'] = $type;
-
-        return $this;
-    }
-
-    /**
-     * Gets text
-     *
-     * @return string|null
-     */
-    public function getText()
-    {
-        return $this->container['text'];
-    }
-
-    /**
-     * Sets text
-     *
-     * @param string|null $text Text for the header. Formatting allows emojis, but not markdown.
-     *
-     * @return self
-     */
-    public function setText($text)
-    {
-        if (!is_null($text) && (mb_strlen($text) > 60)) {
-            throw new \InvalidArgumentException('invalid length for $text when calling WhatsappMessageInteractiveHeader., must be smaller than or equal to 60.');
-        }
-
-        $this->container['text'] = $text;
-
-        return $this;
-    }
-
-    /**
-     * Gets image
-     *
-     * @return \YCloud\Client\Model\WhatsappMessageMedia|null
-     */
-    public function getImage()
-    {
-        return $this->container['image'];
-    }
-
-    /**
-     * Sets image
-     *
-     * @param \YCloud\Client\Model\WhatsappMessageMedia|null $image image
-     *
-     * @return self
-     */
-    public function setImage($image)
-    {
-        $this->container['image'] = $image;
-
-        return $this;
-    }
-
-    /**
-     * Gets video
-     *
-     * @return \YCloud\Client\Model\WhatsappMessageMedia|null
-     */
-    public function getVideo()
-    {
-        return $this->container['video'];
-    }
-
-    /**
-     * Sets video
-     *
-     * @param \YCloud\Client\Model\WhatsappMessageMedia|null $video video
-     *
-     * @return self
-     */
-    public function setVideo($video)
-    {
-        $this->container['video'] = $video;
-
-        return $this;
-    }
-
-    /**
-     * Gets document
-     *
-     * @return \YCloud\Client\Model\WhatsappMessageMedia|null
-     */
-    public function getDocument()
-    {
-        return $this->container['document'];
-    }
-
-    /**
-     * Sets document
-     *
-     * @param \YCloud\Client\Model\WhatsappMessageMedia|null $document document
-     *
-     * @return self
-     */
-    public function setDocument($document)
-    {
-        $this->container['document'] = $document;
+        $this->container['expiration_time_ms'] = $expiration_time_ms;
 
         return $this;
     }

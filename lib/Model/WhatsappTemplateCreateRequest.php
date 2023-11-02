@@ -63,6 +63,7 @@ class WhatsappTemplateCreateRequest implements ModelInterface, ArrayAccess, \Jso
         'name' => 'string',
         'language' => 'string',
         'category' => '\YCloud\Client\Model\WhatsappTemplateCategory',
+        'message_send_ttl_seconds' => 'int',
         'components' => '\YCloud\Client\Model\WhatsappTemplateComponent[]'
     ];
 
@@ -78,6 +79,7 @@ class WhatsappTemplateCreateRequest implements ModelInterface, ArrayAccess, \Jso
         'name' => null,
         'language' => null,
         'category' => null,
+        'message_send_ttl_seconds' => 'int32',
         'components' => null
     ];
 
@@ -112,6 +114,7 @@ class WhatsappTemplateCreateRequest implements ModelInterface, ArrayAccess, \Jso
         'name' => 'name',
         'language' => 'language',
         'category' => 'category',
+        'message_send_ttl_seconds' => 'messageSendTtlSeconds',
         'components' => 'components'
     ];
 
@@ -125,6 +128,7 @@ class WhatsappTemplateCreateRequest implements ModelInterface, ArrayAccess, \Jso
         'name' => 'setName',
         'language' => 'setLanguage',
         'category' => 'setCategory',
+        'message_send_ttl_seconds' => 'setMessageSendTtlSeconds',
         'components' => 'setComponents'
     ];
 
@@ -138,6 +142,7 @@ class WhatsappTemplateCreateRequest implements ModelInterface, ArrayAccess, \Jso
         'name' => 'getName',
         'language' => 'getLanguage',
         'category' => 'getCategory',
+        'message_send_ttl_seconds' => 'getMessageSendTtlSeconds',
         'components' => 'getComponents'
     ];
 
@@ -202,6 +207,7 @@ class WhatsappTemplateCreateRequest implements ModelInterface, ArrayAccess, \Jso
         $this->container['name'] = $data['name'] ?? null;
         $this->container['language'] = $data['language'] ?? null;
         $this->container['category'] = $data['category'] ?? null;
+        $this->container['message_send_ttl_seconds'] = $data['message_send_ttl_seconds'] ?? null;
         $this->container['components'] = $data['components'] ?? null;
     }
 
@@ -351,6 +357,30 @@ class WhatsappTemplateCreateRequest implements ModelInterface, ArrayAccess, \Jso
     public function setCategory($category)
     {
         $this->container['category'] = $category;
+
+        return $this;
+    }
+
+    /**
+     * Gets message_send_ttl_seconds
+     *
+     * @return int|null
+     */
+    public function getMessageSendTtlSeconds()
+    {
+        return $this->container['message_send_ttl_seconds'];
+    }
+
+    /**
+     * Sets message_send_ttl_seconds
+     *
+     * @param int|null $message_send_ttl_seconds **Use only for template category is `AUTHENTICATION`.** If we are unable to deliver an authentication template for an amount of time that exceeds its time-to-live, we will stop retrying and drop the message. Defaults to `600` seconds for newly created authentication templates. To override the default value, set this field to a value between `60` and `600` seconds. Or set it to `-1` resulting in a 24-hour time-to-live.
+     *
+     * @return self
+     */
+    public function setMessageSendTtlSeconds($message_send_ttl_seconds)
+    {
+        $this->container['message_send_ttl_seconds'] = $message_send_ttl_seconds;
 
         return $this;
     }

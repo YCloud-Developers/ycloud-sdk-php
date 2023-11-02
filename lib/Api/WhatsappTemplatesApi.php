@@ -1453,7 +1453,7 @@ class WhatsappTemplatesApi
      * @param  bool $include_total Return results inside an object that contains the total result count or not. (optional, default to false)
      * @param  string $filter_waba_id WhatsApp Business Account ID. (optional)
      * @param  string $filter_name Name of the template. (optional)
-     * @param  string $filter_language Language of the template. (optional)
+     * @param  string $filter_language Language code of the template. See [Supported Languages](https://developers.facebook.com/docs/whatsapp/api/messages/message-templates#supported-languages) for all codes. (optional)
      *
      * @throws \YCloud\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1477,7 +1477,7 @@ class WhatsappTemplatesApi
      * @param  bool $include_total Return results inside an object that contains the total result count or not. (optional, default to false)
      * @param  string $filter_waba_id WhatsApp Business Account ID. (optional)
      * @param  string $filter_name Name of the template. (optional)
-     * @param  string $filter_language Language of the template. (optional)
+     * @param  string $filter_language Language code of the template. See [Supported Languages](https://developers.facebook.com/docs/whatsapp/api/messages/message-templates#supported-languages) for all codes. (optional)
      *
      * @throws \YCloud\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1583,7 +1583,7 @@ class WhatsappTemplatesApi
      * @param  bool $include_total Return results inside an object that contains the total result count or not. (optional, default to false)
      * @param  string $filter_waba_id WhatsApp Business Account ID. (optional)
      * @param  string $filter_name Name of the template. (optional)
-     * @param  string $filter_language Language of the template. (optional)
+     * @param  string $filter_language Language code of the template. See [Supported Languages](https://developers.facebook.com/docs/whatsapp/api/messages/message-templates#supported-languages) for all codes. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1610,7 +1610,7 @@ class WhatsappTemplatesApi
      * @param  bool $include_total Return results inside an object that contains the total result count or not. (optional, default to false)
      * @param  string $filter_waba_id WhatsApp Business Account ID. (optional)
      * @param  string $filter_name Name of the template. (optional)
-     * @param  string $filter_language Language of the template. (optional)
+     * @param  string $filter_language Language code of the template. See [Supported Languages](https://developers.facebook.com/docs/whatsapp/api/messages/message-templates#supported-languages) for all codes. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1666,7 +1666,7 @@ class WhatsappTemplatesApi
      * @param  bool $include_total Return results inside an object that contains the total result count or not. (optional, default to false)
      * @param  string $filter_waba_id WhatsApp Business Account ID. (optional)
      * @param  string $filter_name Name of the template. (optional)
-     * @param  string $filter_language Language of the template. (optional)
+     * @param  string $filter_language Language code of the template. See [Supported Languages](https://developers.facebook.com/docs/whatsapp/api/messages/message-templates#supported-languages) for all codes. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request

@@ -1,6 +1,6 @@
 <?php
 /**
- * WhatsappMessageInteractiveHeader
+ * WhatsappMessageTemplateComponentCard
  *
  * PHP version 7.4
  *
@@ -33,16 +33,16 @@ use \ArrayAccess;
 use \YCloud\Client\ObjectSerializer;
 
 /**
- * WhatsappMessageInteractiveHeader Class Doc Comment
+ * WhatsappMessageTemplateComponentCard Class Doc Comment
  *
  * @category Class
- * @description Required for type &#x60;product_list&#x60;. Optional for other types. See also [WhatsApp Header Object](https://developers.facebook.com/docs/whatsapp/cloud-api/reference/messages#header-object).
+ * @description Card component containing the parameters of the message.
  * @package  YCloud\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class WhatsappMessageInteractiveHeader implements ModelInterface, ArrayAccess, \JsonSerializable
+class WhatsappMessageTemplateComponentCard implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +51,7 @@ class WhatsappMessageInteractiveHeader implements ModelInterface, ArrayAccess, \
       *
       * @var string
       */
-    protected static $openAPIModelName = 'WhatsappMessageInteractiveHeader';
+    protected static $openAPIModelName = 'WhatsappMessageTemplateComponentCard';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,11 +59,8 @@ class WhatsappMessageInteractiveHeader implements ModelInterface, ArrayAccess, \
       * @var string[]
       */
     protected static $openAPITypes = [
-        'type' => 'string',
-        'text' => 'string',
-        'image' => '\YCloud\Client\Model\WhatsappMessageMedia',
-        'video' => '\YCloud\Client\Model\WhatsappMessageMedia',
-        'document' => '\YCloud\Client\Model\WhatsappMessageMedia'
+        'card_index' => 'int',
+        'components' => '\YCloud\Client\Model\WhatsappMessageTemplateComponent[]'
     ];
 
     /**
@@ -74,11 +71,8 @@ class WhatsappMessageInteractiveHeader implements ModelInterface, ArrayAccess, \
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'type' => null,
-        'text' => null,
-        'image' => null,
-        'video' => null,
-        'document' => null
+        'card_index' => 'int32',
+        'components' => null
     ];
 
     /**
@@ -108,11 +102,8 @@ class WhatsappMessageInteractiveHeader implements ModelInterface, ArrayAccess, \
      * @var string[]
      */
     protected static $attributeMap = [
-        'type' => 'type',
-        'text' => 'text',
-        'image' => 'image',
-        'video' => 'video',
-        'document' => 'document'
+        'card_index' => 'card_index',
+        'components' => 'components'
     ];
 
     /**
@@ -121,11 +112,8 @@ class WhatsappMessageInteractiveHeader implements ModelInterface, ArrayAccess, \
      * @var string[]
      */
     protected static $setters = [
-        'type' => 'setType',
-        'text' => 'setText',
-        'image' => 'setImage',
-        'video' => 'setVideo',
-        'document' => 'setDocument'
+        'card_index' => 'setCardIndex',
+        'components' => 'setComponents'
     ];
 
     /**
@@ -134,11 +122,8 @@ class WhatsappMessageInteractiveHeader implements ModelInterface, ArrayAccess, \
      * @var string[]
      */
     protected static $getters = [
-        'type' => 'getType',
-        'text' => 'getText',
-        'image' => 'getImage',
-        'video' => 'getVideo',
-        'document' => 'getDocument'
+        'card_index' => 'getCardIndex',
+        'components' => 'getComponents'
     ];
 
     /**
@@ -182,25 +167,6 @@ class WhatsappMessageInteractiveHeader implements ModelInterface, ArrayAccess, \
         return self::$openAPIModelName;
     }
 
-    public const TYPE_TEXT = 'text';
-    public const TYPE_IMAGE = 'image';
-    public const TYPE_VIDEO = 'video';
-    public const TYPE_DOCUMENT = 'document';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getTypeAllowableValues()
-    {
-        return [
-            self::TYPE_TEXT,
-            self::TYPE_IMAGE,
-            self::TYPE_VIDEO,
-            self::TYPE_DOCUMENT,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -217,11 +183,8 @@ class WhatsappMessageInteractiveHeader implements ModelInterface, ArrayAccess, \
      */
     public function __construct(array $data = null)
     {
-        $this->container['type'] = $data['type'] ?? null;
-        $this->container['text'] = $data['text'] ?? null;
-        $this->container['image'] = $data['image'] ?? null;
-        $this->container['video'] = $data['video'] ?? null;
-        $this->container['document'] = $data['document'] ?? null;
+        $this->container['card_index'] = $data['card_index'] ?? null;
+        $this->container['components'] = $data['components'] ?? null;
     }
 
     /**
@@ -233,17 +196,12 @@ class WhatsappMessageInteractiveHeader implements ModelInterface, ArrayAccess, \
     {
         $invalidProperties = [];
 
-        $allowedValues = $this->getTypeAllowableValues();
-        if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'type', must be one of '%s'",
-                $this->container['type'],
-                implode("', '", $allowedValues)
-            );
+        if (!is_null($this->container['card_index']) && ($this->container['card_index'] > 9)) {
+            $invalidProperties[] = "invalid value for 'card_index', must be smaller than or equal to 9.";
         }
 
-        if (!is_null($this->container['text']) && (mb_strlen($this->container['text']) > 60)) {
-            $invalidProperties[] = "invalid value for 'text', the character length must be smaller than or equal to 60.";
+        if (!is_null($this->container['card_index']) && ($this->container['card_index'] < 0)) {
+            $invalidProperties[] = "invalid value for 'card_index', must be bigger than or equal to 0.";
         }
 
         return $invalidProperties;
@@ -262,135 +220,57 @@ class WhatsappMessageInteractiveHeader implements ModelInterface, ArrayAccess, \
 
 
     /**
-     * Gets type
+     * Gets card_index
      *
-     * @return string|null
+     * @return int|null
      */
-    public function getType()
+    public function getCardIndex()
     {
-        return $this->container['type'];
+        return $this->container['card_index'];
     }
 
     /**
-     * Sets type
+     * Sets card_index
      *
-     * @param string|null $type **Required.** The header type you would like to use. - `text`: Used for List Messages and Reply Buttons. - `video`: Used for Reply Buttons. - `image`: Used for Reply Buttons. - `document`: Used for Reply Buttons.
+     * @param int|null $card_index **Required.** Zero-indexed order in which card appears within the card carousel. 0 indicates first card, 1 indicates second card, etc.
      *
      * @return self
      */
-    public function setType($type)
+    public function setCardIndex($card_index)
     {
-        $allowedValues = $this->getTypeAllowableValues();
-        if (!is_null($type) && !in_array($type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'type', must be one of '%s'",
-                    $type,
-                    implode("', '", $allowedValues)
-                )
-            );
+
+        if (!is_null($card_index) && ($card_index > 9)) {
+            throw new \InvalidArgumentException('invalid value for $card_index when calling WhatsappMessageTemplateComponentCard., must be smaller than or equal to 9.');
         }
-        $this->container['type'] = $type;
-
-        return $this;
-    }
-
-    /**
-     * Gets text
-     *
-     * @return string|null
-     */
-    public function getText()
-    {
-        return $this->container['text'];
-    }
-
-    /**
-     * Sets text
-     *
-     * @param string|null $text Text for the header. Formatting allows emojis, but not markdown.
-     *
-     * @return self
-     */
-    public function setText($text)
-    {
-        if (!is_null($text) && (mb_strlen($text) > 60)) {
-            throw new \InvalidArgumentException('invalid length for $text when calling WhatsappMessageInteractiveHeader., must be smaller than or equal to 60.');
+        if (!is_null($card_index) && ($card_index < 0)) {
+            throw new \InvalidArgumentException('invalid value for $card_index when calling WhatsappMessageTemplateComponentCard., must be bigger than or equal to 0.');
         }
 
-        $this->container['text'] = $text;
+        $this->container['card_index'] = $card_index;
 
         return $this;
     }
 
     /**
-     * Gets image
+     * Gets components
      *
-     * @return \YCloud\Client\Model\WhatsappMessageMedia|null
+     * @return \YCloud\Client\Model\WhatsappMessageTemplateComponent[]|null
      */
-    public function getImage()
+    public function getComponents()
     {
-        return $this->container['image'];
+        return $this->container['components'];
     }
 
     /**
-     * Sets image
+     * Sets components
      *
-     * @param \YCloud\Client\Model\WhatsappMessageMedia|null $image image
+     * @param \YCloud\Client\Model\WhatsappMessageTemplateComponent[]|null $components Card component.
      *
      * @return self
      */
-    public function setImage($image)
+    public function setComponents($components)
     {
-        $this->container['image'] = $image;
-
-        return $this;
-    }
-
-    /**
-     * Gets video
-     *
-     * @return \YCloud\Client\Model\WhatsappMessageMedia|null
-     */
-    public function getVideo()
-    {
-        return $this->container['video'];
-    }
-
-    /**
-     * Sets video
-     *
-     * @param \YCloud\Client\Model\WhatsappMessageMedia|null $video video
-     *
-     * @return self
-     */
-    public function setVideo($video)
-    {
-        $this->container['video'] = $video;
-
-        return $this;
-    }
-
-    /**
-     * Gets document
-     *
-     * @return \YCloud\Client\Model\WhatsappMessageMedia|null
-     */
-    public function getDocument()
-    {
-        return $this->container['document'];
-    }
-
-    /**
-     * Sets document
-     *
-     * @param \YCloud\Client\Model\WhatsappMessageMedia|null $document document
-     *
-     * @return self
-     */
-    public function setDocument($document)
-    {
-        $this->container['document'] = $document;
+        $this->container['components'] = $components;
 
         return $this;
     }

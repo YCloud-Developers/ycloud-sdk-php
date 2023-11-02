@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **from** | **string** | The sender&#39;s phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format. |
 **to** | **string** | The recipient&#39;s phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format. |
 **conversation** | [**\YCloud\Client\Model\WhatsappConversation**](WhatsappConversation.md) |  | [optional]
-**type** | [**\YCloud\Client\Model\WhatsappMessageType**](WhatsappMessageType.md) |  |
+**type** | [**\YCloud\Client\Model\WhatsappMessageType**](WhatsappMessageType.md) |  | [optional]
 **template** | [**\YCloud\Client\Model\WhatsappMessageTemplate**](WhatsappMessageTemplate.md) |  | [optional]
 **text** | [**\YCloud\Client\Model\WhatsappMessageText**](WhatsappMessageText.md) |  | [optional]
 **image** | [**\YCloud\Client\Model\WhatsappMessageMedia**](WhatsappMessageMedia.md) |  | [optional]
