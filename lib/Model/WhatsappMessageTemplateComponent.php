@@ -309,7 +309,7 @@ class WhatsappMessageTemplateComponent implements ModelInterface, ArrayAccess, \
     /**
      * Sets type
      *
-     * @param string $type Describes the component type.
+     * @param string $type Component type.
      *
      * @return self
      */

@@ -1,6 +1,6 @@
 <?php
 /**
- * WhatsappMessageTemplateComponentParameter
+ * WhatsappMessageTemplateComponentCardComponent
  *
  * PHP version 7.4
  *
@@ -33,15 +33,16 @@ use \ArrayAccess;
 use \YCloud\Client\ObjectSerializer;
 
 /**
- * WhatsappMessageTemplateComponentParameter Class Doc Comment
+ * WhatsappMessageTemplateComponentCardComponent Class Doc Comment
  *
  * @category Class
+ * @description Card component object containing the parameters of the message.
  * @package  YCloud\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class WhatsappMessageTemplateComponentParameter implements ModelInterface, ArrayAccess, \JsonSerializable
+class WhatsappMessageTemplateComponentCardComponent implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +51,7 @@ class WhatsappMessageTemplateComponentParameter implements ModelInterface, Array
       *
       * @var string
       */
-    protected static $openAPIModelName = 'WhatsappMessageTemplateComponentParameter';
+    protected static $openAPIModelName = 'WhatsappMessageTemplateComponentCardComponent';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,13 +60,9 @@ class WhatsappMessageTemplateComponentParameter implements ModelInterface, Array
       */
     protected static $openAPITypes = [
         'type' => 'string',
-        'text' => 'string',
-        'payload' => 'string',
-        'coupon_code' => 'string',
-        'image' => '\YCloud\Client\Model\WhatsappMessageMedia',
-        'video' => '\YCloud\Client\Model\WhatsappMessageMedia',
-        'document' => '\YCloud\Client\Model\WhatsappMessageMedia',
-        'limited_time_offer' => '\YCloud\Client\Model\WhatsappMessageTemplateComponentParameterLimitedTimeOffer'
+        'sub_type' => 'string',
+        'index' => 'int',
+        'parameters' => '\YCloud\Client\Model\WhatsappMessageTemplateComponentParameter[]'
     ];
 
     /**
@@ -77,13 +74,9 @@ class WhatsappMessageTemplateComponentParameter implements ModelInterface, Array
       */
     protected static $openAPIFormats = [
         'type' => null,
-        'text' => null,
-        'payload' => null,
-        'coupon_code' => null,
-        'image' => null,
-        'video' => null,
-        'document' => null,
-        'limited_time_offer' => null
+        'sub_type' => null,
+        'index' => 'int32',
+        'parameters' => null
     ];
 
     /**
@@ -114,13 +107,9 @@ class WhatsappMessageTemplateComponentParameter implements ModelInterface, Array
      */
     protected static $attributeMap = [
         'type' => 'type',
-        'text' => 'text',
-        'payload' => 'payload',
-        'coupon_code' => 'coupon_code',
-        'image' => 'image',
-        'video' => 'video',
-        'document' => 'document',
-        'limited_time_offer' => 'limited_time_offer'
+        'sub_type' => 'sub_type',
+        'index' => 'index',
+        'parameters' => 'parameters'
     ];
 
     /**
@@ -130,13 +119,9 @@ class WhatsappMessageTemplateComponentParameter implements ModelInterface, Array
      */
     protected static $setters = [
         'type' => 'setType',
-        'text' => 'setText',
-        'payload' => 'setPayload',
-        'coupon_code' => 'setCouponCode',
-        'image' => 'setImage',
-        'video' => 'setVideo',
-        'document' => 'setDocument',
-        'limited_time_offer' => 'setLimitedTimeOffer'
+        'sub_type' => 'setSubType',
+        'index' => 'setIndex',
+        'parameters' => 'setParameters'
     ];
 
     /**
@@ -146,13 +131,9 @@ class WhatsappMessageTemplateComponentParameter implements ModelInterface, Array
      */
     protected static $getters = [
         'type' => 'getType',
-        'text' => 'getText',
-        'payload' => 'getPayload',
-        'coupon_code' => 'getCouponCode',
-        'image' => 'getImage',
-        'video' => 'getVideo',
-        'document' => 'getDocument',
-        'limited_time_offer' => 'getLimitedTimeOffer'
+        'sub_type' => 'getSubType',
+        'index' => 'getIndex',
+        'parameters' => 'getParameters'
     ];
 
     /**
@@ -196,13 +177,11 @@ class WhatsappMessageTemplateComponentParameter implements ModelInterface, Array
         return self::$openAPIModelName;
     }
 
-    public const TYPE_TEXT = 'text';
-    public const TYPE_IMAGE = 'image';
-    public const TYPE_VIDEO = 'video';
-    public const TYPE_DOCUMENT = 'document';
-    public const TYPE_PAYLOAD = 'payload';
-    public const TYPE_COUPON_CODE = 'coupon_code';
-    public const TYPE_LIMITED_TIME_OFFER = 'limited_time_offer';
+    public const TYPE_HEADER = 'header';
+    public const TYPE_BODY = 'body';
+    public const TYPE_BUTTON = 'button';
+    public const SUB_TYPE_QUICK_REPLY = 'quick_reply';
+    public const SUB_TYPE_URL = 'url';
 
     /**
      * Gets allowable values of the enum
@@ -212,13 +191,22 @@ class WhatsappMessageTemplateComponentParameter implements ModelInterface, Array
     public function getTypeAllowableValues()
     {
         return [
-            self::TYPE_TEXT,
-            self::TYPE_IMAGE,
-            self::TYPE_VIDEO,
-            self::TYPE_DOCUMENT,
-            self::TYPE_PAYLOAD,
-            self::TYPE_COUPON_CODE,
-            self::TYPE_LIMITED_TIME_OFFER,
+            self::TYPE_HEADER,
+            self::TYPE_BODY,
+            self::TYPE_BUTTON,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getSubTypeAllowableValues()
+    {
+        return [
+            self::SUB_TYPE_QUICK_REPLY,
+            self::SUB_TYPE_URL,
         ];
     }
 
@@ -238,13 +226,9 @@ class WhatsappMessageTemplateComponentParameter implements ModelInterface, Array
     public function __construct(array $data = null)
     {
         $this->container['type'] = $data['type'] ?? null;
-        $this->container['text'] = $data['text'] ?? null;
-        $this->container['payload'] = $data['payload'] ?? null;
-        $this->container['coupon_code'] = $data['coupon_code'] ?? null;
-        $this->container['image'] = $data['image'] ?? null;
-        $this->container['video'] = $data['video'] ?? null;
-        $this->container['document'] = $data['document'] ?? null;
-        $this->container['limited_time_offer'] = $data['limited_time_offer'] ?? null;
+        $this->container['sub_type'] = $data['sub_type'] ?? null;
+        $this->container['index'] = $data['index'] ?? null;
+        $this->container['parameters'] = $data['parameters'] ?? null;
     }
 
     /**
@@ -256,6 +240,9 @@ class WhatsappMessageTemplateComponentParameter implements ModelInterface, Array
     {
         $invalidProperties = [];
 
+        if ($this->container['type'] === null) {
+            $invalidProperties[] = "'type' can't be null";
+        }
         $allowedValues = $this->getTypeAllowableValues();
         if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
@@ -263,6 +250,23 @@ class WhatsappMessageTemplateComponentParameter implements ModelInterface, Array
                 $this->container['type'],
                 implode("', '", $allowedValues)
             );
+        }
+
+        $allowedValues = $this->getSubTypeAllowableValues();
+        if (!is_null($this->container['sub_type']) && !in_array($this->container['sub_type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'sub_type', must be one of '%s'",
+                $this->container['sub_type'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        if (!is_null($this->container['index']) && ($this->container['index'] > 9)) {
+            $invalidProperties[] = "invalid value for 'index', must be smaller than or equal to 9.";
+        }
+
+        if (!is_null($this->container['index']) && ($this->container['index'] < 0)) {
+            $invalidProperties[] = "invalid value for 'index', must be bigger than or equal to 0.";
         }
 
         return $invalidProperties;
@@ -283,7 +287,7 @@ class WhatsappMessageTemplateComponentParameter implements ModelInterface, Array
     /**
      * Gets type
      *
-     * @return string|null
+     * @return string
      */
     public function getType()
     {
@@ -293,14 +297,14 @@ class WhatsappMessageTemplateComponentParameter implements ModelInterface, Array
     /**
      * Sets type
      *
-     * @param string|null $type **Required.** Component parameter type. - `text`: Used when the template component type is `BODY`, or the `HEADER` component format is `TEXT`. - `image`: Used when the template `HEADER` component is `IMAGE`. - `video`: Used when the template `HEADER` component is `VIDEO`. - `document`: Used when the template `HEADER` component is `DOCUMENT`. - `payload`: Used when the template component button type is `QUICK_REPLY`. - `coupon_code`: Used when the template component button type is `COPY_CODE`. - `limited_time_offer`: Used when the template component type is `LIMITED_TIME_OFFER`.
+     * @param string $type Component type.
      *
      * @return self
      */
     public function setType($type)
     {
         $allowedValues = $this->getTypeAllowableValues();
-        if (!is_null($type) && !in_array($type, $allowedValues, true)) {
+        if (!in_array($type, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
                     "Invalid value '%s' for 'type', must be one of '%s'",
@@ -315,169 +319,91 @@ class WhatsappMessageTemplateComponentParameter implements ModelInterface, Array
     }
 
     /**
-     * Gets text
+     * Gets sub_type
      *
      * @return string|null
      */
-    public function getText()
+    public function getSubType()
     {
-        return $this->container['text'];
+        return $this->container['sub_type'];
     }
 
     /**
-     * Sets text
+     * Sets sub_type
      *
-     * @param string|null $text **Required when `type` = `text`.** The message's text. For the header component, the character limit is 60 characters. For the body component, the character limit is 1024 characters. For url buttons, it indicates the developer-provided suffix that is appended to the predefined prefix URL in the template.
+     * @param string|null $sub_type **Required when type is `button`.** Type of button. `quick_reply`: Refers to a previously created quick reply button that allows for the customer to return a predefined message. `url`: Refers to a previously created url button that allows the customer to visit the URL generated by appending the text parameter to the predefined prefix URL in the template.
      *
      * @return self
      */
-    public function setText($text)
+    public function setSubType($sub_type)
     {
-        $this->container['text'] = $text;
+        $allowedValues = $this->getSubTypeAllowableValues();
+        if (!is_null($sub_type) && !in_array($sub_type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'sub_type', must be one of '%s'",
+                    $sub_type,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['sub_type'] = $sub_type;
 
         return $this;
     }
 
     /**
-     * Gets payload
+     * Gets index
      *
-     * @return string|null
+     * @return int|null
      */
-    public function getPayload()
+    public function getIndex()
     {
-        return $this->container['payload'];
+        return $this->container['index'];
     }
 
     /**
-     * Sets payload
+     * Sets index
      *
-     * @param string|null $payload Required for `quick_reply` buttons. Developer-defined payload that is returned when the button is clicked in addition to the display text on the button.
+     * @param int|null $index **Required when `type` = `button`. Not used for the other types.** Indicates order in which button should appear, if the template uses multiple buttons. Buttons are zero-indexed, so setting value to 0 will cause the button to appear first, and another button with an index of 1 will appear next, etc.
      *
      * @return self
      */
-    public function setPayload($payload)
+    public function setIndex($index)
     {
-        $this->container['payload'] = $payload;
+
+        if (!is_null($index) && ($index > 9)) {
+            throw new \InvalidArgumentException('invalid value for $index when calling WhatsappMessageTemplateComponentCardComponent., must be smaller than or equal to 9.');
+        }
+        if (!is_null($index) && ($index < 0)) {
+            throw new \InvalidArgumentException('invalid value for $index when calling WhatsappMessageTemplateComponentCardComponent., must be bigger than or equal to 0.');
+        }
+
+        $this->container['index'] = $index;
 
         return $this;
     }
 
     /**
-     * Gets coupon_code
+     * Gets parameters
      *
-     * @return string|null
+     * @return \YCloud\Client\Model\WhatsappMessageTemplateComponentParameter[]|null
      */
-    public function getCouponCode()
+    public function getParameters()
     {
-        return $this->container['coupon_code'];
+        return $this->container['parameters'];
     }
 
     /**
-     * Sets coupon_code
+     * Sets parameters
      *
-     * @param string|null $coupon_code **Required when `type` = `coupon_code`.** The coupon code to be copied when the customer taps the button.
+     * @param \YCloud\Client\Model\WhatsappMessageTemplateComponentParameter[]|null $parameters **Required when `type` = `button`, or there are variables in the corresponding template component, or the card component `HEADER` format is media (`IMAGE`, `VIDEO`).** Array of parameter objects with the content of the message. For components of `type` = `button`, see the [button parameter object](https://developers.facebook.com/docs/whatsapp/cloud-api/reference/messages#button-parameter-object).
      *
      * @return self
      */
-    public function setCouponCode($coupon_code)
+    public function setParameters($parameters)
     {
-        $this->container['coupon_code'] = $coupon_code;
-
-        return $this;
-    }
-
-    /**
-     * Gets image
-     *
-     * @return \YCloud\Client\Model\WhatsappMessageMedia|null
-     */
-    public function getImage()
-    {
-        return $this->container['image'];
-    }
-
-    /**
-     * Sets image
-     *
-     * @param \YCloud\Client\Model\WhatsappMessageMedia|null $image image
-     *
-     * @return self
-     */
-    public function setImage($image)
-    {
-        $this->container['image'] = $image;
-
-        return $this;
-    }
-
-    /**
-     * Gets video
-     *
-     * @return \YCloud\Client\Model\WhatsappMessageMedia|null
-     */
-    public function getVideo()
-    {
-        return $this->container['video'];
-    }
-
-    /**
-     * Sets video
-     *
-     * @param \YCloud\Client\Model\WhatsappMessageMedia|null $video video
-     *
-     * @return self
-     */
-    public function setVideo($video)
-    {
-        $this->container['video'] = $video;
-
-        return $this;
-    }
-
-    /**
-     * Gets document
-     *
-     * @return \YCloud\Client\Model\WhatsappMessageMedia|null
-     */
-    public function getDocument()
-    {
-        return $this->container['document'];
-    }
-
-    /**
-     * Sets document
-     *
-     * @param \YCloud\Client\Model\WhatsappMessageMedia|null $document document
-     *
-     * @return self
-     */
-    public function setDocument($document)
-    {
-        $this->container['document'] = $document;
-
-        return $this;
-    }
-
-    /**
-     * Gets limited_time_offer
-     *
-     * @return \YCloud\Client\Model\WhatsappMessageTemplateComponentParameterLimitedTimeOffer|null
-     */
-    public function getLimitedTimeOffer()
-    {
-        return $this->container['limited_time_offer'];
-    }
-
-    /**
-     * Sets limited_time_offer
-     *
-     * @param \YCloud\Client\Model\WhatsappMessageTemplateComponentParameterLimitedTimeOffer|null $limited_time_offer limited_time_offer
-     *
-     * @return self
-     */
-    public function setLimitedTimeOffer($limited_time_offer)
-    {
-        $this->container['limited_time_offer'] = $limited_time_offer;
+        $this->container['parameters'] = $parameters;
 
         return $this;
     }

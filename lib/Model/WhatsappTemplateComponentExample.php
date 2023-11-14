@@ -36,7 +36,7 @@ use \YCloud\Client\ObjectSerializer;
  * WhatsappTemplateComponentExample Class Doc Comment
  *
  * @category Class
- * @description **Required** when: - &#x60;type&#x60; is &#x60;HEADER&#x60;, and &#x60;format&#x60; is one of &#x60;IMAGE&#x60;, &#x60;VIDEO&#x60;, or &#x60;DOCUMENT&#x60;. You need to provide a sample media URL in &#x60;header_url&#x60;. - &#x60;type&#x60; is &#x60;HEADER&#x60;, &#x60;format&#x60; is &#x60;TEXT&#x60;, and a variable is used in &#x60;text&#x60;. You need to provide a sample value for that variable in &#x60;header_text&#x60;. There can be at most 1 variable in &#x60;HEADER&#x60; text. - &#x60;type&#x60; is &#x60;BODY&#x60;, and variables are used in &#x60;text&#x60;. You need to provide sample values for those variables in &#x60;body_text&#x60;.
+ * @description **Required** when: - &#x60;type&#x60; is &#x60;HEADER&#x60;, and &#x60;format&#x60; is one of &#x60;IMAGE&#x60;, &#x60;VIDEO&#x60;, or &#x60;DOCUMENT&#x60;. Provide a sample media URL in &#x60;header_url&#x60;. - &#x60;type&#x60; is &#x60;HEADER&#x60;, &#x60;format&#x60; is &#x60;TEXT&#x60;, and a variable is used in &#x60;text&#x60;. Provide a sample value for that variable in &#x60;header_text&#x60;. There can be at most 1 variable in &#x60;HEADER&#x60; text. - &#x60;type&#x60; is &#x60;BODY&#x60;, and variables are used in &#x60;text&#x60;. Provide sample values for those variables in &#x60;body_text&#x60;.
  * @package  YCloud\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -51,7 +51,7 @@ class WhatsappTemplateComponentExample implements ModelInterface, ArrayAccess, \
       *
       * @var string
       */
-    protected static $openAPIModelName = 'WhatsappTemplateComponent_example';
+    protected static $openAPIModelName = 'WhatsappTemplateComponentExample';
 
     /**
       * Array of property to type mappings. Used for (de)serialization

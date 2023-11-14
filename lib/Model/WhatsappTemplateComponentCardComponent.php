@@ -1,6 +1,6 @@
 <?php
 /**
- * WhatsappMessageTemplateComponentParameter
+ * WhatsappTemplateComponentCardComponent
  *
  * PHP version 7.4
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \YCloud\Client\ObjectSerializer;
 
 /**
- * WhatsappMessageTemplateComponentParameter Class Doc Comment
+ * WhatsappTemplateComponentCardComponent Class Doc Comment
  *
  * @category Class
  * @package  YCloud\Client
@@ -41,7 +41,7 @@ use \YCloud\Client\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class WhatsappMessageTemplateComponentParameter implements ModelInterface, ArrayAccess, \JsonSerializable
+class WhatsappTemplateComponentCardComponent implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class WhatsappMessageTemplateComponentParameter implements ModelInterface, Array
       *
       * @var string
       */
-    protected static $openAPIModelName = 'WhatsappMessageTemplateComponentParameter';
+    protected static $openAPIModelName = 'WhatsappTemplateComponentCardComponent';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,13 +59,10 @@ class WhatsappMessageTemplateComponentParameter implements ModelInterface, Array
       */
     protected static $openAPITypes = [
         'type' => 'string',
+        'format' => 'string',
         'text' => 'string',
-        'payload' => 'string',
-        'coupon_code' => 'string',
-        'image' => '\YCloud\Client\Model\WhatsappMessageMedia',
-        'video' => '\YCloud\Client\Model\WhatsappMessageMedia',
-        'document' => '\YCloud\Client\Model\WhatsappMessageMedia',
-        'limited_time_offer' => '\YCloud\Client\Model\WhatsappMessageTemplateComponentParameterLimitedTimeOffer'
+        'buttons' => '\YCloud\Client\Model\WhatsappTemplateComponentButton[]',
+        'example' => '\YCloud\Client\Model\WhatsappTemplateComponentExample'
     ];
 
     /**
@@ -77,13 +74,10 @@ class WhatsappMessageTemplateComponentParameter implements ModelInterface, Array
       */
     protected static $openAPIFormats = [
         'type' => null,
+        'format' => null,
         'text' => null,
-        'payload' => null,
-        'coupon_code' => null,
-        'image' => null,
-        'video' => null,
-        'document' => null,
-        'limited_time_offer' => null
+        'buttons' => null,
+        'example' => null
     ];
 
     /**
@@ -114,13 +108,10 @@ class WhatsappMessageTemplateComponentParameter implements ModelInterface, Array
      */
     protected static $attributeMap = [
         'type' => 'type',
+        'format' => 'format',
         'text' => 'text',
-        'payload' => 'payload',
-        'coupon_code' => 'coupon_code',
-        'image' => 'image',
-        'video' => 'video',
-        'document' => 'document',
-        'limited_time_offer' => 'limited_time_offer'
+        'buttons' => 'buttons',
+        'example' => 'example'
     ];
 
     /**
@@ -130,13 +121,10 @@ class WhatsappMessageTemplateComponentParameter implements ModelInterface, Array
      */
     protected static $setters = [
         'type' => 'setType',
+        'format' => 'setFormat',
         'text' => 'setText',
-        'payload' => 'setPayload',
-        'coupon_code' => 'setCouponCode',
-        'image' => 'setImage',
-        'video' => 'setVideo',
-        'document' => 'setDocument',
-        'limited_time_offer' => 'setLimitedTimeOffer'
+        'buttons' => 'setButtons',
+        'example' => 'setExample'
     ];
 
     /**
@@ -146,13 +134,10 @@ class WhatsappMessageTemplateComponentParameter implements ModelInterface, Array
      */
     protected static $getters = [
         'type' => 'getType',
+        'format' => 'getFormat',
         'text' => 'getText',
-        'payload' => 'getPayload',
-        'coupon_code' => 'getCouponCode',
-        'image' => 'getImage',
-        'video' => 'getVideo',
-        'document' => 'getDocument',
-        'limited_time_offer' => 'getLimitedTimeOffer'
+        'buttons' => 'getButtons',
+        'example' => 'getExample'
     ];
 
     /**
@@ -196,13 +181,11 @@ class WhatsappMessageTemplateComponentParameter implements ModelInterface, Array
         return self::$openAPIModelName;
     }
 
-    public const TYPE_TEXT = 'text';
-    public const TYPE_IMAGE = 'image';
-    public const TYPE_VIDEO = 'video';
-    public const TYPE_DOCUMENT = 'document';
-    public const TYPE_PAYLOAD = 'payload';
-    public const TYPE_COUPON_CODE = 'coupon_code';
-    public const TYPE_LIMITED_TIME_OFFER = 'limited_time_offer';
+    public const TYPE_BODY = 'BODY';
+    public const TYPE_HEADER = 'HEADER';
+    public const TYPE_BUTTONS = 'BUTTONS';
+    public const FORMAT_IMAGE = 'IMAGE';
+    public const FORMAT_VIDEO = 'VIDEO';
 
     /**
      * Gets allowable values of the enum
@@ -212,13 +195,22 @@ class WhatsappMessageTemplateComponentParameter implements ModelInterface, Array
     public function getTypeAllowableValues()
     {
         return [
-            self::TYPE_TEXT,
-            self::TYPE_IMAGE,
-            self::TYPE_VIDEO,
-            self::TYPE_DOCUMENT,
-            self::TYPE_PAYLOAD,
-            self::TYPE_COUPON_CODE,
-            self::TYPE_LIMITED_TIME_OFFER,
+            self::TYPE_BODY,
+            self::TYPE_HEADER,
+            self::TYPE_BUTTONS,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getFormatAllowableValues()
+    {
+        return [
+            self::FORMAT_IMAGE,
+            self::FORMAT_VIDEO,
         ];
     }
 
@@ -238,13 +230,10 @@ class WhatsappMessageTemplateComponentParameter implements ModelInterface, Array
     public function __construct(array $data = null)
     {
         $this->container['type'] = $data['type'] ?? null;
+        $this->container['format'] = $data['format'] ?? null;
         $this->container['text'] = $data['text'] ?? null;
-        $this->container['payload'] = $data['payload'] ?? null;
-        $this->container['coupon_code'] = $data['coupon_code'] ?? null;
-        $this->container['image'] = $data['image'] ?? null;
-        $this->container['video'] = $data['video'] ?? null;
-        $this->container['document'] = $data['document'] ?? null;
-        $this->container['limited_time_offer'] = $data['limited_time_offer'] ?? null;
+        $this->container['buttons'] = $data['buttons'] ?? null;
+        $this->container['example'] = $data['example'] ?? null;
     }
 
     /**
@@ -263,6 +252,23 @@ class WhatsappMessageTemplateComponentParameter implements ModelInterface, Array
                 $this->container['type'],
                 implode("', '", $allowedValues)
             );
+        }
+
+        $allowedValues = $this->getFormatAllowableValues();
+        if (!is_null($this->container['format']) && !in_array($this->container['format'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'format', must be one of '%s'",
+                $this->container['format'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        if (!is_null($this->container['text']) && (mb_strlen($this->container['text']) > 160)) {
+            $invalidProperties[] = "invalid value for 'text', the character length must be smaller than or equal to 160.";
+        }
+
+        if (!is_null($this->container['buttons']) && (count($this->container['buttons']) > 2)) {
+            $invalidProperties[] = "invalid value for 'buttons', number of items must be less than or equal to 2.";
         }
 
         return $invalidProperties;
@@ -293,7 +299,7 @@ class WhatsappMessageTemplateComponentParameter implements ModelInterface, Array
     /**
      * Sets type
      *
-     * @param string|null $type **Required.** Component parameter type. - `text`: Used when the template component type is `BODY`, or the `HEADER` component format is `TEXT`. - `image`: Used when the template `HEADER` component is `IMAGE`. - `video`: Used when the template `HEADER` component is `VIDEO`. - `document`: Used when the template `HEADER` component is `DOCUMENT`. - `payload`: Used when the template component button type is `QUICK_REPLY`. - `coupon_code`: Used when the template component button type is `COPY_CODE`. - `limited_time_offer`: Used when the template component type is `LIMITED_TIME_OFFER`.
+     * @param string|null $type **Required.** Card component type. - `BODY`: Body components are text-only components. Cards can optionally include body text. - `HEADER`: Cards must have a media header (image or video). - `BUTTONS`: Buttons are optional interactive components that perform specific actions when tapped.
      *
      * @return self
      */
@@ -315,6 +321,40 @@ class WhatsappMessageTemplateComponentParameter implements ModelInterface, Array
     }
 
     /**
+     * Gets format
+     *
+     * @return string|null
+     */
+    public function getFormat()
+    {
+        return $this->container['format'];
+    }
+
+    /**
+     * Sets format
+     *
+     * @param string|null $format **Required for type `HEADER`.** Cards must have a media header (image or video).
+     *
+     * @return self
+     */
+    public function setFormat($format)
+    {
+        $allowedValues = $this->getFormatAllowableValues();
+        if (!is_null($format) && !in_array($format, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'format', must be one of '%s'",
+                    $format,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['format'] = $format;
+
+        return $this;
+    }
+
+    /**
      * Gets text
      *
      * @return string|null
@@ -327,157 +367,69 @@ class WhatsappMessageTemplateComponentParameter implements ModelInterface, Array
     /**
      * Sets text
      *
-     * @param string|null $text **Required when `type` = `text`.** The message's text. For the header component, the character limit is 60 characters. For the body component, the character limit is 1024 characters. For url buttons, it indicates the developer-provided suffix that is appended to the predefined prefix URL in the template.
+     * @param string|null $text Card body text supports variables. There is no maximum character limit on variables, but they count against the card body text limit of 160 characters.
      *
      * @return self
      */
     public function setText($text)
     {
+        if (!is_null($text) && (mb_strlen($text) > 160)) {
+            throw new \InvalidArgumentException('invalid length for $text when calling WhatsappTemplateComponentCardComponent., must be smaller than or equal to 160.');
+        }
+
         $this->container['text'] = $text;
 
         return $this;
     }
 
     /**
-     * Gets payload
+     * Gets buttons
      *
-     * @return string|null
+     * @return \YCloud\Client\Model\WhatsappTemplateComponentButton[]|null
      */
-    public function getPayload()
+    public function getButtons()
     {
-        return $this->container['payload'];
+        return $this->container['buttons'];
     }
 
     /**
-     * Sets payload
+     * Sets buttons
      *
-     * @param string|null $payload Required for `quick_reply` buttons. Developer-defined payload that is returned when the button is clicked in addition to the display text on the button.
+     * @param \YCloud\Client\Model\WhatsappTemplateComponentButton[]|null $buttons **Required for type `BUTTONS`.** Cards can optionally include up to 2 quick reply buttons, phone number buttons, or URL buttons (button types can be mixed).
      *
      * @return self
      */
-    public function setPayload($payload)
+    public function setButtons($buttons)
     {
-        $this->container['payload'] = $payload;
+
+        if (!is_null($buttons) && (count($buttons) > 2)) {
+            throw new \InvalidArgumentException('invalid value for $buttons when calling WhatsappTemplateComponentCardComponent., number of items must be less than or equal to 2.');
+        }
+        $this->container['buttons'] = $buttons;
 
         return $this;
     }
 
     /**
-     * Gets coupon_code
+     * Gets example
      *
-     * @return string|null
+     * @return \YCloud\Client\Model\WhatsappTemplateComponentExample|null
      */
-    public function getCouponCode()
+    public function getExample()
     {
-        return $this->container['coupon_code'];
+        return $this->container['example'];
     }
 
     /**
-     * Sets coupon_code
+     * Sets example
      *
-     * @param string|null $coupon_code **Required when `type` = `coupon_code`.** The coupon code to be copied when the customer taps the button.
+     * @param \YCloud\Client\Model\WhatsappTemplateComponentExample|null $example example
      *
      * @return self
      */
-    public function setCouponCode($coupon_code)
+    public function setExample($example)
     {
-        $this->container['coupon_code'] = $coupon_code;
-
-        return $this;
-    }
-
-    /**
-     * Gets image
-     *
-     * @return \YCloud\Client\Model\WhatsappMessageMedia|null
-     */
-    public function getImage()
-    {
-        return $this->container['image'];
-    }
-
-    /**
-     * Sets image
-     *
-     * @param \YCloud\Client\Model\WhatsappMessageMedia|null $image image
-     *
-     * @return self
-     */
-    public function setImage($image)
-    {
-        $this->container['image'] = $image;
-
-        return $this;
-    }
-
-    /**
-     * Gets video
-     *
-     * @return \YCloud\Client\Model\WhatsappMessageMedia|null
-     */
-    public function getVideo()
-    {
-        return $this->container['video'];
-    }
-
-    /**
-     * Sets video
-     *
-     * @param \YCloud\Client\Model\WhatsappMessageMedia|null $video video
-     *
-     * @return self
-     */
-    public function setVideo($video)
-    {
-        $this->container['video'] = $video;
-
-        return $this;
-    }
-
-    /**
-     * Gets document
-     *
-     * @return \YCloud\Client\Model\WhatsappMessageMedia|null
-     */
-    public function getDocument()
-    {
-        return $this->container['document'];
-    }
-
-    /**
-     * Sets document
-     *
-     * @param \YCloud\Client\Model\WhatsappMessageMedia|null $document document
-     *
-     * @return self
-     */
-    public function setDocument($document)
-    {
-        $this->container['document'] = $document;
-
-        return $this;
-    }
-
-    /**
-     * Gets limited_time_offer
-     *
-     * @return \YCloud\Client\Model\WhatsappMessageTemplateComponentParameterLimitedTimeOffer|null
-     */
-    public function getLimitedTimeOffer()
-    {
-        return $this->container['limited_time_offer'];
-    }
-
-    /**
-     * Sets limited_time_offer
-     *
-     * @param \YCloud\Client\Model\WhatsappMessageTemplateComponentParameterLimitedTimeOffer|null $limited_time_offer limited_time_offer
-     *
-     * @return self
-     */
-    public function setLimitedTimeOffer($limited_time_offer)
-    {
-        $this->container['limited_time_offer'] = $limited_time_offer;
+        $this->container['example'] = $example;
 
         return $this;
     }

@@ -59,7 +59,7 @@ class WhatsappTemplateComponentCard implements ModelInterface, ArrayAccess, \Jso
       * @var string[]
       */
     protected static $openAPITypes = [
-        'components' => '\YCloud\Client\Model\WhatsappTemplateComponent[]'
+        'components' => '\YCloud\Client\Model\WhatsappTemplateComponentCardComponent[]'
     ];
 
     /**
@@ -208,7 +208,7 @@ class WhatsappTemplateComponentCard implements ModelInterface, ArrayAccess, \Jso
     /**
      * Gets components
      *
-     * @return \YCloud\Client\Model\WhatsappTemplateComponent[]|null
+     * @return \YCloud\Client\Model\WhatsappTemplateComponentCardComponent[]|null
      */
     public function getComponents()
     {
@@ -218,7 +218,7 @@ class WhatsappTemplateComponentCard implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets components
      *
-     * @param \YCloud\Client\Model\WhatsappTemplateComponent[]|null $components **Required.** Card components.
+     * @param \YCloud\Client\Model\WhatsappTemplateComponentCardComponent[]|null $components **Required.** Card components.
      *
      * @return self
      */
