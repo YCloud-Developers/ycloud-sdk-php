@@ -60,7 +60,8 @@ class WhatsappMessageInteractiveActionParameters implements ModelInterface, Arra
       */
     protected static $openAPITypes = [
         'display_text' => 'string',
-        'url' => 'string'
+        'url' => 'string',
+        'thumbnail_product_retailer_id' => 'string'
     ];
 
     /**
@@ -72,7 +73,8 @@ class WhatsappMessageInteractiveActionParameters implements ModelInterface, Arra
       */
     protected static $openAPIFormats = [
         'display_text' => null,
-        'url' => null
+        'url' => null,
+        'thumbnail_product_retailer_id' => null
     ];
 
     /**
@@ -103,7 +105,8 @@ class WhatsappMessageInteractiveActionParameters implements ModelInterface, Arra
      */
     protected static $attributeMap = [
         'display_text' => 'display_text',
-        'url' => 'url'
+        'url' => 'url',
+        'thumbnail_product_retailer_id' => 'thumbnail_product_retailer_id'
     ];
 
     /**
@@ -113,7 +116,8 @@ class WhatsappMessageInteractiveActionParameters implements ModelInterface, Arra
      */
     protected static $setters = [
         'display_text' => 'setDisplayText',
-        'url' => 'setUrl'
+        'url' => 'setUrl',
+        'thumbnail_product_retailer_id' => 'setThumbnailProductRetailerId'
     ];
 
     /**
@@ -123,7 +127,8 @@ class WhatsappMessageInteractiveActionParameters implements ModelInterface, Arra
      */
     protected static $getters = [
         'display_text' => 'getDisplayText',
-        'url' => 'getUrl'
+        'url' => 'getUrl',
+        'thumbnail_product_retailer_id' => 'getThumbnailProductRetailerId'
     ];
 
     /**
@@ -185,6 +190,7 @@ class WhatsappMessageInteractiveActionParameters implements ModelInterface, Arra
     {
         $this->container['display_text'] = $data['display_text'] ?? null;
         $this->container['url'] = $data['url'] ?? null;
+        $this->container['thumbnail_product_retailer_id'] = $data['thumbnail_product_retailer_id'] ?? null;
     }
 
     /**
@@ -263,6 +269,30 @@ class WhatsappMessageInteractiveActionParameters implements ModelInterface, Arra
     public function setUrl($url)
     {
         $this->container['url'] = $url;
+
+        return $this;
+    }
+
+    /**
+     * Gets thumbnail_product_retailer_id
+     *
+     * @return string|null
+     */
+    public function getThumbnailProductRetailerId()
+    {
+        return $this->container['thumbnail_product_retailer_id'];
+    }
+
+    /**
+     * Sets thumbnail_product_retailer_id
+     *
+     * @param string|null $thumbnail_product_retailer_id Item SKU number. Labeled as **Content ID** in the [Commerce Manager](https://business.facebook.com/commerce/). The thumbnail of this item will be used as the message's header image.
+     *
+     * @return self
+     */
+    public function setThumbnailProductRetailerId($thumbnail_product_retailer_id)
+    {
+        $this->container['thumbnail_product_retailer_id'] = $thumbnail_product_retailer_id;
 
         return $this;
     }

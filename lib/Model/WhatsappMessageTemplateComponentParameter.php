@@ -65,7 +65,8 @@ class WhatsappMessageTemplateComponentParameter implements ModelInterface, Array
         'image' => '\YCloud\Client\Model\WhatsappMessageMedia',
         'video' => '\YCloud\Client\Model\WhatsappMessageMedia',
         'document' => '\YCloud\Client\Model\WhatsappMessageMedia',
-        'limited_time_offer' => '\YCloud\Client\Model\WhatsappMessageTemplateComponentParameterLimitedTimeOffer'
+        'limited_time_offer' => '\YCloud\Client\Model\WhatsappMessageTemplateComponentParameterLimitedTimeOffer',
+        'action' => '\YCloud\Client\Model\WhatsappMessageTemplateComponentParameterAction'
     ];
 
     /**
@@ -83,7 +84,8 @@ class WhatsappMessageTemplateComponentParameter implements ModelInterface, Array
         'image' => null,
         'video' => null,
         'document' => null,
-        'limited_time_offer' => null
+        'limited_time_offer' => null,
+        'action' => null
     ];
 
     /**
@@ -120,7 +122,8 @@ class WhatsappMessageTemplateComponentParameter implements ModelInterface, Array
         'image' => 'image',
         'video' => 'video',
         'document' => 'document',
-        'limited_time_offer' => 'limited_time_offer'
+        'limited_time_offer' => 'limited_time_offer',
+        'action' => 'action'
     ];
 
     /**
@@ -136,7 +139,8 @@ class WhatsappMessageTemplateComponentParameter implements ModelInterface, Array
         'image' => 'setImage',
         'video' => 'setVideo',
         'document' => 'setDocument',
-        'limited_time_offer' => 'setLimitedTimeOffer'
+        'limited_time_offer' => 'setLimitedTimeOffer',
+        'action' => 'setAction'
     ];
 
     /**
@@ -152,7 +156,8 @@ class WhatsappMessageTemplateComponentParameter implements ModelInterface, Array
         'image' => 'getImage',
         'video' => 'getVideo',
         'document' => 'getDocument',
-        'limited_time_offer' => 'getLimitedTimeOffer'
+        'limited_time_offer' => 'getLimitedTimeOffer',
+        'action' => 'getAction'
     ];
 
     /**
@@ -203,6 +208,7 @@ class WhatsappMessageTemplateComponentParameter implements ModelInterface, Array
     public const TYPE_PAYLOAD = 'payload';
     public const TYPE_COUPON_CODE = 'coupon_code';
     public const TYPE_LIMITED_TIME_OFFER = 'limited_time_offer';
+    public const TYPE_ACTION = 'action';
 
     /**
      * Gets allowable values of the enum
@@ -219,6 +225,7 @@ class WhatsappMessageTemplateComponentParameter implements ModelInterface, Array
             self::TYPE_PAYLOAD,
             self::TYPE_COUPON_CODE,
             self::TYPE_LIMITED_TIME_OFFER,
+            self::TYPE_ACTION,
         ];
     }
 
@@ -245,6 +252,7 @@ class WhatsappMessageTemplateComponentParameter implements ModelInterface, Array
         $this->container['video'] = $data['video'] ?? null;
         $this->container['document'] = $data['document'] ?? null;
         $this->container['limited_time_offer'] = $data['limited_time_offer'] ?? null;
+        $this->container['action'] = $data['action'] ?? null;
     }
 
     /**
@@ -293,7 +301,7 @@ class WhatsappMessageTemplateComponentParameter implements ModelInterface, Array
     /**
      * Sets type
      *
-     * @param string|null $type **Required.** Component parameter type. - `text`: Used when the template component type is `BODY`, or the `HEADER` component format is `TEXT`. - `image`: Used when the template `HEADER` component is `IMAGE`. - `video`: Used when the template `HEADER` component is `VIDEO`. - `document`: Used when the template `HEADER` component is `DOCUMENT`. - `payload`: Used when the template component button type is `QUICK_REPLY`. - `coupon_code`: Used when the template component button type is `COPY_CODE`. - `limited_time_offer`: Used when the template component type is `LIMITED_TIME_OFFER`.
+     * @param string|null $type **Required.** Component parameter type. - `text`: Used when the template component type is `BODY`, or the `HEADER` component format is `TEXT`. - `image`: Used when the template `HEADER` component is `IMAGE`. - `video`: Used when the template `HEADER` component is `VIDEO`. - `document`: Used when the template `HEADER` component is `DOCUMENT`. - `payload`: Used when the template component button type is `QUICK_REPLY`. - `coupon_code`: Used when the template component button type is `COPY_CODE`. - `limited_time_offer`: Used when the template component type is `LIMITED_TIME_OFFER`. - `action`: Used when the template component button type is `CATALOG`.
      *
      * @return self
      */
@@ -478,6 +486,30 @@ class WhatsappMessageTemplateComponentParameter implements ModelInterface, Array
     public function setLimitedTimeOffer($limited_time_offer)
     {
         $this->container['limited_time_offer'] = $limited_time_offer;
+
+        return $this;
+    }
+
+    /**
+     * Gets action
+     *
+     * @return \YCloud\Client\Model\WhatsappMessageTemplateComponentParameterAction|null
+     */
+    public function getAction()
+    {
+        return $this->container['action'];
+    }
+
+    /**
+     * Sets action
+     *
+     * @param \YCloud\Client\Model\WhatsappMessageTemplateComponentParameterAction|null $action action
+     *
+     * @return self
+     */
+    public function setAction($action)
+    {
+        $this->container['action'] = $action;
 
         return $this;
     }

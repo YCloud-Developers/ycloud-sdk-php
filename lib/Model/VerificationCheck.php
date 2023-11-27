@@ -247,7 +247,7 @@ class VerificationCheck implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets id
      *
-     * @param string $id ID of this object.
+     * @param string $id ID of this verification check.
      *
      * @return self
      */

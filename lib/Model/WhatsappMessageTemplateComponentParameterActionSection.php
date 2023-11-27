@@ -1,6 +1,6 @@
 <?php
 /**
- * WhatsappInboundMessageInteractiveButtonReply
+ * WhatsappMessageTemplateComponentParameterActionSection
  *
  * PHP version 7.4
  *
@@ -33,16 +33,15 @@ use \ArrayAccess;
 use \YCloud\Client\ObjectSerializer;
 
 /**
- * WhatsappInboundMessageInteractiveButtonReply Class Doc Comment
+ * WhatsappMessageTemplateComponentParameterActionSection Class Doc Comment
  *
  * @category Class
- * @description Sent when a customer clicks a button. Returned when &#x60;type&#x60; is &#x60;button_reply&#x60;.
  * @package  YCloud\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class WhatsappInboundMessageInteractiveButtonReply implements ModelInterface, ArrayAccess, \JsonSerializable
+class WhatsappMessageTemplateComponentParameterActionSection implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +50,7 @@ class WhatsappInboundMessageInteractiveButtonReply implements ModelInterface, Ar
       *
       * @var string
       */
-    protected static $openAPIModelName = 'WhatsappInboundMessageInteractive_button_reply';
+    protected static $openAPIModelName = 'WhatsappMessageTemplateComponentParameterActionSection';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,8 +58,8 @@ class WhatsappInboundMessageInteractiveButtonReply implements ModelInterface, Ar
       * @var string[]
       */
     protected static $openAPITypes = [
-        'id' => 'string',
-        'title' => 'string'
+        'title' => 'string',
+        'product_items' => '\YCloud\Client\Model\WhatsappMessageTemplateComponentParameterActionSectionProductItem[]'
     ];
 
     /**
@@ -71,8 +70,8 @@ class WhatsappInboundMessageInteractiveButtonReply implements ModelInterface, Ar
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'id' => null,
-        'title' => null
+        'title' => null,
+        'product_items' => null
     ];
 
     /**
@@ -102,8 +101,8 @@ class WhatsappInboundMessageInteractiveButtonReply implements ModelInterface, Ar
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
-        'title' => 'title'
+        'title' => 'title',
+        'product_items' => 'product_items'
     ];
 
     /**
@@ -112,8 +111,8 @@ class WhatsappInboundMessageInteractiveButtonReply implements ModelInterface, Ar
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
-        'title' => 'setTitle'
+        'title' => 'setTitle',
+        'product_items' => 'setProductItems'
     ];
 
     /**
@@ -122,8 +121,8 @@ class WhatsappInboundMessageInteractiveButtonReply implements ModelInterface, Ar
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
-        'title' => 'getTitle'
+        'title' => 'getTitle',
+        'product_items' => 'getProductItems'
     ];
 
     /**
@@ -183,8 +182,8 @@ class WhatsappInboundMessageInteractiveButtonReply implements ModelInterface, Ar
      */
     public function __construct(array $data = null)
     {
-        $this->container['id'] = $data['id'] ?? null;
         $this->container['title'] = $data['title'] ?? null;
+        $this->container['product_items'] = $data['product_items'] ?? null;
     }
 
     /**
@@ -195,6 +194,18 @@ class WhatsappInboundMessageInteractiveButtonReply implements ModelInterface, Ar
     public function listInvalidProperties()
     {
         $invalidProperties = [];
+
+        if (!is_null($this->container['title']) && (mb_strlen($this->container['title']) > 24)) {
+            $invalidProperties[] = "invalid value for 'title', the character length must be smaller than or equal to 24.";
+        }
+
+        if (!is_null($this->container['product_items']) && (count($this->container['product_items']) > 30)) {
+            $invalidProperties[] = "invalid value for 'product_items', number of items must be less than or equal to 30.";
+        }
+
+        if (!is_null($this->container['product_items']) && (count($this->container['product_items']) < 1)) {
+            $invalidProperties[] = "invalid value for 'product_items', number of items must be greater than or equal to 1.";
+        }
 
         return $invalidProperties;
     }
@@ -212,30 +223,6 @@ class WhatsappInboundMessageInteractiveButtonReply implements ModelInterface, Ar
 
 
     /**
-     * Gets id
-     *
-     * @return string|null
-     */
-    public function getId()
-    {
-        return $this->container['id'];
-    }
-
-    /**
-     * Sets id
-     *
-     * @param string|null $id Unique ID of the clicked button.
-     *
-     * @return self
-     */
-    public function setId($id)
-    {
-        $this->container['id'] = $id;
-
-        return $this;
-    }
-
-    /**
      * Gets title
      *
      * @return string|null
@@ -248,13 +235,48 @@ class WhatsappInboundMessageInteractiveButtonReply implements ModelInterface, Ar
     /**
      * Sets title
      *
-     * @param string|null $title Title of a button.
+     * @param string|null $title Section title text. Maximum 24 characters. Markdown is not supported.
      *
      * @return self
      */
     public function setTitle($title)
     {
+        if (!is_null($title) && (mb_strlen($title) > 24)) {
+            throw new \InvalidArgumentException('invalid length for $title when calling WhatsappMessageTemplateComponentParameterActionSection., must be smaller than or equal to 24.');
+        }
+
         $this->container['title'] = $title;
+
+        return $this;
+    }
+
+    /**
+     * Gets product_items
+     *
+     * @return \YCloud\Client\Model\WhatsappMessageTemplateComponentParameterActionSectionProductItem[]|null
+     */
+    public function getProductItems()
+    {
+        return $this->container['product_items'];
+    }
+
+    /**
+     * Sets product_items
+     *
+     * @param \YCloud\Client\Model\WhatsappMessageTemplateComponentParameterActionSectionProductItem[]|null $product_items Array of product SKU numbers. There is a minimum of 1 product per section and a maximum of 30 products across all sections.
+     *
+     * @return self
+     */
+    public function setProductItems($product_items)
+    {
+
+        if (!is_null($product_items) && (count($product_items) > 30)) {
+            throw new \InvalidArgumentException('invalid value for $product_items when calling WhatsappMessageTemplateComponentParameterActionSection., number of items must be less than or equal to 30.');
+        }
+        if (!is_null($product_items) && (count($product_items) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $product_items when calling WhatsappMessageTemplateComponentParameterActionSection., number of items must be greater than or equal to 1.');
+        }
+        $this->container['product_items'] = $product_items;
 
         return $this;
     }

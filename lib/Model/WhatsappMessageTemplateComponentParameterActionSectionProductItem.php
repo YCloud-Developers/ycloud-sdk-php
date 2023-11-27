@@ -1,6 +1,6 @@
 <?php
 /**
- * WhatsappInboundMessageInteractiveButtonReply
+ * WhatsappMessageTemplateComponentParameterActionSectionProductItem
  *
  * PHP version 7.4
  *
@@ -33,16 +33,15 @@ use \ArrayAccess;
 use \YCloud\Client\ObjectSerializer;
 
 /**
- * WhatsappInboundMessageInteractiveButtonReply Class Doc Comment
+ * WhatsappMessageTemplateComponentParameterActionSectionProductItem Class Doc Comment
  *
  * @category Class
- * @description Sent when a customer clicks a button. Returned when &#x60;type&#x60; is &#x60;button_reply&#x60;.
  * @package  YCloud\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class WhatsappInboundMessageInteractiveButtonReply implements ModelInterface, ArrayAccess, \JsonSerializable
+class WhatsappMessageTemplateComponentParameterActionSectionProductItem implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +50,7 @@ class WhatsappInboundMessageInteractiveButtonReply implements ModelInterface, Ar
       *
       * @var string
       */
-    protected static $openAPIModelName = 'WhatsappInboundMessageInteractive_button_reply';
+    protected static $openAPIModelName = 'WhatsappMessageTemplateComponentParameterActionSectionProductItem';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,8 +58,7 @@ class WhatsappInboundMessageInteractiveButtonReply implements ModelInterface, Ar
       * @var string[]
       */
     protected static $openAPITypes = [
-        'id' => 'string',
-        'title' => 'string'
+        'product_retailer_id' => 'string'
     ];
 
     /**
@@ -71,8 +69,7 @@ class WhatsappInboundMessageInteractiveButtonReply implements ModelInterface, Ar
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'id' => null,
-        'title' => null
+        'product_retailer_id' => null
     ];
 
     /**
@@ -102,8 +99,7 @@ class WhatsappInboundMessageInteractiveButtonReply implements ModelInterface, Ar
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
-        'title' => 'title'
+        'product_retailer_id' => 'product_retailer_id'
     ];
 
     /**
@@ -112,8 +108,7 @@ class WhatsappInboundMessageInteractiveButtonReply implements ModelInterface, Ar
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
-        'title' => 'setTitle'
+        'product_retailer_id' => 'setProductRetailerId'
     ];
 
     /**
@@ -122,8 +117,7 @@ class WhatsappInboundMessageInteractiveButtonReply implements ModelInterface, Ar
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
-        'title' => 'getTitle'
+        'product_retailer_id' => 'getProductRetailerId'
     ];
 
     /**
@@ -183,8 +177,7 @@ class WhatsappInboundMessageInteractiveButtonReply implements ModelInterface, Ar
      */
     public function __construct(array $data = null)
     {
-        $this->container['id'] = $data['id'] ?? null;
-        $this->container['title'] = $data['title'] ?? null;
+        $this->container['product_retailer_id'] = $data['product_retailer_id'] ?? null;
     }
 
     /**
@@ -212,49 +205,25 @@ class WhatsappInboundMessageInteractiveButtonReply implements ModelInterface, Ar
 
 
     /**
-     * Gets id
+     * Gets product_retailer_id
      *
      * @return string|null
      */
-    public function getId()
+    public function getProductRetailerId()
     {
-        return $this->container['id'];
+        return $this->container['product_retailer_id'];
     }
 
     /**
-     * Sets id
+     * Sets product_retailer_id
      *
-     * @param string|null $id Unique ID of the clicked button.
+     * @param string|null $product_retailer_id SKU number of the item you want to appear in the section. SKU numbers are labeled as **Content ID** in the [Commerce Manager](https://business.facebook.com/commerce/).
      *
      * @return self
      */
-    public function setId($id)
+    public function setProductRetailerId($product_retailer_id)
     {
-        $this->container['id'] = $id;
-
-        return $this;
-    }
-
-    /**
-     * Gets title
-     *
-     * @return string|null
-     */
-    public function getTitle()
-    {
-        return $this->container['title'];
-    }
-
-    /**
-     * Sets title
-     *
-     * @param string|null $title Title of a button.
-     *
-     * @return self
-     */
-    public function setTitle($title)
-    {
-        $this->container['title'] = $title;
+        $this->container['product_retailer_id'] = $product_retailer_id;
 
         return $this;
     }

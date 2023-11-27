@@ -34,7 +34,7 @@ use \YCloud\Client\ObjectSerializer;
  * WhatsappTemplateCategory Class Doc Comment
  *
  * @category Class
- * @description Category of WhatsApp templates. - &#x60;AUTHENTICATION&#x60;: Enable businesses to authenticate users with one-time passcodes, potentially at multiple steps in the login process (e.g., account verification, account recovery, integrity challenges). - &#x60;MARKETING&#x60;: Include promotions or offers, informational updates, or invitations for customers to respond / take action. Any conversation that does not qualify as utility or authentication is a marketing conversation. - &#x60;UTILITY&#x60;: Facilitate a specific, agreed-upon request or transaction or update to a customer about an ongoing transaction, including post-purchase notifications and recurring billing statements. - &#x60;TRANSACTIONAL&#x60;: Valid until 2023-05-01. Send account updates, order updates, alerts, and more to share important information. - &#x60;OTP&#x60;: Valid until 2023-05-01. Send codes that allow your customers to access their accounts.
+ * @description Category of WhatsApp templates. - &#x60;AUTHENTICATION&#x60;: Enable businesses to authenticate users with one-time passcodes, potentially at multiple steps in the login process (e.g., account verification, account recovery, integrity challenges). - &#x60;MARKETING&#x60;: Include promotions or offers, informational updates, or invitations for customers to respond / take action. Any conversation that does not qualify as utility or authentication is a marketing conversation. - &#x60;UTILITY&#x60;: Facilitate a specific, agreed-upon request or transaction or update to a customer about an ongoing transaction, including post-purchase notifications and recurring billing statements.
  * @package  YCloud\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -50,10 +50,6 @@ class WhatsappTemplateCategory
 
     public const UTILITY = 'UTILITY';
 
-    public const TRANSACTIONAL = 'TRANSACTIONAL';
-
-    public const OTP = 'OTP';
-
     /**
      * Gets allowable values of the enum
      * @return string[]
@@ -63,9 +59,7 @@ class WhatsappTemplateCategory
         return [
             self::AUTHENTICATION,
             self::MARKETING,
-            self::UTILITY,
-            self::TRANSACTIONAL,
-            self::OTP
+            self::UTILITY
         ];
     }
 }

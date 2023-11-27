@@ -310,7 +310,7 @@ class Event implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets id
      *
-     * @param string $id Unique ID for the object.
+     * @param string $id Unique ID for the event.
      *
      * @return self
      */

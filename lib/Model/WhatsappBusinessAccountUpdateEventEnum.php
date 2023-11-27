@@ -34,7 +34,7 @@ use \YCloud\Client\ObjectSerializer;
  * WhatsappBusinessAccountUpdateEventEnum Class Doc Comment
  *
  * @category Class
- * @description Indicates the update event type of the WABA when a notification is sent to you to report a [policy violation](https://developers.facebook.com/docs/whatsapp/overview/policy-enforcement), a WABA has been banned and more.
+ * @description Indicates the update event type of the WABA when a notification is sent to you to report a [policy violation](https://developers.facebook.com/docs/whatsapp/overview/policy-enforcement), a WABA has been banned and more. - &#x60;DISABLED_UPDATE&#x60;: WhatsApp Business Account Banned. - &#x60;ACCOUNT_RESTRICTION&#x60;: WhatsApp Business Account Restricted Due To Policy Violations. - &#x60;ACCOUNT_VIOLATION&#x60;: WhatsApp Business Account Violates Policy.
  * @package  YCloud\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

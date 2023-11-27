@@ -427,7 +427,7 @@ class WhatsappMessageInteractiveAction implements ModelInterface, ArrayAccess, \
     /**
      * Sets name
      *
-     * @param string|null $name Action name. Required for Call-To-Action (CTA) URL Button Messages.
+     * @param string|null $name Action name. Required for Call-To-Action (CTA) URL Button Messages. - `cta_url`: Use for Call-To-Action (CTA) URL Buttons.
      *
      * @return self
      */

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **string** | Unique ID for the object. |
+**id** | **string** | Unique ID of the message. |
 **wamid** | **string** | The original message ID on WhatsApp&#39;s platform. | [optional]
 **waba_id** | **string** | WhatsApp Business Account ID. |
 **from** | **string** | The sender&#39;s phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format. |

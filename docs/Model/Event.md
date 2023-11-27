@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **string** | Unique ID for the object. |
+**id** | **string** | Unique ID for the event. |
 **type** | [**\YCloud\Client\Model\EventType**](EventType.md) |  |
 **api_version** | **string** | The API version used to render this event. |
 **create_time** | **\DateTime** | The time at which this event was created, formatted in [RFC 3339](https://datatracker.ietf.org/doc/html/rfc3339). e.g., &#x60;2022-06-01T12:00:00.000Z&#x60;. |

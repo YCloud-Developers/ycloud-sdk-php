@@ -34,7 +34,7 @@ use \YCloud\Client\ObjectSerializer;
  * EventType Class Doc Comment
  *
  * @category Class
- * @description Type of webhook events.
+ * @description Type of event.
  * @package  YCloud\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

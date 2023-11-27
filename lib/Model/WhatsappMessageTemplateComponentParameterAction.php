@@ -1,6 +1,6 @@
 <?php
 /**
- * WhatsappInboundMessageInteractiveButtonReply
+ * WhatsappMessageTemplateComponentParameterAction
  *
  * PHP version 7.4
  *
@@ -33,16 +33,16 @@ use \ArrayAccess;
 use \YCloud\Client\ObjectSerializer;
 
 /**
- * WhatsappInboundMessageInteractiveButtonReply Class Doc Comment
+ * WhatsappMessageTemplateComponentParameterAction Class Doc Comment
  *
  * @category Class
- * @description Sent when a customer clicks a button. Returned when &#x60;type&#x60; is &#x60;button_reply&#x60;.
+ * @description Required if template uses catalog or MPM (multi-product message) buttons.
  * @package  YCloud\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class WhatsappInboundMessageInteractiveButtonReply implements ModelInterface, ArrayAccess, \JsonSerializable
+class WhatsappMessageTemplateComponentParameterAction implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +51,7 @@ class WhatsappInboundMessageInteractiveButtonReply implements ModelInterface, Ar
       *
       * @var string
       */
-    protected static $openAPIModelName = 'WhatsappInboundMessageInteractive_button_reply';
+    protected static $openAPIModelName = 'WhatsappMessageTemplateComponentParameterAction';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,8 +59,8 @@ class WhatsappInboundMessageInteractiveButtonReply implements ModelInterface, Ar
       * @var string[]
       */
     protected static $openAPITypes = [
-        'id' => 'string',
-        'title' => 'string'
+        'thumbnail_product_retailer_id' => 'string',
+        'sections' => '\YCloud\Client\Model\WhatsappMessageTemplateComponentParameterActionSection[]'
     ];
 
     /**
@@ -71,8 +71,8 @@ class WhatsappInboundMessageInteractiveButtonReply implements ModelInterface, Ar
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'id' => null,
-        'title' => null
+        'thumbnail_product_retailer_id' => null,
+        'sections' => null
     ];
 
     /**
@@ -102,8 +102,8 @@ class WhatsappInboundMessageInteractiveButtonReply implements ModelInterface, Ar
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
-        'title' => 'title'
+        'thumbnail_product_retailer_id' => 'thumbnail_product_retailer_id',
+        'sections' => 'sections'
     ];
 
     /**
@@ -112,8 +112,8 @@ class WhatsappInboundMessageInteractiveButtonReply implements ModelInterface, Ar
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
-        'title' => 'setTitle'
+        'thumbnail_product_retailer_id' => 'setThumbnailProductRetailerId',
+        'sections' => 'setSections'
     ];
 
     /**
@@ -122,8 +122,8 @@ class WhatsappInboundMessageInteractiveButtonReply implements ModelInterface, Ar
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
-        'title' => 'getTitle'
+        'thumbnail_product_retailer_id' => 'getThumbnailProductRetailerId',
+        'sections' => 'getSections'
     ];
 
     /**
@@ -183,8 +183,8 @@ class WhatsappInboundMessageInteractiveButtonReply implements ModelInterface, Ar
      */
     public function __construct(array $data = null)
     {
-        $this->container['id'] = $data['id'] ?? null;
-        $this->container['title'] = $data['title'] ?? null;
+        $this->container['thumbnail_product_retailer_id'] = $data['thumbnail_product_retailer_id'] ?? null;
+        $this->container['sections'] = $data['sections'] ?? null;
     }
 
     /**
@@ -195,6 +195,10 @@ class WhatsappInboundMessageInteractiveButtonReply implements ModelInterface, Ar
     public function listInvalidProperties()
     {
         $invalidProperties = [];
+
+        if (!is_null($this->container['sections']) && (count($this->container['sections']) > 10)) {
+            $invalidProperties[] = "invalid value for 'sections', number of items must be less than or equal to 10.";
+        }
 
         return $invalidProperties;
     }
@@ -212,49 +216,53 @@ class WhatsappInboundMessageInteractiveButtonReply implements ModelInterface, Ar
 
 
     /**
-     * Gets id
+     * Gets thumbnail_product_retailer_id
      *
      * @return string|null
      */
-    public function getId()
+    public function getThumbnailProductRetailerId()
     {
-        return $this->container['id'];
+        return $this->container['thumbnail_product_retailer_id'];
     }
 
     /**
-     * Sets id
+     * Sets thumbnail_product_retailer_id
      *
-     * @param string|null $id Unique ID of the clicked button.
+     * @param string|null $thumbnail_product_retailer_id **Optional.** Use for catalog and MPM template messages. Item SKU number. Labeled as Content ID in the Commerce Manager. The thumbnail of this item will be used as the message's header image. If the `parameters` object is omitted, the product image of the first item in your catalog will be used.
      *
      * @return self
      */
-    public function setId($id)
+    public function setThumbnailProductRetailerId($thumbnail_product_retailer_id)
     {
-        $this->container['id'] = $id;
+        $this->container['thumbnail_product_retailer_id'] = $thumbnail_product_retailer_id;
 
         return $this;
     }
 
     /**
-     * Gets title
+     * Gets sections
      *
-     * @return string|null
+     * @return \YCloud\Client\Model\WhatsappMessageTemplateComponentParameterActionSection[]|null
      */
-    public function getTitle()
+    public function getSections()
     {
-        return $this->container['title'];
+        return $this->container['sections'];
     }
 
     /**
-     * Sets title
+     * Sets sections
      *
-     * @param string|null $title Title of a button.
+     * @param \YCloud\Client\Model\WhatsappMessageTemplateComponentParameterActionSection[]|null $sections Use for MPM templates. Product sections. You can define up to 10 sections.
      *
      * @return self
      */
-    public function setTitle($title)
+    public function setSections($sections)
     {
-        $this->container['title'] = $title;
+
+        if (!is_null($sections) && (count($sections) > 10)) {
+            throw new \InvalidArgumentException('invalid value for $sections when calling WhatsappMessageTemplateComponentParameterAction., number of items must be less than or equal to 10.');
+        }
+        $this->container['sections'] = $sections;
 
         return $this;
     }

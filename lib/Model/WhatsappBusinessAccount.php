@@ -314,7 +314,7 @@ class WhatsappBusinessAccount implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets id
      *
-     * @param string|null $id ID of the WhatApp Business Account.
+     * @param string|null $id WhatApp Business Account ID.
      *
      * @return self
      */

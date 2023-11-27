@@ -314,7 +314,7 @@ class WhatsappTemplateComponentButton implements ModelInterface, ArrayAccess, \J
     /**
      * Sets text
      *
-     * @param string|null $text **Required for button type `PHONE_NUMBER` or `URL`.** Button text. For `CODE_CODE` buttons, the text is a pre-set value and cannot be customized. For `OTP` buttons, if omitted, the text will default to a pre-set value localized to the template's language. For example, `Copy Code` for English (US). If your template is using a one-tap autofill button and you supply this value, the authentication template message will display a copy code button with this text if we are unable to validate your [handshake](https://developers.facebook.com/docs/whatsapp/business-management-api/authentication-templates#handshake). Maximum 25 characters.
+     * @param string|null $text **Required for button type `PHONE_NUMBER` or `URL`.** Button text. For `CODE_CODE` buttons, the text is a pre-set value and cannot be customized. For `OTP` buttons, if omitted, the text will default to a pre-set value localized to the template's language. For example, `Copy Code` for English (US). If your template is using a one-tap autofill button and you supply this value, the authentication template message will display a copy code button with this text if we are unable to validate your [handshake](https://developers.facebook.com/docs/whatsapp/business-management-api/authentication-templates/autofill-button-authentication-templates#handshake). Maximum 25 characters.
      *
      * @return self
      */
@@ -422,7 +422,7 @@ class WhatsappTemplateComponentButton implements ModelInterface, ArrayAccess, \J
     /**
      * Sets autofill_text
      *
-     * @param string|null $autofill_text **One-tap buttons only.** One-tap button text. Maximum 25 characters.
+     * @param string|null $autofill_text **One-tap and zero-tap buttons only.** One-tap button text. Maximum 25 characters.
      *
      * @return self
      */
@@ -450,7 +450,7 @@ class WhatsappTemplateComponentButton implements ModelInterface, ArrayAccess, \J
     /**
      * Sets package_name
      *
-     * @param string|null $package_name **One-tap buttons only.** Your Android app's package name.
+     * @param string|null $package_name **One-tap and zero-tap buttons only.** Your Android app's package name.
      *
      * @return self
      */
@@ -474,7 +474,7 @@ class WhatsappTemplateComponentButton implements ModelInterface, ArrayAccess, \J
     /**
      * Sets signature_hash
      *
-     * @param string|null $signature_hash **One-tap buttons only.** Your app signing key hash. See [App Signing Key Hash](https://developers.facebook.com/docs/whatsapp/business-management-api/authentication-templates#app-signing-key-hash).
+     * @param string|null $signature_hash **One-tap and zero-tap buttons only.** Your app signing key hash. See [App Signing Key Hash](https://developers.facebook.com/docs/whatsapp/business-management-api/authentication-templates/zero-tap-authentication-templates#app-signing-key-hash).
      *
      * @return self
      */

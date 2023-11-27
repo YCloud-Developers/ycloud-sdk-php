@@ -119,7 +119,7 @@ class WhatsappTemplatesApi
     /**
      * Operation create
      *
-     * Create a WhatsApp template
+     * Create a template
      *
      * @param  \YCloud\Client\Model\WhatsappTemplateCreateRequest $whatsapp_template_create_request whatsapp_template_create_request (required)
      *
@@ -136,7 +136,7 @@ class WhatsappTemplatesApi
     /**
      * Operation createWithHttpInfo
      *
-     * Create a WhatsApp template
+     * Create a template
      *
      * @param  \YCloud\Client\Model\WhatsappTemplateCreateRequest $whatsapp_template_create_request (required)
      *
@@ -235,7 +235,7 @@ class WhatsappTemplatesApi
     /**
      * Operation createAsync
      *
-     * Create a WhatsApp template
+     * Create a template
      *
      * @param  \YCloud\Client\Model\WhatsappTemplateCreateRequest $whatsapp_template_create_request (required)
      *
@@ -255,7 +255,7 @@ class WhatsappTemplatesApi
     /**
      * Operation createAsyncWithHttpInfo
      *
-     * Create a WhatsApp template
+     * Create a template
      *
      * @param  \YCloud\Client\Model\WhatsappTemplateCreateRequest $whatsapp_template_create_request (required)
      *
@@ -402,7 +402,7 @@ class WhatsappTemplatesApi
     /**
      * Operation deleteByName
      *
-     * Delete WhatsApp templates by name
+     * Delete templates by name
      *
      * @param  string $waba_id WhatsApp Business Account ID. (required)
      * @param  string $name Name of the template. (required)
@@ -420,7 +420,7 @@ class WhatsappTemplatesApi
     /**
      * Operation deleteByNameWithHttpInfo
      *
-     * Delete WhatsApp templates by name
+     * Delete templates by name
      *
      * @param  string $waba_id WhatsApp Business Account ID. (required)
      * @param  string $name Name of the template. (required)
@@ -543,7 +543,7 @@ class WhatsappTemplatesApi
     /**
      * Operation deleteByNameAsync
      *
-     * Delete WhatsApp templates by name
+     * Delete templates by name
      *
      * @param  string $waba_id WhatsApp Business Account ID. (required)
      * @param  string $name Name of the template. (required)
@@ -564,7 +564,7 @@ class WhatsappTemplatesApi
     /**
      * Operation deleteByNameAsyncWithHttpInfo
      *
-     * Delete WhatsApp templates by name
+     * Delete templates by name
      *
      * @param  string $waba_id WhatsApp Business Account ID. (required)
      * @param  string $name Name of the template. (required)
@@ -733,7 +733,7 @@ class WhatsappTemplatesApi
     /**
      * Operation deleteByNameAndLanguage
      *
-     * Delete a WhatsApp template
+     * Delete a template
      *
      * @param  string $waba_id WhatsApp Business Account ID. (required)
      * @param  string $name Name of the template. (required)
@@ -752,7 +752,7 @@ class WhatsappTemplatesApi
     /**
      * Operation deleteByNameAndLanguageWithHttpInfo
      *
-     * Delete a WhatsApp template
+     * Delete a template
      *
      * @param  string $waba_id WhatsApp Business Account ID. (required)
      * @param  string $name Name of the template. (required)
@@ -876,7 +876,7 @@ class WhatsappTemplatesApi
     /**
      * Operation deleteByNameAndLanguageAsync
      *
-     * Delete a WhatsApp template
+     * Delete a template
      *
      * @param  string $waba_id WhatsApp Business Account ID. (required)
      * @param  string $name Name of the template. (required)
@@ -898,7 +898,7 @@ class WhatsappTemplatesApi
     /**
      * Operation deleteByNameAndLanguageAsyncWithHttpInfo
      *
-     * Delete a WhatsApp template
+     * Delete a template
      *
      * @param  string $waba_id WhatsApp Business Account ID. (required)
      * @param  string $name Name of the template. (required)
@@ -1083,7 +1083,7 @@ class WhatsappTemplatesApi
     /**
      * Operation editByNameAndLanguage
      *
-     * Edit a WhatsApp template
+     * Edit a template
      *
      * @param  string $waba_id WhatsApp Business Account ID. (required)
      * @param  string $name Name of the template. (required)
@@ -1103,7 +1103,7 @@ class WhatsappTemplatesApi
     /**
      * Operation editByNameAndLanguageWithHttpInfo
      *
-     * Edit a WhatsApp template
+     * Edit a template
      *
      * @param  string $waba_id WhatsApp Business Account ID. (required)
      * @param  string $name Name of the template. (required)
@@ -1228,7 +1228,7 @@ class WhatsappTemplatesApi
     /**
      * Operation editByNameAndLanguageAsync
      *
-     * Edit a WhatsApp template
+     * Edit a template
      *
      * @param  string $waba_id WhatsApp Business Account ID. (required)
      * @param  string $name Name of the template. (required)
@@ -1251,7 +1251,7 @@ class WhatsappTemplatesApi
     /**
      * Operation editByNameAndLanguageAsyncWithHttpInfo
      *
-     * Edit a WhatsApp template
+     * Edit a template
      *
      * @param  string $waba_id WhatsApp Business Account ID. (required)
      * @param  string $name Name of the template. (required)
@@ -1444,7 +1444,7 @@ class WhatsappTemplatesApi
     /**
      * Operation list
      *
-     * List WhatsApp templates
+     * List templates
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -1468,7 +1468,7 @@ class WhatsappTemplatesApi
     /**
      * Operation listWithHttpInfo
      *
-     * List WhatsApp templates
+     * List templates
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -1574,7 +1574,7 @@ class WhatsappTemplatesApi
     /**
      * Operation listAsync
      *
-     * List WhatsApp templates
+     * List templates
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -1601,7 +1601,7 @@ class WhatsappTemplatesApi
     /**
      * Operation listAsyncWithHttpInfo
      *
-     * List WhatsApp templates
+     * List templates
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -1833,7 +1833,7 @@ class WhatsappTemplatesApi
     /**
      * Operation retrieveByNameAndLanguage
      *
-     * Retrieve a WhatsApp template
+     * Retrieve a template
      *
      * @param  string $waba_id WhatsApp Business Account ID. (required)
      * @param  string $name Name of the template. (required)
@@ -1852,7 +1852,7 @@ class WhatsappTemplatesApi
     /**
      * Operation retrieveByNameAndLanguageWithHttpInfo
      *
-     * Retrieve a WhatsApp template
+     * Retrieve a template
      *
      * @param  string $waba_id WhatsApp Business Account ID. (required)
      * @param  string $name Name of the template. (required)
@@ -1976,7 +1976,7 @@ class WhatsappTemplatesApi
     /**
      * Operation retrieveByNameAndLanguageAsync
      *
-     * Retrieve a WhatsApp template
+     * Retrieve a template
      *
      * @param  string $waba_id WhatsApp Business Account ID. (required)
      * @param  string $name Name of the template. (required)
@@ -1998,7 +1998,7 @@ class WhatsappTemplatesApi
     /**
      * Operation retrieveByNameAndLanguageAsyncWithHttpInfo
      *
-     * Retrieve a WhatsApp template
+     * Retrieve a template
      *
      * @param  string $waba_id WhatsApp Business Account ID. (required)
      * @param  string $name Name of the template. (required)

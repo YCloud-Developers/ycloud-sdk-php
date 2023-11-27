@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **string** | ID of the WhatApp Business Account. | [optional]
+**id** | **string** | WhatApp Business Account ID. | [optional]
 **name** | **string** | User-friendly name to differentiate WhatsApp Business Accounts. | [optional]
 **currency** | **string** | The currency in which the payment transactions for the WhatsApp Business Account will be processed. | [optional]
 **message_template_namespace** | **string** | Namespace string for the message templates that belong to the WhatsApp Business Account. | [optional]

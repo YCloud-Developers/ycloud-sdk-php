@@ -422,7 +422,7 @@ class WhatsappMessage implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets id
      *
-     * @param string $id Unique ID for the object.
+     * @param string $id Unique ID of the message.
      *
      * @return self
      */

@@ -1,6 +1,6 @@
 <?php
 /**
- * WhatsappInboundMessageInteractiveButtonReply
+ * WhatsappCommerceSettings
  *
  * PHP version 7.4
  *
@@ -33,16 +33,16 @@ use \ArrayAccess;
 use \YCloud\Client\ObjectSerializer;
 
 /**
- * WhatsappInboundMessageInteractiveButtonReply Class Doc Comment
+ * WhatsappCommerceSettings Class Doc Comment
  *
  * @category Class
- * @description Sent when a customer clicks a button. Returned when &#x60;type&#x60; is &#x60;button_reply&#x60;.
+ * @description WhatsApp business phone number&#39;s commerce settings.
  * @package  YCloud\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class WhatsappInboundMessageInteractiveButtonReply implements ModelInterface, ArrayAccess, \JsonSerializable
+class WhatsappCommerceSettings implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +51,7 @@ class WhatsappInboundMessageInteractiveButtonReply implements ModelInterface, Ar
       *
       * @var string
       */
-    protected static $openAPIModelName = 'WhatsappInboundMessageInteractive_button_reply';
+    protected static $openAPIModelName = 'WhatsappCommerceSettings';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -60,7 +60,8 @@ class WhatsappInboundMessageInteractiveButtonReply implements ModelInterface, Ar
       */
     protected static $openAPITypes = [
         'id' => 'string',
-        'title' => 'string'
+        'is_cart_enabled' => 'bool',
+        'is_catalog_visible' => 'bool'
     ];
 
     /**
@@ -72,7 +73,8 @@ class WhatsappInboundMessageInteractiveButtonReply implements ModelInterface, Ar
       */
     protected static $openAPIFormats = [
         'id' => null,
-        'title' => null
+        'is_cart_enabled' => null,
+        'is_catalog_visible' => null
     ];
 
     /**
@@ -103,7 +105,8 @@ class WhatsappInboundMessageInteractiveButtonReply implements ModelInterface, Ar
      */
     protected static $attributeMap = [
         'id' => 'id',
-        'title' => 'title'
+        'is_cart_enabled' => 'isCartEnabled',
+        'is_catalog_visible' => 'isCatalogVisible'
     ];
 
     /**
@@ -113,7 +116,8 @@ class WhatsappInboundMessageInteractiveButtonReply implements ModelInterface, Ar
      */
     protected static $setters = [
         'id' => 'setId',
-        'title' => 'setTitle'
+        'is_cart_enabled' => 'setIsCartEnabled',
+        'is_catalog_visible' => 'setIsCatalogVisible'
     ];
 
     /**
@@ -123,7 +127,8 @@ class WhatsappInboundMessageInteractiveButtonReply implements ModelInterface, Ar
      */
     protected static $getters = [
         'id' => 'getId',
-        'title' => 'getTitle'
+        'is_cart_enabled' => 'getIsCartEnabled',
+        'is_catalog_visible' => 'getIsCatalogVisible'
     ];
 
     /**
@@ -184,7 +189,8 @@ class WhatsappInboundMessageInteractiveButtonReply implements ModelInterface, Ar
     public function __construct(array $data = null)
     {
         $this->container['id'] = $data['id'] ?? null;
-        $this->container['title'] = $data['title'] ?? null;
+        $this->container['is_cart_enabled'] = $data['is_cart_enabled'] ?? null;
+        $this->container['is_catalog_visible'] = $data['is_catalog_visible'] ?? null;
     }
 
     /**
@@ -224,7 +230,7 @@ class WhatsappInboundMessageInteractiveButtonReply implements ModelInterface, Ar
     /**
      * Sets id
      *
-     * @param string|null $id Unique ID of the clicked button.
+     * @param string|null $id Unique ID for the object.
      *
      * @return self
      */
@@ -236,25 +242,49 @@ class WhatsappInboundMessageInteractiveButtonReply implements ModelInterface, Ar
     }
 
     /**
-     * Gets title
+     * Gets is_cart_enabled
      *
-     * @return string|null
+     * @return bool|null
      */
-    public function getTitle()
+    public function getIsCartEnabled()
     {
-        return $this->container['title'];
+        return $this->container['is_cart_enabled'];
     }
 
     /**
-     * Sets title
+     * Sets is_cart_enabled
      *
-     * @param string|null $title Title of a button.
+     * @param bool|null $is_cart_enabled When enabled, cart-related buttons appear in the conversation, catalog, and product details views. When the cart is disabled, customers can see products and their details, but all cart related buttons will not appear in any view.
      *
      * @return self
      */
-    public function setTitle($title)
+    public function setIsCartEnabled($is_cart_enabled)
     {
-        $this->container['title'] = $title;
+        $this->container['is_cart_enabled'] = $is_cart_enabled;
+
+        return $this;
+    }
+
+    /**
+     * Gets is_catalog_visible
+     *
+     * @return bool|null
+     */
+    public function getIsCatalogVisible()
+    {
+        return $this->container['is_catalog_visible'];
+    }
+
+    /**
+     * Sets is_catalog_visible
+     *
+     * @param bool|null $is_catalog_visible When enabled, the catalog storefront icon and catalog-related buttons appear in conversation and business profile views. When the catalog is disabled, the storefront icon and catalog-related buttons will not appear in any views and the catalog preview with thumbnails will not appear in the business profile view.
+     *
+     * @return self
+     */
+    public function setIsCatalogVisible($is_catalog_visible)
+    {
+        $this->container['is_catalog_visible'] = $is_catalog_visible;
 
         return $this;
     }

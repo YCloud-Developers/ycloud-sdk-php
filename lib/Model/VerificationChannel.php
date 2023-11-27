@@ -34,7 +34,7 @@ use \YCloud\Client\ObjectSerializer;
  * VerificationChannel Class Doc Comment
  *
  * @category Class
- * @description Supports several independent channels for verification: &#x60;sms&#x60;: Sends an SMS message with a verification code. &#x60;voice&#x60;: Makes a voice call with a verification code. &#x60;email_code&#x60;: Sends an email with a verification code. &#x60;whatsapp&#x60;: Sends a WhatsApp message with a verification code.
+ * @description Supports several independent channels for verification: - &#x60;sms&#x60;: Sends an SMS message with a verification code. - &#x60;voice&#x60;: Makes a voice call with a verification code. - &#x60;email_code&#x60;: Sends an email with a verification code. - &#x60;whatsapp&#x60;: Sends a WhatsApp message with a verification code.
  * @package  YCloud\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

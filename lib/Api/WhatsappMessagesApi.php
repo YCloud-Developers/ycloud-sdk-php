@@ -119,7 +119,7 @@ class WhatsappMessagesApi
     /**
      * Operation retrieve
      *
-     * Retrieve a WhatsApp message
+     * Retrieve a message
      *
      * @param  string $id ID of the object. (required)
      *
@@ -136,7 +136,7 @@ class WhatsappMessagesApi
     /**
      * Operation retrieveWithHttpInfo
      *
-     * Retrieve a WhatsApp message
+     * Retrieve a message
      *
      * @param  string $id ID of the object. (required)
      *
@@ -258,7 +258,7 @@ class WhatsappMessagesApi
     /**
      * Operation retrieveAsync
      *
-     * Retrieve a WhatsApp message
+     * Retrieve a message
      *
      * @param  string $id ID of the object. (required)
      *
@@ -278,7 +278,7 @@ class WhatsappMessagesApi
     /**
      * Operation retrieveAsyncWithHttpInfo
      *
-     * Retrieve a WhatsApp message
+     * Retrieve a message
      *
      * @param  string $id ID of the object. (required)
      *
@@ -427,7 +427,7 @@ class WhatsappMessagesApi
     /**
      * Operation send
      *
-     * Enqueue a WhatsApp message
+     * Enqueue a message
      *
      * @param  \YCloud\Client\Model\WhatsappMessageSendRequest $whatsapp_message_send_request whatsapp_message_send_request (required)
      *
@@ -444,7 +444,7 @@ class WhatsappMessagesApi
     /**
      * Operation sendWithHttpInfo
      *
-     * Enqueue a WhatsApp message
+     * Enqueue a message
      *
      * @param  \YCloud\Client\Model\WhatsappMessageSendRequest $whatsapp_message_send_request (required)
      *
@@ -543,7 +543,7 @@ class WhatsappMessagesApi
     /**
      * Operation sendAsync
      *
-     * Enqueue a WhatsApp message
+     * Enqueue a message
      *
      * @param  \YCloud\Client\Model\WhatsappMessageSendRequest $whatsapp_message_send_request (required)
      *
@@ -563,7 +563,7 @@ class WhatsappMessagesApi
     /**
      * Operation sendAsyncWithHttpInfo
      *
-     * Enqueue a WhatsApp message
+     * Enqueue a message
      *
      * @param  \YCloud\Client\Model\WhatsappMessageSendRequest $whatsapp_message_send_request (required)
      *
@@ -710,7 +710,7 @@ class WhatsappMessagesApi
     /**
      * Operation sendDirectly
      *
-     * Send a WhatsApp message directly
+     * Send a message directly
      *
      * @param  \YCloud\Client\Model\WhatsappMessageSendRequest $whatsapp_message_send_request whatsapp_message_send_request (required)
      *
@@ -727,7 +727,7 @@ class WhatsappMessagesApi
     /**
      * Operation sendDirectlyWithHttpInfo
      *
-     * Send a WhatsApp message directly
+     * Send a message directly
      *
      * @param  \YCloud\Client\Model\WhatsappMessageSendRequest $whatsapp_message_send_request (required)
      *
@@ -826,7 +826,7 @@ class WhatsappMessagesApi
     /**
      * Operation sendDirectlyAsync
      *
-     * Send a WhatsApp message directly
+     * Send a message directly
      *
      * @param  \YCloud\Client\Model\WhatsappMessageSendRequest $whatsapp_message_send_request (required)
      *
@@ -846,7 +846,7 @@ class WhatsappMessagesApi
     /**
      * Operation sendDirectlyAsyncWithHttpInfo
      *
-     * Send a WhatsApp message directly
+     * Send a message directly
      *
      * @param  \YCloud\Client\Model\WhatsappMessageSendRequest $whatsapp_message_send_request (required)
      *

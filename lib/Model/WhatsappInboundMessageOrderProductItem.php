@@ -60,7 +60,7 @@ class WhatsappInboundMessageOrderProductItem implements ModelInterface, ArrayAcc
     protected static $openAPITypes = [
         'product_retailer_id' => 'string',
         'quantity' => 'int',
-        'item_price' => 'string',
+        'item_price' => 'double',
         'currency' => 'string'
     ];
 
@@ -74,7 +74,7 @@ class WhatsappInboundMessageOrderProductItem implements ModelInterface, ArrayAcc
     protected static $openAPIFormats = [
         'product_retailer_id' => null,
         'quantity' => 'int32',
-        'item_price' => null,
+        'item_price' => 'double',
         'currency' => null
     ];
 
@@ -273,7 +273,7 @@ class WhatsappInboundMessageOrderProductItem implements ModelInterface, ArrayAcc
     /**
      * Gets item_price
      *
-     * @return string|null
+     * @return double|null
      */
     public function getItemPrice()
     {
@@ -283,7 +283,7 @@ class WhatsappInboundMessageOrderProductItem implements ModelInterface, ArrayAcc
     /**
      * Sets item_price
      *
-     * @param string|null $item_price Unitary price of item.
+     * @param double|null $item_price Unitary price of item.
      *
      * @return self
      */
