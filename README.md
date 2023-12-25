@@ -81,6 +81,11 @@ Class | Method | HTTP request | Description
 *EmailsApi* | [**send**](docs/Api/EmailsApi.md#send) | **POST** /emails | Send an email
 *SmsApi* | [**list**](docs/Api/SmsApi.md#list) | **GET** /sms | List SMS records
 *SmsApi* | [**send**](docs/Api/SmsApi.md#send) | **POST** /sms | Send an SMS
+*UnsubscribersApi* | [**create**](docs/Api/UnsubscribersApi.md#create) | **POST** /unsubscribers | Create an unsubscriber
+*UnsubscribersApi* | [**deleteByCustomerAndChannel**](docs/Api/UnsubscribersApi.md#deletebycustomerandchannel) | **DELETE** /unsubscribers/{customer}/{channel} | Delete an unsubscriber
+*UnsubscribersApi* | [**list**](docs/Api/UnsubscribersApi.md#list) | **GET** /unsubscribers | List unsubscribers
+*UnsubscribersApi* | [**listAllByCustomer**](docs/Api/UnsubscribersApi.md#listallbycustomer) | **GET** /unsubscribers/{customer} | List all unsubscribers by customer
+*UnsubscribersApi* | [**retrieveByCustomerAndChannel**](docs/Api/UnsubscribersApi.md#retrievebycustomerandchannel) | **GET** /unsubscribers/{customer}/{channel} | Retrieve an unsubscriber
 *VerifyApi* | [**check**](docs/Api/VerifyApi.md#check) | **POST** /verify/verificationChecks | Check a verification
 *VerifyApi* | [**send**](docs/Api/VerifyApi.md#send) | **POST** /verify/verifications | Start a verification
 *VoicesApi* | [**list**](docs/Api/VoicesApi.md#list) | **GET** /voices | List voice records
@@ -128,10 +133,16 @@ Class | Method | HTTP request | Description
 - [Mailbox](docs/Model/Mailbox.md)
 - [MetaBusinessAccountVerificationStatus](docs/Model/MetaBusinessAccountVerificationStatus.md)
 - [Page](docs/Model/Page.md)
+- [PageCursor](docs/Model/PageCursor.md)
 - [Sms](docs/Model/Sms.md)
 - [SmsInbound](docs/Model/SmsInbound.md)
 - [SmsPage](docs/Model/SmsPage.md)
 - [SmsSendRequest](docs/Model/SmsSendRequest.md)
+- [Unsubscriber](docs/Model/Unsubscriber.md)
+- [UnsubscriberChannel](docs/Model/UnsubscriberChannel.md)
+- [UnsubscriberCreateRequest](docs/Model/UnsubscriberCreateRequest.md)
+- [UnsubscriberPage](docs/Model/UnsubscriberPage.md)
+- [UnsubscriberType](docs/Model/UnsubscriberType.md)
 - [Verification](docs/Model/Verification.md)
 - [VerificationChannel](docs/Model/VerificationChannel.md)
 - [VerificationCheck](docs/Model/VerificationCheck.md)
