@@ -34,7 +34,7 @@ use \YCloud\Client\ObjectSerializer;
  * WhatsappPhoneNumberCodeVerificationStatus Class Doc Comment
  *
  * @category Class
- * @description To see if a phone number has been verified via OTP (one-time password), check that number&#39;s &#x60;code_verification_status&#x60; field.
+ * @description To see if a phone number has been verified via OTP (one-time password).
  * @package  YCloud\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

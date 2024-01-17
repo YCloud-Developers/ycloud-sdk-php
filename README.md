@@ -102,6 +102,7 @@ Class | Method | HTTP request | Description
 *WhatsappMessagesApi* | [**send**](docs/Api/WhatsappMessagesApi.md#send) | **POST** /whatsapp/messages | Enqueue a message
 *WhatsappMessagesApi* | [**sendDirectly**](docs/Api/WhatsappMessagesApi.md#senddirectly) | **POST** /whatsapp/messages/sendDirectly | Send a message directly
 *WhatsappPhoneNumbersApi* | [**list**](docs/Api/WhatsappPhoneNumbersApi.md#list) | **GET** /whatsapp/phoneNumbers | List phone numbers
+*WhatsappPhoneNumbersApi* | [**register**](docs/Api/WhatsappPhoneNumbersApi.md#register) | **POST** /whatsapp/phoneNumbers/{wabaId}/{phoneNumber}/register | Register a phone number
 *WhatsappPhoneNumbersApi* | [**retrieve**](docs/Api/WhatsappPhoneNumbersApi.md#retrieve) | **GET** /whatsapp/phoneNumbers/{wabaId}/{phoneNumber} | Retrieve a phone number
 *WhatsappPhoneNumbersApi* | [**retrieveCommerceSettings**](docs/Api/WhatsappPhoneNumbersApi.md#retrievecommercesettings) | **GET** /whatsapp/phoneNumbers/{wabaId}/{phoneNumber}/whatsappCommerceSettings | Retrieve commerce settings
 *WhatsappPhoneNumbersApi* | [**retrieveProfile**](docs/Api/WhatsappPhoneNumbersApi.md#retrieveprofile) | **GET** /whatsapp/phoneNumbers/{wabaId}/{phoneNumber}/profile | Retrieve a phone number profile

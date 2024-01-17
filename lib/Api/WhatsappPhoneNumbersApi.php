@@ -469,6 +469,333 @@ class WhatsappPhoneNumbersApi
     }
 
     /**
+     * Operation register
+     *
+     * Register a phone number
+     *
+     * @param  string $waba_id WhatsApp Business Account ID. (required)
+     * @param  string $phone_number Phone number ID. (required)
+     *
+     * @throws \YCloud\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \YCloud\Client\Model\WhatsappPhoneNumber|\YCloud\Client\Model\ErrorResponse
+     */
+    public function register($waba_id, $phone_number)
+    {
+        list($response) = $this->registerWithHttpInfo($waba_id, $phone_number);
+        return $response;
+    }
+
+    /**
+     * Operation registerWithHttpInfo
+     *
+     * Register a phone number
+     *
+     * @param  string $waba_id WhatsApp Business Account ID. (required)
+     * @param  string $phone_number Phone number ID. (required)
+     *
+     * @throws \YCloud\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \YCloud\Client\Model\WhatsappPhoneNumber|\YCloud\Client\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function registerWithHttpInfo($waba_id, $phone_number)
+    {
+        $request = $this->registerRequest($waba_id, $phone_number);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\YCloud\Client\Model\WhatsappPhoneNumber' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\YCloud\Client\Model\WhatsappPhoneNumber' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\YCloud\Client\Model\WhatsappPhoneNumber', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 404:
+                    if ('\YCloud\Client\Model\ErrorResponse' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\YCloud\Client\Model\ErrorResponse' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\YCloud\Client\Model\ErrorResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\YCloud\Client\Model\WhatsappPhoneNumber';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\YCloud\Client\Model\WhatsappPhoneNumber',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\YCloud\Client\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation registerAsync
+     *
+     * Register a phone number
+     *
+     * @param  string $waba_id WhatsApp Business Account ID. (required)
+     * @param  string $phone_number Phone number ID. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function registerAsync($waba_id, $phone_number)
+    {
+        return $this->registerAsyncWithHttpInfo($waba_id, $phone_number)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation registerAsyncWithHttpInfo
+     *
+     * Register a phone number
+     *
+     * @param  string $waba_id WhatsApp Business Account ID. (required)
+     * @param  string $phone_number Phone number ID. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function registerAsyncWithHttpInfo($waba_id, $phone_number)
+    {
+        $returnType = '\YCloud\Client\Model\WhatsappPhoneNumber';
+        $request = $this->registerRequest($waba_id, $phone_number);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'register'
+     *
+     * @param  string $waba_id WhatsApp Business Account ID. (required)
+     * @param  string $phone_number Phone number ID. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function registerRequest($waba_id, $phone_number)
+    {
+        // verify the required parameter 'waba_id' is set
+        if ($waba_id === null || (is_array($waba_id) && count($waba_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $waba_id when calling register'
+            );
+        }
+        // verify the required parameter 'phone_number' is set
+        if ($phone_number === null || (is_array($phone_number) && count($phone_number) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $phone_number when calling register'
+            );
+        }
+
+        $resourcePath = '/whatsapp/phoneNumbers/{wabaId}/{phoneNumber}/register';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($waba_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'wabaId' . '}',
+                ObjectSerializer::toPathValue($waba_id),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($phone_number !== null) {
+            $resourcePath = str_replace(
+                '{' . 'phoneNumber' . '}',
+                ObjectSerializer::toPathValue($phone_number),
+                $resourcePath
+            );
+        }
+
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('X-API-Key');
+        if ($apiKey !== null) {
+            $headers['X-API-Key'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation retrieve
      *
      * Retrieve a phone number

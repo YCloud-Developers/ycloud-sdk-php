@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**id** | **string** | Phone number ID. | [optional]
 **phone_number** | **string** | Phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format. | [optional]
 **display_phone_number** | **string** | Display phone number. | [optional]
 **waba_id** | **string** | WhatsApp Business Account ID. | [optional]

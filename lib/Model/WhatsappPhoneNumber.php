@@ -59,6 +59,7 @@ class WhatsappPhoneNumber implements ModelInterface, ArrayAccess, \JsonSerializa
       * @var string[]
       */
     protected static $openAPITypes = [
+        'id' => 'string',
         'phone_number' => 'string',
         'display_phone_number' => 'string',
         'waba_id' => 'string',
@@ -84,6 +85,7 @@ class WhatsappPhoneNumber implements ModelInterface, ArrayAccess, \JsonSerializa
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'id' => null,
         'phone_number' => null,
         'display_phone_number' => null,
         'waba_id' => null,
@@ -128,6 +130,7 @@ class WhatsappPhoneNumber implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $attributeMap = [
+        'id' => 'id',
         'phone_number' => 'phoneNumber',
         'display_phone_number' => 'displayPhoneNumber',
         'waba_id' => 'wabaId',
@@ -151,6 +154,7 @@ class WhatsappPhoneNumber implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $setters = [
+        'id' => 'setId',
         'phone_number' => 'setPhoneNumber',
         'display_phone_number' => 'setDisplayPhoneNumber',
         'waba_id' => 'setWabaId',
@@ -174,6 +178,7 @@ class WhatsappPhoneNumber implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $getters = [
+        'id' => 'getId',
         'phone_number' => 'getPhoneNumber',
         'display_phone_number' => 'getDisplayPhoneNumber',
         'waba_id' => 'getWabaId',
@@ -248,6 +253,7 @@ class WhatsappPhoneNumber implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     public function __construct(array $data = null)
     {
+        $this->container['id'] = $data['id'] ?? null;
         $this->container['phone_number'] = $data['phone_number'] ?? null;
         $this->container['display_phone_number'] = $data['display_phone_number'] ?? null;
         $this->container['waba_id'] = $data['waba_id'] ?? null;
@@ -288,6 +294,30 @@ class WhatsappPhoneNumber implements ModelInterface, ArrayAccess, \JsonSerializa
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets id
+     *
+     * @return string|null
+     */
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * Sets id
+     *
+     * @param string|null $id Phone number ID.
+     *
+     * @return self
+     */
+    public function setId($id)
+    {
+        $this->container['id'] = $id;
+
+        return $this;
+    }
 
     /**
      * Gets phone_number

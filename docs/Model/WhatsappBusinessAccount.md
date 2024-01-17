@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **business_verification_status** | [**\YCloud\Client\Model\MetaBusinessAccountVerificationStatus**](MetaBusinessAccountVerificationStatus.md) |  | [optional]
 **country** | **string** | Country of the WhatsApp Business Account&#39;s owning Meta Business account. | [optional]
 **ownership_type** | **string** | Ownership type of the WhatsApp Business Account. | [optional]
+**payment_method_attached** | **bool** | Whether we have attached a payment method to the WhatsApp Business Account. | [optional]
 **primary_funding_id** | **string** | Primary funding ID for the WhatsApp Business Account paid service. | [optional]
 **purchase_order_number** | **string** | The purchase order number supplied by the business for payment management purposes. | [optional]
 **timezone_id** | **string** | The timezone ID of the WhatsApp Business Account. See [Timezone IDs](https://developers.facebook.com/docs/marketing-api/reference/ad-account/timezone-ids). | [optional]

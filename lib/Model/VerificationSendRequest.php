@@ -63,7 +63,8 @@ class VerificationSendRequest implements ModelInterface, ArrayAccess, \JsonSeria
         'code' => 'string',
         'sender_id' => 'string',
         'signature' => 'string',
-        'language' => 'string'
+        'language' => 'string',
+        'external_id' => 'string'
     ];
 
     /**
@@ -79,7 +80,8 @@ class VerificationSendRequest implements ModelInterface, ArrayAccess, \JsonSeria
         'code' => null,
         'sender_id' => null,
         'signature' => null,
-        'language' => null
+        'language' => null,
+        'external_id' => null
     ];
 
     /**
@@ -114,7 +116,8 @@ class VerificationSendRequest implements ModelInterface, ArrayAccess, \JsonSeria
         'code' => 'code',
         'sender_id' => 'senderId',
         'signature' => 'signature',
-        'language' => 'language'
+        'language' => 'language',
+        'external_id' => 'externalId'
     ];
 
     /**
@@ -128,7 +131,8 @@ class VerificationSendRequest implements ModelInterface, ArrayAccess, \JsonSeria
         'code' => 'setCode',
         'sender_id' => 'setSenderId',
         'signature' => 'setSignature',
-        'language' => 'setLanguage'
+        'language' => 'setLanguage',
+        'external_id' => 'setExternalId'
     ];
 
     /**
@@ -142,7 +146,8 @@ class VerificationSendRequest implements ModelInterface, ArrayAccess, \JsonSeria
         'code' => 'getCode',
         'sender_id' => 'getSenderId',
         'signature' => 'getSignature',
-        'language' => 'getLanguage'
+        'language' => 'getLanguage',
+        'external_id' => 'getExternalId'
     ];
 
     /**
@@ -208,6 +213,7 @@ class VerificationSendRequest implements ModelInterface, ArrayAccess, \JsonSeria
         $this->container['sender_id'] = $data['sender_id'] ?? null;
         $this->container['signature'] = $data['signature'] ?? null;
         $this->container['language'] = $data['language'] ?? null;
+        $this->container['external_id'] = $data['external_id'] ?? null;
     }
 
     /**
@@ -395,6 +401,30 @@ class VerificationSendRequest implements ModelInterface, ArrayAccess, \JsonSeria
     public function setLanguage($language)
     {
         $this->container['language'] = $language;
+
+        return $this;
+    }
+
+    /**
+     * Gets external_id
+     *
+     * @return string|null
+     */
+    public function getExternalId()
+    {
+        return $this->container['external_id'];
+    }
+
+    /**
+     * Sets external_id
+     *
+     * @param string|null $external_id A unique string to reference the object. This can be an order number or similar, and can be used to reconcile the object with your internal systems. If present, this value will also be attached to the `externalId` of message objects.
+     *
+     * @return self
+     */
+    public function setExternalId($external_id)
+    {
+        $this->container['external_id'] = $external_id;
 
         return $this;
     }

@@ -5,6 +5,7 @@ All URIs are relative to https://api.ycloud.com/v2.
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**list()**](WhatsappPhoneNumbersApi.md#list) | **GET** /whatsapp/phoneNumbers | List phone numbers
+[**register()**](WhatsappPhoneNumbersApi.md#register) | **POST** /whatsapp/phoneNumbers/{wabaId}/{phoneNumber}/register | Register a phone number
 [**retrieve()**](WhatsappPhoneNumbersApi.md#retrieve) | **GET** /whatsapp/phoneNumbers/{wabaId}/{phoneNumber} | Retrieve a phone number
 [**retrieveCommerceSettings()**](WhatsappPhoneNumbersApi.md#retrieveCommerceSettings) | **GET** /whatsapp/phoneNumbers/{wabaId}/{phoneNumber}/whatsappCommerceSettings | Retrieve commerce settings
 [**retrieveProfile()**](WhatsappPhoneNumbersApi.md#retrieveProfile) | **GET** /whatsapp/phoneNumbers/{wabaId}/{phoneNumber}/profile | Retrieve a phone number profile
@@ -66,6 +67,68 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**\YCloud\Client\Model\WhatsappPhoneNumberPage**](../Model/WhatsappPhoneNumberPage.md)
+
+### Authorization
+
+[api_key](../../README.md#api_key)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `register()`
+
+```php
+register($waba_id, $phone_number): \YCloud\Client\Model\WhatsappPhoneNumber
+```
+
+Register a phone number
+
+Registers a WhatsApp business phone number.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: api_key
+$config = YCloud\Client\Configuration::getDefaultConfiguration()->setApiKey('X-API-Key', 'YOUR_API_KEY');
+
+
+$apiInstance = new YCloud\Client\Api\WhatsappPhoneNumbersApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$waba_id = whatsapp-business-account-id; // string | WhatsApp Business Account ID.
+$phone_number = 1234567890123456; // string | Phone number ID.
+
+try {
+    $result = $apiInstance->register($waba_id, $phone_number);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling WhatsappPhoneNumbersApi->register: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **waba_id** | **string**| WhatsApp Business Account ID. |
+ **phone_number** | **string**| Phone number ID. |
+
+### Return type
+
+[**\YCloud\Client\Model\WhatsappPhoneNumber**](../Model/WhatsappPhoneNumber.md)
 
 ### Authorization
 

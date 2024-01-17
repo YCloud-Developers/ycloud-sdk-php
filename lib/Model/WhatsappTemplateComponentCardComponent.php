@@ -271,6 +271,10 @@ class WhatsappTemplateComponentCardComponent implements ModelInterface, ArrayAcc
             $invalidProperties[] = "invalid value for 'buttons', number of items must be less than or equal to 2.";
         }
 
+        if (!is_null($this->container['buttons']) && (count($this->container['buttons']) < 1)) {
+            $invalidProperties[] = "invalid value for 'buttons', number of items must be greater than or equal to 1.";
+        }
+
         return $invalidProperties;
     }
 
@@ -299,7 +303,7 @@ class WhatsappTemplateComponentCardComponent implements ModelInterface, ArrayAcc
     /**
      * Sets type
      *
-     * @param string|null $type **Required.** Card component type. - `BODY`: Body components are text-only components. Cards can optionally include body text. - `HEADER`: Cards must have a media header (image or video). - `BUTTONS`: Buttons are optional interactive components that perform specific actions when tapped.
+     * @param string|null $type **Required.** Card component type. - `BODY`: Body components are text-only components. Cards must have body text. - `HEADER`: Cards must have a media header (image or video). - `BUTTONS`: Buttons are interactive components that perform specific actions when tapped. Cards must have at least one button, up to 2 buttons.
      *
      * @return self
      */
@@ -367,7 +371,7 @@ class WhatsappTemplateComponentCardComponent implements ModelInterface, ArrayAcc
     /**
      * Sets text
      *
-     * @param string|null $text Card body text supports variables. There is no maximum character limit on variables, but they count against the card body text limit of 160 characters.
+     * @param string|null $text **Required for type `BODY`.** Card body text supports variables. Maximum 160 characters.
      *
      * @return self
      */
@@ -395,7 +399,7 @@ class WhatsappTemplateComponentCardComponent implements ModelInterface, ArrayAcc
     /**
      * Sets buttons
      *
-     * @param \YCloud\Client\Model\WhatsappTemplateComponentButton[]|null $buttons **Required for type `BUTTONS`.** Cards can optionally include up to 2 quick reply buttons, phone number buttons, or URL buttons (button types can be mixed).
+     * @param \YCloud\Client\Model\WhatsappTemplateComponentButton[]|null $buttons **Required for type `BUTTONS`.** Cards must have at least one button. Supports 2 buttons. Buttons can be the same or a mix of quick reply buttons, phone number buttons, or URL buttons.
      *
      * @return self
      */
@@ -404,6 +408,9 @@ class WhatsappTemplateComponentCardComponent implements ModelInterface, ArrayAcc
 
         if (!is_null($buttons) && (count($buttons) > 2)) {
             throw new \InvalidArgumentException('invalid value for $buttons when calling WhatsappTemplateComponentCardComponent., number of items must be less than or equal to 2.');
+        }
+        if (!is_null($buttons) && (count($buttons) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $buttons when calling WhatsappTemplateComponentCardComponent., number of items must be greater than or equal to 1.');
         }
         $this->container['buttons'] = $buttons;
 

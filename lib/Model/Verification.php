@@ -66,7 +66,8 @@ class Verification implements ModelInterface, ArrayAccess, \JsonSerializable
         'total_price' => 'double',
         'currency' => 'string',
         'sms_fallback_enabled' => 'bool',
-        'sms_fallback' => '\YCloud\Client\Model\VerificationFallback'
+        'sms_fallback' => '\YCloud\Client\Model\VerificationFallback',
+        'external_id' => 'string'
     ];
 
     /**
@@ -85,7 +86,8 @@ class Verification implements ModelInterface, ArrayAccess, \JsonSerializable
         'total_price' => 'double',
         'currency' => null,
         'sms_fallback_enabled' => null,
-        'sms_fallback' => null
+        'sms_fallback' => null,
+        'external_id' => null
     ];
 
     /**
@@ -123,7 +125,8 @@ class Verification implements ModelInterface, ArrayAccess, \JsonSerializable
         'total_price' => 'totalPrice',
         'currency' => 'currency',
         'sms_fallback_enabled' => 'smsFallbackEnabled',
-        'sms_fallback' => 'smsFallback'
+        'sms_fallback' => 'smsFallback',
+        'external_id' => 'externalId'
     ];
 
     /**
@@ -140,7 +143,8 @@ class Verification implements ModelInterface, ArrayAccess, \JsonSerializable
         'total_price' => 'setTotalPrice',
         'currency' => 'setCurrency',
         'sms_fallback_enabled' => 'setSmsFallbackEnabled',
-        'sms_fallback' => 'setSmsFallback'
+        'sms_fallback' => 'setSmsFallback',
+        'external_id' => 'setExternalId'
     ];
 
     /**
@@ -157,7 +161,8 @@ class Verification implements ModelInterface, ArrayAccess, \JsonSerializable
         'total_price' => 'getTotalPrice',
         'currency' => 'getCurrency',
         'sms_fallback_enabled' => 'getSmsFallbackEnabled',
-        'sms_fallback' => 'getSmsFallback'
+        'sms_fallback' => 'getSmsFallback',
+        'external_id' => 'getExternalId'
     ];
 
     /**
@@ -226,6 +231,7 @@ class Verification implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['currency'] = $data['currency'] ?? null;
         $this->container['sms_fallback_enabled'] = $data['sms_fallback_enabled'] ?? null;
         $this->container['sms_fallback'] = $data['sms_fallback'] ?? null;
+        $this->container['external_id'] = $data['external_id'] ?? null;
     }
 
     /**
@@ -467,6 +473,30 @@ class Verification implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setSmsFallback($sms_fallback)
     {
         $this->container['sms_fallback'] = $sms_fallback;
+
+        return $this;
+    }
+
+    /**
+     * Gets external_id
+     *
+     * @return string|null
+     */
+    public function getExternalId()
+    {
+        return $this->container['external_id'];
+    }
+
+    /**
+     * Sets external_id
+     *
+     * @param string|null $external_id A unique string to reference the object. This can be an order number or similar, and can be used to reconcile the object with your internal systems.
+     *
+     * @return self
+     */
+    public function setExternalId($external_id)
+    {
+        $this->container['external_id'] = $external_id;
 
         return $this;
     }

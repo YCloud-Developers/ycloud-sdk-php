@@ -67,6 +67,7 @@ class WhatsappBusinessAccount implements ModelInterface, ArrayAccess, \JsonSeria
         'business_verification_status' => '\YCloud\Client\Model\MetaBusinessAccountVerificationStatus',
         'country' => 'string',
         'ownership_type' => 'string',
+        'payment_method_attached' => 'bool',
         'primary_funding_id' => 'string',
         'purchase_order_number' => 'string',
         'timezone_id' => 'string',
@@ -94,6 +95,7 @@ class WhatsappBusinessAccount implements ModelInterface, ArrayAccess, \JsonSeria
         'business_verification_status' => null,
         'country' => null,
         'ownership_type' => null,
+        'payment_method_attached' => null,
         'primary_funding_id' => null,
         'purchase_order_number' => null,
         'timezone_id' => null,
@@ -140,6 +142,7 @@ class WhatsappBusinessAccount implements ModelInterface, ArrayAccess, \JsonSeria
         'business_verification_status' => 'businessVerificationStatus',
         'country' => 'country',
         'ownership_type' => 'ownershipType',
+        'payment_method_attached' => 'paymentMethodAttached',
         'primary_funding_id' => 'primaryFundingId',
         'purchase_order_number' => 'purchaseOrderNumber',
         'timezone_id' => 'timezoneId',
@@ -165,6 +168,7 @@ class WhatsappBusinessAccount implements ModelInterface, ArrayAccess, \JsonSeria
         'business_verification_status' => 'setBusinessVerificationStatus',
         'country' => 'setCountry',
         'ownership_type' => 'setOwnershipType',
+        'payment_method_attached' => 'setPaymentMethodAttached',
         'primary_funding_id' => 'setPrimaryFundingId',
         'purchase_order_number' => 'setPurchaseOrderNumber',
         'timezone_id' => 'setTimezoneId',
@@ -190,6 +194,7 @@ class WhatsappBusinessAccount implements ModelInterface, ArrayAccess, \JsonSeria
         'business_verification_status' => 'getBusinessVerificationStatus',
         'country' => 'getCountry',
         'ownership_type' => 'getOwnershipType',
+        'payment_method_attached' => 'getPaymentMethodAttached',
         'primary_funding_id' => 'getPrimaryFundingId',
         'purchase_order_number' => 'getPurchaseOrderNumber',
         'timezone_id' => 'getTimezoneId',
@@ -266,6 +271,7 @@ class WhatsappBusinessAccount implements ModelInterface, ArrayAccess, \JsonSeria
         $this->container['business_verification_status'] = $data['business_verification_status'] ?? null;
         $this->container['country'] = $data['country'] ?? null;
         $this->container['ownership_type'] = $data['ownership_type'] ?? null;
+        $this->container['payment_method_attached'] = $data['payment_method_attached'] ?? null;
         $this->container['primary_funding_id'] = $data['primary_funding_id'] ?? null;
         $this->container['purchase_order_number'] = $data['purchase_order_number'] ?? null;
         $this->container['timezone_id'] = $data['timezone_id'] ?? null;
@@ -489,6 +495,30 @@ class WhatsappBusinessAccount implements ModelInterface, ArrayAccess, \JsonSeria
     public function setOwnershipType($ownership_type)
     {
         $this->container['ownership_type'] = $ownership_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets payment_method_attached
+     *
+     * @return bool|null
+     */
+    public function getPaymentMethodAttached()
+    {
+        return $this->container['payment_method_attached'];
+    }
+
+    /**
+     * Sets payment_method_attached
+     *
+     * @param bool|null $payment_method_attached Whether we have attached a payment method to the WhatsApp Business Account.
+     *
+     * @return self
+     */
+    public function setPaymentMethodAttached($payment_method_attached)
+    {
+        $this->container['payment_method_attached'] = $payment_method_attached;
 
         return $this;
     }
