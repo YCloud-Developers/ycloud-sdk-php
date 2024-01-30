@@ -48,6 +48,8 @@ class WhatsappPhoneNumberCodeVerificationStatus
 
     public const NOT_VERIFIED = 'NOT_VERIFIED';
 
+    public const EXPIRED = 'EXPIRED';
+
     /**
      * Gets allowable values of the enum
      * @return string[]
@@ -56,7 +58,8 @@ class WhatsappPhoneNumberCodeVerificationStatus
     {
         return [
             self::VERIFIED,
-            self::NOT_VERIFIED
+            self::NOT_VERIFIED,
+            self::EXPIRED
         ];
     }
 }

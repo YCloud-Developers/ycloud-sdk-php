@@ -303,7 +303,7 @@ class EmailSendRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets from
      *
-     * @param string $from - The sender's email. Its domain should be one that has been registered and activated in your YCloud account. - The test address provided by YCloud is `ycloud@ycloud-mail.com`, which only supports sending emails to your registered email address. - The sender's email address is required while the sender's name is optional. For example, both `ycloud@ycloud-mail.com` and `YCloud<ycloud@ycloud-mail.com>` work.
+     * @param string $from - The sender's email. Its domain should be one that has been registered and activated in your account. - The sender's email address is required while the sender's name is optional. For example, both `support@example.com` and `Sender<support@example.com>` work.
      *
      * @return self
      */

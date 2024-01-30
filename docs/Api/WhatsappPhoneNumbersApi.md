@@ -21,7 +21,7 @@ list($page, $limit, $include_total, $filter_waba_id): \YCloud\Client\Model\Whats
 
 List phone numbers
 
-Returns a paginated list of WhatsApp business phone numbers you've registered on YCloud.
+Returns a paginated list of WhatsApp business phone numbers you've registered.
 
 ### Example
 
@@ -151,7 +151,7 @@ retrieve($waba_id, $phone_number): \YCloud\Client\Model\WhatsappPhoneNumber
 
 Retrieve a phone number
 
-Retrieves a WhatsApp business phone number you've registered on YCloud.
+Retrieves a WhatsApp business phone number you've registered.
 
 ### Example
 

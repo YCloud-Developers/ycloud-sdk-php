@@ -25,6 +25,8 @@
 
 * `REACTION` (value: `'reaction'`)
 
+* `REQUEST_WELCOME` (value: `'request_welcome'`)
+
 * `ORDER` (value: `'order'`)
 
 * `SYSTEM` (value: `'system'`)

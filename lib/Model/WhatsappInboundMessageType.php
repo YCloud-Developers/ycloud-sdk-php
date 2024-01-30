@@ -66,6 +66,8 @@ class WhatsappInboundMessageType
 
     public const REACTION = 'reaction';
 
+    public const REQUEST_WELCOME = 'request_welcome';
+
     public const ORDER = 'order';
 
     public const SYSTEM = 'system';
@@ -92,6 +94,7 @@ class WhatsappInboundMessageType
             self::INTERACTIVE,
             self::BUTTON,
             self::REACTION,
+            self::REQUEST_WELCOME,
             self::ORDER,
             self::SYSTEM,
             self::UNSUPPORTED,

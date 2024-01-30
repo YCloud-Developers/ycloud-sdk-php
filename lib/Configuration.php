@@ -101,7 +101,7 @@ class Configuration
      *
      * @var string
      */
-    protected $userAgent = 'ycloud-sdk-php/1.11.1';
+    protected $userAgent = 'ycloud-sdk-php/1.11.2';
 
     /**
      * Debug switch (default set to false)
@@ -474,7 +474,7 @@ class Configuration
         return [
             [
                 "url" => "https://api.ycloud.com/v2",
-                "description" => "YCloud API base URL",
+                "description" => "Base URL",
             ]
         ];
     }

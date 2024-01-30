@@ -16,7 +16,7 @@ list($page, $limit, $include_total, $filter_account_review_status): \YCloud\Clie
 
 List WABAs
 
-Returns a paginated list of WhatsApp business accounts you've registered on YCloud.
+Returns a paginated list of WhatsApp business accounts you've registered.
 
 ### Example
 
@@ -84,7 +84,7 @@ retrieve($id): \YCloud\Client\Model\WhatsappBusinessAccount
 
 Retrieve a WABA
 
-Retrieves a WABA you've registered on YCloud.
+Retrieves a WABA you've registered.
 
 ### Example
 

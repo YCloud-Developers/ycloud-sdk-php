@@ -442,7 +442,7 @@ class Verification implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets sms_fallback_enabled
      *
-     * @param bool|null $sms_fallback_enabled Whether sms fallback is enabled or not. Applicable when `channel` is `whatsapp`. If enabled, YCloud will try to send the verification code via sms when the WhatsApp message is failed.
+     * @param bool|null $sms_fallback_enabled Whether sms fallback is enabled or not. Applicable when `channel` is `whatsapp`. If enabled, we will try to send the verification code via sms when the WhatsApp message is failed.
      *
      * @return self
      */

@@ -315,7 +315,7 @@ class VerificationSendRequest implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets code
      *
-     * @param string|null $code Verification code to be sent. This field is optional. If not provided, YCloud will automatically generate a code.
+     * @param string|null $code Verification code to be sent. This field is optional. If not provided, we will automatically generate a code.
      *
      * @return self
      */
@@ -370,7 +370,7 @@ class VerificationSendRequest implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets signature
      *
-     * @param string|null $signature This parameter is only required for Chinese mainland SMS messages. You must specify an approved signature such as `YCloud`. It will be added to the beginning of SMS body and wrapped with `【】`, e.g. `【YCloud】Your verification code is 123456`.
+     * @param string|null $signature This parameter is only required for Chinese mainland SMS messages. You must specify an approved signature such as `Brand`. It will be added to the beginning of SMS body and wrapped with `【】`, e.g. `【Brand】Your verification code is 123456`.
      *
      * @return self
      */
