@@ -89,6 +89,7 @@ class WhatsappMessage implements ModelInterface, ArrayAccess, \JsonSerializable
         'read_time' => '\DateTime',
         'total_price' => 'double',
         'currency' => 'string',
+        'region_code' => 'string',
         'whatsapp_api_error' => '\YCloud\Client\Model\WhatsappApiError',
         'biz_type' => 'string',
         'verification_id' => 'string'
@@ -132,6 +133,7 @@ class WhatsappMessage implements ModelInterface, ArrayAccess, \JsonSerializable
         'read_time' => 'date-time',
         'total_price' => 'double',
         'currency' => null,
+        'region_code' => null,
         'whatsapp_api_error' => null,
         'biz_type' => null,
         'verification_id' => null
@@ -194,6 +196,7 @@ class WhatsappMessage implements ModelInterface, ArrayAccess, \JsonSerializable
         'read_time' => 'readTime',
         'total_price' => 'totalPrice',
         'currency' => 'currency',
+        'region_code' => 'regionCode',
         'whatsapp_api_error' => 'whatsappApiError',
         'biz_type' => 'bizType',
         'verification_id' => 'verificationId'
@@ -235,6 +238,7 @@ class WhatsappMessage implements ModelInterface, ArrayAccess, \JsonSerializable
         'read_time' => 'setReadTime',
         'total_price' => 'setTotalPrice',
         'currency' => 'setCurrency',
+        'region_code' => 'setRegionCode',
         'whatsapp_api_error' => 'setWhatsappApiError',
         'biz_type' => 'setBizType',
         'verification_id' => 'setVerificationId'
@@ -276,6 +280,7 @@ class WhatsappMessage implements ModelInterface, ArrayAccess, \JsonSerializable
         'read_time' => 'getReadTime',
         'total_price' => 'getTotalPrice',
         'currency' => 'getCurrency',
+        'region_code' => 'getRegionCode',
         'whatsapp_api_error' => 'getWhatsappApiError',
         'biz_type' => 'getBizType',
         'verification_id' => 'getVerificationId'
@@ -368,6 +373,7 @@ class WhatsappMessage implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['read_time'] = $data['read_time'] ?? null;
         $this->container['total_price'] = $data['total_price'] ?? null;
         $this->container['currency'] = $data['currency'] ?? null;
+        $this->container['region_code'] = $data['region_code'] ?? null;
         $this->container['whatsapp_api_error'] = $data['whatsapp_api_error'] ?? null;
         $this->container['biz_type'] = $data['biz_type'] ?? null;
         $this->container['verification_id'] = $data['verification_id'] ?? null;
@@ -1125,6 +1131,30 @@ class WhatsappMessage implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setCurrency($currency)
     {
         $this->container['currency'] = $currency;
+
+        return $this;
+    }
+
+    /**
+     * Gets region_code
+     *
+     * @return string|null
+     */
+    public function getRegionCode()
+    {
+        return $this->container['region_code'];
+    }
+
+    /**
+     * Sets region_code
+     *
+     * @param string|null $region_code The [region code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) of the recipient phone number.
+     *
+     * @return self
+     */
+    public function setRegionCode($region_code)
+    {
+        $this->container['region_code'] = $region_code;
 
         return $this;
     }

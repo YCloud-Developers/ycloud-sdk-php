@@ -64,7 +64,8 @@ class ContactUpdateRequest implements ModelInterface, ArrayAccess, \JsonSerializ
         'country_code' => 'string',
         'email' => 'string',
         'tags' => 'string[]',
-        'custom_attributes' => '\YCloud\Client\Model\ContactCustomAttribute[]'
+        'custom_attributes' => '\YCloud\Client\Model\ContactCustomAttribute[]',
+        'owner_email' => 'string'
     ];
 
     /**
@@ -80,7 +81,8 @@ class ContactUpdateRequest implements ModelInterface, ArrayAccess, \JsonSerializ
         'country_code' => null,
         'email' => null,
         'tags' => null,
-        'custom_attributes' => null
+        'custom_attributes' => null,
+        'owner_email' => null
     ];
 
     /**
@@ -115,7 +117,8 @@ class ContactUpdateRequest implements ModelInterface, ArrayAccess, \JsonSerializ
         'country_code' => 'countryCode',
         'email' => 'email',
         'tags' => 'tags',
-        'custom_attributes' => 'customAttributes'
+        'custom_attributes' => 'customAttributes',
+        'owner_email' => 'ownerEmail'
     ];
 
     /**
@@ -129,7 +132,8 @@ class ContactUpdateRequest implements ModelInterface, ArrayAccess, \JsonSerializ
         'country_code' => 'setCountryCode',
         'email' => 'setEmail',
         'tags' => 'setTags',
-        'custom_attributes' => 'setCustomAttributes'
+        'custom_attributes' => 'setCustomAttributes',
+        'owner_email' => 'setOwnerEmail'
     ];
 
     /**
@@ -143,7 +147,8 @@ class ContactUpdateRequest implements ModelInterface, ArrayAccess, \JsonSerializ
         'country_code' => 'getCountryCode',
         'email' => 'getEmail',
         'tags' => 'getTags',
-        'custom_attributes' => 'getCustomAttributes'
+        'custom_attributes' => 'getCustomAttributes',
+        'owner_email' => 'getOwnerEmail'
     ];
 
     /**
@@ -209,6 +214,7 @@ class ContactUpdateRequest implements ModelInterface, ArrayAccess, \JsonSerializ
         $this->container['email'] = $data['email'] ?? null;
         $this->container['tags'] = $data['tags'] ?? null;
         $this->container['custom_attributes'] = $data['custom_attributes'] ?? null;
+        $this->container['owner_email'] = $data['owner_email'] ?? null;
     }
 
     /**
@@ -230,6 +236,10 @@ class ContactUpdateRequest implements ModelInterface, ArrayAccess, \JsonSerializ
 
         if (!is_null($this->container['tags']) && (count($this->container['tags']) > 50)) {
             $invalidProperties[] = "invalid value for 'tags', number of items must be less than or equal to 50.";
+        }
+
+        if (!is_null($this->container['owner_email']) && (mb_strlen($this->container['owner_email']) > 250)) {
+            $invalidProperties[] = "invalid value for 'owner_email', the character length must be smaller than or equal to 250.";
         }
 
         return $invalidProperties;
@@ -399,6 +409,34 @@ class ContactUpdateRequest implements ModelInterface, ArrayAccess, \JsonSerializ
     public function setCustomAttributes($custom_attributes)
     {
         $this->container['custom_attributes'] = $custom_attributes;
+
+        return $this;
+    }
+
+    /**
+     * Gets owner_email
+     *
+     * @return string|null
+     */
+    public function getOwnerEmail()
+    {
+        return $this->container['owner_email'];
+    }
+
+    /**
+     * Sets owner_email
+     *
+     * @param string|null $owner_email The email address of the contact's owner.
+     *
+     * @return self
+     */
+    public function setOwnerEmail($owner_email)
+    {
+        if (!is_null($owner_email) && (mb_strlen($owner_email) > 250)) {
+            throw new \InvalidArgumentException('invalid length for $owner_email when calling ContactUpdateRequest., must be smaller than or equal to 250.');
+        }
+
+        $this->container['owner_email'] = $owner_email;
 
         return $this;
     }

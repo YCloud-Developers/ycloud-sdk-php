@@ -10,5 +10,6 @@ Name | Type | Description | Notes
 **email** | **string** | The contact&#39;s email address. If present, the email address must be unique. | [optional]
 **tags** | **string[]** | Contact&#39;s tags. Maximum items: 50. | [optional]
 **custom_attributes** | [**\YCloud\Client\Model\ContactCustomAttribute[]**](ContactCustomAttribute.md) | Contact&#39;s custom attributes. If present (i.e., not &#x60;null&#x60;), all previous attributes of this contact will be replaced. | [optional]
+**owner_email** | **string** | The email address of the contact&#39;s owner. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

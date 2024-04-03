@@ -126,7 +126,7 @@ class WhatsappPhoneNumbersApi
      * @param  int $page Page number of the results to be returned, 1-based. (optional, default to 1)
      * @param  int $limit A limit on the number of results to be returned, or number of results per page, between 1 and 100, defaults to 10. (optional, default to 10)
      * @param  bool $include_total Return results inside an object that contains the total result count or not. (optional, default to false)
-     * @param  string $filter_waba_id WhatsApp Business Account ID. (optional)
+     * @param  string $filter_waba_id **Required**. WhatsApp Business Account ID. (optional)
      *
      * @throws \YCloud\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -148,7 +148,7 @@ class WhatsappPhoneNumbersApi
      * @param  int $page Page number of the results to be returned, 1-based. (optional, default to 1)
      * @param  int $limit A limit on the number of results to be returned, or number of results per page, between 1 and 100, defaults to 10. (optional, default to 10)
      * @param  bool $include_total Return results inside an object that contains the total result count or not. (optional, default to false)
-     * @param  string $filter_waba_id WhatsApp Business Account ID. (optional)
+     * @param  string $filter_waba_id **Required**. WhatsApp Business Account ID. (optional)
      *
      * @throws \YCloud\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -252,7 +252,7 @@ class WhatsappPhoneNumbersApi
      * @param  int $page Page number of the results to be returned, 1-based. (optional, default to 1)
      * @param  int $limit A limit on the number of results to be returned, or number of results per page, between 1 and 100, defaults to 10. (optional, default to 10)
      * @param  bool $include_total Return results inside an object that contains the total result count or not. (optional, default to false)
-     * @param  string $filter_waba_id WhatsApp Business Account ID. (optional)
+     * @param  string $filter_waba_id **Required**. WhatsApp Business Account ID. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -277,7 +277,7 @@ class WhatsappPhoneNumbersApi
      * @param  int $page Page number of the results to be returned, 1-based. (optional, default to 1)
      * @param  int $limit A limit on the number of results to be returned, or number of results per page, between 1 and 100, defaults to 10. (optional, default to 10)
      * @param  bool $include_total Return results inside an object that contains the total result count or not. (optional, default to false)
-     * @param  string $filter_waba_id WhatsApp Business Account ID. (optional)
+     * @param  string $filter_waba_id **Required**. WhatsApp Business Account ID. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -331,7 +331,7 @@ class WhatsappPhoneNumbersApi
      * @param  int $page Page number of the results to be returned, 1-based. (optional, default to 1)
      * @param  int $limit A limit on the number of results to be returned, or number of results per page, between 1 and 100, defaults to 10. (optional, default to 10)
      * @param  bool $include_total Return results inside an object that contains the total result count or not. (optional, default to false)
-     * @param  string $filter_waba_id WhatsApp Business Account ID. (optional)
+     * @param  string $filter_waba_id **Required**. WhatsApp Business Account ID. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request

@@ -162,8 +162,8 @@ $associate_array['page'] = 1; // int | Page number of the results to be returned
 $associate_array['limit'] = 10; // int | A limit on the number of results to be returned, or number of results per page, between 1 and 100, defaults to 10.
 $associate_array['include_total'] = false; // bool | Return results inside an object that contains the total result count or not.
 $associate_array['filter_tags'] = tag1,tag2; // string | Comma-separated list of tags.
-$associate_array['filter_country_code'] = GB; // string | Two-letter country abbreviation. See [ISO 3166-1 alpha-2 country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).
-$associate_array['filter_phone_number'] = +447901614024; // string | Phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format.
+$associate_array['filter_country_code'] = US; // string | Two-letter country abbreviation. See [ISO 3166-1 alpha-2 country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).
+$associate_array['filter_phone_number'] = +16315551111; // string | Phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format.
 $associate_array['filter_email'] = support@example.com; // string | The contact's email address.
 
 try {
