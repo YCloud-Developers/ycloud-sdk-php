@@ -286,7 +286,7 @@ class WhatsappMessageInteractiveActionParameters implements ModelInterface, Arra
     /**
      * Sets thumbnail_product_retailer_id
      *
-     * @param string|null $thumbnail_product_retailer_id Item SKU number. Labeled as **Content ID** in the [Commerce Manager](https://business.facebook.com/commerce/). The thumbnail of this item will be used as the message's header image.
+     * @param string|null $thumbnail_product_retailer_id Item SKU number. Labeled as **Content ID** in the [Commerce Manager](https://business.facebook.com/commerce). The thumbnail of this item will be used as the message's header image.
      *
      * @return self
      */

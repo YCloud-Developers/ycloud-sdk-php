@@ -36,7 +36,7 @@ use \YCloud\Client\ObjectSerializer;
  * WhatsappInboundMessageInteractive Class Doc Comment
  *
  * @category Class
- * @description When a customer has interacted with your message, this object is included in the message object. See also [WhatsApp webhook messages object](https://developers.facebook.com/docs/whatsapp/cloud-api/webhooks/components#messages-object), and [payload examples](https://developers.facebook.com/docs/whatsapp/cloud-api/webhooks/payload-examples#webhook-notification-payload-examples).
+ * @description When a customer has interacted with your message, this object is included in the message object.
  * @package  YCloud\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

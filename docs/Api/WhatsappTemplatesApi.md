@@ -206,7 +206,7 @@ editByNameAndLanguage($waba_id, $name, $language, $whatsapp_template_edit_reques
 
 Edit a template
 
-Edits a WhatsApp template by name and language. Editing a template replaces its old contents entirely, so include any components you wish to preserve as well as components you wish to update using the components parameter. See also [Edit a Message Template](https://developers.facebook.com/docs/whatsapp/business-management-api/message-templates#edit-a-message-template).
+Edits a WhatsApp template by name and language. Editing a template replaces its old contents entirely, so include any components you wish to preserve as well as components you wish to update using the components parameter.
 
 ### Example
 
@@ -294,7 +294,7 @@ $apiInstance = new YCloud\Client\Api\WhatsappTemplatesApi(
 $associate_array['page'] = 1; // int | Page number of the results to be returned, 1-based.
 $associate_array['limit'] = 10; // int | A limit on the number of results to be returned, or number of results per page, between 1 and 100, defaults to 10.
 $associate_array['include_total'] = false; // bool | Return results inside an object that contains the total result count or not.
-$associate_array['filter_waba_id'] = whatsapp-business-account-id; // string | **Required**. WhatsApp Business Account ID.
+$associate_array['filter_waba_id'] = whatsapp-business-account-id; // string | **Required if you have more than 100 WABAs.** WhatsApp Business Account ID.
 $associate_array['filter_name'] = sample_whatsapp_template; // string | Name of the template.
 $associate_array['filter_language'] = en_US; // string | Language code of the template. See [Supported Languages](https://developers.facebook.com/docs/whatsapp/api/messages/message-templates#supported-languages) for all codes.
 
@@ -315,7 +315,7 @@ Name | Type | Description  | Notes
  **page** | **int**| Page number of the results to be returned, 1-based. | [optional] [default to 1]
  **limit** | **int**| A limit on the number of results to be returned, or number of results per page, between 1 and 100, defaults to 10. | [optional] [default to 10]
  **include_total** | **bool**| Return results inside an object that contains the total result count or not. | [optional] [default to false]
- **filter_waba_id** | **string**| **Required**. WhatsApp Business Account ID. | [optional]
+ **filter_waba_id** | **string**| **Required if you have more than 100 WABAs.** WhatsApp Business Account ID. | [optional]
  **filter_name** | **string**| Name of the template. | [optional]
  **filter_language** | **string**| Language code of the template. See [Supported Languages](https://developers.facebook.com/docs/whatsapp/api/messages/message-templates#supported-languages) for all codes. | [optional]
 

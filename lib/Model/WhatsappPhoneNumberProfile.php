@@ -36,7 +36,7 @@ use \YCloud\Client\ObjectSerializer;
  * WhatsappPhoneNumberProfile Class Doc Comment
  *
  * @category Class
- * @description WhatsApp Phone Number Business Profile. Customers can view your business profile by clicking your business&#39;s name or number in a conversation thread. See also [Business Profiles](https://developers.facebook.com/docs/whatsapp/cloud-api/reference/business-profiles).
+ * @description WhatsApp Phone Number Business Profile. Customers can view your business profile by clicking your business&#39;s name or number in a conversation thread.
  * @package  YCloud\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

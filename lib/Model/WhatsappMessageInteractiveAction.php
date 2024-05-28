@@ -36,7 +36,7 @@ use \YCloud\Client\ObjectSerializer;
  * WhatsappMessageInteractiveAction Class Doc Comment
  *
  * @category Class
- * @description **Required.** Action you want the user to perform after reading the &#x60;interactive&#x60; message. See also [WhatsApp Interactive Action Object](https://developers.facebook.com/docs/whatsapp/cloud-api/reference/messages#action-object).
+ * @description **Required.** Action you want the user to perform after reading the &#x60;interactive&#x60; message.
  * @package  YCloud\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -350,7 +350,7 @@ class WhatsappMessageInteractiveAction implements ModelInterface, ArrayAccess, \
     /**
      * Sets catalog_id
      *
-     * @param string|null $catalog_id Required for Single Product Messages and Multi-Product Messages. Unique identifier of the Facebook catalog linked to your WhatsApp Business Account. This ID can be retrieved via the [Meta Commerce Manager](https://business.facebook.com/commerce/).
+     * @param string|null $catalog_id Required for Single Product Messages and Multi-Product Messages. Unique identifier of the Facebook catalog linked to your WhatsApp Business Account. This ID can be retrieved via the [Meta Commerce Manager](https://business.facebook.com/commerce).
      *
      * @return self
      */

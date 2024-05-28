@@ -25,7 +25,7 @@ Alternatively, add the following to `composer.json`:
   "repositories": [
     {
       "type": "vcs",
-      "url": "https://github.com/ycloud-cpaas/ycloud-sdk-php.git"
+      "url": "https://github.com/ycloud-developers/ycloud-sdk-php.git"
     }
   ],
   "require": {
@@ -161,6 +161,7 @@ Class | Method | HTTP request | Description
 - [WebhookEndpointStatus](docs/Model/WebhookEndpointStatus.md)
 - [WebhookEndpointUpdateRequest](docs/Model/WebhookEndpointUpdateRequest.md)
 - [WhatsappApiError](docs/Model/WhatsappApiError.md)
+- [WhatsappAuthIntlRateEligibilityCountry](docs/Model/WhatsappAuthIntlRateEligibilityCountry.md)
 - [WhatsappBusinessAccount](docs/Model/WhatsappBusinessAccount.md)
 - [WhatsappBusinessAccountBanState](docs/Model/WhatsappBusinessAccountBanState.md)
 - [WhatsappBusinessAccountPage](docs/Model/WhatsappBusinessAccountPage.md)
@@ -235,6 +236,7 @@ Class | Method | HTTP request | Description
 - [WhatsappPhoneNumberQualityRating](docs/Model/WhatsappPhoneNumberQualityRating.md)
 - [WhatsappPhoneNumberQualityUpdateEventEnum](docs/Model/WhatsappPhoneNumberQualityUpdateEventEnum.md)
 - [WhatsappPhoneNumberStatus](docs/Model/WhatsappPhoneNumberStatus.md)
+- [WhatsappPricingCategory](docs/Model/WhatsappPricingCategory.md)
 - [WhatsappProfile](docs/Model/WhatsappProfile.md)
 - [WhatsappReviewDecision](docs/Model/WhatsappReviewDecision.md)
 - [WhatsappTemplate](docs/Model/WhatsappTemplate.md)

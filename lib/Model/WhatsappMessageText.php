@@ -36,7 +36,7 @@ use \YCloud\Client\ObjectSerializer;
  * WhatsappMessageText Class Doc Comment
  *
  * @category Class
- * @description [WhatsApp Text Object](https://developers.facebook.com/docs/whatsapp/cloud-api/reference/messages#text-object).
+ * @description WhatsApp Message Text Object.
  * @package  YCloud\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

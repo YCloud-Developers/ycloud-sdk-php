@@ -43,7 +43,7 @@ $apiInstance = new YCloud\Client\Api\WhatsappPhoneNumbersApi(
 $associate_array['page'] = 1; // int | Page number of the results to be returned, 1-based.
 $associate_array['limit'] = 10; // int | A limit on the number of results to be returned, or number of results per page, between 1 and 100, defaults to 10.
 $associate_array['include_total'] = false; // bool | Return results inside an object that contains the total result count or not.
-$associate_array['filter_waba_id'] = whatsapp-business-account-id; // string | **Required**. WhatsApp Business Account ID.
+$associate_array['filter_waba_id'] = whatsapp-business-account-id; // string | **Required if you have more than 100 WABAs.** WhatsApp Business Account ID.
 
 try {
     $result = $apiInstance->list($associate_array);
@@ -62,7 +62,7 @@ Name | Type | Description  | Notes
  **page** | **int**| Page number of the results to be returned, 1-based. | [optional] [default to 1]
  **limit** | **int**| A limit on the number of results to be returned, or number of results per page, between 1 and 100, defaults to 10. | [optional] [default to 10]
  **include_total** | **bool**| Return results inside an object that contains the total result count or not. | [optional] [default to false]
- **filter_waba_id** | **string**| **Required**. WhatsApp Business Account ID. | [optional]
+ **filter_waba_id** | **string**| **Required if you have more than 100 WABAs.** WhatsApp Business Account ID. | [optional]
 
 ### Return type
 

@@ -36,7 +36,7 @@ use \YCloud\Client\ObjectSerializer;
  * WhatsappMessageInteractiveBody Class Doc Comment
  *
  * @category Class
- * @description Optional for type &#x60;product&#x60;. Required for other message types. See also [WhatsApp Interactive Object](https://developers.facebook.com/docs/whatsapp/cloud-api/reference/messages#interactive-object).
+ * @description Optional for type &#x60;product&#x60;. Required for other message types.
  * @package  YCloud\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

@@ -74,8 +74,6 @@ class WhatsappInboundMessageType
 
     public const UNSUPPORTED = 'unsupported';
 
-    public const UNKNOWN = 'unknown';
-
     /**
      * Gets allowable values of the enum
      * @return string[]
@@ -97,8 +95,7 @@ class WhatsappInboundMessageType
             self::REQUEST_WELCOME,
             self::ORDER,
             self::SYSTEM,
-            self::UNSUPPORTED,
-            self::UNKNOWN
+            self::UNSUPPORTED
         ];
     }
 }

@@ -90,6 +90,7 @@ class WhatsappMessage implements ModelInterface, ArrayAccess, \JsonSerializable
         'total_price' => 'double',
         'currency' => 'string',
         'region_code' => 'string',
+        'pricing_category' => '\YCloud\Client\Model\WhatsappPricingCategory',
         'whatsapp_api_error' => '\YCloud\Client\Model\WhatsappApiError',
         'biz_type' => 'string',
         'verification_id' => 'string'
@@ -134,6 +135,7 @@ class WhatsappMessage implements ModelInterface, ArrayAccess, \JsonSerializable
         'total_price' => 'double',
         'currency' => null,
         'region_code' => null,
+        'pricing_category' => null,
         'whatsapp_api_error' => null,
         'biz_type' => null,
         'verification_id' => null
@@ -197,6 +199,7 @@ class WhatsappMessage implements ModelInterface, ArrayAccess, \JsonSerializable
         'total_price' => 'totalPrice',
         'currency' => 'currency',
         'region_code' => 'regionCode',
+        'pricing_category' => 'pricingCategory',
         'whatsapp_api_error' => 'whatsappApiError',
         'biz_type' => 'bizType',
         'verification_id' => 'verificationId'
@@ -239,6 +242,7 @@ class WhatsappMessage implements ModelInterface, ArrayAccess, \JsonSerializable
         'total_price' => 'setTotalPrice',
         'currency' => 'setCurrency',
         'region_code' => 'setRegionCode',
+        'pricing_category' => 'setPricingCategory',
         'whatsapp_api_error' => 'setWhatsappApiError',
         'biz_type' => 'setBizType',
         'verification_id' => 'setVerificationId'
@@ -281,6 +285,7 @@ class WhatsappMessage implements ModelInterface, ArrayAccess, \JsonSerializable
         'total_price' => 'getTotalPrice',
         'currency' => 'getCurrency',
         'region_code' => 'getRegionCode',
+        'pricing_category' => 'getPricingCategory',
         'whatsapp_api_error' => 'getWhatsappApiError',
         'biz_type' => 'getBizType',
         'verification_id' => 'getVerificationId'
@@ -374,6 +379,7 @@ class WhatsappMessage implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['total_price'] = $data['total_price'] ?? null;
         $this->container['currency'] = $data['currency'] ?? null;
         $this->container['region_code'] = $data['region_code'] ?? null;
+        $this->container['pricing_category'] = $data['pricing_category'] ?? null;
         $this->container['whatsapp_api_error'] = $data['whatsapp_api_error'] ?? null;
         $this->container['biz_type'] = $data['biz_type'] ?? null;
         $this->container['verification_id'] = $data['verification_id'] ?? null;
@@ -1155,6 +1161,30 @@ class WhatsappMessage implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setRegionCode($region_code)
     {
         $this->container['region_code'] = $region_code;
+
+        return $this;
+    }
+
+    /**
+     * Gets pricing_category
+     *
+     * @return \YCloud\Client\Model\WhatsappPricingCategory|null
+     */
+    public function getPricingCategory()
+    {
+        return $this->container['pricing_category'];
+    }
+
+    /**
+     * Sets pricing_category
+     *
+     * @param \YCloud\Client\Model\WhatsappPricingCategory|null $pricing_category pricing_category
+     *
+     * @return self
+     */
+    public function setPricingCategory($pricing_category)
+    {
+        $this->container['pricing_category'] = $pricing_category;
 
         return $this;
     }

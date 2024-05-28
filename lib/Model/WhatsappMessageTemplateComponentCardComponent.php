@@ -397,7 +397,7 @@ class WhatsappMessageTemplateComponentCardComponent implements ModelInterface, A
     /**
      * Sets parameters
      *
-     * @param \YCloud\Client\Model\WhatsappMessageTemplateComponentParameter[]|null $parameters **Required when `type` = `button`, or there are variables in the corresponding template component, or the card component `HEADER` format is media (`IMAGE`, `VIDEO`).** Array of parameter objects with the content of the message. For components of `type` = `button`, see the [button parameter object](https://developers.facebook.com/docs/whatsapp/cloud-api/reference/messages#button-parameter-object).
+     * @param \YCloud\Client\Model\WhatsappMessageTemplateComponentParameter[]|null $parameters **Required when `type` = `button`, or there are variables in the corresponding template component, or the card component `HEADER` format is media (`IMAGE`, `VIDEO`).** Array of parameter objects with the content of the message.
      *
      * @return self
      */

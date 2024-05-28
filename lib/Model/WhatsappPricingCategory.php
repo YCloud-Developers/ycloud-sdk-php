@@ -1,6 +1,6 @@
 <?php
 /**
- * WhatsappConversationOriginType
+ * WhatsappPricingCategory
  *
  * PHP version 7.4
  *
@@ -31,15 +31,15 @@ namespace YCloud\Client\Model;
 use \YCloud\Client\ObjectSerializer;
 
 /**
- * WhatsappConversationOriginType Class Doc Comment
+ * WhatsappPricingCategory Class Doc Comment
  *
  * @category Class
- * @description Indicates [conversation category](https://developers.facebook.com/docs/whatsapp/pricing#conversation-categories). This can also be referred to as a conversation entry point. - &#x60;referral_conversion&#x60;: Indicates a [free entry point conversation](https://developers.facebook.com/docs/whatsapp/pricing#free-entry-point-conversations). - &#x60;authentication&#x60;: Indicates the conversation was opened by a business sending template categorized as &#x60;AUTHENTICATION&#x60; to the customer. This applies any time it has been more than 24 hours since the last customer message. - &#x60;marketing&#x60;: Indicates the conversation was opened by a business sending template categorized as &#x60;MARKETING&#x60; to the customer. This applies any time it has been more than 24 hours since the last customer message. - &#x60;utility&#x60;: Indicates the conversation was opened by a business sending template categorized as &#x60;UTILITY&#x60; to the customer. This applies any time it has been more than 24 hours since the last customer message. - &#x60;service&#x60;: Indicates that the conversation opened by a business replying to a customer within a [customer service window](https://developers.facebook.com/docs/whatsapp/pricing#customer-service-windows).
+ * @description WhatsApp pricing category. - &#x60;referral_conversion&#x60;: Indicates a [free entry point conversation](https://developers.facebook.com/docs/whatsapp/pricing#free-entry-point-conversations). - &#x60;authentication&#x60;: Indicates the conversation was billed at authentication rate. - &#x60;authentication_international&#x60;: Indicates the conversation was conversation was billed at the [authentication-international rate](https://developers.facebook.com/docs/whatsapp/pricing/authentication-international-rates). - &#x60;marketing&#x60;: Indicates the conversation was billed at authentication rate. - &#x60;utility&#x60;: Indicates the conversation was billed at utility rate. - &#x60;service&#x60;: Indicates the conversation was billed at service rate.  See also [Conversation-Based Pricing](https://developers.facebook.com/docs/whatsapp/pricing).
  * @package  YCloud\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class WhatsappConversationOriginType
+class WhatsappPricingCategory
 {
     /**
      * Possible values of this enum
@@ -47,6 +47,8 @@ class WhatsappConversationOriginType
     public const REFERRAL_CONVERSION = 'referral_conversion';
 
     public const AUTHENTICATION = 'authentication';
+
+    public const AUTHENTICATION_INTERNATIONAL = 'authentication_international';
 
     public const MARKETING = 'marketing';
 
@@ -63,6 +65,7 @@ class WhatsappConversationOriginType
         return [
             self::REFERRAL_CONVERSION,
             self::AUTHENTICATION,
+            self::AUTHENTICATION_INTERNATIONAL,
             self::MARKETING,
             self::UTILITY,
             self::SERVICE

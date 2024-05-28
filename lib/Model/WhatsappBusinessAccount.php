@@ -36,7 +36,7 @@ use \YCloud\Client\ObjectSerializer;
  * WhatsappBusinessAccount Class Doc Comment
  *
  * @category Class
- * @description Represents a specific [WhatsApp Business Account (WABA)](https://www.facebook.com/business/help/1499554293524119).
+ * @description Represents a specific [WhatsApp Business Account (WABA)](https://developers.facebook.com/docs/whatsapp/overview/business-accounts).
  * @package  YCloud\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -76,7 +76,9 @@ class WhatsappBusinessAccount implements ModelInterface, ArrayAccess, \JsonSeria
         'ban_state' => '\YCloud\Client\Model\WhatsappBusinessAccountBanState',
         'ban_date' => 'string',
         'violation_type' => 'string',
-        'restrictions' => '\YCloud\Client\Model\WhatsappBusinessAccountRestrictionInfo[]'
+        'restrictions' => '\YCloud\Client\Model\WhatsappBusinessAccountRestrictionInfo[]',
+        'auth_intl_rate_eligibility_countries' => '\YCloud\Client\Model\WhatsappAuthIntlRateEligibilityCountry[]',
+        'primary_business_location' => 'string'
     ];
 
     /**
@@ -104,7 +106,9 @@ class WhatsappBusinessAccount implements ModelInterface, ArrayAccess, \JsonSeria
         'ban_state' => null,
         'ban_date' => null,
         'violation_type' => null,
-        'restrictions' => null
+        'restrictions' => null,
+        'auth_intl_rate_eligibility_countries' => null,
+        'primary_business_location' => null
     ];
 
     /**
@@ -151,7 +155,9 @@ class WhatsappBusinessAccount implements ModelInterface, ArrayAccess, \JsonSeria
         'ban_state' => 'banState',
         'ban_date' => 'banDate',
         'violation_type' => 'violationType',
-        'restrictions' => 'restrictions'
+        'restrictions' => 'restrictions',
+        'auth_intl_rate_eligibility_countries' => 'authIntlRateEligibilityCountries',
+        'primary_business_location' => 'primaryBusinessLocation'
     ];
 
     /**
@@ -177,7 +183,9 @@ class WhatsappBusinessAccount implements ModelInterface, ArrayAccess, \JsonSeria
         'ban_state' => 'setBanState',
         'ban_date' => 'setBanDate',
         'violation_type' => 'setViolationType',
-        'restrictions' => 'setRestrictions'
+        'restrictions' => 'setRestrictions',
+        'auth_intl_rate_eligibility_countries' => 'setAuthIntlRateEligibilityCountries',
+        'primary_business_location' => 'setPrimaryBusinessLocation'
     ];
 
     /**
@@ -203,7 +211,9 @@ class WhatsappBusinessAccount implements ModelInterface, ArrayAccess, \JsonSeria
         'ban_state' => 'getBanState',
         'ban_date' => 'getBanDate',
         'violation_type' => 'getViolationType',
-        'restrictions' => 'getRestrictions'
+        'restrictions' => 'getRestrictions',
+        'auth_intl_rate_eligibility_countries' => 'getAuthIntlRateEligibilityCountries',
+        'primary_business_location' => 'getPrimaryBusinessLocation'
     ];
 
     /**
@@ -281,6 +291,8 @@ class WhatsappBusinessAccount implements ModelInterface, ArrayAccess, \JsonSeria
         $this->container['ban_date'] = $data['ban_date'] ?? null;
         $this->container['violation_type'] = $data['violation_type'] ?? null;
         $this->container['restrictions'] = $data['restrictions'] ?? null;
+        $this->container['auth_intl_rate_eligibility_countries'] = $data['auth_intl_rate_eligibility_countries'] ?? null;
+        $this->container['primary_business_location'] = $data['primary_business_location'] ?? null;
     }
 
     /**
@@ -735,6 +747,54 @@ class WhatsappBusinessAccount implements ModelInterface, ArrayAccess, \JsonSeria
     public function setRestrictions($restrictions)
     {
         $this->container['restrictions'] = $restrictions;
+
+        return $this;
+    }
+
+    /**
+     * Gets auth_intl_rate_eligibility_countries
+     *
+     * @return \YCloud\Client\Model\WhatsappAuthIntlRateEligibilityCountry[]|null
+     */
+    public function getAuthIntlRateEligibilityCountries()
+    {
+        return $this->container['auth_intl_rate_eligibility_countries'];
+    }
+
+    /**
+     * Sets auth_intl_rate_eligibility_countries
+     *
+     * @param \YCloud\Client\Model\WhatsappAuthIntlRateEligibilityCountry[]|null $auth_intl_rate_eligibility_countries Starting June 1, 2024, we are updating our authentication rate card and introducing a new authentication-international rate. This rate will apply in the the following countries: - June 1, 2024 – Indonesia (country calling code +62, country code `ID`) - July 1, 2024 – India (country calling code +91, country code `IN`)  See also [Authentication-International Rates](https://developers.facebook.com/docs/whatsapp/pricing/authentication-international-rates).
+     *
+     * @return self
+     */
+    public function setAuthIntlRateEligibilityCountries($auth_intl_rate_eligibility_countries)
+    {
+        $this->container['auth_intl_rate_eligibility_countries'] = $auth_intl_rate_eligibility_countries;
+
+        return $this;
+    }
+
+    /**
+     * Gets primary_business_location
+     *
+     * @return string|null
+     */
+    public function getPrimaryBusinessLocation()
+    {
+        return $this->container['primary_business_location'];
+    }
+
+    /**
+     * Sets primary_business_location
+     *
+     * @param string|null $primary_business_location Your primary business location is the country where your business is based. It will appear in the Business Manager under the Primary Business Location field starting May 1, 2024. [ISO 3166-1 alpha-2 country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).
+     *
+     * @return self
+     */
+    public function setPrimaryBusinessLocation($primary_business_location)
+    {
+        $this->container['primary_business_location'] = $primary_business_location;
 
         return $this;
     }

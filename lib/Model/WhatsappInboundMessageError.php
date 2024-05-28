@@ -36,7 +36,7 @@ use \YCloud\Client\ObjectSerializer;
  * WhatsappInboundMessageError Class Doc Comment
  *
  * @category Class
- * @description When the message type field is set to &#x60;unknown&#x60; or &#x60;unsupported&#x60;, this object is included.
+ * @description When the message type &#x60;unsupported&#x60;, this object is included.
  * @package  YCloud\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

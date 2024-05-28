@@ -36,7 +36,7 @@ use \YCloud\Client\ObjectSerializer;
  * WhatsappMessageTemplate Class Doc Comment
  *
  * @category Class
- * @description Use for sending a WhatsApp &#x60;template&#x60; message. See also [WhatsApp Template Object](https://developers.facebook.com/docs/whatsapp/cloud-api/reference/messages#template-object).
+ * @description Use for sending a WhatsApp &#x60;template&#x60; message.
  * @package  YCloud\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

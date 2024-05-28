@@ -36,7 +36,7 @@ use \YCloud\Client\ObjectSerializer;
  * WhatsappMessageContact Class Doc Comment
  *
  * @category Class
- * @description When the message type filed is set to &#x60;contacts&#x60;, this object is included in the message object. See also [WhatsApp message contacts object](https://developers.facebook.com/docs/whatsapp/cloud-api/reference/messages#contacts-object).
+ * @description When the message type filed is set to &#x60;contacts&#x60;, this object is included in the message object.
  * @package  YCloud\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

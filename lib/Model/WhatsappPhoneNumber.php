@@ -36,7 +36,7 @@ use \YCloud\Client\ObjectSerializer;
  * WhatsappPhoneNumber Class Doc Comment
  *
  * @category Class
- * @description A WhatsApp Business Account (WABA) phone number. See also [WhatsApp Retrieve Phone Numbers](https://developers.facebook.com/docs/whatsapp/business-management-api/manage-phone-numbers).
+ * @description See [WhatsApp Business Phone Number](https://developers.facebook.com/docs/whatsapp/cloud-api/phone-numbers)
  * @package  YCloud\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -428,7 +428,7 @@ class WhatsappPhoneNumber implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets messaging_limit
      *
-     * @param string|null $messaging_limit Messaging limits determine the maximum number of business-initiated conversations each phone number can start in a rolling 24-hour period. See also [Messaging Limits](https://developers.facebook.com/docs/whatsapp/messaging-limits#messaging-limits). - `TIER_NOT_SET`: Unknown limit. - `TIER_50`: 50 business-initiated conversations in a rolling 24-hour period. - `TIER_250`: 250 business-initiated conversations in a rolling 24-hour period. - `TIER_1K`: 1K business-initiated conversations with unique customers in a rolling 24-hour period. - `TIER_10K`: 10K business-initiated conversations with unique customers in a rolling 24-hour period. - `TIER_100K`: 100K business-initiated conversations with unique customers in a rolling 24-hour period. - `TIER_UNLIMITED`: An unlimited number of business-initiated conversations in a rolling 24-hour period.
+     * @param string|null $messaging_limit Messaging limits determine the maximum number of business-initiated conversations each phone number can start in a rolling 24-hour period. See also [Messaging Limits](https://developers.facebook.com/docs/whatsapp/messaging-limits). - `TIER_NOT_SET`: Unknown limit. - `TIER_50`: 50 business-initiated conversations in a rolling 24-hour period. - `TIER_250`: 250 business-initiated conversations in a rolling 24-hour period. - `TIER_1K`: 1K business-initiated conversations with unique customers in a rolling 24-hour period. - `TIER_10K`: 10K business-initiated conversations with unique customers in a rolling 24-hour period. - `TIER_100K`: 100K business-initiated conversations with unique customers in a rolling 24-hour period. - `TIER_UNLIMITED`: An unlimited number of business-initiated conversations in a rolling 24-hour period.
      *
      * @return self
      */
@@ -620,7 +620,7 @@ class WhatsappPhoneNumber implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets requested_verified_name
      *
-     * @param string|null $requested_verified_name Last requested verified name. See [Phone Number Name Update](https://developers.facebook.com/docs/graph-api/webhooks/reference/whatsapp-business-account/#phone_number_name_update).
+     * @param string|null $requested_verified_name Last requested verified name.
      *
      * @return self
      */
@@ -644,7 +644,7 @@ class WhatsappPhoneNumber implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets rejection_reason
      *
-     * @param string|null $rejection_reason Rejection reason. See [Phone Number Name Update](https://developers.facebook.com/docs/graph-api/webhooks/reference/whatsapp-business-account/#phone_number_name_update).
+     * @param string|null $rejection_reason Rejection reason.
      *
      * @return self
      */

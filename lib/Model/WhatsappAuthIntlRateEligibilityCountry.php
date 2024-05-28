@@ -1,6 +1,6 @@
 <?php
 /**
- * WhatsappMessageInteractiveHeader
+ * WhatsappAuthIntlRateEligibilityCountry
  *
  * PHP version 7.4
  *
@@ -33,16 +33,16 @@ use \ArrayAccess;
 use \YCloud\Client\ObjectSerializer;
 
 /**
- * WhatsappMessageInteractiveHeader Class Doc Comment
+ * WhatsappAuthIntlRateEligibilityCountry Class Doc Comment
  *
  * @category Class
- * @description Required for type &#x60;product_list&#x60;. Optional for other types.
+ * @description Starting June 1, 2024, we are updating our authentication rate card and introducing a new authentication-international rate. This rate will apply in the the following countries: - June 1, 2024 – Indonesia (country calling code +62, country code &#x60;ID&#x60;) - July 1, 2024 – India (country calling code +91, country code &#x60;IN&#x60;)  See also [Authentication-International Rates](https://developers.facebook.com/docs/whatsapp/pricing/authentication-international-rates).
  * @package  YCloud\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class WhatsappMessageInteractiveHeader implements ModelInterface, ArrayAccess, \JsonSerializable
+class WhatsappAuthIntlRateEligibilityCountry implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +51,7 @@ class WhatsappMessageInteractiveHeader implements ModelInterface, ArrayAccess, \
       *
       * @var string
       */
-    protected static $openAPIModelName = 'WhatsappMessageInteractiveHeader';
+    protected static $openAPIModelName = 'WhatsappAuthIntlRateEligibilityCountry';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,11 +59,8 @@ class WhatsappMessageInteractiveHeader implements ModelInterface, ArrayAccess, \
       * @var string[]
       */
     protected static $openAPITypes = [
-        'type' => 'string',
-        'text' => 'string',
-        'image' => '\YCloud\Client\Model\WhatsappMessageMedia',
-        'video' => '\YCloud\Client\Model\WhatsappMessageMedia',
-        'document' => '\YCloud\Client\Model\WhatsappMessageMedia'
+        'country_code' => 'string',
+        'start_time' => '\DateTime'
     ];
 
     /**
@@ -74,11 +71,8 @@ class WhatsappMessageInteractiveHeader implements ModelInterface, ArrayAccess, \
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'type' => null,
-        'text' => null,
-        'image' => null,
-        'video' => null,
-        'document' => null
+        'country_code' => null,
+        'start_time' => 'date-time'
     ];
 
     /**
@@ -108,11 +102,8 @@ class WhatsappMessageInteractiveHeader implements ModelInterface, ArrayAccess, \
      * @var string[]
      */
     protected static $attributeMap = [
-        'type' => 'type',
-        'text' => 'text',
-        'image' => 'image',
-        'video' => 'video',
-        'document' => 'document'
+        'country_code' => 'countryCode',
+        'start_time' => 'startTime'
     ];
 
     /**
@@ -121,11 +112,8 @@ class WhatsappMessageInteractiveHeader implements ModelInterface, ArrayAccess, \
      * @var string[]
      */
     protected static $setters = [
-        'type' => 'setType',
-        'text' => 'setText',
-        'image' => 'setImage',
-        'video' => 'setVideo',
-        'document' => 'setDocument'
+        'country_code' => 'setCountryCode',
+        'start_time' => 'setStartTime'
     ];
 
     /**
@@ -134,11 +122,8 @@ class WhatsappMessageInteractiveHeader implements ModelInterface, ArrayAccess, \
      * @var string[]
      */
     protected static $getters = [
-        'type' => 'getType',
-        'text' => 'getText',
-        'image' => 'getImage',
-        'video' => 'getVideo',
-        'document' => 'getDocument'
+        'country_code' => 'getCountryCode',
+        'start_time' => 'getStartTime'
     ];
 
     /**
@@ -182,25 +167,6 @@ class WhatsappMessageInteractiveHeader implements ModelInterface, ArrayAccess, \
         return self::$openAPIModelName;
     }
 
-    public const TYPE_TEXT = 'text';
-    public const TYPE_IMAGE = 'image';
-    public const TYPE_VIDEO = 'video';
-    public const TYPE_DOCUMENT = 'document';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getTypeAllowableValues()
-    {
-        return [
-            self::TYPE_TEXT,
-            self::TYPE_IMAGE,
-            self::TYPE_VIDEO,
-            self::TYPE_DOCUMENT,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -217,11 +183,8 @@ class WhatsappMessageInteractiveHeader implements ModelInterface, ArrayAccess, \
      */
     public function __construct(array $data = null)
     {
-        $this->container['type'] = $data['type'] ?? null;
-        $this->container['text'] = $data['text'] ?? null;
-        $this->container['image'] = $data['image'] ?? null;
-        $this->container['video'] = $data['video'] ?? null;
-        $this->container['document'] = $data['document'] ?? null;
+        $this->container['country_code'] = $data['country_code'] ?? null;
+        $this->container['start_time'] = $data['start_time'] ?? null;
     }
 
     /**
@@ -232,19 +195,6 @@ class WhatsappMessageInteractiveHeader implements ModelInterface, ArrayAccess, \
     public function listInvalidProperties()
     {
         $invalidProperties = [];
-
-        $allowedValues = $this->getTypeAllowableValues();
-        if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'type', must be one of '%s'",
-                $this->container['type'],
-                implode("', '", $allowedValues)
-            );
-        }
-
-        if (!is_null($this->container['text']) && (mb_strlen($this->container['text']) > 60)) {
-            $invalidProperties[] = "invalid value for 'text', the character length must be smaller than or equal to 60.";
-        }
 
         return $invalidProperties;
     }
@@ -262,135 +212,49 @@ class WhatsappMessageInteractiveHeader implements ModelInterface, ArrayAccess, \
 
 
     /**
-     * Gets type
+     * Gets country_code
      *
      * @return string|null
      */
-    public function getType()
+    public function getCountryCode()
     {
-        return $this->container['type'];
+        return $this->container['country_code'];
     }
 
     /**
-     * Sets type
+     * Sets country_code
      *
-     * @param string|null $type **Required.** The header type you would like to use. - `text`: Used for List Messages, Reply Buttons, and Multi-Product Messages. - `video`: Used for Reply Buttons. - `image`: Used for Reply Buttons. - `document`: Used for Reply Buttons.
+     * @param string|null $country_code [ISO 3166-1 alpha-2 country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).
      *
      * @return self
      */
-    public function setType($type)
+    public function setCountryCode($country_code)
     {
-        $allowedValues = $this->getTypeAllowableValues();
-        if (!is_null($type) && !in_array($type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'type', must be one of '%s'",
-                    $type,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['type'] = $type;
+        $this->container['country_code'] = $country_code;
 
         return $this;
     }
 
     /**
-     * Gets text
+     * Gets start_time
      *
-     * @return string|null
+     * @return \DateTime|null
      */
-    public function getText()
+    public function getStartTime()
     {
-        return $this->container['text'];
+        return $this->container['start_time'];
     }
 
     /**
-     * Sets text
+     * Sets start_time
      *
-     * @param string|null $text Text for the header. Formatting allows emojis, but not markdown.
+     * @param \DateTime|null $start_time Date when newly-opened authentication conversations are subject to authentication-international rates, formatted in [RFC 3339](https://datatracker.ietf.org/doc/html/rfc3339). e.g., `2024-07-01T00:00:00.000Z`.
      *
      * @return self
      */
-    public function setText($text)
+    public function setStartTime($start_time)
     {
-        if (!is_null($text) && (mb_strlen($text) > 60)) {
-            throw new \InvalidArgumentException('invalid length for $text when calling WhatsappMessageInteractiveHeader., must be smaller than or equal to 60.');
-        }
-
-        $this->container['text'] = $text;
-
-        return $this;
-    }
-
-    /**
-     * Gets image
-     *
-     * @return \YCloud\Client\Model\WhatsappMessageMedia|null
-     */
-    public function getImage()
-    {
-        return $this->container['image'];
-    }
-
-    /**
-     * Sets image
-     *
-     * @param \YCloud\Client\Model\WhatsappMessageMedia|null $image image
-     *
-     * @return self
-     */
-    public function setImage($image)
-    {
-        $this->container['image'] = $image;
-
-        return $this;
-    }
-
-    /**
-     * Gets video
-     *
-     * @return \YCloud\Client\Model\WhatsappMessageMedia|null
-     */
-    public function getVideo()
-    {
-        return $this->container['video'];
-    }
-
-    /**
-     * Sets video
-     *
-     * @param \YCloud\Client\Model\WhatsappMessageMedia|null $video video
-     *
-     * @return self
-     */
-    public function setVideo($video)
-    {
-        $this->container['video'] = $video;
-
-        return $this;
-    }
-
-    /**
-     * Gets document
-     *
-     * @return \YCloud\Client\Model\WhatsappMessageMedia|null
-     */
-    public function getDocument()
-    {
-        return $this->container['document'];
-    }
-
-    /**
-     * Sets document
-     *
-     * @param \YCloud\Client\Model\WhatsappMessageMedia|null $document document
-     *
-     * @return self
-     */
-    public function setDocument($document)
-    {
-        $this->container['document'] = $document;
+        $this->container['start_time'] = $start_time;
 
         return $this;
     }
