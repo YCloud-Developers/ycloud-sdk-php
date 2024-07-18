@@ -74,7 +74,8 @@ class WhatsappMessageSendRequest implements ModelInterface, ArrayAccess, \JsonSe
         'reaction' => '\YCloud\Client\Model\WhatsappMessageReaction',
         'context' => '\YCloud\Client\Model\WhatsappMessageContext',
         'external_id' => 'string',
-        'filter_unsubscribed' => 'bool'
+        'filter_unsubscribed' => 'bool',
+        'filter_blocked' => 'bool'
     ];
 
     /**
@@ -101,7 +102,8 @@ class WhatsappMessageSendRequest implements ModelInterface, ArrayAccess, \JsonSe
         'reaction' => null,
         'context' => null,
         'external_id' => null,
-        'filter_unsubscribed' => null
+        'filter_unsubscribed' => null,
+        'filter_blocked' => null
     ];
 
     /**
@@ -147,7 +149,8 @@ class WhatsappMessageSendRequest implements ModelInterface, ArrayAccess, \JsonSe
         'reaction' => 'reaction',
         'context' => 'context',
         'external_id' => 'externalId',
-        'filter_unsubscribed' => 'filterUnsubscribed'
+        'filter_unsubscribed' => 'filterUnsubscribed',
+        'filter_blocked' => 'filterBlocked'
     ];
 
     /**
@@ -172,7 +175,8 @@ class WhatsappMessageSendRequest implements ModelInterface, ArrayAccess, \JsonSe
         'reaction' => 'setReaction',
         'context' => 'setContext',
         'external_id' => 'setExternalId',
-        'filter_unsubscribed' => 'setFilterUnsubscribed'
+        'filter_unsubscribed' => 'setFilterUnsubscribed',
+        'filter_blocked' => 'setFilterBlocked'
     ];
 
     /**
@@ -197,7 +201,8 @@ class WhatsappMessageSendRequest implements ModelInterface, ArrayAccess, \JsonSe
         'reaction' => 'getReaction',
         'context' => 'getContext',
         'external_id' => 'getExternalId',
-        'filter_unsubscribed' => 'getFilterUnsubscribed'
+        'filter_unsubscribed' => 'getFilterUnsubscribed',
+        'filter_blocked' => 'getFilterBlocked'
     ];
 
     /**
@@ -274,6 +279,7 @@ class WhatsappMessageSendRequest implements ModelInterface, ArrayAccess, \JsonSe
         $this->container['context'] = $data['context'] ?? null;
         $this->container['external_id'] = $data['external_id'] ?? null;
         $this->container['filter_unsubscribed'] = $data['filter_unsubscribed'] ?? null;
+        $this->container['filter_blocked'] = $data['filter_blocked'] ?? null;
     }
 
     /**
@@ -713,6 +719,30 @@ class WhatsappMessageSendRequest implements ModelInterface, ArrayAccess, \JsonSe
     public function setFilterUnsubscribed($filter_unsubscribed)
     {
         $this->container['filter_unsubscribed'] = $filter_unsubscribed;
+
+        return $this;
+    }
+
+    /**
+     * Gets filter_blocked
+     *
+     * @return bool|null
+     */
+    public function getFilterBlocked()
+    {
+        return $this->container['filter_blocked'];
+    }
+
+    /**
+     * Sets filter_blocked
+     *
+     * @param bool|null $filter_blocked **Optional.** If set to `true`, the message will not be sent to users in your block list. Defaults to `false`.  Only use for `POST /v2/whatsapp/messages`. If the user is in your block list, we will push webhook notifications with `whatsappMessage.errorCode` set to `RECIPIENT_IN_BLOCK_LIST`.  Not applicable to `POST /v2/whatsapp/message/sendDirectly`.
+     *
+     * @return self
+     */
+    public function setFilterBlocked($filter_blocked)
+    {
+        $this->container['filter_blocked'] = $filter_blocked;
 
         return $this;
     }
