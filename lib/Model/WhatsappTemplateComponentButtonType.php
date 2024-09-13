@@ -34,7 +34,7 @@ use \YCloud\Client\ObjectSerializer;
  * WhatsappTemplateComponentButtonType Class Doc Comment
  *
  * @category Class
- * @description Button type. - &#x60;PHONE_NUMBER&#x60;: Phone number buttons call the specified business phone number when tapped by the app user. Templates are limited to one phone number button. - &#x60;URL&#x60;: URL buttons load the specified URL in the device&#39;s default web browser when tapped by the app user. Templates are limited to two URL buttons. - &#x60;QUICK_REPLY&#x60;: Quick reply buttons are custom text-only buttons that immediately message you with the specified text string when tapped by the app user. Templates are limited to 10 quick reply buttons. If using quick reply buttons with other buttons, buttons must be organized into two groups: quick reply buttons and non-quick reply buttons. - &#x60;COPY_CODE&#x60;: Copy code buttons copy a text string (defined when the template is sent in a template message) to the device&#39;s clipboard when tapped by the app user. Templates are limited to one copy code button. - &#x60;OTP&#x60;: One-time password (OTP) buttons are a special type of URL button component used with authentication templates. - &#x60;CATALOG&#x60;: When a customer taps the **View catalog** button in a catalog template message, your product catalog appears within WhatsApp. - &#x60;MPM&#x60;: Customers can browse products and sections by tapping the **View items** button in a multi-product template message.
+ * @description Button type. - &#x60;PHONE_NUMBER&#x60;: Phone number buttons call the specified business phone number when tapped by the app user. Templates are limited to one phone number button. - &#x60;URL&#x60;: URL buttons load the specified URL in the device&#39;s default web browser when tapped by the app user. Templates are limited to two URL buttons. - &#x60;QUICK_REPLY&#x60;: Quick reply buttons are custom text-only buttons that immediately message you with the specified text string when tapped by the app user. Templates are limited to 10 quick reply buttons. If using quick reply buttons with other buttons, buttons must be organized into two groups: quick reply buttons and non-quick reply buttons. - &#x60;COPY_CODE&#x60;: Copy code buttons copy a text string (defined when the template is sent in a template message) to the device&#39;s clipboard when tapped by the app user. Templates are limited to one copy code button. - &#x60;OTP&#x60;: One-time password (OTP) buttons are a special type of URL button component used with authentication templates. - &#x60;CATALOG&#x60;: When a customer taps the **View catalog** button in a catalog template message, your product catalog appears within WhatsApp. - &#x60;MPM&#x60;: Customers can browse products and sections by tapping the **View items** button in a multi-product template message. - &#x60;FLOW&#x60;: Use this type to specify the [Flow](https://developers.facebook.com/docs/whatsapp/flows) to be sent with the template message.
  * @package  YCloud\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -58,6 +58,8 @@ class WhatsappTemplateComponentButtonType
 
     public const MPM = 'MPM';
 
+    public const FLOW = 'FLOW';
+
     /**
      * Gets allowable values of the enum
      * @return string[]
@@ -71,7 +73,8 @@ class WhatsappTemplateComponentButtonType
             self::COPY_CODE,
             self::OTP,
             self::CATALOG,
-            self::MPM
+            self::MPM,
+            self::FLOW
         ];
     }
 }

@@ -1,6 +1,6 @@
 <?php
 /**
- * WhatsappTemplateCreateRequest
+ * CustomEventDefinitionPropertyCreateRequest
  *
  * PHP version 7.4
  *
@@ -33,16 +33,16 @@ use \ArrayAccess;
 use \YCloud\Client\ObjectSerializer;
 
 /**
- * WhatsappTemplateCreateRequest Class Doc Comment
+ * CustomEventDefinitionPropertyCreateRequest Class Doc Comment
  *
  * @category Class
- * @description See [WhatsApp Templates](https://developers.facebook.com/docs/whatsapp/business-management-api/message-templates).
+ * @description Contains the properties of the custom event property definition to be created.
  * @package  YCloud\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class WhatsappTemplateCreateRequest implements ModelInterface, ArrayAccess, \JsonSerializable
+class CustomEventDefinitionPropertyCreateRequest implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +51,7 @@ class WhatsappTemplateCreateRequest implements ModelInterface, ArrayAccess, \Jso
       *
       * @var string
       */
-    protected static $openAPIModelName = 'WhatsappTemplateCreateRequest';
+    protected static $openAPIModelName = 'CustomEventDefinitionPropertyCreateRequest';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,12 +59,10 @@ class WhatsappTemplateCreateRequest implements ModelInterface, ArrayAccess, \Jso
       * @var string[]
       */
     protected static $openAPITypes = [
-        'waba_id' => 'string',
         'name' => 'string',
-        'language' => 'string',
-        'category' => '\YCloud\Client\Model\WhatsappTemplateCategory',
-        'message_send_ttl_seconds' => 'int',
-        'components' => '\YCloud\Client\Model\WhatsappTemplateComponent[]'
+        'label' => 'string',
+        'description' => 'string',
+        'type' => 'string'
     ];
 
     /**
@@ -75,12 +73,10 @@ class WhatsappTemplateCreateRequest implements ModelInterface, ArrayAccess, \Jso
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'waba_id' => null,
         'name' => null,
-        'language' => null,
-        'category' => null,
-        'message_send_ttl_seconds' => 'int32',
-        'components' => null
+        'label' => null,
+        'description' => null,
+        'type' => null
     ];
 
     /**
@@ -110,12 +106,10 @@ class WhatsappTemplateCreateRequest implements ModelInterface, ArrayAccess, \Jso
      * @var string[]
      */
     protected static $attributeMap = [
-        'waba_id' => 'wabaId',
         'name' => 'name',
-        'language' => 'language',
-        'category' => 'category',
-        'message_send_ttl_seconds' => 'messageSendTtlSeconds',
-        'components' => 'components'
+        'label' => 'label',
+        'description' => 'description',
+        'type' => 'type'
     ];
 
     /**
@@ -124,12 +118,10 @@ class WhatsappTemplateCreateRequest implements ModelInterface, ArrayAccess, \Jso
      * @var string[]
      */
     protected static $setters = [
-        'waba_id' => 'setWabaId',
         'name' => 'setName',
-        'language' => 'setLanguage',
-        'category' => 'setCategory',
-        'message_send_ttl_seconds' => 'setMessageSendTtlSeconds',
-        'components' => 'setComponents'
+        'label' => 'setLabel',
+        'description' => 'setDescription',
+        'type' => 'setType'
     ];
 
     /**
@@ -138,12 +130,10 @@ class WhatsappTemplateCreateRequest implements ModelInterface, ArrayAccess, \Jso
      * @var string[]
      */
     protected static $getters = [
-        'waba_id' => 'getWabaId',
         'name' => 'getName',
-        'language' => 'getLanguage',
-        'category' => 'getCategory',
-        'message_send_ttl_seconds' => 'getMessageSendTtlSeconds',
-        'components' => 'getComponents'
+        'label' => 'getLabel',
+        'description' => 'getDescription',
+        'type' => 'getType'
     ];
 
     /**
@@ -187,6 +177,25 @@ class WhatsappTemplateCreateRequest implements ModelInterface, ArrayAccess, \Jso
         return self::$openAPIModelName;
     }
 
+    public const TYPE_STRING = 'STRING';
+    public const TYPE_NUMBER = 'NUMBER';
+    public const TYPE_TIMESTAMP = 'TIMESTAMP';
+    public const TYPE_URL = 'URL';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getTypeAllowableValues()
+    {
+        return [
+            self::TYPE_STRING,
+            self::TYPE_NUMBER,
+            self::TYPE_TIMESTAMP,
+            self::TYPE_URL,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -203,12 +212,10 @@ class WhatsappTemplateCreateRequest implements ModelInterface, ArrayAccess, \Jso
      */
     public function __construct(array $data = null)
     {
-        $this->container['waba_id'] = $data['waba_id'] ?? null;
         $this->container['name'] = $data['name'] ?? null;
-        $this->container['language'] = $data['language'] ?? null;
-        $this->container['category'] = $data['category'] ?? null;
-        $this->container['message_send_ttl_seconds'] = $data['message_send_ttl_seconds'] ?? null;
-        $this->container['components'] = $data['components'] ?? null;
+        $this->container['label'] = $data['label'] ?? null;
+        $this->container['description'] = $data['description'] ?? null;
+        $this->container['type'] = $data['type'] ?? null;
     }
 
     /**
@@ -220,29 +227,36 @@ class WhatsappTemplateCreateRequest implements ModelInterface, ArrayAccess, \Jso
     {
         $invalidProperties = [];
 
-        if ($this->container['waba_id'] === null) {
-            $invalidProperties[] = "'waba_id' can't be null";
-        }
         if ($this->container['name'] === null) {
             $invalidProperties[] = "'name' can't be null";
         }
-        if ((mb_strlen($this->container['name']) > 512)) {
-            $invalidProperties[] = "invalid value for 'name', the character length must be smaller than or equal to 512.";
+        if ((mb_strlen($this->container['name']) > 50)) {
+            $invalidProperties[] = "invalid value for 'name', the character length must be smaller than or equal to 50.";
         }
 
-        if (!preg_match("/[a-z0-9]{1,512}/", $this->container['name'])) {
-            $invalidProperties[] = "invalid value for 'name', must be conform to the pattern /[a-z0-9]{1,512}/.";
+        if (!preg_match("/^[a-z][a-z0-9_]{1,50}$/", $this->container['name'])) {
+            $invalidProperties[] = "invalid value for 'name', must be conform to the pattern /^[a-z][a-z0-9_]{1,50}$/.";
         }
 
-        if ($this->container['language'] === null) {
-            $invalidProperties[] = "'language' can't be null";
+        if ($this->container['label'] === null) {
+            $invalidProperties[] = "'label' can't be null";
         }
-        if ($this->container['category'] === null) {
-            $invalidProperties[] = "'category' can't be null";
+        if ((mb_strlen($this->container['label']) > 50)) {
+            $invalidProperties[] = "invalid value for 'label', the character length must be smaller than or equal to 50.";
         }
-        if ($this->container['components'] === null) {
-            $invalidProperties[] = "'components' can't be null";
+
+        if ($this->container['type'] === null) {
+            $invalidProperties[] = "'type' can't be null";
         }
+        $allowedValues = $this->getTypeAllowableValues();
+        if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'type', must be one of '%s'",
+                $this->container['type'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         return $invalidProperties;
     }
 
@@ -259,30 +273,6 @@ class WhatsappTemplateCreateRequest implements ModelInterface, ArrayAccess, \Jso
 
 
     /**
-     * Gets waba_id
-     *
-     * @return string
-     */
-    public function getWabaId()
-    {
-        return $this->container['waba_id'];
-    }
-
-    /**
-     * Sets waba_id
-     *
-     * @param string $waba_id WhatsApp Business Account ID.
-     *
-     * @return self
-     */
-    public function setWabaId($waba_id)
-    {
-        $this->container['waba_id'] = $waba_id;
-
-        return $this;
-    }
-
-    /**
      * Gets name
      *
      * @return string
@@ -295,17 +285,17 @@ class WhatsappTemplateCreateRequest implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets name
      *
-     * @param string $name Name of the template.
+     * @param string $name The unique name of the custom property.
      *
      * @return self
      */
     public function setName($name)
     {
-        if ((mb_strlen($name) > 512)) {
-            throw new \InvalidArgumentException('invalid length for $name when calling WhatsappTemplateCreateRequest., must be smaller than or equal to 512.');
+        if ((mb_strlen($name) > 50)) {
+            throw new \InvalidArgumentException('invalid length for $name when calling CustomEventDefinitionPropertyCreateRequest., must be smaller than or equal to 50.');
         }
-        if ((!preg_match("/[a-z0-9]{1,512}/", $name))) {
-            throw new \InvalidArgumentException("invalid value for \$name when calling WhatsappTemplateCreateRequest., must conform to the pattern /[a-z0-9]{1,512}/.");
+        if ((!preg_match("/^[a-z][a-z0-9_]{1,50}$/", $name))) {
+            throw new \InvalidArgumentException("invalid value for \$name when calling CustomEventDefinitionPropertyCreateRequest., must conform to the pattern /^[a-z][a-z0-9_]{1,50}$/.");
         }
 
         $this->container['name'] = $name;
@@ -314,97 +304,87 @@ class WhatsappTemplateCreateRequest implements ModelInterface, ArrayAccess, \Jso
     }
 
     /**
-     * Gets language
+     * Gets label
      *
      * @return string
      */
-    public function getLanguage()
+    public function getLabel()
     {
-        return $this->container['language'];
+        return $this->container['label'];
     }
 
     /**
-     * Sets language
+     * Sets label
      *
-     * @param string $language Language code of the template. See [Supported Languages](https://developers.facebook.com/docs/whatsapp/api/messages/message-templates#supported-languages) for all codes.
+     * @param string $label The label of the property.
      *
      * @return self
      */
-    public function setLanguage($language)
+    public function setLabel($label)
     {
-        $this->container['language'] = $language;
+        if ((mb_strlen($label) > 50)) {
+            throw new \InvalidArgumentException('invalid length for $label when calling CustomEventDefinitionPropertyCreateRequest., must be smaller than or equal to 50.');
+        }
+
+        $this->container['label'] = $label;
 
         return $this;
     }
 
     /**
-     * Gets category
+     * Gets description
      *
-     * @return \YCloud\Client\Model\WhatsappTemplateCategory
+     * @return string|null
      */
-    public function getCategory()
+    public function getDescription()
     {
-        return $this->container['category'];
+        return $this->container['description'];
     }
 
     /**
-     * Sets category
+     * Sets description
      *
-     * @param \YCloud\Client\Model\WhatsappTemplateCategory $category category
+     * @param string|null $description The description of the property.
      *
      * @return self
      */
-    public function setCategory($category)
+    public function setDescription($description)
     {
-        $this->container['category'] = $category;
+        $this->container['description'] = $description;
 
         return $this;
     }
 
     /**
-     * Gets message_send_ttl_seconds
+     * Gets type
      *
-     * @return int|null
+     * @return string
      */
-    public function getMessageSendTtlSeconds()
+    public function getType()
     {
-        return $this->container['message_send_ttl_seconds'];
+        return $this->container['type'];
     }
 
     /**
-     * Sets message_send_ttl_seconds
+     * Sets type
      *
-     * @param int|null $message_send_ttl_seconds **Use only for template category is `AUTHENTICATION` or `UTILITY`.** If we are unable to deliver a message for an amount of time that exceeds its time-to-live, we will stop retrying and drop the message. By default, messages that use an authentication template have a default TTL of **10 minutes**, and messages that use a utility template have a default TTL of **30 days**. Set its value between `60` and `600` seconds (i.e., 1 to 10 minutes) for authentication templates, or `60` and `3600` seconds (i.e., 1 to 60 minutes) for utility templates. Alternatively, you can set this value to `-1`, which will set a custom TTL of 30 days for either type of template. We encourage you to set a time-to-live for all of your authentication templates, preferably equal to or less than your code expiration time, to ensure your customers only get a message when a code is still usable. Authentication templates created before October 23, 2024, have a default TTL of 30 days.
+     * @param string $type Type of the property. - `STRING`: Indicates a property that receives plain text strings. - `NUMBER`: Indicates a property that receives numeric values with up to one decimal. - `TIMESTAMP`: Indicates a property that receives epoch millisecond. - `URL`: Indicates a property that receives URLs, formatted as strings starting with `http://` or `https://`.
      *
      * @return self
      */
-    public function setMessageSendTtlSeconds($message_send_ttl_seconds)
+    public function setType($type)
     {
-        $this->container['message_send_ttl_seconds'] = $message_send_ttl_seconds;
-
-        return $this;
-    }
-
-    /**
-     * Gets components
-     *
-     * @return \YCloud\Client\Model\WhatsappTemplateComponent[]
-     */
-    public function getComponents()
-    {
-        return $this->container['components'];
-    }
-
-    /**
-     * Sets components
-     *
-     * @param \YCloud\Client\Model\WhatsappTemplateComponent[] $components components
-     *
-     * @return self
-     */
-    public function setComponents($components)
-    {
-        $this->container['components'] = $components;
+        $allowedValues = $this->getTypeAllowableValues();
+        if (!in_array($type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'type', must be one of '%s'",
+                    $type,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['type'] = $type;
 
         return $this;
     }

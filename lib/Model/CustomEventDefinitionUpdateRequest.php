@@ -1,6 +1,6 @@
 <?php
 /**
- * WhatsappTemplateEditRequest
+ * CustomEventDefinitionUpdateRequest
  *
  * PHP version 7.4
  *
@@ -33,16 +33,16 @@ use \ArrayAccess;
 use \YCloud\Client\ObjectSerializer;
 
 /**
- * WhatsappTemplateEditRequest Class Doc Comment
+ * CustomEventDefinitionUpdateRequest Class Doc Comment
  *
  * @category Class
- * @description The request body to edit a WhatsApp template.
+ * @description Contains the properties of the custom event definition to be updated.
  * @package  YCloud\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class WhatsappTemplateEditRequest implements ModelInterface, ArrayAccess, \JsonSerializable
+class CustomEventDefinitionUpdateRequest implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +51,7 @@ class WhatsappTemplateEditRequest implements ModelInterface, ArrayAccess, \JsonS
       *
       * @var string
       */
-    protected static $openAPIModelName = 'WhatsappTemplateEditRequest';
+    protected static $openAPIModelName = 'CustomEventDefinitionUpdateRequest';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,8 +59,8 @@ class WhatsappTemplateEditRequest implements ModelInterface, ArrayAccess, \JsonS
       * @var string[]
       */
     protected static $openAPITypes = [
-        'components' => '\YCloud\Client\Model\WhatsappTemplateComponent[]',
-        'message_send_ttl_seconds' => 'int'
+        'label' => 'string',
+        'description' => 'string'
     ];
 
     /**
@@ -71,8 +71,8 @@ class WhatsappTemplateEditRequest implements ModelInterface, ArrayAccess, \JsonS
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'components' => null,
-        'message_send_ttl_seconds' => 'int32'
+        'label' => null,
+        'description' => null
     ];
 
     /**
@@ -102,8 +102,8 @@ class WhatsappTemplateEditRequest implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $attributeMap = [
-        'components' => 'components',
-        'message_send_ttl_seconds' => 'messageSendTtlSeconds'
+        'label' => 'label',
+        'description' => 'description'
     ];
 
     /**
@@ -112,8 +112,8 @@ class WhatsappTemplateEditRequest implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $setters = [
-        'components' => 'setComponents',
-        'message_send_ttl_seconds' => 'setMessageSendTtlSeconds'
+        'label' => 'setLabel',
+        'description' => 'setDescription'
     ];
 
     /**
@@ -122,8 +122,8 @@ class WhatsappTemplateEditRequest implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $getters = [
-        'components' => 'getComponents',
-        'message_send_ttl_seconds' => 'getMessageSendTtlSeconds'
+        'label' => 'getLabel',
+        'description' => 'getDescription'
     ];
 
     /**
@@ -183,8 +183,8 @@ class WhatsappTemplateEditRequest implements ModelInterface, ArrayAccess, \JsonS
      */
     public function __construct(array $data = null)
     {
-        $this->container['components'] = $data['components'] ?? null;
-        $this->container['message_send_ttl_seconds'] = $data['message_send_ttl_seconds'] ?? null;
+        $this->container['label'] = $data['label'] ?? null;
+        $this->container['description'] = $data['description'] ?? null;
     }
 
     /**
@@ -196,9 +196,6 @@ class WhatsappTemplateEditRequest implements ModelInterface, ArrayAccess, \JsonS
     {
         $invalidProperties = [];
 
-        if ($this->container['components'] === null) {
-            $invalidProperties[] = "'components' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -215,49 +212,49 @@ class WhatsappTemplateEditRequest implements ModelInterface, ArrayAccess, \JsonS
 
 
     /**
-     * Gets components
+     * Gets label
      *
-     * @return \YCloud\Client\Model\WhatsappTemplateComponent[]
+     * @return string|null
      */
-    public function getComponents()
+    public function getLabel()
     {
-        return $this->container['components'];
+        return $this->container['label'];
     }
 
     /**
-     * Sets components
+     * Sets label
      *
-     * @param \YCloud\Client\Model\WhatsappTemplateComponent[] $components components
+     * @param string|null $label The label of the event definition.
      *
      * @return self
      */
-    public function setComponents($components)
+    public function setLabel($label)
     {
-        $this->container['components'] = $components;
+        $this->container['label'] = $label;
 
         return $this;
     }
 
     /**
-     * Gets message_send_ttl_seconds
+     * Gets description
      *
-     * @return int|null
+     * @return string|null
      */
-    public function getMessageSendTtlSeconds()
+    public function getDescription()
     {
-        return $this->container['message_send_ttl_seconds'];
+        return $this->container['description'];
     }
 
     /**
-     * Sets message_send_ttl_seconds
+     * Sets description
      *
-     * @param int|null $message_send_ttl_seconds **Use only for template category is `AUTHENTICATION` or `UTILITY`.** If we are unable to deliver a message for an amount of time that exceeds its time-to-live, we will stop retrying and drop the message. By default, messages that use an authentication template have a default TTL of **10 minutes**, and messages that use a utility template have a default TTL of **30 days**. Set its value between `60` and `600` seconds (i.e., 1 to 10 minutes) for authentication templates, or `60` and `3600` seconds (i.e., 1 to 60 minutes) for utility templates. Alternatively, you can set this value to `-1`, which will set a custom TTL of 30 days for either type of template. We encourage you to set a time-to-live for all of your authentication templates, preferably equal to or less than your code expiration time, to ensure your customers only get a message when a code is still usable. Authentication templates created before October 23, 2024, have a default TTL of 30 days.
+     * @param string|null $description The description of the event definition.
      *
      * @return self
      */
-    public function setMessageSendTtlSeconds($message_send_ttl_seconds)
+    public function setDescription($description)
     {
-        $this->container['message_send_ttl_seconds'] = $message_send_ttl_seconds;
+        $this->container['description'] = $description;
 
         return $this;
     }

@@ -1,6 +1,6 @@
 <?php
 /**
- * WhatsappTemplateCreateRequest
+ * CustomEventSendRequest
  *
  * PHP version 7.4
  *
@@ -33,16 +33,16 @@ use \ArrayAccess;
 use \YCloud\Client\ObjectSerializer;
 
 /**
- * WhatsappTemplateCreateRequest Class Doc Comment
+ * CustomEventSendRequest Class Doc Comment
  *
  * @category Class
- * @description See [WhatsApp Templates](https://developers.facebook.com/docs/whatsapp/business-management-api/message-templates).
+ * @description Contains the properties of the custom event data to be sent.
  * @package  YCloud\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class WhatsappTemplateCreateRequest implements ModelInterface, ArrayAccess, \JsonSerializable
+class CustomEventSendRequest implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +51,7 @@ class WhatsappTemplateCreateRequest implements ModelInterface, ArrayAccess, \Jso
       *
       * @var string
       */
-    protected static $openAPIModelName = 'WhatsappTemplateCreateRequest';
+    protected static $openAPIModelName = 'CustomEventSendRequest';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,12 +59,11 @@ class WhatsappTemplateCreateRequest implements ModelInterface, ArrayAccess, \Jso
       * @var string[]
       */
     protected static $openAPITypes = [
-        'waba_id' => 'string',
-        'name' => 'string',
-        'language' => 'string',
-        'category' => '\YCloud\Client\Model\WhatsappTemplateCategory',
-        'message_send_ttl_seconds' => 'int',
-        'components' => '\YCloud\Client\Model\WhatsappTemplateComponent[]'
+        'event_name' => 'string',
+        'occur_time' => '\DateTime',
+        'object_id' => 'string',
+        'contact_phone_number' => 'string',
+        'properties' => 'array<string,object>'
     ];
 
     /**
@@ -75,12 +74,11 @@ class WhatsappTemplateCreateRequest implements ModelInterface, ArrayAccess, \Jso
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'waba_id' => null,
-        'name' => null,
-        'language' => null,
-        'category' => null,
-        'message_send_ttl_seconds' => 'int32',
-        'components' => null
+        'event_name' => null,
+        'occur_time' => 'date-time',
+        'object_id' => null,
+        'contact_phone_number' => null,
+        'properties' => null
     ];
 
     /**
@@ -110,12 +108,11 @@ class WhatsappTemplateCreateRequest implements ModelInterface, ArrayAccess, \Jso
      * @var string[]
      */
     protected static $attributeMap = [
-        'waba_id' => 'wabaId',
-        'name' => 'name',
-        'language' => 'language',
-        'category' => 'category',
-        'message_send_ttl_seconds' => 'messageSendTtlSeconds',
-        'components' => 'components'
+        'event_name' => 'eventName',
+        'occur_time' => 'occurTime',
+        'object_id' => 'objectId',
+        'contact_phone_number' => 'contactPhoneNumber',
+        'properties' => 'properties'
     ];
 
     /**
@@ -124,12 +121,11 @@ class WhatsappTemplateCreateRequest implements ModelInterface, ArrayAccess, \Jso
      * @var string[]
      */
     protected static $setters = [
-        'waba_id' => 'setWabaId',
-        'name' => 'setName',
-        'language' => 'setLanguage',
-        'category' => 'setCategory',
-        'message_send_ttl_seconds' => 'setMessageSendTtlSeconds',
-        'components' => 'setComponents'
+        'event_name' => 'setEventName',
+        'occur_time' => 'setOccurTime',
+        'object_id' => 'setObjectId',
+        'contact_phone_number' => 'setContactPhoneNumber',
+        'properties' => 'setProperties'
     ];
 
     /**
@@ -138,12 +134,11 @@ class WhatsappTemplateCreateRequest implements ModelInterface, ArrayAccess, \Jso
      * @var string[]
      */
     protected static $getters = [
-        'waba_id' => 'getWabaId',
-        'name' => 'getName',
-        'language' => 'getLanguage',
-        'category' => 'getCategory',
-        'message_send_ttl_seconds' => 'getMessageSendTtlSeconds',
-        'components' => 'getComponents'
+        'event_name' => 'getEventName',
+        'occur_time' => 'getOccurTime',
+        'object_id' => 'getObjectId',
+        'contact_phone_number' => 'getContactPhoneNumber',
+        'properties' => 'getProperties'
     ];
 
     /**
@@ -203,12 +198,11 @@ class WhatsappTemplateCreateRequest implements ModelInterface, ArrayAccess, \Jso
      */
     public function __construct(array $data = null)
     {
-        $this->container['waba_id'] = $data['waba_id'] ?? null;
-        $this->container['name'] = $data['name'] ?? null;
-        $this->container['language'] = $data['language'] ?? null;
-        $this->container['category'] = $data['category'] ?? null;
-        $this->container['message_send_ttl_seconds'] = $data['message_send_ttl_seconds'] ?? null;
-        $this->container['components'] = $data['components'] ?? null;
+        $this->container['event_name'] = $data['event_name'] ?? null;
+        $this->container['occur_time'] = $data['occur_time'] ?? null;
+        $this->container['object_id'] = $data['object_id'] ?? null;
+        $this->container['contact_phone_number'] = $data['contact_phone_number'] ?? null;
+        $this->container['properties'] = $data['properties'] ?? null;
     }
 
     /**
@@ -220,28 +214,8 @@ class WhatsappTemplateCreateRequest implements ModelInterface, ArrayAccess, \Jso
     {
         $invalidProperties = [];
 
-        if ($this->container['waba_id'] === null) {
-            $invalidProperties[] = "'waba_id' can't be null";
-        }
-        if ($this->container['name'] === null) {
-            $invalidProperties[] = "'name' can't be null";
-        }
-        if ((mb_strlen($this->container['name']) > 512)) {
-            $invalidProperties[] = "invalid value for 'name', the character length must be smaller than or equal to 512.";
-        }
-
-        if (!preg_match("/[a-z0-9]{1,512}/", $this->container['name'])) {
-            $invalidProperties[] = "invalid value for 'name', must be conform to the pattern /[a-z0-9]{1,512}/.";
-        }
-
-        if ($this->container['language'] === null) {
-            $invalidProperties[] = "'language' can't be null";
-        }
-        if ($this->container['category'] === null) {
-            $invalidProperties[] = "'category' can't be null";
-        }
-        if ($this->container['components'] === null) {
-            $invalidProperties[] = "'components' can't be null";
+        if ($this->container['event_name'] === null) {
+            $invalidProperties[] = "'event_name' can't be null";
         }
         return $invalidProperties;
     }
@@ -259,152 +233,121 @@ class WhatsappTemplateCreateRequest implements ModelInterface, ArrayAccess, \Jso
 
 
     /**
-     * Gets waba_id
+     * Gets event_name
      *
      * @return string
      */
-    public function getWabaId()
+    public function getEventName()
     {
-        return $this->container['waba_id'];
+        return $this->container['event_name'];
     }
 
     /**
-     * Sets waba_id
+     * Sets event_name
      *
-     * @param string $waba_id WhatsApp Business Account ID.
+     * @param string $event_name Name of the event. One of the custom event names you previously defined.
      *
      * @return self
      */
-    public function setWabaId($waba_id)
+    public function setEventName($event_name)
     {
-        $this->container['waba_id'] = $waba_id;
+        $this->container['event_name'] = $event_name;
 
         return $this;
     }
 
     /**
-     * Gets name
+     * Gets occur_time
      *
-     * @return string
+     * @return \DateTime|null
      */
-    public function getName()
+    public function getOccurTime()
     {
-        return $this->container['name'];
+        return $this->container['occur_time'];
     }
 
     /**
-     * Sets name
+     * Sets occur_time
      *
-     * @param string $name Name of the template.
+     * @param \DateTime|null $occur_time The time at which the event occurred, formatted in [RFC 3339](https://datatracker.ietf.org/doc/html/rfc3339). e.g., `2022-06-01T12:00:00.000Z`, if not provided, the current time will be used.
      *
      * @return self
      */
-    public function setName($name)
+    public function setOccurTime($occur_time)
     {
-        if ((mb_strlen($name) > 512)) {
-            throw new \InvalidArgumentException('invalid length for $name when calling WhatsappTemplateCreateRequest., must be smaller than or equal to 512.');
-        }
-        if ((!preg_match("/[a-z0-9]{1,512}/", $name))) {
-            throw new \InvalidArgumentException("invalid value for \$name when calling WhatsappTemplateCreateRequest., must conform to the pattern /[a-z0-9]{1,512}/.");
-        }
-
-        $this->container['name'] = $name;
+        $this->container['occur_time'] = $occur_time;
 
         return $this;
     }
 
     /**
-     * Gets language
+     * Gets object_id
      *
-     * @return string
+     * @return string|null
      */
-    public function getLanguage()
+    public function getObjectId()
     {
-        return $this->container['language'];
+        return $this->container['object_id'];
     }
 
     /**
-     * Sets language
+     * Sets object_id
      *
-     * @param string $language Language code of the template. See [Supported Languages](https://developers.facebook.com/docs/whatsapp/api/messages/message-templates#supported-languages) for all codes.
+     * @param string|null $object_id ID of the object that the event is associated with. For events defined with `objectType` as `CONTACT`, the `objectId` should be a `contact` ID. Alternatively, you can use the `contactPhoneNumber` field to specify the contact.
      *
      * @return self
      */
-    public function setLanguage($language)
+    public function setObjectId($object_id)
     {
-        $this->container['language'] = $language;
+        $this->container['object_id'] = $object_id;
 
         return $this;
     }
 
     /**
-     * Gets category
+     * Gets contact_phone_number
      *
-     * @return \YCloud\Client\Model\WhatsappTemplateCategory
+     * @return string|null
      */
-    public function getCategory()
+    public function getContactPhoneNumber()
     {
-        return $this->container['category'];
+        return $this->container['contact_phone_number'];
     }
 
     /**
-     * Sets category
+     * Sets contact_phone_number
      *
-     * @param \YCloud\Client\Model\WhatsappTemplateCategory $category category
+     * @param string|null $contact_phone_number The phone number of the contact for events defined with `objectType` as `CONTACT`.
      *
      * @return self
      */
-    public function setCategory($category)
+    public function setContactPhoneNumber($contact_phone_number)
     {
-        $this->container['category'] = $category;
+        $this->container['contact_phone_number'] = $contact_phone_number;
 
         return $this;
     }
 
     /**
-     * Gets message_send_ttl_seconds
+     * Gets properties
      *
-     * @return int|null
+     * @return array<string,object>|null
      */
-    public function getMessageSendTtlSeconds()
+    public function getProperties()
     {
-        return $this->container['message_send_ttl_seconds'];
+        return $this->container['properties'];
     }
 
     /**
-     * Sets message_send_ttl_seconds
+     * Sets properties
      *
-     * @param int|null $message_send_ttl_seconds **Use only for template category is `AUTHENTICATION` or `UTILITY`.** If we are unable to deliver a message for an amount of time that exceeds its time-to-live, we will stop retrying and drop the message. By default, messages that use an authentication template have a default TTL of **10 minutes**, and messages that use a utility template have a default TTL of **30 days**. Set its value between `60` and `600` seconds (i.e., 1 to 10 minutes) for authentication templates, or `60` and `3600` seconds (i.e., 1 to 60 minutes) for utility templates. Alternatively, you can set this value to `-1`, which will set a custom TTL of 30 days for either type of template. We encourage you to set a time-to-live for all of your authentication templates, preferably equal to or less than your code expiration time, to ensure your customers only get a message when a code is still usable. Authentication templates created before October 23, 2024, have a default TTL of 30 days.
+     * @param array<string,object>|null $properties The properties of the custom event.
      *
      * @return self
      */
-    public function setMessageSendTtlSeconds($message_send_ttl_seconds)
+    public function setProperties($properties)
     {
-        $this->container['message_send_ttl_seconds'] = $message_send_ttl_seconds;
-
-        return $this;
-    }
-
-    /**
-     * Gets components
-     *
-     * @return \YCloud\Client\Model\WhatsappTemplateComponent[]
-     */
-    public function getComponents()
-    {
-        return $this->container['components'];
-    }
-
-    /**
-     * Sets components
-     *
-     * @param \YCloud\Client\Model\WhatsappTemplateComponent[] $components components
-     *
-     * @return self
-     */
-    public function setComponents($components)
-    {
-        $this->container['components'] = $components;
+        $this->container['properties'] = $properties;
 
         return $this;
     }

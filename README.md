@@ -78,6 +78,13 @@ Class | Method | HTTP request | Description
 *ContactsApi* | [**list**](docs/Api/ContactsApi.md#list) | **GET** /contact/contacts | List contacts
 *ContactsApi* | [**retrieve**](docs/Api/ContactsApi.md#retrieve) | **GET** /contact/contacts/{id} | Retrieve a contact
 *ContactsApi* | [**update**](docs/Api/ContactsApi.md#update) | **PATCH** /contact/contacts/{id} | Update a contact
+*CustomEventsApi* | [**createDefinition**](docs/Api/CustomEventsApi.md#createdefinition) | **POST** /event/definitions | Create an event definition
+*CustomEventsApi* | [**createPropertyDefinition**](docs/Api/CustomEventsApi.md#createpropertydefinition) | **POST** /event/definitions/{name}/properties | Create an event property definition
+*CustomEventsApi* | [**propertyDefinition**](docs/Api/CustomEventsApi.md#propertydefinition) | **DELETE** /event/definitions/{name}/properties/{propertyName} | Delete an event property definition
+*CustomEventsApi* | [**propertyDefinition_0**](docs/Api/CustomEventsApi.md#propertydefinition_0) | **PATCH** /event/definitions/{name}/properties/{propertyName} | Update an event property definition
+*CustomEventsApi* | [**retrieveDefinition**](docs/Api/CustomEventsApi.md#retrievedefinition) | **GET** /event/definitions/{name} | Retrieve an event definition
+*CustomEventsApi* | [**sendEvent**](docs/Api/CustomEventsApi.md#sendevent) | **POST** /event/events | Send an event
+*CustomEventsApi* | [**updateDefinition**](docs/Api/CustomEventsApi.md#updatedefinition) | **PATCH** /event/definitions/{name} | Update an event definition
 *EmailsApi* | [**send**](docs/Api/EmailsApi.md#send) | **POST** /emails | Send an email
 *SmsApi* | [**list**](docs/Api/SmsApi.md#list) | **GET** /sms | List SMS records
 *SmsApi* | [**send**](docs/Api/SmsApi.md#send) | **POST** /sms | Send an SMS
@@ -124,6 +131,13 @@ Class | Method | HTTP request | Description
 - [ContactCustomAttribute](docs/Model/ContactCustomAttribute.md)
 - [ContactPage](docs/Model/ContactPage.md)
 - [ContactUpdateRequest](docs/Model/ContactUpdateRequest.md)
+- [CustomEventDefinition](docs/Model/CustomEventDefinition.md)
+- [CustomEventDefinitionCreateRequest](docs/Model/CustomEventDefinitionCreateRequest.md)
+- [CustomEventDefinitionProperty](docs/Model/CustomEventDefinitionProperty.md)
+- [CustomEventDefinitionPropertyCreateRequest](docs/Model/CustomEventDefinitionPropertyCreateRequest.md)
+- [CustomEventDefinitionPropertyUpdateRequest](docs/Model/CustomEventDefinitionPropertyUpdateRequest.md)
+- [CustomEventDefinitionUpdateRequest](docs/Model/CustomEventDefinitionUpdateRequest.md)
+- [CustomEventSendRequest](docs/Model/CustomEventSendRequest.md)
 - [Email](docs/Model/Email.md)
 - [EmailContentType](docs/Model/EmailContentType.md)
 - [EmailDelivery](docs/Model/EmailDelivery.md)
@@ -203,6 +217,7 @@ Class | Method | HTTP request | Description
 - [WhatsappMessageInteractiveActionButton](docs/Model/WhatsappMessageInteractiveActionButton.md)
 - [WhatsappMessageInteractiveActionButtonReply](docs/Model/WhatsappMessageInteractiveActionButtonReply.md)
 - [WhatsappMessageInteractiveActionParameters](docs/Model/WhatsappMessageInteractiveActionParameters.md)
+- [WhatsappMessageInteractiveActionParametersFlowActionPayload](docs/Model/WhatsappMessageInteractiveActionParametersFlowActionPayload.md)
 - [WhatsappMessageInteractiveActionSection](docs/Model/WhatsappMessageInteractiveActionSection.md)
 - [WhatsappMessageInteractiveActionSectionProductItem](docs/Model/WhatsappMessageInteractiveActionSectionProductItem.md)
 - [WhatsappMessageInteractiveActionSectionRow](docs/Model/WhatsappMessageInteractiveActionSectionRow.md)

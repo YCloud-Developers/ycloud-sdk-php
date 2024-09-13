@@ -194,6 +194,7 @@ class WhatsappMessageInteractiveAction implements ModelInterface, ArrayAccess, \
 
     public const NAME_CTA_URL = 'cta_url';
     public const NAME_SEND_LOCATION = 'send_location';
+    public const NAME_FLOW = 'flow';
 
     /**
      * Gets allowable values of the enum
@@ -205,6 +206,7 @@ class WhatsappMessageInteractiveAction implements ModelInterface, ArrayAccess, \
         return [
             self::NAME_CTA_URL,
             self::NAME_SEND_LOCATION,
+            self::NAME_FLOW,
         ];
     }
 
@@ -429,7 +431,7 @@ class WhatsappMessageInteractiveAction implements ModelInterface, ArrayAccess, \
     /**
      * Sets name
      *
-     * @param string|null $name Action name. Required for Call-To-Action (CTA) URL Button Messages. - `cta_url`: Use for Call-To-Action (CTA) URL Buttons. - `send_location`: Use for Location Request Messages.
+     * @param string|null $name Action name. Required for Call-To-Action (CTA) buttons. - `cta_url`: Use for Call-To-Action (CTA) URL buttons. - `send_location`: Use for Location Request buttons. - `flow`: Use for Flow buttons.
      *
      * @return self
      */

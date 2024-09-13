@@ -66,6 +66,7 @@ class Contact implements ModelInterface, ArrayAccess, \JsonSerializable
         'phone_number' => 'string',
         'email' => 'string',
         'last_seen' => '\DateTime',
+        'last_message_to_phone_number' => 'string',
         'tags' => 'string[]',
         'create_time' => '\DateTime',
         'custom_attributes' => '\YCloud\Client\Model\ContactCustomAttribute[]',
@@ -87,6 +88,7 @@ class Contact implements ModelInterface, ArrayAccess, \JsonSerializable
         'phone_number' => null,
         'email' => null,
         'last_seen' => 'date-time',
+        'last_message_to_phone_number' => null,
         'tags' => null,
         'create_time' => 'date-time',
         'custom_attributes' => null,
@@ -127,6 +129,7 @@ class Contact implements ModelInterface, ArrayAccess, \JsonSerializable
         'phone_number' => 'phoneNumber',
         'email' => 'email',
         'last_seen' => 'lastSeen',
+        'last_message_to_phone_number' => 'lastMessageToPhoneNumber',
         'tags' => 'tags',
         'create_time' => 'createTime',
         'custom_attributes' => 'customAttributes',
@@ -146,6 +149,7 @@ class Contact implements ModelInterface, ArrayAccess, \JsonSerializable
         'phone_number' => 'setPhoneNumber',
         'email' => 'setEmail',
         'last_seen' => 'setLastSeen',
+        'last_message_to_phone_number' => 'setLastMessageToPhoneNumber',
         'tags' => 'setTags',
         'create_time' => 'setCreateTime',
         'custom_attributes' => 'setCustomAttributes',
@@ -165,6 +169,7 @@ class Contact implements ModelInterface, ArrayAccess, \JsonSerializable
         'phone_number' => 'getPhoneNumber',
         'email' => 'getEmail',
         'last_seen' => 'getLastSeen',
+        'last_message_to_phone_number' => 'getLastMessageToPhoneNumber',
         'tags' => 'getTags',
         'create_time' => 'getCreateTime',
         'custom_attributes' => 'getCustomAttributes',
@@ -235,6 +240,7 @@ class Contact implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['phone_number'] = $data['phone_number'] ?? null;
         $this->container['email'] = $data['email'] ?? null;
         $this->container['last_seen'] = $data['last_seen'] ?? null;
+        $this->container['last_message_to_phone_number'] = $data['last_message_to_phone_number'] ?? null;
         $this->container['tags'] = $data['tags'] ?? null;
         $this->container['create_time'] = $data['create_time'] ?? null;
         $this->container['custom_attributes'] = $data['custom_attributes'] ?? null;
@@ -441,13 +447,37 @@ class Contact implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets last_seen
      *
-     * @param \DateTime|null $last_seen The time at which the latest inbound message was created, formatted in [RFC 3339](https://datatracker.ietf.org/doc/html/rfc3339). e.g., `2022-06-01T12:00:00.000Z`.
+     * @param \DateTime|null $last_seen The time at which the contact last sent a message to your business, formatted in [RFC 3339](https://datatracker.ietf.org/doc/html/rfc3339). e.g., `2022-06-01T12:00:00.000Z`.
      *
      * @return self
      */
     public function setLastSeen($last_seen)
     {
         $this->container['last_seen'] = $last_seen;
+
+        return $this;
+    }
+
+    /**
+     * Gets last_message_to_phone_number
+     *
+     * @return string|null
+     */
+    public function getLastMessageToPhoneNumber()
+    {
+        return $this->container['last_message_to_phone_number'];
+    }
+
+    /**
+     * Sets last_message_to_phone_number
+     *
+     * @param string|null $last_message_to_phone_number The business phone number that the contact last sent a message to.
+     *
+     * @return self
+     */
+    public function setLastMessageToPhoneNumber($last_message_to_phone_number)
+    {
+        $this->container['last_message_to_phone_number'] = $last_message_to_phone_number;
 
         return $this;
     }

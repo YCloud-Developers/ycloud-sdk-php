@@ -36,7 +36,7 @@ use \YCloud\Client\ObjectSerializer;
  * WhatsappMessageInteractiveActionParameters Class Doc Comment
  *
  * @category Class
- * @description Action parameters. Required for Call-To-Action (CTA) URL Button Messages.
+ * @description Action parameters. Required for Call-To-Action (CTA) buttons.
  * @package  YCloud\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -61,7 +61,13 @@ class WhatsappMessageInteractiveActionParameters implements ModelInterface, Arra
     protected static $openAPITypes = [
         'display_text' => 'string',
         'url' => 'string',
-        'thumbnail_product_retailer_id' => 'string'
+        'thumbnail_product_retailer_id' => 'string',
+        'flow_message_version' => 'string',
+        'flow_token' => 'string',
+        'flow_id' => 'string',
+        'flow_cta' => 'string',
+        'flow_action' => 'string',
+        'flow_action_payload' => '\YCloud\Client\Model\WhatsappMessageInteractiveActionParametersFlowActionPayload'
     ];
 
     /**
@@ -74,7 +80,13 @@ class WhatsappMessageInteractiveActionParameters implements ModelInterface, Arra
     protected static $openAPIFormats = [
         'display_text' => null,
         'url' => null,
-        'thumbnail_product_retailer_id' => null
+        'thumbnail_product_retailer_id' => null,
+        'flow_message_version' => null,
+        'flow_token' => null,
+        'flow_id' => null,
+        'flow_cta' => null,
+        'flow_action' => null,
+        'flow_action_payload' => null
     ];
 
     /**
@@ -106,7 +118,13 @@ class WhatsappMessageInteractiveActionParameters implements ModelInterface, Arra
     protected static $attributeMap = [
         'display_text' => 'display_text',
         'url' => 'url',
-        'thumbnail_product_retailer_id' => 'thumbnail_product_retailer_id'
+        'thumbnail_product_retailer_id' => 'thumbnail_product_retailer_id',
+        'flow_message_version' => 'flow_message_version',
+        'flow_token' => 'flow_token',
+        'flow_id' => 'flow_id',
+        'flow_cta' => 'flow_cta',
+        'flow_action' => 'flow_action',
+        'flow_action_payload' => 'flow_action_payload'
     ];
 
     /**
@@ -117,7 +135,13 @@ class WhatsappMessageInteractiveActionParameters implements ModelInterface, Arra
     protected static $setters = [
         'display_text' => 'setDisplayText',
         'url' => 'setUrl',
-        'thumbnail_product_retailer_id' => 'setThumbnailProductRetailerId'
+        'thumbnail_product_retailer_id' => 'setThumbnailProductRetailerId',
+        'flow_message_version' => 'setFlowMessageVersion',
+        'flow_token' => 'setFlowToken',
+        'flow_id' => 'setFlowId',
+        'flow_cta' => 'setFlowCta',
+        'flow_action' => 'setFlowAction',
+        'flow_action_payload' => 'setFlowActionPayload'
     ];
 
     /**
@@ -128,7 +152,13 @@ class WhatsappMessageInteractiveActionParameters implements ModelInterface, Arra
     protected static $getters = [
         'display_text' => 'getDisplayText',
         'url' => 'getUrl',
-        'thumbnail_product_retailer_id' => 'getThumbnailProductRetailerId'
+        'thumbnail_product_retailer_id' => 'getThumbnailProductRetailerId',
+        'flow_message_version' => 'getFlowMessageVersion',
+        'flow_token' => 'getFlowToken',
+        'flow_id' => 'getFlowId',
+        'flow_cta' => 'getFlowCta',
+        'flow_action' => 'getFlowAction',
+        'flow_action_payload' => 'getFlowActionPayload'
     ];
 
     /**
@@ -191,6 +221,12 @@ class WhatsappMessageInteractiveActionParameters implements ModelInterface, Arra
         $this->container['display_text'] = $data['display_text'] ?? null;
         $this->container['url'] = $data['url'] ?? null;
         $this->container['thumbnail_product_retailer_id'] = $data['thumbnail_product_retailer_id'] ?? null;
+        $this->container['flow_message_version'] = $data['flow_message_version'] ?? null;
+        $this->container['flow_token'] = $data['flow_token'] ?? null;
+        $this->container['flow_id'] = $data['flow_id'] ?? null;
+        $this->container['flow_cta'] = $data['flow_cta'] ?? null;
+        $this->container['flow_action'] = $data['flow_action'] ?? null;
+        $this->container['flow_action_payload'] = $data['flow_action_payload'] ?? null;
     }
 
     /**
@@ -204,6 +240,10 @@ class WhatsappMessageInteractiveActionParameters implements ModelInterface, Arra
 
         if (!is_null($this->container['display_text']) && (mb_strlen($this->container['display_text']) > 20)) {
             $invalidProperties[] = "invalid value for 'display_text', the character length must be smaller than or equal to 20.";
+        }
+
+        if (!is_null($this->container['flow_cta']) && (mb_strlen($this->container['flow_cta']) > 20)) {
+            $invalidProperties[] = "invalid value for 'flow_cta', the character length must be smaller than or equal to 20.";
         }
 
         return $invalidProperties;
@@ -293,6 +333,154 @@ class WhatsappMessageInteractiveActionParameters implements ModelInterface, Arra
     public function setThumbnailProductRetailerId($thumbnail_product_retailer_id)
     {
         $this->container['thumbnail_product_retailer_id'] = $thumbnail_product_retailer_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets flow_message_version
+     *
+     * @return string|null
+     */
+    public function getFlowMessageVersion()
+    {
+        return $this->container['flow_message_version'];
+    }
+
+    /**
+     * Sets flow_message_version
+     *
+     * @param string|null $flow_message_version Use for `flow` buttons. Value must be \"3\".
+     *
+     * @return self
+     */
+    public function setFlowMessageVersion($flow_message_version)
+    {
+        $this->container['flow_message_version'] = $flow_message_version;
+
+        return $this;
+    }
+
+    /**
+     * Gets flow_token
+     *
+     * @return string|null
+     */
+    public function getFlowToken()
+    {
+        return $this->container['flow_token'];
+    }
+
+    /**
+     * Sets flow_token
+     *
+     * @param string|null $flow_token Use for `flow` buttons. Flow token that is generated by the business to serve as an identifier. Defaults to `unused`.
+     *
+     * @return self
+     */
+    public function setFlowToken($flow_token)
+    {
+        $this->container['flow_token'] = $flow_token;
+
+        return $this;
+    }
+
+    /**
+     * Gets flow_id
+     *
+     * @return string|null
+     */
+    public function getFlowId()
+    {
+        return $this->container['flow_id'];
+    }
+
+    /**
+     * Sets flow_id
+     *
+     * @param string|null $flow_id Required for `flow` buttons. Unique ID of the Flow provided by WhatsApp.
+     *
+     * @return self
+     */
+    public function setFlowId($flow_id)
+    {
+        $this->container['flow_id'] = $flow_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets flow_cta
+     *
+     * @return string|null
+     */
+    public function getFlowCta()
+    {
+        return $this->container['flow_cta'];
+    }
+
+    /**
+     * Sets flow_cta
+     *
+     * @param string|null $flow_cta Required for `flow` buttons. Text on the CTA button. For example: \"Open flow!\". Maximum length: 20 characters.
+     *
+     * @return self
+     */
+    public function setFlowCta($flow_cta)
+    {
+        if (!is_null($flow_cta) && (mb_strlen($flow_cta) > 20)) {
+            throw new \InvalidArgumentException('invalid length for $flow_cta when calling WhatsappMessageInteractiveActionParameters., must be smaller than or equal to 20.');
+        }
+
+        $this->container['flow_cta'] = $flow_cta;
+
+        return $this;
+    }
+
+    /**
+     * Gets flow_action
+     *
+     * @return string|null
+     */
+    public function getFlowAction()
+    {
+        return $this->container['flow_action'];
+    }
+
+    /**
+     * Sets flow_action
+     *
+     * @param string|null $flow_action Use for `flow` buttons. Either `navigate` or `data_exchange`. Defaults to `navigate`.
+     *
+     * @return self
+     */
+    public function setFlowAction($flow_action)
+    {
+        $this->container['flow_action'] = $flow_action;
+
+        return $this;
+    }
+
+    /**
+     * Gets flow_action_payload
+     *
+     * @return \YCloud\Client\Model\WhatsappMessageInteractiveActionParametersFlowActionPayload|null
+     */
+    public function getFlowActionPayload()
+    {
+        return $this->container['flow_action_payload'];
+    }
+
+    /**
+     * Sets flow_action_payload
+     *
+     * @param \YCloud\Client\Model\WhatsappMessageInteractiveActionParametersFlowActionPayload|null $flow_action_payload flow_action_payload
+     *
+     * @return self
+     */
+    public function setFlowActionPayload($flow_action_payload)
+    {
+        $this->container['flow_action_payload'] = $flow_action_payload;
 
         return $this;
     }

@@ -67,7 +67,10 @@ class WhatsappTemplateComponentButton implements ModelInterface, ArrayAccess, \J
         'package_name' => 'string',
         'signature_hash' => 'string',
         'zero_tap_terms_accepted' => 'bool',
-        'example' => 'string[]'
+        'example' => 'string[]',
+        'flow_id' => 'string',
+        'flow_action' => 'string',
+        'navigate_screen' => 'string'
     ];
 
     /**
@@ -87,7 +90,10 @@ class WhatsappTemplateComponentButton implements ModelInterface, ArrayAccess, \J
         'package_name' => null,
         'signature_hash' => null,
         'zero_tap_terms_accepted' => null,
-        'example' => null
+        'example' => null,
+        'flow_id' => null,
+        'flow_action' => null,
+        'navigate_screen' => null
     ];
 
     /**
@@ -126,7 +132,10 @@ class WhatsappTemplateComponentButton implements ModelInterface, ArrayAccess, \J
         'package_name' => 'package_name',
         'signature_hash' => 'signature_hash',
         'zero_tap_terms_accepted' => 'zero_tap_terms_accepted',
-        'example' => 'example'
+        'example' => 'example',
+        'flow_id' => 'flow_id',
+        'flow_action' => 'flow_action',
+        'navigate_screen' => 'navigate_screen'
     ];
 
     /**
@@ -144,7 +153,10 @@ class WhatsappTemplateComponentButton implements ModelInterface, ArrayAccess, \J
         'package_name' => 'setPackageName',
         'signature_hash' => 'setSignatureHash',
         'zero_tap_terms_accepted' => 'setZeroTapTermsAccepted',
-        'example' => 'setExample'
+        'example' => 'setExample',
+        'flow_id' => 'setFlowId',
+        'flow_action' => 'setFlowAction',
+        'navigate_screen' => 'setNavigateScreen'
     ];
 
     /**
@@ -162,7 +174,10 @@ class WhatsappTemplateComponentButton implements ModelInterface, ArrayAccess, \J
         'package_name' => 'getPackageName',
         'signature_hash' => 'getSignatureHash',
         'zero_tap_terms_accepted' => 'getZeroTapTermsAccepted',
-        'example' => 'getExample'
+        'example' => 'getExample',
+        'flow_id' => 'getFlowId',
+        'flow_action' => 'getFlowAction',
+        'navigate_screen' => 'getNavigateScreen'
     ];
 
     /**
@@ -232,6 +247,9 @@ class WhatsappTemplateComponentButton implements ModelInterface, ArrayAccess, \J
         $this->container['signature_hash'] = $data['signature_hash'] ?? null;
         $this->container['zero_tap_terms_accepted'] = $data['zero_tap_terms_accepted'] ?? null;
         $this->container['example'] = $data['example'] ?? null;
+        $this->container['flow_id'] = $data['flow_id'] ?? null;
+        $this->container['flow_action'] = $data['flow_action'] ?? null;
+        $this->container['navigate_screen'] = $data['navigate_screen'] ?? null;
     }
 
     /**
@@ -529,6 +547,78 @@ class WhatsappTemplateComponentButton implements ModelInterface, ArrayAccess, \J
     public function setExample($example)
     {
         $this->container['example'] = $example;
+
+        return $this;
+    }
+
+    /**
+     * Gets flow_id
+     *
+     * @return string|null
+     */
+    public function getFlowId()
+    {
+        return $this->container['flow_id'];
+    }
+
+    /**
+     * Sets flow_id
+     *
+     * @param string|null $flow_id **Required for button type `FLOW`.** The unique ID of a Flow.
+     *
+     * @return self
+     */
+    public function setFlowId($flow_id)
+    {
+        $this->container['flow_id'] = $flow_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets flow_action
+     *
+     * @return string|null
+     */
+    public function getFlowAction()
+    {
+        return $this->container['flow_action'];
+    }
+
+    /**
+     * Sets flow_action
+     *
+     * @param string|null $flow_action **Use for button type `FLOW`.** Either `navigate` or `data_exchange`. Defaults to `navigate`.
+     *
+     * @return self
+     */
+    public function setFlowAction($flow_action)
+    {
+        $this->container['flow_action'] = $flow_action;
+
+        return $this;
+    }
+
+    /**
+     * Gets navigate_screen
+     *
+     * @return string|null
+     */
+    public function getNavigateScreen()
+    {
+        return $this->container['navigate_screen'];
+    }
+
+    /**
+     * Sets navigate_screen
+     *
+     * @param string|null $navigate_screen **Required if `flow_action` is `navigate`.** The unique ID of the Screen in the Flow.
+     *
+     * @return self
+     */
+    public function setNavigateScreen($navigate_screen)
+    {
+        $this->container['navigate_screen'] = $navigate_screen;
 
         return $this;
     }
