@@ -1,6 +1,6 @@
 <?php
 /**
- * WhatsappMessageTemplateComponent
+ * WhatsappPaymentTransaction
  *
  * PHP version 7.4
  *
@@ -33,16 +33,16 @@ use \ArrayAccess;
 use \YCloud\Client\ObjectSerializer;
 
 /**
- * WhatsappMessageTemplateComponent Class Doc Comment
+ * WhatsappPaymentTransaction Class Doc Comment
  *
  * @category Class
- * @description Component object containing the parameters of the message.
+ * @description Represents a transaction attempt for a payment.
  * @package  YCloud\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class WhatsappMessageTemplateComponent implements ModelInterface, ArrayAccess, \JsonSerializable
+class WhatsappPaymentTransaction implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +51,7 @@ class WhatsappMessageTemplateComponent implements ModelInterface, ArrayAccess, \
       *
       * @var string
       */
-    protected static $openAPIModelName = 'WhatsappMessageTemplateComponent';
+    protected static $openAPIModelName = 'WhatsappPaymentTransaction';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,11 +59,15 @@ class WhatsappMessageTemplateComponent implements ModelInterface, ArrayAccess, \
       * @var string[]
       */
     protected static $openAPITypes = [
+        'id' => 'string',
         'type' => 'string',
-        'sub_type' => 'string',
-        'index' => 'int',
-        'parameters' => '\YCloud\Client\Model\WhatsappMessageTemplateComponentParameter[]',
-        'cards' => '\YCloud\Client\Model\WhatsappMessageTemplateComponentCard[]'
+        'status' => 'string',
+        'created_timestamp' => 'int',
+        'updated_timestamp' => 'int',
+        'amount' => '\YCloud\Client\Model\WhatsappMessageOrderAmount',
+        'currency' => 'string',
+        'method_type' => 'string',
+        'error' => '\YCloud\Client\Model\WhatsappPaymentTransactionError'
     ];
 
     /**
@@ -74,11 +78,15 @@ class WhatsappMessageTemplateComponent implements ModelInterface, ArrayAccess, \
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'id' => null,
         'type' => null,
-        'sub_type' => null,
-        'index' => 'int32',
-        'parameters' => null,
-        'cards' => null
+        'status' => null,
+        'created_timestamp' => 'int64',
+        'updated_timestamp' => 'int64',
+        'amount' => null,
+        'currency' => null,
+        'method_type' => null,
+        'error' => null
     ];
 
     /**
@@ -108,11 +116,15 @@ class WhatsappMessageTemplateComponent implements ModelInterface, ArrayAccess, \
      * @var string[]
      */
     protected static $attributeMap = [
+        'id' => 'id',
         'type' => 'type',
-        'sub_type' => 'sub_type',
-        'index' => 'index',
-        'parameters' => 'parameters',
-        'cards' => 'cards'
+        'status' => 'status',
+        'created_timestamp' => 'createdTimestamp',
+        'updated_timestamp' => 'updatedTimestamp',
+        'amount' => 'amount',
+        'currency' => 'currency',
+        'method_type' => 'methodType',
+        'error' => 'error'
     ];
 
     /**
@@ -121,11 +133,15 @@ class WhatsappMessageTemplateComponent implements ModelInterface, ArrayAccess, \
      * @var string[]
      */
     protected static $setters = [
+        'id' => 'setId',
         'type' => 'setType',
-        'sub_type' => 'setSubType',
-        'index' => 'setIndex',
-        'parameters' => 'setParameters',
-        'cards' => 'setCards'
+        'status' => 'setStatus',
+        'created_timestamp' => 'setCreatedTimestamp',
+        'updated_timestamp' => 'setUpdatedTimestamp',
+        'amount' => 'setAmount',
+        'currency' => 'setCurrency',
+        'method_type' => 'setMethodType',
+        'error' => 'setError'
     ];
 
     /**
@@ -134,11 +150,15 @@ class WhatsappMessageTemplateComponent implements ModelInterface, ArrayAccess, \
      * @var string[]
      */
     protected static $getters = [
+        'id' => 'getId',
         'type' => 'getType',
-        'sub_type' => 'getSubType',
-        'index' => 'getIndex',
-        'parameters' => 'getParameters',
-        'cards' => 'getCards'
+        'status' => 'getStatus',
+        'created_timestamp' => 'getCreatedTimestamp',
+        'updated_timestamp' => 'getUpdatedTimestamp',
+        'amount' => 'getAmount',
+        'currency' => 'getCurrency',
+        'method_type' => 'getMethodType',
+        'error' => 'getError'
     ];
 
     /**
@@ -182,19 +202,13 @@ class WhatsappMessageTemplateComponent implements ModelInterface, ArrayAccess, \
         return self::$openAPIModelName;
     }
 
-    public const TYPE_HEADER = 'header';
-    public const TYPE_BODY = 'body';
-    public const TYPE_BUTTON = 'button';
-    public const TYPE_LIMITED_TIME_OFFER = 'limited_time_offer';
-    public const TYPE_CAROUSEL = 'carousel';
-    public const TYPE_ORDER_STATUS = 'order_status';
-    public const SUB_TYPE_QUICK_REPLY = 'quick_reply';
-    public const SUB_TYPE_URL = 'url';
-    public const SUB_TYPE_COPY_CODE = 'copy_code';
-    public const SUB_TYPE_CATALOG = 'catalog';
-    public const SUB_TYPE_MPM = 'mpm';
-    public const SUB_TYPE_FLOW = 'flow';
-    public const SUB_TYPE_ORDER_DETAILS = 'order_details';
+    public const TYPE_BILLDESK = 'billdesk';
+    public const TYPE_RAZORPAY = 'razorpay';
+    public const TYPE_PAYU = 'payu';
+    public const TYPE_ZAAKPAY = 'zaakpay';
+    public const STATUS_PENDING = 'pending';
+    public const STATUS_SUCCESS = 'success';
+    public const STATUS_FAILED = 'failed';
 
     /**
      * Gets allowable values of the enum
@@ -204,12 +218,10 @@ class WhatsappMessageTemplateComponent implements ModelInterface, ArrayAccess, \
     public function getTypeAllowableValues()
     {
         return [
-            self::TYPE_HEADER,
-            self::TYPE_BODY,
-            self::TYPE_BUTTON,
-            self::TYPE_LIMITED_TIME_OFFER,
-            self::TYPE_CAROUSEL,
-            self::TYPE_ORDER_STATUS,
+            self::TYPE_BILLDESK,
+            self::TYPE_RAZORPAY,
+            self::TYPE_PAYU,
+            self::TYPE_ZAAKPAY,
         ];
     }
 
@@ -218,16 +230,12 @@ class WhatsappMessageTemplateComponent implements ModelInterface, ArrayAccess, \
      *
      * @return string[]
      */
-    public function getSubTypeAllowableValues()
+    public function getStatusAllowableValues()
     {
         return [
-            self::SUB_TYPE_QUICK_REPLY,
-            self::SUB_TYPE_URL,
-            self::SUB_TYPE_COPY_CODE,
-            self::SUB_TYPE_CATALOG,
-            self::SUB_TYPE_MPM,
-            self::SUB_TYPE_FLOW,
-            self::SUB_TYPE_ORDER_DETAILS,
+            self::STATUS_PENDING,
+            self::STATUS_SUCCESS,
+            self::STATUS_FAILED,
         ];
     }
 
@@ -246,11 +254,15 @@ class WhatsappMessageTemplateComponent implements ModelInterface, ArrayAccess, \
      */
     public function __construct(array $data = null)
     {
+        $this->container['id'] = $data['id'] ?? null;
         $this->container['type'] = $data['type'] ?? null;
-        $this->container['sub_type'] = $data['sub_type'] ?? null;
-        $this->container['index'] = $data['index'] ?? null;
-        $this->container['parameters'] = $data['parameters'] ?? null;
-        $this->container['cards'] = $data['cards'] ?? null;
+        $this->container['status'] = $data['status'] ?? null;
+        $this->container['created_timestamp'] = $data['created_timestamp'] ?? null;
+        $this->container['updated_timestamp'] = $data['updated_timestamp'] ?? null;
+        $this->container['amount'] = $data['amount'] ?? null;
+        $this->container['currency'] = $data['currency'] ?? null;
+        $this->container['method_type'] = $data['method_type'] ?? null;
+        $this->container['error'] = $data['error'] ?? null;
     }
 
     /**
@@ -262,6 +274,9 @@ class WhatsappMessageTemplateComponent implements ModelInterface, ArrayAccess, \
     {
         $invalidProperties = [];
 
+        if ($this->container['id'] === null) {
+            $invalidProperties[] = "'id' can't be null";
+        }
         if ($this->container['type'] === null) {
             $invalidProperties[] = "'type' can't be null";
         }
@@ -274,23 +289,30 @@ class WhatsappMessageTemplateComponent implements ModelInterface, ArrayAccess, \
             );
         }
 
-        $allowedValues = $this->getSubTypeAllowableValues();
-        if (!is_null($this->container['sub_type']) && !in_array($this->container['sub_type'], $allowedValues, true)) {
+        if ($this->container['status'] === null) {
+            $invalidProperties[] = "'status' can't be null";
+        }
+        $allowedValues = $this->getStatusAllowableValues();
+        if (!is_null($this->container['status']) && !in_array($this->container['status'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'sub_type', must be one of '%s'",
-                $this->container['sub_type'],
+                "invalid value '%s' for 'status', must be one of '%s'",
+                $this->container['status'],
                 implode("', '", $allowedValues)
             );
         }
 
-        if (!is_null($this->container['index']) && ($this->container['index'] > 9)) {
-            $invalidProperties[] = "invalid value for 'index', must be smaller than or equal to 9.";
+        if ($this->container['created_timestamp'] === null) {
+            $invalidProperties[] = "'created_timestamp' can't be null";
         }
-
-        if (!is_null($this->container['index']) && ($this->container['index'] < 0)) {
-            $invalidProperties[] = "invalid value for 'index', must be bigger than or equal to 0.";
+        if ($this->container['updated_timestamp'] === null) {
+            $invalidProperties[] = "'updated_timestamp' can't be null";
         }
-
+        if ($this->container['amount'] === null) {
+            $invalidProperties[] = "'amount' can't be null";
+        }
+        if ($this->container['currency'] === null) {
+            $invalidProperties[] = "'currency' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -307,6 +329,30 @@ class WhatsappMessageTemplateComponent implements ModelInterface, ArrayAccess, \
 
 
     /**
+     * Gets id
+     *
+     * @return string
+     */
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * Sets id
+     *
+     * @param string $id Transaction ID.
+     *
+     * @return self
+     */
+    public function setId($id)
+    {
+        $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
      * Gets type
      *
      * @return string
@@ -319,7 +365,7 @@ class WhatsappMessageTemplateComponent implements ModelInterface, ArrayAccess, \
     /**
      * Sets type
      *
-     * @param string $type Component type.
+     * @param string $type The payment type for this transactions. One of `billdesk`, `razorpay`, `payu`, or `zaakpay`.
      *
      * @return self
      */
@@ -341,115 +387,179 @@ class WhatsappMessageTemplateComponent implements ModelInterface, ArrayAccess, \
     }
 
     /**
-     * Gets sub_type
+     * Gets status
      *
-     * @return string|null
+     * @return string
      */
-    public function getSubType()
+    public function getStatus()
     {
-        return $this->container['sub_type'];
+        return $this->container['status'];
     }
 
     /**
-     * Sets sub_type
+     * Sets status
      *
-     * @param string|null $sub_type **Required when type is `button`.** Type of button. - `quick_reply`: Refers to a previously created quick reply button that allows for the customer to return a predefined message. - `url`: Refers to a previously created url button that allows the customer to visit the URL generated by appending the text parameter to the predefined prefix URL in the template. - `copy_code`: Refers to a previously created copy code button that allows the customer to copy a text string (defined when the template is sent in a template message) to the device's clipboard when tapped by the app user. - `catalog`: Refers to a previously created catalog button that allows the customer to view your product catalog. - `mpm`: Refers to a previously created MPM (multi-product message) button that allows the customer to browser products and sections. - `flow`: Refers to a previously created flow button that allows the customer to interact with a [flow](https://developers.facebook.com/docs/whatsapp/flows). - `order_details`: Refers to a previously created order details button that allows the customer to view the details of an order.
+     * @param string $status The status of the transaction. One of `pending`, `success` or `failed`.
      *
      * @return self
      */
-    public function setSubType($sub_type)
+    public function setStatus($status)
     {
-        $allowedValues = $this->getSubTypeAllowableValues();
-        if (!is_null($sub_type) && !in_array($sub_type, $allowedValues, true)) {
+        $allowedValues = $this->getStatusAllowableValues();
+        if (!in_array($status, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
-                    "Invalid value '%s' for 'sub_type', must be one of '%s'",
-                    $sub_type,
+                    "Invalid value '%s' for 'status', must be one of '%s'",
+                    $status,
                     implode("', '", $allowedValues)
                 )
             );
         }
-        $this->container['sub_type'] = $sub_type;
+        $this->container['status'] = $status;
 
         return $this;
     }
 
     /**
-     * Gets index
+     * Gets created_timestamp
      *
-     * @return int|null
+     * @return int
      */
-    public function getIndex()
+    public function getCreatedTimestamp()
     {
-        return $this->container['index'];
+        return $this->container['created_timestamp'];
     }
 
     /**
-     * Sets index
+     * Sets created_timestamp
      *
-     * @param int|null $index **Required when `type` = `button`. Not used for the other types.** Indicates order in which button should appear, if the template uses multiple buttons. Buttons are zero-indexed, so setting value to 0 will cause the button to appear first, and another button with an index of 1 will appear next, etc.
+     * @param int $created_timestamp Time when transaction was created in epoch milliseconds.
      *
      * @return self
      */
-    public function setIndex($index)
+    public function setCreatedTimestamp($created_timestamp)
     {
-
-        if (!is_null($index) && ($index > 9)) {
-            throw new \InvalidArgumentException('invalid value for $index when calling WhatsappMessageTemplateComponent., must be smaller than or equal to 9.');
-        }
-        if (!is_null($index) && ($index < 0)) {
-            throw new \InvalidArgumentException('invalid value for $index when calling WhatsappMessageTemplateComponent., must be bigger than or equal to 0.');
-        }
-
-        $this->container['index'] = $index;
+        $this->container['created_timestamp'] = $created_timestamp;
 
         return $this;
     }
 
     /**
-     * Gets parameters
+     * Gets updated_timestamp
      *
-     * @return \YCloud\Client\Model\WhatsappMessageTemplateComponentParameter[]|null
+     * @return int
      */
-    public function getParameters()
+    public function getUpdatedTimestamp()
     {
-        return $this->container['parameters'];
+        return $this->container['updated_timestamp'];
     }
 
     /**
-     * Sets parameters
+     * Sets updated_timestamp
      *
-     * @param \YCloud\Client\Model\WhatsappMessageTemplateComponentParameter[]|null $parameters **Required when `type` = `button`, or there are variables in the corresponding template component, or the template `HEADER` format is media (`IMAGE`, `VIDEO`, or `DOCUMENT`).** Array of parameter objects with the content of the message.
+     * @param int $updated_timestamp Time when transaction was last updated in epoch milliseconds.
      *
      * @return self
      */
-    public function setParameters($parameters)
+    public function setUpdatedTimestamp($updated_timestamp)
     {
-        $this->container['parameters'] = $parameters;
+        $this->container['updated_timestamp'] = $updated_timestamp;
 
         return $this;
     }
 
     /**
-     * Gets cards
+     * Gets amount
      *
-     * @return \YCloud\Client\Model\WhatsappMessageTemplateComponentCard[]|null
+     * @return \YCloud\Client\Model\WhatsappMessageOrderAmount
      */
-    public function getCards()
+    public function getAmount()
     {
-        return $this->container['cards'];
+        return $this->container['amount'];
     }
 
     /**
-     * Sets cards
+     * Sets amount
      *
-     * @param \YCloud\Client\Model\WhatsappMessageTemplateComponentCard[]|null $cards Use for `carousel` components. Provides card components containing the parameters of the message.
+     * @param \YCloud\Client\Model\WhatsappMessageOrderAmount $amount amount
      *
      * @return self
      */
-    public function setCards($cards)
+    public function setAmount($amount)
     {
-        $this->container['cards'] = $cards;
+        $this->container['amount'] = $amount;
+
+        return $this;
+    }
+
+    /**
+     * Gets currency
+     *
+     * @return string
+     */
+    public function getCurrency()
+    {
+        return $this->container['currency'];
+    }
+
+    /**
+     * Sets currency
+     *
+     * @param string $currency The currency for this payment. Currently the only supported value is `INR`.
+     *
+     * @return self
+     */
+    public function setCurrency($currency)
+    {
+        $this->container['currency'] = $currency;
+
+        return $this;
+    }
+
+    /**
+     * Gets method_type
+     *
+     * @return string|null
+     */
+    public function getMethodType()
+    {
+        return $this->container['method_type'];
+    }
+
+    /**
+     * Sets method_type
+     *
+     * @param string|null $method_type Describes the type of payment method used by consumer to pay for the order. Can be one of `upi`, `card`, `wallet`, or `netbanking`. The payment method information might not be available for failed payments.
+     *
+     * @return self
+     */
+    public function setMethodType($method_type)
+    {
+        $this->container['method_type'] = $method_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets error
+     *
+     * @return \YCloud\Client\Model\WhatsappPaymentTransactionError|null
+     */
+    public function getError()
+    {
+        return $this->container['error'];
+    }
+
+    /**
+     * Sets error
+     *
+     * @param \YCloud\Client\Model\WhatsappPaymentTransactionError|null $error error
+     *
+     * @return self
+     */
+    public function setError($error)
+    {
+        $this->container['error'] = $error;
 
         return $this;
     }

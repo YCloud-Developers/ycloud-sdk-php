@@ -34,7 +34,7 @@ use \YCloud\Client\ObjectSerializer;
  * WhatsappBusinessAccountUpdateEventEnum Class Doc Comment
  *
  * @category Class
- * @description Indicates the update event type of the WABA when a notification is sent to you to report a [policy violation](https://developers.facebook.com/docs/whatsapp/overview/policy-enforcement), a WABA has been banned and more. - &#x60;DISABLED_UPDATE&#x60;: WhatsApp Business Account Banned. - &#x60;ACCOUNT_RESTRICTION&#x60;: WhatsApp Business Account Restricted Due To Policy Violations. - &#x60;ACCOUNT_VIOLATION&#x60;: WhatsApp Business Account Violates Policy.
+ * @description Indicates the update event type of the WABA when a notification is sent to you to report a [policy violation](https://developers.facebook.com/docs/whatsapp/overview/policy-enforcement), a WABA has been banned and more. - &#x60;DISABLED_UPDATE&#x60;: WhatsApp Business Account Banned. - &#x60;ACCOUNT_RESTRICTION&#x60;: WhatsApp Business Account Restricted Due To Policy Violations. - &#x60;ACCOUNT_VIOLATION&#x60;: WhatsApp Business Account Violates Policy. - &#x60;AUTH_INTL_PRICE_ELIGIBILITY_UPDATE&#x60;: WhatsApp Business Account is eligible for the [authentication-international rate](https://developers.facebook.com/docs/whatsapp/pricing/authentication-international-rates). - &#x60;BUSINESS_PRIMARY_LOCATION_COUNTRY_UPDATE&#x60;: Business&#39;s [primary business location](https://developers.facebook.com/docs/whatsapp/pricing/authentication-international-rates#primary-business-location) is set.
  * @package  YCloud\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -50,6 +50,10 @@ class WhatsappBusinessAccountUpdateEventEnum
 
     public const ACCOUNT_VIOLATION = 'ACCOUNT_VIOLATION';
 
+    public const AUTH_INTL_PRICE_ELIGIBILITY_UPDATE = 'AUTH_INTL_PRICE_ELIGIBILITY_UPDATE';
+
+    public const BUSINESS_PRIMARY_LOCATION_COUNTRY_UPDATE = 'BUSINESS_PRIMARY_LOCATION_COUNTRY_UPDATE';
+
     /**
      * Gets allowable values of the enum
      * @return string[]
@@ -59,7 +63,9 @@ class WhatsappBusinessAccountUpdateEventEnum
         return [
             self::DISABLED_UPDATE,
             self::ACCOUNT_RESTRICTION,
-            self::ACCOUNT_VIOLATION
+            self::ACCOUNT_VIOLATION,
+            self::AUTH_INTL_PRICE_ELIGIBILITY_UPDATE,
+            self::BUSINESS_PRIMARY_LOCATION_COUNTRY_UPDATE
         ];
     }
 }

@@ -1,6 +1,6 @@
 <?php
 /**
- * WhatsappMessageInteractive
+ * WhatsappMessageOrderPaymentSettingPaymentGatewayPayu
  *
  * PHP version 7.4
  *
@@ -33,16 +33,16 @@ use \ArrayAccess;
 use \YCloud\Client\ObjectSerializer;
 
 /**
- * WhatsappMessageInteractive Class Doc Comment
+ * WhatsappMessageOrderPaymentSettingPaymentGatewayPayu Class Doc Comment
  *
  * @category Class
- * @description Use for &#x60;interactive&#x60; messages.
+ * @description Additional info for PayU. User-defined fields (udf) are used to store any information corresponding to a particular order. Each UDF field has a maximum character limit of 255.
  * @package  YCloud\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class WhatsappMessageInteractive implements ModelInterface, ArrayAccess, \JsonSerializable
+class WhatsappMessageOrderPaymentSettingPaymentGatewayPayu implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +51,7 @@ class WhatsappMessageInteractive implements ModelInterface, ArrayAccess, \JsonSe
       *
       * @var string
       */
-    protected static $openAPIModelName = 'WhatsappMessageInteractive';
+    protected static $openAPIModelName = 'WhatsappMessageOrderPaymentSettingPaymentGatewayPayu';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,11 +59,10 @@ class WhatsappMessageInteractive implements ModelInterface, ArrayAccess, \JsonSe
       * @var string[]
       */
     protected static $openAPITypes = [
-        'type' => 'string',
-        'action' => '\YCloud\Client\Model\WhatsappMessageInteractiveAction',
-        'body' => '\YCloud\Client\Model\WhatsappMessageInteractiveBody',
-        'header' => '\YCloud\Client\Model\WhatsappMessageInteractiveHeader',
-        'footer' => '\YCloud\Client\Model\WhatsappMessageInteractiveFooter'
+        'udf1' => 'string',
+        'udf2' => 'string',
+        'udf3' => 'string',
+        'udf4' => 'string'
     ];
 
     /**
@@ -74,11 +73,10 @@ class WhatsappMessageInteractive implements ModelInterface, ArrayAccess, \JsonSe
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'type' => null,
-        'action' => null,
-        'body' => null,
-        'header' => null,
-        'footer' => null
+        'udf1' => null,
+        'udf2' => null,
+        'udf3' => null,
+        'udf4' => null
     ];
 
     /**
@@ -108,11 +106,10 @@ class WhatsappMessageInteractive implements ModelInterface, ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static $attributeMap = [
-        'type' => 'type',
-        'action' => 'action',
-        'body' => 'body',
-        'header' => 'header',
-        'footer' => 'footer'
+        'udf1' => 'udf1',
+        'udf2' => 'udf2',
+        'udf3' => 'udf3',
+        'udf4' => 'udf4'
     ];
 
     /**
@@ -121,11 +118,10 @@ class WhatsappMessageInteractive implements ModelInterface, ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static $setters = [
-        'type' => 'setType',
-        'action' => 'setAction',
-        'body' => 'setBody',
-        'header' => 'setHeader',
-        'footer' => 'setFooter'
+        'udf1' => 'setUdf1',
+        'udf2' => 'setUdf2',
+        'udf3' => 'setUdf3',
+        'udf4' => 'setUdf4'
     ];
 
     /**
@@ -134,11 +130,10 @@ class WhatsappMessageInteractive implements ModelInterface, ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static $getters = [
-        'type' => 'getType',
-        'action' => 'getAction',
-        'body' => 'getBody',
-        'header' => 'getHeader',
-        'footer' => 'getFooter'
+        'udf1' => 'getUdf1',
+        'udf2' => 'getUdf2',
+        'udf3' => 'getUdf3',
+        'udf4' => 'getUdf4'
     ];
 
     /**
@@ -182,35 +177,6 @@ class WhatsappMessageInteractive implements ModelInterface, ArrayAccess, \JsonSe
         return self::$openAPIModelName;
     }
 
-    public const TYPE_BUTTON = 'button';
-    public const TYPE__LIST = 'list';
-    public const TYPE_CTA_URL = 'cta_url';
-    public const TYPE_PRODUCT = 'product';
-    public const TYPE_PRODUCT_LIST = 'product_list';
-    public const TYPE_CATALOG_MESSAGE = 'catalog_message';
-    public const TYPE_LOCATION_REQUEST_MESSAGE = 'location_request_message';
-    public const TYPE_ORDER_DETAILS = 'order_details';
-    public const TYPE_ORDER_STATUS = 'order_status';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getTypeAllowableValues()
-    {
-        return [
-            self::TYPE_BUTTON,
-            self::TYPE__LIST,
-            self::TYPE_CTA_URL,
-            self::TYPE_PRODUCT,
-            self::TYPE_PRODUCT_LIST,
-            self::TYPE_CATALOG_MESSAGE,
-            self::TYPE_LOCATION_REQUEST_MESSAGE,
-            self::TYPE_ORDER_DETAILS,
-            self::TYPE_ORDER_STATUS,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -227,11 +193,10 @@ class WhatsappMessageInteractive implements ModelInterface, ArrayAccess, \JsonSe
      */
     public function __construct(array $data = null)
     {
-        $this->container['type'] = $data['type'] ?? null;
-        $this->container['action'] = $data['action'] ?? null;
-        $this->container['body'] = $data['body'] ?? null;
-        $this->container['header'] = $data['header'] ?? null;
-        $this->container['footer'] = $data['footer'] ?? null;
+        $this->container['udf1'] = $data['udf1'] ?? null;
+        $this->container['udf2'] = $data['udf2'] ?? null;
+        $this->container['udf3'] = $data['udf3'] ?? null;
+        $this->container['udf4'] = $data['udf4'] ?? null;
     }
 
     /**
@@ -242,15 +207,6 @@ class WhatsappMessageInteractive implements ModelInterface, ArrayAccess, \JsonSe
     public function listInvalidProperties()
     {
         $invalidProperties = [];
-
-        $allowedValues = $this->getTypeAllowableValues();
-        if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'type', must be one of '%s'",
-                $this->container['type'],
-                implode("', '", $allowedValues)
-            );
-        }
 
         return $invalidProperties;
     }
@@ -268,131 +224,97 @@ class WhatsappMessageInteractive implements ModelInterface, ArrayAccess, \JsonSe
 
 
     /**
-     * Gets type
+     * Gets udf1
      *
      * @return string|null
      */
-    public function getType()
+    public function getUdf1()
     {
-        return $this->container['type'];
+        return $this->container['udf1'];
     }
 
     /**
-     * Sets type
+     * Sets udf1
      *
-     * @param string|null $type **Required.** The type of interactive message you want to send. - `button`: Use for Reply Buttons. - `list`: Use for List Messages. - `cta_url`: Use for Call-To-Action (CTA) URL Button Messages. - `product`: Use for Single Product Messages. - `product_list`: Use for Multi-Product Messages. - `catalog_message`: Use for Catalog Messages. - `location_request_message`: Use for Location Request Messages. - `order_details`: Use for Order Details Messages. - `order_status`: Use for Order Status Messages.
+     * @param string|null $udf1 udf1
      *
      * @return self
      */
-    public function setType($type)
+    public function setUdf1($udf1)
     {
-        $allowedValues = $this->getTypeAllowableValues();
-        if (!is_null($type) && !in_array($type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'type', must be one of '%s'",
-                    $type,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['type'] = $type;
+        $this->container['udf1'] = $udf1;
 
         return $this;
     }
 
     /**
-     * Gets action
+     * Gets udf2
      *
-     * @return \YCloud\Client\Model\WhatsappMessageInteractiveAction|null
+     * @return string|null
      */
-    public function getAction()
+    public function getUdf2()
     {
-        return $this->container['action'];
+        return $this->container['udf2'];
     }
 
     /**
-     * Sets action
+     * Sets udf2
      *
-     * @param \YCloud\Client\Model\WhatsappMessageInteractiveAction|null $action action
+     * @param string|null $udf2 udf2
      *
      * @return self
      */
-    public function setAction($action)
+    public function setUdf2($udf2)
     {
-        $this->container['action'] = $action;
+        $this->container['udf2'] = $udf2;
 
         return $this;
     }
 
     /**
-     * Gets body
+     * Gets udf3
      *
-     * @return \YCloud\Client\Model\WhatsappMessageInteractiveBody|null
+     * @return string|null
      */
-    public function getBody()
+    public function getUdf3()
     {
-        return $this->container['body'];
+        return $this->container['udf3'];
     }
 
     /**
-     * Sets body
+     * Sets udf3
      *
-     * @param \YCloud\Client\Model\WhatsappMessageInteractiveBody|null $body body
+     * @param string|null $udf3 udf3
      *
      * @return self
      */
-    public function setBody($body)
+    public function setUdf3($udf3)
     {
-        $this->container['body'] = $body;
+        $this->container['udf3'] = $udf3;
 
         return $this;
     }
 
     /**
-     * Gets header
+     * Gets udf4
      *
-     * @return \YCloud\Client\Model\WhatsappMessageInteractiveHeader|null
+     * @return string|null
      */
-    public function getHeader()
+    public function getUdf4()
     {
-        return $this->container['header'];
+        return $this->container['udf4'];
     }
 
     /**
-     * Sets header
+     * Sets udf4
      *
-     * @param \YCloud\Client\Model\WhatsappMessageInteractiveHeader|null $header header
+     * @param string|null $udf4 udf4
      *
      * @return self
      */
-    public function setHeader($header)
+    public function setUdf4($udf4)
     {
-        $this->container['header'] = $header;
-
-        return $this;
-    }
-
-    /**
-     * Gets footer
-     *
-     * @return \YCloud\Client\Model\WhatsappMessageInteractiveFooter|null
-     */
-    public function getFooter()
-    {
-        return $this->container['footer'];
-    }
-
-    /**
-     * Sets footer
-     *
-     * @param \YCloud\Client\Model\WhatsappMessageInteractiveFooter|null $footer footer
-     *
-     * @return self
-     */
-    public function setFooter($footer)
-    {
-        $this->container['footer'] = $footer;
+        $this->container['udf4'] = $udf4;
 
         return $this;
     }

@@ -1,6 +1,6 @@
 <?php
 /**
- * WhatsappMessageInteractive
+ * WhatsappMessageOrderAmount
  *
  * PHP version 7.4
  *
@@ -33,16 +33,16 @@ use \ArrayAccess;
 use \YCloud\Client\ObjectSerializer;
 
 /**
- * WhatsappMessageInteractive Class Doc Comment
+ * WhatsappMessageOrderAmount Class Doc Comment
  *
  * @category Class
- * @description Use for &#x60;interactive&#x60; messages.
+ * @description Represents the amount of an order.
  * @package  YCloud\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class WhatsappMessageInteractive implements ModelInterface, ArrayAccess, \JsonSerializable
+class WhatsappMessageOrderAmount implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +51,7 @@ class WhatsappMessageInteractive implements ModelInterface, ArrayAccess, \JsonSe
       *
       * @var string
       */
-    protected static $openAPIModelName = 'WhatsappMessageInteractive';
+    protected static $openAPIModelName = 'WhatsappMessageOrderAmount';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,11 +59,10 @@ class WhatsappMessageInteractive implements ModelInterface, ArrayAccess, \JsonSe
       * @var string[]
       */
     protected static $openAPITypes = [
-        'type' => 'string',
-        'action' => '\YCloud\Client\Model\WhatsappMessageInteractiveAction',
-        'body' => '\YCloud\Client\Model\WhatsappMessageInteractiveBody',
-        'header' => '\YCloud\Client\Model\WhatsappMessageInteractiveHeader',
-        'footer' => '\YCloud\Client\Model\WhatsappMessageInteractiveFooter'
+        'offset' => 'int',
+        'value' => 'int',
+        'description' => 'string',
+        'discount_program_name' => 'string'
     ];
 
     /**
@@ -74,11 +73,10 @@ class WhatsappMessageInteractive implements ModelInterface, ArrayAccess, \JsonSe
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'type' => null,
-        'action' => null,
-        'body' => null,
-        'header' => null,
-        'footer' => null
+        'offset' => 'int32',
+        'value' => 'int32',
+        'description' => null,
+        'discount_program_name' => null
     ];
 
     /**
@@ -108,11 +106,10 @@ class WhatsappMessageInteractive implements ModelInterface, ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static $attributeMap = [
-        'type' => 'type',
-        'action' => 'action',
-        'body' => 'body',
-        'header' => 'header',
-        'footer' => 'footer'
+        'offset' => 'offset',
+        'value' => 'value',
+        'description' => 'description',
+        'discount_program_name' => 'discount_program_name'
     ];
 
     /**
@@ -121,11 +118,10 @@ class WhatsappMessageInteractive implements ModelInterface, ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static $setters = [
-        'type' => 'setType',
-        'action' => 'setAction',
-        'body' => 'setBody',
-        'header' => 'setHeader',
-        'footer' => 'setFooter'
+        'offset' => 'setOffset',
+        'value' => 'setValue',
+        'description' => 'setDescription',
+        'discount_program_name' => 'setDiscountProgramName'
     ];
 
     /**
@@ -134,11 +130,10 @@ class WhatsappMessageInteractive implements ModelInterface, ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static $getters = [
-        'type' => 'getType',
-        'action' => 'getAction',
-        'body' => 'getBody',
-        'header' => 'getHeader',
-        'footer' => 'getFooter'
+        'offset' => 'getOffset',
+        'value' => 'getValue',
+        'description' => 'getDescription',
+        'discount_program_name' => 'getDiscountProgramName'
     ];
 
     /**
@@ -182,35 +177,6 @@ class WhatsappMessageInteractive implements ModelInterface, ArrayAccess, \JsonSe
         return self::$openAPIModelName;
     }
 
-    public const TYPE_BUTTON = 'button';
-    public const TYPE__LIST = 'list';
-    public const TYPE_CTA_URL = 'cta_url';
-    public const TYPE_PRODUCT = 'product';
-    public const TYPE_PRODUCT_LIST = 'product_list';
-    public const TYPE_CATALOG_MESSAGE = 'catalog_message';
-    public const TYPE_LOCATION_REQUEST_MESSAGE = 'location_request_message';
-    public const TYPE_ORDER_DETAILS = 'order_details';
-    public const TYPE_ORDER_STATUS = 'order_status';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getTypeAllowableValues()
-    {
-        return [
-            self::TYPE_BUTTON,
-            self::TYPE__LIST,
-            self::TYPE_CTA_URL,
-            self::TYPE_PRODUCT,
-            self::TYPE_PRODUCT_LIST,
-            self::TYPE_CATALOG_MESSAGE,
-            self::TYPE_LOCATION_REQUEST_MESSAGE,
-            self::TYPE_ORDER_DETAILS,
-            self::TYPE_ORDER_STATUS,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -227,11 +193,10 @@ class WhatsappMessageInteractive implements ModelInterface, ArrayAccess, \JsonSe
      */
     public function __construct(array $data = null)
     {
-        $this->container['type'] = $data['type'] ?? null;
-        $this->container['action'] = $data['action'] ?? null;
-        $this->container['body'] = $data['body'] ?? null;
-        $this->container['header'] = $data['header'] ?? null;
-        $this->container['footer'] = $data['footer'] ?? null;
+        $this->container['offset'] = $data['offset'] ?? null;
+        $this->container['value'] = $data['value'] ?? null;
+        $this->container['description'] = $data['description'] ?? null;
+        $this->container['discount_program_name'] = $data['discount_program_name'] ?? null;
     }
 
     /**
@@ -243,13 +208,18 @@ class WhatsappMessageInteractive implements ModelInterface, ArrayAccess, \JsonSe
     {
         $invalidProperties = [];
 
-        $allowedValues = $this->getTypeAllowableValues();
-        if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'type', must be one of '%s'",
-                $this->container['type'],
-                implode("', '", $allowedValues)
-            );
+        if ($this->container['offset'] === null) {
+            $invalidProperties[] = "'offset' can't be null";
+        }
+        if ($this->container['value'] === null) {
+            $invalidProperties[] = "'value' can't be null";
+        }
+        if (!is_null($this->container['description']) && (mb_strlen($this->container['description']) > 60)) {
+            $invalidProperties[] = "invalid value for 'description', the character length must be smaller than or equal to 60.";
+        }
+
+        if (!is_null($this->container['discount_program_name']) && (mb_strlen($this->container['discount_program_name']) > 60)) {
+            $invalidProperties[] = "invalid value for 'discount_program_name', the character length must be smaller than or equal to 60.";
         }
 
         return $invalidProperties;
@@ -268,131 +238,105 @@ class WhatsappMessageInteractive implements ModelInterface, ArrayAccess, \JsonSe
 
 
     /**
-     * Gets type
+     * Gets offset
+     *
+     * @return int
+     */
+    public function getOffset()
+    {
+        return $this->container['offset'];
+    }
+
+    /**
+     * Sets offset
+     *
+     * @param int $offset Must be `100` for `INR`.
+     *
+     * @return self
+     */
+    public function setOffset($offset)
+    {
+        $this->container['offset'] = $offset;
+
+        return $this;
+    }
+
+    /**
+     * Gets value
+     *
+     * @return int
+     */
+    public function getValue()
+    {
+        return $this->container['value'];
+    }
+
+    /**
+     * Sets value
+     *
+     * @param int $value Positive integer representing the amount value multiplied by offset.  For example, ₹12.34 has value 1234.
+     *
+     * @return self
+     */
+    public function setValue($value)
+    {
+        $this->container['value'] = $value;
+
+        return $this;
+    }
+
+    /**
+     * Gets description
      *
      * @return string|null
      */
-    public function getType()
+    public function getDescription()
     {
-        return $this->container['type'];
+        return $this->container['description'];
     }
 
     /**
-     * Sets type
+     * Sets description
      *
-     * @param string|null $type **Required.** The type of interactive message you want to send. - `button`: Use for Reply Buttons. - `list`: Use for List Messages. - `cta_url`: Use for Call-To-Action (CTA) URL Button Messages. - `product`: Use for Single Product Messages. - `product_list`: Use for Multi-Product Messages. - `catalog_message`: Use for Catalog Messages. - `location_request_message`: Use for Location Request Messages. - `order_details`: Use for Order Details Messages. - `order_status`: Use for Order Status Messages.
+     * @param string|null $description Use only for `tax`, `shipping`, or `discount`. Description of the amount. Max character limit is 60 characters.
      *
      * @return self
      */
-    public function setType($type)
+    public function setDescription($description)
     {
-        $allowedValues = $this->getTypeAllowableValues();
-        if (!is_null($type) && !in_array($type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'type', must be one of '%s'",
-                    $type,
-                    implode("', '", $allowedValues)
-                )
-            );
+        if (!is_null($description) && (mb_strlen($description) > 60)) {
+            throw new \InvalidArgumentException('invalid length for $description when calling WhatsappMessageOrderAmount., must be smaller than or equal to 60.');
         }
-        $this->container['type'] = $type;
+
+        $this->container['description'] = $description;
 
         return $this;
     }
 
     /**
-     * Gets action
+     * Gets discount_program_name
      *
-     * @return \YCloud\Client\Model\WhatsappMessageInteractiveAction|null
+     * @return string|null
      */
-    public function getAction()
+    public function getDiscountProgramName()
     {
-        return $this->container['action'];
+        return $this->container['discount_program_name'];
     }
 
     /**
-     * Sets action
+     * Sets discount_program_name
      *
-     * @param \YCloud\Client\Model\WhatsappMessageInteractiveAction|null $action action
+     * @param string|null $discount_program_name Use only for `discount`. Text used for defining incentivised orders. If order is incentivised, the merchant needs to define this information. Max character limit is 60 characters.
      *
      * @return self
      */
-    public function setAction($action)
+    public function setDiscountProgramName($discount_program_name)
     {
-        $this->container['action'] = $action;
+        if (!is_null($discount_program_name) && (mb_strlen($discount_program_name) > 60)) {
+            throw new \InvalidArgumentException('invalid length for $discount_program_name when calling WhatsappMessageOrderAmount., must be smaller than or equal to 60.');
+        }
 
-        return $this;
-    }
-
-    /**
-     * Gets body
-     *
-     * @return \YCloud\Client\Model\WhatsappMessageInteractiveBody|null
-     */
-    public function getBody()
-    {
-        return $this->container['body'];
-    }
-
-    /**
-     * Sets body
-     *
-     * @param \YCloud\Client\Model\WhatsappMessageInteractiveBody|null $body body
-     *
-     * @return self
-     */
-    public function setBody($body)
-    {
-        $this->container['body'] = $body;
-
-        return $this;
-    }
-
-    /**
-     * Gets header
-     *
-     * @return \YCloud\Client\Model\WhatsappMessageInteractiveHeader|null
-     */
-    public function getHeader()
-    {
-        return $this->container['header'];
-    }
-
-    /**
-     * Sets header
-     *
-     * @param \YCloud\Client\Model\WhatsappMessageInteractiveHeader|null $header header
-     *
-     * @return self
-     */
-    public function setHeader($header)
-    {
-        $this->container['header'] = $header;
-
-        return $this;
-    }
-
-    /**
-     * Gets footer
-     *
-     * @return \YCloud\Client\Model\WhatsappMessageInteractiveFooter|null
-     */
-    public function getFooter()
-    {
-        return $this->container['footer'];
-    }
-
-    /**
-     * Sets footer
-     *
-     * @param \YCloud\Client\Model\WhatsappMessageInteractiveFooter|null $footer footer
-     *
-     * @return self
-     */
-    public function setFooter($footer)
-    {
-        $this->container['footer'] = $footer;
+        $this->container['discount_program_name'] = $discount_program_name;
 
         return $this;
     }

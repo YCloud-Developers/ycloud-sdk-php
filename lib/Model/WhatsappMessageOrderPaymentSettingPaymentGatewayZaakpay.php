@@ -1,6 +1,6 @@
 <?php
 /**
- * WhatsappMessageInteractive
+ * WhatsappMessageOrderPaymentSettingPaymentGatewayZaakpay
  *
  * PHP version 7.4
  *
@@ -33,16 +33,16 @@ use \ArrayAccess;
 use \YCloud\Client\ObjectSerializer;
 
 /**
- * WhatsappMessageInteractive Class Doc Comment
+ * WhatsappMessageOrderPaymentSettingPaymentGatewayZaakpay Class Doc Comment
  *
  * @category Class
- * @description Use for &#x60;interactive&#x60; messages.
+ * @description Additional info for Zaakpay. User-defined fields (extra) are used to store any information corresponding to a particular order. Each extra field has a maximum character limit of 180.
  * @package  YCloud\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class WhatsappMessageInteractive implements ModelInterface, ArrayAccess, \JsonSerializable
+class WhatsappMessageOrderPaymentSettingPaymentGatewayZaakpay implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +51,7 @@ class WhatsappMessageInteractive implements ModelInterface, ArrayAccess, \JsonSe
       *
       * @var string
       */
-    protected static $openAPIModelName = 'WhatsappMessageInteractive';
+    protected static $openAPIModelName = 'WhatsappMessageOrderPaymentSettingPaymentGatewayZaakpay';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,11 +59,8 @@ class WhatsappMessageInteractive implements ModelInterface, ArrayAccess, \JsonSe
       * @var string[]
       */
     protected static $openAPITypes = [
-        'type' => 'string',
-        'action' => '\YCloud\Client\Model\WhatsappMessageInteractiveAction',
-        'body' => '\YCloud\Client\Model\WhatsappMessageInteractiveBody',
-        'header' => '\YCloud\Client\Model\WhatsappMessageInteractiveHeader',
-        'footer' => '\YCloud\Client\Model\WhatsappMessageInteractiveFooter'
+        'extra1' => 'string',
+        'extra2' => 'string'
     ];
 
     /**
@@ -74,11 +71,8 @@ class WhatsappMessageInteractive implements ModelInterface, ArrayAccess, \JsonSe
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'type' => null,
-        'action' => null,
-        'body' => null,
-        'header' => null,
-        'footer' => null
+        'extra1' => null,
+        'extra2' => null
     ];
 
     /**
@@ -108,11 +102,8 @@ class WhatsappMessageInteractive implements ModelInterface, ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static $attributeMap = [
-        'type' => 'type',
-        'action' => 'action',
-        'body' => 'body',
-        'header' => 'header',
-        'footer' => 'footer'
+        'extra1' => 'extra1',
+        'extra2' => 'extra2'
     ];
 
     /**
@@ -121,11 +112,8 @@ class WhatsappMessageInteractive implements ModelInterface, ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static $setters = [
-        'type' => 'setType',
-        'action' => 'setAction',
-        'body' => 'setBody',
-        'header' => 'setHeader',
-        'footer' => 'setFooter'
+        'extra1' => 'setExtra1',
+        'extra2' => 'setExtra2'
     ];
 
     /**
@@ -134,11 +122,8 @@ class WhatsappMessageInteractive implements ModelInterface, ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static $getters = [
-        'type' => 'getType',
-        'action' => 'getAction',
-        'body' => 'getBody',
-        'header' => 'getHeader',
-        'footer' => 'getFooter'
+        'extra1' => 'getExtra1',
+        'extra2' => 'getExtra2'
     ];
 
     /**
@@ -182,35 +167,6 @@ class WhatsappMessageInteractive implements ModelInterface, ArrayAccess, \JsonSe
         return self::$openAPIModelName;
     }
 
-    public const TYPE_BUTTON = 'button';
-    public const TYPE__LIST = 'list';
-    public const TYPE_CTA_URL = 'cta_url';
-    public const TYPE_PRODUCT = 'product';
-    public const TYPE_PRODUCT_LIST = 'product_list';
-    public const TYPE_CATALOG_MESSAGE = 'catalog_message';
-    public const TYPE_LOCATION_REQUEST_MESSAGE = 'location_request_message';
-    public const TYPE_ORDER_DETAILS = 'order_details';
-    public const TYPE_ORDER_STATUS = 'order_status';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getTypeAllowableValues()
-    {
-        return [
-            self::TYPE_BUTTON,
-            self::TYPE__LIST,
-            self::TYPE_CTA_URL,
-            self::TYPE_PRODUCT,
-            self::TYPE_PRODUCT_LIST,
-            self::TYPE_CATALOG_MESSAGE,
-            self::TYPE_LOCATION_REQUEST_MESSAGE,
-            self::TYPE_ORDER_DETAILS,
-            self::TYPE_ORDER_STATUS,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -227,11 +183,8 @@ class WhatsappMessageInteractive implements ModelInterface, ArrayAccess, \JsonSe
      */
     public function __construct(array $data = null)
     {
-        $this->container['type'] = $data['type'] ?? null;
-        $this->container['action'] = $data['action'] ?? null;
-        $this->container['body'] = $data['body'] ?? null;
-        $this->container['header'] = $data['header'] ?? null;
-        $this->container['footer'] = $data['footer'] ?? null;
+        $this->container['extra1'] = $data['extra1'] ?? null;
+        $this->container['extra2'] = $data['extra2'] ?? null;
     }
 
     /**
@@ -242,15 +195,6 @@ class WhatsappMessageInteractive implements ModelInterface, ArrayAccess, \JsonSe
     public function listInvalidProperties()
     {
         $invalidProperties = [];
-
-        $allowedValues = $this->getTypeAllowableValues();
-        if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'type', must be one of '%s'",
-                $this->container['type'],
-                implode("', '", $allowedValues)
-            );
-        }
 
         return $invalidProperties;
     }
@@ -268,131 +212,49 @@ class WhatsappMessageInteractive implements ModelInterface, ArrayAccess, \JsonSe
 
 
     /**
-     * Gets type
+     * Gets extra1
      *
      * @return string|null
      */
-    public function getType()
+    public function getExtra1()
     {
-        return $this->container['type'];
+        return $this->container['extra1'];
     }
 
     /**
-     * Sets type
+     * Sets extra1
      *
-     * @param string|null $type **Required.** The type of interactive message you want to send. - `button`: Use for Reply Buttons. - `list`: Use for List Messages. - `cta_url`: Use for Call-To-Action (CTA) URL Button Messages. - `product`: Use for Single Product Messages. - `product_list`: Use for Multi-Product Messages. - `catalog_message`: Use for Catalog Messages. - `location_request_message`: Use for Location Request Messages. - `order_details`: Use for Order Details Messages. - `order_status`: Use for Order Status Messages.
+     * @param string|null $extra1 extra1
      *
      * @return self
      */
-    public function setType($type)
+    public function setExtra1($extra1)
     {
-        $allowedValues = $this->getTypeAllowableValues();
-        if (!is_null($type) && !in_array($type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'type', must be one of '%s'",
-                    $type,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['type'] = $type;
+        $this->container['extra1'] = $extra1;
 
         return $this;
     }
 
     /**
-     * Gets action
+     * Gets extra2
      *
-     * @return \YCloud\Client\Model\WhatsappMessageInteractiveAction|null
+     * @return string|null
      */
-    public function getAction()
+    public function getExtra2()
     {
-        return $this->container['action'];
+        return $this->container['extra2'];
     }
 
     /**
-     * Sets action
+     * Sets extra2
      *
-     * @param \YCloud\Client\Model\WhatsappMessageInteractiveAction|null $action action
+     * @param string|null $extra2 extra2
      *
      * @return self
      */
-    public function setAction($action)
+    public function setExtra2($extra2)
     {
-        $this->container['action'] = $action;
-
-        return $this;
-    }
-
-    /**
-     * Gets body
-     *
-     * @return \YCloud\Client\Model\WhatsappMessageInteractiveBody|null
-     */
-    public function getBody()
-    {
-        return $this->container['body'];
-    }
-
-    /**
-     * Sets body
-     *
-     * @param \YCloud\Client\Model\WhatsappMessageInteractiveBody|null $body body
-     *
-     * @return self
-     */
-    public function setBody($body)
-    {
-        $this->container['body'] = $body;
-
-        return $this;
-    }
-
-    /**
-     * Gets header
-     *
-     * @return \YCloud\Client\Model\WhatsappMessageInteractiveHeader|null
-     */
-    public function getHeader()
-    {
-        return $this->container['header'];
-    }
-
-    /**
-     * Sets header
-     *
-     * @param \YCloud\Client\Model\WhatsappMessageInteractiveHeader|null $header header
-     *
-     * @return self
-     */
-    public function setHeader($header)
-    {
-        $this->container['header'] = $header;
-
-        return $this;
-    }
-
-    /**
-     * Gets footer
-     *
-     * @return \YCloud\Client\Model\WhatsappMessageInteractiveFooter|null
-     */
-    public function getFooter()
-    {
-        return $this->container['footer'];
-    }
-
-    /**
-     * Sets footer
-     *
-     * @param \YCloud\Client\Model\WhatsappMessageInteractiveFooter|null $footer footer
-     *
-     * @return self
-     */
-    public function setFooter($footer)
-    {
-        $this->container['footer'] = $footer;
+        $this->container['extra2'] = $extra2;
 
         return $this;
     }

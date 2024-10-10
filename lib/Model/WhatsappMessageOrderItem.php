@@ -1,6 +1,6 @@
 <?php
 /**
- * WhatsappMessageTemplate
+ * WhatsappMessageOrderItem
  *
  * PHP version 7.4
  *
@@ -33,16 +33,15 @@ use \ArrayAccess;
 use \YCloud\Client\ObjectSerializer;
 
 /**
- * WhatsappMessageTemplate Class Doc Comment
+ * WhatsappMessageOrderItem Class Doc Comment
  *
  * @category Class
- * @description Use for sending a WhatsApp &#x60;template&#x60; message.
  * @package  YCloud\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class WhatsappMessageTemplate implements ModelInterface, ArrayAccess, \JsonSerializable
+class WhatsappMessageOrderItem implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +50,7 @@ class WhatsappMessageTemplate implements ModelInterface, ArrayAccess, \JsonSeria
       *
       * @var string
       */
-    protected static $openAPIModelName = 'WhatsappMessageTemplate';
+    protected static $openAPIModelName = 'WhatsappMessageOrderItem';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,9 +58,15 @@ class WhatsappMessageTemplate implements ModelInterface, ArrayAccess, \JsonSeria
       * @var string[]
       */
     protected static $openAPITypes = [
+        'retailer_id' => 'string',
         'name' => 'string',
-        'language' => '\YCloud\Client\Model\WhatsappMessageTemplateLanguage',
-        'components' => '\YCloud\Client\Model\WhatsappMessageTemplateComponent[]'
+        'image' => '\YCloud\Client\Model\WhatsappMessageMedia',
+        'amount' => '\YCloud\Client\Model\WhatsappMessageOrderAmount',
+        'sale_amount' => '\YCloud\Client\Model\WhatsappMessageOrderAmount',
+        'quantity' => 'int',
+        'country_of_origin' => 'string',
+        'importer_name' => 'string',
+        'importer_address' => 'string'
     ];
 
     /**
@@ -72,9 +77,15 @@ class WhatsappMessageTemplate implements ModelInterface, ArrayAccess, \JsonSeria
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'retailer_id' => null,
         'name' => null,
-        'language' => null,
-        'components' => null
+        'image' => null,
+        'amount' => null,
+        'sale_amount' => null,
+        'quantity' => 'int32',
+        'country_of_origin' => null,
+        'importer_name' => null,
+        'importer_address' => null
     ];
 
     /**
@@ -104,9 +115,15 @@ class WhatsappMessageTemplate implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $attributeMap = [
+        'retailer_id' => 'retailer_id',
         'name' => 'name',
-        'language' => 'language',
-        'components' => 'components'
+        'image' => 'image',
+        'amount' => 'amount',
+        'sale_amount' => 'sale_amount',
+        'quantity' => 'quantity',
+        'country_of_origin' => 'country_of_origin',
+        'importer_name' => 'importer_name',
+        'importer_address' => 'importer_address'
     ];
 
     /**
@@ -115,9 +132,15 @@ class WhatsappMessageTemplate implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $setters = [
+        'retailer_id' => 'setRetailerId',
         'name' => 'setName',
-        'language' => 'setLanguage',
-        'components' => 'setComponents'
+        'image' => 'setImage',
+        'amount' => 'setAmount',
+        'sale_amount' => 'setSaleAmount',
+        'quantity' => 'setQuantity',
+        'country_of_origin' => 'setCountryOfOrigin',
+        'importer_name' => 'setImporterName',
+        'importer_address' => 'setImporterAddress'
     ];
 
     /**
@@ -126,9 +149,15 @@ class WhatsappMessageTemplate implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $getters = [
+        'retailer_id' => 'getRetailerId',
         'name' => 'getName',
-        'language' => 'getLanguage',
-        'components' => 'getComponents'
+        'image' => 'getImage',
+        'amount' => 'getAmount',
+        'sale_amount' => 'getSaleAmount',
+        'quantity' => 'getQuantity',
+        'country_of_origin' => 'getCountryOfOrigin',
+        'importer_name' => 'getImporterName',
+        'importer_address' => 'getImporterAddress'
     ];
 
     /**
@@ -188,9 +217,15 @@ class WhatsappMessageTemplate implements ModelInterface, ArrayAccess, \JsonSeria
      */
     public function __construct(array $data = null)
     {
+        $this->container['retailer_id'] = $data['retailer_id'] ?? null;
         $this->container['name'] = $data['name'] ?? null;
-        $this->container['language'] = $data['language'] ?? null;
-        $this->container['components'] = $data['components'] ?? null;
+        $this->container['image'] = $data['image'] ?? null;
+        $this->container['amount'] = $data['amount'] ?? null;
+        $this->container['sale_amount'] = $data['sale_amount'] ?? null;
+        $this->container['quantity'] = $data['quantity'] ?? null;
+        $this->container['country_of_origin'] = $data['country_of_origin'] ?? null;
+        $this->container['importer_name'] = $data['importer_name'] ?? null;
+        $this->container['importer_address'] = $data['importer_address'] ?? null;
     }
 
     /**
@@ -205,8 +240,15 @@ class WhatsappMessageTemplate implements ModelInterface, ArrayAccess, \JsonSeria
         if ($this->container['name'] === null) {
             $invalidProperties[] = "'name' can't be null";
         }
-        if ($this->container['language'] === null) {
-            $invalidProperties[] = "'language' can't be null";
+        if ((mb_strlen($this->container['name']) > 60)) {
+            $invalidProperties[] = "invalid value for 'name', the character length must be smaller than or equal to 60.";
+        }
+
+        if ($this->container['amount'] === null) {
+            $invalidProperties[] = "'amount' can't be null";
+        }
+        if ($this->container['quantity'] === null) {
+            $invalidProperties[] = "'quantity' can't be null";
         }
         return $invalidProperties;
     }
@@ -224,6 +266,30 @@ class WhatsappMessageTemplate implements ModelInterface, ArrayAccess, \JsonSeria
 
 
     /**
+     * Gets retailer_id
+     *
+     * @return string|null
+     */
+    public function getRetailerId()
+    {
+        return $this->container['retailer_id'];
+    }
+
+    /**
+     * Sets retailer_id
+     *
+     * @param string|null $retailer_id Content ID for an item in the order from your catalog.
+     *
+     * @return self
+     */
+    public function setRetailerId($retailer_id)
+    {
+        $this->container['retailer_id'] = $retailer_id;
+
+        return $this;
+    }
+
+    /**
      * Gets name
      *
      * @return string
@@ -236,61 +302,185 @@ class WhatsappMessageTemplate implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets name
      *
-     * @param string $name Name of the template.
+     * @param string $name The item's name to be displayed to the user. Cannot exceed 60 characters.
      *
      * @return self
      */
     public function setName($name)
     {
+        if ((mb_strlen($name) > 60)) {
+            throw new \InvalidArgumentException('invalid length for $name when calling WhatsappMessageOrderItem., must be smaller than or equal to 60.');
+        }
+
         $this->container['name'] = $name;
 
         return $this;
     }
 
     /**
-     * Gets language
+     * Gets image
      *
-     * @return \YCloud\Client\Model\WhatsappMessageTemplateLanguage
+     * @return \YCloud\Client\Model\WhatsappMessageMedia|null
      */
-    public function getLanguage()
+    public function getImage()
     {
-        return $this->container['language'];
+        return $this->container['image'];
     }
 
     /**
-     * Sets language
+     * Sets image
      *
-     * @param \YCloud\Client\Model\WhatsappMessageTemplateLanguage $language language
+     * @param \YCloud\Client\Model\WhatsappMessageMedia|null $image image
      *
      * @return self
      */
-    public function setLanguage($language)
+    public function setImage($image)
     {
-        $this->container['language'] = $language;
+        $this->container['image'] = $image;
 
         return $this;
     }
 
     /**
-     * Gets components
+     * Gets amount
      *
-     * @return \YCloud\Client\Model\WhatsappMessageTemplateComponent[]|null
+     * @return \YCloud\Client\Model\WhatsappMessageOrderAmount
      */
-    public function getComponents()
+    public function getAmount()
     {
-        return $this->container['components'];
+        return $this->container['amount'];
     }
 
     /**
-     * Sets components
+     * Sets amount
      *
-     * @param \YCloud\Client\Model\WhatsappMessageTemplateComponent[]|null $components **Required when the specified template contains variables or media.** Array of component objects containing the parameters of the message.
+     * @param \YCloud\Client\Model\WhatsappMessageOrderAmount $amount amount
      *
      * @return self
      */
-    public function setComponents($components)
+    public function setAmount($amount)
     {
-        $this->container['components'] = $components;
+        $this->container['amount'] = $amount;
+
+        return $this;
+    }
+
+    /**
+     * Gets sale_amount
+     *
+     * @return \YCloud\Client\Model\WhatsappMessageOrderAmount|null
+     */
+    public function getSaleAmount()
+    {
+        return $this->container['sale_amount'];
+    }
+
+    /**
+     * Sets sale_amount
+     *
+     * @param \YCloud\Client\Model\WhatsappMessageOrderAmount|null $sale_amount sale_amount
+     *
+     * @return self
+     */
+    public function setSaleAmount($sale_amount)
+    {
+        $this->container['sale_amount'] = $sale_amount;
+
+        return $this;
+    }
+
+    /**
+     * Gets quantity
+     *
+     * @return int
+     */
+    public function getQuantity()
+    {
+        return $this->container['quantity'];
+    }
+
+    /**
+     * Sets quantity
+     *
+     * @param int $quantity The number of items in the order.
+     *
+     * @return self
+     */
+    public function setQuantity($quantity)
+    {
+        $this->container['quantity'] = $quantity;
+
+        return $this;
+    }
+
+    /**
+     * Gets country_of_origin
+     *
+     * @return string|null
+     */
+    public function getCountryOfOrigin()
+    {
+        return $this->container['country_of_origin'];
+    }
+
+    /**
+     * Sets country_of_origin
+     *
+     * @param string|null $country_of_origin Required if `catalog_id` is not present. The country of origin of the product.
+     *
+     * @return self
+     */
+    public function setCountryOfOrigin($country_of_origin)
+    {
+        $this->container['country_of_origin'] = $country_of_origin;
+
+        return $this;
+    }
+
+    /**
+     * Gets importer_name
+     *
+     * @return string|null
+     */
+    public function getImporterName()
+    {
+        return $this->container['importer_name'];
+    }
+
+    /**
+     * Sets importer_name
+     *
+     * @param string|null $importer_name Required if `catalog_id` is not present. Name of the importer company.
+     *
+     * @return self
+     */
+    public function setImporterName($importer_name)
+    {
+        $this->container['importer_name'] = $importer_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets importer_address
+     *
+     * @return string|null
+     */
+    public function getImporterAddress()
+    {
+        return $this->container['importer_address'];
+    }
+
+    /**
+     * Sets importer_address
+     *
+     * @param string|null $importer_address Required if `catalog_id` is not present. Address of importer company.
+     *
+     * @return self
+     */
+    public function setImporterAddress($importer_address)
+    {
+        $this->container['importer_address'] = $importer_address;
 
         return $this;
     }

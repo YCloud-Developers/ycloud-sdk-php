@@ -1,6 +1,6 @@
 <?php
 /**
- * WhatsappTemplateCreateRequest
+ * WhatsappMessageOrderBeneficiary
  *
  * PHP version 7.4
  *
@@ -33,16 +33,16 @@ use \ArrayAccess;
 use \YCloud\Client\ObjectSerializer;
 
 /**
- * WhatsappTemplateCreateRequest Class Doc Comment
+ * WhatsappMessageOrderBeneficiary Class Doc Comment
  *
  * @category Class
- * @description See [WhatsApp Templates](https://developers.facebook.com/docs/whatsapp/business-management-api/message-templates).
+ * @description A beneficiary is an intended recipient for shipping the physical goods in the order. Beneficiary information isn&#39;t shown to users but is needed for legal and compliance reasons.
  * @package  YCloud\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class WhatsappTemplateCreateRequest implements ModelInterface, ArrayAccess, \JsonSerializable
+class WhatsappMessageOrderBeneficiary implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +51,7 @@ class WhatsappTemplateCreateRequest implements ModelInterface, ArrayAccess, \Jso
       *
       * @var string
       */
-    protected static $openAPIModelName = 'WhatsappTemplateCreateRequest';
+    protected static $openAPIModelName = 'WhatsappMessageOrderBeneficiary';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,13 +59,13 @@ class WhatsappTemplateCreateRequest implements ModelInterface, ArrayAccess, \Jso
       * @var string[]
       */
     protected static $openAPITypes = [
-        'waba_id' => 'string',
         'name' => 'string',
-        'language' => 'string',
-        'category' => '\YCloud\Client\Model\WhatsappTemplateCategory',
-        'sub_category' => '\YCloud\Client\Model\WhatsappTemplateSubCategory',
-        'message_send_ttl_seconds' => 'int',
-        'components' => '\YCloud\Client\Model\WhatsappTemplateComponent[]'
+        'address_line1' => 'string',
+        'address_line2' => 'string',
+        'city' => 'string',
+        'state' => 'string',
+        'country' => 'string',
+        'postal_code' => 'string'
     ];
 
     /**
@@ -76,13 +76,13 @@ class WhatsappTemplateCreateRequest implements ModelInterface, ArrayAccess, \Jso
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'waba_id' => null,
         'name' => null,
-        'language' => null,
-        'category' => null,
-        'sub_category' => null,
-        'message_send_ttl_seconds' => 'int32',
-        'components' => null
+        'address_line1' => null,
+        'address_line2' => null,
+        'city' => null,
+        'state' => null,
+        'country' => null,
+        'postal_code' => null
     ];
 
     /**
@@ -112,13 +112,13 @@ class WhatsappTemplateCreateRequest implements ModelInterface, ArrayAccess, \Jso
      * @var string[]
      */
     protected static $attributeMap = [
-        'waba_id' => 'wabaId',
         'name' => 'name',
-        'language' => 'language',
-        'category' => 'category',
-        'sub_category' => 'subCategory',
-        'message_send_ttl_seconds' => 'messageSendTtlSeconds',
-        'components' => 'components'
+        'address_line1' => 'address_line1',
+        'address_line2' => 'address_line2',
+        'city' => 'city',
+        'state' => 'state',
+        'country' => 'country',
+        'postal_code' => 'postal_code'
     ];
 
     /**
@@ -127,13 +127,13 @@ class WhatsappTemplateCreateRequest implements ModelInterface, ArrayAccess, \Jso
      * @var string[]
      */
     protected static $setters = [
-        'waba_id' => 'setWabaId',
         'name' => 'setName',
-        'language' => 'setLanguage',
-        'category' => 'setCategory',
-        'sub_category' => 'setSubCategory',
-        'message_send_ttl_seconds' => 'setMessageSendTtlSeconds',
-        'components' => 'setComponents'
+        'address_line1' => 'setAddressLine1',
+        'address_line2' => 'setAddressLine2',
+        'city' => 'setCity',
+        'state' => 'setState',
+        'country' => 'setCountry',
+        'postal_code' => 'setPostalCode'
     ];
 
     /**
@@ -142,13 +142,13 @@ class WhatsappTemplateCreateRequest implements ModelInterface, ArrayAccess, \Jso
      * @var string[]
      */
     protected static $getters = [
-        'waba_id' => 'getWabaId',
         'name' => 'getName',
-        'language' => 'getLanguage',
-        'category' => 'getCategory',
-        'sub_category' => 'getSubCategory',
-        'message_send_ttl_seconds' => 'getMessageSendTtlSeconds',
-        'components' => 'getComponents'
+        'address_line1' => 'getAddressLine1',
+        'address_line2' => 'getAddressLine2',
+        'city' => 'getCity',
+        'state' => 'getState',
+        'country' => 'getCountry',
+        'postal_code' => 'getPostalCode'
     ];
 
     /**
@@ -208,13 +208,13 @@ class WhatsappTemplateCreateRequest implements ModelInterface, ArrayAccess, \Jso
      */
     public function __construct(array $data = null)
     {
-        $this->container['waba_id'] = $data['waba_id'] ?? null;
         $this->container['name'] = $data['name'] ?? null;
-        $this->container['language'] = $data['language'] ?? null;
-        $this->container['category'] = $data['category'] ?? null;
-        $this->container['sub_category'] = $data['sub_category'] ?? null;
-        $this->container['message_send_ttl_seconds'] = $data['message_send_ttl_seconds'] ?? null;
-        $this->container['components'] = $data['components'] ?? null;
+        $this->container['address_line1'] = $data['address_line1'] ?? null;
+        $this->container['address_line2'] = $data['address_line2'] ?? null;
+        $this->container['city'] = $data['city'] ?? null;
+        $this->container['state'] = $data['state'] ?? null;
+        $this->container['country'] = $data['country'] ?? null;
+        $this->container['postal_code'] = $data['postal_code'] ?? null;
     }
 
     /**
@@ -226,29 +226,44 @@ class WhatsappTemplateCreateRequest implements ModelInterface, ArrayAccess, \Jso
     {
         $invalidProperties = [];
 
-        if ($this->container['waba_id'] === null) {
-            $invalidProperties[] = "'waba_id' can't be null";
-        }
         if ($this->container['name'] === null) {
             $invalidProperties[] = "'name' can't be null";
         }
-        if ((mb_strlen($this->container['name']) > 512)) {
-            $invalidProperties[] = "invalid value for 'name', the character length must be smaller than or equal to 512.";
+        if ((mb_strlen($this->container['name']) > 200)) {
+            $invalidProperties[] = "invalid value for 'name', the character length must be smaller than or equal to 200.";
         }
 
-        if (!preg_match("/[a-z0-9]{1,512}/", $this->container['name'])) {
-            $invalidProperties[] = "invalid value for 'name', must be conform to the pattern /[a-z0-9]{1,512}/.";
+        if ($this->container['address_line1'] === null) {
+            $invalidProperties[] = "'address_line1' can't be null";
+        }
+        if ((mb_strlen($this->container['address_line1']) > 100)) {
+            $invalidProperties[] = "invalid value for 'address_line1', the character length must be smaller than or equal to 100.";
         }
 
-        if ($this->container['language'] === null) {
-            $invalidProperties[] = "'language' can't be null";
+        if (!is_null($this->container['address_line2']) && (mb_strlen($this->container['address_line2']) > 100)) {
+            $invalidProperties[] = "invalid value for 'address_line2', the character length must be smaller than or equal to 100.";
         }
-        if ($this->container['category'] === null) {
-            $invalidProperties[] = "'category' can't be null";
+
+        if ($this->container['city'] === null) {
+            $invalidProperties[] = "'city' can't be null";
         }
-        if ($this->container['components'] === null) {
-            $invalidProperties[] = "'components' can't be null";
+        if ($this->container['state'] === null) {
+            $invalidProperties[] = "'state' can't be null";
         }
+        if ($this->container['country'] === null) {
+            $invalidProperties[] = "'country' can't be null";
+        }
+        if ($this->container['postal_code'] === null) {
+            $invalidProperties[] = "'postal_code' can't be null";
+        }
+        if ((mb_strlen($this->container['postal_code']) > 6)) {
+            $invalidProperties[] = "invalid value for 'postal_code', the character length must be smaller than or equal to 6.";
+        }
+
+        if ((mb_strlen($this->container['postal_code']) < 6)) {
+            $invalidProperties[] = "invalid value for 'postal_code', the character length must be bigger than or equal to 6.";
+        }
+
         return $invalidProperties;
     }
 
@@ -265,30 +280,6 @@ class WhatsappTemplateCreateRequest implements ModelInterface, ArrayAccess, \Jso
 
 
     /**
-     * Gets waba_id
-     *
-     * @return string
-     */
-    public function getWabaId()
-    {
-        return $this->container['waba_id'];
-    }
-
-    /**
-     * Sets waba_id
-     *
-     * @param string $waba_id WhatsApp Business Account ID.
-     *
-     * @return self
-     */
-    public function setWabaId($waba_id)
-    {
-        $this->container['waba_id'] = $waba_id;
-
-        return $this;
-    }
-
-    /**
      * Gets name
      *
      * @return string
@@ -301,17 +292,14 @@ class WhatsappTemplateCreateRequest implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets name
      *
-     * @param string $name Name of the template.
+     * @param string $name Name of the individual or business receiving the physical goods. Cannot exceed 200 characters.
      *
      * @return self
      */
     public function setName($name)
     {
-        if ((mb_strlen($name) > 512)) {
-            throw new \InvalidArgumentException('invalid length for $name when calling WhatsappTemplateCreateRequest., must be smaller than or equal to 512.');
-        }
-        if ((!preg_match("/[a-z0-9]{1,512}/", $name))) {
-            throw new \InvalidArgumentException("invalid value for \$name when calling WhatsappTemplateCreateRequest., must conform to the pattern /[a-z0-9]{1,512}/.");
+        if ((mb_strlen($name) > 200)) {
+            throw new \InvalidArgumentException('invalid length for $name when calling WhatsappMessageOrderBeneficiary., must be smaller than or equal to 200.');
         }
 
         $this->container['name'] = $name;
@@ -320,121 +308,160 @@ class WhatsappTemplateCreateRequest implements ModelInterface, ArrayAccess, \Jso
     }
 
     /**
-     * Gets language
+     * Gets address_line1
      *
      * @return string
      */
-    public function getLanguage()
+    public function getAddressLine1()
     {
-        return $this->container['language'];
+        return $this->container['address_line1'];
     }
 
     /**
-     * Sets language
+     * Sets address_line1
      *
-     * @param string $language Language code of the template. See [Supported Languages](https://developers.facebook.com/docs/whatsapp/api/messages/message-templates#supported-languages) for all codes.
+     * @param string $address_line1 Shipping address (Door/Tower Number, Street Name etc.). Cannot exceed 100 characters.
      *
      * @return self
      */
-    public function setLanguage($language)
+    public function setAddressLine1($address_line1)
     {
-        $this->container['language'] = $language;
+        if ((mb_strlen($address_line1) > 100)) {
+            throw new \InvalidArgumentException('invalid length for $address_line1 when calling WhatsappMessageOrderBeneficiary., must be smaller than or equal to 100.');
+        }
+
+        $this->container['address_line1'] = $address_line1;
 
         return $this;
     }
 
     /**
-     * Gets category
+     * Gets address_line2
      *
-     * @return \YCloud\Client\Model\WhatsappTemplateCategory
+     * @return string|null
      */
-    public function getCategory()
+    public function getAddressLine2()
     {
-        return $this->container['category'];
+        return $this->container['address_line2'];
     }
 
     /**
-     * Sets category
+     * Sets address_line2
      *
-     * @param \YCloud\Client\Model\WhatsappTemplateCategory $category category
+     * @param string|null $address_line2 Shipping address (Landmark, Area, etc.). Cannot exceed 100 characters.
      *
      * @return self
      */
-    public function setCategory($category)
+    public function setAddressLine2($address_line2)
     {
-        $this->container['category'] = $category;
+        if (!is_null($address_line2) && (mb_strlen($address_line2) > 100)) {
+            throw new \InvalidArgumentException('invalid length for $address_line2 when calling WhatsappMessageOrderBeneficiary., must be smaller than or equal to 100.');
+        }
+
+        $this->container['address_line2'] = $address_line2;
 
         return $this;
     }
 
     /**
-     * Gets sub_category
+     * Gets city
      *
-     * @return \YCloud\Client\Model\WhatsappTemplateSubCategory|null
+     * @return string
      */
-    public function getSubCategory()
+    public function getCity()
     {
-        return $this->container['sub_category'];
+        return $this->container['city'];
     }
 
     /**
-     * Sets sub_category
+     * Sets city
      *
-     * @param \YCloud\Client\Model\WhatsappTemplateSubCategory|null $sub_category sub_category
+     * @param string $city Name of the city.
      *
      * @return self
      */
-    public function setSubCategory($sub_category)
+    public function setCity($city)
     {
-        $this->container['sub_category'] = $sub_category;
+        $this->container['city'] = $city;
 
         return $this;
     }
 
     /**
-     * Gets message_send_ttl_seconds
+     * Gets state
      *
-     * @return int|null
+     * @return string
      */
-    public function getMessageSendTtlSeconds()
+    public function getState()
     {
-        return $this->container['message_send_ttl_seconds'];
+        return $this->container['state'];
     }
 
     /**
-     * Sets message_send_ttl_seconds
+     * Sets state
      *
-     * @param int|null $message_send_ttl_seconds **Use only for template category is `AUTHENTICATION` or `UTILITY`.** If we are unable to deliver a message for an amount of time that exceeds its time-to-live, we will stop retrying and drop the message. By default, messages that use an authentication template have a default TTL of **10 minutes**, and messages that use a utility template have a default TTL of **30 days**. Set its value between `60` and `600` seconds (i.e., 1 to 10 minutes) for authentication templates, or `60` and `3600` seconds (i.e., 1 to 60 minutes) for utility templates. Alternatively, you can set this value to `-1`, which will set a custom TTL of 30 days for either type of template. We encourage you to set a time-to-live for all of your authentication templates, preferably equal to or less than your code expiration time, to ensure your customers only get a message when a code is still usable. Authentication templates created before October 23, 2024, have a default TTL of 30 days.
+     * @param string $state Name of the state.
      *
      * @return self
      */
-    public function setMessageSendTtlSeconds($message_send_ttl_seconds)
+    public function setState($state)
     {
-        $this->container['message_send_ttl_seconds'] = $message_send_ttl_seconds;
+        $this->container['state'] = $state;
 
         return $this;
     }
 
     /**
-     * Gets components
+     * Gets country
      *
-     * @return \YCloud\Client\Model\WhatsappTemplateComponent[]
+     * @return string
      */
-    public function getComponents()
+    public function getCountry()
     {
-        return $this->container['components'];
+        return $this->container['country'];
     }
 
     /**
-     * Sets components
+     * Sets country
      *
-     * @param \YCloud\Client\Model\WhatsappTemplateComponent[] $components components
+     * @param string $country Name of the country. Currently the only supported value is `India`.
      *
      * @return self
      */
-    public function setComponents($components)
+    public function setCountry($country)
     {
-        $this->container['components'] = $components;
+        $this->container['country'] = $country;
+
+        return $this;
+    }
+
+    /**
+     * Gets postal_code
+     *
+     * @return string
+     */
+    public function getPostalCode()
+    {
+        return $this->container['postal_code'];
+    }
+
+    /**
+     * Sets postal_code
+     *
+     * @param string $postal_code 6-digit zipcode of shipping address.
+     *
+     * @return self
+     */
+    public function setPostalCode($postal_code)
+    {
+        if ((mb_strlen($postal_code) > 6)) {
+            throw new \InvalidArgumentException('invalid length for $postal_code when calling WhatsappMessageOrderBeneficiary., must be smaller than or equal to 6.');
+        }
+        if ((mb_strlen($postal_code) < 6)) {
+            throw new \InvalidArgumentException('invalid length for $postal_code when calling WhatsappMessageOrderBeneficiary., must be bigger than or equal to 6.');
+        }
+
+        $this->container['postal_code'] = $postal_code;
 
         return $this;
     }

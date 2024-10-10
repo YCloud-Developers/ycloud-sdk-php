@@ -1,6 +1,6 @@
 <?php
 /**
- * WhatsappMessageInteractive
+ * WhatsappPayment
  *
  * PHP version 7.4
  *
@@ -33,16 +33,16 @@ use \ArrayAccess;
 use \YCloud\Client\ObjectSerializer;
 
 /**
- * WhatsappMessageInteractive Class Doc Comment
+ * WhatsappPayment Class Doc Comment
  *
  * @category Class
- * @description Use for &#x60;interactive&#x60; messages.
+ * @description Represents a payment object. Businesses receive updates via webhooks when the status of the user-initiated transaction changes.
  * @package  YCloud\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class WhatsappMessageInteractive implements ModelInterface, ArrayAccess, \JsonSerializable
+class WhatsappPayment implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +51,7 @@ class WhatsappMessageInteractive implements ModelInterface, ArrayAccess, \JsonSe
       *
       * @var string
       */
-    protected static $openAPIModelName = 'WhatsappMessageInteractive';
+    protected static $openAPIModelName = 'WhatsappPayment';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,11 +59,10 @@ class WhatsappMessageInteractive implements ModelInterface, ArrayAccess, \JsonSe
       * @var string[]
       */
     protected static $openAPITypes = [
-        'type' => 'string',
-        'action' => '\YCloud\Client\Model\WhatsappMessageInteractiveAction',
-        'body' => '\YCloud\Client\Model\WhatsappMessageInteractiveBody',
-        'header' => '\YCloud\Client\Model\WhatsappMessageInteractiveHeader',
-        'footer' => '\YCloud\Client\Model\WhatsappMessageInteractiveFooter'
+        'waba_id' => 'string',
+        'reference_id' => 'string',
+        'status' => '\YCloud\Client\Model\WhatsappPaymentStatus',
+        'transactions' => '\YCloud\Client\Model\WhatsappPaymentTransaction[]'
     ];
 
     /**
@@ -74,11 +73,10 @@ class WhatsappMessageInteractive implements ModelInterface, ArrayAccess, \JsonSe
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'type' => null,
-        'action' => null,
-        'body' => null,
-        'header' => null,
-        'footer' => null
+        'waba_id' => null,
+        'reference_id' => null,
+        'status' => null,
+        'transactions' => null
     ];
 
     /**
@@ -108,11 +106,10 @@ class WhatsappMessageInteractive implements ModelInterface, ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static $attributeMap = [
-        'type' => 'type',
-        'action' => 'action',
-        'body' => 'body',
-        'header' => 'header',
-        'footer' => 'footer'
+        'waba_id' => 'wabaId',
+        'reference_id' => 'referenceId',
+        'status' => 'status',
+        'transactions' => 'transactions'
     ];
 
     /**
@@ -121,11 +118,10 @@ class WhatsappMessageInteractive implements ModelInterface, ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static $setters = [
-        'type' => 'setType',
-        'action' => 'setAction',
-        'body' => 'setBody',
-        'header' => 'setHeader',
-        'footer' => 'setFooter'
+        'waba_id' => 'setWabaId',
+        'reference_id' => 'setReferenceId',
+        'status' => 'setStatus',
+        'transactions' => 'setTransactions'
     ];
 
     /**
@@ -134,11 +130,10 @@ class WhatsappMessageInteractive implements ModelInterface, ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static $getters = [
-        'type' => 'getType',
-        'action' => 'getAction',
-        'body' => 'getBody',
-        'header' => 'getHeader',
-        'footer' => 'getFooter'
+        'waba_id' => 'getWabaId',
+        'reference_id' => 'getReferenceId',
+        'status' => 'getStatus',
+        'transactions' => 'getTransactions'
     ];
 
     /**
@@ -182,35 +177,6 @@ class WhatsappMessageInteractive implements ModelInterface, ArrayAccess, \JsonSe
         return self::$openAPIModelName;
     }
 
-    public const TYPE_BUTTON = 'button';
-    public const TYPE__LIST = 'list';
-    public const TYPE_CTA_URL = 'cta_url';
-    public const TYPE_PRODUCT = 'product';
-    public const TYPE_PRODUCT_LIST = 'product_list';
-    public const TYPE_CATALOG_MESSAGE = 'catalog_message';
-    public const TYPE_LOCATION_REQUEST_MESSAGE = 'location_request_message';
-    public const TYPE_ORDER_DETAILS = 'order_details';
-    public const TYPE_ORDER_STATUS = 'order_status';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getTypeAllowableValues()
-    {
-        return [
-            self::TYPE_BUTTON,
-            self::TYPE__LIST,
-            self::TYPE_CTA_URL,
-            self::TYPE_PRODUCT,
-            self::TYPE_PRODUCT_LIST,
-            self::TYPE_CATALOG_MESSAGE,
-            self::TYPE_LOCATION_REQUEST_MESSAGE,
-            self::TYPE_ORDER_DETAILS,
-            self::TYPE_ORDER_STATUS,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -227,11 +193,10 @@ class WhatsappMessageInteractive implements ModelInterface, ArrayAccess, \JsonSe
      */
     public function __construct(array $data = null)
     {
-        $this->container['type'] = $data['type'] ?? null;
-        $this->container['action'] = $data['action'] ?? null;
-        $this->container['body'] = $data['body'] ?? null;
-        $this->container['header'] = $data['header'] ?? null;
-        $this->container['footer'] = $data['footer'] ?? null;
+        $this->container['waba_id'] = $data['waba_id'] ?? null;
+        $this->container['reference_id'] = $data['reference_id'] ?? null;
+        $this->container['status'] = $data['status'] ?? null;
+        $this->container['transactions'] = $data['transactions'] ?? null;
     }
 
     /**
@@ -243,15 +208,15 @@ class WhatsappMessageInteractive implements ModelInterface, ArrayAccess, \JsonSe
     {
         $invalidProperties = [];
 
-        $allowedValues = $this->getTypeAllowableValues();
-        if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'type', must be one of '%s'",
-                $this->container['type'],
-                implode("', '", $allowedValues)
-            );
+        if ($this->container['waba_id'] === null) {
+            $invalidProperties[] = "'waba_id' can't be null";
         }
-
+        if ($this->container['reference_id'] === null) {
+            $invalidProperties[] = "'reference_id' can't be null";
+        }
+        if ($this->container['status'] === null) {
+            $invalidProperties[] = "'status' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -268,131 +233,97 @@ class WhatsappMessageInteractive implements ModelInterface, ArrayAccess, \JsonSe
 
 
     /**
-     * Gets type
+     * Gets waba_id
      *
-     * @return string|null
+     * @return string
      */
-    public function getType()
+    public function getWabaId()
     {
-        return $this->container['type'];
+        return $this->container['waba_id'];
     }
 
     /**
-     * Sets type
+     * Sets waba_id
      *
-     * @param string|null $type **Required.** The type of interactive message you want to send. - `button`: Use for Reply Buttons. - `list`: Use for List Messages. - `cta_url`: Use for Call-To-Action (CTA) URL Button Messages. - `product`: Use for Single Product Messages. - `product_list`: Use for Multi-Product Messages. - `catalog_message`: Use for Catalog Messages. - `location_request_message`: Use for Location Request Messages. - `order_details`: Use for Order Details Messages. - `order_status`: Use for Order Status Messages.
+     * @param string $waba_id WhatsApp Business Account ID.
      *
      * @return self
      */
-    public function setType($type)
+    public function setWabaId($waba_id)
     {
-        $allowedValues = $this->getTypeAllowableValues();
-        if (!is_null($type) && !in_array($type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'type', must be one of '%s'",
-                    $type,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['type'] = $type;
+        $this->container['waba_id'] = $waba_id;
 
         return $this;
     }
 
     /**
-     * Gets action
+     * Gets reference_id
      *
-     * @return \YCloud\Client\Model\WhatsappMessageInteractiveAction|null
+     * @return string
      */
-    public function getAction()
+    public function getReferenceId()
     {
-        return $this->container['action'];
+        return $this->container['reference_id'];
     }
 
     /**
-     * Sets action
+     * Sets reference_id
      *
-     * @param \YCloud\Client\Model\WhatsappMessageInteractiveAction|null $action action
+     * @param string $reference_id Unique identifier for the payment provided by the business. It is case sensitive and cannot be an empty string and can only contain English letters, numbers, underscores, dashes, or dots, and should not exceed 35 characters.
      *
      * @return self
      */
-    public function setAction($action)
+    public function setReferenceId($reference_id)
     {
-        $this->container['action'] = $action;
+        $this->container['reference_id'] = $reference_id;
 
         return $this;
     }
 
     /**
-     * Gets body
+     * Gets status
      *
-     * @return \YCloud\Client\Model\WhatsappMessageInteractiveBody|null
+     * @return \YCloud\Client\Model\WhatsappPaymentStatus
      */
-    public function getBody()
+    public function getStatus()
     {
-        return $this->container['body'];
+        return $this->container['status'];
     }
 
     /**
-     * Sets body
+     * Sets status
      *
-     * @param \YCloud\Client\Model\WhatsappMessageInteractiveBody|null $body body
+     * @param \YCloud\Client\Model\WhatsappPaymentStatus $status status
      *
      * @return self
      */
-    public function setBody($body)
+    public function setStatus($status)
     {
-        $this->container['body'] = $body;
+        $this->container['status'] = $status;
 
         return $this;
     }
 
     /**
-     * Gets header
+     * Gets transactions
      *
-     * @return \YCloud\Client\Model\WhatsappMessageInteractiveHeader|null
+     * @return \YCloud\Client\Model\WhatsappPaymentTransaction[]|null
      */
-    public function getHeader()
+    public function getTransactions()
     {
-        return $this->container['header'];
+        return $this->container['transactions'];
     }
 
     /**
-     * Sets header
+     * Sets transactions
      *
-     * @param \YCloud\Client\Model\WhatsappMessageInteractiveHeader|null $header header
+     * @param \YCloud\Client\Model\WhatsappPaymentTransaction[]|null $transactions Contains the latest transaction attempt for this payment.
      *
      * @return self
      */
-    public function setHeader($header)
+    public function setTransactions($transactions)
     {
-        $this->container['header'] = $header;
-
-        return $this;
-    }
-
-    /**
-     * Gets footer
-     *
-     * @return \YCloud\Client\Model\WhatsappMessageInteractiveFooter|null
-     */
-    public function getFooter()
-    {
-        return $this->container['footer'];
-    }
-
-    /**
-     * Sets footer
-     *
-     * @param \YCloud\Client\Model\WhatsappMessageInteractiveFooter|null $footer footer
-     *
-     * @return self
-     */
-    public function setFooter($footer)
-    {
-        $this->container['footer'] = $footer;
+        $this->container['transactions'] = $transactions;
 
         return $this;
     }

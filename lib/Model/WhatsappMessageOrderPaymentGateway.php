@@ -1,6 +1,6 @@
 <?php
 /**
- * WhatsappMessageInteractive
+ * WhatsappMessageOrderPaymentGateway
  *
  * PHP version 7.4
  *
@@ -33,16 +33,16 @@ use \ArrayAccess;
 use \YCloud\Client\ObjectSerializer;
 
 /**
- * WhatsappMessageInteractive Class Doc Comment
+ * WhatsappMessageOrderPaymentGateway Class Doc Comment
  *
  * @category Class
- * @description Use for &#x60;interactive&#x60; messages.
+ * @description An object that describes payment account information.
  * @package  YCloud\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class WhatsappMessageInteractive implements ModelInterface, ArrayAccess, \JsonSerializable
+class WhatsappMessageOrderPaymentGateway implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +51,7 @@ class WhatsappMessageInteractive implements ModelInterface, ArrayAccess, \JsonSe
       *
       * @var string
       */
-    protected static $openAPIModelName = 'WhatsappMessageInteractive';
+    protected static $openAPIModelName = 'WhatsappMessageOrderPaymentGateway';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -60,10 +60,11 @@ class WhatsappMessageInteractive implements ModelInterface, ArrayAccess, \JsonSe
       */
     protected static $openAPITypes = [
         'type' => 'string',
-        'action' => '\YCloud\Client\Model\WhatsappMessageInteractiveAction',
-        'body' => '\YCloud\Client\Model\WhatsappMessageInteractiveBody',
-        'header' => '\YCloud\Client\Model\WhatsappMessageInteractiveHeader',
-        'footer' => '\YCloud\Client\Model\WhatsappMessageInteractiveFooter'
+        'configuration_name' => 'string',
+        'billdesk' => '\YCloud\Client\Model\WhatsappMessageOrderPaymentSettingPaymentGatewayBilldesk',
+        'payu' => '\YCloud\Client\Model\WhatsappMessageOrderPaymentSettingPaymentGatewayPayu',
+        'razorpay' => '\YCloud\Client\Model\WhatsappMessageOrderPaymentSettingPaymentGatewayRazorpay',
+        'zaakpay' => '\YCloud\Client\Model\WhatsappMessageOrderPaymentSettingPaymentGatewayZaakpay'
     ];
 
     /**
@@ -75,10 +76,11 @@ class WhatsappMessageInteractive implements ModelInterface, ArrayAccess, \JsonSe
       */
     protected static $openAPIFormats = [
         'type' => null,
-        'action' => null,
-        'body' => null,
-        'header' => null,
-        'footer' => null
+        'configuration_name' => null,
+        'billdesk' => null,
+        'payu' => null,
+        'razorpay' => null,
+        'zaakpay' => null
     ];
 
     /**
@@ -109,10 +111,11 @@ class WhatsappMessageInteractive implements ModelInterface, ArrayAccess, \JsonSe
      */
     protected static $attributeMap = [
         'type' => 'type',
-        'action' => 'action',
-        'body' => 'body',
-        'header' => 'header',
-        'footer' => 'footer'
+        'configuration_name' => 'configuration_name',
+        'billdesk' => 'billdesk',
+        'payu' => 'payu',
+        'razorpay' => 'razorpay',
+        'zaakpay' => 'zaakpay'
     ];
 
     /**
@@ -122,10 +125,11 @@ class WhatsappMessageInteractive implements ModelInterface, ArrayAccess, \JsonSe
      */
     protected static $setters = [
         'type' => 'setType',
-        'action' => 'setAction',
-        'body' => 'setBody',
-        'header' => 'setHeader',
-        'footer' => 'setFooter'
+        'configuration_name' => 'setConfigurationName',
+        'billdesk' => 'setBilldesk',
+        'payu' => 'setPayu',
+        'razorpay' => 'setRazorpay',
+        'zaakpay' => 'setZaakpay'
     ];
 
     /**
@@ -135,10 +139,11 @@ class WhatsappMessageInteractive implements ModelInterface, ArrayAccess, \JsonSe
      */
     protected static $getters = [
         'type' => 'getType',
-        'action' => 'getAction',
-        'body' => 'getBody',
-        'header' => 'getHeader',
-        'footer' => 'getFooter'
+        'configuration_name' => 'getConfigurationName',
+        'billdesk' => 'getBilldesk',
+        'payu' => 'getPayu',
+        'razorpay' => 'getRazorpay',
+        'zaakpay' => 'getZaakpay'
     ];
 
     /**
@@ -182,15 +187,10 @@ class WhatsappMessageInteractive implements ModelInterface, ArrayAccess, \JsonSe
         return self::$openAPIModelName;
     }
 
-    public const TYPE_BUTTON = 'button';
-    public const TYPE__LIST = 'list';
-    public const TYPE_CTA_URL = 'cta_url';
-    public const TYPE_PRODUCT = 'product';
-    public const TYPE_PRODUCT_LIST = 'product_list';
-    public const TYPE_CATALOG_MESSAGE = 'catalog_message';
-    public const TYPE_LOCATION_REQUEST_MESSAGE = 'location_request_message';
-    public const TYPE_ORDER_DETAILS = 'order_details';
-    public const TYPE_ORDER_STATUS = 'order_status';
+    public const TYPE_BILLDESK = 'billdesk';
+    public const TYPE_RAZORPAY = 'razorpay';
+    public const TYPE_PAYU = 'payu';
+    public const TYPE_ZAAKPAY = 'zaakpay';
 
     /**
      * Gets allowable values of the enum
@@ -200,15 +200,10 @@ class WhatsappMessageInteractive implements ModelInterface, ArrayAccess, \JsonSe
     public function getTypeAllowableValues()
     {
         return [
-            self::TYPE_BUTTON,
-            self::TYPE__LIST,
-            self::TYPE_CTA_URL,
-            self::TYPE_PRODUCT,
-            self::TYPE_PRODUCT_LIST,
-            self::TYPE_CATALOG_MESSAGE,
-            self::TYPE_LOCATION_REQUEST_MESSAGE,
-            self::TYPE_ORDER_DETAILS,
-            self::TYPE_ORDER_STATUS,
+            self::TYPE_BILLDESK,
+            self::TYPE_RAZORPAY,
+            self::TYPE_PAYU,
+            self::TYPE_ZAAKPAY,
         ];
     }
 
@@ -228,10 +223,11 @@ class WhatsappMessageInteractive implements ModelInterface, ArrayAccess, \JsonSe
     public function __construct(array $data = null)
     {
         $this->container['type'] = $data['type'] ?? null;
-        $this->container['action'] = $data['action'] ?? null;
-        $this->container['body'] = $data['body'] ?? null;
-        $this->container['header'] = $data['header'] ?? null;
-        $this->container['footer'] = $data['footer'] ?? null;
+        $this->container['configuration_name'] = $data['configuration_name'] ?? null;
+        $this->container['billdesk'] = $data['billdesk'] ?? null;
+        $this->container['payu'] = $data['payu'] ?? null;
+        $this->container['razorpay'] = $data['razorpay'] ?? null;
+        $this->container['zaakpay'] = $data['zaakpay'] ?? null;
     }
 
     /**
@@ -243,6 +239,9 @@ class WhatsappMessageInteractive implements ModelInterface, ArrayAccess, \JsonSe
     {
         $invalidProperties = [];
 
+        if ($this->container['type'] === null) {
+            $invalidProperties[] = "'type' can't be null";
+        }
         $allowedValues = $this->getTypeAllowableValues();
         if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
@@ -250,6 +249,13 @@ class WhatsappMessageInteractive implements ModelInterface, ArrayAccess, \JsonSe
                 $this->container['type'],
                 implode("', '", $allowedValues)
             );
+        }
+
+        if ($this->container['configuration_name'] === null) {
+            $invalidProperties[] = "'configuration_name' can't be null";
+        }
+        if ((mb_strlen($this->container['configuration_name']) > 60)) {
+            $invalidProperties[] = "invalid value for 'configuration_name', the character length must be smaller than or equal to 60.";
         }
 
         return $invalidProperties;
@@ -270,7 +276,7 @@ class WhatsappMessageInteractive implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Gets type
      *
-     * @return string|null
+     * @return string
      */
     public function getType()
     {
@@ -280,14 +286,14 @@ class WhatsappMessageInteractive implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets type
      *
-     * @param string|null $type **Required.** The type of interactive message you want to send. - `button`: Use for Reply Buttons. - `list`: Use for List Messages. - `cta_url`: Use for Call-To-Action (CTA) URL Button Messages. - `product`: Use for Single Product Messages. - `product_list`: Use for Multi-Product Messages. - `catalog_message`: Use for Catalog Messages. - `location_request_message`: Use for Location Request Messages. - `order_details`: Use for Order Details Messages. - `order_status`: Use for Order Status Messages.
+     * @param string $type Payment type. Must set this to `billdesk`, `razorpay`, `payu`, or `zaakpay`, if you have linked your BillDesk, Razorpay, PayU, or Zaakpay payment gateway to accept payments.
      *
      * @return self
      */
     public function setType($type)
     {
         $allowedValues = $this->getTypeAllowableValues();
-        if (!is_null($type) && !in_array($type, $allowedValues, true)) {
+        if (!in_array($type, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
                     "Invalid value '%s' for 'type', must be one of '%s'",
@@ -302,97 +308,125 @@ class WhatsappMessageInteractive implements ModelInterface, ArrayAccess, \JsonSe
     }
 
     /**
-     * Gets action
+     * Gets configuration_name
      *
-     * @return \YCloud\Client\Model\WhatsappMessageInteractiveAction|null
+     * @return string
      */
-    public function getAction()
+    public function getConfigurationName()
     {
-        return $this->container['action'];
+        return $this->container['configuration_name'];
     }
 
     /**
-     * Sets action
+     * Sets configuration_name
      *
-     * @param \YCloud\Client\Model\WhatsappMessageInteractiveAction|null $action action
+     * @param string $configuration_name The name of the pre-configured payment configuration to use for this order and must not exceed 60 characters. This value must match with a payment configuration set up on the WhatsApp Business Manager.
      *
      * @return self
      */
-    public function setAction($action)
+    public function setConfigurationName($configuration_name)
     {
-        $this->container['action'] = $action;
+        if ((mb_strlen($configuration_name) > 60)) {
+            throw new \InvalidArgumentException('invalid length for $configuration_name when calling WhatsappMessageOrderPaymentGateway., must be smaller than or equal to 60.');
+        }
+
+        $this->container['configuration_name'] = $configuration_name;
 
         return $this;
     }
 
     /**
-     * Gets body
+     * Gets billdesk
      *
-     * @return \YCloud\Client\Model\WhatsappMessageInteractiveBody|null
+     * @return \YCloud\Client\Model\WhatsappMessageOrderPaymentSettingPaymentGatewayBilldesk|null
      */
-    public function getBody()
+    public function getBilldesk()
     {
-        return $this->container['body'];
+        return $this->container['billdesk'];
     }
 
     /**
-     * Sets body
+     * Sets billdesk
      *
-     * @param \YCloud\Client\Model\WhatsappMessageInteractiveBody|null $body body
+     * @param \YCloud\Client\Model\WhatsappMessageOrderPaymentSettingPaymentGatewayBilldesk|null $billdesk billdesk
      *
      * @return self
      */
-    public function setBody($body)
+    public function setBilldesk($billdesk)
     {
-        $this->container['body'] = $body;
+        $this->container['billdesk'] = $billdesk;
 
         return $this;
     }
 
     /**
-     * Gets header
+     * Gets payu
      *
-     * @return \YCloud\Client\Model\WhatsappMessageInteractiveHeader|null
+     * @return \YCloud\Client\Model\WhatsappMessageOrderPaymentSettingPaymentGatewayPayu|null
      */
-    public function getHeader()
+    public function getPayu()
     {
-        return $this->container['header'];
+        return $this->container['payu'];
     }
 
     /**
-     * Sets header
+     * Sets payu
      *
-     * @param \YCloud\Client\Model\WhatsappMessageInteractiveHeader|null $header header
+     * @param \YCloud\Client\Model\WhatsappMessageOrderPaymentSettingPaymentGatewayPayu|null $payu payu
      *
      * @return self
      */
-    public function setHeader($header)
+    public function setPayu($payu)
     {
-        $this->container['header'] = $header;
+        $this->container['payu'] = $payu;
 
         return $this;
     }
 
     /**
-     * Gets footer
+     * Gets razorpay
      *
-     * @return \YCloud\Client\Model\WhatsappMessageInteractiveFooter|null
+     * @return \YCloud\Client\Model\WhatsappMessageOrderPaymentSettingPaymentGatewayRazorpay|null
      */
-    public function getFooter()
+    public function getRazorpay()
     {
-        return $this->container['footer'];
+        return $this->container['razorpay'];
     }
 
     /**
-     * Sets footer
+     * Sets razorpay
      *
-     * @param \YCloud\Client\Model\WhatsappMessageInteractiveFooter|null $footer footer
+     * @param \YCloud\Client\Model\WhatsappMessageOrderPaymentSettingPaymentGatewayRazorpay|null $razorpay razorpay
      *
      * @return self
      */
-    public function setFooter($footer)
+    public function setRazorpay($razorpay)
     {
-        $this->container['footer'] = $footer;
+        $this->container['razorpay'] = $razorpay;
+
+        return $this;
+    }
+
+    /**
+     * Gets zaakpay
+     *
+     * @return \YCloud\Client\Model\WhatsappMessageOrderPaymentSettingPaymentGatewayZaakpay|null
+     */
+    public function getZaakpay()
+    {
+        return $this->container['zaakpay'];
+    }
+
+    /**
+     * Sets zaakpay
+     *
+     * @param \YCloud\Client\Model\WhatsappMessageOrderPaymentSettingPaymentGatewayZaakpay|null $zaakpay zaakpay
+     *
+     * @return self
+     */
+    public function setZaakpay($zaakpay)
+    {
+        $this->container['zaakpay'] = $zaakpay;
 
         return $this;
     }

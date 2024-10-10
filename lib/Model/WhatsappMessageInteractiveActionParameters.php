@@ -67,7 +67,14 @@ class WhatsappMessageInteractiveActionParameters implements ModelInterface, Arra
         'flow_id' => 'string',
         'flow_cta' => 'string',
         'flow_action' => 'string',
-        'flow_action_payload' => '\YCloud\Client\Model\WhatsappMessageInteractiveActionParametersFlowActionPayload'
+        'flow_action_payload' => '\YCloud\Client\Model\WhatsappMessageInteractiveActionParametersFlowActionPayload',
+        'reference_id' => 'string',
+        'type' => 'string',
+        'beneficiaries' => '\YCloud\Client\Model\WhatsappMessageOrderBeneficiary[]',
+        'currency' => 'string',
+        'total_amount' => '\YCloud\Client\Model\WhatsappMessageOrderAmount',
+        'order' => '\YCloud\Client\Model\WhatsappMessageOrderInfo',
+        'payment_settings' => '\YCloud\Client\Model\WhatsappMessageOrderPaymentSetting[]'
     ];
 
     /**
@@ -86,7 +93,14 @@ class WhatsappMessageInteractiveActionParameters implements ModelInterface, Arra
         'flow_id' => null,
         'flow_cta' => null,
         'flow_action' => null,
-        'flow_action_payload' => null
+        'flow_action_payload' => null,
+        'reference_id' => null,
+        'type' => null,
+        'beneficiaries' => null,
+        'currency' => null,
+        'total_amount' => null,
+        'order' => null,
+        'payment_settings' => null
     ];
 
     /**
@@ -124,7 +138,14 @@ class WhatsappMessageInteractiveActionParameters implements ModelInterface, Arra
         'flow_id' => 'flow_id',
         'flow_cta' => 'flow_cta',
         'flow_action' => 'flow_action',
-        'flow_action_payload' => 'flow_action_payload'
+        'flow_action_payload' => 'flow_action_payload',
+        'reference_id' => 'reference_id',
+        'type' => 'type',
+        'beneficiaries' => 'beneficiaries',
+        'currency' => 'currency',
+        'total_amount' => 'total_amount',
+        'order' => 'order',
+        'payment_settings' => 'payment_settings'
     ];
 
     /**
@@ -141,7 +162,14 @@ class WhatsappMessageInteractiveActionParameters implements ModelInterface, Arra
         'flow_id' => 'setFlowId',
         'flow_cta' => 'setFlowCta',
         'flow_action' => 'setFlowAction',
-        'flow_action_payload' => 'setFlowActionPayload'
+        'flow_action_payload' => 'setFlowActionPayload',
+        'reference_id' => 'setReferenceId',
+        'type' => 'setType',
+        'beneficiaries' => 'setBeneficiaries',
+        'currency' => 'setCurrency',
+        'total_amount' => 'setTotalAmount',
+        'order' => 'setOrder',
+        'payment_settings' => 'setPaymentSettings'
     ];
 
     /**
@@ -158,7 +186,14 @@ class WhatsappMessageInteractiveActionParameters implements ModelInterface, Arra
         'flow_id' => 'getFlowId',
         'flow_cta' => 'getFlowCta',
         'flow_action' => 'getFlowAction',
-        'flow_action_payload' => 'getFlowActionPayload'
+        'flow_action_payload' => 'getFlowActionPayload',
+        'reference_id' => 'getReferenceId',
+        'type' => 'getType',
+        'beneficiaries' => 'getBeneficiaries',
+        'currency' => 'getCurrency',
+        'total_amount' => 'getTotalAmount',
+        'order' => 'getOrder',
+        'payment_settings' => 'getPaymentSettings'
     ];
 
     /**
@@ -227,6 +262,13 @@ class WhatsappMessageInteractiveActionParameters implements ModelInterface, Arra
         $this->container['flow_cta'] = $data['flow_cta'] ?? null;
         $this->container['flow_action'] = $data['flow_action'] ?? null;
         $this->container['flow_action_payload'] = $data['flow_action_payload'] ?? null;
+        $this->container['reference_id'] = $data['reference_id'] ?? null;
+        $this->container['type'] = $data['type'] ?? null;
+        $this->container['beneficiaries'] = $data['beneficiaries'] ?? null;
+        $this->container['currency'] = $data['currency'] ?? null;
+        $this->container['total_amount'] = $data['total_amount'] ?? null;
+        $this->container['order'] = $data['order'] ?? null;
+        $this->container['payment_settings'] = $data['payment_settings'] ?? null;
     }
 
     /**
@@ -481,6 +523,174 @@ class WhatsappMessageInteractiveActionParameters implements ModelInterface, Arra
     public function setFlowActionPayload($flow_action_payload)
     {
         $this->container['flow_action_payload'] = $flow_action_payload;
+
+        return $this;
+    }
+
+    /**
+     * Gets reference_id
+     *
+     * @return string|null
+     */
+    public function getReferenceId()
+    {
+        return $this->container['reference_id'];
+    }
+
+    /**
+     * Sets reference_id
+     *
+     * @param string|null $reference_id Required for `review_and_pay` buttons. Unique identifier for the order provided by the business. It is case sensitive and cannot be an empty string and can only contain English letters, numbers, underscores, dashes, or dots, and should not exceed 35 characters.  The `reference_id` must be unique for each order_details message for a given business. If there is a need to send multiple order_details messages for the same order, it is recommended to include a sequence number in the reference_id (for example, \"BM345A-12\") to ensure reference_id uniqueness.
+     *
+     * @return self
+     */
+    public function setReferenceId($reference_id)
+    {
+        $this->container['reference_id'] = $reference_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets type
+     *
+     * @return string|null
+     */
+    public function getType()
+    {
+        return $this->container['type'];
+    }
+
+    /**
+     * Sets type
+     *
+     * @param string|null $type Required for `review_and_pay` buttons. The type of goods being paid for in this order. Current supported options are `digital-goods` and `physical-goods`.
+     *
+     * @return self
+     */
+    public function setType($type)
+    {
+        $this->container['type'] = $type;
+
+        return $this;
+    }
+
+    /**
+     * Gets beneficiaries
+     *
+     * @return \YCloud\Client\Model\WhatsappMessageOrderBeneficiary[]|null
+     */
+    public function getBeneficiaries()
+    {
+        return $this->container['beneficiaries'];
+    }
+
+    /**
+     * Sets beneficiaries
+     *
+     * @param \YCloud\Client\Model\WhatsappMessageOrderBeneficiary[]|null $beneficiaries Required for `review_and_pay` buttons. An array of beneficiaries for this order. A beneficiary is an intended recipient for shipping the physical goods in the order. Beneficiary information isn't shown to users but is needed for legal and compliance reasons.
+     *
+     * @return self
+     */
+    public function setBeneficiaries($beneficiaries)
+    {
+        $this->container['beneficiaries'] = $beneficiaries;
+
+        return $this;
+    }
+
+    /**
+     * Gets currency
+     *
+     * @return string|null
+     */
+    public function getCurrency()
+    {
+        return $this->container['currency'];
+    }
+
+    /**
+     * Sets currency
+     *
+     * @param string|null $currency Required for `review_and_pay` buttons. The currency for this order. Currently the only supported value is `INR`.
+     *
+     * @return self
+     */
+    public function setCurrency($currency)
+    {
+        $this->container['currency'] = $currency;
+
+        return $this;
+    }
+
+    /**
+     * Gets total_amount
+     *
+     * @return \YCloud\Client\Model\WhatsappMessageOrderAmount|null
+     */
+    public function getTotalAmount()
+    {
+        return $this->container['total_amount'];
+    }
+
+    /**
+     * Sets total_amount
+     *
+     * @param \YCloud\Client\Model\WhatsappMessageOrderAmount|null $total_amount total_amount
+     *
+     * @return self
+     */
+    public function setTotalAmount($total_amount)
+    {
+        $this->container['total_amount'] = $total_amount;
+
+        return $this;
+    }
+
+    /**
+     * Gets order
+     *
+     * @return \YCloud\Client\Model\WhatsappMessageOrderInfo|null
+     */
+    public function getOrder()
+    {
+        return $this->container['order'];
+    }
+
+    /**
+     * Sets order
+     *
+     * @param \YCloud\Client\Model\WhatsappMessageOrderInfo|null $order order
+     *
+     * @return self
+     */
+    public function setOrder($order)
+    {
+        $this->container['order'] = $order;
+
+        return $this;
+    }
+
+    /**
+     * Gets payment_settings
+     *
+     * @return \YCloud\Client\Model\WhatsappMessageOrderPaymentSetting[]|null
+     */
+    public function getPaymentSettings()
+    {
+        return $this->container['payment_settings'];
+    }
+
+    /**
+     * Sets payment_settings
+     *
+     * @param \YCloud\Client\Model\WhatsappMessageOrderPaymentSetting[]|null $payment_settings Required for `review_and_pay` buttons. Payment settings for the order.
+     *
+     * @return self
+     */
+    public function setPaymentSettings($payment_settings)
+    {
+        $this->container['payment_settings'] = $payment_settings;
 
         return $this;
     }

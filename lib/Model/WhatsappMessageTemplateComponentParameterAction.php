@@ -62,7 +62,8 @@ class WhatsappMessageTemplateComponentParameterAction implements ModelInterface,
         'thumbnail_product_retailer_id' => 'string',
         'sections' => '\YCloud\Client\Model\WhatsappMessageTemplateComponentParameterActionSection[]',
         'flow_token' => 'string',
-        'flow_action_data' => 'array<string,object>'
+        'flow_action_data' => 'array<string,object>',
+        'order_details' => '\YCloud\Client\Model\WhatsappMessageOrderDetails'
     ];
 
     /**
@@ -76,7 +77,8 @@ class WhatsappMessageTemplateComponentParameterAction implements ModelInterface,
         'thumbnail_product_retailer_id' => null,
         'sections' => null,
         'flow_token' => null,
-        'flow_action_data' => null
+        'flow_action_data' => null,
+        'order_details' => null
     ];
 
     /**
@@ -109,7 +111,8 @@ class WhatsappMessageTemplateComponentParameterAction implements ModelInterface,
         'thumbnail_product_retailer_id' => 'thumbnail_product_retailer_id',
         'sections' => 'sections',
         'flow_token' => 'flow_token',
-        'flow_action_data' => 'flow_action_data'
+        'flow_action_data' => 'flow_action_data',
+        'order_details' => 'order_details'
     ];
 
     /**
@@ -121,7 +124,8 @@ class WhatsappMessageTemplateComponentParameterAction implements ModelInterface,
         'thumbnail_product_retailer_id' => 'setThumbnailProductRetailerId',
         'sections' => 'setSections',
         'flow_token' => 'setFlowToken',
-        'flow_action_data' => 'setFlowActionData'
+        'flow_action_data' => 'setFlowActionData',
+        'order_details' => 'setOrderDetails'
     ];
 
     /**
@@ -133,7 +137,8 @@ class WhatsappMessageTemplateComponentParameterAction implements ModelInterface,
         'thumbnail_product_retailer_id' => 'getThumbnailProductRetailerId',
         'sections' => 'getSections',
         'flow_token' => 'getFlowToken',
-        'flow_action_data' => 'getFlowActionData'
+        'flow_action_data' => 'getFlowActionData',
+        'order_details' => 'getOrderDetails'
     ];
 
     /**
@@ -197,6 +202,7 @@ class WhatsappMessageTemplateComponentParameterAction implements ModelInterface,
         $this->container['sections'] = $data['sections'] ?? null;
         $this->container['flow_token'] = $data['flow_token'] ?? null;
         $this->container['flow_action_data'] = $data['flow_action_data'] ?? null;
+        $this->container['order_details'] = $data['order_details'] ?? null;
     }
 
     /**
@@ -323,6 +329,30 @@ class WhatsappMessageTemplateComponentParameterAction implements ModelInterface,
     public function setFlowActionData($flow_action_data)
     {
         $this->container['flow_action_data'] = $flow_action_data;
+
+        return $this;
+    }
+
+    /**
+     * Gets order_details
+     *
+     * @return \YCloud\Client\Model\WhatsappMessageOrderDetails|null
+     */
+    public function getOrderDetails()
+    {
+        return $this->container['order_details'];
+    }
+
+    /**
+     * Sets order_details
+     *
+     * @param \YCloud\Client\Model\WhatsappMessageOrderDetails|null $order_details order_details
+     *
+     * @return self
+     */
+    public function setOrderDetails($order_details)
+    {
+        $this->container['order_details'] = $order_details;
 
         return $this;
     }

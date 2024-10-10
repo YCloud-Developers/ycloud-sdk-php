@@ -63,6 +63,7 @@ class WhatsappTemplate implements ModelInterface, ArrayAccess, \JsonSerializable
         'name' => 'string',
         'language' => 'string',
         'category' => '\YCloud\Client\Model\WhatsappTemplateCategory',
+        'sub_category' => '\YCloud\Client\Model\WhatsappTemplateSubCategory',
         'previous_category' => 'string',
         'message_send_ttl_seconds' => 'int',
         'components' => '\YCloud\Client\Model\WhatsappTemplateComponent[]',
@@ -88,6 +89,7 @@ class WhatsappTemplate implements ModelInterface, ArrayAccess, \JsonSerializable
         'name' => null,
         'language' => null,
         'category' => null,
+        'sub_category' => null,
         'previous_category' => null,
         'message_send_ttl_seconds' => 'int32',
         'components' => null,
@@ -132,6 +134,7 @@ class WhatsappTemplate implements ModelInterface, ArrayAccess, \JsonSerializable
         'name' => 'name',
         'language' => 'language',
         'category' => 'category',
+        'sub_category' => 'subCategory',
         'previous_category' => 'previousCategory',
         'message_send_ttl_seconds' => 'messageSendTtlSeconds',
         'components' => 'components',
@@ -155,6 +158,7 @@ class WhatsappTemplate implements ModelInterface, ArrayAccess, \JsonSerializable
         'name' => 'setName',
         'language' => 'setLanguage',
         'category' => 'setCategory',
+        'sub_category' => 'setSubCategory',
         'previous_category' => 'setPreviousCategory',
         'message_send_ttl_seconds' => 'setMessageSendTtlSeconds',
         'components' => 'setComponents',
@@ -178,6 +182,7 @@ class WhatsappTemplate implements ModelInterface, ArrayAccess, \JsonSerializable
         'name' => 'getName',
         'language' => 'getLanguage',
         'category' => 'getCategory',
+        'sub_category' => 'getSubCategory',
         'previous_category' => 'getPreviousCategory',
         'message_send_ttl_seconds' => 'getMessageSendTtlSeconds',
         'components' => 'getComponents',
@@ -252,6 +257,7 @@ class WhatsappTemplate implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['name'] = $data['name'] ?? null;
         $this->container['language'] = $data['language'] ?? null;
         $this->container['category'] = $data['category'] ?? null;
+        $this->container['sub_category'] = $data['sub_category'] ?? null;
         $this->container['previous_category'] = $data['previous_category'] ?? null;
         $this->container['message_send_ttl_seconds'] = $data['message_send_ttl_seconds'] ?? null;
         $this->container['components'] = $data['components'] ?? null;
@@ -409,6 +415,30 @@ class WhatsappTemplate implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setCategory($category)
     {
         $this->container['category'] = $category;
+
+        return $this;
+    }
+
+    /**
+     * Gets sub_category
+     *
+     * @return \YCloud\Client\Model\WhatsappTemplateSubCategory|null
+     */
+    public function getSubCategory()
+    {
+        return $this->container['sub_category'];
+    }
+
+    /**
+     * Sets sub_category
+     *
+     * @param \YCloud\Client\Model\WhatsappTemplateSubCategory|null $sub_category sub_category
+     *
+     * @return self
+     */
+    public function setSubCategory($sub_category)
+    {
+        $this->container['sub_category'] = $sub_category;
 
         return $this;
     }
