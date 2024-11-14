@@ -211,6 +211,7 @@ class WhatsappTemplateComponent implements ModelInterface, ArrayAccess, \JsonSer
     public const FORMAT_IMAGE = 'IMAGE';
     public const FORMAT_VIDEO = 'VIDEO';
     public const FORMAT_DOCUMENT = 'DOCUMENT';
+    public const FORMAT_LOCATION = 'LOCATION';
 
     /**
      * Gets allowable values of the enum
@@ -241,6 +242,7 @@ class WhatsappTemplateComponent implements ModelInterface, ArrayAccess, \JsonSer
             self::FORMAT_IMAGE,
             self::FORMAT_VIDEO,
             self::FORMAT_DOCUMENT,
+            self::FORMAT_LOCATION,
         ];
     }
 

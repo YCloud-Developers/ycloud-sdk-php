@@ -65,6 +65,7 @@ class WhatsappMessageInteractiveActionParameters implements ModelInterface, Arra
         'flow_message_version' => 'string',
         'flow_token' => 'string',
         'flow_id' => 'string',
+        'flow_name' => 'string',
         'flow_cta' => 'string',
         'flow_action' => 'string',
         'flow_action_payload' => '\YCloud\Client\Model\WhatsappMessageInteractiveActionParametersFlowActionPayload',
@@ -91,6 +92,7 @@ class WhatsappMessageInteractiveActionParameters implements ModelInterface, Arra
         'flow_message_version' => null,
         'flow_token' => null,
         'flow_id' => null,
+        'flow_name' => null,
         'flow_cta' => null,
         'flow_action' => null,
         'flow_action_payload' => null,
@@ -136,6 +138,7 @@ class WhatsappMessageInteractiveActionParameters implements ModelInterface, Arra
         'flow_message_version' => 'flow_message_version',
         'flow_token' => 'flow_token',
         'flow_id' => 'flow_id',
+        'flow_name' => 'flow_name',
         'flow_cta' => 'flow_cta',
         'flow_action' => 'flow_action',
         'flow_action_payload' => 'flow_action_payload',
@@ -160,6 +163,7 @@ class WhatsappMessageInteractiveActionParameters implements ModelInterface, Arra
         'flow_message_version' => 'setFlowMessageVersion',
         'flow_token' => 'setFlowToken',
         'flow_id' => 'setFlowId',
+        'flow_name' => 'setFlowName',
         'flow_cta' => 'setFlowCta',
         'flow_action' => 'setFlowAction',
         'flow_action_payload' => 'setFlowActionPayload',
@@ -184,6 +188,7 @@ class WhatsappMessageInteractiveActionParameters implements ModelInterface, Arra
         'flow_message_version' => 'getFlowMessageVersion',
         'flow_token' => 'getFlowToken',
         'flow_id' => 'getFlowId',
+        'flow_name' => 'getFlowName',
         'flow_cta' => 'getFlowCta',
         'flow_action' => 'getFlowAction',
         'flow_action_payload' => 'getFlowActionPayload',
@@ -259,6 +264,7 @@ class WhatsappMessageInteractiveActionParameters implements ModelInterface, Arra
         $this->container['flow_message_version'] = $data['flow_message_version'] ?? null;
         $this->container['flow_token'] = $data['flow_token'] ?? null;
         $this->container['flow_id'] = $data['flow_id'] ?? null;
+        $this->container['flow_name'] = $data['flow_name'] ?? null;
         $this->container['flow_cta'] = $data['flow_cta'] ?? null;
         $this->container['flow_action'] = $data['flow_action'] ?? null;
         $this->container['flow_action_payload'] = $data['flow_action_payload'] ?? null;
@@ -440,13 +446,37 @@ class WhatsappMessageInteractiveActionParameters implements ModelInterface, Arra
     /**
      * Sets flow_id
      *
-     * @param string|null $flow_id Required for `flow` buttons. Unique ID of the Flow provided by WhatsApp.
+     * @param string|null $flow_id Conditionally required for `flow` buttons. Unique ID of the Flow provided by WhatsApp. Cannot be used with the `flow_name` parameter.
      *
      * @return self
      */
     public function setFlowId($flow_id)
     {
         $this->container['flow_id'] = $flow_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets flow_name
+     *
+     * @return string|null
+     */
+    public function getFlowName()
+    {
+        return $this->container['flow_name'];
+    }
+
+    /**
+     * Sets flow_name
+     *
+     * @param string|null $flow_name Conditionally required for `flow` buttons. The name of the Flow that you created. Cannot be used with the `flow_id` parameter. Changing the Flow name will require updating this parameter to match the new name.
+     *
+     * @return self
+     */
+    public function setFlowName($flow_name)
+    {
+        $this->container['flow_name'] = $flow_name;
 
         return $this;
     }

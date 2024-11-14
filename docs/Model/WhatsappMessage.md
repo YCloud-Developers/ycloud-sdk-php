@@ -23,7 +23,7 @@ Name | Type | Description | Notes
 **contacts** | [**\YCloud\Client\Model\WhatsappMessageContact[]**](WhatsappMessageContact.md) |  | [optional]
 **reaction** | [**\YCloud\Client\Model\WhatsappMessageReaction**](WhatsappMessageReaction.md) |  | [optional]
 **context** | [**\YCloud\Client\Model\WhatsappMessageContext**](WhatsappMessageContext.md) |  | [optional]
-**external_id** | **string** | A unique string to reference the object. This can be an order number or similar, and can be used to reconcile the object with your internal systems. | [optional]
+**external_id** | **string** | A unique (recommended) string to reference the object. This can be an order number or similar, and can be used to reconcile the object with your internal systems. | [optional]
 **status** | [**\YCloud\Client\Model\WhatsappMessageStatus**](WhatsappMessageStatus.md) |  | [optional]
 **error_code** | **string** | Error code when the message status is &#x60;failed&#x60;. | [optional]
 **error_message** | **string** | Error message when the message status is &#x60;failed&#x60;. | [optional]

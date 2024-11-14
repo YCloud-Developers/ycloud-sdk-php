@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 **error_code** | **string** | Error code when the message is undeliverable. | [optional]
 **create_time** | **\DateTime** | The time at which this message was created, formatted in [RFC 3339](https://datatracker.ietf.org/doc/html/rfc3339). e.g., &#x60;2022-03-01T12:00:00.000Z&#x60;. | [optional]
 **update_time** | **\DateTime** | The time at which the delivery report for this message was updated, formatted in [RFC 3339](https://datatracker.ietf.org/doc/html/rfc3339). e.g., &#x60;2022-03-01T12:00:00.000Z&#x60;. | [optional]
-**external_id** | **string** | A unique string to reference the object. This can be an order number or similar, and can be used to reconcile the object with your internal systems. | [optional]
+**external_id** | **string** | A unique (recommended) string to reference the object. This can be an order number or similar, and can be used to reconcile the object with your internal systems. | [optional]
 **callback_url** | **string** | Delivery report URL. You can provide a URL, and we will push the updated status report to your server in time. e.g., https://httpbin.org/anything?tag&#x3D;api. Note: We recommend configuring Webhook Endpoints instead. | [optional]
 **biz_type** | **string** | This can be either empty or one of &#x60;voice&#x60;, or &#x60;verify&#x60;. Defaults to &#x60;voice&#x60;. - &#x60;voice&#x60;: Indicates that the message is sent via the **Voice** product. - &#x60;verify&#x60;: Indicates that the message is sent via **Verify** product. | [optional]
 **verification_id** | **string** | The verification ID. Included only when &#x60;bizType&#x60; is &#x60;verify&#x60;. | [optional]

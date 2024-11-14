@@ -441,7 +441,7 @@ class EmailDelivery implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets external_id
      *
-     * @param string|null $external_id The `externalId` you specified when you sent the email.
+     * @param string|null $external_id The `externalId` you set when you sent the email.
      *
      * @return self
      */

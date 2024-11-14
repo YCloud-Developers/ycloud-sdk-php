@@ -69,6 +69,8 @@ class WhatsappTemplateComponentButton implements ModelInterface, ArrayAccess, \J
         'zero_tap_terms_accepted' => 'bool',
         'example' => 'string[]',
         'flow_id' => 'string',
+        'flow_name' => 'string',
+        'flow_json' => 'string',
         'flow_action' => 'string',
         'navigate_screen' => 'string'
     ];
@@ -92,6 +94,8 @@ class WhatsappTemplateComponentButton implements ModelInterface, ArrayAccess, \J
         'zero_tap_terms_accepted' => null,
         'example' => null,
         'flow_id' => null,
+        'flow_name' => null,
+        'flow_json' => null,
         'flow_action' => null,
         'navigate_screen' => null
     ];
@@ -134,6 +138,8 @@ class WhatsappTemplateComponentButton implements ModelInterface, ArrayAccess, \J
         'zero_tap_terms_accepted' => 'zero_tap_terms_accepted',
         'example' => 'example',
         'flow_id' => 'flow_id',
+        'flow_name' => 'flow_name',
+        'flow_json' => 'flow_json',
         'flow_action' => 'flow_action',
         'navigate_screen' => 'navigate_screen'
     ];
@@ -155,6 +161,8 @@ class WhatsappTemplateComponentButton implements ModelInterface, ArrayAccess, \J
         'zero_tap_terms_accepted' => 'setZeroTapTermsAccepted',
         'example' => 'setExample',
         'flow_id' => 'setFlowId',
+        'flow_name' => 'setFlowName',
+        'flow_json' => 'setFlowJson',
         'flow_action' => 'setFlowAction',
         'navigate_screen' => 'setNavigateScreen'
     ];
@@ -176,6 +184,8 @@ class WhatsappTemplateComponentButton implements ModelInterface, ArrayAccess, \J
         'zero_tap_terms_accepted' => 'getZeroTapTermsAccepted',
         'example' => 'getExample',
         'flow_id' => 'getFlowId',
+        'flow_name' => 'getFlowName',
+        'flow_json' => 'getFlowJson',
         'flow_action' => 'getFlowAction',
         'navigate_screen' => 'getNavigateScreen'
     ];
@@ -248,6 +258,8 @@ class WhatsappTemplateComponentButton implements ModelInterface, ArrayAccess, \J
         $this->container['zero_tap_terms_accepted'] = $data['zero_tap_terms_accepted'] ?? null;
         $this->container['example'] = $data['example'] ?? null;
         $this->container['flow_id'] = $data['flow_id'] ?? null;
+        $this->container['flow_name'] = $data['flow_name'] ?? null;
+        $this->container['flow_json'] = $data['flow_json'] ?? null;
         $this->container['flow_action'] = $data['flow_action'] ?? null;
         $this->container['navigate_screen'] = $data['navigate_screen'] ?? null;
     }
@@ -564,13 +576,61 @@ class WhatsappTemplateComponentButton implements ModelInterface, ArrayAccess, \J
     /**
      * Sets flow_id
      *
-     * @param string|null $flow_id **Required for button type `FLOW`.** The unique ID of a Flow.
+     * @param string|null $flow_id **Conditionally required for button type `FLOW`.** The unique ID of the Flow. Cannot be used if `flow_name` or `flow_json` parameters are provided. Only one of these parameters is allowed.
      *
      * @return self
      */
     public function setFlowId($flow_id)
     {
         $this->container['flow_id'] = $flow_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets flow_name
+     *
+     * @return string|null
+     */
+    public function getFlowName()
+    {
+        return $this->container['flow_name'];
+    }
+
+    /**
+     * Sets flow_name
+     *
+     * @param string|null $flow_name **Conditionally required for button type `FLOW`.** The name of the Flow. Cannot be used if `flow_id` or `flow_json` parameters are provided. Only one of these parameters is allowed. The Flow ID is stored in the message template, not the name, so changing the Flow name will not affect existing message templates.
+     *
+     * @return self
+     */
+    public function setFlowName($flow_name)
+    {
+        $this->container['flow_name'] = $flow_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets flow_json
+     *
+     * @return string|null
+     */
+    public function getFlowJson()
+    {
+        return $this->container['flow_json'];
+    }
+
+    /**
+     * Sets flow_json
+     *
+     * @param string|null $flow_json **Conditionally required for button type `FLOW`.** The Flow JSON encoded as string with escaping. The Flow JSON specifies the content of the Flow. Cannot be used if `flow_id` or `flow_name` parameters are provided. Only one of these parameters is allowed.
+     *
+     * @return self
+     */
+    public function setFlowJson($flow_json)
+    {
+        $this->container['flow_json'] = $flow_json;
 
         return $this;
     }

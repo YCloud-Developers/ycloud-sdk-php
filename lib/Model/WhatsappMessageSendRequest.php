@@ -688,7 +688,7 @@ class WhatsappMessageSendRequest implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets external_id
      *
-     * @param string|null $external_id A unique string to reference the object. This can be an order number or similar, and can be used to reconcile the object with your internal systems.
+     * @param string|null $external_id A unique (recommended) string to reference the object. This can be an order number or similar, and can be used to reconcile the object with your internal systems.
      *
      * @return self
      */

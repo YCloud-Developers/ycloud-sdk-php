@@ -418,7 +418,7 @@ class VerificationSendRequest implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets external_id
      *
-     * @param string|null $external_id A unique string to reference the object. This can be an order number or similar, and can be used to reconcile the object with your internal systems. If present, this value will also be attached to the `externalId` of message objects.
+     * @param string|null $external_id A unique (recommended) string to reference the object. This can be an order number or similar, and can be used to reconcile the object with your internal systems. If present, this value will also be attached to the `externalId` of message objects.
      *
      * @return self
      */
