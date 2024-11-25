@@ -197,6 +197,7 @@ class WhatsappMessageInteractiveAction implements ModelInterface, ArrayAccess, \
     public const NAME_FLOW = 'flow';
     public const NAME_REVIEW_AND_PAY = 'review_and_pay';
     public const NAME_REVIEW_ORDER = 'review_order';
+    public const NAME_VOICE_CALL = 'voice_call';
 
     /**
      * Gets allowable values of the enum
@@ -211,6 +212,7 @@ class WhatsappMessageInteractiveAction implements ModelInterface, ArrayAccess, \
             self::NAME_FLOW,
             self::NAME_REVIEW_AND_PAY,
             self::NAME_REVIEW_ORDER,
+            self::NAME_VOICE_CALL,
         ];
     }
 
@@ -435,7 +437,7 @@ class WhatsappMessageInteractiveAction implements ModelInterface, ArrayAccess, \
     /**
      * Sets name
      *
-     * @param string|null $name Action name. Required for Call-To-Action (CTA) buttons. - `cta_url`: Use for Call-To-Action (CTA) URL buttons. - `send_location`: Use for Location Request buttons. - `flow`: Use for Flow buttons. - `review_and_pay`: Use for Order Details buttons. - `review_order`: Use for Order Status buttons.
+     * @param string|null $name Action name. Required for Call-To-Action (CTA) buttons. - `cta_url`: Use for Call-To-Action (CTA) URL buttons. - `send_location`: Use for Location Request buttons. - `flow`: Use for Flow buttons. - `review_and_pay`: Use for Order Details buttons. - `review_order`: Use for Order Status buttons. - `voice_call`: Use for Voice Call buttons.
      *
      * @return self
      */

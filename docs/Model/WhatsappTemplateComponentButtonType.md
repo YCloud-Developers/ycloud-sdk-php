@@ -19,5 +19,9 @@
 
 * `FLOW` (value: `'FLOW'`)
 
+* `ORDER_DETAILS` (value: `'ORDER_DETAILS'`)
+
+* `VOICE_CALL` (value: `'VOICE_CALL'`)
+
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
