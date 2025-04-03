@@ -106,6 +106,7 @@ Class | Method | HTTP request | Description
 *WhatsappBusinessAccountsApi* | [**list**](docs/Api/WhatsappBusinessAccountsApi.md#list) | **GET** /whatsapp/businessAccounts | List WABAs
 *WhatsappBusinessAccountsApi* | [**retrieve**](docs/Api/WhatsappBusinessAccountsApi.md#retrieve) | **GET** /whatsapp/businessAccounts/{id} | Retrieve a WABA
 *WhatsappInboundMessagesApi* | [**markAsRead**](docs/Api/WhatsappInboundMessagesApi.md#markasread) | **POST** /whatsapp/inboundMessages/{id}/markAsRead | Mark message as read
+*WhatsappMediaApi* | [**upload**](docs/Api/WhatsappMediaApi.md#upload) | **POST** /whatsapp/media/{phoneNumber}/upload | Upload media
 *WhatsappMessagesApi* | [**retrieve**](docs/Api/WhatsappMessagesApi.md#retrieve) | **GET** /whatsapp/messages/{id} | Retrieve a message
 *WhatsappMessagesApi* | [**send**](docs/Api/WhatsappMessagesApi.md#send) | **POST** /whatsapp/messages | Enqueue a message
 *WhatsappMessagesApi* | [**sendDirectly**](docs/Api/WhatsappMessagesApi.md#senddirectly) | **POST** /whatsapp/messages/sendDirectly | Send a message directly
@@ -203,6 +204,8 @@ Class | Method | HTTP request | Description
 - [WhatsappInboundMessageSystem](docs/Model/WhatsappInboundMessageSystem.md)
 - [WhatsappInboundMessageText](docs/Model/WhatsappInboundMessageText.md)
 - [WhatsappInboundMessageType](docs/Model/WhatsappInboundMessageType.md)
+- [WhatsappMedia](docs/Model/WhatsappMedia.md)
+- [WhatsappMediaUpload200Response](docs/Model/WhatsappMediaUpload200Response.md)
 - [WhatsappMessage](docs/Model/WhatsappMessage.md)
 - [WhatsappMessageContact](docs/Model/WhatsappMessageContact.md)
 - [WhatsappMessageContactAddress](docs/Model/WhatsappMessageContactAddress.md)

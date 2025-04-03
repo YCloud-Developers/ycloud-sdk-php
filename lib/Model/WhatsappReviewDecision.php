@@ -48,6 +48,8 @@ class WhatsappReviewDecision
 
     public const REJECTED = 'REJECTED';
 
+    public const DEFERRED = 'DEFERRED';
+
     /**
      * Gets allowable values of the enum
      * @return string[]
@@ -56,7 +58,8 @@ class WhatsappReviewDecision
     {
         return [
             self::APPROVED,
-            self::REJECTED
+            self::REJECTED,
+            self::DEFERRED
         ];
     }
 }
