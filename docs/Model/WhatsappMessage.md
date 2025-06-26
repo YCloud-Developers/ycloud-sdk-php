@@ -36,6 +36,8 @@ Name | Type | Description | Notes
 **currency** | **string** | Price currency. [ISO 4217 currency code](https://en.wikipedia.org/wiki/ISO_4217). | [optional]
 **region_code** | **string** | The [region code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) of the recipient phone number. | [optional]
 **pricing_category** | [**\YCloud\Client\Model\WhatsappPricingCategory**](WhatsappPricingCategory.md) |  | [optional]
+**pricing_model** | [**\YCloud\Client\Model\WhatsappPricingModel**](WhatsappPricingModel.md) |  | [optional]
+**pricing_type** | [**\YCloud\Client\Model\WhatsappPricingType**](WhatsappPricingType.md) |  | [optional]
 **whatsapp_api_error** | [**\YCloud\Client\Model\WhatsappApiError**](WhatsappApiError.md) |  | [optional]
 **biz_type** | **string** | This can be either empty or one of &#x60;whatsapp&#x60;, or &#x60;verify&#x60;. Defaults to &#x60;whatsapp&#x60;. - &#x60;whatsapp&#x60;: Indicates that the message is sent via the **WhatsApp** product. - &#x60;verify&#x60;: Indicates that the message is sent via the **Verify** product. | [optional]
 **verification_id** | **string** | The verification ID. Included only when &#x60;bizType&#x60; is &#x60;verify&#x60;. | [optional]

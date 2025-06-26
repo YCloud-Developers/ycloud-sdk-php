@@ -91,6 +91,8 @@ class WhatsappMessage implements ModelInterface, ArrayAccess, \JsonSerializable
         'currency' => 'string',
         'region_code' => 'string',
         'pricing_category' => '\YCloud\Client\Model\WhatsappPricingCategory',
+        'pricing_model' => '\YCloud\Client\Model\WhatsappPricingModel',
+        'pricing_type' => '\YCloud\Client\Model\WhatsappPricingType',
         'whatsapp_api_error' => '\YCloud\Client\Model\WhatsappApiError',
         'biz_type' => 'string',
         'verification_id' => 'string'
@@ -136,6 +138,8 @@ class WhatsappMessage implements ModelInterface, ArrayAccess, \JsonSerializable
         'currency' => null,
         'region_code' => null,
         'pricing_category' => null,
+        'pricing_model' => null,
+        'pricing_type' => null,
         'whatsapp_api_error' => null,
         'biz_type' => null,
         'verification_id' => null
@@ -200,6 +204,8 @@ class WhatsappMessage implements ModelInterface, ArrayAccess, \JsonSerializable
         'currency' => 'currency',
         'region_code' => 'regionCode',
         'pricing_category' => 'pricingCategory',
+        'pricing_model' => 'pricingModel',
+        'pricing_type' => 'pricingType',
         'whatsapp_api_error' => 'whatsappApiError',
         'biz_type' => 'bizType',
         'verification_id' => 'verificationId'
@@ -243,6 +249,8 @@ class WhatsappMessage implements ModelInterface, ArrayAccess, \JsonSerializable
         'currency' => 'setCurrency',
         'region_code' => 'setRegionCode',
         'pricing_category' => 'setPricingCategory',
+        'pricing_model' => 'setPricingModel',
+        'pricing_type' => 'setPricingType',
         'whatsapp_api_error' => 'setWhatsappApiError',
         'biz_type' => 'setBizType',
         'verification_id' => 'setVerificationId'
@@ -286,6 +294,8 @@ class WhatsappMessage implements ModelInterface, ArrayAccess, \JsonSerializable
         'currency' => 'getCurrency',
         'region_code' => 'getRegionCode',
         'pricing_category' => 'getPricingCategory',
+        'pricing_model' => 'getPricingModel',
+        'pricing_type' => 'getPricingType',
         'whatsapp_api_error' => 'getWhatsappApiError',
         'biz_type' => 'getBizType',
         'verification_id' => 'getVerificationId'
@@ -380,6 +390,8 @@ class WhatsappMessage implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['currency'] = $data['currency'] ?? null;
         $this->container['region_code'] = $data['region_code'] ?? null;
         $this->container['pricing_category'] = $data['pricing_category'] ?? null;
+        $this->container['pricing_model'] = $data['pricing_model'] ?? null;
+        $this->container['pricing_type'] = $data['pricing_type'] ?? null;
         $this->container['whatsapp_api_error'] = $data['whatsapp_api_error'] ?? null;
         $this->container['biz_type'] = $data['biz_type'] ?? null;
         $this->container['verification_id'] = $data['verification_id'] ?? null;
@@ -1185,6 +1197,54 @@ class WhatsappMessage implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setPricingCategory($pricing_category)
     {
         $this->container['pricing_category'] = $pricing_category;
+
+        return $this;
+    }
+
+    /**
+     * Gets pricing_model
+     *
+     * @return \YCloud\Client\Model\WhatsappPricingModel|null
+     */
+    public function getPricingModel()
+    {
+        return $this->container['pricing_model'];
+    }
+
+    /**
+     * Sets pricing_model
+     *
+     * @param \YCloud\Client\Model\WhatsappPricingModel|null $pricing_model pricing_model
+     *
+     * @return self
+     */
+    public function setPricingModel($pricing_model)
+    {
+        $this->container['pricing_model'] = $pricing_model;
+
+        return $this;
+    }
+
+    /**
+     * Gets pricing_type
+     *
+     * @return \YCloud\Client\Model\WhatsappPricingType|null
+     */
+    public function getPricingType()
+    {
+        return $this->container['pricing_type'];
+    }
+
+    /**
+     * Sets pricing_type
+     *
+     * @param \YCloud\Client\Model\WhatsappPricingType|null $pricing_type pricing_type
+     *
+     * @return self
+     */
+    public function setPricingType($pricing_type)
+    {
+        $this->container['pricing_type'] = $pricing_type;
 
         return $this;
     }

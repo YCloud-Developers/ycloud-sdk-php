@@ -106,6 +106,7 @@ Class | Method | HTTP request | Description
 *WhatsappBusinessAccountsApi* | [**list**](docs/Api/WhatsappBusinessAccountsApi.md#list) | **GET** /whatsapp/businessAccounts | List WABAs
 *WhatsappBusinessAccountsApi* | [**retrieve**](docs/Api/WhatsappBusinessAccountsApi.md#retrieve) | **GET** /whatsapp/businessAccounts/{id} | Retrieve a WABA
 *WhatsappInboundMessagesApi* | [**markAsRead**](docs/Api/WhatsappInboundMessagesApi.md#markasread) | **POST** /whatsapp/inboundMessages/{id}/markAsRead | Mark message as read
+*WhatsappInboundMessagesApi* | [**typingIndicator**](docs/Api/WhatsappInboundMessagesApi.md#typingindicator) | **POST** /whatsapp/inboundMessages/{id}/typingIndicator | Mark message as read and display a typing indicator
 *WhatsappMediaApi* | [**upload**](docs/Api/WhatsappMediaApi.md#upload) | **POST** /whatsapp/media/{phoneNumber}/upload | Upload media
 *WhatsappMessagesApi* | [**retrieve**](docs/Api/WhatsappMessagesApi.md#retrieve) | **GET** /whatsapp/messages/{id} | Retrieve a message
 *WhatsappMessagesApi* | [**send**](docs/Api/WhatsappMessagesApi.md#send) | **POST** /whatsapp/messages | Enqueue a message
@@ -273,6 +274,8 @@ Class | Method | HTTP request | Description
 - [WhatsappPhoneNumberQualityUpdateEventEnum](docs/Model/WhatsappPhoneNumberQualityUpdateEventEnum.md)
 - [WhatsappPhoneNumberStatus](docs/Model/WhatsappPhoneNumberStatus.md)
 - [WhatsappPricingCategory](docs/Model/WhatsappPricingCategory.md)
+- [WhatsappPricingModel](docs/Model/WhatsappPricingModel.md)
+- [WhatsappPricingType](docs/Model/WhatsappPricingType.md)
 - [WhatsappProfile](docs/Model/WhatsappProfile.md)
 - [WhatsappReviewDecision](docs/Model/WhatsappReviewDecision.md)
 - [WhatsappTemplate](docs/Model/WhatsappTemplate.md)
