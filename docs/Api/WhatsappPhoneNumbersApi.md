@@ -9,6 +9,8 @@ Method | HTTP request | Description
 [**retrieve()**](WhatsappPhoneNumbersApi.md#retrieve) | **GET** /whatsapp/phoneNumbers/{wabaId}/{phoneNumber} | Retrieve a phone number
 [**retrieveCommerceSettings()**](WhatsappPhoneNumbersApi.md#retrieveCommerceSettings) | **GET** /whatsapp/phoneNumbers/{wabaId}/{phoneNumber}/whatsappCommerceSettings | Retrieve commerce settings
 [**retrieveProfile()**](WhatsappPhoneNumbersApi.md#retrieveProfile) | **GET** /whatsapp/phoneNumbers/{wabaId}/{phoneNumber}/profile | Retrieve a phone number profile
+[**retrieveSettings()**](WhatsappPhoneNumbersApi.md#retrieveSettings) | **GET** /whatsapp/phoneNumbers/{wabaId}/{phoneNumber}/settings | Retrieve phone number settings
+[**saveSettings()**](WhatsappPhoneNumbersApi.md#saveSettings) | **POST** /whatsapp/phoneNumbers/{wabaId}/{phoneNumber}/settings | Save phone number settings
 [**updateCommerceSettings()**](WhatsappPhoneNumbersApi.md#updateCommerceSettings) | **PATCH** /whatsapp/phoneNumbers/{wabaId}/{phoneNumber}/whatsappCommerceSettings | Update commerce settings
 [**updateProfile()**](WhatsappPhoneNumbersApi.md#updateProfile) | **PATCH** /whatsapp/phoneNumbers/{wabaId}/{phoneNumber}/profile | Update a phone number profile
 
@@ -323,6 +325,132 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `retrieveSettings()`
+
+```php
+retrieveSettings($waba_id, $phone_number): \YCloud\Client\Model\WhatsappPhoneNumberSettings
+```
+
+Retrieve phone number settings
+
+Retrieves phone number specific settings.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: api_key
+$config = YCloud\Client\Configuration::getDefaultConfiguration()->setApiKey('X-API-Key', 'YOUR_API_KEY');
+
+
+$apiInstance = new YCloud\Client\Api\WhatsappPhoneNumbersApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$waba_id = whatsapp-business-account-id; // string | WhatsApp Business Account ID.
+$phone_number = +6283138205170; // string | Phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format.
+
+try {
+    $result = $apiInstance->retrieveSettings($waba_id, $phone_number);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling WhatsappPhoneNumbersApi->retrieveSettings: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **waba_id** | **string**| WhatsApp Business Account ID. |
+ **phone_number** | **string**| Phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format. |
+
+### Return type
+
+[**\YCloud\Client\Model\WhatsappPhoneNumberSettings**](../Model/WhatsappPhoneNumberSettings.md)
+
+### Authorization
+
+[api_key](../../README.md#api_key)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `saveSettings()`
+
+```php
+saveSettings($waba_id, $phone_number, $whatsapp_phone_number_settings): \YCloud\Client\Model\WhatsappPhoneNumberSettings
+```
+
+Save phone number settings
+
+Saves phone number specific settings.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: api_key
+$config = YCloud\Client\Configuration::getDefaultConfiguration()->setApiKey('X-API-Key', 'YOUR_API_KEY');
+
+
+$apiInstance = new YCloud\Client\Api\WhatsappPhoneNumbersApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$waba_id = whatsapp-business-account-id; // string | WhatsApp Business Account ID.
+$phone_number = +6283138205150; // string | Phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format.
+$whatsapp_phone_number_settings = {"calling":{"status":"ENABLED","iconVisibility":"DEFAULT"}}; // \YCloud\Client\Model\WhatsappPhoneNumberSettings | Phone number settings to save.
+
+try {
+    $result = $apiInstance->saveSettings($waba_id, $phone_number, $whatsapp_phone_number_settings);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling WhatsappPhoneNumbersApi->saveSettings: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **waba_id** | **string**| WhatsApp Business Account ID. |
+ **phone_number** | **string**| Phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format. |
+ **whatsapp_phone_number_settings** | [**\YCloud\Client\Model\WhatsappPhoneNumberSettings**](../Model/WhatsappPhoneNumberSettings.md)| Phone number settings to save. |
+
+### Return type
+
+[**\YCloud\Client\Model\WhatsappPhoneNumberSettings**](../Model/WhatsappPhoneNumberSettings.md)
+
+### Authorization
+
+[api_key](../../README.md#api_key)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)

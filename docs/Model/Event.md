@@ -18,5 +18,8 @@ Name | Type | Description | Notes
 **whatsapp_phone_number** | [**\YCloud\Client\Model\WhatsappPhoneNumber**](WhatsappPhoneNumber.md) |  | [optional]
 **whatsapp_payment** | [**\YCloud\Client\Model\WhatsappPayment**](WhatsappPayment.md) |  | [optional]
 **whatsapp_template** | [**\YCloud\Client\Model\WhatsappTemplate**](WhatsappTemplate.md) |  | [optional]
+**contact_attributes_changed** | [**\YCloud\Client\Model\ContactAttributesChanged**](ContactAttributesChanged.md) |  | [optional]
+**contact_created** | [**\YCloud\Client\Model\ContactCreated**](ContactCreated.md) |  | [optional]
+**contact_deleted** | [**\YCloud\Client\Model\ContactDeleted**](ContactDeleted.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

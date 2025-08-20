@@ -62,6 +62,10 @@ class EventType
 
     public const WHATSAPP_MESSAGE_UPDATED = 'whatsapp.message.updated';
 
+    public const WHATSAPP_SMB_HISTORY = 'whatsapp.smb.history';
+
+    public const WHATSAPP_SMB_MESSAGE_CREATED = 'whatsapp.smb.message.created';
+
     public const WHATSAPP_PHONE_NUMBER_DELETED = 'whatsapp.phone_number.deleted';
 
     public const WHATSAPP_PHONE_NUMBER_NAME_UPDATED = 'whatsapp.phone_number.name_updated';
@@ -73,6 +77,12 @@ class EventType
     public const WHATSAPP_TEMPLATE_QUALITY_UPDATED = 'whatsapp.template.quality_updated';
 
     public const WHATSAPP_TEMPLATE_REVIEWED = 'whatsapp.template.reviewed';
+
+    public const CONTACT_ATTRIBUTES_CHANGED = 'contact.attributes_changed';
+
+    public const CONTACT_CREATED = 'contact.created';
+
+    public const CONTACT_DELETED = 'contact.deleted';
 
     /**
      * Gets allowable values of the enum
@@ -90,12 +100,17 @@ class EventType
             self::WHATSAPP_BUSINESS_ACCOUNT_UPDATED,
             self::WHATSAPP_INBOUND_MESSAGE_RECEIVED,
             self::WHATSAPP_MESSAGE_UPDATED,
+            self::WHATSAPP_SMB_HISTORY,
+            self::WHATSAPP_SMB_MESSAGE_CREATED,
             self::WHATSAPP_PHONE_NUMBER_DELETED,
             self::WHATSAPP_PHONE_NUMBER_NAME_UPDATED,
             self::WHATSAPP_PHONE_NUMBER_QUALITY_UPDATED,
             self::WHATSAPP_TEMPLATE_CATEGORY_UPDATED,
             self::WHATSAPP_TEMPLATE_QUALITY_UPDATED,
-            self::WHATSAPP_TEMPLATE_REVIEWED
+            self::WHATSAPP_TEMPLATE_REVIEWED,
+            self::CONTACT_ATTRIBUTES_CHANGED,
+            self::CONTACT_CREATED,
+            self::CONTACT_DELETED
         ];
     }
 }

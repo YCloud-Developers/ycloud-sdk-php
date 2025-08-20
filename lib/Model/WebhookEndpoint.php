@@ -61,6 +61,7 @@ class WebhookEndpoint implements ModelInterface, ArrayAccess, \JsonSerializable
         'id' => 'string',
         'url' => 'string',
         'enabled_events' => 'string[]',
+        'event_properties' => '\YCloud\Client\Model\EventProperty[]',
         'description' => 'string',
         'status' => '\YCloud\Client\Model\WebhookEndpointStatus',
         'secret' => 'string',
@@ -79,6 +80,7 @@ class WebhookEndpoint implements ModelInterface, ArrayAccess, \JsonSerializable
         'id' => null,
         'url' => null,
         'enabled_events' => null,
+        'event_properties' => null,
         'description' => null,
         'status' => null,
         'secret' => null,
@@ -116,6 +118,7 @@ class WebhookEndpoint implements ModelInterface, ArrayAccess, \JsonSerializable
         'id' => 'id',
         'url' => 'url',
         'enabled_events' => 'enabledEvents',
+        'event_properties' => 'eventProperties',
         'description' => 'description',
         'status' => 'status',
         'secret' => 'secret',
@@ -132,6 +135,7 @@ class WebhookEndpoint implements ModelInterface, ArrayAccess, \JsonSerializable
         'id' => 'setId',
         'url' => 'setUrl',
         'enabled_events' => 'setEnabledEvents',
+        'event_properties' => 'setEventProperties',
         'description' => 'setDescription',
         'status' => 'setStatus',
         'secret' => 'setSecret',
@@ -148,6 +152,7 @@ class WebhookEndpoint implements ModelInterface, ArrayAccess, \JsonSerializable
         'id' => 'getId',
         'url' => 'getUrl',
         'enabled_events' => 'getEnabledEvents',
+        'event_properties' => 'getEventProperties',
         'description' => 'getDescription',
         'status' => 'getStatus',
         'secret' => 'getSecret',
@@ -215,6 +220,7 @@ class WebhookEndpoint implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['id'] = $data['id'] ?? null;
         $this->container['url'] = $data['url'] ?? null;
         $this->container['enabled_events'] = $data['enabled_events'] ?? null;
+        $this->container['event_properties'] = $data['event_properties'] ?? null;
         $this->container['description'] = $data['description'] ?? null;
         $this->container['status'] = $data['status'] ?? null;
         $this->container['secret'] = $data['secret'] ?? null;
@@ -317,6 +323,30 @@ class WebhookEndpoint implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setEnabledEvents($enabled_events)
     {
         $this->container['enabled_events'] = $enabled_events;
+
+        return $this;
+    }
+
+    /**
+     * Gets event_properties
+     *
+     * @return \YCloud\Client\Model\EventProperty[]|null
+     */
+    public function getEventProperties()
+    {
+        return $this->container['event_properties'];
+    }
+
+    /**
+     * Sets event_properties
+     *
+     * @param \YCloud\Client\Model\EventProperty[]|null $event_properties Optional configuration for event properties in webhook payloads. Specifies which properties should be included for specific event types. When `enabledEvents` contains `contact.attributes_changed`, this field is required and must contain at least one event property configuration for that event type.
+     *
+     * @return self
+     */
+    public function setEventProperties($event_properties)
+    {
+        $this->container['event_properties'] = $event_properties;
 
         return $this;
     }

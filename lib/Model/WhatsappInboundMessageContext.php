@@ -314,7 +314,7 @@ class WhatsappInboundMessageContext implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets id
      *
-     * @param string|null $id **Optional.**  The `wamid` for the sent message for an inbound reply. `wamid` is the original message ID on WhatsApp’s platform.
+     * @param string|null $id **Optional.**  The `wamid` for the sent message for an inbound reply. `wamid` is the original message ID on WhatsApp's platform.
      *
      * @return self
      */

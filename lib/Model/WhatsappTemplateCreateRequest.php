@@ -65,7 +65,8 @@ class WhatsappTemplateCreateRequest implements ModelInterface, ArrayAccess, \Jso
         'category' => '\YCloud\Client\Model\WhatsappTemplateCategory',
         'sub_category' => '\YCloud\Client\Model\WhatsappTemplateSubCategory',
         'message_send_ttl_seconds' => 'int',
-        'components' => '\YCloud\Client\Model\WhatsappTemplateComponent[]'
+        'components' => '\YCloud\Client\Model\WhatsappTemplateComponent[]',
+        'cta_url_link_tracking_opted_out' => 'bool'
     ];
 
     /**
@@ -82,7 +83,8 @@ class WhatsappTemplateCreateRequest implements ModelInterface, ArrayAccess, \Jso
         'category' => null,
         'sub_category' => null,
         'message_send_ttl_seconds' => 'int32',
-        'components' => null
+        'components' => null,
+        'cta_url_link_tracking_opted_out' => null
     ];
 
     /**
@@ -118,7 +120,8 @@ class WhatsappTemplateCreateRequest implements ModelInterface, ArrayAccess, \Jso
         'category' => 'category',
         'sub_category' => 'subCategory',
         'message_send_ttl_seconds' => 'messageSendTtlSeconds',
-        'components' => 'components'
+        'components' => 'components',
+        'cta_url_link_tracking_opted_out' => 'ctaUrlLinkTrackingOptedOut'
     ];
 
     /**
@@ -133,7 +136,8 @@ class WhatsappTemplateCreateRequest implements ModelInterface, ArrayAccess, \Jso
         'category' => 'setCategory',
         'sub_category' => 'setSubCategory',
         'message_send_ttl_seconds' => 'setMessageSendTtlSeconds',
-        'components' => 'setComponents'
+        'components' => 'setComponents',
+        'cta_url_link_tracking_opted_out' => 'setCtaUrlLinkTrackingOptedOut'
     ];
 
     /**
@@ -148,7 +152,8 @@ class WhatsappTemplateCreateRequest implements ModelInterface, ArrayAccess, \Jso
         'category' => 'getCategory',
         'sub_category' => 'getSubCategory',
         'message_send_ttl_seconds' => 'getMessageSendTtlSeconds',
-        'components' => 'getComponents'
+        'components' => 'getComponents',
+        'cta_url_link_tracking_opted_out' => 'getCtaUrlLinkTrackingOptedOut'
     ];
 
     /**
@@ -215,6 +220,7 @@ class WhatsappTemplateCreateRequest implements ModelInterface, ArrayAccess, \Jso
         $this->container['sub_category'] = $data['sub_category'] ?? null;
         $this->container['message_send_ttl_seconds'] = $data['message_send_ttl_seconds'] ?? null;
         $this->container['components'] = $data['components'] ?? null;
+        $this->container['cta_url_link_tracking_opted_out'] = $data['cta_url_link_tracking_opted_out'] ?? null;
     }
 
     /**
@@ -435,6 +441,30 @@ class WhatsappTemplateCreateRequest implements ModelInterface, ArrayAccess, \Jso
     public function setComponents($components)
     {
         $this->container['components'] = $components;
+
+        return $this;
+    }
+
+    /**
+     * Gets cta_url_link_tracking_opted_out
+     *
+     * @return bool|null
+     */
+    public function getCtaUrlLinkTrackingOptedOut()
+    {
+        return $this->container['cta_url_link_tracking_opted_out'];
+    }
+
+    /**
+     * Sets cta_url_link_tracking_opted_out
+     *
+     * @param bool|null $cta_url_link_tracking_opted_out **Optional.** Indicates if template button click tracking is disabled. Set to `true` to disable button click tracking on the template, or `false` to enable. You can disable button click tracking on an individual template by setting this field to `true`. Once disabled, button engagement/clicks will not be displayed in the WhatsApp Manager when viewing the template's insights. If not provided, this value defaults to `false`, which means button click tracking is enabled by default.
+     *
+     * @return self
+     */
+    public function setCtaUrlLinkTrackingOptedOut($cta_url_link_tracking_opted_out)
+    {
+        $this->container['cta_url_link_tracking_opted_out'] = $cta_url_link_tracking_opted_out;
 
         return $this;
     }

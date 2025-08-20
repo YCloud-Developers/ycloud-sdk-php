@@ -72,7 +72,10 @@ class Event implements ModelInterface, ArrayAccess, \JsonSerializable
         'whatsapp_message' => '\YCloud\Client\Model\WhatsappMessage',
         'whatsapp_phone_number' => '\YCloud\Client\Model\WhatsappPhoneNumber',
         'whatsapp_payment' => '\YCloud\Client\Model\WhatsappPayment',
-        'whatsapp_template' => '\YCloud\Client\Model\WhatsappTemplate'
+        'whatsapp_template' => '\YCloud\Client\Model\WhatsappTemplate',
+        'contact_attributes_changed' => '\YCloud\Client\Model\ContactAttributesChanged',
+        'contact_created' => '\YCloud\Client\Model\ContactCreated',
+        'contact_deleted' => '\YCloud\Client\Model\ContactDeleted'
     ];
 
     /**
@@ -96,7 +99,10 @@ class Event implements ModelInterface, ArrayAccess, \JsonSerializable
         'whatsapp_message' => null,
         'whatsapp_phone_number' => null,
         'whatsapp_payment' => null,
-        'whatsapp_template' => null
+        'whatsapp_template' => null,
+        'contact_attributes_changed' => null,
+        'contact_created' => null,
+        'contact_deleted' => null
     ];
 
     /**
@@ -139,7 +145,10 @@ class Event implements ModelInterface, ArrayAccess, \JsonSerializable
         'whatsapp_message' => 'whatsappMessage',
         'whatsapp_phone_number' => 'whatsappPhoneNumber',
         'whatsapp_payment' => 'whatsappPayment',
-        'whatsapp_template' => 'whatsappTemplate'
+        'whatsapp_template' => 'whatsappTemplate',
+        'contact_attributes_changed' => 'contactAttributesChanged',
+        'contact_created' => 'contactCreated',
+        'contact_deleted' => 'contactDeleted'
     ];
 
     /**
@@ -161,7 +170,10 @@ class Event implements ModelInterface, ArrayAccess, \JsonSerializable
         'whatsapp_message' => 'setWhatsappMessage',
         'whatsapp_phone_number' => 'setWhatsappPhoneNumber',
         'whatsapp_payment' => 'setWhatsappPayment',
-        'whatsapp_template' => 'setWhatsappTemplate'
+        'whatsapp_template' => 'setWhatsappTemplate',
+        'contact_attributes_changed' => 'setContactAttributesChanged',
+        'contact_created' => 'setContactCreated',
+        'contact_deleted' => 'setContactDeleted'
     ];
 
     /**
@@ -183,7 +195,10 @@ class Event implements ModelInterface, ArrayAccess, \JsonSerializable
         'whatsapp_message' => 'getWhatsappMessage',
         'whatsapp_phone_number' => 'getWhatsappPhoneNumber',
         'whatsapp_payment' => 'getWhatsappPayment',
-        'whatsapp_template' => 'getWhatsappTemplate'
+        'whatsapp_template' => 'getWhatsappTemplate',
+        'contact_attributes_changed' => 'getContactAttributesChanged',
+        'contact_created' => 'getContactCreated',
+        'contact_deleted' => 'getContactDeleted'
     ];
 
     /**
@@ -257,6 +272,9 @@ class Event implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['whatsapp_phone_number'] = $data['whatsapp_phone_number'] ?? null;
         $this->container['whatsapp_payment'] = $data['whatsapp_payment'] ?? null;
         $this->container['whatsapp_template'] = $data['whatsapp_template'] ?? null;
+        $this->container['contact_attributes_changed'] = $data['contact_attributes_changed'] ?? null;
+        $this->container['contact_created'] = $data['contact_created'] ?? null;
+        $this->container['contact_deleted'] = $data['contact_deleted'] ?? null;
     }
 
     /**
@@ -642,6 +660,78 @@ class Event implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setWhatsappTemplate($whatsapp_template)
     {
         $this->container['whatsapp_template'] = $whatsapp_template;
+
+        return $this;
+    }
+
+    /**
+     * Gets contact_attributes_changed
+     *
+     * @return \YCloud\Client\Model\ContactAttributesChanged|null
+     */
+    public function getContactAttributesChanged()
+    {
+        return $this->container['contact_attributes_changed'];
+    }
+
+    /**
+     * Sets contact_attributes_changed
+     *
+     * @param \YCloud\Client\Model\ContactAttributesChanged|null $contact_attributes_changed contact_attributes_changed
+     *
+     * @return self
+     */
+    public function setContactAttributesChanged($contact_attributes_changed)
+    {
+        $this->container['contact_attributes_changed'] = $contact_attributes_changed;
+
+        return $this;
+    }
+
+    /**
+     * Gets contact_created
+     *
+     * @return \YCloud\Client\Model\ContactCreated|null
+     */
+    public function getContactCreated()
+    {
+        return $this->container['contact_created'];
+    }
+
+    /**
+     * Sets contact_created
+     *
+     * @param \YCloud\Client\Model\ContactCreated|null $contact_created contact_created
+     *
+     * @return self
+     */
+    public function setContactCreated($contact_created)
+    {
+        $this->container['contact_created'] = $contact_created;
+
+        return $this;
+    }
+
+    /**
+     * Gets contact_deleted
+     *
+     * @return \YCloud\Client\Model\ContactDeleted|null
+     */
+    public function getContactDeleted()
+    {
+        return $this->container['contact_deleted'];
+    }
+
+    /**
+     * Sets contact_deleted
+     *
+     * @param \YCloud\Client\Model\ContactDeleted|null $contact_deleted contact_deleted
+     *
+     * @return self
+     */
+    public function setContactDeleted($contact_deleted)
+    {
+        $this->container['contact_deleted'] = $contact_deleted;
 
         return $this;
     }

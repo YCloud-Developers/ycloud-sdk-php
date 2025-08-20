@@ -36,7 +36,7 @@ use \YCloud\Client\ObjectSerializer;
  * WhatsappInboundMessageSystem Class Doc Comment
  *
  * @category Class
- * @description When the message type is set to &#x60;system&#x60;, this field is included. This object is added to Webhooks if a user has changed their phone number and if a user’s identity has potentially changed on WhatsApp.
+ * @description When the message type is set to &#x60;system&#x60;, this field is included. This object is added to Webhooks if a user has changed their phone number and if a user&#39;s identity has potentially changed on WhatsApp.
  * @package  YCloud\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

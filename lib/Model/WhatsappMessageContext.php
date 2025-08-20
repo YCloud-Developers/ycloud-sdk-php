@@ -218,7 +218,7 @@ class WhatsappMessageContext implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets message_id
      *
-     * @param string|null $message_id Specifies the `wamid` of the message your are replying to. `wamid` is the original message ID on WhatsApp’s platform.
+     * @param string|null $message_id Specifies the `wamid` of the message your are replying to. `wamid` is the original message ID on WhatsApp's platform.
      *
      * @return self
      */

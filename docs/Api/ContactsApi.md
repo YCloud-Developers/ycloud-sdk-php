@@ -4,12 +4,70 @@ All URIs are relative to https://api.ycloud.com/v2.
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**attributesList()**](ContactsApi.md#attributesList) | **GET** /contact/contacts/attributes | List contact attributes
 [**create()**](ContactsApi.md#create) | **POST** /contact/contacts | Create a contact
 [**delete()**](ContactsApi.md#delete) | **DELETE** /contact/contacts/{id} | Delete a contact
 [**list()**](ContactsApi.md#list) | **GET** /contact/contacts | List contacts
 [**retrieve()**](ContactsApi.md#retrieve) | **GET** /contact/contacts/{id} | Retrieve a contact
 [**update()**](ContactsApi.md#update) | **PATCH** /contact/contacts/{id} | Update a contact
 
+
+## `attributesList()`
+
+```php
+attributesList(): \YCloud\Client\Model\ContactAttribute[]
+```
+
+List contact attributes
+
+Returns a list of all available contact attributes and their configurations.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: api_key
+$config = YCloud\Client\Configuration::getDefaultConfiguration()->setApiKey('X-API-Key', 'YOUR_API_KEY');
+
+
+$apiInstance = new YCloud\Client\Api\ContactsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+
+try {
+    $result = $apiInstance->attributesList();
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ContactsApi->attributesList: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**\YCloud\Client\Model\ContactAttribute[]**](../Model/ContactAttribute.md)
+
+### Authorization
+
+[api_key](../../README.md#api_key)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
 
 ## `create()`
 

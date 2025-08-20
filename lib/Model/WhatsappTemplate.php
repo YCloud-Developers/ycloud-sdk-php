@@ -59,6 +59,7 @@ class WhatsappTemplate implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
+        'official_template_id' => 'string',
         'waba_id' => 'string',
         'name' => 'string',
         'language' => 'string',
@@ -85,6 +86,7 @@ class WhatsappTemplate implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'official_template_id' => null,
         'waba_id' => null,
         'name' => null,
         'language' => null,
@@ -130,6 +132,7 @@ class WhatsappTemplate implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
+        'official_template_id' => 'officialTemplateId',
         'waba_id' => 'wabaId',
         'name' => 'name',
         'language' => 'language',
@@ -154,6 +157,7 @@ class WhatsappTemplate implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
+        'official_template_id' => 'setOfficialTemplateId',
         'waba_id' => 'setWabaId',
         'name' => 'setName',
         'language' => 'setLanguage',
@@ -178,6 +182,7 @@ class WhatsappTemplate implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
+        'official_template_id' => 'getOfficialTemplateId',
         'waba_id' => 'getWabaId',
         'name' => 'getName',
         'language' => 'getLanguage',
@@ -253,6 +258,7 @@ class WhatsappTemplate implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
+        $this->container['official_template_id'] = $data['official_template_id'] ?? null;
         $this->container['waba_id'] = $data['waba_id'] ?? null;
         $this->container['name'] = $data['name'] ?? null;
         $this->container['language'] = $data['language'] ?? null;
@@ -315,6 +321,30 @@ class WhatsappTemplate implements ModelInterface, ArrayAccess, \JsonSerializable
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets official_template_id
+     *
+     * @return string|null
+     */
+    public function getOfficialTemplateId()
+    {
+        return $this->container['official_template_id'];
+    }
+
+    /**
+     * Sets official_template_id
+     *
+     * @param string|null $official_template_id Official template ID assigned by WhatsApp. This ID is used to identify the template in WhatsApp's system.
+     *
+     * @return self
+     */
+    public function setOfficialTemplateId($official_template_id)
+    {
+        $this->container['official_template_id'] = $official_template_id;
+
+        return $this;
+    }
 
     /**
      * Gets waba_id

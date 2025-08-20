@@ -73,6 +73,7 @@ All URIs are relative to *https://api.ycloud.com/v2*
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *BalanceApi* | [**retrieve**](docs/Api/BalanceApi.md#retrieve) | **GET** /balance | Retrieve balance
+*ContactsApi* | [**attributesList**](docs/Api/ContactsApi.md#attributeslist) | **GET** /contact/contacts/attributes | List contact attributes
 *ContactsApi* | [**create**](docs/Api/ContactsApi.md#create) | **POST** /contact/contacts | Create a contact
 *ContactsApi* | [**delete**](docs/Api/ContactsApi.md#delete) | **DELETE** /contact/contacts/{id} | Delete a contact
 *ContactsApi* | [**list**](docs/Api/ContactsApi.md#list) | **GET** /contact/contacts | List contacts
@@ -105,6 +106,20 @@ Class | Method | HTTP request | Description
 *WebhookEndpointsApi* | [**update**](docs/Api/WebhookEndpointsApi.md#update) | **PATCH** /webhookEndpoints/{id} | Update a webhook endpoint
 *WhatsappBusinessAccountsApi* | [**list**](docs/Api/WhatsappBusinessAccountsApi.md#list) | **GET** /whatsapp/businessAccounts | List WABAs
 *WhatsappBusinessAccountsApi* | [**retrieve**](docs/Api/WhatsappBusinessAccountsApi.md#retrieve) | **GET** /whatsapp/businessAccounts/{id} | Retrieve a WABA
+*WhatsappCallingApi* | [**accept**](docs/Api/WhatsappCallingApi.md#accept) | **POST** /whatsapp/calls/accept | Accept a call
+*WhatsappCallingApi* | [**connect**](docs/Api/WhatsappCallingApi.md#connect) | **POST** /whatsapp/calls/connect | Connect a call
+*WhatsappCallingApi* | [**preAccept**](docs/Api/WhatsappCallingApi.md#preaccept) | **POST** /whatsapp/calls/preAccept | Pre-accept a call
+*WhatsappCallingApi* | [**reject**](docs/Api/WhatsappCallingApi.md#reject) | **POST** /whatsapp/calls/reject | Reject a call
+*WhatsappCallingApi* | [**terminate**](docs/Api/WhatsappCallingApi.md#terminate) | **POST** /whatsapp/calls/terminate | Terminate a call
+*WhatsappFlowsApi* | [**create**](docs/Api/WhatsappFlowsApi.md#create) | **POST** /whatsapp/flows | Create a flow
+*WhatsappFlowsApi* | [**delete**](docs/Api/WhatsappFlowsApi.md#delete) | **DELETE** /whatsapp/flows/{flowId} | Delete a flow
+*WhatsappFlowsApi* | [**deprecate**](docs/Api/WhatsappFlowsApi.md#deprecate) | **POST** /whatsapp/flows/{flowId}/deprecate | Deprecate a flow
+*WhatsappFlowsApi* | [**list**](docs/Api/WhatsappFlowsApi.md#list) | **GET** /whatsapp/flows | List flows
+*WhatsappFlowsApi* | [**preview**](docs/Api/WhatsappFlowsApi.md#preview) | **GET** /whatsapp/flows/{flowId}/preview | generate a web preview URL with this flow.
+*WhatsappFlowsApi* | [**publish**](docs/Api/WhatsappFlowsApi.md#publish) | **POST** /whatsapp/flows/{flowId}/publish | Publish a flow
+*WhatsappFlowsApi* | [**retrieve**](docs/Api/WhatsappFlowsApi.md#retrieve) | **GET** /whatsapp/flows/{flowId} | Retrieve a flow
+*WhatsappFlowsApi* | [**updateMetadata**](docs/Api/WhatsappFlowsApi.md#updatemetadata) | **PATCH** /whatsapp/flows/{flowId}/metadata | Update flow metadata
+*WhatsappFlowsApi* | [**updateStructure**](docs/Api/WhatsappFlowsApi.md#updatestructure) | **PATCH** /whatsapp/flows/{flowId}/assets | Update flow structure
 *WhatsappInboundMessagesApi* | [**markAsRead**](docs/Api/WhatsappInboundMessagesApi.md#markasread) | **POST** /whatsapp/inboundMessages/{id}/markAsRead | Mark message as read
 *WhatsappInboundMessagesApi* | [**typingIndicator**](docs/Api/WhatsappInboundMessagesApi.md#typingindicator) | **POST** /whatsapp/inboundMessages/{id}/typingIndicator | Mark message as read and display a typing indicator
 *WhatsappMediaApi* | [**upload**](docs/Api/WhatsappMediaApi.md#upload) | **POST** /whatsapp/media/{phoneNumber}/upload | Upload media
@@ -116,6 +131,8 @@ Class | Method | HTTP request | Description
 *WhatsappPhoneNumbersApi* | [**retrieve**](docs/Api/WhatsappPhoneNumbersApi.md#retrieve) | **GET** /whatsapp/phoneNumbers/{wabaId}/{phoneNumber} | Retrieve a phone number
 *WhatsappPhoneNumbersApi* | [**retrieveCommerceSettings**](docs/Api/WhatsappPhoneNumbersApi.md#retrievecommercesettings) | **GET** /whatsapp/phoneNumbers/{wabaId}/{phoneNumber}/whatsappCommerceSettings | Retrieve commerce settings
 *WhatsappPhoneNumbersApi* | [**retrieveProfile**](docs/Api/WhatsappPhoneNumbersApi.md#retrieveprofile) | **GET** /whatsapp/phoneNumbers/{wabaId}/{phoneNumber}/profile | Retrieve a phone number profile
+*WhatsappPhoneNumbersApi* | [**retrieveSettings**](docs/Api/WhatsappPhoneNumbersApi.md#retrievesettings) | **GET** /whatsapp/phoneNumbers/{wabaId}/{phoneNumber}/settings | Retrieve phone number settings
+*WhatsappPhoneNumbersApi* | [**saveSettings**](docs/Api/WhatsappPhoneNumbersApi.md#savesettings) | **POST** /whatsapp/phoneNumbers/{wabaId}/{phoneNumber}/settings | Save phone number settings
 *WhatsappPhoneNumbersApi* | [**updateCommerceSettings**](docs/Api/WhatsappPhoneNumbersApi.md#updatecommercesettings) | **PATCH** /whatsapp/phoneNumbers/{wabaId}/{phoneNumber}/whatsappCommerceSettings | Update commerce settings
 *WhatsappPhoneNumbersApi* | [**updateProfile**](docs/Api/WhatsappPhoneNumbersApi.md#updateprofile) | **PATCH** /whatsapp/phoneNumbers/{wabaId}/{phoneNumber}/profile | Update a phone number profile
 *WhatsappTemplatesApi* | [**create**](docs/Api/WhatsappTemplatesApi.md#create) | **POST** /whatsapp/templates | Create a template
@@ -127,11 +144,20 @@ Class | Method | HTTP request | Description
 
 ## Models
 
+- [AttributeChangeAction](docs/Model/AttributeChangeAction.md)
 - [Balance](docs/Model/Balance.md)
 - [Contact](docs/Model/Contact.md)
+- [ContactAttribute](docs/Model/ContactAttribute.md)
+- [ContactAttributeChange](docs/Model/ContactAttributeChange.md)
+- [ContactAttributeChangeNewValue](docs/Model/ContactAttributeChangeNewValue.md)
+- [ContactAttributeChangeOldValue](docs/Model/ContactAttributeChangeOldValue.md)
+- [ContactAttributesChanged](docs/Model/ContactAttributesChanged.md)
 - [ContactCreateRequest](docs/Model/ContactCreateRequest.md)
+- [ContactCreated](docs/Model/ContactCreated.md)
 - [ContactCustomAttribute](docs/Model/ContactCustomAttribute.md)
+- [ContactDeleted](docs/Model/ContactDeleted.md)
 - [ContactPage](docs/Model/ContactPage.md)
+- [ContactSourceType](docs/Model/ContactSourceType.md)
 - [ContactUpdateRequest](docs/Model/ContactUpdateRequest.md)
 - [CustomEventDefinition](docs/Model/CustomEventDefinition.md)
 - [CustomEventDefinitionCreateRequest](docs/Model/CustomEventDefinitionCreateRequest.md)
@@ -147,6 +173,7 @@ Class | Method | HTTP request | Description
 - [Error](docs/Model/Error.md)
 - [ErrorResponse](docs/Model/ErrorResponse.md)
 - [Event](docs/Model/Event.md)
+- [EventProperty](docs/Model/EventProperty.md)
 - [EventType](docs/Model/EventType.md)
 - [Mailbox](docs/Model/Mailbox.md)
 - [MetaBusinessAccountVerificationStatus](docs/Model/MetaBusinessAccountVerificationStatus.md)
@@ -184,18 +211,38 @@ Class | Method | HTTP request | Description
 - [WhatsappBusinessAccountRestrictionInfo](docs/Model/WhatsappBusinessAccountRestrictionInfo.md)
 - [WhatsappBusinessAccountReviewStatus](docs/Model/WhatsappBusinessAccountReviewStatus.md)
 - [WhatsappBusinessAccountUpdateEventEnum](docs/Model/WhatsappBusinessAccountUpdateEventEnum.md)
+- [WhatsappCallingConnectRequest](docs/Model/WhatsappCallingConnectRequest.md)
+- [WhatsappCallingPreAcceptRequest](docs/Model/WhatsappCallingPreAcceptRequest.md)
+- [WhatsappCallingRequest](docs/Model/WhatsappCallingRequest.md)
+- [WhatsappCallingResponse](docs/Model/WhatsappCallingResponse.md)
+- [WhatsappCallingTerminateRequest](docs/Model/WhatsappCallingTerminateRequest.md)
 - [WhatsappCommerceSettings](docs/Model/WhatsappCommerceSettings.md)
 - [WhatsappCommerceSettingsUpdateRequest](docs/Model/WhatsappCommerceSettingsUpdateRequest.md)
 - [WhatsappConversation](docs/Model/WhatsappConversation.md)
 - [WhatsappConversationOriginType](docs/Model/WhatsappConversationOriginType.md)
 - [WhatsappConversationType](docs/Model/WhatsappConversationType.md)
+- [WhatsappFlow](docs/Model/WhatsappFlow.md)
+- [WhatsappFlowCategory](docs/Model/WhatsappFlowCategory.md)
+- [WhatsappFlowCreate200Response](docs/Model/WhatsappFlowCreate200Response.md)
+- [WhatsappFlowCreate400Response](docs/Model/WhatsappFlowCreate400Response.md)
+- [WhatsappFlowCreateRequest](docs/Model/WhatsappFlowCreateRequest.md)
+- [WhatsappFlowList200Response](docs/Model/WhatsappFlowList200Response.md)
+- [WhatsappFlowPreviewUrl](docs/Model/WhatsappFlowPreviewUrl.md)
+- [WhatsappFlowStatus](docs/Model/WhatsappFlowStatus.md)
+- [WhatsappFlowUpdateMetadata200Response](docs/Model/WhatsappFlowUpdateMetadata200Response.md)
+- [WhatsappFlowUpdateMetadataRequest](docs/Model/WhatsappFlowUpdateMetadataRequest.md)
+- [WhatsappFlowValidationError](docs/Model/WhatsappFlowValidationError.md)
+- [WhatsappFlowValidationErrorPointersInner](docs/Model/WhatsappFlowValidationErrorPointersInner.md)
+- [WhatsappFlowWhatsappBusinessAccount](docs/Model/WhatsappFlowWhatsappBusinessAccount.md)
 - [WhatsappInboundMessage](docs/Model/WhatsappInboundMessage.md)
 - [WhatsappInboundMessageButton](docs/Model/WhatsappInboundMessageButton.md)
 - [WhatsappInboundMessageContext](docs/Model/WhatsappInboundMessageContext.md)
 - [WhatsappInboundMessageError](docs/Model/WhatsappInboundMessageError.md)
 - [WhatsappInboundMessageInteractive](docs/Model/WhatsappInboundMessageInteractive.md)
 - [WhatsappInboundMessageInteractiveButtonReply](docs/Model/WhatsappInboundMessageInteractiveButtonReply.md)
+- [WhatsappInboundMessageInteractiveCallPermissionReply](docs/Model/WhatsappInboundMessageInteractiveCallPermissionReply.md)
 - [WhatsappInboundMessageInteractiveListReply](docs/Model/WhatsappInboundMessageInteractiveListReply.md)
+- [WhatsappInboundMessageInteractiveNfmReply](docs/Model/WhatsappInboundMessageInteractiveNfmReply.md)
 - [WhatsappInboundMessageLocation](docs/Model/WhatsappInboundMessageLocation.md)
 - [WhatsappInboundMessageMedia](docs/Model/WhatsappInboundMessageMedia.md)
 - [WhatsappInboundMessageOrder](docs/Model/WhatsappInboundMessageOrder.md)
@@ -230,6 +277,8 @@ Class | Method | HTTP request | Description
 - [WhatsappMessageInteractiveHeader](docs/Model/WhatsappMessageInteractiveHeader.md)
 - [WhatsappMessageLocation](docs/Model/WhatsappMessageLocation.md)
 - [WhatsappMessageMedia](docs/Model/WhatsappMessageMedia.md)
+- [WhatsappMessageMediaOneOf](docs/Model/WhatsappMessageMediaOneOf.md)
+- [WhatsappMessageMediaOneOf1](docs/Model/WhatsappMessageMediaOneOf1.md)
 - [WhatsappMessageOrderAmount](docs/Model/WhatsappMessageOrderAmount.md)
 - [WhatsappMessageOrderBeneficiary](docs/Model/WhatsappMessageOrderBeneficiary.md)
 - [WhatsappMessageOrderDetails](docs/Model/WhatsappMessageOrderDetails.md)
@@ -272,6 +321,8 @@ Class | Method | HTTP request | Description
 - [WhatsappPhoneNumberProfileVertical](docs/Model/WhatsappPhoneNumberProfileVertical.md)
 - [WhatsappPhoneNumberQualityRating](docs/Model/WhatsappPhoneNumberQualityRating.md)
 - [WhatsappPhoneNumberQualityUpdateEventEnum](docs/Model/WhatsappPhoneNumberQualityUpdateEventEnum.md)
+- [WhatsappPhoneNumberSettings](docs/Model/WhatsappPhoneNumberSettings.md)
+- [WhatsappPhoneNumberSettingsCalling](docs/Model/WhatsappPhoneNumberSettingsCalling.md)
 - [WhatsappPhoneNumberStatus](docs/Model/WhatsappPhoneNumberStatus.md)
 - [WhatsappPricingCategory](docs/Model/WhatsappPricingCategory.md)
 - [WhatsappPricingModel](docs/Model/WhatsappPricingModel.md)
@@ -282,6 +333,7 @@ Class | Method | HTTP request | Description
 - [WhatsappTemplateCategory](docs/Model/WhatsappTemplateCategory.md)
 - [WhatsappTemplateComponent](docs/Model/WhatsappTemplateComponent.md)
 - [WhatsappTemplateComponentButton](docs/Model/WhatsappTemplateComponentButton.md)
+- [WhatsappTemplateComponentButtonOtpSupportedApp](docs/Model/WhatsappTemplateComponentButtonOtpSupportedApp.md)
 - [WhatsappTemplateComponentButtonOtpType](docs/Model/WhatsappTemplateComponentButtonOtpType.md)
 - [WhatsappTemplateComponentButtonType](docs/Model/WhatsappTemplateComponentButtonType.md)
 - [WhatsappTemplateComponentCard](docs/Model/WhatsappTemplateComponentCard.md)

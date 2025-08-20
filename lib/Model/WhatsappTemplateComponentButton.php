@@ -66,6 +66,7 @@ class WhatsappTemplateComponentButton implements ModelInterface, ArrayAccess, \J
         'autofill_text' => 'string',
         'package_name' => 'string',
         'signature_hash' => 'string',
+        'supported_apps' => '\YCloud\Client\Model\WhatsappTemplateComponentButtonOtpSupportedApp[]',
         'zero_tap_terms_accepted' => 'bool',
         'example' => 'string[]',
         'flow_id' => 'string',
@@ -91,6 +92,7 @@ class WhatsappTemplateComponentButton implements ModelInterface, ArrayAccess, \J
         'autofill_text' => null,
         'package_name' => null,
         'signature_hash' => null,
+        'supported_apps' => null,
         'zero_tap_terms_accepted' => null,
         'example' => null,
         'flow_id' => null,
@@ -135,6 +137,7 @@ class WhatsappTemplateComponentButton implements ModelInterface, ArrayAccess, \J
         'autofill_text' => 'autofill_text',
         'package_name' => 'package_name',
         'signature_hash' => 'signature_hash',
+        'supported_apps' => 'supported_apps',
         'zero_tap_terms_accepted' => 'zero_tap_terms_accepted',
         'example' => 'example',
         'flow_id' => 'flow_id',
@@ -158,6 +161,7 @@ class WhatsappTemplateComponentButton implements ModelInterface, ArrayAccess, \J
         'autofill_text' => 'setAutofillText',
         'package_name' => 'setPackageName',
         'signature_hash' => 'setSignatureHash',
+        'supported_apps' => 'setSupportedApps',
         'zero_tap_terms_accepted' => 'setZeroTapTermsAccepted',
         'example' => 'setExample',
         'flow_id' => 'setFlowId',
@@ -181,6 +185,7 @@ class WhatsappTemplateComponentButton implements ModelInterface, ArrayAccess, \J
         'autofill_text' => 'getAutofillText',
         'package_name' => 'getPackageName',
         'signature_hash' => 'getSignatureHash',
+        'supported_apps' => 'getSupportedApps',
         'zero_tap_terms_accepted' => 'getZeroTapTermsAccepted',
         'example' => 'getExample',
         'flow_id' => 'getFlowId',
@@ -255,6 +260,7 @@ class WhatsappTemplateComponentButton implements ModelInterface, ArrayAccess, \J
         $this->container['autofill_text'] = $data['autofill_text'] ?? null;
         $this->container['package_name'] = $data['package_name'] ?? null;
         $this->container['signature_hash'] = $data['signature_hash'] ?? null;
+        $this->container['supported_apps'] = $data['supported_apps'] ?? null;
         $this->container['zero_tap_terms_accepted'] = $data['zero_tap_terms_accepted'] ?? null;
         $this->container['example'] = $data['example'] ?? null;
         $this->container['flow_id'] = $data['flow_id'] ?? null;
@@ -471,6 +477,7 @@ class WhatsappTemplateComponentButton implements ModelInterface, ArrayAccess, \J
      * Gets package_name
      *
      * @return string|null
+     * @deprecated
      */
     public function getPackageName()
     {
@@ -480,9 +487,10 @@ class WhatsappTemplateComponentButton implements ModelInterface, ArrayAccess, \J
     /**
      * Sets package_name
      *
-     * @param string|null $package_name **One-tap and zero-tap buttons only.** Your Android app's package name.
+     * @param string|null $package_name **Deprecated since 2025-07-23. Use `supported_apps` instead.** **One-tap and zero-tap buttons only.** Your Android app's package name.
      *
      * @return self
+     * @deprecated
      */
     public function setPackageName($package_name)
     {
@@ -495,6 +503,7 @@ class WhatsappTemplateComponentButton implements ModelInterface, ArrayAccess, \J
      * Gets signature_hash
      *
      * @return string|null
+     * @deprecated
      */
     public function getSignatureHash()
     {
@@ -504,13 +513,38 @@ class WhatsappTemplateComponentButton implements ModelInterface, ArrayAccess, \J
     /**
      * Sets signature_hash
      *
-     * @param string|null $signature_hash **One-tap and zero-tap buttons only.** Your app signing key hash. See [App Signing Key Hash](https://developers.facebook.com/docs/whatsapp/business-management-api/authentication-templates/zero-tap-authentication-templates#app-signing-key-hash).
+     * @param string|null $signature_hash **Deprecated since 2025-07-23. Use `supported_apps` instead.** **One-tap and zero-tap buttons only.** Your app signing key hash. See [App Signing Key Hash](https://developers.facebook.com/docs/whatsapp/business-management-api/authentication-templates/zero-tap-authentication-templates#app-signing-key-hash).
      *
      * @return self
+     * @deprecated
      */
     public function setSignatureHash($signature_hash)
     {
         $this->container['signature_hash'] = $signature_hash;
+
+        return $this;
+    }
+
+    /**
+     * Gets supported_apps
+     *
+     * @return \YCloud\Client\Model\WhatsappTemplateComponentButtonOtpSupportedApp[]|null
+     */
+    public function getSupportedApps()
+    {
+        return $this->container['supported_apps'];
+    }
+
+    /**
+     * Sets supported_apps
+     *
+     * @param \YCloud\Client\Model\WhatsappTemplateComponentButtonOtpSupportedApp[]|null $supported_apps **One-tap and zero-tap buttons only.** List of supported apps.
+     *
+     * @return self
+     */
+    public function setSupportedApps($supported_apps)
+    {
+        $this->container['supported_apps'] = $supported_apps;
 
         return $this;
     }

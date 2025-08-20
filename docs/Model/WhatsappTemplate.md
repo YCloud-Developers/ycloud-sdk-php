@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**official_template_id** | **string** | Official template ID assigned by WhatsApp. This ID is used to identify the template in WhatsApp&#39;s system. | [optional]
 **waba_id** | **string** | WhatsApp Business Account ID. |
 **name** | **string** | Name of the template. |
 **language** | **string** | Language code of the template. See [Supported Languages](https://developers.facebook.com/docs/whatsapp/api/messages/message-templates#supported-languages) for all codes. |

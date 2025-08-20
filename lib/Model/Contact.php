@@ -70,7 +70,10 @@ class Contact implements ModelInterface, ArrayAccess, \JsonSerializable
         'tags' => 'string[]',
         'create_time' => '\DateTime',
         'custom_attributes' => '\YCloud\Client\Model\ContactCustomAttribute[]',
-        'owner_email' => 'string'
+        'owner_email' => 'string',
+        'source_type' => '\YCloud\Client\Model\ContactSourceType',
+        'source_id' => 'string',
+        'source_url' => 'string'
     ];
 
     /**
@@ -92,7 +95,10 @@ class Contact implements ModelInterface, ArrayAccess, \JsonSerializable
         'tags' => null,
         'create_time' => 'date-time',
         'custom_attributes' => null,
-        'owner_email' => null
+        'owner_email' => null,
+        'source_type' => null,
+        'source_id' => null,
+        'source_url' => null
     ];
 
     /**
@@ -133,7 +139,10 @@ class Contact implements ModelInterface, ArrayAccess, \JsonSerializable
         'tags' => 'tags',
         'create_time' => 'createTime',
         'custom_attributes' => 'customAttributes',
-        'owner_email' => 'ownerEmail'
+        'owner_email' => 'ownerEmail',
+        'source_type' => 'sourceType',
+        'source_id' => 'sourceId',
+        'source_url' => 'sourceUrl'
     ];
 
     /**
@@ -153,7 +162,10 @@ class Contact implements ModelInterface, ArrayAccess, \JsonSerializable
         'tags' => 'setTags',
         'create_time' => 'setCreateTime',
         'custom_attributes' => 'setCustomAttributes',
-        'owner_email' => 'setOwnerEmail'
+        'owner_email' => 'setOwnerEmail',
+        'source_type' => 'setSourceType',
+        'source_id' => 'setSourceId',
+        'source_url' => 'setSourceUrl'
     ];
 
     /**
@@ -173,7 +185,10 @@ class Contact implements ModelInterface, ArrayAccess, \JsonSerializable
         'tags' => 'getTags',
         'create_time' => 'getCreateTime',
         'custom_attributes' => 'getCustomAttributes',
-        'owner_email' => 'getOwnerEmail'
+        'owner_email' => 'getOwnerEmail',
+        'source_type' => 'getSourceType',
+        'source_id' => 'getSourceId',
+        'source_url' => 'getSourceUrl'
     ];
 
     /**
@@ -245,6 +260,9 @@ class Contact implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['create_time'] = $data['create_time'] ?? null;
         $this->container['custom_attributes'] = $data['custom_attributes'] ?? null;
         $this->container['owner_email'] = $data['owner_email'] ?? null;
+        $this->container['source_type'] = $data['source_type'] ?? null;
+        $this->container['source_id'] = $data['source_id'] ?? null;
+        $this->container['source_url'] = $data['source_url'] ?? null;
     }
 
     /**
@@ -269,6 +287,14 @@ class Contact implements ModelInterface, ArrayAccess, \JsonSerializable
 
         if (!is_null($this->container['owner_email']) && (mb_strlen($this->container['owner_email']) > 250)) {
             $invalidProperties[] = "invalid value for 'owner_email', the character length must be smaller than or equal to 250.";
+        }
+
+        if (!is_null($this->container['source_id']) && (mb_strlen($this->container['source_id']) > 255)) {
+            $invalidProperties[] = "invalid value for 'source_id', the character length must be smaller than or equal to 255.";
+        }
+
+        if (!is_null($this->container['source_url']) && (mb_strlen($this->container['source_url']) > 500)) {
+            $invalidProperties[] = "invalid value for 'source_url', the character length must be smaller than or equal to 500.";
         }
 
         return $invalidProperties;
@@ -582,6 +608,86 @@ class Contact implements ModelInterface, ArrayAccess, \JsonSerializable
         }
 
         $this->container['owner_email'] = $owner_email;
+
+        return $this;
+    }
+
+    /**
+     * Gets source_type
+     *
+     * @return \YCloud\Client\Model\ContactSourceType|null
+     */
+    public function getSourceType()
+    {
+        return $this->container['source_type'];
+    }
+
+    /**
+     * Sets source_type
+     *
+     * @param \YCloud\Client\Model\ContactSourceType|null $source_type source_type
+     *
+     * @return self
+     */
+    public function setSourceType($source_type)
+    {
+        $this->container['source_type'] = $source_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets source_id
+     *
+     * @return string|null
+     */
+    public function getSourceId()
+    {
+        return $this->container['source_id'];
+    }
+
+    /**
+     * Sets source_id
+     *
+     * @param string|null $source_id 来源标识符。与联系人创建来源相关的唯一标识符。
+     *
+     * @return self
+     */
+    public function setSourceId($source_id)
+    {
+        if (!is_null($source_id) && (mb_strlen($source_id) > 255)) {
+            throw new \InvalidArgumentException('invalid length for $source_id when calling Contact., must be smaller than or equal to 255.');
+        }
+
+        $this->container['source_id'] = $source_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets source_url
+     *
+     * @return string|null
+     */
+    public function getSourceUrl()
+    {
+        return $this->container['source_url'];
+    }
+
+    /**
+     * Sets source_url
+     *
+     * @param string|null $source_url 来源URL。联系人创建时的来源链接地址。
+     *
+     * @return self
+     */
+    public function setSourceUrl($source_url)
+    {
+        if (!is_null($source_url) && (mb_strlen($source_url) > 500)) {
+            throw new \InvalidArgumentException('invalid length for $source_url when calling Contact., must be smaller than or equal to 500.');
+        }
+
+        $this->container['source_url'] = $source_url;
 
         return $this;
     }

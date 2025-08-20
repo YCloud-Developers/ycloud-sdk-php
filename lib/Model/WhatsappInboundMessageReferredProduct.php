@@ -36,7 +36,7 @@ use \YCloud\Client\ObjectSerializer;
  * WhatsappInboundMessageReferredProduct Class Doc Comment
  *
  * @category Class
- * @description A Product Inquiry Message is received when a user is asking for more information about a specific product. These can be received as in two scenarios: 1. When a customer replies to Single or Multi-Product Messages. 2. When a customer accesses a business’ catalog through another entry point, navigates to a Product Details Page, and clicks Message Business about this Product.
+ * @description A Product Inquiry Message is received when a user is asking for more information about a specific product. These can be received as in two scenarios: 1. When a customer replies to Single or Multi-Product Messages. 2. When a customer accesses a business&#39; catalog through another entry point, navigates to a Product Details Page, and clicks Message Business about this Product.
  * @package  YCloud\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

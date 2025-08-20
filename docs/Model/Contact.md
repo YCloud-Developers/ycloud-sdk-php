@@ -16,5 +16,8 @@ Name | Type | Description | Notes
 **create_time** | **\DateTime** | The time at which the contact was created, formatted in [RFC 3339](https://datatracker.ietf.org/doc/html/rfc3339). e.g., &#x60;2022-06-01T12:00:00.000Z&#x60;. | [optional]
 **custom_attributes** | [**\YCloud\Client\Model\ContactCustomAttribute[]**](ContactCustomAttribute.md) | Contact&#39;s custom attributes. | [optional]
 **owner_email** | **string** | The email address of the contact&#39;s owner. | [optional]
+**source_type** | [**\YCloud\Client\Model\ContactSourceType**](ContactSourceType.md) |  | [optional]
+**source_id** | **string** | 来源标识符。与联系人创建来源相关的唯一标识符。 | [optional]
+**source_url** | **string** | 来源URL。联系人创建时的来源链接地址。 | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

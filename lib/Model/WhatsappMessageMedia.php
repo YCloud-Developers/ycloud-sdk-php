@@ -36,7 +36,7 @@ use \YCloud\Client\ObjectSerializer;
  * WhatsappMessageMedia Class Doc Comment
  *
  * @category Class
- * @description Use for &#x60;image&#x60;, &#x60;video&#x60;, &#x60;audio&#x60;, &#x60;document&#x60;, or &#x60;sticker&#x60; messages.  See also [Supported Media Types](https://developers.facebook.com/docs/whatsapp/cloud-api/reference/media#supported-media-types).
+ * @description Use for &#x60;image&#x60;, &#x60;video&#x60;, &#x60;audio&#x60;, &#x60;document&#x60;, or &#x60;sticker&#x60; messages.  See also [Supported Media Types](https://developers.facebook.com/docs/whatsapp/cloud-api/reference/media#supported-media-types).  **Note**: Either &#x60;id&#x60; or &#x60;link&#x60; must be provided, but not both. These parameters are mutually exclusive.  Reference: [WhatsApp Cloud API Media Object](https://developers.facebook.com/docs/whatsapp/cloud-api/reference/messages#media-object)
  * @package  YCloud\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -59,6 +59,7 @@ class WhatsappMessageMedia implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var string[]
       */
     protected static $openAPITypes = [
+        'id' => 'string',
         'link' => 'string',
         'caption' => 'string',
         'filename' => 'string'
@@ -72,6 +73,7 @@ class WhatsappMessageMedia implements ModelInterface, ArrayAccess, \JsonSerializ
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'id' => null,
         'link' => null,
         'caption' => null,
         'filename' => null
@@ -104,6 +106,7 @@ class WhatsappMessageMedia implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $attributeMap = [
+        'id' => 'id',
         'link' => 'link',
         'caption' => 'caption',
         'filename' => 'filename'
@@ -115,6 +118,7 @@ class WhatsappMessageMedia implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $setters = [
+        'id' => 'setId',
         'link' => 'setLink',
         'caption' => 'setCaption',
         'filename' => 'setFilename'
@@ -126,6 +130,7 @@ class WhatsappMessageMedia implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $getters = [
+        'id' => 'getId',
         'link' => 'getLink',
         'caption' => 'getCaption',
         'filename' => 'getFilename'
@@ -188,6 +193,7 @@ class WhatsappMessageMedia implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     public function __construct(array $data = null)
     {
+        $this->container['id'] = $data['id'] ?? null;
         $this->container['link'] = $data['link'] ?? null;
         $this->container['caption'] = $data['caption'] ?? null;
         $this->container['filename'] = $data['filename'] ?? null;
@@ -202,6 +208,9 @@ class WhatsappMessageMedia implements ModelInterface, ArrayAccess, \JsonSerializ
     {
         $invalidProperties = [];
 
+        if ($this->container['id'] === null) {
+            $invalidProperties[] = "'id' can't be null";
+        }
         if ($this->container['link'] === null) {
             $invalidProperties[] = "'link' can't be null";
         }
@@ -221,6 +230,30 @@ class WhatsappMessageMedia implements ModelInterface, ArrayAccess, \JsonSerializ
 
 
     /**
+     * Gets id
+     *
+     * @return string
+     */
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * Sets id
+     *
+     * @param string $id Required when using media that has been uploaded to WhatsApp servers.  Provide the media object ID obtained from WhatsApp media upload API (https://docs.ycloud.com/update/reference/whatsapp_media-upload#/).
+     *
+     * @return self
+     */
+    public function setId($id)
+    {
+        $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
      * Gets link
      *
      * @return string
@@ -233,7 +266,7 @@ class WhatsappMessageMedia implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets link
      *
-     * @param string $link The protocol and URL of the media to be sent. Use only with HTTP/HTTPS URLs.
+     * @param string $link Required when sending media directly from your server.  The protocol and URL of the media to be sent. Use only with HTTP/HTTPS URLs. Note: WhatsApp Cloud API caches media resources for 10 minutes. To ensure latest content, add random query strings to the URL.
      *
      * @return self
      */

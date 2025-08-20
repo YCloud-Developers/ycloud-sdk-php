@@ -60,7 +60,8 @@ class WhatsappTemplateEditRequest implements ModelInterface, ArrayAccess, \JsonS
       */
     protected static $openAPITypes = [
         'components' => '\YCloud\Client\Model\WhatsappTemplateComponent[]',
-        'message_send_ttl_seconds' => 'int'
+        'message_send_ttl_seconds' => 'int',
+        'cta_url_link_tracking_opted_out' => 'bool'
     ];
 
     /**
@@ -72,7 +73,8 @@ class WhatsappTemplateEditRequest implements ModelInterface, ArrayAccess, \JsonS
       */
     protected static $openAPIFormats = [
         'components' => null,
-        'message_send_ttl_seconds' => 'int32'
+        'message_send_ttl_seconds' => 'int32',
+        'cta_url_link_tracking_opted_out' => null
     ];
 
     /**
@@ -103,7 +105,8 @@ class WhatsappTemplateEditRequest implements ModelInterface, ArrayAccess, \JsonS
      */
     protected static $attributeMap = [
         'components' => 'components',
-        'message_send_ttl_seconds' => 'messageSendTtlSeconds'
+        'message_send_ttl_seconds' => 'messageSendTtlSeconds',
+        'cta_url_link_tracking_opted_out' => 'ctaUrlLinkTrackingOptedOut'
     ];
 
     /**
@@ -113,7 +116,8 @@ class WhatsappTemplateEditRequest implements ModelInterface, ArrayAccess, \JsonS
      */
     protected static $setters = [
         'components' => 'setComponents',
-        'message_send_ttl_seconds' => 'setMessageSendTtlSeconds'
+        'message_send_ttl_seconds' => 'setMessageSendTtlSeconds',
+        'cta_url_link_tracking_opted_out' => 'setCtaUrlLinkTrackingOptedOut'
     ];
 
     /**
@@ -123,7 +127,8 @@ class WhatsappTemplateEditRequest implements ModelInterface, ArrayAccess, \JsonS
      */
     protected static $getters = [
         'components' => 'getComponents',
-        'message_send_ttl_seconds' => 'getMessageSendTtlSeconds'
+        'message_send_ttl_seconds' => 'getMessageSendTtlSeconds',
+        'cta_url_link_tracking_opted_out' => 'getCtaUrlLinkTrackingOptedOut'
     ];
 
     /**
@@ -185,6 +190,7 @@ class WhatsappTemplateEditRequest implements ModelInterface, ArrayAccess, \JsonS
     {
         $this->container['components'] = $data['components'] ?? null;
         $this->container['message_send_ttl_seconds'] = $data['message_send_ttl_seconds'] ?? null;
+        $this->container['cta_url_link_tracking_opted_out'] = $data['cta_url_link_tracking_opted_out'] ?? null;
     }
 
     /**
@@ -258,6 +264,30 @@ class WhatsappTemplateEditRequest implements ModelInterface, ArrayAccess, \JsonS
     public function setMessageSendTtlSeconds($message_send_ttl_seconds)
     {
         $this->container['message_send_ttl_seconds'] = $message_send_ttl_seconds;
+
+        return $this;
+    }
+
+    /**
+     * Gets cta_url_link_tracking_opted_out
+     *
+     * @return bool|null
+     */
+    public function getCtaUrlLinkTrackingOptedOut()
+    {
+        return $this->container['cta_url_link_tracking_opted_out'];
+    }
+
+    /**
+     * Sets cta_url_link_tracking_opted_out
+     *
+     * @param bool|null $cta_url_link_tracking_opted_out **Optional.** Indicates if template button click tracking is disabled. Set to `true` to disable button click tracking on the template, or `false` to enable. You can disable button click tracking on an individual template by setting this field to `true`. Once disabled, button engagement/clicks will not be displayed in the WhatsApp Manager when viewing the template's insights.
+     *
+     * @return self
+     */
+    public function setCtaUrlLinkTrackingOptedOut($cta_url_link_tracking_opted_out)
+    {
+        $this->container['cta_url_link_tracking_opted_out'] = $cta_url_link_tracking_opted_out;
 
         return $this;
     }

@@ -61,7 +61,9 @@ class WhatsappInboundMessageInteractive implements ModelInterface, ArrayAccess, 
     protected static $openAPITypes = [
         'type' => 'string',
         'button_reply' => '\YCloud\Client\Model\WhatsappInboundMessageInteractiveButtonReply',
-        'list_reply' => '\YCloud\Client\Model\WhatsappInboundMessageInteractiveListReply'
+        'list_reply' => '\YCloud\Client\Model\WhatsappInboundMessageInteractiveListReply',
+        'nfm_reply' => '\YCloud\Client\Model\WhatsappInboundMessageInteractiveNfmReply',
+        'call_permission_reply' => '\YCloud\Client\Model\WhatsappInboundMessageInteractiveCallPermissionReply'
     ];
 
     /**
@@ -74,7 +76,9 @@ class WhatsappInboundMessageInteractive implements ModelInterface, ArrayAccess, 
     protected static $openAPIFormats = [
         'type' => null,
         'button_reply' => null,
-        'list_reply' => null
+        'list_reply' => null,
+        'nfm_reply' => null,
+        'call_permission_reply' => null
     ];
 
     /**
@@ -106,7 +110,9 @@ class WhatsappInboundMessageInteractive implements ModelInterface, ArrayAccess, 
     protected static $attributeMap = [
         'type' => 'type',
         'button_reply' => 'button_reply',
-        'list_reply' => 'list_reply'
+        'list_reply' => 'list_reply',
+        'nfm_reply' => 'nfm_reply',
+        'call_permission_reply' => 'call_permission_reply'
     ];
 
     /**
@@ -117,7 +123,9 @@ class WhatsappInboundMessageInteractive implements ModelInterface, ArrayAccess, 
     protected static $setters = [
         'type' => 'setType',
         'button_reply' => 'setButtonReply',
-        'list_reply' => 'setListReply'
+        'list_reply' => 'setListReply',
+        'nfm_reply' => 'setNfmReply',
+        'call_permission_reply' => 'setCallPermissionReply'
     ];
 
     /**
@@ -128,7 +136,9 @@ class WhatsappInboundMessageInteractive implements ModelInterface, ArrayAccess, 
     protected static $getters = [
         'type' => 'getType',
         'button_reply' => 'getButtonReply',
-        'list_reply' => 'getListReply'
+        'list_reply' => 'getListReply',
+        'nfm_reply' => 'getNfmReply',
+        'call_permission_reply' => 'getCallPermissionReply'
     ];
 
     /**
@@ -174,6 +184,8 @@ class WhatsappInboundMessageInteractive implements ModelInterface, ArrayAccess, 
 
     public const TYPE_BUTTON_REPLY = 'button_reply';
     public const TYPE_LIST_REPLY = 'list_reply';
+    public const TYPE_NFM_REPLY = 'nfm_reply';
+    public const TYPE_CALL_PERMISSION_REPLY = 'call_permission_reply';
 
     /**
      * Gets allowable values of the enum
@@ -185,6 +197,8 @@ class WhatsappInboundMessageInteractive implements ModelInterface, ArrayAccess, 
         return [
             self::TYPE_BUTTON_REPLY,
             self::TYPE_LIST_REPLY,
+            self::TYPE_NFM_REPLY,
+            self::TYPE_CALL_PERMISSION_REPLY,
         ];
     }
 
@@ -206,6 +220,8 @@ class WhatsappInboundMessageInteractive implements ModelInterface, ArrayAccess, 
         $this->container['type'] = $data['type'] ?? null;
         $this->container['button_reply'] = $data['button_reply'] ?? null;
         $this->container['list_reply'] = $data['list_reply'] ?? null;
+        $this->container['nfm_reply'] = $data['nfm_reply'] ?? null;
+        $this->container['call_permission_reply'] = $data['call_permission_reply'] ?? null;
     }
 
     /**
@@ -254,7 +270,7 @@ class WhatsappInboundMessageInteractive implements ModelInterface, ArrayAccess, 
     /**
      * Sets type
      *
-     * @param string|null $type The type of interactive message received. - `button_reply`: Sent when a customer clicks a button. - `list_reply`: Sent when a customer selects an item from a list.
+     * @param string|null $type The type of interactive message received. - `button_reply`: Sent when a customer clicks a button. - `list_reply`: Sent when a customer selects an item from a list. - `nfm_reply`: Sent when a customer responds to a WhatsApp Flow (Next Feature Messaging). - `call_permission_reply`: Sent when a customer responds to a call permission request.
      *
      * @return self
      */
@@ -319,6 +335,54 @@ class WhatsappInboundMessageInteractive implements ModelInterface, ArrayAccess, 
     public function setListReply($list_reply)
     {
         $this->container['list_reply'] = $list_reply;
+
+        return $this;
+    }
+
+    /**
+     * Gets nfm_reply
+     *
+     * @return \YCloud\Client\Model\WhatsappInboundMessageInteractiveNfmReply|null
+     */
+    public function getNfmReply()
+    {
+        return $this->container['nfm_reply'];
+    }
+
+    /**
+     * Sets nfm_reply
+     *
+     * @param \YCloud\Client\Model\WhatsappInboundMessageInteractiveNfmReply|null $nfm_reply nfm_reply
+     *
+     * @return self
+     */
+    public function setNfmReply($nfm_reply)
+    {
+        $this->container['nfm_reply'] = $nfm_reply;
+
+        return $this;
+    }
+
+    /**
+     * Gets call_permission_reply
+     *
+     * @return \YCloud\Client\Model\WhatsappInboundMessageInteractiveCallPermissionReply|null
+     */
+    public function getCallPermissionReply()
+    {
+        return $this->container['call_permission_reply'];
+    }
+
+    /**
+     * Sets call_permission_reply
+     *
+     * @param \YCloud\Client\Model\WhatsappInboundMessageInteractiveCallPermissionReply|null $call_permission_reply call_permission_reply
+     *
+     * @return self
+     */
+    public function setCallPermissionReply($call_permission_reply)
+    {
+        $this->container['call_permission_reply'] = $call_permission_reply;
 
         return $this;
     }
