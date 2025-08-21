@@ -59,8 +59,8 @@ class ContactAttributeChange implements ModelInterface, ArrayAccess, \JsonSerial
       * @var string[]
       */
     protected static $openAPITypes = [
-        'old_value' => '\YCloud\Client\Model\ContactAttributeChangeOldValue',
-        'new_value' => '\YCloud\Client\Model\ContactAttributeChangeNewValue',
+        'old_value' => 'mixed',
+        'new_value' => 'mixed',
         'extra' => '\YCloud\Client\Model\AttributeChangeAction[]'
     ];
 
@@ -220,7 +220,7 @@ class ContactAttributeChange implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets old_value
      *
-     * @return \YCloud\Client\Model\ContactAttributeChangeOldValue|null
+     * @return mixed|null
      */
     public function getOldValue()
     {
@@ -230,7 +230,7 @@ class ContactAttributeChange implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets old_value
      *
-     * @param \YCloud\Client\Model\ContactAttributeChangeOldValue|null $old_value old_value
+     * @param mixed|null $old_value The previous value of the attribute before the change. Can be a string, number, array, or boolean depending on the attribute type. This field is not included when the value is null.
      *
      * @return self
      */
@@ -244,7 +244,7 @@ class ContactAttributeChange implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets new_value
      *
-     * @return \YCloud\Client\Model\ContactAttributeChangeNewValue|null
+     * @return mixed|null
      */
     public function getNewValue()
     {
@@ -254,7 +254,7 @@ class ContactAttributeChange implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets new_value
      *
-     * @param \YCloud\Client\Model\ContactAttributeChangeNewValue|null $new_value new_value
+     * @param mixed|null $new_value The new value of the attribute after the change. Can be a string, number, array, or boolean depending on the attribute type. This field is not included when the value is null.
      *
      * @return self
      */

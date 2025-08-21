@@ -649,7 +649,7 @@ class Contact implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets source_id
      *
-     * @param string|null $source_id 来源标识符。与联系人创建来源相关的唯一标识符。
+     * @param string|null $source_id Source identifier. A unique identifier related to the contact creation source.
      *
      * @return self
      */
@@ -677,7 +677,7 @@ class Contact implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets source_url
      *
-     * @param string|null $source_url 来源URL。联系人创建时的来源链接地址。
+     * @param string|null $source_url Source URL. The source link address where the contact was created.
      *
      * @return self
      */

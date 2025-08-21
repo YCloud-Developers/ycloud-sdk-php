@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 **custom_attributes** | [**\YCloud\Client\Model\ContactCustomAttribute[]**](ContactCustomAttribute.md) | Contact&#39;s custom attributes. | [optional]
 **owner_email** | **string** | The email address of the contact&#39;s owner. | [optional]
 **source_type** | [**\YCloud\Client\Model\ContactSourceType**](ContactSourceType.md) |  | [optional]
-**source_id** | **string** | 来源标识符。与联系人创建来源相关的唯一标识符。 | [optional]
-**source_url** | **string** | 来源URL。联系人创建时的来源链接地址。 | [optional]
+**source_id** | **string** | Source identifier. A unique identifier related to the contact creation source. | [optional]
+**source_url** | **string** | Source URL. The source link address where the contact was created. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

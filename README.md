@@ -149,8 +149,6 @@ Class | Method | HTTP request | Description
 - [Contact](docs/Model/Contact.md)
 - [ContactAttribute](docs/Model/ContactAttribute.md)
 - [ContactAttributeChange](docs/Model/ContactAttributeChange.md)
-- [ContactAttributeChangeNewValue](docs/Model/ContactAttributeChangeNewValue.md)
-- [ContactAttributeChangeOldValue](docs/Model/ContactAttributeChangeOldValue.md)
 - [ContactAttributesChanged](docs/Model/ContactAttributesChanged.md)
 - [ContactCreateRequest](docs/Model/ContactCreateRequest.md)
 - [ContactCreated](docs/Model/ContactCreated.md)
