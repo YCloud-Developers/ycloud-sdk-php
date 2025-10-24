@@ -64,6 +64,9 @@ class WhatsappBusinessAccount implements ModelInterface, ArrayAccess, \JsonSeria
         'currency' => 'string',
         'message_template_namespace' => 'string',
         'account_review_status' => '\YCloud\Client\Model\WhatsappBusinessAccountReviewStatus',
+        'business_id' => 'string',
+        'business_name' => 'string',
+        'business_status' => 'string',
         'business_verification_status' => '\YCloud\Client\Model\MetaBusinessAccountVerificationStatus',
         'country' => 'string',
         'ownership_type' => 'string',
@@ -78,7 +81,8 @@ class WhatsappBusinessAccount implements ModelInterface, ArrayAccess, \JsonSeria
         'violation_type' => 'string',
         'restrictions' => '\YCloud\Client\Model\WhatsappBusinessAccountRestrictionInfo[]',
         'auth_intl_rate_eligibility_countries' => '\YCloud\Client\Model\WhatsappAuthIntlRateEligibilityCountry[]',
-        'primary_business_location' => 'string'
+        'primary_business_location' => 'string',
+        'whatsapp_business_manager_messaging_limit' => 'string'
     ];
 
     /**
@@ -94,6 +98,9 @@ class WhatsappBusinessAccount implements ModelInterface, ArrayAccess, \JsonSeria
         'currency' => null,
         'message_template_namespace' => null,
         'account_review_status' => null,
+        'business_id' => null,
+        'business_name' => null,
+        'business_status' => null,
         'business_verification_status' => null,
         'country' => null,
         'ownership_type' => null,
@@ -108,7 +115,8 @@ class WhatsappBusinessAccount implements ModelInterface, ArrayAccess, \JsonSeria
         'violation_type' => null,
         'restrictions' => null,
         'auth_intl_rate_eligibility_countries' => null,
-        'primary_business_location' => null
+        'primary_business_location' => null,
+        'whatsapp_business_manager_messaging_limit' => null
     ];
 
     /**
@@ -143,6 +151,9 @@ class WhatsappBusinessAccount implements ModelInterface, ArrayAccess, \JsonSeria
         'currency' => 'currency',
         'message_template_namespace' => 'messageTemplateNamespace',
         'account_review_status' => 'accountReviewStatus',
+        'business_id' => 'businessId',
+        'business_name' => 'businessName',
+        'business_status' => 'businessStatus',
         'business_verification_status' => 'businessVerificationStatus',
         'country' => 'country',
         'ownership_type' => 'ownershipType',
@@ -157,7 +168,8 @@ class WhatsappBusinessAccount implements ModelInterface, ArrayAccess, \JsonSeria
         'violation_type' => 'violationType',
         'restrictions' => 'restrictions',
         'auth_intl_rate_eligibility_countries' => 'authIntlRateEligibilityCountries',
-        'primary_business_location' => 'primaryBusinessLocation'
+        'primary_business_location' => 'primaryBusinessLocation',
+        'whatsapp_business_manager_messaging_limit' => 'whatsappBusinessManagerMessagingLimit'
     ];
 
     /**
@@ -171,6 +183,9 @@ class WhatsappBusinessAccount implements ModelInterface, ArrayAccess, \JsonSeria
         'currency' => 'setCurrency',
         'message_template_namespace' => 'setMessageTemplateNamespace',
         'account_review_status' => 'setAccountReviewStatus',
+        'business_id' => 'setBusinessId',
+        'business_name' => 'setBusinessName',
+        'business_status' => 'setBusinessStatus',
         'business_verification_status' => 'setBusinessVerificationStatus',
         'country' => 'setCountry',
         'ownership_type' => 'setOwnershipType',
@@ -185,7 +200,8 @@ class WhatsappBusinessAccount implements ModelInterface, ArrayAccess, \JsonSeria
         'violation_type' => 'setViolationType',
         'restrictions' => 'setRestrictions',
         'auth_intl_rate_eligibility_countries' => 'setAuthIntlRateEligibilityCountries',
-        'primary_business_location' => 'setPrimaryBusinessLocation'
+        'primary_business_location' => 'setPrimaryBusinessLocation',
+        'whatsapp_business_manager_messaging_limit' => 'setWhatsappBusinessManagerMessagingLimit'
     ];
 
     /**
@@ -199,6 +215,9 @@ class WhatsappBusinessAccount implements ModelInterface, ArrayAccess, \JsonSeria
         'currency' => 'getCurrency',
         'message_template_namespace' => 'getMessageTemplateNamespace',
         'account_review_status' => 'getAccountReviewStatus',
+        'business_id' => 'getBusinessId',
+        'business_name' => 'getBusinessName',
+        'business_status' => 'getBusinessStatus',
         'business_verification_status' => 'getBusinessVerificationStatus',
         'country' => 'getCountry',
         'ownership_type' => 'getOwnershipType',
@@ -213,7 +232,8 @@ class WhatsappBusinessAccount implements ModelInterface, ArrayAccess, \JsonSeria
         'violation_type' => 'getViolationType',
         'restrictions' => 'getRestrictions',
         'auth_intl_rate_eligibility_countries' => 'getAuthIntlRateEligibilityCountries',
-        'primary_business_location' => 'getPrimaryBusinessLocation'
+        'primary_business_location' => 'getPrimaryBusinessLocation',
+        'whatsapp_business_manager_messaging_limit' => 'getWhatsappBusinessManagerMessagingLimit'
     ];
 
     /**
@@ -278,6 +298,9 @@ class WhatsappBusinessAccount implements ModelInterface, ArrayAccess, \JsonSeria
         $this->container['currency'] = $data['currency'] ?? null;
         $this->container['message_template_namespace'] = $data['message_template_namespace'] ?? null;
         $this->container['account_review_status'] = $data['account_review_status'] ?? null;
+        $this->container['business_id'] = $data['business_id'] ?? null;
+        $this->container['business_name'] = $data['business_name'] ?? null;
+        $this->container['business_status'] = $data['business_status'] ?? null;
         $this->container['business_verification_status'] = $data['business_verification_status'] ?? null;
         $this->container['country'] = $data['country'] ?? null;
         $this->container['ownership_type'] = $data['ownership_type'] ?? null;
@@ -293,6 +316,7 @@ class WhatsappBusinessAccount implements ModelInterface, ArrayAccess, \JsonSeria
         $this->container['restrictions'] = $data['restrictions'] ?? null;
         $this->container['auth_intl_rate_eligibility_countries'] = $data['auth_intl_rate_eligibility_countries'] ?? null;
         $this->container['primary_business_location'] = $data['primary_business_location'] ?? null;
+        $this->container['whatsapp_business_manager_messaging_limit'] = $data['whatsapp_business_manager_messaging_limit'] ?? null;
     }
 
     /**
@@ -435,6 +459,78 @@ class WhatsappBusinessAccount implements ModelInterface, ArrayAccess, \JsonSeria
     public function setAccountReviewStatus($account_review_status)
     {
         $this->container['account_review_status'] = $account_review_status;
+
+        return $this;
+    }
+
+    /**
+     * Gets business_id
+     *
+     * @return string|null
+     */
+    public function getBusinessId()
+    {
+        return $this->container['business_id'];
+    }
+
+    /**
+     * Sets business_id
+     *
+     * @param string|null $business_id Business Portfolio ID.
+     *
+     * @return self
+     */
+    public function setBusinessId($business_id)
+    {
+        $this->container['business_id'] = $business_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets business_name
+     *
+     * @return string|null
+     */
+    public function getBusinessName()
+    {
+        return $this->container['business_name'];
+    }
+
+    /**
+     * Sets business_name
+     *
+     * @param string|null $business_name Business Portfolio Name.
+     *
+     * @return self
+     */
+    public function setBusinessName($business_name)
+    {
+        $this->container['business_name'] = $business_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets business_status
+     *
+     * @return string|null
+     */
+    public function getBusinessStatus()
+    {
+        return $this->container['business_status'];
+    }
+
+    /**
+     * Sets business_status
+     *
+     * @param string|null $business_status Business Portfolio Status,Default:APPROVED
+     *
+     * @return self
+     */
+    public function setBusinessStatus($business_status)
+    {
+        $this->container['business_status'] = $business_status;
 
         return $this;
     }
@@ -795,6 +891,30 @@ class WhatsappBusinessAccount implements ModelInterface, ArrayAccess, \JsonSeria
     public function setPrimaryBusinessLocation($primary_business_location)
     {
         $this->container['primary_business_location'] = $primary_business_location;
+
+        return $this;
+    }
+
+    /**
+     * Gets whatsapp_business_manager_messaging_limit
+     *
+     * @return string|null
+     */
+    public function getWhatsappBusinessManagerMessagingLimit()
+    {
+        return $this->container['whatsapp_business_manager_messaging_limit'];
+    }
+
+    /**
+     * Sets whatsapp_business_manager_messaging_limit
+     *
+     * @param string|null $whatsapp_business_manager_messaging_limit The owning business portfolio's messaging limit. Starting October 7, 2025, messaging limits will instead be calculated and set on a business portfolio basis, and will be shared by all business phone numbers within each portfolio. See also [phone_number_quality_update webhook reference](https://developers.facebook.com/docs/whatsapp/cloud-api/webhooks/reference/phone_number_quality_update). - `TIER_NOT_SET`: The business phone number has not been used to send a message yet. - `TIER_50`: Messaging limit of 50 business-initiated conversations in a rolling 24-hour period. - `TIER_250`: Messaging limit of 250 business-initiated conversations in a rolling 24-hour period. - `TIER_2K`: Messaging limit of 2,000 business-initiated conversations in a rolling 24-hour period. - `TIER_10K`: Messaging limit of 10,000 business-initiated conversations in a rolling 24-hour period. - `TIER_100K`: Messaging limit of 100,000 business-initiated conversations in a rolling 24-hour period. - `TIER_UNLIMITED`: The business phone number has higher throughput with unlimited business-initiated conversations.
+     *
+     * @return self
+     */
+    public function setWhatsappBusinessManagerMessagingLimit($whatsapp_business_manager_messaging_limit)
+    {
+        $this->container['whatsapp_business_manager_messaging_limit'] = $whatsapp_business_manager_messaging_limit;
 
         return $this;
     }

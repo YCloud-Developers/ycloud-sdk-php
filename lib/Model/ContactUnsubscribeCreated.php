@@ -1,6 +1,6 @@
 <?php
 /**
- * WhatsappMessageMedia
+ * ContactUnsubscribeCreated
  *
  * PHP version 7.4
  *
@@ -33,16 +33,16 @@ use \ArrayAccess;
 use \YCloud\Client\ObjectSerializer;
 
 /**
- * WhatsappMessageMedia Class Doc Comment
+ * ContactUnsubscribeCreated Class Doc Comment
  *
  * @category Class
- * @description Use for &#x60;image&#x60;, &#x60;video&#x60;, &#x60;audio&#x60;, &#x60;document&#x60;, or &#x60;sticker&#x60; messages.  See also [Supported Media Types](https://developers.facebook.com/docs/whatsapp/cloud-api/reference/media#supported-media-types).  **Note**: Either &#x60;id&#x60; or &#x60;link&#x60; must be provided, but not both. These parameters are mutually exclusive.  Reference: [WhatsApp Cloud API Media Object](https://developers.facebook.com/docs/whatsapp/cloud-api/reference/messages#media-object)
+ * @description Represents a customer initiates an unsubscribe event.
  * @package  YCloud\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class WhatsappMessageMedia implements ModelInterface, ArrayAccess, \JsonSerializable
+class ContactUnsubscribeCreated implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +51,7 @@ class WhatsappMessageMedia implements ModelInterface, ArrayAccess, \JsonSerializ
       *
       * @var string
       */
-    protected static $openAPIModelName = 'WhatsappMessageMedia';
+    protected static $openAPIModelName = 'ContactUnsubscribeCreated';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,10 +59,9 @@ class WhatsappMessageMedia implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var string[]
       */
     protected static $openAPITypes = [
-        'caption' => 'string',
-        'filename' => 'string',
-        'id' => 'string',
-        'link' => 'string'
+        'phone_number' => 'string',
+        'source' => 'string',
+        'update_time' => '\DateTime'
     ];
 
     /**
@@ -73,10 +72,9 @@ class WhatsappMessageMedia implements ModelInterface, ArrayAccess, \JsonSerializ
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'caption' => null,
-        'filename' => null,
-        'id' => null,
-        'link' => null
+        'phone_number' => null,
+        'source' => null,
+        'update_time' => 'date-time'
     ];
 
     /**
@@ -106,10 +104,9 @@ class WhatsappMessageMedia implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $attributeMap = [
-        'caption' => 'caption',
-        'filename' => 'filename',
-        'id' => 'id',
-        'link' => 'link'
+        'phone_number' => 'phoneNumber',
+        'source' => 'source',
+        'update_time' => 'updateTime'
     ];
 
     /**
@@ -118,10 +115,9 @@ class WhatsappMessageMedia implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $setters = [
-        'caption' => 'setCaption',
-        'filename' => 'setFilename',
-        'id' => 'setId',
-        'link' => 'setLink'
+        'phone_number' => 'setPhoneNumber',
+        'source' => 'setSource',
+        'update_time' => 'setUpdateTime'
     ];
 
     /**
@@ -130,10 +126,9 @@ class WhatsappMessageMedia implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $getters = [
-        'caption' => 'getCaption',
-        'filename' => 'getFilename',
-        'id' => 'getId',
-        'link' => 'getLink'
+        'phone_number' => 'getPhoneNumber',
+        'source' => 'getSource',
+        'update_time' => 'getUpdateTime'
     ];
 
     /**
@@ -177,6 +172,27 @@ class WhatsappMessageMedia implements ModelInterface, ArrayAccess, \JsonSerializ
         return self::$openAPIModelName;
     }
 
+    public const SOURCE_WHATSAPP = 'Whatsapp';
+    public const SOURCE_INBOX = 'Inbox';
+    public const SOURCE_CHATBOT = 'Chatbot';
+    public const SOURCE_API = 'API';
+    public const SOURCE_MANUAL = 'Manual';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getSourceAllowableValues()
+    {
+        return [
+            self::SOURCE_WHATSAPP,
+            self::SOURCE_INBOX,
+            self::SOURCE_CHATBOT,
+            self::SOURCE_API,
+            self::SOURCE_MANUAL,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -193,10 +209,9 @@ class WhatsappMessageMedia implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     public function __construct(array $data = null)
     {
-        $this->container['caption'] = $data['caption'] ?? null;
-        $this->container['filename'] = $data['filename'] ?? null;
-        $this->container['id'] = $data['id'] ?? null;
-        $this->container['link'] = $data['link'] ?? null;
+        $this->container['phone_number'] = $data['phone_number'] ?? null;
+        $this->container['source'] = $data['source'] ?? null;
+        $this->container['update_time'] = $data['update_time'] ?? null;
     }
 
     /**
@@ -208,12 +223,15 @@ class WhatsappMessageMedia implements ModelInterface, ArrayAccess, \JsonSerializ
     {
         $invalidProperties = [];
 
-        if ($this->container['id'] === null) {
-            $invalidProperties[] = "'id' can't be null";
+        $allowedValues = $this->getSourceAllowableValues();
+        if (!is_null($this->container['source']) && !in_array($this->container['source'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'source', must be one of '%s'",
+                $this->container['source'],
+                implode("', '", $allowedValues)
+            );
         }
-        if ($this->container['link'] === null) {
-            $invalidProperties[] = "'link' can't be null";
-        }
+
         return $invalidProperties;
     }
 
@@ -230,97 +248,83 @@ class WhatsappMessageMedia implements ModelInterface, ArrayAccess, \JsonSerializ
 
 
     /**
-     * Gets caption
+     * Gets phone_number
      *
      * @return string|null
      */
-    public function getCaption()
+    public function getPhoneNumber()
     {
-        return $this->container['caption'];
+        return $this->container['phone_number'];
     }
 
     /**
-     * Sets caption
+     * Sets phone_number
      *
-     * @param string|null $caption Describes the specified `image`, `video`, or `document` media. Not applicable in the `header` of `template` or `interactive` messages.
+     * @param string|null $phone_number Unique Customer Phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format.
      *
      * @return self
      */
-    public function setCaption($caption)
+    public function setPhoneNumber($phone_number)
     {
-        $this->container['caption'] = $caption;
+        $this->container['phone_number'] = $phone_number;
 
         return $this;
     }
 
     /**
-     * Gets filename
+     * Gets source
      *
      * @return string|null
      */
-    public function getFilename()
+    public function getSource()
     {
-        return $this->container['filename'];
+        return $this->container['source'];
     }
 
     /**
-     * Sets filename
+     * Sets source
      *
-     * @param string|null $filename Describes the filename for the specific document. Use only with `document` media.
+     * @param string|null $source The source from which a customer initiates an unsubscribe. - `Whatsapp`: The customer initiated an unsubscribe on the whatsapp client. - `Inbox`:You added a customer to the unsubscribe list on the Inbox page of YCloud. - `Chatbot`: The message sent by the customer triggered the unsubscribe keyword configured by the Chatbot. - `API`: You add customers to the unsubscribe list through YCloud's OpenAPI. - `Manual`: You added a customer to the unsubscribe list on the Contact page of YCloud.
      *
      * @return self
      */
-    public function setFilename($filename)
+    public function setSource($source)
     {
-        $this->container['filename'] = $filename;
+        $allowedValues = $this->getSourceAllowableValues();
+        if (!is_null($source) && !in_array($source, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'source', must be one of '%s'",
+                    $source,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['source'] = $source;
 
         return $this;
     }
 
     /**
-     * Gets id
+     * Gets update_time
      *
-     * @return string
+     * @return \DateTime|null
      */
-    public function getId()
+    public function getUpdateTime()
     {
-        return $this->container['id'];
+        return $this->container['update_time'];
     }
 
     /**
-     * Sets id
+     * Sets update_time
      *
-     * @param string $id Required when using media that has been uploaded to WhatsApp servers.  Provide the media object ID obtained from WhatsApp media upload API (https://docs.ycloud.com/update/reference/whatsapp_media-upload#/).
+     * @param \DateTime|null $update_time The time when a customer initiates an unsubscribe, formatted in [RFC 3339](https://datatracker.ietf.org/doc/html/rfc3339). e.g., `2022-06-01T12:00:00.000Z`.
      *
      * @return self
      */
-    public function setId($id)
+    public function setUpdateTime($update_time)
     {
-        $this->container['id'] = $id;
-
-        return $this;
-    }
-
-    /**
-     * Gets link
-     *
-     * @return string
-     */
-    public function getLink()
-    {
-        return $this->container['link'];
-    }
-
-    /**
-     * Sets link
-     *
-     * @param string $link Required when sending media directly from your server.  The protocol and URL of the media to be sent. Use only with HTTP/HTTPS URLs. Note: WhatsApp Cloud API caches media resources for 10 minutes. To ensure latest content, add random query strings to the URL.
-     *
-     * @return self
-     */
-    public function setLink($link)
-    {
-        $this->container['link'] = $link;
+        $this->container['update_time'] = $update_time;
 
         return $this;
     }

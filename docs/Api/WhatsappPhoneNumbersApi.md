@@ -12,6 +12,7 @@ Method | HTTP request | Description
 [**retrieveSettings()**](WhatsappPhoneNumbersApi.md#retrieveSettings) | **GET** /whatsapp/phoneNumbers/{wabaId}/{phoneNumber}/settings | Retrieve phone number settings
 [**saveSettings()**](WhatsappPhoneNumbersApi.md#saveSettings) | **POST** /whatsapp/phoneNumbers/{wabaId}/{phoneNumber}/settings | Save phone number settings
 [**updateCommerceSettings()**](WhatsappPhoneNumbersApi.md#updateCommerceSettings) | **PATCH** /whatsapp/phoneNumbers/{wabaId}/{phoneNumber}/whatsappCommerceSettings | Update commerce settings
+[**updateDisplayName()**](WhatsappPhoneNumbersApi.md#updateDisplayName) | **PATCH** /whatsapp/phoneNumbers/{wabaId}/{phoneNumber}/displayName | Update a phone number display name
 [**updateProfile()**](WhatsappPhoneNumbersApi.md#updateProfile) | **PATCH** /whatsapp/phoneNumbers/{wabaId}/{phoneNumber}/profile | Update a phone number profile
 
 
@@ -507,6 +508,70 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**\YCloud\Client\Model\WhatsappCommerceSettings**](../Model/WhatsappCommerceSettings.md)
+
+### Authorization
+
+[api_key](../../README.md#api_key)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `updateDisplayName()`
+
+```php
+updateDisplayName($waba_id, $phone_number, $whatsapp_phone_name_update_request): \YCloud\Client\Model\WhatsappPhoneNameUpdateResponse
+```
+
+Update a phone number display name
+
+Updates a WhatsApp business phone number display name.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: api_key
+$config = YCloud\Client\Configuration::getDefaultConfiguration()->setApiKey('X-API-Key', 'YOUR_API_KEY');
+
+
+$apiInstance = new YCloud\Client\Api\WhatsappPhoneNumbersApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$waba_id = whatsapp-business-account-id; // string | WhatsApp Business Account ID.
+$phone_number = +16315551111; // string | Phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format.
+$whatsapp_phone_name_update_request = new \YCloud\Client\Model\WhatsappPhoneNameUpdateRequest(); // \YCloud\Client\Model\WhatsappPhoneNameUpdateRequest
+
+try {
+    $result = $apiInstance->updateDisplayName($waba_id, $phone_number, $whatsapp_phone_name_update_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling WhatsappPhoneNumbersApi->updateDisplayName: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **waba_id** | **string**| WhatsApp Business Account ID. |
+ **phone_number** | **string**| Phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format. |
+ **whatsapp_phone_name_update_request** | [**\YCloud\Client\Model\WhatsappPhoneNameUpdateRequest**](../Model/WhatsappPhoneNameUpdateRequest.md)|  |
+
+### Return type
+
+[**\YCloud\Client\Model\WhatsappPhoneNameUpdateResponse**](../Model/WhatsappPhoneNameUpdateResponse.md)
 
 ### Authorization
 

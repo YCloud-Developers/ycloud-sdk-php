@@ -59,7 +59,8 @@ class WhatsappFlowUpdateMetadataRequest implements ModelInterface, ArrayAccess, 
       */
     protected static $openAPITypes = [
         'name' => 'string',
-        'categories' => '\YCloud\Client\Model\WhatsappFlowCategory[]'
+        'categories' => '\YCloud\Client\Model\WhatsappFlowCategory[]',
+        'endpoint_uri' => 'string'
     ];
 
     /**
@@ -71,7 +72,8 @@ class WhatsappFlowUpdateMetadataRequest implements ModelInterface, ArrayAccess, 
       */
     protected static $openAPIFormats = [
         'name' => null,
-        'categories' => null
+        'categories' => null,
+        'endpoint_uri' => null
     ];
 
     /**
@@ -102,7 +104,8 @@ class WhatsappFlowUpdateMetadataRequest implements ModelInterface, ArrayAccess, 
      */
     protected static $attributeMap = [
         'name' => 'name',
-        'categories' => 'categories'
+        'categories' => 'categories',
+        'endpoint_uri' => 'endpointUri'
     ];
 
     /**
@@ -112,7 +115,8 @@ class WhatsappFlowUpdateMetadataRequest implements ModelInterface, ArrayAccess, 
      */
     protected static $setters = [
         'name' => 'setName',
-        'categories' => 'setCategories'
+        'categories' => 'setCategories',
+        'endpoint_uri' => 'setEndpointUri'
     ];
 
     /**
@@ -122,7 +126,8 @@ class WhatsappFlowUpdateMetadataRequest implements ModelInterface, ArrayAccess, 
      */
     protected static $getters = [
         'name' => 'getName',
-        'categories' => 'getCategories'
+        'categories' => 'getCategories',
+        'endpoint_uri' => 'getEndpointUri'
     ];
 
     /**
@@ -184,6 +189,7 @@ class WhatsappFlowUpdateMetadataRequest implements ModelInterface, ArrayAccess, 
     {
         $this->container['name'] = $data['name'] ?? null;
         $this->container['categories'] = $data['categories'] ?? null;
+        $this->container['endpoint_uri'] = $data['endpoint_uri'] ?? null;
     }
 
     /**
@@ -254,6 +260,30 @@ class WhatsappFlowUpdateMetadataRequest implements ModelInterface, ArrayAccess, 
     public function setCategories($categories)
     {
         $this->container['categories'] = $categories;
+
+        return $this;
+    }
+
+    /**
+     * Gets endpoint_uri
+     *
+     * @return string|null
+     */
+    public function getEndpointUri()
+    {
+        return $this->container['endpoint_uri'];
+    }
+
+    /**
+     * Sets endpoint_uri
+     *
+     * @param string|null $endpoint_uri The endpoint URI for the Flow.
+     *
+     * @return self
+     */
+    public function setEndpointUri($endpoint_uri)
+    {
+        $this->container['endpoint_uri'] = $endpoint_uri;
 
         return $this;
     }

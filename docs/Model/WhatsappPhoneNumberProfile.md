@@ -5,6 +5,10 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **about** | **string** | The business&#39;s **About** text. This text appears in the business&#39;s profile, beneath its profile image, phone number, and contact buttons. | [optional]
+**verified_name** | **string** | The verified name | [optional]
+**name_status** | [**\YCloud\Client\Model\WhatsappPhoneNumberNameStatus**](WhatsappPhoneNumberNameStatus.md) |  | [optional]
+**new_name** | **string** | The modified name | [optional]
+**new_name_status** | [**\YCloud\Client\Model\WhatsappPhoneNumberNameStatus**](WhatsappPhoneNumberNameStatus.md) |  | [optional]
 **address** | **string** | Address of the business. Character limit 256. | [optional]
 **description** | **string** | Description of the business. Character limit 512. | [optional]
 **email** | **string** | The contact email address (in valid email format) of the business. Character limit 128. | [optional]

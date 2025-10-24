@@ -63,6 +63,7 @@ class Unsubscriber implements ModelInterface, ArrayAccess, \JsonSerializable
         'customer' => 'string',
         'channel' => '\YCloud\Client\Model\UnsubscriberChannel',
         'region_code' => 'string',
+        'source' => 'string',
         'create_time' => '\DateTime'
     ];
 
@@ -78,6 +79,7 @@ class Unsubscriber implements ModelInterface, ArrayAccess, \JsonSerializable
         'customer' => null,
         'channel' => null,
         'region_code' => null,
+        'source' => null,
         'create_time' => 'date-time'
     ];
 
@@ -112,6 +114,7 @@ class Unsubscriber implements ModelInterface, ArrayAccess, \JsonSerializable
         'customer' => 'customer',
         'channel' => 'channel',
         'region_code' => 'regionCode',
+        'source' => 'source',
         'create_time' => 'createTime'
     ];
 
@@ -125,6 +128,7 @@ class Unsubscriber implements ModelInterface, ArrayAccess, \JsonSerializable
         'customer' => 'setCustomer',
         'channel' => 'setChannel',
         'region_code' => 'setRegionCode',
+        'source' => 'setSource',
         'create_time' => 'setCreateTime'
     ];
 
@@ -138,6 +142,7 @@ class Unsubscriber implements ModelInterface, ArrayAccess, \JsonSerializable
         'customer' => 'getCustomer',
         'channel' => 'getChannel',
         'region_code' => 'getRegionCode',
+        'source' => 'getSource',
         'create_time' => 'getCreateTime'
     ];
 
@@ -182,6 +187,23 @@ class Unsubscriber implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
+    public const SOURCE_WHATSAPP = 'Whatsapp';
+    public const SOURCE_API = 'API';
+    public const SOURCE_MANUAL = 'Manual';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getSourceAllowableValues()
+    {
+        return [
+            self::SOURCE_WHATSAPP,
+            self::SOURCE_API,
+            self::SOURCE_MANUAL,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -202,6 +224,7 @@ class Unsubscriber implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['customer'] = $data['customer'] ?? null;
         $this->container['channel'] = $data['channel'] ?? null;
         $this->container['region_code'] = $data['region_code'] ?? null;
+        $this->container['source'] = $data['source'] ?? null;
         $this->container['create_time'] = $data['create_time'] ?? null;
     }
 
@@ -213,6 +236,15 @@ class Unsubscriber implements ModelInterface, ArrayAccess, \JsonSerializable
     public function listInvalidProperties()
     {
         $invalidProperties = [];
+
+        $allowedValues = $this->getSourceAllowableValues();
+        if (!is_null($this->container['source']) && !in_array($this->container['source'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'source', must be one of '%s'",
+                $this->container['source'],
+                implode("', '", $allowedValues)
+            );
+        }
 
         return $invalidProperties;
     }
@@ -321,6 +353,40 @@ class Unsubscriber implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setRegionCode($region_code)
     {
         $this->container['region_code'] = $region_code;
+
+        return $this;
+    }
+
+    /**
+     * Gets source
+     *
+     * @return string|null
+     */
+    public function getSource()
+    {
+        return $this->container['source'];
+    }
+
+    /**
+     * Sets source
+     *
+     * @param string|null $source The source from which a customer resumed their subscription - `Whatsapp`: The customer resumed their subscription on the whatsapp client - `API`: You remove the customer from the unsubscribe list through the OpenAPI of YCloud - `Manual`: You remove the customer from the unsubscribe list on the Contact page of YCloud.
+     *
+     * @return self
+     */
+    public function setSource($source)
+    {
+        $allowedValues = $this->getSourceAllowableValues();
+        if (!is_null($source) && !in_array($source, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'source', must be one of '%s'",
+                    $source,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['source'] = $source;
 
         return $this;
     }

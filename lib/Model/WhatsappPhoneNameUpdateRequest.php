@@ -1,6 +1,6 @@
 <?php
 /**
- * WhatsappMessageMedia
+ * WhatsappPhoneNameUpdateRequest
  *
  * PHP version 7.4
  *
@@ -33,16 +33,16 @@ use \ArrayAccess;
 use \YCloud\Client\ObjectSerializer;
 
 /**
- * WhatsappMessageMedia Class Doc Comment
+ * WhatsappPhoneNameUpdateRequest Class Doc Comment
  *
  * @category Class
- * @description Use for &#x60;image&#x60;, &#x60;video&#x60;, &#x60;audio&#x60;, &#x60;document&#x60;, or &#x60;sticker&#x60; messages.  See also [Supported Media Types](https://developers.facebook.com/docs/whatsapp/cloud-api/reference/media#supported-media-types).  **Note**: Either &#x60;id&#x60; or &#x60;link&#x60; must be provided, but not both. These parameters are mutually exclusive.  Reference: [WhatsApp Cloud API Media Object](https://developers.facebook.com/docs/whatsapp/cloud-api/reference/messages#media-object)
+ * @description WhatsApp Phone Number Display Name
  * @package  YCloud\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class WhatsappMessageMedia implements ModelInterface, ArrayAccess, \JsonSerializable
+class WhatsappPhoneNameUpdateRequest implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +51,7 @@ class WhatsappMessageMedia implements ModelInterface, ArrayAccess, \JsonSerializ
       *
       * @var string
       */
-    protected static $openAPIModelName = 'WhatsappMessageMedia';
+    protected static $openAPIModelName = 'WhatsappPhoneNameUpdateRequest';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,10 +59,7 @@ class WhatsappMessageMedia implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var string[]
       */
     protected static $openAPITypes = [
-        'caption' => 'string',
-        'filename' => 'string',
-        'id' => 'string',
-        'link' => 'string'
+        'new_name' => 'string'
     ];
 
     /**
@@ -73,10 +70,7 @@ class WhatsappMessageMedia implements ModelInterface, ArrayAccess, \JsonSerializ
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'caption' => null,
-        'filename' => null,
-        'id' => null,
-        'link' => null
+        'new_name' => null
     ];
 
     /**
@@ -106,10 +100,7 @@ class WhatsappMessageMedia implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $attributeMap = [
-        'caption' => 'caption',
-        'filename' => 'filename',
-        'id' => 'id',
-        'link' => 'link'
+        'new_name' => 'newName'
     ];
 
     /**
@@ -118,10 +109,7 @@ class WhatsappMessageMedia implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $setters = [
-        'caption' => 'setCaption',
-        'filename' => 'setFilename',
-        'id' => 'setId',
-        'link' => 'setLink'
+        'new_name' => 'setNewName'
     ];
 
     /**
@@ -130,10 +118,7 @@ class WhatsappMessageMedia implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $getters = [
-        'caption' => 'getCaption',
-        'filename' => 'getFilename',
-        'id' => 'getId',
-        'link' => 'getLink'
+        'new_name' => 'getNewName'
     ];
 
     /**
@@ -193,10 +178,7 @@ class WhatsappMessageMedia implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     public function __construct(array $data = null)
     {
-        $this->container['caption'] = $data['caption'] ?? null;
-        $this->container['filename'] = $data['filename'] ?? null;
-        $this->container['id'] = $data['id'] ?? null;
-        $this->container['link'] = $data['link'] ?? null;
+        $this->container['new_name'] = $data['new_name'] ?? null;
     }
 
     /**
@@ -208,12 +190,14 @@ class WhatsappMessageMedia implements ModelInterface, ArrayAccess, \JsonSerializ
     {
         $invalidProperties = [];
 
-        if ($this->container['id'] === null) {
-            $invalidProperties[] = "'id' can't be null";
+        if (!is_null($this->container['new_name']) && (mb_strlen($this->container['new_name']) > 150)) {
+            $invalidProperties[] = "invalid value for 'new_name', the character length must be smaller than or equal to 150.";
         }
-        if ($this->container['link'] === null) {
-            $invalidProperties[] = "'link' can't be null";
+
+        if (!is_null($this->container['new_name']) && (mb_strlen($this->container['new_name']) < 3)) {
+            $invalidProperties[] = "invalid value for 'new_name', the character length must be bigger than or equal to 3.";
         }
+
         return $invalidProperties;
     }
 
@@ -230,97 +214,32 @@ class WhatsappMessageMedia implements ModelInterface, ArrayAccess, \JsonSerializ
 
 
     /**
-     * Gets caption
+     * Gets new_name
      *
      * @return string|null
      */
-    public function getCaption()
+    public function getNewName()
     {
-        return $this->container['caption'];
+        return $this->container['new_name'];
     }
 
     /**
-     * Sets caption
+     * Sets new_name
      *
-     * @param string|null $caption Describes the specified `image`, `video`, or `document` media. Not applicable in the `header` of `template` or `interactive` messages.
+     * @param string|null $new_name The new name you want to modify
      *
      * @return self
      */
-    public function setCaption($caption)
+    public function setNewName($new_name)
     {
-        $this->container['caption'] = $caption;
+        if (!is_null($new_name) && (mb_strlen($new_name) > 150)) {
+            throw new \InvalidArgumentException('invalid length for $new_name when calling WhatsappPhoneNameUpdateRequest., must be smaller than or equal to 150.');
+        }
+        if (!is_null($new_name) && (mb_strlen($new_name) < 3)) {
+            throw new \InvalidArgumentException('invalid length for $new_name when calling WhatsappPhoneNameUpdateRequest., must be bigger than or equal to 3.');
+        }
 
-        return $this;
-    }
-
-    /**
-     * Gets filename
-     *
-     * @return string|null
-     */
-    public function getFilename()
-    {
-        return $this->container['filename'];
-    }
-
-    /**
-     * Sets filename
-     *
-     * @param string|null $filename Describes the filename for the specific document. Use only with `document` media.
-     *
-     * @return self
-     */
-    public function setFilename($filename)
-    {
-        $this->container['filename'] = $filename;
-
-        return $this;
-    }
-
-    /**
-     * Gets id
-     *
-     * @return string
-     */
-    public function getId()
-    {
-        return $this->container['id'];
-    }
-
-    /**
-     * Sets id
-     *
-     * @param string $id Required when using media that has been uploaded to WhatsApp servers.  Provide the media object ID obtained from WhatsApp media upload API (https://docs.ycloud.com/update/reference/whatsapp_media-upload#/).
-     *
-     * @return self
-     */
-    public function setId($id)
-    {
-        $this->container['id'] = $id;
-
-        return $this;
-    }
-
-    /**
-     * Gets link
-     *
-     * @return string
-     */
-    public function getLink()
-    {
-        return $this->container['link'];
-    }
-
-    /**
-     * Sets link
-     *
-     * @param string $link Required when sending media directly from your server.  The protocol and URL of the media to be sent. Use only with HTTP/HTTPS URLs. Note: WhatsApp Cloud API caches media resources for 10 minutes. To ensure latest content, add random query strings to the URL.
-     *
-     * @return self
-     */
-    public function setLink($link)
-    {
-        $this->container['link'] = $link;
+        $this->container['new_name'] = $new_name;
 
         return $this;
     }

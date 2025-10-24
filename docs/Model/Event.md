@@ -21,5 +21,7 @@ Name | Type | Description | Notes
 **contact_attributes_changed** | [**\YCloud\Client\Model\ContactAttributesChanged**](ContactAttributesChanged.md) |  | [optional]
 **contact_created** | [**\YCloud\Client\Model\ContactCreated**](ContactCreated.md) |  | [optional]
 **contact_deleted** | [**\YCloud\Client\Model\ContactDeleted**](ContactDeleted.md) |  | [optional]
+**contact_unsubscribe_created** | [**\YCloud\Client\Model\ContactUnsubscribeCreated**](ContactUnsubscribeCreated.md) |  | [optional]
+**contact_unsubscribe_deleted** | [**\YCloud\Client\Model\ContactUnsubscribeDeleted**](ContactUnsubscribeDeleted.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

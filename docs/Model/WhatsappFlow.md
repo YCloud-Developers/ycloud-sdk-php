@@ -12,5 +12,6 @@ Name | Type | Description | Notes
 **validation_errors** | [**\YCloud\Client\Model\WhatsappFlowValidationError[]**](WhatsappFlowValidationError.md) | List of validation errors. | [optional]
 **json_version** | **string** | Version of the Flow JSON structure. | [optional]
 **data_api_version** | **string** | Version of the Data API. | [optional]
+**endpoint_uri** | **string** | The endpoint URI for the Flow. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

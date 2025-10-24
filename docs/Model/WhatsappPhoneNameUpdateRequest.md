@@ -1,9 +1,9 @@
-# # WhatsappFlowList200Response
+# # WhatsappPhoneNameUpdateRequest
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [**\YCloud\Client\Model\WhatsappListFlowItem[]**](WhatsappListFlowItem.md) | List of flows. | [optional]
+**new_name** | **string** | The new name you want to modify | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

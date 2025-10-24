@@ -58,7 +58,7 @@ class WhatsappFlowList200Response implements ModelInterface, ArrayAccess, \JsonS
       * @var string[]
       */
     protected static $openAPITypes = [
-        'items' => '\YCloud\Client\Model\WhatsappFlow[]'
+        'items' => '\YCloud\Client\Model\WhatsappListFlowItem[]'
     ];
 
     /**
@@ -207,7 +207,7 @@ class WhatsappFlowList200Response implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Gets items
      *
-     * @return \YCloud\Client\Model\WhatsappFlow[]|null
+     * @return \YCloud\Client\Model\WhatsappListFlowItem[]|null
      */
     public function getItems()
     {
@@ -217,7 +217,7 @@ class WhatsappFlowList200Response implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets items
      *
-     * @param \YCloud\Client\Model\WhatsappFlow[]|null $items List of flows.
+     * @param \YCloud\Client\Model\WhatsappListFlowItem[]|null $items List of flows.
      *
      * @return self
      */

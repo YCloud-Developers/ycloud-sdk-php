@@ -60,6 +60,10 @@ class WhatsappPhoneNumberProfile implements ModelInterface, ArrayAccess, \JsonSe
       */
     protected static $openAPITypes = [
         'about' => 'string',
+        'verified_name' => 'string',
+        'name_status' => '\YCloud\Client\Model\WhatsappPhoneNumberNameStatus',
+        'new_name' => 'string',
+        'new_name_status' => '\YCloud\Client\Model\WhatsappPhoneNumberNameStatus',
         'address' => 'string',
         'description' => 'string',
         'email' => 'string',
@@ -77,6 +81,10 @@ class WhatsappPhoneNumberProfile implements ModelInterface, ArrayAccess, \JsonSe
       */
     protected static $openAPIFormats = [
         'about' => null,
+        'verified_name' => null,
+        'name_status' => null,
+        'new_name' => null,
+        'new_name_status' => null,
         'address' => null,
         'description' => null,
         'email' => null,
@@ -113,6 +121,10 @@ class WhatsappPhoneNumberProfile implements ModelInterface, ArrayAccess, \JsonSe
      */
     protected static $attributeMap = [
         'about' => 'about',
+        'verified_name' => 'verifiedName',
+        'name_status' => 'nameStatus',
+        'new_name' => 'newName',
+        'new_name_status' => 'newNameStatus',
         'address' => 'address',
         'description' => 'description',
         'email' => 'email',
@@ -128,6 +140,10 @@ class WhatsappPhoneNumberProfile implements ModelInterface, ArrayAccess, \JsonSe
      */
     protected static $setters = [
         'about' => 'setAbout',
+        'verified_name' => 'setVerifiedName',
+        'name_status' => 'setNameStatus',
+        'new_name' => 'setNewName',
+        'new_name_status' => 'setNewNameStatus',
         'address' => 'setAddress',
         'description' => 'setDescription',
         'email' => 'setEmail',
@@ -143,6 +159,10 @@ class WhatsappPhoneNumberProfile implements ModelInterface, ArrayAccess, \JsonSe
      */
     protected static $getters = [
         'about' => 'getAbout',
+        'verified_name' => 'getVerifiedName',
+        'name_status' => 'getNameStatus',
+        'new_name' => 'getNewName',
+        'new_name_status' => 'getNewNameStatus',
         'address' => 'getAddress',
         'description' => 'getDescription',
         'email' => 'getEmail',
@@ -209,6 +229,10 @@ class WhatsappPhoneNumberProfile implements ModelInterface, ArrayAccess, \JsonSe
     public function __construct(array $data = null)
     {
         $this->container['about'] = $data['about'] ?? null;
+        $this->container['verified_name'] = $data['verified_name'] ?? null;
+        $this->container['name_status'] = $data['name_status'] ?? null;
+        $this->container['new_name'] = $data['new_name'] ?? null;
+        $this->container['new_name_status'] = $data['new_name_status'] ?? null;
         $this->container['address'] = $data['address'] ?? null;
         $this->container['description'] = $data['description'] ?? null;
         $this->container['email'] = $data['email'] ?? null;
@@ -277,6 +301,102 @@ class WhatsappPhoneNumberProfile implements ModelInterface, ArrayAccess, \JsonSe
     public function setAbout($about)
     {
         $this->container['about'] = $about;
+
+        return $this;
+    }
+
+    /**
+     * Gets verified_name
+     *
+     * @return string|null
+     */
+    public function getVerifiedName()
+    {
+        return $this->container['verified_name'];
+    }
+
+    /**
+     * Sets verified_name
+     *
+     * @param string|null $verified_name The verified name
+     *
+     * @return self
+     */
+    public function setVerifiedName($verified_name)
+    {
+        $this->container['verified_name'] = $verified_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets name_status
+     *
+     * @return \YCloud\Client\Model\WhatsappPhoneNumberNameStatus|null
+     */
+    public function getNameStatus()
+    {
+        return $this->container['name_status'];
+    }
+
+    /**
+     * Sets name_status
+     *
+     * @param \YCloud\Client\Model\WhatsappPhoneNumberNameStatus|null $name_status name_status
+     *
+     * @return self
+     */
+    public function setNameStatus($name_status)
+    {
+        $this->container['name_status'] = $name_status;
+
+        return $this;
+    }
+
+    /**
+     * Gets new_name
+     *
+     * @return string|null
+     */
+    public function getNewName()
+    {
+        return $this->container['new_name'];
+    }
+
+    /**
+     * Sets new_name
+     *
+     * @param string|null $new_name The modified name
+     *
+     * @return self
+     */
+    public function setNewName($new_name)
+    {
+        $this->container['new_name'] = $new_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets new_name_status
+     *
+     * @return \YCloud\Client\Model\WhatsappPhoneNumberNameStatus|null
+     */
+    public function getNewNameStatus()
+    {
+        return $this->container['new_name_status'];
+    }
+
+    /**
+     * Sets new_name_status
+     *
+     * @param \YCloud\Client\Model\WhatsappPhoneNumberNameStatus|null $new_name_status new_name_status
+     *
+     * @return self
+     */
+    public function setNewNameStatus($new_name_status)
+    {
+        $this->container['new_name_status'] = $new_name_status;
 
         return $this;
     }

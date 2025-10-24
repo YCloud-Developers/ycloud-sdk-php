@@ -43,5 +43,9 @@
 
 * `CONTACT_DELETED` (value: `'contact.deleted'`)
 
+* `CONTACT_UNSUBSCRIBE_CREATED` (value: `'contact.unsubscribe.created'`)
+
+* `CONTACT_UNSUBSCRIBE_DELETED` (value: `'contact.unsubscribe.deleted'`)
+
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

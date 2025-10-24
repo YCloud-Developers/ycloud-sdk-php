@@ -63,7 +63,8 @@ class WhatsappFlowCreateRequest implements ModelInterface, ArrayAccess, \JsonSer
         'categories' => '\YCloud\Client\Model\WhatsappFlowCategory[]',
         'flow_json' => 'string',
         'publish' => 'bool',
-        'clone_flow_id' => 'string'
+        'clone_flow_id' => 'string',
+        'endpoint_uri' => 'string'
     ];
 
     /**
@@ -79,7 +80,8 @@ class WhatsappFlowCreateRequest implements ModelInterface, ArrayAccess, \JsonSer
         'categories' => null,
         'flow_json' => null,
         'publish' => null,
-        'clone_flow_id' => null
+        'clone_flow_id' => null,
+        'endpoint_uri' => null
     ];
 
     /**
@@ -114,7 +116,8 @@ class WhatsappFlowCreateRequest implements ModelInterface, ArrayAccess, \JsonSer
         'categories' => 'categories',
         'flow_json' => 'flowJson',
         'publish' => 'publish',
-        'clone_flow_id' => 'cloneFlowId'
+        'clone_flow_id' => 'cloneFlowId',
+        'endpoint_uri' => 'endpointUri'
     ];
 
     /**
@@ -128,7 +131,8 @@ class WhatsappFlowCreateRequest implements ModelInterface, ArrayAccess, \JsonSer
         'categories' => 'setCategories',
         'flow_json' => 'setFlowJson',
         'publish' => 'setPublish',
-        'clone_flow_id' => 'setCloneFlowId'
+        'clone_flow_id' => 'setCloneFlowId',
+        'endpoint_uri' => 'setEndpointUri'
     ];
 
     /**
@@ -142,7 +146,8 @@ class WhatsappFlowCreateRequest implements ModelInterface, ArrayAccess, \JsonSer
         'categories' => 'getCategories',
         'flow_json' => 'getFlowJson',
         'publish' => 'getPublish',
-        'clone_flow_id' => 'getCloneFlowId'
+        'clone_flow_id' => 'getCloneFlowId',
+        'endpoint_uri' => 'getEndpointUri'
     ];
 
     /**
@@ -208,6 +213,7 @@ class WhatsappFlowCreateRequest implements ModelInterface, ArrayAccess, \JsonSer
         $this->container['flow_json'] = $data['flow_json'] ?? null;
         $this->container['publish'] = $data['publish'] ?? false;
         $this->container['clone_flow_id'] = $data['clone_flow_id'] ?? null;
+        $this->container['endpoint_uri'] = $data['endpoint_uri'] ?? null;
     }
 
     /**
@@ -383,6 +389,30 @@ class WhatsappFlowCreateRequest implements ModelInterface, ArrayAccess, \JsonSer
     public function setCloneFlowId($clone_flow_id)
     {
         $this->container['clone_flow_id'] = $clone_flow_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets endpoint_uri
+     *
+     * @return string|null
+     */
+    public function getEndpointUri()
+    {
+        return $this->container['endpoint_uri'];
+    }
+
+    /**
+     * Sets endpoint_uri
+     *
+     * @param string|null $endpoint_uri The endpoint URI for the Flow.
+     *
+     * @return self
+     */
+    public function setEndpointUri($endpoint_uri)
+    {
+        $this->container['endpoint_uri'] = $endpoint_uri;
 
         return $this;
     }

@@ -134,6 +134,7 @@ Class | Method | HTTP request | Description
 *WhatsappPhoneNumbersApi* | [**retrieveSettings**](docs/Api/WhatsappPhoneNumbersApi.md#retrievesettings) | **GET** /whatsapp/phoneNumbers/{wabaId}/{phoneNumber}/settings | Retrieve phone number settings
 *WhatsappPhoneNumbersApi* | [**saveSettings**](docs/Api/WhatsappPhoneNumbersApi.md#savesettings) | **POST** /whatsapp/phoneNumbers/{wabaId}/{phoneNumber}/settings | Save phone number settings
 *WhatsappPhoneNumbersApi* | [**updateCommerceSettings**](docs/Api/WhatsappPhoneNumbersApi.md#updatecommercesettings) | **PATCH** /whatsapp/phoneNumbers/{wabaId}/{phoneNumber}/whatsappCommerceSettings | Update commerce settings
+*WhatsappPhoneNumbersApi* | [**updateDisplayName**](docs/Api/WhatsappPhoneNumbersApi.md#updatedisplayname) | **PATCH** /whatsapp/phoneNumbers/{wabaId}/{phoneNumber}/displayName | Update a phone number display name
 *WhatsappPhoneNumbersApi* | [**updateProfile**](docs/Api/WhatsappPhoneNumbersApi.md#updateprofile) | **PATCH** /whatsapp/phoneNumbers/{wabaId}/{phoneNumber}/profile | Update a phone number profile
 *WhatsappTemplatesApi* | [**create**](docs/Api/WhatsappTemplatesApi.md#create) | **POST** /whatsapp/templates | Create a template
 *WhatsappTemplatesApi* | [**deleteByName**](docs/Api/WhatsappTemplatesApi.md#deletebyname) | **DELETE** /whatsapp/templates/{wabaId}/{name} | Delete templates by name
@@ -156,6 +157,8 @@ Class | Method | HTTP request | Description
 - [ContactDeleted](docs/Model/ContactDeleted.md)
 - [ContactPage](docs/Model/ContactPage.md)
 - [ContactSourceType](docs/Model/ContactSourceType.md)
+- [ContactUnsubscribeCreated](docs/Model/ContactUnsubscribeCreated.md)
+- [ContactUnsubscribeDeleted](docs/Model/ContactUnsubscribeDeleted.md)
 - [ContactUpdateRequest](docs/Model/ContactUpdateRequest.md)
 - [CustomEventDefinition](docs/Model/CustomEventDefinition.md)
 - [CustomEventDefinitionCreateRequest](docs/Model/CustomEventDefinitionCreateRequest.md)
@@ -250,6 +253,7 @@ Class | Method | HTTP request | Description
 - [WhatsappInboundMessageSystem](docs/Model/WhatsappInboundMessageSystem.md)
 - [WhatsappInboundMessageText](docs/Model/WhatsappInboundMessageText.md)
 - [WhatsappInboundMessageType](docs/Model/WhatsappInboundMessageType.md)
+- [WhatsappListFlowItem](docs/Model/WhatsappListFlowItem.md)
 - [WhatsappMedia](docs/Model/WhatsappMedia.md)
 - [WhatsappMediaUpload200Response](docs/Model/WhatsappMediaUpload200Response.md)
 - [WhatsappMessage](docs/Model/WhatsappMessage.md)
@@ -275,8 +279,7 @@ Class | Method | HTTP request | Description
 - [WhatsappMessageInteractiveHeader](docs/Model/WhatsappMessageInteractiveHeader.md)
 - [WhatsappMessageLocation](docs/Model/WhatsappMessageLocation.md)
 - [WhatsappMessageMedia](docs/Model/WhatsappMessageMedia.md)
-- [WhatsappMessageMediaOneOf](docs/Model/WhatsappMessageMediaOneOf.md)
-- [WhatsappMessageMediaOneOf1](docs/Model/WhatsappMessageMediaOneOf1.md)
+- [WhatsappMessageMediaAllOf](docs/Model/WhatsappMessageMediaAllOf.md)
 - [WhatsappMessageOrderAmount](docs/Model/WhatsappMessageOrderAmount.md)
 - [WhatsappMessageOrderBeneficiary](docs/Model/WhatsappMessageOrderBeneficiary.md)
 - [WhatsappMessageOrderDetails](docs/Model/WhatsappMessageOrderDetails.md)
@@ -310,6 +313,8 @@ Class | Method | HTTP request | Description
 - [WhatsappPaymentStatus](docs/Model/WhatsappPaymentStatus.md)
 - [WhatsappPaymentTransaction](docs/Model/WhatsappPaymentTransaction.md)
 - [WhatsappPaymentTransactionError](docs/Model/WhatsappPaymentTransactionError.md)
+- [WhatsappPhoneNameUpdateRequest](docs/Model/WhatsappPhoneNameUpdateRequest.md)
+- [WhatsappPhoneNameUpdateResponse](docs/Model/WhatsappPhoneNameUpdateResponse.md)
 - [WhatsappPhoneNumber](docs/Model/WhatsappPhoneNumber.md)
 - [WhatsappPhoneNumberCodeVerificationStatus](docs/Model/WhatsappPhoneNumberCodeVerificationStatus.md)
 - [WhatsappPhoneNumberNameStatus](docs/Model/WhatsappPhoneNumberNameStatus.md)

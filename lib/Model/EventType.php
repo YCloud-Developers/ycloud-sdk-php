@@ -84,6 +84,10 @@ class EventType
 
     public const CONTACT_DELETED = 'contact.deleted';
 
+    public const CONTACT_UNSUBSCRIBE_CREATED = 'contact.unsubscribe.created';
+
+    public const CONTACT_UNSUBSCRIBE_DELETED = 'contact.unsubscribe.deleted';
+
     /**
      * Gets allowable values of the enum
      * @return string[]
@@ -110,7 +114,9 @@ class EventType
             self::WHATSAPP_TEMPLATE_REVIEWED,
             self::CONTACT_ATTRIBUTES_CHANGED,
             self::CONTACT_CREATED,
-            self::CONTACT_DELETED
+            self::CONTACT_DELETED,
+            self::CONTACT_UNSUBSCRIBE_CREATED,
+            self::CONTACT_UNSUBSCRIBE_DELETED
         ];
     }
 }

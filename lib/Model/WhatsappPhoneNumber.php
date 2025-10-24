@@ -65,7 +65,9 @@ class WhatsappPhoneNumber implements ModelInterface, ArrayAccess, \JsonSerializa
         'waba_id' => 'string',
         'quality_rating' => '\YCloud\Client\Model\WhatsappPhoneNumberQualityRating',
         'messaging_limit' => 'string',
+        'whatsapp_business_manager_messaging_limit' => 'string',
         'verified_name' => 'string',
+        'new_name' => 'string',
         'code_verification_status' => '\YCloud\Client\Model\WhatsappPhoneNumberCodeVerificationStatus',
         'is_official_business_account' => 'bool',
         'status' => '\YCloud\Client\Model\WhatsappPhoneNumberStatus',
@@ -91,7 +93,9 @@ class WhatsappPhoneNumber implements ModelInterface, ArrayAccess, \JsonSerializa
         'waba_id' => null,
         'quality_rating' => null,
         'messaging_limit' => null,
+        'whatsapp_business_manager_messaging_limit' => null,
         'verified_name' => null,
+        'new_name' => null,
         'code_verification_status' => null,
         'is_official_business_account' => null,
         'status' => null,
@@ -136,7 +140,9 @@ class WhatsappPhoneNumber implements ModelInterface, ArrayAccess, \JsonSerializa
         'waba_id' => 'wabaId',
         'quality_rating' => 'qualityRating',
         'messaging_limit' => 'messagingLimit',
+        'whatsapp_business_manager_messaging_limit' => 'whatsappBusinessManagerMessagingLimit',
         'verified_name' => 'verifiedName',
+        'new_name' => 'newName',
         'code_verification_status' => 'codeVerificationStatus',
         'is_official_business_account' => 'isOfficialBusinessAccount',
         'status' => 'status',
@@ -160,7 +166,9 @@ class WhatsappPhoneNumber implements ModelInterface, ArrayAccess, \JsonSerializa
         'waba_id' => 'setWabaId',
         'quality_rating' => 'setQualityRating',
         'messaging_limit' => 'setMessagingLimit',
+        'whatsapp_business_manager_messaging_limit' => 'setWhatsappBusinessManagerMessagingLimit',
         'verified_name' => 'setVerifiedName',
+        'new_name' => 'setNewName',
         'code_verification_status' => 'setCodeVerificationStatus',
         'is_official_business_account' => 'setIsOfficialBusinessAccount',
         'status' => 'setStatus',
@@ -184,7 +192,9 @@ class WhatsappPhoneNumber implements ModelInterface, ArrayAccess, \JsonSerializa
         'waba_id' => 'getWabaId',
         'quality_rating' => 'getQualityRating',
         'messaging_limit' => 'getMessagingLimit',
+        'whatsapp_business_manager_messaging_limit' => 'getWhatsappBusinessManagerMessagingLimit',
         'verified_name' => 'getVerifiedName',
+        'new_name' => 'getNewName',
         'code_verification_status' => 'getCodeVerificationStatus',
         'is_official_business_account' => 'getIsOfficialBusinessAccount',
         'status' => 'getStatus',
@@ -259,7 +269,9 @@ class WhatsappPhoneNumber implements ModelInterface, ArrayAccess, \JsonSerializa
         $this->container['waba_id'] = $data['waba_id'] ?? null;
         $this->container['quality_rating'] = $data['quality_rating'] ?? null;
         $this->container['messaging_limit'] = $data['messaging_limit'] ?? null;
+        $this->container['whatsapp_business_manager_messaging_limit'] = $data['whatsapp_business_manager_messaging_limit'] ?? null;
         $this->container['verified_name'] = $data['verified_name'] ?? null;
+        $this->container['new_name'] = $data['new_name'] ?? null;
         $this->container['code_verification_status'] = $data['code_verification_status'] ?? null;
         $this->container['is_official_business_account'] = $data['is_official_business_account'] ?? null;
         $this->container['status'] = $data['status'] ?? null;
@@ -440,6 +452,30 @@ class WhatsappPhoneNumber implements ModelInterface, ArrayAccess, \JsonSerializa
     }
 
     /**
+     * Gets whatsapp_business_manager_messaging_limit
+     *
+     * @return string|null
+     */
+    public function getWhatsappBusinessManagerMessagingLimit()
+    {
+        return $this->container['whatsapp_business_manager_messaging_limit'];
+    }
+
+    /**
+     * Sets whatsapp_business_manager_messaging_limit
+     *
+     * @param string|null $whatsapp_business_manager_messaging_limit The owning business portfolio's messaging limit. Starting October 7, 2025, messaging limits will instead be calculated and set on a business portfolio basis, and will be shared by all business phone numbers within each portfolio. See also [phone_number_quality_update webhook reference](https://developers.facebook.com/docs/whatsapp/cloud-api/webhooks/reference/phone_number_quality_update). - `TIER_NOT_SET`: The business phone number has not been used to send a message yet. - `TIER_50`: Messaging limit of 50 business-initiated conversations in a rolling 24-hour period. - `TIER_250`: Messaging limit of 250 business-initiated conversations in a rolling 24-hour period. - `TIER_2K`: Messaging limit of 2,000 business-initiated conversations in a rolling 24-hour period. - `TIER_10K`: Messaging limit of 10,000 business-initiated conversations in a rolling 24-hour period. - `TIER_100K`: Messaging limit of 100,000 business-initiated conversations in a rolling 24-hour period. - `TIER_UNLIMITED`: The business phone number has higher throughput with unlimited business-initiated conversations.
+     *
+     * @return self
+     */
+    public function setWhatsappBusinessManagerMessagingLimit($whatsapp_business_manager_messaging_limit)
+    {
+        $this->container['whatsapp_business_manager_messaging_limit'] = $whatsapp_business_manager_messaging_limit;
+
+        return $this;
+    }
+
+    /**
      * Gets verified_name
      *
      * @return string|null
@@ -459,6 +495,30 @@ class WhatsappPhoneNumber implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setVerifiedName($verified_name)
     {
         $this->container['verified_name'] = $verified_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets new_name
+     *
+     * @return string|null
+     */
+    public function getNewName()
+    {
+        return $this->container['new_name'];
+    }
+
+    /**
+     * Sets new_name
+     *
+     * @param string|null $new_name The modified name
+     *
+     * @return self
+     */
+    public function setNewName($new_name)
+    {
+        $this->container['new_name'] = $new_name;
 
         return $this;
     }

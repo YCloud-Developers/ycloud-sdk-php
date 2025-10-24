@@ -75,7 +75,9 @@ class Event implements ModelInterface, ArrayAccess, \JsonSerializable
         'whatsapp_template' => '\YCloud\Client\Model\WhatsappTemplate',
         'contact_attributes_changed' => '\YCloud\Client\Model\ContactAttributesChanged',
         'contact_created' => '\YCloud\Client\Model\ContactCreated',
-        'contact_deleted' => '\YCloud\Client\Model\ContactDeleted'
+        'contact_deleted' => '\YCloud\Client\Model\ContactDeleted',
+        'contact_unsubscribe_created' => '\YCloud\Client\Model\ContactUnsubscribeCreated',
+        'contact_unsubscribe_deleted' => '\YCloud\Client\Model\ContactUnsubscribeDeleted'
     ];
 
     /**
@@ -102,7 +104,9 @@ class Event implements ModelInterface, ArrayAccess, \JsonSerializable
         'whatsapp_template' => null,
         'contact_attributes_changed' => null,
         'contact_created' => null,
-        'contact_deleted' => null
+        'contact_deleted' => null,
+        'contact_unsubscribe_created' => null,
+        'contact_unsubscribe_deleted' => null
     ];
 
     /**
@@ -148,7 +152,9 @@ class Event implements ModelInterface, ArrayAccess, \JsonSerializable
         'whatsapp_template' => 'whatsappTemplate',
         'contact_attributes_changed' => 'contactAttributesChanged',
         'contact_created' => 'contactCreated',
-        'contact_deleted' => 'contactDeleted'
+        'contact_deleted' => 'contactDeleted',
+        'contact_unsubscribe_created' => 'contactUnsubscribeCreated',
+        'contact_unsubscribe_deleted' => 'contactUnsubscribeDeleted'
     ];
 
     /**
@@ -173,7 +179,9 @@ class Event implements ModelInterface, ArrayAccess, \JsonSerializable
         'whatsapp_template' => 'setWhatsappTemplate',
         'contact_attributes_changed' => 'setContactAttributesChanged',
         'contact_created' => 'setContactCreated',
-        'contact_deleted' => 'setContactDeleted'
+        'contact_deleted' => 'setContactDeleted',
+        'contact_unsubscribe_created' => 'setContactUnsubscribeCreated',
+        'contact_unsubscribe_deleted' => 'setContactUnsubscribeDeleted'
     ];
 
     /**
@@ -198,7 +206,9 @@ class Event implements ModelInterface, ArrayAccess, \JsonSerializable
         'whatsapp_template' => 'getWhatsappTemplate',
         'contact_attributes_changed' => 'getContactAttributesChanged',
         'contact_created' => 'getContactCreated',
-        'contact_deleted' => 'getContactDeleted'
+        'contact_deleted' => 'getContactDeleted',
+        'contact_unsubscribe_created' => 'getContactUnsubscribeCreated',
+        'contact_unsubscribe_deleted' => 'getContactUnsubscribeDeleted'
     ];
 
     /**
@@ -275,6 +285,8 @@ class Event implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['contact_attributes_changed'] = $data['contact_attributes_changed'] ?? null;
         $this->container['contact_created'] = $data['contact_created'] ?? null;
         $this->container['contact_deleted'] = $data['contact_deleted'] ?? null;
+        $this->container['contact_unsubscribe_created'] = $data['contact_unsubscribe_created'] ?? null;
+        $this->container['contact_unsubscribe_deleted'] = $data['contact_unsubscribe_deleted'] ?? null;
     }
 
     /**
@@ -732,6 +744,54 @@ class Event implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setContactDeleted($contact_deleted)
     {
         $this->container['contact_deleted'] = $contact_deleted;
+
+        return $this;
+    }
+
+    /**
+     * Gets contact_unsubscribe_created
+     *
+     * @return \YCloud\Client\Model\ContactUnsubscribeCreated|null
+     */
+    public function getContactUnsubscribeCreated()
+    {
+        return $this->container['contact_unsubscribe_created'];
+    }
+
+    /**
+     * Sets contact_unsubscribe_created
+     *
+     * @param \YCloud\Client\Model\ContactUnsubscribeCreated|null $contact_unsubscribe_created contact_unsubscribe_created
+     *
+     * @return self
+     */
+    public function setContactUnsubscribeCreated($contact_unsubscribe_created)
+    {
+        $this->container['contact_unsubscribe_created'] = $contact_unsubscribe_created;
+
+        return $this;
+    }
+
+    /**
+     * Gets contact_unsubscribe_deleted
+     *
+     * @return \YCloud\Client\Model\ContactUnsubscribeDeleted|null
+     */
+    public function getContactUnsubscribeDeleted()
+    {
+        return $this->container['contact_unsubscribe_deleted'];
+    }
+
+    /**
+     * Sets contact_unsubscribe_deleted
+     *
+     * @param \YCloud\Client\Model\ContactUnsubscribeDeleted|null $contact_unsubscribe_deleted contact_unsubscribe_deleted
+     *
+     * @return self
+     */
+    public function setContactUnsubscribeDeleted($contact_unsubscribe_deleted)
+    {
+        $this->container['contact_unsubscribe_deleted'] = $contact_unsubscribe_deleted;
 
         return $this;
     }

@@ -1,6 +1,6 @@
 <?php
 /**
- * WhatsappFlow
+ * WhatsappPhoneNameUpdateResponse
  *
  * PHP version 7.4
  *
@@ -33,16 +33,16 @@ use \ArrayAccess;
 use \YCloud\Client\ObjectSerializer;
 
 /**
- * WhatsappFlow Class Doc Comment
+ * WhatsappPhoneNameUpdateResponse Class Doc Comment
  *
  * @category Class
- * @description Represents a WhatsApp Flow.
+ * @description WhatsApp Phone Number Display Name Modify Result
  * @package  YCloud\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class WhatsappFlow implements ModelInterface, ArrayAccess, \JsonSerializable
+class WhatsappPhoneNameUpdateResponse implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +51,7 @@ class WhatsappFlow implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'WhatsappFlow';
+    protected static $openAPIModelName = 'WhatsappPhoneNameUpdateResponse';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,15 +59,10 @@ class WhatsappFlow implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'id' => 'string',
-        'name' => 'string',
-        'status' => '\YCloud\Client\Model\WhatsappFlowStatus',
-        'categories' => '\YCloud\Client\Model\WhatsappFlowCategory[]',
-        'whatsapp_business_account' => '\YCloud\Client\Model\WhatsappFlowWhatsappBusinessAccount',
-        'validation_errors' => '\YCloud\Client\Model\WhatsappFlowValidationError[]',
-        'json_version' => 'string',
-        'data_api_version' => 'string',
-        'endpoint_uri' => 'string'
+        'verified_name' => 'string',
+        'name_status' => '\YCloud\Client\Model\WhatsappPhoneNumberNameStatus',
+        'new_name' => 'string',
+        'new_name_status' => '\YCloud\Client\Model\WhatsappPhoneNumberNameStatus'
     ];
 
     /**
@@ -78,15 +73,10 @@ class WhatsappFlow implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'id' => null,
-        'name' => null,
-        'status' => null,
-        'categories' => null,
-        'whatsapp_business_account' => null,
-        'validation_errors' => null,
-        'json_version' => null,
-        'data_api_version' => null,
-        'endpoint_uri' => null
+        'verified_name' => null,
+        'name_status' => null,
+        'new_name' => null,
+        'new_name_status' => null
     ];
 
     /**
@@ -116,15 +106,10 @@ class WhatsappFlow implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
-        'name' => 'name',
-        'status' => 'status',
-        'categories' => 'categories',
-        'whatsapp_business_account' => 'whatsappBusinessAccount',
-        'validation_errors' => 'validationErrors',
-        'json_version' => 'jsonVersion',
-        'data_api_version' => 'dataApiVersion',
-        'endpoint_uri' => 'endpointUri'
+        'verified_name' => 'verifiedName',
+        'name_status' => 'nameStatus',
+        'new_name' => 'newName',
+        'new_name_status' => 'newNameStatus'
     ];
 
     /**
@@ -133,15 +118,10 @@ class WhatsappFlow implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
-        'name' => 'setName',
-        'status' => 'setStatus',
-        'categories' => 'setCategories',
-        'whatsapp_business_account' => 'setWhatsappBusinessAccount',
-        'validation_errors' => 'setValidationErrors',
-        'json_version' => 'setJsonVersion',
-        'data_api_version' => 'setDataApiVersion',
-        'endpoint_uri' => 'setEndpointUri'
+        'verified_name' => 'setVerifiedName',
+        'name_status' => 'setNameStatus',
+        'new_name' => 'setNewName',
+        'new_name_status' => 'setNewNameStatus'
     ];
 
     /**
@@ -150,15 +130,10 @@ class WhatsappFlow implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
-        'name' => 'getName',
-        'status' => 'getStatus',
-        'categories' => 'getCategories',
-        'whatsapp_business_account' => 'getWhatsappBusinessAccount',
-        'validation_errors' => 'getValidationErrors',
-        'json_version' => 'getJsonVersion',
-        'data_api_version' => 'getDataApiVersion',
-        'endpoint_uri' => 'getEndpointUri'
+        'verified_name' => 'getVerifiedName',
+        'name_status' => 'getNameStatus',
+        'new_name' => 'getNewName',
+        'new_name_status' => 'getNewNameStatus'
     ];
 
     /**
@@ -218,15 +193,10 @@ class WhatsappFlow implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['id'] = $data['id'] ?? null;
-        $this->container['name'] = $data['name'] ?? null;
-        $this->container['status'] = $data['status'] ?? null;
-        $this->container['categories'] = $data['categories'] ?? null;
-        $this->container['whatsapp_business_account'] = $data['whatsapp_business_account'] ?? null;
-        $this->container['validation_errors'] = $data['validation_errors'] ?? null;
-        $this->container['json_version'] = $data['json_version'] ?? null;
-        $this->container['data_api_version'] = $data['data_api_version'] ?? null;
-        $this->container['endpoint_uri'] = $data['endpoint_uri'] ?? null;
+        $this->container['verified_name'] = $data['verified_name'] ?? null;
+        $this->container['name_status'] = $data['name_status'] ?? null;
+        $this->container['new_name'] = $data['new_name'] ?? null;
+        $this->container['new_name_status'] = $data['new_name_status'] ?? null;
     }
 
     /**
@@ -237,6 +207,22 @@ class WhatsappFlow implements ModelInterface, ArrayAccess, \JsonSerializable
     public function listInvalidProperties()
     {
         $invalidProperties = [];
+
+        if (!is_null($this->container['verified_name']) && (mb_strlen($this->container['verified_name']) > 150)) {
+            $invalidProperties[] = "invalid value for 'verified_name', the character length must be smaller than or equal to 150.";
+        }
+
+        if (!is_null($this->container['verified_name']) && (mb_strlen($this->container['verified_name']) < 3)) {
+            $invalidProperties[] = "invalid value for 'verified_name', the character length must be bigger than or equal to 3.";
+        }
+
+        if (!is_null($this->container['new_name']) && (mb_strlen($this->container['new_name']) > 150)) {
+            $invalidProperties[] = "invalid value for 'new_name', the character length must be smaller than or equal to 150.";
+        }
+
+        if (!is_null($this->container['new_name']) && (mb_strlen($this->container['new_name']) < 3)) {
+            $invalidProperties[] = "invalid value for 'new_name', the character length must be bigger than or equal to 3.";
+        }
 
         return $invalidProperties;
     }
@@ -254,217 +240,111 @@ class WhatsappFlow implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets id
+     * Gets verified_name
      *
      * @return string|null
      */
-    public function getId()
+    public function getVerifiedName()
     {
-        return $this->container['id'];
+        return $this->container['verified_name'];
     }
 
     /**
-     * Sets id
+     * Sets verified_name
      *
-     * @param string|null $id Flow ID.
+     * @param string|null $verified_name The verified name
      *
      * @return self
      */
-    public function setId($id)
+    public function setVerifiedName($verified_name)
     {
-        $this->container['id'] = $id;
+        if (!is_null($verified_name) && (mb_strlen($verified_name) > 150)) {
+            throw new \InvalidArgumentException('invalid length for $verified_name when calling WhatsappPhoneNameUpdateResponse., must be smaller than or equal to 150.');
+        }
+        if (!is_null($verified_name) && (mb_strlen($verified_name) < 3)) {
+            throw new \InvalidArgumentException('invalid length for $verified_name when calling WhatsappPhoneNameUpdateResponse., must be bigger than or equal to 3.');
+        }
+
+        $this->container['verified_name'] = $verified_name;
 
         return $this;
     }
 
     /**
-     * Gets name
+     * Gets name_status
+     *
+     * @return \YCloud\Client\Model\WhatsappPhoneNumberNameStatus|null
+     */
+    public function getNameStatus()
+    {
+        return $this->container['name_status'];
+    }
+
+    /**
+     * Sets name_status
+     *
+     * @param \YCloud\Client\Model\WhatsappPhoneNumberNameStatus|null $name_status name_status
+     *
+     * @return self
+     */
+    public function setNameStatus($name_status)
+    {
+        $this->container['name_status'] = $name_status;
+
+        return $this;
+    }
+
+    /**
+     * Gets new_name
      *
      * @return string|null
      */
-    public function getName()
+    public function getNewName()
     {
-        return $this->container['name'];
+        return $this->container['new_name'];
     }
 
     /**
-     * Sets name
+     * Sets new_name
      *
-     * @param string|null $name Flow name.
+     * @param string|null $new_name The new name you want to modify
      *
      * @return self
      */
-    public function setName($name)
+    public function setNewName($new_name)
     {
-        $this->container['name'] = $name;
+        if (!is_null($new_name) && (mb_strlen($new_name) > 150)) {
+            throw new \InvalidArgumentException('invalid length for $new_name when calling WhatsappPhoneNameUpdateResponse., must be smaller than or equal to 150.');
+        }
+        if (!is_null($new_name) && (mb_strlen($new_name) < 3)) {
+            throw new \InvalidArgumentException('invalid length for $new_name when calling WhatsappPhoneNameUpdateResponse., must be bigger than or equal to 3.');
+        }
+
+        $this->container['new_name'] = $new_name;
 
         return $this;
     }
 
     /**
-     * Gets status
+     * Gets new_name_status
      *
-     * @return \YCloud\Client\Model\WhatsappFlowStatus|null
+     * @return \YCloud\Client\Model\WhatsappPhoneNumberNameStatus|null
      */
-    public function getStatus()
+    public function getNewNameStatus()
     {
-        return $this->container['status'];
+        return $this->container['new_name_status'];
     }
 
     /**
-     * Sets status
+     * Sets new_name_status
      *
-     * @param \YCloud\Client\Model\WhatsappFlowStatus|null $status status
+     * @param \YCloud\Client\Model\WhatsappPhoneNumberNameStatus|null $new_name_status new_name_status
      *
      * @return self
      */
-    public function setStatus($status)
+    public function setNewNameStatus($new_name_status)
     {
-        $this->container['status'] = $status;
-
-        return $this;
-    }
-
-    /**
-     * Gets categories
-     *
-     * @return \YCloud\Client\Model\WhatsappFlowCategory[]|null
-     */
-    public function getCategories()
-    {
-        return $this->container['categories'];
-    }
-
-    /**
-     * Sets categories
-     *
-     * @param \YCloud\Client\Model\WhatsappFlowCategory[]|null $categories Flow categories.
-     *
-     * @return self
-     */
-    public function setCategories($categories)
-    {
-        $this->container['categories'] = $categories;
-
-        return $this;
-    }
-
-    /**
-     * Gets whatsapp_business_account
-     *
-     * @return \YCloud\Client\Model\WhatsappFlowWhatsappBusinessAccount|null
-     */
-    public function getWhatsappBusinessAccount()
-    {
-        return $this->container['whatsapp_business_account'];
-    }
-
-    /**
-     * Sets whatsapp_business_account
-     *
-     * @param \YCloud\Client\Model\WhatsappFlowWhatsappBusinessAccount|null $whatsapp_business_account whatsapp_business_account
-     *
-     * @return self
-     */
-    public function setWhatsappBusinessAccount($whatsapp_business_account)
-    {
-        $this->container['whatsapp_business_account'] = $whatsapp_business_account;
-
-        return $this;
-    }
-
-    /**
-     * Gets validation_errors
-     *
-     * @return \YCloud\Client\Model\WhatsappFlowValidationError[]|null
-     */
-    public function getValidationErrors()
-    {
-        return $this->container['validation_errors'];
-    }
-
-    /**
-     * Sets validation_errors
-     *
-     * @param \YCloud\Client\Model\WhatsappFlowValidationError[]|null $validation_errors List of validation errors.
-     *
-     * @return self
-     */
-    public function setValidationErrors($validation_errors)
-    {
-        $this->container['validation_errors'] = $validation_errors;
-
-        return $this;
-    }
-
-    /**
-     * Gets json_version
-     *
-     * @return string|null
-     */
-    public function getJsonVersion()
-    {
-        return $this->container['json_version'];
-    }
-
-    /**
-     * Sets json_version
-     *
-     * @param string|null $json_version Version of the Flow JSON structure.
-     *
-     * @return self
-     */
-    public function setJsonVersion($json_version)
-    {
-        $this->container['json_version'] = $json_version;
-
-        return $this;
-    }
-
-    /**
-     * Gets data_api_version
-     *
-     * @return string|null
-     */
-    public function getDataApiVersion()
-    {
-        return $this->container['data_api_version'];
-    }
-
-    /**
-     * Sets data_api_version
-     *
-     * @param string|null $data_api_version Version of the Data API.
-     *
-     * @return self
-     */
-    public function setDataApiVersion($data_api_version)
-    {
-        $this->container['data_api_version'] = $data_api_version;
-
-        return $this;
-    }
-
-    /**
-     * Gets endpoint_uri
-     *
-     * @return string|null
-     */
-    public function getEndpointUri()
-    {
-        return $this->container['endpoint_uri'];
-    }
-
-    /**
-     * Sets endpoint_uri
-     *
-     * @param string|null $endpoint_uri The endpoint URI for the Flow.
-     *
-     * @return self
-     */
-    public function setEndpointUri($endpoint_uri)
-    {
-        $this->container['endpoint_uri'] = $endpoint_uri;
+        $this->container['new_name_status'] = $new_name_status;
 
         return $this;
     }
