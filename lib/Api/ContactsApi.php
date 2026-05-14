@@ -670,7 +670,7 @@ class ContactsApi
      *
      * Delete a contact
      *
-     * @param  string $id ID of the contact. (required)
+     * @param  string $id ID of the contact. Also support phone number([E.164](https://en.wikipedia.org/wiki/E.164) format, start with character &#39;+&#39;), example: +16315551111 (required)
      *
      * @throws \YCloud\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -687,7 +687,7 @@ class ContactsApi
      *
      * Delete a contact
      *
-     * @param  string $id ID of the contact. (required)
+     * @param  string $id ID of the contact. Also support phone number([E.164](https://en.wikipedia.org/wiki/E.164) format, start with character &#39;+&#39;), example: +16315551111 (required)
      *
      * @throws \YCloud\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -809,7 +809,7 @@ class ContactsApi
      *
      * Delete a contact
      *
-     * @param  string $id ID of the contact. (required)
+     * @param  string $id ID of the contact. Also support phone number([E.164](https://en.wikipedia.org/wiki/E.164) format, start with character &#39;+&#39;), example: +16315551111 (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -829,7 +829,7 @@ class ContactsApi
      *
      * Delete a contact
      *
-     * @param  string $id ID of the contact. (required)
+     * @param  string $id ID of the contact. Also support phone number([E.164](https://en.wikipedia.org/wiki/E.164) format, start with character &#39;+&#39;), example: +16315551111 (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -878,7 +878,7 @@ class ContactsApi
     /**
      * Create request for operation 'delete'
      *
-     * @param  string $id ID of the contact. (required)
+     * @param  string $id ID of the contact. Also support phone number([E.164](https://en.wikipedia.org/wiki/E.164) format, start with character &#39;+&#39;), example: +16315551111 (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -987,7 +987,7 @@ class ContactsApi
      * @param  int $page Page number of the results to be returned, 1-based. (optional, default to 1)
      * @param  int $limit A limit on the number of results to be returned, or number of results per page, between 1 and 100, defaults to 10. (optional, default to 10)
      * @param  bool $include_total Return results inside an object that contains the total result count or not. (optional, default to false)
-     * @param  string $filter_tags Comma-separated list of tags. (optional)
+     * @param  string $filter_tags Comma-separated list of tags&#39; id. (optional)
      * @param  string $filter_country_code Two-letter country abbreviation. See [ISO 3166-1 alpha-2 country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2). (optional)
      * @param  string $filter_phone_number Phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format. (optional)
      * @param  string $filter_email The contact&#39;s email address. (optional)
@@ -1012,7 +1012,7 @@ class ContactsApi
      * @param  int $page Page number of the results to be returned, 1-based. (optional, default to 1)
      * @param  int $limit A limit on the number of results to be returned, or number of results per page, between 1 and 100, defaults to 10. (optional, default to 10)
      * @param  bool $include_total Return results inside an object that contains the total result count or not. (optional, default to false)
-     * @param  string $filter_tags Comma-separated list of tags. (optional)
+     * @param  string $filter_tags Comma-separated list of tags&#39; id. (optional)
      * @param  string $filter_country_code Two-letter country abbreviation. See [ISO 3166-1 alpha-2 country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2). (optional)
      * @param  string $filter_phone_number Phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format. (optional)
      * @param  string $filter_email The contact&#39;s email address. (optional)
@@ -1119,7 +1119,7 @@ class ContactsApi
      * @param  int $page Page number of the results to be returned, 1-based. (optional, default to 1)
      * @param  int $limit A limit on the number of results to be returned, or number of results per page, between 1 and 100, defaults to 10. (optional, default to 10)
      * @param  bool $include_total Return results inside an object that contains the total result count or not. (optional, default to false)
-     * @param  string $filter_tags Comma-separated list of tags. (optional)
+     * @param  string $filter_tags Comma-separated list of tags&#39; id. (optional)
      * @param  string $filter_country_code Two-letter country abbreviation. See [ISO 3166-1 alpha-2 country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2). (optional)
      * @param  string $filter_phone_number Phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format. (optional)
      * @param  string $filter_email The contact&#39;s email address. (optional)
@@ -1147,7 +1147,7 @@ class ContactsApi
      * @param  int $page Page number of the results to be returned, 1-based. (optional, default to 1)
      * @param  int $limit A limit on the number of results to be returned, or number of results per page, between 1 and 100, defaults to 10. (optional, default to 10)
      * @param  bool $include_total Return results inside an object that contains the total result count or not. (optional, default to false)
-     * @param  string $filter_tags Comma-separated list of tags. (optional)
+     * @param  string $filter_tags Comma-separated list of tags&#39; id. (optional)
      * @param  string $filter_country_code Two-letter country abbreviation. See [ISO 3166-1 alpha-2 country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2). (optional)
      * @param  string $filter_phone_number Phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format. (optional)
      * @param  string $filter_email The contact&#39;s email address. (optional)
@@ -1204,7 +1204,7 @@ class ContactsApi
      * @param  int $page Page number of the results to be returned, 1-based. (optional, default to 1)
      * @param  int $limit A limit on the number of results to be returned, or number of results per page, between 1 and 100, defaults to 10. (optional, default to 10)
      * @param  bool $include_total Return results inside an object that contains the total result count or not. (optional, default to false)
-     * @param  string $filter_tags Comma-separated list of tags. (optional)
+     * @param  string $filter_tags Comma-separated list of tags&#39; id. (optional)
      * @param  string $filter_country_code Two-letter country abbreviation. See [ISO 3166-1 alpha-2 country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2). (optional)
      * @param  string $filter_phone_number Phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format. (optional)
      * @param  string $filter_email The contact&#39;s email address. (optional)
@@ -1379,7 +1379,7 @@ class ContactsApi
      *
      * Retrieve a contact
      *
-     * @param  string $id ID of the contact. (required)
+     * @param  string $id ID of the contact. Also support phone number([E.164](https://en.wikipedia.org/wiki/E.164) format, start with character &#39;+&#39;), example: +16315551111 (required)
      *
      * @throws \YCloud\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1396,7 +1396,7 @@ class ContactsApi
      *
      * Retrieve a contact
      *
-     * @param  string $id ID of the contact. (required)
+     * @param  string $id ID of the contact. Also support phone number([E.164](https://en.wikipedia.org/wiki/E.164) format, start with character &#39;+&#39;), example: +16315551111 (required)
      *
      * @throws \YCloud\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1518,7 +1518,7 @@ class ContactsApi
      *
      * Retrieve a contact
      *
-     * @param  string $id ID of the contact. (required)
+     * @param  string $id ID of the contact. Also support phone number([E.164](https://en.wikipedia.org/wiki/E.164) format, start with character &#39;+&#39;), example: +16315551111 (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1538,7 +1538,7 @@ class ContactsApi
      *
      * Retrieve a contact
      *
-     * @param  string $id ID of the contact. (required)
+     * @param  string $id ID of the contact. Also support phone number([E.164](https://en.wikipedia.org/wiki/E.164) format, start with character &#39;+&#39;), example: +16315551111 (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1587,7 +1587,7 @@ class ContactsApi
     /**
      * Create request for operation 'retrieve'
      *
-     * @param  string $id ID of the contact. (required)
+     * @param  string $id ID of the contact. Also support phone number([E.164](https://en.wikipedia.org/wiki/E.164) format, start with character &#39;+&#39;), example: +16315551111 (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -1691,7 +1691,7 @@ class ContactsApi
      *
      * Update a contact
      *
-     * @param  string $id ID of the contact. (required)
+     * @param  string $id ID of the contact. Also support phone number([E.164](https://en.wikipedia.org/wiki/E.164) format, start with character &#39;+&#39;), example: +16315551111 (required)
      * @param  \YCloud\Client\Model\ContactUpdateRequest $contact_update_request contact_update_request (optional)
      *
      * @throws \YCloud\Client\ApiException on non-2xx response
@@ -1709,7 +1709,7 @@ class ContactsApi
      *
      * Update a contact
      *
-     * @param  string $id ID of the contact. (required)
+     * @param  string $id ID of the contact. Also support phone number([E.164](https://en.wikipedia.org/wiki/E.164) format, start with character &#39;+&#39;), example: +16315551111 (required)
      * @param  \YCloud\Client\Model\ContactUpdateRequest $contact_update_request (optional)
      *
      * @throws \YCloud\Client\ApiException on non-2xx response
@@ -1832,7 +1832,7 @@ class ContactsApi
      *
      * Update a contact
      *
-     * @param  string $id ID of the contact. (required)
+     * @param  string $id ID of the contact. Also support phone number([E.164](https://en.wikipedia.org/wiki/E.164) format, start with character &#39;+&#39;), example: +16315551111 (required)
      * @param  \YCloud\Client\Model\ContactUpdateRequest $contact_update_request (optional)
      *
      * @throws \InvalidArgumentException
@@ -1853,7 +1853,7 @@ class ContactsApi
      *
      * Update a contact
      *
-     * @param  string $id ID of the contact. (required)
+     * @param  string $id ID of the contact. Also support phone number([E.164](https://en.wikipedia.org/wiki/E.164) format, start with character &#39;+&#39;), example: +16315551111 (required)
      * @param  \YCloud\Client\Model\ContactUpdateRequest $contact_update_request (optional)
      *
      * @throws \InvalidArgumentException
@@ -1903,7 +1903,7 @@ class ContactsApi
     /**
      * Create request for operation 'update'
      *
-     * @param  string $id ID of the contact. (required)
+     * @param  string $id ID of the contact. Also support phone number([E.164](https://en.wikipedia.org/wiki/E.164) format, start with character &#39;+&#39;), example: +16315551111 (required)
      * @param  \YCloud\Client\Model\ContactUpdateRequest $contact_update_request (optional)
      *
      * @throws \InvalidArgumentException

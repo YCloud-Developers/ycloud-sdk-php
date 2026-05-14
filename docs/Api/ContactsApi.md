@@ -156,7 +156,7 @@ $apiInstance = new YCloud\Client\Api\ContactsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$id = 1693364594105000026; // string | ID of the contact.
+$id = 1693364594105000026/+16315551111; // string | ID of the contact. Also support phone number([E.164](https://en.wikipedia.org/wiki/E.164) format, start with character '+'), example: +16315551111
 
 try {
     $result = $apiInstance->delete($id);
@@ -170,7 +170,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **string**| ID of the contact. |
+ **id** | **string**| ID of the contact. Also support phone number([E.164](https://en.wikipedia.org/wiki/E.164) format, start with character &#39;+&#39;), example: +16315551111 |
 
 ### Return type
 
@@ -219,7 +219,7 @@ $apiInstance = new YCloud\Client\Api\ContactsApi(
 $associate_array['page'] = 1; // int | Page number of the results to be returned, 1-based.
 $associate_array['limit'] = 10; // int | A limit on the number of results to be returned, or number of results per page, between 1 and 100, defaults to 10.
 $associate_array['include_total'] = false; // bool | Return results inside an object that contains the total result count or not.
-$associate_array['filter_tags'] = tag1,tag2; // string | Comma-separated list of tags.
+$associate_array['filter_tags'] = tag1_id,tag2_id; // string | Comma-separated list of tags' id.
 $associate_array['filter_country_code'] = US; // string | Two-letter country abbreviation. See [ISO 3166-1 alpha-2 country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).
 $associate_array['filter_phone_number'] = +16315551111; // string | Phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format.
 $associate_array['filter_email'] = support@example.com; // string | The contact's email address.
@@ -241,7 +241,7 @@ Name | Type | Description  | Notes
  **page** | **int**| Page number of the results to be returned, 1-based. | [optional] [default to 1]
  **limit** | **int**| A limit on the number of results to be returned, or number of results per page, between 1 and 100, defaults to 10. | [optional] [default to 10]
  **include_total** | **bool**| Return results inside an object that contains the total result count or not. | [optional] [default to false]
- **filter_tags** | **string**| Comma-separated list of tags. | [optional]
+ **filter_tags** | **string**| Comma-separated list of tags&#39; id. | [optional]
  **filter_country_code** | **string**| Two-letter country abbreviation. See [ISO 3166-1 alpha-2 country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2). | [optional]
  **filter_phone_number** | **string**| Phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format. | [optional]
  **filter_email** | **string**| The contact&#39;s email address. | [optional]
@@ -290,7 +290,7 @@ $apiInstance = new YCloud\Client\Api\ContactsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$id = 1693364594105000026; // string | ID of the contact.
+$id = 1693364594105000026/+16315551111; // string | ID of the contact. Also support phone number([E.164](https://en.wikipedia.org/wiki/E.164) format, start with character '+'), example: +16315551111
 
 try {
     $result = $apiInstance->retrieve($id);
@@ -304,7 +304,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **string**| ID of the contact. |
+ **id** | **string**| ID of the contact. Also support phone number([E.164](https://en.wikipedia.org/wiki/E.164) format, start with character &#39;+&#39;), example: +16315551111 |
 
 ### Return type
 
@@ -350,7 +350,7 @@ $apiInstance = new YCloud\Client\Api\ContactsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$id = 1693364594105000026; // string | ID of the contact.
+$id = 1693364594105000026/+16315551111; // string | ID of the contact. Also support phone number([E.164](https://en.wikipedia.org/wiki/E.164) format, start with character '+'), example: +16315551111
 $contact_update_request = new \YCloud\Client\Model\ContactUpdateRequest(); // \YCloud\Client\Model\ContactUpdateRequest
 
 try {
@@ -365,7 +365,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **string**| ID of the contact. |
+ **id** | **string**| ID of the contact. Also support phone number([E.164](https://en.wikipedia.org/wiki/E.164) format, start with character &#39;+&#39;), example: +16315551111 |
  **contact_update_request** | [**\YCloud\Client\Model\ContactUpdateRequest**](../Model/ContactUpdateRequest.md)|  | [optional]
 
 ### Return type

@@ -63,6 +63,7 @@ class WhatsappMessageTemplateComponentParameter implements ModelInterface, Array
         'payload' => 'string',
         'coupon_code' => 'string',
         'image' => '\YCloud\Client\Model\WhatsappMessageMedia',
+        'gif' => '\YCloud\Client\Model\WhatsappMessageMedia',
         'video' => '\YCloud\Client\Model\WhatsappMessageMedia',
         'document' => '\YCloud\Client\Model\WhatsappMessageMedia',
         'limited_time_offer' => '\YCloud\Client\Model\WhatsappMessageTemplateComponentParameterLimitedTimeOffer',
@@ -84,6 +85,7 @@ class WhatsappMessageTemplateComponentParameter implements ModelInterface, Array
         'payload' => null,
         'coupon_code' => null,
         'image' => null,
+        'gif' => null,
         'video' => null,
         'document' => null,
         'limited_time_offer' => null,
@@ -124,6 +126,7 @@ class WhatsappMessageTemplateComponentParameter implements ModelInterface, Array
         'payload' => 'payload',
         'coupon_code' => 'coupon_code',
         'image' => 'image',
+        'gif' => 'gif',
         'video' => 'video',
         'document' => 'document',
         'limited_time_offer' => 'limited_time_offer',
@@ -143,6 +146,7 @@ class WhatsappMessageTemplateComponentParameter implements ModelInterface, Array
         'payload' => 'setPayload',
         'coupon_code' => 'setCouponCode',
         'image' => 'setImage',
+        'gif' => 'setGif',
         'video' => 'setVideo',
         'document' => 'setDocument',
         'limited_time_offer' => 'setLimitedTimeOffer',
@@ -162,6 +166,7 @@ class WhatsappMessageTemplateComponentParameter implements ModelInterface, Array
         'payload' => 'getPayload',
         'coupon_code' => 'getCouponCode',
         'image' => 'getImage',
+        'gif' => 'getGif',
         'video' => 'getVideo',
         'document' => 'getDocument',
         'limited_time_offer' => 'getLimitedTimeOffer',
@@ -213,6 +218,7 @@ class WhatsappMessageTemplateComponentParameter implements ModelInterface, Array
 
     public const TYPE_TEXT = 'text';
     public const TYPE_IMAGE = 'image';
+    public const TYPE_GIF = 'gif';
     public const TYPE_VIDEO = 'video';
     public const TYPE_DOCUMENT = 'document';
     public const TYPE_PAYLOAD = 'payload';
@@ -232,6 +238,7 @@ class WhatsappMessageTemplateComponentParameter implements ModelInterface, Array
         return [
             self::TYPE_TEXT,
             self::TYPE_IMAGE,
+            self::TYPE_GIF,
             self::TYPE_VIDEO,
             self::TYPE_DOCUMENT,
             self::TYPE_PAYLOAD,
@@ -263,6 +270,7 @@ class WhatsappMessageTemplateComponentParameter implements ModelInterface, Array
         $this->container['payload'] = $data['payload'] ?? null;
         $this->container['coupon_code'] = $data['coupon_code'] ?? null;
         $this->container['image'] = $data['image'] ?? null;
+        $this->container['gif'] = $data['gif'] ?? null;
         $this->container['video'] = $data['video'] ?? null;
         $this->container['document'] = $data['document'] ?? null;
         $this->container['limited_time_offer'] = $data['limited_time_offer'] ?? null;
@@ -317,7 +325,7 @@ class WhatsappMessageTemplateComponentParameter implements ModelInterface, Array
     /**
      * Sets type
      *
-     * @param string|null $type **Required.** Component parameter type. - `text`: Used when the template component type is `BODY`, or the `HEADER` component format is `TEXT`. - `image`: Used when the template `HEADER` component is `IMAGE`. - `video`: Used when the template `HEADER` component is `VIDEO`. - `document`: Used when the template `HEADER` component is `DOCUMENT`. - `payload`: Used when the template component button type is `QUICK_REPLY`. - `coupon_code`: Used when the template component button type is `COPY_CODE`. - `limited_time_offer`: Used when the template component type is `LIMITED_TIME_OFFER`. - `action`: Used when the template component button type is `CATALOG`, `MPM`, `FLOW`, or `ORDER_DETAILS`. - `order_status`: Used when the template subcategory is `ORDER_STATUS`. - `location`: Used when the template `HEADER` component is `LOCATION`.
+     * @param string|null $type **Required.** Component parameter type. - `text`: Used when the template component type is `BODY`, or the `HEADER` component format is `TEXT`. - `image`: Used when the template `HEADER` component is `IMAGE`. - `gif`: Used when the template `HEADER` component is `GIF`. - `video`: Used when the template `HEADER` component is `VIDEO`. - `document`: Used when the template `HEADER` component is `DOCUMENT`. - `payload`: Used when the template component button type is `QUICK_REPLY`. - `coupon_code`: Used when the template component button type is `COPY_CODE`. - `limited_time_offer`: Used when the template component type is `LIMITED_TIME_OFFER`. - `action`: Used when the template component button type is `CATALOG`, `MPM`, `FLOW`, or `ORDER_DETAILS`. - `order_status`: Used when the template subcategory is `ORDER_STATUS`. - `location`: Used when the template `HEADER` component is `LOCATION`.
      *
      * @return self
      */
@@ -430,6 +438,30 @@ class WhatsappMessageTemplateComponentParameter implements ModelInterface, Array
     public function setImage($image)
     {
         $this->container['image'] = $image;
+
+        return $this;
+    }
+
+    /**
+     * Gets gif
+     *
+     * @return \YCloud\Client\Model\WhatsappMessageMedia|null
+     */
+    public function getGif()
+    {
+        return $this->container['gif'];
+    }
+
+    /**
+     * Sets gif
+     *
+     * @param \YCloud\Client\Model\WhatsappMessageMedia|null $gif gif
+     *
+     * @return self
+     */
+    public function setGif($gif)
+    {
+        $this->container['gif'] = $gif;
 
         return $this;
     }

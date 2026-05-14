@@ -37,6 +37,16 @@
 
 * `WHATSAPP_TEMPLATE_REVIEWED` (value: `'whatsapp.template.reviewed'`)
 
+* `WHATSAPP_CALL_CONNECT` (value: `'whatsapp.call.connect'`)
+
+* `WHATSAPP_CALL_TERMINATE` (value: `'whatsapp.call.terminate'`)
+
+* `WHATSAPP_CALL_STATUS_UPDATED` (value: `'whatsapp.call.status.updated'`)
+
+* `WHATSAPP_FLOW_STATUS_CHANGE` (value: `'whatsapp.flow.status_change'`)
+
+* `WHATSAPP_PAYMENT_UPDATED` (value: `'whatsapp.payment.updated'`)
+
 * `CONTACT_ATTRIBUTES_CHANGED` (value: `'contact.attributes_changed'`)
 
 * `CONTACT_CREATED` (value: `'contact.created'`)
@@ -46,6 +56,8 @@
 * `CONTACT_UNSUBSCRIBE_CREATED` (value: `'contact.unsubscribe.created'`)
 
 * `CONTACT_UNSUBSCRIBE_DELETED` (value: `'contact.unsubscribe.deleted'`)
+
+* `WHATSAPP_USER_PREFERENCES` (value: `'whatsapp.user.preferences'`)
 
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

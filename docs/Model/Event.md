@@ -23,5 +23,6 @@ Name | Type | Description | Notes
 **contact_deleted** | [**\YCloud\Client\Model\ContactDeleted**](ContactDeleted.md) |  | [optional]
 **contact_unsubscribe_created** | [**\YCloud\Client\Model\ContactUnsubscribeCreated**](ContactUnsubscribeCreated.md) |  | [optional]
 **contact_unsubscribe_deleted** | [**\YCloud\Client\Model\ContactUnsubscribeDeleted**](ContactUnsubscribeDeleted.md) |  | [optional]
+**whatsapp_user_preference** | [**\YCloud\Client\Model\WhatsappUserPreference**](WhatsappUserPreference.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

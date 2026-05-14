@@ -78,6 +78,16 @@ class EventType
 
     public const WHATSAPP_TEMPLATE_REVIEWED = 'whatsapp.template.reviewed';
 
+    public const WHATSAPP_CALL_CONNECT = 'whatsapp.call.connect';
+
+    public const WHATSAPP_CALL_TERMINATE = 'whatsapp.call.terminate';
+
+    public const WHATSAPP_CALL_STATUS_UPDATED = 'whatsapp.call.status.updated';
+
+    public const WHATSAPP_FLOW_STATUS_CHANGE = 'whatsapp.flow.status_change';
+
+    public const WHATSAPP_PAYMENT_UPDATED = 'whatsapp.payment.updated';
+
     public const CONTACT_ATTRIBUTES_CHANGED = 'contact.attributes_changed';
 
     public const CONTACT_CREATED = 'contact.created';
@@ -87,6 +97,8 @@ class EventType
     public const CONTACT_UNSUBSCRIBE_CREATED = 'contact.unsubscribe.created';
 
     public const CONTACT_UNSUBSCRIBE_DELETED = 'contact.unsubscribe.deleted';
+
+    public const WHATSAPP_USER_PREFERENCES = 'whatsapp.user.preferences';
 
     /**
      * Gets allowable values of the enum
@@ -112,11 +124,17 @@ class EventType
             self::WHATSAPP_TEMPLATE_CATEGORY_UPDATED,
             self::WHATSAPP_TEMPLATE_QUALITY_UPDATED,
             self::WHATSAPP_TEMPLATE_REVIEWED,
+            self::WHATSAPP_CALL_CONNECT,
+            self::WHATSAPP_CALL_TERMINATE,
+            self::WHATSAPP_CALL_STATUS_UPDATED,
+            self::WHATSAPP_FLOW_STATUS_CHANGE,
+            self::WHATSAPP_PAYMENT_UPDATED,
             self::CONTACT_ATTRIBUTES_CHANGED,
             self::CONTACT_CREATED,
             self::CONTACT_DELETED,
             self::CONTACT_UNSUBSCRIBE_CREATED,
-            self::CONTACT_UNSUBSCRIBE_DELETED
+            self::CONTACT_UNSUBSCRIBE_DELETED,
+            self::WHATSAPP_USER_PREFERENCES
         ];
     }
 }

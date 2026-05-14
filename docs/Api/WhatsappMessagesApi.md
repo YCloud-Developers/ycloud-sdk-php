@@ -77,7 +77,7 @@ send($whatsapp_message_send_request): \YCloud\Client\Model\WhatsappMessage
 
 Enqueue a message
 
-Enqueues an outbound WhatsApp message for sending.  Queued messages will be submitted to the WhatsApp Business API asynchronously.
+Enqueues an outbound WhatsApp message for sending.  Queued messages will be submitted to the WhatsApp Business API asynchronously.  For WhatsApp `template` messages, the referenced template must be in `APPROVED` status. `ARCHIVED` templates cannot be sent.
 
 ### Example
 

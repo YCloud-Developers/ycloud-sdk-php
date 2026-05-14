@@ -224,7 +224,7 @@ class WhatsappMessageOrderPaymentSettingPaymentGatewayRazorpay implements ModelI
     /**
      * Sets receipt
      *
-     * @param string|null $receipt Receipt number that corresponds to this order, set for your internal reference.  Maximum length of 40 characters supported with minimum length greater than 0 characters.
+     * @param string|null $receipt Receipt number that corresponds to this order, set for your internal reference. Maximum length of 40 characters supported with minimum length greater than 0 characters.
      *
      * @return self
      */

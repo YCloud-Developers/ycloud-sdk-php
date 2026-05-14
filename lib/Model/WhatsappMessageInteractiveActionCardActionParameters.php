@@ -1,6 +1,6 @@
 <?php
 /**
- * WhatsappMessageMediaOneOf
+ * WhatsappMessageInteractiveActionCardActionParameters
  *
  * PHP version 7.4
  *
@@ -33,15 +33,16 @@ use \ArrayAccess;
 use \YCloud\Client\ObjectSerializer;
 
 /**
- * WhatsappMessageMediaOneOf Class Doc Comment
+ * WhatsappMessageInteractiveActionCardActionParameters Class Doc Comment
  *
  * @category Class
+ * @description Required when card action is url button. Only support &#x60;display_text&#x60; and &#x60;url&#x60;. Button display text Max 20 chars.
  * @package  YCloud\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class WhatsappMessageMediaOneOf implements ModelInterface, ArrayAccess, \JsonSerializable
+class WhatsappMessageInteractiveActionCardActionParameters implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +51,7 @@ class WhatsappMessageMediaOneOf implements ModelInterface, ArrayAccess, \JsonSer
       *
       * @var string
       */
-    protected static $openAPIModelName = 'WhatsappMessageMedia_oneOf';
+    protected static $openAPIModelName = 'WhatsappMessageInteractiveActionCardActionParameters';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,7 +59,8 @@ class WhatsappMessageMediaOneOf implements ModelInterface, ArrayAccess, \JsonSer
       * @var string[]
       */
     protected static $openAPITypes = [
-        'id' => 'string'
+        'display_text' => 'string',
+        'url' => 'string'
     ];
 
     /**
@@ -69,7 +71,8 @@ class WhatsappMessageMediaOneOf implements ModelInterface, ArrayAccess, \JsonSer
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'id' => null
+        'display_text' => null,
+        'url' => null
     ];
 
     /**
@@ -99,7 +102,8 @@ class WhatsappMessageMediaOneOf implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id'
+        'display_text' => 'display_text',
+        'url' => 'url'
     ];
 
     /**
@@ -108,7 +112,8 @@ class WhatsappMessageMediaOneOf implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId'
+        'display_text' => 'setDisplayText',
+        'url' => 'setUrl'
     ];
 
     /**
@@ -117,7 +122,8 @@ class WhatsappMessageMediaOneOf implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId'
+        'display_text' => 'getDisplayText',
+        'url' => 'getUrl'
     ];
 
     /**
@@ -177,7 +183,8 @@ class WhatsappMessageMediaOneOf implements ModelInterface, ArrayAccess, \JsonSer
      */
     public function __construct(array $data = null)
     {
-        $this->container['id'] = $data['id'] ?? null;
+        $this->container['display_text'] = $data['display_text'] ?? null;
+        $this->container['url'] = $data['url'] ?? null;
     }
 
     /**
@@ -189,9 +196,10 @@ class WhatsappMessageMediaOneOf implements ModelInterface, ArrayAccess, \JsonSer
     {
         $invalidProperties = [];
 
-        if ($this->container['id'] === null) {
-            $invalidProperties[] = "'id' can't be null";
+        if (!is_null($this->container['display_text']) && (mb_strlen($this->container['display_text']) > 20)) {
+            $invalidProperties[] = "invalid value for 'display_text', the character length must be smaller than or equal to 20.";
         }
+
         return $invalidProperties;
     }
 
@@ -208,25 +216,53 @@ class WhatsappMessageMediaOneOf implements ModelInterface, ArrayAccess, \JsonSer
 
 
     /**
-     * Gets id
+     * Gets display_text
      *
-     * @return string
+     * @return string|null
      */
-    public function getId()
+    public function getDisplayText()
     {
-        return $this->container['id'];
+        return $this->container['display_text'];
     }
 
     /**
-     * Sets id
+     * Sets display_text
      *
-     * @param string $id Required when using media that has been uploaded to WhatsApp servers.  Provide the media object ID obtained from WhatsApp media upload API (https://docs.ycloud.com/update/reference/whatsapp_media-upload#/).
+     * @param string|null $display_text Text of the CTA URL button. Maximum length: 20 bytes.
      *
      * @return self
      */
-    public function setId($id)
+    public function setDisplayText($display_text)
     {
-        $this->container['id'] = $id;
+        if (!is_null($display_text) && (mb_strlen($display_text) > 20)) {
+            throw new \InvalidArgumentException('invalid length for $display_text when calling WhatsappMessageInteractiveActionCardActionParameters., must be smaller than or equal to 20.');
+        }
+
+        $this->container['display_text'] = $display_text;
+
+        return $this;
+    }
+
+    /**
+     * Gets url
+     *
+     * @return string|null
+     */
+    public function getUrl()
+    {
+        return $this->container['url'];
+    }
+
+    /**
+     * Sets url
+     *
+     * @param string|null $url URL of the CTA URL button.
+     *
+     * @return self
+     */
+    public function setUrl($url)
+    {
+        $this->container['url'] = $url;
 
         return $this;
     }

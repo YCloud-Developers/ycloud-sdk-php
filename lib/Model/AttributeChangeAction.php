@@ -293,7 +293,7 @@ class AttributeChangeAction implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets id
      *
-     * @param string|null $id The ID of the item when the attribute is 'tags'.  This field is only present for tag-related changes.
+     * @param string|null $id The ID of the item when the attribute is 'tags'. This field is only present for tag-related changes.
      *
      * @return self
      */
@@ -317,7 +317,7 @@ class AttributeChangeAction implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets value
      *
-     * @param string|null $value The value of the item when the attribute is 'tags'.  This field is only present for tag-related changes.
+     * @param string|null $value The value of the item when the attribute is 'tags'. This field is only present for tag-related changes.
      *
      * @return self
      */

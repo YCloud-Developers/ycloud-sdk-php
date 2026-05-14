@@ -65,7 +65,8 @@ class WhatsappMessageInteractiveAction implements ModelInterface, ArrayAccess, \
         'product_retailer_id' => 'string',
         'sections' => '\YCloud\Client\Model\WhatsappMessageInteractiveActionSection[]',
         'name' => 'string',
-        'parameters' => '\YCloud\Client\Model\WhatsappMessageInteractiveActionParameters'
+        'parameters' => '\YCloud\Client\Model\WhatsappMessageInteractiveActionParameters',
+        'cards' => '\YCloud\Client\Model\WhatsappMessageInteractiveActionCard[]'
     ];
 
     /**
@@ -82,7 +83,8 @@ class WhatsappMessageInteractiveAction implements ModelInterface, ArrayAccess, \
         'product_retailer_id' => null,
         'sections' => null,
         'name' => null,
-        'parameters' => null
+        'parameters' => null,
+        'cards' => null
     ];
 
     /**
@@ -118,7 +120,8 @@ class WhatsappMessageInteractiveAction implements ModelInterface, ArrayAccess, \
         'product_retailer_id' => 'product_retailer_id',
         'sections' => 'sections',
         'name' => 'name',
-        'parameters' => 'parameters'
+        'parameters' => 'parameters',
+        'cards' => 'cards'
     ];
 
     /**
@@ -133,7 +136,8 @@ class WhatsappMessageInteractiveAction implements ModelInterface, ArrayAccess, \
         'product_retailer_id' => 'setProductRetailerId',
         'sections' => 'setSections',
         'name' => 'setName',
-        'parameters' => 'setParameters'
+        'parameters' => 'setParameters',
+        'cards' => 'setCards'
     ];
 
     /**
@@ -148,7 +152,8 @@ class WhatsappMessageInteractiveAction implements ModelInterface, ArrayAccess, \
         'product_retailer_id' => 'getProductRetailerId',
         'sections' => 'getSections',
         'name' => 'getName',
-        'parameters' => 'getParameters'
+        'parameters' => 'getParameters',
+        'cards' => 'getCards'
     ];
 
     /**
@@ -238,6 +243,7 @@ class WhatsappMessageInteractiveAction implements ModelInterface, ArrayAccess, \
         $this->container['sections'] = $data['sections'] ?? null;
         $this->container['name'] = $data['name'] ?? null;
         $this->container['parameters'] = $data['parameters'] ?? null;
+        $this->container['cards'] = $data['cards'] ?? null;
     }
 
     /**
@@ -272,6 +278,10 @@ class WhatsappMessageInteractiveAction implements ModelInterface, ArrayAccess, \
                 $this->container['name'],
                 implode("', '", $allowedValues)
             );
+        }
+
+        if (!is_null($this->container['cards']) && (count($this->container['cards']) > 10)) {
+            $invalidProperties[] = "invalid value for 'cards', number of items must be less than or equal to 10.";
         }
 
         return $invalidProperties;
@@ -478,6 +488,34 @@ class WhatsappMessageInteractiveAction implements ModelInterface, ArrayAccess, \
     public function setParameters($parameters)
     {
         $this->container['parameters'] = $parameters;
+
+        return $this;
+    }
+
+    /**
+     * Gets cards
+     *
+     * @return \YCloud\Client\Model\WhatsappMessageInteractiveActionCard[]|null
+     */
+    public function getCards()
+    {
+        return $this->container['cards'];
+    }
+
+    /**
+     * Sets cards
+     *
+     * @param \YCloud\Client\Model\WhatsappMessageInteractiveActionCard[]|null $cards Required for Carousel Messages. Array of card objects. Minimum of 2, maximum of 10.
+     *
+     * @return self
+     */
+    public function setCards($cards)
+    {
+
+        if (!is_null($cards) && (count($cards) > 10)) {
+            throw new \InvalidArgumentException('invalid value for $cards when calling WhatsappMessageInteractiveAction., number of items must be less than or equal to 10.');
+        }
+        $this->container['cards'] = $cards;
 
         return $this;
     }

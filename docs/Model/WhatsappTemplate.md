@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **official_template_id** | **string** | Official template ID assigned by WhatsApp. This ID is used to identify the template in WhatsApp&#39;s system. | [optional]
 **waba_id** | **string** | WhatsApp Business Account ID. |
 **name** | **string** | Name of the template. |
-**language** | **string** | Language code of the template. See [Supported Languages](https://developers.facebook.com/docs/whatsapp/api/messages/message-templates#supported-languages) for all codes. |
+**language** | **string** | Language code of the template. See [Supported Languages](https://developers.facebook.com/documentation/business-messaging/whatsapp/templates/supported-languages) for all codes. |
 **category** | [**\YCloud\Client\Model\WhatsappTemplateCategory**](WhatsappTemplateCategory.md) |  | [optional]
 **sub_category** | [**\YCloud\Client\Model\WhatsappTemplateSubCategory**](WhatsappTemplateSubCategory.md) |  | [optional]
 **previous_category** | **string** | This field indicates the template&#39;s previous category (or &#x60;null&#x60;, for newly created templates after April 1, 2023). Compare this value to the template&#39;s &#x60;category&#x60; field value, which indicates the template&#39;s current category. | [optional]

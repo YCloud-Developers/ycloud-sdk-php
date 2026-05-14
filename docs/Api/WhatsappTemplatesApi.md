@@ -163,7 +163,7 @@ $apiInstance = new YCloud\Client\Api\WhatsappTemplatesApi(
 );
 $waba_id = whatsapp-business-account-id; // string | WhatsApp Business Account ID.
 $name = sample_whatsapp_template; // string | Name of the template.
-$language = en_US; // string | Language code of the template. See [Supported Languages](https://developers.facebook.com/docs/whatsapp/api/messages/message-templates#supported-languages) for all codes.
+$language = en; // string | Language code of the template. See [Supported Languages](https://developers.facebook.com/documentation/business-messaging/whatsapp/templates/supported-languages) for all codes.
 
 try {
     $result = $apiInstance->deleteByNameAndLanguage($waba_id, $name, $language);
@@ -179,7 +179,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **waba_id** | **string**| WhatsApp Business Account ID. |
  **name** | **string**| Name of the template. |
- **language** | **string**| Language code of the template. See [Supported Languages](https://developers.facebook.com/docs/whatsapp/api/messages/message-templates#supported-languages) for all codes. |
+ **language** | **string**| Language code of the template. See [Supported Languages](https://developers.facebook.com/documentation/business-messaging/whatsapp/templates/supported-languages) for all codes. |
 
 ### Return type
 
@@ -206,7 +206,7 @@ editByNameAndLanguage($waba_id, $name, $language, $whatsapp_template_edit_reques
 
 Edit a template
 
-Edits a WhatsApp template by name and language. Editing a template replaces its old contents entirely, so include any components you wish to preserve as well as components you wish to update using the components parameter.
+Edits a WhatsApp template by name and language. Editing a template replaces its old contents entirely, so include any components you wish to preserve as well as components you wish to update using the components parameter.  Only templates in `APPROVED`, `REJECTED`, or `PAUSED` status can be edited. `ARCHIVED` templates cannot be edited.
 
 ### Example
 
@@ -227,7 +227,7 @@ $apiInstance = new YCloud\Client\Api\WhatsappTemplatesApi(
 );
 $waba_id = whatsapp-business-account-id; // string | WhatsApp Business Account ID.
 $name = sample_whatsapp_template; // string | Name of the template.
-$language = en_US; // string | Language code of the template. See [Supported Languages](https://developers.facebook.com/docs/whatsapp/api/messages/message-templates#supported-languages) for all codes.
+$language = en; // string | Language code of the template. See [Supported Languages](https://developers.facebook.com/documentation/business-messaging/whatsapp/templates/supported-languages) for all codes.
 $whatsapp_template_edit_request = new \YCloud\Client\Model\WhatsappTemplateEditRequest(); // \YCloud\Client\Model\WhatsappTemplateEditRequest
 
 try {
@@ -244,7 +244,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **waba_id** | **string**| WhatsApp Business Account ID. |
  **name** | **string**| Name of the template. |
- **language** | **string**| Language code of the template. See [Supported Languages](https://developers.facebook.com/docs/whatsapp/api/messages/message-templates#supported-languages) for all codes. |
+ **language** | **string**| Language code of the template. See [Supported Languages](https://developers.facebook.com/documentation/business-messaging/whatsapp/templates/supported-languages) for all codes. |
  **whatsapp_template_edit_request** | [**\YCloud\Client\Model\WhatsappTemplateEditRequest**](../Model/WhatsappTemplateEditRequest.md)|  | [optional]
 
 ### Return type
@@ -267,12 +267,12 @@ Name | Type | Description  | Notes
 ## `list()`
 
 ```php
-list($page, $limit, $include_total, $filter_waba_id, $filter_name, $filter_language): \YCloud\Client\Model\WhatsappTemplatePage
+list($page, $limit, $include_total, $filter_waba_id, $filter_name, $filter_language, $filter_status): \YCloud\Client\Model\WhatsappTemplatePage
 ```
 
 List templates
 
-Returns a paginated list of WhatsApp templates you've previously created.
+Returns a paginated list of WhatsApp templates you've previously created.  Archived templates are included when they match the query. Use `filter.status=ARCHIVED` to list archived templates explicitly.
 
 ### Example
 
@@ -296,7 +296,8 @@ $associate_array['limit'] = 10; // int | A limit on the number of results to be 
 $associate_array['include_total'] = false; // bool | Return results inside an object that contains the total result count or not.
 $associate_array['filter_waba_id'] = whatsapp-business-account-id; // string | **Required if you have more than 100 WABAs.** WhatsApp Business Account ID.
 $associate_array['filter_name'] = sample_whatsapp_template; // string | Name of the template.
-$associate_array['filter_language'] = en_US; // string | Language code of the template. See [Supported Languages](https://developers.facebook.com/docs/whatsapp/api/messages/message-templates#supported-languages) for all codes.
+$associate_array['filter_language'] = en; // string | Language code of the template. See [Supported Languages](https://developers.facebook.com/documentation/business-messaging/whatsapp/templates/supported-languages) for all codes.
+$associate_array['filter_status'] = APPROVED,ARCHIVED; // string | Comma-separated template statuses to filter by. Supported values include `PENDING`, `REJECTED`, `APPROVED`, `PAUSED`, `DISABLED`, `ARCHIVED`, `IN_APPEAL`, and `DELETED`.
 
 try {
     $result = $apiInstance->list($associate_array);
@@ -317,7 +318,8 @@ Name | Type | Description  | Notes
  **include_total** | **bool**| Return results inside an object that contains the total result count or not. | [optional] [default to false]
  **filter_waba_id** | **string**| **Required if you have more than 100 WABAs.** WhatsApp Business Account ID. | [optional]
  **filter_name** | **string**| Name of the template. | [optional]
- **filter_language** | **string**| Language code of the template. See [Supported Languages](https://developers.facebook.com/docs/whatsapp/api/messages/message-templates#supported-languages) for all codes. | [optional]
+ **filter_language** | **string**| Language code of the template. See [Supported Languages](https://developers.facebook.com/documentation/business-messaging/whatsapp/templates/supported-languages) for all codes. | [optional]
+ **filter_status** | **string**| Comma-separated template statuses to filter by. Supported values include &#x60;PENDING&#x60;, &#x60;REJECTED&#x60;, &#x60;APPROVED&#x60;, &#x60;PAUSED&#x60;, &#x60;DISABLED&#x60;, &#x60;ARCHIVED&#x60;, &#x60;IN_APPEAL&#x60;, and &#x60;DELETED&#x60;. | [optional]
 
 ### Return type
 
@@ -344,7 +346,7 @@ retrieveByNameAndLanguage($waba_id, $name, $language): \YCloud\Client\Model\What
 
 Retrieve a template
 
-Retrieves a WhatsApp template by name and language.
+Retrieves a WhatsApp template by name and language.  The returned template `status` may be `ARCHIVED`.
 
 ### Example
 
@@ -365,7 +367,7 @@ $apiInstance = new YCloud\Client\Api\WhatsappTemplatesApi(
 );
 $waba_id = whatsapp-business-account-id; // string | WhatsApp Business Account ID.
 $name = sample_whatsapp_template; // string | Name of the template.
-$language = en_US; // string | Language code of the template. See [Supported Languages](https://developers.facebook.com/docs/whatsapp/api/messages/message-templates#supported-languages) for all codes.
+$language = en; // string | Language code of the template. See [Supported Languages](https://developers.facebook.com/documentation/business-messaging/whatsapp/templates/supported-languages) for all codes.
 
 try {
     $result = $apiInstance->retrieveByNameAndLanguage($waba_id, $name, $language);
@@ -381,7 +383,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **waba_id** | **string**| WhatsApp Business Account ID. |
  **name** | **string**| Name of the template. |
- **language** | **string**| Language code of the template. See [Supported Languages](https://developers.facebook.com/docs/whatsapp/api/messages/message-templates#supported-languages) for all codes. |
+ **language** | **string**| Language code of the template. See [Supported Languages](https://developers.facebook.com/documentation/business-messaging/whatsapp/templates/supported-languages) for all codes. |
 
 ### Return type
 
