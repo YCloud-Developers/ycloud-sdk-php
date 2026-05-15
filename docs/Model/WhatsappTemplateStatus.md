@@ -13,6 +13,8 @@
 
 * `DISABLED` (value: `'DISABLED'`)
 
+* `ARCHIVED` (value: `'ARCHIVED'`)
+
 * `IN_APPEAL` (value: `'IN_APPEAL'`)
 
 * `DELETED` (value: `'DELETED'`)

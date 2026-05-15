@@ -77,7 +77,8 @@ class Event implements ModelInterface, ArrayAccess, \JsonSerializable
         'contact_created' => '\YCloud\Client\Model\ContactCreated',
         'contact_deleted' => '\YCloud\Client\Model\ContactDeleted',
         'contact_unsubscribe_created' => '\YCloud\Client\Model\ContactUnsubscribeCreated',
-        'contact_unsubscribe_deleted' => '\YCloud\Client\Model\ContactUnsubscribeDeleted'
+        'contact_unsubscribe_deleted' => '\YCloud\Client\Model\ContactUnsubscribeDeleted',
+        'whatsapp_user_preference' => '\YCloud\Client\Model\WhatsappUserPreference'
     ];
 
     /**
@@ -106,7 +107,8 @@ class Event implements ModelInterface, ArrayAccess, \JsonSerializable
         'contact_created' => null,
         'contact_deleted' => null,
         'contact_unsubscribe_created' => null,
-        'contact_unsubscribe_deleted' => null
+        'contact_unsubscribe_deleted' => null,
+        'whatsapp_user_preference' => null
     ];
 
     /**
@@ -154,7 +156,8 @@ class Event implements ModelInterface, ArrayAccess, \JsonSerializable
         'contact_created' => 'contactCreated',
         'contact_deleted' => 'contactDeleted',
         'contact_unsubscribe_created' => 'contactUnsubscribeCreated',
-        'contact_unsubscribe_deleted' => 'contactUnsubscribeDeleted'
+        'contact_unsubscribe_deleted' => 'contactUnsubscribeDeleted',
+        'whatsapp_user_preference' => 'whatsappUserPreference'
     ];
 
     /**
@@ -181,7 +184,8 @@ class Event implements ModelInterface, ArrayAccess, \JsonSerializable
         'contact_created' => 'setContactCreated',
         'contact_deleted' => 'setContactDeleted',
         'contact_unsubscribe_created' => 'setContactUnsubscribeCreated',
-        'contact_unsubscribe_deleted' => 'setContactUnsubscribeDeleted'
+        'contact_unsubscribe_deleted' => 'setContactUnsubscribeDeleted',
+        'whatsapp_user_preference' => 'setWhatsappUserPreference'
     ];
 
     /**
@@ -208,7 +212,8 @@ class Event implements ModelInterface, ArrayAccess, \JsonSerializable
         'contact_created' => 'getContactCreated',
         'contact_deleted' => 'getContactDeleted',
         'contact_unsubscribe_created' => 'getContactUnsubscribeCreated',
-        'contact_unsubscribe_deleted' => 'getContactUnsubscribeDeleted'
+        'contact_unsubscribe_deleted' => 'getContactUnsubscribeDeleted',
+        'whatsapp_user_preference' => 'getWhatsappUserPreference'
     ];
 
     /**
@@ -287,6 +292,7 @@ class Event implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['contact_deleted'] = $data['contact_deleted'] ?? null;
         $this->container['contact_unsubscribe_created'] = $data['contact_unsubscribe_created'] ?? null;
         $this->container['contact_unsubscribe_deleted'] = $data['contact_unsubscribe_deleted'] ?? null;
+        $this->container['whatsapp_user_preference'] = $data['whatsapp_user_preference'] ?? null;
     }
 
     /**
@@ -792,6 +798,30 @@ class Event implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setContactUnsubscribeDeleted($contact_unsubscribe_deleted)
     {
         $this->container['contact_unsubscribe_deleted'] = $contact_unsubscribe_deleted;
+
+        return $this;
+    }
+
+    /**
+     * Gets whatsapp_user_preference
+     *
+     * @return \YCloud\Client\Model\WhatsappUserPreference|null
+     */
+    public function getWhatsappUserPreference()
+    {
+        return $this->container['whatsapp_user_preference'];
+    }
+
+    /**
+     * Sets whatsapp_user_preference
+     *
+     * @param \YCloud\Client\Model\WhatsappUserPreference|null $whatsapp_user_preference whatsapp_user_preference
+     *
+     * @return self
+     */
+    public function setWhatsappUserPreference($whatsapp_user_preference)
+    {
+        $this->container['whatsapp_user_preference'] = $whatsapp_user_preference;
 
         return $this;
     }

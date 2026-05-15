@@ -73,7 +73,8 @@ class WhatsappTemplateComponentButton implements ModelInterface, ArrayAccess, \J
         'flow_name' => 'string',
         'flow_json' => 'string',
         'flow_action' => 'string',
-        'navigate_screen' => 'string'
+        'navigate_screen' => 'string',
+        'app_deep_link' => '\YCloud\Client\Model\WhatsappTemplateComponentButtonAppDeepLink'
     ];
 
     /**
@@ -99,7 +100,8 @@ class WhatsappTemplateComponentButton implements ModelInterface, ArrayAccess, \J
         'flow_name' => null,
         'flow_json' => null,
         'flow_action' => null,
-        'navigate_screen' => null
+        'navigate_screen' => null,
+        'app_deep_link' => null
     ];
 
     /**
@@ -144,7 +146,8 @@ class WhatsappTemplateComponentButton implements ModelInterface, ArrayAccess, \J
         'flow_name' => 'flow_name',
         'flow_json' => 'flow_json',
         'flow_action' => 'flow_action',
-        'navigate_screen' => 'navigate_screen'
+        'navigate_screen' => 'navigate_screen',
+        'app_deep_link' => 'app_deep_link'
     ];
 
     /**
@@ -168,7 +171,8 @@ class WhatsappTemplateComponentButton implements ModelInterface, ArrayAccess, \J
         'flow_name' => 'setFlowName',
         'flow_json' => 'setFlowJson',
         'flow_action' => 'setFlowAction',
-        'navigate_screen' => 'setNavigateScreen'
+        'navigate_screen' => 'setNavigateScreen',
+        'app_deep_link' => 'setAppDeepLink'
     ];
 
     /**
@@ -192,7 +196,8 @@ class WhatsappTemplateComponentButton implements ModelInterface, ArrayAccess, \J
         'flow_name' => 'getFlowName',
         'flow_json' => 'getFlowJson',
         'flow_action' => 'getFlowAction',
-        'navigate_screen' => 'getNavigateScreen'
+        'navigate_screen' => 'getNavigateScreen',
+        'app_deep_link' => 'getAppDeepLink'
     ];
 
     /**
@@ -268,6 +273,7 @@ class WhatsappTemplateComponentButton implements ModelInterface, ArrayAccess, \J
         $this->container['flow_json'] = $data['flow_json'] ?? null;
         $this->container['flow_action'] = $data['flow_action'] ?? null;
         $this->container['navigate_screen'] = $data['navigate_screen'] ?? null;
+        $this->container['app_deep_link'] = $data['app_deep_link'] ?? null;
     }
 
     /**
@@ -713,6 +719,30 @@ class WhatsappTemplateComponentButton implements ModelInterface, ArrayAccess, \J
     public function setNavigateScreen($navigate_screen)
     {
         $this->container['navigate_screen'] = $navigate_screen;
+
+        return $this;
+    }
+
+    /**
+     * Gets app_deep_link
+     *
+     * @return \YCloud\Client\Model\WhatsappTemplateComponentButtonAppDeepLink|null
+     */
+    public function getAppDeepLink()
+    {
+        return $this->container['app_deep_link'];
+    }
+
+    /**
+     * Sets app_deep_link
+     *
+     * @param \YCloud\Client\Model\WhatsappTemplateComponentButtonAppDeepLink|null $app_deep_link app_deep_link
+     *
+     * @return self
+     */
+    public function setAppDeepLink($app_deep_link)
+    {
+        $this->container['app_deep_link'] = $app_deep_link;
 
         return $this;
     }

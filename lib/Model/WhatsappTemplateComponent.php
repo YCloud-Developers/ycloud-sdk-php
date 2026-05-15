@@ -207,8 +207,10 @@ class WhatsappTemplateComponent implements ModelInterface, ArrayAccess, \JsonSer
     public const TYPE_BUTTONS = 'BUTTONS';
     public const TYPE_LIMITED_TIME_OFFER = 'LIMITED_TIME_OFFER';
     public const TYPE_CAROUSEL = 'CAROUSEL';
+    public const TYPE_CALL_PERMISSION_REQUEST = 'CALL_PERMISSION_REQUEST';
     public const FORMAT_TEXT = 'TEXT';
     public const FORMAT_IMAGE = 'IMAGE';
+    public const FORMAT_GIF = 'GIF';
     public const FORMAT_VIDEO = 'VIDEO';
     public const FORMAT_DOCUMENT = 'DOCUMENT';
     public const FORMAT_LOCATION = 'LOCATION';
@@ -227,6 +229,7 @@ class WhatsappTemplateComponent implements ModelInterface, ArrayAccess, \JsonSer
             self::TYPE_BUTTONS,
             self::TYPE_LIMITED_TIME_OFFER,
             self::TYPE_CAROUSEL,
+            self::TYPE_CALL_PERMISSION_REQUEST,
         ];
     }
 
@@ -240,6 +243,7 @@ class WhatsappTemplateComponent implements ModelInterface, ArrayAccess, \JsonSer
         return [
             self::FORMAT_TEXT,
             self::FORMAT_IMAGE,
+            self::FORMAT_GIF,
             self::FORMAT_VIDEO,
             self::FORMAT_DOCUMENT,
             self::FORMAT_LOCATION,
@@ -347,7 +351,7 @@ class WhatsappTemplateComponent implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets type
      *
-     * @param string|null $type **Required.** Template component type. - `BODY`: Body components are text-only components and are required by all templates. Templates are limited to one body component. - `HEADER`: Headers are optional components that appear at the top of template messages. Headers support text, media (images, videos, documents). Templates are limited to one header component. - `FOOTER`: Footers are optional text-only components that appear immediately after the body component. Templates are limited to one footer component. - `BUTTONS`: Buttons are optional interactive components that perform specific actions when tapped. - `LIMITED_TIME_OFFER`: Use for limited-time offer templates. The delivered message can display an offer expiration details section with a heading, an optional expiration timer, and the offer code itself. - `CAROUSEL`: Carousel templates allow you to send a single text message (1), accompanied by a set of up to 10 carousel cards (2) in a horizontally scrollable view.
+     * @param string|null $type **Required.** Template component type. - `BODY`: Body components are text-only components and are required by all templates. Templates are limited to one body component. - `HEADER`: Headers are optional components that appear at the top of template messages. Headers support text, media (images, gif, videos, documents). Templates are limited to one header component. - `FOOTER`: Footers are optional text-only components that appear immediately after the body component. Templates are limited to one footer component. - `BUTTONS`: Buttons are optional interactive components that perform specific actions when tapped. - `LIMITED_TIME_OFFER`: Use for limited-time offer templates. The delivered message can display an offer expiration details section with a heading, an optional expiration timer, and the offer code itself. - `CAROUSEL`: Carousel templates allow you to send a single text message (1), accompanied by a set of up to 10 carousel cards (2) in a horizontally scrollable view. - `CALL_PERMISSION_REQUEST`: Sending a template message allows you to initiate a user conversation with a call permission request.
      *
      * @return self
      */

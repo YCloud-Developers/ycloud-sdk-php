@@ -36,7 +36,7 @@ use \YCloud\Client\ObjectSerializer;
  * WhatsappTemplateComponentExample Class Doc Comment
  *
  * @category Class
- * @description **Required** when: - &#x60;type&#x60; is &#x60;HEADER&#x60;, and &#x60;format&#x60; is one of &#x60;IMAGE&#x60;, &#x60;VIDEO&#x60;, or &#x60;DOCUMENT&#x60;. Provide a sample media URL in &#x60;header_url&#x60;. - &#x60;type&#x60; is &#x60;HEADER&#x60;, &#x60;format&#x60; is &#x60;TEXT&#x60;, and a variable is used in &#x60;text&#x60;. Provide a sample value for that variable in &#x60;header_text&#x60;. There can be at most 1 variable in &#x60;HEADER&#x60; text. - &#x60;type&#x60; is &#x60;BODY&#x60;, and variables are used in &#x60;text&#x60;. Provide sample values for those variables in &#x60;body_text&#x60;.
+ * @description **Required** when: - &#x60;type&#x60; is &#x60;HEADER&#x60;, and &#x60;format&#x60; is one of &#x60;IMAGE&#x60;, &#x60;GIF&#x60;, &#x60;VIDEO&#x60;, or &#x60;DOCUMENT&#x60;. Provide a sample media URL in &#x60;header_url&#x60;. - &#x60;type&#x60; is &#x60;HEADER&#x60;, &#x60;format&#x60; is &#x60;TEXT&#x60;, and a variable is used in &#x60;text&#x60;. Provide a sample value for that variable in &#x60;header_text&#x60;. There can be at most 1 variable in &#x60;HEADER&#x60; text. - &#x60;type&#x60; is &#x60;BODY&#x60;, and variables are used in &#x60;text&#x60;. Provide sample values for those variables in &#x60;body_text&#x60;.
  * @package  YCloud\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -278,7 +278,7 @@ class WhatsappTemplateComponentExample implements ModelInterface, ArrayAccess, \
     /**
      * Sets header_url
      *
-     * @param string[]|null $header_url Sample media URL for a `HEADER` component whose format is one of `IMAGE`, `VIDEO`, or `DOCUMENT`. Supported types: - For `IMAGE`, the URL must end with one of `.jpg`, `.jpeg`, or `.png`, size limit is 5MB. - For `VIDEO`, the URL must end with `.mp4`, size limit is 16MB. - For `DOCUMENT`, the URL must end with `.pdf`, size limit is 100MB.
+     * @param string[]|null $header_url Sample media URL for a `HEADER` component whose format is one of `IMAGE`, `GIF`, `VIDEO`, or `DOCUMENT`. Supported types: - For `IMAGE`, the URL must end with one of `.jpg`, `.jpeg`, or `.png`, size limit is 5MB. - For `GIF`, the URL must end with `.mp4`, size limit is 3.5MB. - For `VIDEO`, the URL must end with `.mp4`, size limit is 16MB. - For `DOCUMENT`, the URL must end with `.pdf`, size limit is 100MB.
      *
      * @return self
      */

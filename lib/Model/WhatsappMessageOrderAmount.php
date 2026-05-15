@@ -274,7 +274,7 @@ class WhatsappMessageOrderAmount implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets value
      *
-     * @param int $value Positive integer representing the amount value multiplied by offset.  For example, ₹12.34 has value 1234.
+     * @param int $value Positive integer representing the amount value multiplied by offset. For example, ₹12.34 has value 1234.
      *
      * @return self
      */

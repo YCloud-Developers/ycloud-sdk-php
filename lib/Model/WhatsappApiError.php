@@ -434,7 +434,7 @@ class WhatsappApiError implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets error_data
      *
-     * @param object|null $error_data Additional data about the error. A string or map. - For template APIs, this field is a string describing the reason for the error.   - For message APIs, this field is a map with property `details` describing the reason for the error.
+     * @param object|null $error_data Additional data about the error. A string or map. - For template APIs, this field is a string describing the reason for the error. - For message APIs, this field is a map with property `details` describing the reason for the error.
      *
      * @return self
      */

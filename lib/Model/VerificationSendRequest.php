@@ -346,7 +346,7 @@ class VerificationSendRequest implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets sender_id
      *
-     * @param string|null $sender_id [Sender ID](https://help.ycloud.com/en/articles/3080386) to be used.
+     * @param string|null $sender_id [Sender ID](https://helpdocs.ycloud.com/help-center/integrations/channels/global-sms/sms-features/sender-id) to be used.
      *
      * @return self
      */

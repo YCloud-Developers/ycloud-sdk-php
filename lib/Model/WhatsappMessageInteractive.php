@@ -193,6 +193,7 @@ class WhatsappMessageInteractive implements ModelInterface, ArrayAccess, \JsonSe
     public const TYPE_ORDER_STATUS = 'order_status';
     public const TYPE_VOICE_CALL = 'voice_call';
     public const TYPE_FLOW = 'flow';
+    public const TYPE_CAROUSEL = 'carousel';
 
     /**
      * Gets allowable values of the enum
@@ -213,6 +214,7 @@ class WhatsappMessageInteractive implements ModelInterface, ArrayAccess, \JsonSe
             self::TYPE_ORDER_STATUS,
             self::TYPE_VOICE_CALL,
             self::TYPE_FLOW,
+            self::TYPE_CAROUSEL,
         ];
     }
 
@@ -284,7 +286,7 @@ class WhatsappMessageInteractive implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets type
      *
-     * @param string|null $type **Required.** The type of interactive message you want to send. - `button`: Use for Reply Buttons. - `list`: Use for List Messages. - `cta_url`: Use for Call-To-Action (CTA) URL Button Messages. - `product`: Use for Single Product Messages. - `product_list`: Use for Multi-Product Messages. - `catalog_message`: Use for Catalog Messages. - `location_request_message`: Use for Location Request Messages. - `order_details`: Use for Order Details Messages. - `order_status`: Use for Order Status Messages. - `voice_call`: Use for Voice Call Messages. - `flow`: Use for Flow Messages.
+     * @param string|null $type **Required.** The type of interactive message you want to send. - `button`: Use for Reply Buttons. - `list`: Use for List Messages. - `cta_url`: Use for Call-To-Action (CTA) URL Button Messages. - `product`: Use for Single Product Messages. - `product_list`: Use for Multi-Product Messages. - `catalog_message`: Use for Catalog Messages. - `location_request_message`: Use for Location Request Messages. - `order_details`: Use for Order Details Messages. - `order_status`: Use for Order Status Messages. - `voice_call`: Use for Voice Call Messages. - `flow`: Use for Flow Messages. - `carousel`: Use for media carousel message.
      *
      * @return self
      */

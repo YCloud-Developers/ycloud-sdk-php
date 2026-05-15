@@ -269,6 +269,13 @@ Class | Method | HTTP request | Description
 - [WhatsappMessageInteractiveAction](docs/Model/WhatsappMessageInteractiveAction.md)
 - [WhatsappMessageInteractiveActionButton](docs/Model/WhatsappMessageInteractiveActionButton.md)
 - [WhatsappMessageInteractiveActionButtonReply](docs/Model/WhatsappMessageInteractiveActionButtonReply.md)
+- [WhatsappMessageInteractiveActionCard](docs/Model/WhatsappMessageInteractiveActionCard.md)
+- [WhatsappMessageInteractiveActionCardAction](docs/Model/WhatsappMessageInteractiveActionCardAction.md)
+- [WhatsappMessageInteractiveActionCardActionButton](docs/Model/WhatsappMessageInteractiveActionCardActionButton.md)
+- [WhatsappMessageInteractiveActionCardActionButtonQuickReply](docs/Model/WhatsappMessageInteractiveActionCardActionButtonQuickReply.md)
+- [WhatsappMessageInteractiveActionCardActionParameters](docs/Model/WhatsappMessageInteractiveActionCardActionParameters.md)
+- [WhatsappMessageInteractiveActionCardBody](docs/Model/WhatsappMessageInteractiveActionCardBody.md)
+- [WhatsappMessageInteractiveActionCardHeader](docs/Model/WhatsappMessageInteractiveActionCardHeader.md)
 - [WhatsappMessageInteractiveActionParameters](docs/Model/WhatsappMessageInteractiveActionParameters.md)
 - [WhatsappMessageInteractiveActionParametersFlowActionPayload](docs/Model/WhatsappMessageInteractiveActionParametersFlowActionPayload.md)
 - [WhatsappMessageInteractiveActionSection](docs/Model/WhatsappMessageInteractiveActionSection.md)
@@ -279,7 +286,6 @@ Class | Method | HTTP request | Description
 - [WhatsappMessageInteractiveHeader](docs/Model/WhatsappMessageInteractiveHeader.md)
 - [WhatsappMessageLocation](docs/Model/WhatsappMessageLocation.md)
 - [WhatsappMessageMedia](docs/Model/WhatsappMessageMedia.md)
-- [WhatsappMessageMediaAllOf](docs/Model/WhatsappMessageMediaAllOf.md)
 - [WhatsappMessageOrderAmount](docs/Model/WhatsappMessageOrderAmount.md)
 - [WhatsappMessageOrderBeneficiary](docs/Model/WhatsappMessageOrderBeneficiary.md)
 - [WhatsappMessageOrderDetails](docs/Model/WhatsappMessageOrderDetails.md)
@@ -336,6 +342,7 @@ Class | Method | HTTP request | Description
 - [WhatsappTemplateCategory](docs/Model/WhatsappTemplateCategory.md)
 - [WhatsappTemplateComponent](docs/Model/WhatsappTemplateComponent.md)
 - [WhatsappTemplateComponentButton](docs/Model/WhatsappTemplateComponentButton.md)
+- [WhatsappTemplateComponentButtonAppDeepLink](docs/Model/WhatsappTemplateComponentButtonAppDeepLink.md)
 - [WhatsappTemplateComponentButtonOtpSupportedApp](docs/Model/WhatsappTemplateComponentButtonOtpSupportedApp.md)
 - [WhatsappTemplateComponentButtonOtpType](docs/Model/WhatsappTemplateComponentButtonOtpType.md)
 - [WhatsappTemplateComponentButtonType](docs/Model/WhatsappTemplateComponentButtonType.md)
@@ -350,6 +357,7 @@ Class | Method | HTTP request | Description
 - [WhatsappTemplateStatus](docs/Model/WhatsappTemplateStatus.md)
 - [WhatsappTemplateStatusUpdateEventEnum](docs/Model/WhatsappTemplateStatusUpdateEventEnum.md)
 - [WhatsappTemplateSubCategory](docs/Model/WhatsappTemplateSubCategory.md)
+- [WhatsappUserPreference](docs/Model/WhatsappUserPreference.md)
 
 ## Authorization
 

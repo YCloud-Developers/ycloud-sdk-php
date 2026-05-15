@@ -338,7 +338,7 @@ class WhatsappTemplateCreateRequest implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets language
      *
-     * @param string $language Language code of the template. See [Supported Languages](https://developers.facebook.com/docs/whatsapp/api/messages/message-templates#supported-languages) for all codes.
+     * @param string $language Language code of the template. See [Supported Languages](https://developers.facebook.com/documentation/business-messaging/whatsapp/templates/supported-languages) for all codes.
      *
      * @return self
      */

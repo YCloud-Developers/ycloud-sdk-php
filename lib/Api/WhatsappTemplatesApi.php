@@ -737,7 +737,7 @@ class WhatsappTemplatesApi
      *
      * @param  string $waba_id WhatsApp Business Account ID. (required)
      * @param  string $name Name of the template. (required)
-     * @param  string $language Language code of the template. See [Supported Languages](https://developers.facebook.com/docs/whatsapp/api/messages/message-templates#supported-languages) for all codes. (required)
+     * @param  string $language Language code of the template. See [Supported Languages](https://developers.facebook.com/documentation/business-messaging/whatsapp/templates/supported-languages) for all codes. (required)
      *
      * @throws \YCloud\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -756,7 +756,7 @@ class WhatsappTemplatesApi
      *
      * @param  string $waba_id WhatsApp Business Account ID. (required)
      * @param  string $name Name of the template. (required)
-     * @param  string $language Language code of the template. See [Supported Languages](https://developers.facebook.com/docs/whatsapp/api/messages/message-templates#supported-languages) for all codes. (required)
+     * @param  string $language Language code of the template. See [Supported Languages](https://developers.facebook.com/documentation/business-messaging/whatsapp/templates/supported-languages) for all codes. (required)
      *
      * @throws \YCloud\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -880,7 +880,7 @@ class WhatsappTemplatesApi
      *
      * @param  string $waba_id WhatsApp Business Account ID. (required)
      * @param  string $name Name of the template. (required)
-     * @param  string $language Language code of the template. See [Supported Languages](https://developers.facebook.com/docs/whatsapp/api/messages/message-templates#supported-languages) for all codes. (required)
+     * @param  string $language Language code of the template. See [Supported Languages](https://developers.facebook.com/documentation/business-messaging/whatsapp/templates/supported-languages) for all codes. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -902,7 +902,7 @@ class WhatsappTemplatesApi
      *
      * @param  string $waba_id WhatsApp Business Account ID. (required)
      * @param  string $name Name of the template. (required)
-     * @param  string $language Language code of the template. See [Supported Languages](https://developers.facebook.com/docs/whatsapp/api/messages/message-templates#supported-languages) for all codes. (required)
+     * @param  string $language Language code of the template. See [Supported Languages](https://developers.facebook.com/documentation/business-messaging/whatsapp/templates/supported-languages) for all codes. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -953,7 +953,7 @@ class WhatsappTemplatesApi
      *
      * @param  string $waba_id WhatsApp Business Account ID. (required)
      * @param  string $name Name of the template. (required)
-     * @param  string $language Language code of the template. See [Supported Languages](https://developers.facebook.com/docs/whatsapp/api/messages/message-templates#supported-languages) for all codes. (required)
+     * @param  string $language Language code of the template. See [Supported Languages](https://developers.facebook.com/documentation/business-messaging/whatsapp/templates/supported-languages) for all codes. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -1087,7 +1087,7 @@ class WhatsappTemplatesApi
      *
      * @param  string $waba_id WhatsApp Business Account ID. (required)
      * @param  string $name Name of the template. (required)
-     * @param  string $language Language code of the template. See [Supported Languages](https://developers.facebook.com/docs/whatsapp/api/messages/message-templates#supported-languages) for all codes. (required)
+     * @param  string $language Language code of the template. See [Supported Languages](https://developers.facebook.com/documentation/business-messaging/whatsapp/templates/supported-languages) for all codes. (required)
      * @param  \YCloud\Client\Model\WhatsappTemplateEditRequest $whatsapp_template_edit_request whatsapp_template_edit_request (optional)
      *
      * @throws \YCloud\Client\ApiException on non-2xx response
@@ -1107,7 +1107,7 @@ class WhatsappTemplatesApi
      *
      * @param  string $waba_id WhatsApp Business Account ID. (required)
      * @param  string $name Name of the template. (required)
-     * @param  string $language Language code of the template. See [Supported Languages](https://developers.facebook.com/docs/whatsapp/api/messages/message-templates#supported-languages) for all codes. (required)
+     * @param  string $language Language code of the template. See [Supported Languages](https://developers.facebook.com/documentation/business-messaging/whatsapp/templates/supported-languages) for all codes. (required)
      * @param  \YCloud\Client\Model\WhatsappTemplateEditRequest $whatsapp_template_edit_request (optional)
      *
      * @throws \YCloud\Client\ApiException on non-2xx response
@@ -1232,7 +1232,7 @@ class WhatsappTemplatesApi
      *
      * @param  string $waba_id WhatsApp Business Account ID. (required)
      * @param  string $name Name of the template. (required)
-     * @param  string $language Language code of the template. See [Supported Languages](https://developers.facebook.com/docs/whatsapp/api/messages/message-templates#supported-languages) for all codes. (required)
+     * @param  string $language Language code of the template. See [Supported Languages](https://developers.facebook.com/documentation/business-messaging/whatsapp/templates/supported-languages) for all codes. (required)
      * @param  \YCloud\Client\Model\WhatsappTemplateEditRequest $whatsapp_template_edit_request (optional)
      *
      * @throws \InvalidArgumentException
@@ -1255,7 +1255,7 @@ class WhatsappTemplatesApi
      *
      * @param  string $waba_id WhatsApp Business Account ID. (required)
      * @param  string $name Name of the template. (required)
-     * @param  string $language Language code of the template. See [Supported Languages](https://developers.facebook.com/docs/whatsapp/api/messages/message-templates#supported-languages) for all codes. (required)
+     * @param  string $language Language code of the template. See [Supported Languages](https://developers.facebook.com/documentation/business-messaging/whatsapp/templates/supported-languages) for all codes. (required)
      * @param  \YCloud\Client\Model\WhatsappTemplateEditRequest $whatsapp_template_edit_request (optional)
      *
      * @throws \InvalidArgumentException
@@ -1307,7 +1307,7 @@ class WhatsappTemplatesApi
      *
      * @param  string $waba_id WhatsApp Business Account ID. (required)
      * @param  string $name Name of the template. (required)
-     * @param  string $language Language code of the template. See [Supported Languages](https://developers.facebook.com/docs/whatsapp/api/messages/message-templates#supported-languages) for all codes. (required)
+     * @param  string $language Language code of the template. See [Supported Languages](https://developers.facebook.com/documentation/business-messaging/whatsapp/templates/supported-languages) for all codes. (required)
      * @param  \YCloud\Client\Model\WhatsappTemplateEditRequest $whatsapp_template_edit_request (optional)
      *
      * @throws \InvalidArgumentException
@@ -1453,7 +1453,8 @@ class WhatsappTemplatesApi
      * @param  bool $include_total Return results inside an object that contains the total result count or not. (optional, default to false)
      * @param  string $filter_waba_id **Required if you have more than 100 WABAs.** WhatsApp Business Account ID. (optional)
      * @param  string $filter_name Name of the template. (optional)
-     * @param  string $filter_language Language code of the template. See [Supported Languages](https://developers.facebook.com/docs/whatsapp/api/messages/message-templates#supported-languages) for all codes. (optional)
+     * @param  string $filter_language Language code of the template. See [Supported Languages](https://developers.facebook.com/documentation/business-messaging/whatsapp/templates/supported-languages) for all codes. (optional)
+     * @param  string $filter_status Comma-separated template statuses to filter by. Supported values include &#x60;PENDING&#x60;, &#x60;REJECTED&#x60;, &#x60;APPROVED&#x60;, &#x60;PAUSED&#x60;, &#x60;DISABLED&#x60;, &#x60;ARCHIVED&#x60;, &#x60;IN_APPEAL&#x60;, and &#x60;DELETED&#x60;. (optional)
      *
      * @throws \YCloud\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1477,7 +1478,8 @@ class WhatsappTemplatesApi
      * @param  bool $include_total Return results inside an object that contains the total result count or not. (optional, default to false)
      * @param  string $filter_waba_id **Required if you have more than 100 WABAs.** WhatsApp Business Account ID. (optional)
      * @param  string $filter_name Name of the template. (optional)
-     * @param  string $filter_language Language code of the template. See [Supported Languages](https://developers.facebook.com/docs/whatsapp/api/messages/message-templates#supported-languages) for all codes. (optional)
+     * @param  string $filter_language Language code of the template. See [Supported Languages](https://developers.facebook.com/documentation/business-messaging/whatsapp/templates/supported-languages) for all codes. (optional)
+     * @param  string $filter_status Comma-separated template statuses to filter by. Supported values include &#x60;PENDING&#x60;, &#x60;REJECTED&#x60;, &#x60;APPROVED&#x60;, &#x60;PAUSED&#x60;, &#x60;DISABLED&#x60;, &#x60;ARCHIVED&#x60;, &#x60;IN_APPEAL&#x60;, and &#x60;DELETED&#x60;. (optional)
      *
      * @throws \YCloud\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1583,7 +1585,8 @@ class WhatsappTemplatesApi
      * @param  bool $include_total Return results inside an object that contains the total result count or not. (optional, default to false)
      * @param  string $filter_waba_id **Required if you have more than 100 WABAs.** WhatsApp Business Account ID. (optional)
      * @param  string $filter_name Name of the template. (optional)
-     * @param  string $filter_language Language code of the template. See [Supported Languages](https://developers.facebook.com/docs/whatsapp/api/messages/message-templates#supported-languages) for all codes. (optional)
+     * @param  string $filter_language Language code of the template. See [Supported Languages](https://developers.facebook.com/documentation/business-messaging/whatsapp/templates/supported-languages) for all codes. (optional)
+     * @param  string $filter_status Comma-separated template statuses to filter by. Supported values include &#x60;PENDING&#x60;, &#x60;REJECTED&#x60;, &#x60;APPROVED&#x60;, &#x60;PAUSED&#x60;, &#x60;DISABLED&#x60;, &#x60;ARCHIVED&#x60;, &#x60;IN_APPEAL&#x60;, and &#x60;DELETED&#x60;. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1610,7 +1613,8 @@ class WhatsappTemplatesApi
      * @param  bool $include_total Return results inside an object that contains the total result count or not. (optional, default to false)
      * @param  string $filter_waba_id **Required if you have more than 100 WABAs.** WhatsApp Business Account ID. (optional)
      * @param  string $filter_name Name of the template. (optional)
-     * @param  string $filter_language Language code of the template. See [Supported Languages](https://developers.facebook.com/docs/whatsapp/api/messages/message-templates#supported-languages) for all codes. (optional)
+     * @param  string $filter_language Language code of the template. See [Supported Languages](https://developers.facebook.com/documentation/business-messaging/whatsapp/templates/supported-languages) for all codes. (optional)
+     * @param  string $filter_status Comma-separated template statuses to filter by. Supported values include &#x60;PENDING&#x60;, &#x60;REJECTED&#x60;, &#x60;APPROVED&#x60;, &#x60;PAUSED&#x60;, &#x60;DISABLED&#x60;, &#x60;ARCHIVED&#x60;, &#x60;IN_APPEAL&#x60;, and &#x60;DELETED&#x60;. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1666,7 +1670,8 @@ class WhatsappTemplatesApi
      * @param  bool $include_total Return results inside an object that contains the total result count or not. (optional, default to false)
      * @param  string $filter_waba_id **Required if you have more than 100 WABAs.** WhatsApp Business Account ID. (optional)
      * @param  string $filter_name Name of the template. (optional)
-     * @param  string $filter_language Language code of the template. See [Supported Languages](https://developers.facebook.com/docs/whatsapp/api/messages/message-templates#supported-languages) for all codes. (optional)
+     * @param  string $filter_language Language code of the template. See [Supported Languages](https://developers.facebook.com/documentation/business-messaging/whatsapp/templates/supported-languages) for all codes. (optional)
+     * @param  string $filter_status Comma-separated template statuses to filter by. Supported values include &#x60;PENDING&#x60;, &#x60;REJECTED&#x60;, &#x60;APPROVED&#x60;, &#x60;PAUSED&#x60;, &#x60;DISABLED&#x60;, &#x60;ARCHIVED&#x60;, &#x60;IN_APPEAL&#x60;, and &#x60;DELETED&#x60;. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -1680,6 +1685,7 @@ class WhatsappTemplatesApi
         $filter_waba_id = array_key_exists('filter_waba_id', $associative_array) ? $associative_array['filter_waba_id'] : null;
         $filter_name = array_key_exists('filter_name', $associative_array) ? $associative_array['filter_name'] : null;
         $filter_language = array_key_exists('filter_language', $associative_array) ? $associative_array['filter_language'] : null;
+        $filter_status = array_key_exists('filter_status', $associative_array) ? $associative_array['filter_status'] : null;
 
         if ($page !== null && $page > 100) {
             throw new \InvalidArgumentException('invalid value for "$page" when calling WhatsappTemplatesApi.list, must be smaller than or equal to 100.');
@@ -1764,6 +1770,15 @@ class WhatsappTemplatesApi
             true, // explode
             false // required
         ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $filter_status,
+            'filter.status', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
 
 
 
@@ -1837,7 +1852,7 @@ class WhatsappTemplatesApi
      *
      * @param  string $waba_id WhatsApp Business Account ID. (required)
      * @param  string $name Name of the template. (required)
-     * @param  string $language Language code of the template. See [Supported Languages](https://developers.facebook.com/docs/whatsapp/api/messages/message-templates#supported-languages) for all codes. (required)
+     * @param  string $language Language code of the template. See [Supported Languages](https://developers.facebook.com/documentation/business-messaging/whatsapp/templates/supported-languages) for all codes. (required)
      *
      * @throws \YCloud\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1856,7 +1871,7 @@ class WhatsappTemplatesApi
      *
      * @param  string $waba_id WhatsApp Business Account ID. (required)
      * @param  string $name Name of the template. (required)
-     * @param  string $language Language code of the template. See [Supported Languages](https://developers.facebook.com/docs/whatsapp/api/messages/message-templates#supported-languages) for all codes. (required)
+     * @param  string $language Language code of the template. See [Supported Languages](https://developers.facebook.com/documentation/business-messaging/whatsapp/templates/supported-languages) for all codes. (required)
      *
      * @throws \YCloud\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1980,7 +1995,7 @@ class WhatsappTemplatesApi
      *
      * @param  string $waba_id WhatsApp Business Account ID. (required)
      * @param  string $name Name of the template. (required)
-     * @param  string $language Language code of the template. See [Supported Languages](https://developers.facebook.com/docs/whatsapp/api/messages/message-templates#supported-languages) for all codes. (required)
+     * @param  string $language Language code of the template. See [Supported Languages](https://developers.facebook.com/documentation/business-messaging/whatsapp/templates/supported-languages) for all codes. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2002,7 +2017,7 @@ class WhatsappTemplatesApi
      *
      * @param  string $waba_id WhatsApp Business Account ID. (required)
      * @param  string $name Name of the template. (required)
-     * @param  string $language Language code of the template. See [Supported Languages](https://developers.facebook.com/docs/whatsapp/api/messages/message-templates#supported-languages) for all codes. (required)
+     * @param  string $language Language code of the template. See [Supported Languages](https://developers.facebook.com/documentation/business-messaging/whatsapp/templates/supported-languages) for all codes. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2053,7 +2068,7 @@ class WhatsappTemplatesApi
      *
      * @param  string $waba_id WhatsApp Business Account ID. (required)
      * @param  string $name Name of the template. (required)
-     * @param  string $language Language code of the template. See [Supported Languages](https://developers.facebook.com/docs/whatsapp/api/messages/message-templates#supported-languages) for all codes. (required)
+     * @param  string $language Language code of the template. See [Supported Languages](https://developers.facebook.com/documentation/business-messaging/whatsapp/templates/supported-languages) for all codes. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request

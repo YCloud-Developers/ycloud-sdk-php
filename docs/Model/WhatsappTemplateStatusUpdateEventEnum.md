@@ -17,6 +17,10 @@
 
 * `DISABLED` (value: `'DISABLED'`)
 
+* `ARCHIVED` (value: `'ARCHIVED'`)
+
+* `UNARCHIVED` (value: `'UNARCHIVED'`)
+
 * `REINSTATED` (value: `'REINSTATED'`)
 
 * `PENDING_DELETION` (value: `'PENDING_DELETION'`)

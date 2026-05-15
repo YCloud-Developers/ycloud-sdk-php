@@ -1,6 +1,6 @@
 <?php
 /**
- * WhatsappMessageMediaOneOf1
+ * WhatsappMessageInteractiveActionCardActionButton
  *
  * PHP version 7.4
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \YCloud\Client\ObjectSerializer;
 
 /**
- * WhatsappMessageMediaOneOf1 Class Doc Comment
+ * WhatsappMessageInteractiveActionCardActionButton Class Doc Comment
  *
  * @category Class
  * @package  YCloud\Client
@@ -41,7 +41,7 @@ use \YCloud\Client\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class WhatsappMessageMediaOneOf1 implements ModelInterface, ArrayAccess, \JsonSerializable
+class WhatsappMessageInteractiveActionCardActionButton implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class WhatsappMessageMediaOneOf1 implements ModelInterface, ArrayAccess, \JsonSe
       *
       * @var string
       */
-    protected static $openAPIModelName = 'WhatsappMessageMedia_oneOf_1';
+    protected static $openAPIModelName = 'WhatsappMessageInteractiveActionCardActionButton';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,7 +58,8 @@ class WhatsappMessageMediaOneOf1 implements ModelInterface, ArrayAccess, \JsonSe
       * @var string[]
       */
     protected static $openAPITypes = [
-        'link' => 'string'
+        'type' => 'string',
+        'quick_reply' => '\YCloud\Client\Model\WhatsappMessageInteractiveActionCardActionButtonQuickReply'
     ];
 
     /**
@@ -69,7 +70,8 @@ class WhatsappMessageMediaOneOf1 implements ModelInterface, ArrayAccess, \JsonSe
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'link' => null
+        'type' => null,
+        'quick_reply' => null
     ];
 
     /**
@@ -99,7 +101,8 @@ class WhatsappMessageMediaOneOf1 implements ModelInterface, ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static $attributeMap = [
-        'link' => 'link'
+        'type' => 'type',
+        'quick_reply' => 'quick_reply'
     ];
 
     /**
@@ -108,7 +111,8 @@ class WhatsappMessageMediaOneOf1 implements ModelInterface, ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static $setters = [
-        'link' => 'setLink'
+        'type' => 'setType',
+        'quick_reply' => 'setQuickReply'
     ];
 
     /**
@@ -117,7 +121,8 @@ class WhatsappMessageMediaOneOf1 implements ModelInterface, ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static $getters = [
-        'link' => 'getLink'
+        'type' => 'getType',
+        'quick_reply' => 'getQuickReply'
     ];
 
     /**
@@ -177,7 +182,8 @@ class WhatsappMessageMediaOneOf1 implements ModelInterface, ArrayAccess, \JsonSe
      */
     public function __construct(array $data = null)
     {
-        $this->container['link'] = $data['link'] ?? null;
+        $this->container['type'] = $data['type'] ?? null;
+        $this->container['quick_reply'] = $data['quick_reply'] ?? null;
     }
 
     /**
@@ -189,9 +195,6 @@ class WhatsappMessageMediaOneOf1 implements ModelInterface, ArrayAccess, \JsonSe
     {
         $invalidProperties = [];
 
-        if ($this->container['link'] === null) {
-            $invalidProperties[] = "'link' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -208,25 +211,49 @@ class WhatsappMessageMediaOneOf1 implements ModelInterface, ArrayAccess, \JsonSe
 
 
     /**
-     * Gets link
+     * Gets type
      *
-     * @return string
+     * @return string|null
      */
-    public function getLink()
+    public function getType()
     {
-        return $this->container['link'];
+        return $this->container['type'];
     }
 
     /**
-     * Sets link
+     * Sets type
      *
-     * @param string $link Required when sending media directly from your server.  The protocol and URL of the media to be sent. Use only with HTTP/HTTPS URLs. Note: WhatsApp Cloud API caches media resources for 10 minutes. To ensure latest content, add random query strings to the URL.
+     * @param string|null $type Must be \"quick_reply\".
      *
      * @return self
      */
-    public function setLink($link)
+    public function setType($type)
     {
-        $this->container['link'] = $link;
+        $this->container['type'] = $type;
+
+        return $this;
+    }
+
+    /**
+     * Gets quick_reply
+     *
+     * @return \YCloud\Client\Model\WhatsappMessageInteractiveActionCardActionButtonQuickReply|null
+     */
+    public function getQuickReply()
+    {
+        return $this->container['quick_reply'];
+    }
+
+    /**
+     * Sets quick_reply
+     *
+     * @param \YCloud\Client\Model\WhatsappMessageInteractiveActionCardActionButtonQuickReply|null $quick_reply quick_reply
+     *
+     * @return self
+     */
+    public function setQuickReply($quick_reply)
+    {
+        $this->container['quick_reply'] = $quick_reply;
 
         return $this;
     }
