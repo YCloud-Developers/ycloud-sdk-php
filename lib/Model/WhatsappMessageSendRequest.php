@@ -36,6 +36,7 @@ use \YCloud\Client\ObjectSerializer;
  * WhatsappMessageSendRequest Class Doc Comment
  *
  * @category Class
+ * @description Provide exactly one of &#x60;to&#x60; or &#x60;recipient&#x60;. If both are provided, &#x60;to&#x60; takes precedence and &#x60;recipient&#x60; is ignored.
  * @package  YCloud\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -60,6 +61,8 @@ class WhatsappMessageSendRequest implements ModelInterface, ArrayAccess, \JsonSe
     protected static $openAPITypes = [
         'from' => 'string',
         'to' => 'string',
+        'recipient' => 'string',
+        'customer_profile' => '\YCloud\Client\Model\WhatsappProfile',
         'type' => '\YCloud\Client\Model\WhatsappMessageType',
         'template' => '\YCloud\Client\Model\WhatsappMessageTemplate',
         'text' => '\YCloud\Client\Model\WhatsappMessageText',
@@ -88,6 +91,8 @@ class WhatsappMessageSendRequest implements ModelInterface, ArrayAccess, \JsonSe
     protected static $openAPIFormats = [
         'from' => null,
         'to' => null,
+        'recipient' => null,
+        'customer_profile' => null,
         'type' => null,
         'template' => null,
         'text' => null,
@@ -135,6 +140,8 @@ class WhatsappMessageSendRequest implements ModelInterface, ArrayAccess, \JsonSe
     protected static $attributeMap = [
         'from' => 'from',
         'to' => 'to',
+        'recipient' => 'recipient',
+        'customer_profile' => 'customerProfile',
         'type' => 'type',
         'template' => 'template',
         'text' => 'text',
@@ -161,6 +168,8 @@ class WhatsappMessageSendRequest implements ModelInterface, ArrayAccess, \JsonSe
     protected static $setters = [
         'from' => 'setFrom',
         'to' => 'setTo',
+        'recipient' => 'setRecipient',
+        'customer_profile' => 'setCustomerProfile',
         'type' => 'setType',
         'template' => 'setTemplate',
         'text' => 'setText',
@@ -187,6 +196,8 @@ class WhatsappMessageSendRequest implements ModelInterface, ArrayAccess, \JsonSe
     protected static $getters = [
         'from' => 'getFrom',
         'to' => 'getTo',
+        'recipient' => 'getRecipient',
+        'customer_profile' => 'getCustomerProfile',
         'type' => 'getType',
         'template' => 'getTemplate',
         'text' => 'getText',
@@ -264,6 +275,8 @@ class WhatsappMessageSendRequest implements ModelInterface, ArrayAccess, \JsonSe
     {
         $this->container['from'] = $data['from'] ?? null;
         $this->container['to'] = $data['to'] ?? null;
+        $this->container['recipient'] = $data['recipient'] ?? null;
+        $this->container['customer_profile'] = $data['customer_profile'] ?? null;
         $this->container['type'] = $data['type'] ?? null;
         $this->container['template'] = $data['template'] ?? null;
         $this->container['text'] = $data['text'] ?? null;
@@ -293,9 +306,6 @@ class WhatsappMessageSendRequest implements ModelInterface, ArrayAccess, \JsonSe
 
         if ($this->container['from'] === null) {
             $invalidProperties[] = "'from' can't be null";
-        }
-        if ($this->container['to'] === null) {
-            $invalidProperties[] = "'to' can't be null";
         }
         if ($this->container['type'] === null) {
             $invalidProperties[] = "'type' can't be null";
@@ -342,7 +352,7 @@ class WhatsappMessageSendRequest implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Gets to
      *
-     * @return string
+     * @return string|null
      */
     public function getTo()
     {
@@ -352,13 +362,61 @@ class WhatsappMessageSendRequest implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets to
      *
-     * @param string $to The recipient's phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format.
+     * @param string|null $to The recipient's phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format. Required when `recipient` is not provided.
      *
      * @return self
      */
     public function setTo($to)
     {
         $this->container['to'] = $to;
+
+        return $this;
+    }
+
+    /**
+     * Gets recipient
+     *
+     * @return string|null
+     */
+    public function getRecipient()
+    {
+        return $this->container['recipient'];
+    }
+
+    /**
+     * Sets recipient
+     *
+     * @param string|null $recipient The recipient's WhatsApp Business-scoped user ID (BSUID) or parent BSUID. Required when `to` is not provided.
+     *
+     * @return self
+     */
+    public function setRecipient($recipient)
+    {
+        $this->container['recipient'] = $recipient;
+
+        return $this;
+    }
+
+    /**
+     * Gets customer_profile
+     *
+     * @return \YCloud\Client\Model\WhatsappProfile|null
+     */
+    public function getCustomerProfile()
+    {
+        return $this->container['customer_profile'];
+    }
+
+    /**
+     * Sets customer_profile
+     *
+     * @param \YCloud\Client\Model\WhatsappProfile|null $customer_profile customer_profile
+     *
+     * @return self
+     */
+    public function setCustomerProfile($customer_profile)
+    {
+        $this->container['customer_profile'] = $customer_profile;
 
         return $this;
     }
