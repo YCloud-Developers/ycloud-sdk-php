@@ -82,7 +82,10 @@ class WhatsappBusinessAccount implements ModelInterface, ArrayAccess, \JsonSeria
         'restrictions' => '\YCloud\Client\Model\WhatsappBusinessAccountRestrictionInfo[]',
         'auth_intl_rate_eligibility_countries' => '\YCloud\Client\Model\WhatsappAuthIntlRateEligibilityCountry[]',
         'primary_business_location' => 'string',
-        'whatsapp_business_manager_messaging_limit' => 'string'
+        'whatsapp_business_manager_messaging_limit' => 'string',
+        'removed_reason' => 'string',
+        'removed_initiated_by' => 'string',
+        'removed_time' => '\DateTime'
     ];
 
     /**
@@ -116,7 +119,10 @@ class WhatsappBusinessAccount implements ModelInterface, ArrayAccess, \JsonSeria
         'restrictions' => null,
         'auth_intl_rate_eligibility_countries' => null,
         'primary_business_location' => null,
-        'whatsapp_business_manager_messaging_limit' => null
+        'whatsapp_business_manager_messaging_limit' => null,
+        'removed_reason' => null,
+        'removed_initiated_by' => null,
+        'removed_time' => 'date-time'
     ];
 
     /**
@@ -169,7 +175,10 @@ class WhatsappBusinessAccount implements ModelInterface, ArrayAccess, \JsonSeria
         'restrictions' => 'restrictions',
         'auth_intl_rate_eligibility_countries' => 'authIntlRateEligibilityCountries',
         'primary_business_location' => 'primaryBusinessLocation',
-        'whatsapp_business_manager_messaging_limit' => 'whatsappBusinessManagerMessagingLimit'
+        'whatsapp_business_manager_messaging_limit' => 'whatsappBusinessManagerMessagingLimit',
+        'removed_reason' => 'removedReason',
+        'removed_initiated_by' => 'removedInitiatedBy',
+        'removed_time' => 'removedTime'
     ];
 
     /**
@@ -201,7 +210,10 @@ class WhatsappBusinessAccount implements ModelInterface, ArrayAccess, \JsonSeria
         'restrictions' => 'setRestrictions',
         'auth_intl_rate_eligibility_countries' => 'setAuthIntlRateEligibilityCountries',
         'primary_business_location' => 'setPrimaryBusinessLocation',
-        'whatsapp_business_manager_messaging_limit' => 'setWhatsappBusinessManagerMessagingLimit'
+        'whatsapp_business_manager_messaging_limit' => 'setWhatsappBusinessManagerMessagingLimit',
+        'removed_reason' => 'setRemovedReason',
+        'removed_initiated_by' => 'setRemovedInitiatedBy',
+        'removed_time' => 'setRemovedTime'
     ];
 
     /**
@@ -233,7 +245,10 @@ class WhatsappBusinessAccount implements ModelInterface, ArrayAccess, \JsonSeria
         'restrictions' => 'getRestrictions',
         'auth_intl_rate_eligibility_countries' => 'getAuthIntlRateEligibilityCountries',
         'primary_business_location' => 'getPrimaryBusinessLocation',
-        'whatsapp_business_manager_messaging_limit' => 'getWhatsappBusinessManagerMessagingLimit'
+        'whatsapp_business_manager_messaging_limit' => 'getWhatsappBusinessManagerMessagingLimit',
+        'removed_reason' => 'getRemovedReason',
+        'removed_initiated_by' => 'getRemovedInitiatedBy',
+        'removed_time' => 'getRemovedTime'
     ];
 
     /**
@@ -317,6 +332,9 @@ class WhatsappBusinessAccount implements ModelInterface, ArrayAccess, \JsonSeria
         $this->container['auth_intl_rate_eligibility_countries'] = $data['auth_intl_rate_eligibility_countries'] ?? null;
         $this->container['primary_business_location'] = $data['primary_business_location'] ?? null;
         $this->container['whatsapp_business_manager_messaging_limit'] = $data['whatsapp_business_manager_messaging_limit'] ?? null;
+        $this->container['removed_reason'] = $data['removed_reason'] ?? null;
+        $this->container['removed_initiated_by'] = $data['removed_initiated_by'] ?? null;
+        $this->container['removed_time'] = $data['removed_time'] ?? null;
     }
 
     /**
@@ -915,6 +933,78 @@ class WhatsappBusinessAccount implements ModelInterface, ArrayAccess, \JsonSeria
     public function setWhatsappBusinessManagerMessagingLimit($whatsapp_business_manager_messaging_limit)
     {
         $this->container['whatsapp_business_manager_messaging_limit'] = $whatsapp_business_manager_messaging_limit;
+
+        return $this;
+    }
+
+    /**
+     * Gets removed_reason
+     *
+     * @return string|null
+     */
+    public function getRemovedReason()
+    {
+        return $this->container['removed_reason'];
+    }
+
+    /**
+     * Sets removed_reason
+     *
+     * @param string|null $removed_reason Raw reason from the WhatsApp Business Account deletion event. Known values include: - `ACCOUNT_DISCONNECTED`: The account was disconnected due to enforcement or because the WhatsApp account was explicitly deleted. - `BUSINESS_DOWNGRADE`: The phone number was registered with the consumer WhatsApp app. - `CHANGE_NUMBER`: The WhatsApp phone number was changed. - `COMPANION_INACTIVITY`: A companion device was inactive for approximately 30 days. - `PRIMARY_INACTIVITY`: A primary device was inactive for approximately 30 days. - `USER_RE_REGISTERED`: WhatsApp was re-registered on a new device.  Unknown values are returned as received.
+     *
+     * @return self
+     */
+    public function setRemovedReason($removed_reason)
+    {
+        $this->container['removed_reason'] = $removed_reason;
+
+        return $this;
+    }
+
+    /**
+     * Gets removed_initiated_by
+     *
+     * @return string|null
+     */
+    public function getRemovedInitiatedBy()
+    {
+        return $this->container['removed_initiated_by'];
+    }
+
+    /**
+     * Sets removed_initiated_by
+     *
+     * @param string|null $removed_initiated_by Raw initiator from the WhatsApp Business Account deletion event. Known values include: - `USER`: The removal was initiated by the WhatsApp user. - `SYSTEM`: The removal was initiated by the Meta system.  Unknown values are returned as received.
+     *
+     * @return self
+     */
+    public function setRemovedInitiatedBy($removed_initiated_by)
+    {
+        $this->container['removed_initiated_by'] = $removed_initiated_by;
+
+        return $this;
+    }
+
+    /**
+     * Gets removed_time
+     *
+     * @return \DateTime|null
+     */
+    public function getRemovedTime()
+    {
+        return $this->container['removed_time'];
+    }
+
+    /**
+     * Sets removed_time
+     *
+     * @param \DateTime|null $removed_time The time when the WhatsApp Business Account deletion event was received, formatted in [RFC 3339](https://datatracker.ietf.org/doc/html/rfc3339). e.g., `2026-05-19T12:00:00.000Z`.
+     *
+     * @return self
+     */
+    public function setRemovedTime($removed_time)
+    {
+        $this->container['removed_time'] = $removed_time;
 
         return $this;
     }

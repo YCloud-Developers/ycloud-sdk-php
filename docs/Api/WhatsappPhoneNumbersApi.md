@@ -4,17 +4,83 @@ All URIs are relative to https://api.ycloud.com/v2.
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**deleteBusinessUsername()**](WhatsappPhoneNumbersApi.md#deleteBusinessUsername) | **DELETE** /whatsapp/phoneNumbers/{wabaId}/{phoneNumber}/businessUsername | Delete a phone number business username
 [**list()**](WhatsappPhoneNumbersApi.md#list) | **GET** /whatsapp/phoneNumbers | List phone numbers
 [**register()**](WhatsappPhoneNumbersApi.md#register) | **POST** /whatsapp/phoneNumbers/{wabaId}/{phoneNumber}/register | Register a phone number
 [**retrieve()**](WhatsappPhoneNumbersApi.md#retrieve) | **GET** /whatsapp/phoneNumbers/{wabaId}/{phoneNumber} | Retrieve a phone number
+[**retrieveBusinessUsername()**](WhatsappPhoneNumbersApi.md#retrieveBusinessUsername) | **GET** /whatsapp/phoneNumbers/{wabaId}/{phoneNumber}/businessUsername | Retrieve a phone number business username
+[**retrieveBusinessUsernameSuggestions()**](WhatsappPhoneNumbersApi.md#retrieveBusinessUsernameSuggestions) | **GET** /whatsapp/phoneNumbers/{wabaId}/{phoneNumber}/businessUsername/suggestions | Retrieve phone number business username suggestions
 [**retrieveCommerceSettings()**](WhatsappPhoneNumbersApi.md#retrieveCommerceSettings) | **GET** /whatsapp/phoneNumbers/{wabaId}/{phoneNumber}/whatsappCommerceSettings | Retrieve commerce settings
 [**retrieveProfile()**](WhatsappPhoneNumbersApi.md#retrieveProfile) | **GET** /whatsapp/phoneNumbers/{wabaId}/{phoneNumber}/profile | Retrieve a phone number profile
 [**retrieveSettings()**](WhatsappPhoneNumbersApi.md#retrieveSettings) | **GET** /whatsapp/phoneNumbers/{wabaId}/{phoneNumber}/settings | Retrieve phone number settings
 [**saveSettings()**](WhatsappPhoneNumbersApi.md#saveSettings) | **POST** /whatsapp/phoneNumbers/{wabaId}/{phoneNumber}/settings | Save phone number settings
+[**updateBusinessUsername()**](WhatsappPhoneNumbersApi.md#updateBusinessUsername) | **PATCH** /whatsapp/phoneNumbers/{wabaId}/{phoneNumber}/businessUsername | Update a phone number business username
 [**updateCommerceSettings()**](WhatsappPhoneNumbersApi.md#updateCommerceSettings) | **PATCH** /whatsapp/phoneNumbers/{wabaId}/{phoneNumber}/whatsappCommerceSettings | Update commerce settings
 [**updateDisplayName()**](WhatsappPhoneNumbersApi.md#updateDisplayName) | **PATCH** /whatsapp/phoneNumbers/{wabaId}/{phoneNumber}/displayName | Update a phone number display name
 [**updateProfile()**](WhatsappPhoneNumbersApi.md#updateProfile) | **PATCH** /whatsapp/phoneNumbers/{wabaId}/{phoneNumber}/profile | Update a phone number profile
 
+
+## `deleteBusinessUsername()`
+
+```php
+deleteBusinessUsername($waba_id, $phone_number): \YCloud\Client\Model\WhatsappBusinessUsernameDeleteResult
+```
+
+Delete a phone number business username
+
+Deletes the active Business Username for a WhatsApp business phone number. This operation removes the currently active Business Username. It does not cancel or remove a pending Business Username request. If a pending request still exists after deletion, the returned `businessUsernameStatus` remains `pending_review`; otherwise it becomes `not_set`.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: api_key
+$config = YCloud\Client\Configuration::getDefaultConfiguration()->setApiKey('X-API-Key', 'YOUR_API_KEY');
+
+
+$apiInstance = new YCloud\Client\Api\WhatsappPhoneNumbersApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$waba_id = whatsapp-business-account-id; // string | WhatsApp Business Account ID.
+$phone_number = +16315551111; // string | Phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format.
+
+try {
+    $result = $apiInstance->deleteBusinessUsername($waba_id, $phone_number);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling WhatsappPhoneNumbersApi->deleteBusinessUsername: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **waba_id** | **string**| WhatsApp Business Account ID. |
+ **phone_number** | **string**| Phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format. |
+
+### Return type
+
+[**\YCloud\Client\Model\WhatsappBusinessUsernameDeleteResult**](../Model/WhatsappBusinessUsernameDeleteResult.md)
+
+### Authorization
+
+[api_key](../../README.md#api_key)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
 
 ## `list()`
 
@@ -194,6 +260,130 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**\YCloud\Client\Model\WhatsappPhoneNumber**](../Model/WhatsappPhoneNumber.md)
+
+### Authorization
+
+[api_key](../../README.md#api_key)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `retrieveBusinessUsername()`
+
+```php
+retrieveBusinessUsername($waba_id, $phone_number): \YCloud\Client\Model\WhatsappBusinessUsername
+```
+
+Retrieve a phone number business username
+
+Retrieves the Business Username state for a WhatsApp business phone number. The response reflects YCloud's latest known phone number state. If the phone number has no locally stored Business Username state, YCloud may sync the current username state from Meta before returning the response.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: api_key
+$config = YCloud\Client\Configuration::getDefaultConfiguration()->setApiKey('X-API-Key', 'YOUR_API_KEY');
+
+
+$apiInstance = new YCloud\Client\Api\WhatsappPhoneNumbersApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$waba_id = whatsapp-business-account-id; // string | WhatsApp Business Account ID.
+$phone_number = +16315551111; // string | Phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format.
+
+try {
+    $result = $apiInstance->retrieveBusinessUsername($waba_id, $phone_number);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling WhatsappPhoneNumbersApi->retrieveBusinessUsername: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **waba_id** | **string**| WhatsApp Business Account ID. |
+ **phone_number** | **string**| Phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format. |
+
+### Return type
+
+[**\YCloud\Client\Model\WhatsappBusinessUsername**](../Model/WhatsappBusinessUsername.md)
+
+### Authorization
+
+[api_key](../../README.md#api_key)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `retrieveBusinessUsernameSuggestions()`
+
+```php
+retrieveBusinessUsernameSuggestions($waba_id, $phone_number): \YCloud\Client\Model\WhatsappBusinessUsernameSuggestions
+```
+
+Retrieve phone number business username suggestions
+
+Retrieves reserved Business Username suggestions for a WhatsApp business phone number. The response flattens Meta username suggestions into a string array. If no suggestions are available, `data` is an empty array.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: api_key
+$config = YCloud\Client\Configuration::getDefaultConfiguration()->setApiKey('X-API-Key', 'YOUR_API_KEY');
+
+
+$apiInstance = new YCloud\Client\Api\WhatsappPhoneNumbersApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$waba_id = whatsapp-business-account-id; // string | WhatsApp Business Account ID.
+$phone_number = +16315551111; // string | Phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format.
+
+try {
+    $result = $apiInstance->retrieveBusinessUsernameSuggestions($waba_id, $phone_number);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling WhatsappPhoneNumbersApi->retrieveBusinessUsernameSuggestions: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **waba_id** | **string**| WhatsApp Business Account ID. |
+ **phone_number** | **string**| Phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format. |
+
+### Return type
+
+[**\YCloud\Client\Model\WhatsappBusinessUsernameSuggestions**](../Model/WhatsappBusinessUsernameSuggestions.md)
 
 ### Authorization
 
@@ -444,6 +634,70 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**\YCloud\Client\Model\WhatsappPhoneNumberSettings**](../Model/WhatsappPhoneNumberSettings.md)
+
+### Authorization
+
+[api_key](../../README.md#api_key)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `updateBusinessUsername()`
+
+```php
+updateBusinessUsername($waba_id, $phone_number, $whatsapp_business_username_update_request): \YCloud\Client\Model\WhatsappBusinessUsername
+```
+
+Update a phone number business username
+
+Requests a Business Username update for a WhatsApp business phone number. The requested username may require Meta review before it becomes active. If Meta accepts the request for review, the response status is usually `pending_review`; if Meta returns an error, YCloud returns the error and does not change the stored Business Username state.  The `username` value is a plain username without `@`. YCloud trims leading and trailing whitespace and normalizes the value to lowercase before validation and submission.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: api_key
+$config = YCloud\Client\Configuration::getDefaultConfiguration()->setApiKey('X-API-Key', 'YOUR_API_KEY');
+
+
+$apiInstance = new YCloud\Client\Api\WhatsappPhoneNumbersApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$waba_id = whatsapp-business-account-id; // string | WhatsApp Business Account ID.
+$phone_number = +16315551111; // string | Phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format.
+$whatsapp_business_username_update_request = new \YCloud\Client\Model\WhatsappBusinessUsernameUpdateRequest(); // \YCloud\Client\Model\WhatsappBusinessUsernameUpdateRequest
+
+try {
+    $result = $apiInstance->updateBusinessUsername($waba_id, $phone_number, $whatsapp_business_username_update_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling WhatsappPhoneNumbersApi->updateBusinessUsername: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **waba_id** | **string**| WhatsApp Business Account ID. |
+ **phone_number** | **string**| Phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format. |
+ **whatsapp_business_username_update_request** | [**\YCloud\Client\Model\WhatsappBusinessUsernameUpdateRequest**](../Model/WhatsappBusinessUsernameUpdateRequest.md)|  |
+
+### Return type
+
+[**\YCloud\Client\Model\WhatsappBusinessUsername**](../Model/WhatsappBusinessUsername.md)
 
 ### Authorization
 

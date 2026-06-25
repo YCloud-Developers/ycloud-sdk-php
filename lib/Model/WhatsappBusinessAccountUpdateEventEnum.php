@@ -34,7 +34,7 @@ use \YCloud\Client\ObjectSerializer;
  * WhatsappBusinessAccountUpdateEventEnum Class Doc Comment
  *
  * @category Class
- * @description Indicates the update event type of the WABA when a notification is sent to you to report a [policy violation](https://developers.facebook.com/docs/whatsapp/overview/policy-enforcement), a WABA has been banned and more. - &#x60;DISABLED_UPDATE&#x60;: WhatsApp Business Account Banned. - &#x60;ACCOUNT_RESTRICTION&#x60;: WhatsApp Business Account Restricted Due To Policy Violations. - &#x60;ACCOUNT_VIOLATION&#x60;: WhatsApp Business Account Violates Policy. - &#x60;AUTH_INTL_PRICE_ELIGIBILITY_UPDATE&#x60;: WhatsApp Business Account is eligible for the [authentication-international rate](https://developers.facebook.com/docs/whatsapp/pricing/authentication-international-rates). - &#x60;BUSINESS_PRIMARY_LOCATION_COUNTRY_UPDATE&#x60;: Business&#39;s [primary business location](https://developers.facebook.com/docs/whatsapp/pricing/authentication-international-rates#primary-business-location) is set.
+ * @description Indicates the update event type of the WABA when a notification is sent to you to report a [policy violation](https://developers.facebook.com/docs/whatsapp/overview/policy-enforcement), a WABA has been banned and more. - &#x60;DISABLED_UPDATE&#x60;: WhatsApp Business Account Banned. - &#x60;ACCOUNT_RESTRICTION&#x60;: WhatsApp Business Account Restricted Due To Policy Violations. - &#x60;ACCOUNT_VIOLATION&#x60;: WhatsApp Business Account Violates Policy. - &#x60;PARTNER_REMOVED&#x60;: WhatsApp Business Account was removed from the partner connection. - &#x60;PARTNER_APP_UNINSTALLED&#x60;: WhatsApp Business Account partner app was uninstalled. - &#x60;AUTH_INTL_PRICE_ELIGIBILITY_UPDATE&#x60;: WhatsApp Business Account is eligible for the [authentication-international rate](https://developers.facebook.com/docs/whatsapp/pricing/authentication-international-rates). - &#x60;BUSINESS_PRIMARY_LOCATION_COUNTRY_UPDATE&#x60;: Business&#39;s [primary business location](https://developers.facebook.com/docs/whatsapp/pricing/authentication-international-rates#primary-business-location) is set.
  * @package  YCloud\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -50,6 +50,10 @@ class WhatsappBusinessAccountUpdateEventEnum
 
     public const ACCOUNT_VIOLATION = 'ACCOUNT_VIOLATION';
 
+    public const PARTNER_REMOVED = 'PARTNER_REMOVED';
+
+    public const PARTNER_APP_UNINSTALLED = 'PARTNER_APP_UNINSTALLED';
+
     public const AUTH_INTL_PRICE_ELIGIBILITY_UPDATE = 'AUTH_INTL_PRICE_ELIGIBILITY_UPDATE';
 
     public const BUSINESS_PRIMARY_LOCATION_COUNTRY_UPDATE = 'BUSINESS_PRIMARY_LOCATION_COUNTRY_UPDATE';
@@ -64,6 +68,8 @@ class WhatsappBusinessAccountUpdateEventEnum
             self::DISABLED_UPDATE,
             self::ACCOUNT_RESTRICTION,
             self::ACCOUNT_VIOLATION,
+            self::PARTNER_REMOVED,
+            self::PARTNER_APP_UNINSTALLED,
             self::AUTH_INTL_PRICE_ELIGIBILITY_UPDATE,
             self::BUSINESS_PRIMARY_LOCATION_COUNTRY_UPDATE
         ];
