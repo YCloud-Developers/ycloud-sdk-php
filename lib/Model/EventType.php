@@ -62,6 +62,14 @@ class EventType
 
     public const WHATSAPP_MESSAGE_UPDATED = 'whatsapp.message.updated';
 
+    public const WHATSAPP_GROUP_LIFECYCLE_UPDATE = 'whatsapp.group.lifecycle_update';
+
+    public const WHATSAPP_GROUP_PARTICIPANTS_UPDATE = 'whatsapp.group.participants_update';
+
+    public const WHATSAPP_GROUP_SETTINGS_UPDATE = 'whatsapp.group.settings_update';
+
+    public const WHATSAPP_GROUP_STATUS_UPDATE = 'whatsapp.group.status_update';
+
     public const WHATSAPP_SMB_HISTORY = 'whatsapp.smb.history';
 
     public const WHATSAPP_SMB_MESSAGE_CREATED = 'whatsapp.smb.message.created';
@@ -71,6 +79,8 @@ class EventType
     public const WHATSAPP_PHONE_NUMBER_NAME_UPDATED = 'whatsapp.phone_number.name_updated';
 
     public const WHATSAPP_PHONE_NUMBER_QUALITY_UPDATED = 'whatsapp.phone_number.quality_updated';
+
+    public const WHATSAPP_PHONE_NUMBER_BUSINESS_USERNAME_UPDATED = 'whatsapp.phone_number.business_username_updated';
 
     public const WHATSAPP_TEMPLATE_CATEGORY_UPDATED = 'whatsapp.template.category_updated';
 
@@ -116,11 +126,16 @@ class EventType
             self::WHATSAPP_BUSINESS_ACCOUNT_UPDATED,
             self::WHATSAPP_INBOUND_MESSAGE_RECEIVED,
             self::WHATSAPP_MESSAGE_UPDATED,
+            self::WHATSAPP_GROUP_LIFECYCLE_UPDATE,
+            self::WHATSAPP_GROUP_PARTICIPANTS_UPDATE,
+            self::WHATSAPP_GROUP_SETTINGS_UPDATE,
+            self::WHATSAPP_GROUP_STATUS_UPDATE,
             self::WHATSAPP_SMB_HISTORY,
             self::WHATSAPP_SMB_MESSAGE_CREATED,
             self::WHATSAPP_PHONE_NUMBER_DELETED,
             self::WHATSAPP_PHONE_NUMBER_NAME_UPDATED,
             self::WHATSAPP_PHONE_NUMBER_QUALITY_UPDATED,
+            self::WHATSAPP_PHONE_NUMBER_BUSINESS_USERNAME_UPDATED,
             self::WHATSAPP_TEMPLATE_CATEGORY_UPDATED,
             self::WHATSAPP_TEMPLATE_QUALITY_UPDATED,
             self::WHATSAPP_TEMPLATE_REVIEWED,

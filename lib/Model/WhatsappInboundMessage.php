@@ -65,6 +65,7 @@ class WhatsappInboundMessage implements ModelInterface, ArrayAccess, \JsonSerial
         'from' => 'string',
         'customer_profile' => '\YCloud\Client\Model\WhatsappProfile',
         'to' => 'string',
+        'group_id' => 'string',
         'send_time' => '\DateTime',
         'type' => '\YCloud\Client\Model\WhatsappInboundMessageType',
         'text' => '\YCloud\Client\Model\WhatsappInboundMessageText',
@@ -99,6 +100,7 @@ class WhatsappInboundMessage implements ModelInterface, ArrayAccess, \JsonSerial
         'from' => null,
         'customer_profile' => null,
         'to' => null,
+        'group_id' => null,
         'send_time' => 'date-time',
         'type' => null,
         'text' => null,
@@ -152,6 +154,7 @@ class WhatsappInboundMessage implements ModelInterface, ArrayAccess, \JsonSerial
         'from' => 'from',
         'customer_profile' => 'customerProfile',
         'to' => 'to',
+        'group_id' => 'groupId',
         'send_time' => 'sendTime',
         'type' => 'type',
         'text' => 'text',
@@ -184,6 +187,7 @@ class WhatsappInboundMessage implements ModelInterface, ArrayAccess, \JsonSerial
         'from' => 'setFrom',
         'customer_profile' => 'setCustomerProfile',
         'to' => 'setTo',
+        'group_id' => 'setGroupId',
         'send_time' => 'setSendTime',
         'type' => 'setType',
         'text' => 'setText',
@@ -216,6 +220,7 @@ class WhatsappInboundMessage implements ModelInterface, ArrayAccess, \JsonSerial
         'from' => 'getFrom',
         'customer_profile' => 'getCustomerProfile',
         'to' => 'getTo',
+        'group_id' => 'getGroupId',
         'send_time' => 'getSendTime',
         'type' => 'getType',
         'text' => 'getText',
@@ -299,6 +304,7 @@ class WhatsappInboundMessage implements ModelInterface, ArrayAccess, \JsonSerial
         $this->container['from'] = $data['from'] ?? null;
         $this->container['customer_profile'] = $data['customer_profile'] ?? null;
         $this->container['to'] = $data['to'] ?? null;
+        $this->container['group_id'] = $data['group_id'] ?? null;
         $this->container['send_time'] = $data['send_time'] ?? null;
         $this->container['type'] = $data['type'] ?? null;
         $this->container['text'] = $data['text'] ?? null;
@@ -486,6 +492,30 @@ class WhatsappInboundMessage implements ModelInterface, ArrayAccess, \JsonSerial
     public function setTo($to)
     {
         $this->container['to'] = $to;
+
+        return $this;
+    }
+
+    /**
+     * Gets group_id
+     *
+     * @return string|null
+     */
+    public function getGroupId()
+    {
+        return $this->container['group_id'];
+    }
+
+    /**
+     * Sets group_id
+     *
+     * @param string|null $group_id WhatsApp group ID. Included when the inbound message was sent in a group.
+     *
+     * @return self
+     */
+    public function setGroupId($group_id)
+    {
+        $this->container['group_id'] = $group_id;
 
         return $this;
     }

@@ -63,6 +63,10 @@ class WhatsappPhoneNumber implements ModelInterface, ArrayAccess, \JsonSerializa
         'phone_number' => 'string',
         'display_phone_number' => 'string',
         'waba_id' => 'string',
+        'business_username' => 'string',
+        'business_username_status' => '\YCloud\Client\Model\WhatsappBusinessUsernameStatus',
+        'requested_business_username' => 'string',
+        'business_username_updated_at' => '\DateTime',
         'quality_rating' => '\YCloud\Client\Model\WhatsappPhoneNumberQualityRating',
         'messaging_limit' => 'string',
         'whatsapp_business_manager_messaging_limit' => 'string',
@@ -76,7 +80,8 @@ class WhatsappPhoneNumber implements ModelInterface, ArrayAccess, \JsonSerializa
         'decision' => '\YCloud\Client\Model\WhatsappReviewDecision',
         'requested_verified_name' => 'string',
         'rejection_reason' => 'string',
-        'quality_update_event' => '\YCloud\Client\Model\WhatsappPhoneNumberQualityUpdateEventEnum'
+        'quality_update_event' => '\YCloud\Client\Model\WhatsappPhoneNumberQualityUpdateEventEnum',
+        'update_event' => 'string'
     ];
 
     /**
@@ -91,6 +96,10 @@ class WhatsappPhoneNumber implements ModelInterface, ArrayAccess, \JsonSerializa
         'phone_number' => null,
         'display_phone_number' => null,
         'waba_id' => null,
+        'business_username' => null,
+        'business_username_status' => null,
+        'requested_business_username' => null,
+        'business_username_updated_at' => 'date-time',
         'quality_rating' => null,
         'messaging_limit' => null,
         'whatsapp_business_manager_messaging_limit' => null,
@@ -104,7 +113,8 @@ class WhatsappPhoneNumber implements ModelInterface, ArrayAccess, \JsonSerializa
         'decision' => null,
         'requested_verified_name' => null,
         'rejection_reason' => null,
-        'quality_update_event' => null
+        'quality_update_event' => null,
+        'update_event' => null
     ];
 
     /**
@@ -138,6 +148,10 @@ class WhatsappPhoneNumber implements ModelInterface, ArrayAccess, \JsonSerializa
         'phone_number' => 'phoneNumber',
         'display_phone_number' => 'displayPhoneNumber',
         'waba_id' => 'wabaId',
+        'business_username' => 'businessUsername',
+        'business_username_status' => 'businessUsernameStatus',
+        'requested_business_username' => 'requestedBusinessUsername',
+        'business_username_updated_at' => 'businessUsernameUpdatedAt',
         'quality_rating' => 'qualityRating',
         'messaging_limit' => 'messagingLimit',
         'whatsapp_business_manager_messaging_limit' => 'whatsappBusinessManagerMessagingLimit',
@@ -151,7 +165,8 @@ class WhatsappPhoneNumber implements ModelInterface, ArrayAccess, \JsonSerializa
         'decision' => 'decision',
         'requested_verified_name' => 'requestedVerifiedName',
         'rejection_reason' => 'rejectionReason',
-        'quality_update_event' => 'qualityUpdateEvent'
+        'quality_update_event' => 'qualityUpdateEvent',
+        'update_event' => 'updateEvent'
     ];
 
     /**
@@ -164,6 +179,10 @@ class WhatsappPhoneNumber implements ModelInterface, ArrayAccess, \JsonSerializa
         'phone_number' => 'setPhoneNumber',
         'display_phone_number' => 'setDisplayPhoneNumber',
         'waba_id' => 'setWabaId',
+        'business_username' => 'setBusinessUsername',
+        'business_username_status' => 'setBusinessUsernameStatus',
+        'requested_business_username' => 'setRequestedBusinessUsername',
+        'business_username_updated_at' => 'setBusinessUsernameUpdatedAt',
         'quality_rating' => 'setQualityRating',
         'messaging_limit' => 'setMessagingLimit',
         'whatsapp_business_manager_messaging_limit' => 'setWhatsappBusinessManagerMessagingLimit',
@@ -177,7 +196,8 @@ class WhatsappPhoneNumber implements ModelInterface, ArrayAccess, \JsonSerializa
         'decision' => 'setDecision',
         'requested_verified_name' => 'setRequestedVerifiedName',
         'rejection_reason' => 'setRejectionReason',
-        'quality_update_event' => 'setQualityUpdateEvent'
+        'quality_update_event' => 'setQualityUpdateEvent',
+        'update_event' => 'setUpdateEvent'
     ];
 
     /**
@@ -190,6 +210,10 @@ class WhatsappPhoneNumber implements ModelInterface, ArrayAccess, \JsonSerializa
         'phone_number' => 'getPhoneNumber',
         'display_phone_number' => 'getDisplayPhoneNumber',
         'waba_id' => 'getWabaId',
+        'business_username' => 'getBusinessUsername',
+        'business_username_status' => 'getBusinessUsernameStatus',
+        'requested_business_username' => 'getRequestedBusinessUsername',
+        'business_username_updated_at' => 'getBusinessUsernameUpdatedAt',
         'quality_rating' => 'getQualityRating',
         'messaging_limit' => 'getMessagingLimit',
         'whatsapp_business_manager_messaging_limit' => 'getWhatsappBusinessManagerMessagingLimit',
@@ -203,7 +227,8 @@ class WhatsappPhoneNumber implements ModelInterface, ArrayAccess, \JsonSerializa
         'decision' => 'getDecision',
         'requested_verified_name' => 'getRequestedVerifiedName',
         'rejection_reason' => 'getRejectionReason',
-        'quality_update_event' => 'getQualityUpdateEvent'
+        'quality_update_event' => 'getQualityUpdateEvent',
+        'update_event' => 'getUpdateEvent'
     ];
 
     /**
@@ -247,6 +272,21 @@ class WhatsappPhoneNumber implements ModelInterface, ArrayAccess, \JsonSerializa
         return self::$openAPIModelName;
     }
 
+    public const UPDATE_EVENT_RECONNECTED = 'ACCOUNT_RECONNECTED';
+    public const UPDATE_EVENT_OFFBOARDED = 'ACCOUNT_OFFBOARDED';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getUpdateEventAllowableValues()
+    {
+        return [
+            self::UPDATE_EVENT_RECONNECTED,
+            self::UPDATE_EVENT_OFFBOARDED,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -267,6 +307,10 @@ class WhatsappPhoneNumber implements ModelInterface, ArrayAccess, \JsonSerializa
         $this->container['phone_number'] = $data['phone_number'] ?? null;
         $this->container['display_phone_number'] = $data['display_phone_number'] ?? null;
         $this->container['waba_id'] = $data['waba_id'] ?? null;
+        $this->container['business_username'] = $data['business_username'] ?? null;
+        $this->container['business_username_status'] = $data['business_username_status'] ?? null;
+        $this->container['requested_business_username'] = $data['requested_business_username'] ?? null;
+        $this->container['business_username_updated_at'] = $data['business_username_updated_at'] ?? null;
         $this->container['quality_rating'] = $data['quality_rating'] ?? null;
         $this->container['messaging_limit'] = $data['messaging_limit'] ?? null;
         $this->container['whatsapp_business_manager_messaging_limit'] = $data['whatsapp_business_manager_messaging_limit'] ?? null;
@@ -281,6 +325,7 @@ class WhatsappPhoneNumber implements ModelInterface, ArrayAccess, \JsonSerializa
         $this->container['requested_verified_name'] = $data['requested_verified_name'] ?? null;
         $this->container['rejection_reason'] = $data['rejection_reason'] ?? null;
         $this->container['quality_update_event'] = $data['quality_update_event'] ?? null;
+        $this->container['update_event'] = $data['update_event'] ?? null;
     }
 
     /**
@@ -291,6 +336,15 @@ class WhatsappPhoneNumber implements ModelInterface, ArrayAccess, \JsonSerializa
     public function listInvalidProperties()
     {
         $invalidProperties = [];
+
+        $allowedValues = $this->getUpdateEventAllowableValues();
+        if (!is_null($this->container['update_event']) && !in_array($this->container['update_event'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'update_event', must be one of '%s'",
+                $this->container['update_event'],
+                implode("', '", $allowedValues)
+            );
+        }
 
         return $invalidProperties;
     }
@@ -399,6 +453,102 @@ class WhatsappPhoneNumber implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setWabaId($waba_id)
     {
         $this->container['waba_id'] = $waba_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets business_username
+     *
+     * @return string|null
+     */
+    public function getBusinessUsername()
+    {
+        return $this->container['business_username'];
+    }
+
+    /**
+     * Sets business_username
+     *
+     * @param string|null $business_username Active Business Username for this phone number. The value is a plain username without `@`.
+     *
+     * @return self
+     */
+    public function setBusinessUsername($business_username)
+    {
+        $this->container['business_username'] = $business_username;
+
+        return $this;
+    }
+
+    /**
+     * Gets business_username_status
+     *
+     * @return \YCloud\Client\Model\WhatsappBusinessUsernameStatus|null
+     */
+    public function getBusinessUsernameStatus()
+    {
+        return $this->container['business_username_status'];
+    }
+
+    /**
+     * Sets business_username_status
+     *
+     * @param \YCloud\Client\Model\WhatsappBusinessUsernameStatus|null $business_username_status business_username_status
+     *
+     * @return self
+     */
+    public function setBusinessUsernameStatus($business_username_status)
+    {
+        $this->container['business_username_status'] = $business_username_status;
+
+        return $this;
+    }
+
+    /**
+     * Gets requested_business_username
+     *
+     * @return string|null
+     */
+    public function getRequestedBusinessUsername()
+    {
+        return $this->container['requested_business_username'];
+    }
+
+    /**
+     * Sets requested_business_username
+     *
+     * @param string|null $requested_business_username Last requested Business Username that is still under review. This value can coexist with an active `businessUsername` while the new request is pending.
+     *
+     * @return self
+     */
+    public function setRequestedBusinessUsername($requested_business_username)
+    {
+        $this->container['requested_business_username'] = $requested_business_username;
+
+        return $this;
+    }
+
+    /**
+     * Gets business_username_updated_at
+     *
+     * @return \DateTime|null
+     */
+    public function getBusinessUsernameUpdatedAt()
+    {
+        return $this->container['business_username_updated_at'];
+    }
+
+    /**
+     * Sets business_username_updated_at
+     *
+     * @param \DateTime|null $business_username_updated_at The time when the Business Username state was last updated.
+     *
+     * @return self
+     */
+    public function setBusinessUsernameUpdatedAt($business_username_updated_at)
+    {
+        $this->container['business_username_updated_at'] = $business_username_updated_at;
 
         return $this;
     }
@@ -735,6 +885,40 @@ class WhatsappPhoneNumber implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setQualityUpdateEvent($quality_update_event)
     {
         $this->container['quality_update_event'] = $quality_update_event;
+
+        return $this;
+    }
+
+    /**
+     * Gets update_event
+     *
+     * @return string|null
+     */
+    public function getUpdateEvent()
+    {
+        return $this->container['update_event'];
+    }
+
+    /**
+     * Sets update_event
+     *
+     * @param string|null $update_event Account update event that triggered this phone number status change.
+     *
+     * @return self
+     */
+    public function setUpdateEvent($update_event)
+    {
+        $allowedValues = $this->getUpdateEventAllowableValues();
+        if (!is_null($update_event) && !in_array($update_event, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'update_event', must be one of '%s'",
+                    $update_event,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['update_event'] = $update_event;
 
         return $this;
     }

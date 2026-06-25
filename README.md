@@ -120,19 +120,35 @@ Class | Method | HTTP request | Description
 *WhatsappFlowsApi* | [**retrieve**](docs/Api/WhatsappFlowsApi.md#retrieve) | **GET** /whatsapp/flows/{flowId} | Retrieve a flow
 *WhatsappFlowsApi* | [**updateMetadata**](docs/Api/WhatsappFlowsApi.md#updatemetadata) | **PATCH** /whatsapp/flows/{flowId}/metadata | Update flow metadata
 *WhatsappFlowsApi* | [**updateStructure**](docs/Api/WhatsappFlowsApi.md#updatestructure) | **PATCH** /whatsapp/flows/{flowId}/assets | Update flow structure
+*WhatsappGroupsApi* | [**approveJoinRequests**](docs/Api/WhatsappGroupsApi.md#approvejoinrequests) | **POST** /whatsapp/{businessPhoneNumber}/groups/{groupId}/joinRequests/approve | Approve group join requests
+*WhatsappGroupsApi* | [**create**](docs/Api/WhatsappGroupsApi.md#create) | **POST** /whatsapp/{businessPhoneNumber}/groups | Create a group
+*WhatsappGroupsApi* | [**delete**](docs/Api/WhatsappGroupsApi.md#delete) | **DELETE** /whatsapp/{businessPhoneNumber}/groups/{groupId} | Delete a group
+*WhatsappGroupsApi* | [**list**](docs/Api/WhatsappGroupsApi.md#list) | **GET** /whatsapp/{businessPhoneNumber}/groups | List groups
+*WhatsappGroupsApi* | [**listJoinRequests**](docs/Api/WhatsappGroupsApi.md#listjoinrequests) | **GET** /whatsapp/{businessPhoneNumber}/groups/{groupId}/joinRequests | List group join requests
+*WhatsappGroupsApi* | [**rejectJoinRequests**](docs/Api/WhatsappGroupsApi.md#rejectjoinrequests) | **POST** /whatsapp/{businessPhoneNumber}/groups/{groupId}/joinRequests/reject | Reject group join requests
+*WhatsappGroupsApi* | [**removeParticipants**](docs/Api/WhatsappGroupsApi.md#removeparticipants) | **POST** /whatsapp/groups/{groupId}/participants/remove | Remove group participants
+*WhatsappGroupsApi* | [**resetInviteLink**](docs/Api/WhatsappGroupsApi.md#resetinvitelink) | **POST** /whatsapp/{businessPhoneNumber}/groups/{groupId}/inviteLink/reset | Reset a group invite link
+*WhatsappGroupsApi* | [**retrieve**](docs/Api/WhatsappGroupsApi.md#retrieve) | **GET** /whatsapp/{businessPhoneNumber}/groups/{groupId} | Retrieve a group
+*WhatsappGroupsApi* | [**retrieveInviteLink**](docs/Api/WhatsappGroupsApi.md#retrieveinvitelink) | **GET** /whatsapp/{businessPhoneNumber}/groups/{groupId}/inviteLink | Retrieve a group invite link
+*WhatsappGroupsApi* | [**sendInviteLinkMessage**](docs/Api/WhatsappGroupsApi.md#sendinvitelinkmessage) | **POST** /whatsapp/{businessPhoneNumber}/groups/inviteLink/messages | Send a group invite link message
+*WhatsappGroupsApi* | [**updateSettings**](docs/Api/WhatsappGroupsApi.md#updatesettings) | **PATCH** /whatsapp/{businessPhoneNumber}/groups/{groupId}/settings | Update group settings
 *WhatsappInboundMessagesApi* | [**markAsRead**](docs/Api/WhatsappInboundMessagesApi.md#markasread) | **POST** /whatsapp/inboundMessages/{id}/markAsRead | Mark message as read
 *WhatsappInboundMessagesApi* | [**typingIndicator**](docs/Api/WhatsappInboundMessagesApi.md#typingindicator) | **POST** /whatsapp/inboundMessages/{id}/typingIndicator | Mark message as read and display a typing indicator
 *WhatsappMediaApi* | [**upload**](docs/Api/WhatsappMediaApi.md#upload) | **POST** /whatsapp/media/{phoneNumber}/upload | Upload media
 *WhatsappMessagesApi* | [**retrieve**](docs/Api/WhatsappMessagesApi.md#retrieve) | **GET** /whatsapp/messages/{id} | Retrieve a message
 *WhatsappMessagesApi* | [**send**](docs/Api/WhatsappMessagesApi.md#send) | **POST** /whatsapp/messages | Enqueue a message
 *WhatsappMessagesApi* | [**sendDirectly**](docs/Api/WhatsappMessagesApi.md#senddirectly) | **POST** /whatsapp/messages/sendDirectly | Send a message directly
+*WhatsappPhoneNumbersApi* | [**deleteBusinessUsername**](docs/Api/WhatsappPhoneNumbersApi.md#deletebusinessusername) | **DELETE** /whatsapp/phoneNumbers/{wabaId}/{phoneNumber}/businessUsername | Delete a phone number business username
 *WhatsappPhoneNumbersApi* | [**list**](docs/Api/WhatsappPhoneNumbersApi.md#list) | **GET** /whatsapp/phoneNumbers | List phone numbers
 *WhatsappPhoneNumbersApi* | [**register**](docs/Api/WhatsappPhoneNumbersApi.md#register) | **POST** /whatsapp/phoneNumbers/{wabaId}/{phoneNumber}/register | Register a phone number
 *WhatsappPhoneNumbersApi* | [**retrieve**](docs/Api/WhatsappPhoneNumbersApi.md#retrieve) | **GET** /whatsapp/phoneNumbers/{wabaId}/{phoneNumber} | Retrieve a phone number
+*WhatsappPhoneNumbersApi* | [**retrieveBusinessUsername**](docs/Api/WhatsappPhoneNumbersApi.md#retrievebusinessusername) | **GET** /whatsapp/phoneNumbers/{wabaId}/{phoneNumber}/businessUsername | Retrieve a phone number business username
+*WhatsappPhoneNumbersApi* | [**retrieveBusinessUsernameSuggestions**](docs/Api/WhatsappPhoneNumbersApi.md#retrievebusinessusernamesuggestions) | **GET** /whatsapp/phoneNumbers/{wabaId}/{phoneNumber}/businessUsername/suggestions | Retrieve phone number business username suggestions
 *WhatsappPhoneNumbersApi* | [**retrieveCommerceSettings**](docs/Api/WhatsappPhoneNumbersApi.md#retrievecommercesettings) | **GET** /whatsapp/phoneNumbers/{wabaId}/{phoneNumber}/whatsappCommerceSettings | Retrieve commerce settings
 *WhatsappPhoneNumbersApi* | [**retrieveProfile**](docs/Api/WhatsappPhoneNumbersApi.md#retrieveprofile) | **GET** /whatsapp/phoneNumbers/{wabaId}/{phoneNumber}/profile | Retrieve a phone number profile
 *WhatsappPhoneNumbersApi* | [**retrieveSettings**](docs/Api/WhatsappPhoneNumbersApi.md#retrievesettings) | **GET** /whatsapp/phoneNumbers/{wabaId}/{phoneNumber}/settings | Retrieve phone number settings
 *WhatsappPhoneNumbersApi* | [**saveSettings**](docs/Api/WhatsappPhoneNumbersApi.md#savesettings) | **POST** /whatsapp/phoneNumbers/{wabaId}/{phoneNumber}/settings | Save phone number settings
+*WhatsappPhoneNumbersApi* | [**updateBusinessUsername**](docs/Api/WhatsappPhoneNumbersApi.md#updatebusinessusername) | **PATCH** /whatsapp/phoneNumbers/{wabaId}/{phoneNumber}/businessUsername | Update a phone number business username
 *WhatsappPhoneNumbersApi* | [**updateCommerceSettings**](docs/Api/WhatsappPhoneNumbersApi.md#updatecommercesettings) | **PATCH** /whatsapp/phoneNumbers/{wabaId}/{phoneNumber}/whatsappCommerceSettings | Update commerce settings
 *WhatsappPhoneNumbersApi* | [**updateDisplayName**](docs/Api/WhatsappPhoneNumbersApi.md#updatedisplayname) | **PATCH** /whatsapp/phoneNumbers/{wabaId}/{phoneNumber}/displayName | Update a phone number display name
 *WhatsappPhoneNumbersApi* | [**updateProfile**](docs/Api/WhatsappPhoneNumbersApi.md#updateprofile) | **PATCH** /whatsapp/phoneNumbers/{wabaId}/{phoneNumber}/profile | Update a phone number profile
@@ -212,6 +228,11 @@ Class | Method | HTTP request | Description
 - [WhatsappBusinessAccountRestrictionInfo](docs/Model/WhatsappBusinessAccountRestrictionInfo.md)
 - [WhatsappBusinessAccountReviewStatus](docs/Model/WhatsappBusinessAccountReviewStatus.md)
 - [WhatsappBusinessAccountUpdateEventEnum](docs/Model/WhatsappBusinessAccountUpdateEventEnum.md)
+- [WhatsappBusinessUsername](docs/Model/WhatsappBusinessUsername.md)
+- [WhatsappBusinessUsernameDeleteResult](docs/Model/WhatsappBusinessUsernameDeleteResult.md)
+- [WhatsappBusinessUsernameStatus](docs/Model/WhatsappBusinessUsernameStatus.md)
+- [WhatsappBusinessUsernameSuggestions](docs/Model/WhatsappBusinessUsernameSuggestions.md)
+- [WhatsappBusinessUsernameUpdateRequest](docs/Model/WhatsappBusinessUsernameUpdateRequest.md)
 - [WhatsappCallingConnectRequest](docs/Model/WhatsappCallingConnectRequest.md)
 - [WhatsappCallingPreAcceptRequest](docs/Model/WhatsappCallingPreAcceptRequest.md)
 - [WhatsappCallingRequest](docs/Model/WhatsappCallingRequest.md)
@@ -235,6 +256,36 @@ Class | Method | HTTP request | Description
 - [WhatsappFlowValidationError](docs/Model/WhatsappFlowValidationError.md)
 - [WhatsappFlowValidationErrorPointersInner](docs/Model/WhatsappFlowValidationErrorPointersInner.md)
 - [WhatsappFlowWhatsappBusinessAccount](docs/Model/WhatsappFlowWhatsappBusinessAccount.md)
+- [WhatsappGroup](docs/Model/WhatsappGroup.md)
+- [WhatsappGroupAsyncResponse](docs/Model/WhatsappGroupAsyncResponse.md)
+- [WhatsappGroupCreateRequest](docs/Model/WhatsappGroupCreateRequest.md)
+- [WhatsappGroupCustomerProfile](docs/Model/WhatsappGroupCustomerProfile.md)
+- [WhatsappGroupFailedJoinRequest](docs/Model/WhatsappGroupFailedJoinRequest.md)
+- [WhatsappGroupInviteLink](docs/Model/WhatsappGroupInviteLink.md)
+- [WhatsappGroupInviteLinkMessageRequest](docs/Model/WhatsappGroupInviteLinkMessageRequest.md)
+- [WhatsappGroupJoinApprovalMode](docs/Model/WhatsappGroupJoinApprovalMode.md)
+- [WhatsappGroupJoinRequest](docs/Model/WhatsappGroupJoinRequest.md)
+- [WhatsappGroupJoinRequestActionRequest](docs/Model/WhatsappGroupJoinRequestActionRequest.md)
+- [WhatsappGroupJoinRequestActionResponse](docs/Model/WhatsappGroupJoinRequestActionResponse.md)
+- [WhatsappGroupJoinRequestListResponse](docs/Model/WhatsappGroupJoinRequestListResponse.md)
+- [WhatsappGroupListItem](docs/Model/WhatsappGroupListItem.md)
+- [WhatsappGroupListResponse](docs/Model/WhatsappGroupListResponse.md)
+- [WhatsappGroupPaging](docs/Model/WhatsappGroupPaging.md)
+- [WhatsappGroupParticipant](docs/Model/WhatsappGroupParticipant.md)
+- [WhatsappGroupRemoveParticipant](docs/Model/WhatsappGroupRemoveParticipant.md)
+- [WhatsappGroupRemoveParticipantsRequest](docs/Model/WhatsappGroupRemoveParticipantsRequest.md)
+- [WhatsappGroupUpdateSettingsRequest](docs/Model/WhatsappGroupUpdateSettingsRequest.md)
+- [WhatsappGroupWebhook](docs/Model/WhatsappGroupWebhook.md)
+- [WhatsappGroupWebhookConversation](docs/Model/WhatsappGroupWebhookConversation.md)
+- [WhatsappGroupWebhookConversationOrigin](docs/Model/WhatsappGroupWebhookConversationOrigin.md)
+- [WhatsappGroupWebhookField](docs/Model/WhatsappGroupWebhookField.md)
+- [WhatsappGroupWebhookMessageStatus](docs/Model/WhatsappGroupWebhookMessageStatus.md)
+- [WhatsappGroupWebhookParticipant](docs/Model/WhatsappGroupWebhookParticipant.md)
+- [WhatsappGroupWebhookPricing](docs/Model/WhatsappGroupWebhookPricing.md)
+- [WhatsappGroupWebhookSetting](docs/Model/WhatsappGroupWebhookSetting.md)
+- [WhatsappGroupWebhookStatus](docs/Model/WhatsappGroupWebhookStatus.md)
+- [WhatsappGroupWebhookStatusContact](docs/Model/WhatsappGroupWebhookStatusContact.md)
+- [WhatsappGroupWebhookType](docs/Model/WhatsappGroupWebhookType.md)
 - [WhatsappInboundMessage](docs/Model/WhatsappInboundMessage.md)
 - [WhatsappInboundMessageButton](docs/Model/WhatsappInboundMessageButton.md)
 - [WhatsappInboundMessageContext](docs/Model/WhatsappInboundMessageContext.md)

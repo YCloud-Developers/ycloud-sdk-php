@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **whatsapp_business_account** | [**\YCloud\Client\Model\WhatsappBusinessAccount**](WhatsappBusinessAccount.md) |  | [optional]
 **whatsapp_inbound_message** | [**\YCloud\Client\Model\WhatsappInboundMessage**](WhatsappInboundMessage.md) |  | [optional]
 **whatsapp_message** | [**\YCloud\Client\Model\WhatsappMessage**](WhatsappMessage.md) |  | [optional]
+**whatsapp_group** | [**\YCloud\Client\Model\WhatsappGroupWebhook**](WhatsappGroupWebhook.md) |  | [optional]
 **whatsapp_phone_number** | [**\YCloud\Client\Model\WhatsappPhoneNumber**](WhatsappPhoneNumber.md) |  | [optional]
 **whatsapp_payment** | [**\YCloud\Client\Model\WhatsappPayment**](WhatsappPayment.md) |  | [optional]
 **whatsapp_template** | [**\YCloud\Client\Model\WhatsappTemplate**](WhatsappTemplate.md) |  | [optional]
