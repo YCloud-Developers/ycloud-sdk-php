@@ -64,6 +64,12 @@ class WhatsappMessage implements ModelInterface, ArrayAccess, \JsonSerializable
         'waba_id' => 'string',
         'from' => 'string',
         'to' => 'string',
+        'recipient' => 'string',
+        'recipient_user_id' => 'string',
+        'to_user_id' => 'string',
+        'parent_recipient_user_id' => 'string',
+        'to_parent_user_id' => 'string',
+        'customer_profile' => '\YCloud\Client\Model\WhatsappProfile',
         'conversation' => '\YCloud\Client\Model\WhatsappConversation',
         'type' => '\YCloud\Client\Model\WhatsappMessageType',
         'template' => '\YCloud\Client\Model\WhatsappMessageTemplate',
@@ -111,6 +117,12 @@ class WhatsappMessage implements ModelInterface, ArrayAccess, \JsonSerializable
         'waba_id' => null,
         'from' => null,
         'to' => null,
+        'recipient' => null,
+        'recipient_user_id' => null,
+        'to_user_id' => null,
+        'parent_recipient_user_id' => null,
+        'to_parent_user_id' => null,
+        'customer_profile' => null,
         'conversation' => null,
         'type' => null,
         'template' => null,
@@ -177,6 +189,12 @@ class WhatsappMessage implements ModelInterface, ArrayAccess, \JsonSerializable
         'waba_id' => 'wabaId',
         'from' => 'from',
         'to' => 'to',
+        'recipient' => 'recipient',
+        'recipient_user_id' => 'recipientUserId',
+        'to_user_id' => 'toUserId',
+        'parent_recipient_user_id' => 'parentRecipientUserId',
+        'to_parent_user_id' => 'toParentUserId',
+        'customer_profile' => 'customerProfile',
         'conversation' => 'conversation',
         'type' => 'type',
         'template' => 'template',
@@ -222,6 +240,12 @@ class WhatsappMessage implements ModelInterface, ArrayAccess, \JsonSerializable
         'waba_id' => 'setWabaId',
         'from' => 'setFrom',
         'to' => 'setTo',
+        'recipient' => 'setRecipient',
+        'recipient_user_id' => 'setRecipientUserId',
+        'to_user_id' => 'setToUserId',
+        'parent_recipient_user_id' => 'setParentRecipientUserId',
+        'to_parent_user_id' => 'setToParentUserId',
+        'customer_profile' => 'setCustomerProfile',
         'conversation' => 'setConversation',
         'type' => 'setType',
         'template' => 'setTemplate',
@@ -267,6 +291,12 @@ class WhatsappMessage implements ModelInterface, ArrayAccess, \JsonSerializable
         'waba_id' => 'getWabaId',
         'from' => 'getFrom',
         'to' => 'getTo',
+        'recipient' => 'getRecipient',
+        'recipient_user_id' => 'getRecipientUserId',
+        'to_user_id' => 'getToUserId',
+        'parent_recipient_user_id' => 'getParentRecipientUserId',
+        'to_parent_user_id' => 'getToParentUserId',
+        'customer_profile' => 'getCustomerProfile',
         'conversation' => 'getConversation',
         'type' => 'getType',
         'template' => 'getTemplate',
@@ -363,6 +393,12 @@ class WhatsappMessage implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['waba_id'] = $data['waba_id'] ?? null;
         $this->container['from'] = $data['from'] ?? null;
         $this->container['to'] = $data['to'] ?? null;
+        $this->container['recipient'] = $data['recipient'] ?? null;
+        $this->container['recipient_user_id'] = $data['recipient_user_id'] ?? null;
+        $this->container['to_user_id'] = $data['to_user_id'] ?? null;
+        $this->container['parent_recipient_user_id'] = $data['parent_recipient_user_id'] ?? null;
+        $this->container['to_parent_user_id'] = $data['to_parent_user_id'] ?? null;
+        $this->container['customer_profile'] = $data['customer_profile'] ?? null;
         $this->container['conversation'] = $data['conversation'] ?? null;
         $this->container['type'] = $data['type'] ?? null;
         $this->container['template'] = $data['template'] ?? null;
@@ -414,9 +450,6 @@ class WhatsappMessage implements ModelInterface, ArrayAccess, \JsonSerializable
         }
         if ($this->container['from'] === null) {
             $invalidProperties[] = "'from' can't be null";
-        }
-        if ($this->container['to'] === null) {
-            $invalidProperties[] = "'to' can't be null";
         }
         return $invalidProperties;
     }
@@ -532,7 +565,7 @@ class WhatsappMessage implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets to
      *
-     * @return string
+     * @return string|null
      */
     public function getTo()
     {
@@ -542,13 +575,157 @@ class WhatsappMessage implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets to
      *
-     * @param string $to The recipient's phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format.
+     * @param string|null $to The recipient's phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format.
      *
      * @return self
      */
     public function setTo($to)
     {
         $this->container['to'] = $to;
+
+        return $this;
+    }
+
+    /**
+     * Gets recipient
+     *
+     * @return string|null
+     */
+    public function getRecipient()
+    {
+        return $this->container['recipient'];
+    }
+
+    /**
+     * Sets recipient
+     *
+     * @param string|null $recipient The recipient value submitted in the request when a BSUID or parent BSUID was used.
+     *
+     * @return self
+     */
+    public function setRecipient($recipient)
+    {
+        $this->container['recipient'] = $recipient;
+
+        return $this;
+    }
+
+    /**
+     * Gets recipient_user_id
+     *
+     * @return string|null
+     */
+    public function getRecipientUserId()
+    {
+        return $this->container['recipient_user_id'];
+    }
+
+    /**
+     * Sets recipient_user_id
+     *
+     * @param string|null $recipient_user_id The recipient's WhatsApp Business-scoped user ID (BSUID).
+     *
+     * @return self
+     */
+    public function setRecipientUserId($recipient_user_id)
+    {
+        $this->container['recipient_user_id'] = $recipient_user_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets to_user_id
+     *
+     * @return string|null
+     */
+    public function getToUserId()
+    {
+        return $this->container['to_user_id'];
+    }
+
+    /**
+     * Sets to_user_id
+     *
+     * @param string|null $to_user_id Alias of `recipientUserId` kept for compatibility.
+     *
+     * @return self
+     */
+    public function setToUserId($to_user_id)
+    {
+        $this->container['to_user_id'] = $to_user_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets parent_recipient_user_id
+     *
+     * @return string|null
+     */
+    public function getParentRecipientUserId()
+    {
+        return $this->container['parent_recipient_user_id'];
+    }
+
+    /**
+     * Sets parent_recipient_user_id
+     *
+     * @param string|null $parent_recipient_user_id The recipient's parent WhatsApp Business-scoped user ID.
+     *
+     * @return self
+     */
+    public function setParentRecipientUserId($parent_recipient_user_id)
+    {
+        $this->container['parent_recipient_user_id'] = $parent_recipient_user_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets to_parent_user_id
+     *
+     * @return string|null
+     */
+    public function getToParentUserId()
+    {
+        return $this->container['to_parent_user_id'];
+    }
+
+    /**
+     * Sets to_parent_user_id
+     *
+     * @param string|null $to_parent_user_id Alias of `parentRecipientUserId` kept for compatibility.
+     *
+     * @return self
+     */
+    public function setToParentUserId($to_parent_user_id)
+    {
+        $this->container['to_parent_user_id'] = $to_parent_user_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets customer_profile
+     *
+     * @return \YCloud\Client\Model\WhatsappProfile|null
+     */
+    public function getCustomerProfile()
+    {
+        return $this->container['customer_profile'];
+    }
+
+    /**
+     * Sets customer_profile
+     *
+     * @param \YCloud\Client\Model\WhatsappProfile|null $customer_profile customer_profile
+     *
+     * @return self
+     */
+    public function setCustomerProfile($customer_profile)
+    {
+        $this->container['customer_profile'] = $customer_profile;
 
         return $this;
     }

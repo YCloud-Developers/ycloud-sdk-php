@@ -36,6 +36,7 @@ use \YCloud\Client\ObjectSerializer;
  * WhatsappGroupInviteLinkMessageRequest Class Doc Comment
  *
  * @category Class
+ * @description Provide exactly one of &#x60;to&#x60; or &#x60;recipient&#x60;. If both are provided, &#x60;to&#x60; takes precedence and &#x60;recipient&#x60; is ignored.
  * @package  YCloud\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -59,6 +60,7 @@ class WhatsappGroupInviteLinkMessageRequest implements ModelInterface, ArrayAcce
       */
     protected static $openAPITypes = [
         'to' => 'string',
+        'recipient' => 'string',
         'template_name' => 'string',
         'language_code' => 'string',
         'parameters' => '\YCloud\Client\Model\WhatsappMessageTemplateComponentParameter[]'
@@ -73,6 +75,7 @@ class WhatsappGroupInviteLinkMessageRequest implements ModelInterface, ArrayAcce
       */
     protected static $openAPIFormats = [
         'to' => null,
+        'recipient' => null,
         'template_name' => null,
         'language_code' => null,
         'parameters' => null
@@ -106,6 +109,7 @@ class WhatsappGroupInviteLinkMessageRequest implements ModelInterface, ArrayAcce
      */
     protected static $attributeMap = [
         'to' => 'to',
+        'recipient' => 'recipient',
         'template_name' => 'templateName',
         'language_code' => 'languageCode',
         'parameters' => 'parameters'
@@ -118,6 +122,7 @@ class WhatsappGroupInviteLinkMessageRequest implements ModelInterface, ArrayAcce
      */
     protected static $setters = [
         'to' => 'setTo',
+        'recipient' => 'setRecipient',
         'template_name' => 'setTemplateName',
         'language_code' => 'setLanguageCode',
         'parameters' => 'setParameters'
@@ -130,6 +135,7 @@ class WhatsappGroupInviteLinkMessageRequest implements ModelInterface, ArrayAcce
      */
     protected static $getters = [
         'to' => 'getTo',
+        'recipient' => 'getRecipient',
         'template_name' => 'getTemplateName',
         'language_code' => 'getLanguageCode',
         'parameters' => 'getParameters'
@@ -193,6 +199,7 @@ class WhatsappGroupInviteLinkMessageRequest implements ModelInterface, ArrayAcce
     public function __construct(array $data = null)
     {
         $this->container['to'] = $data['to'] ?? null;
+        $this->container['recipient'] = $data['recipient'] ?? null;
         $this->container['template_name'] = $data['template_name'] ?? null;
         $this->container['language_code'] = $data['language_code'] ?? null;
         $this->container['parameters'] = $data['parameters'] ?? null;
@@ -207,9 +214,6 @@ class WhatsappGroupInviteLinkMessageRequest implements ModelInterface, ArrayAcce
     {
         $invalidProperties = [];
 
-        if ($this->container['to'] === null) {
-            $invalidProperties[] = "'to' can't be null";
-        }
         if ($this->container['template_name'] === null) {
             $invalidProperties[] = "'template_name' can't be null";
         }
@@ -237,7 +241,7 @@ class WhatsappGroupInviteLinkMessageRequest implements ModelInterface, ArrayAcce
     /**
      * Gets to
      *
-     * @return string
+     * @return string|null
      */
     public function getTo()
     {
@@ -247,13 +251,37 @@ class WhatsappGroupInviteLinkMessageRequest implements ModelInterface, ArrayAcce
     /**
      * Sets to
      *
-     * @param string $to The recipient's phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format.
+     * @param string|null $to The recipient's phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format. Required when `recipient` is not provided.
      *
      * @return self
      */
     public function setTo($to)
     {
         $this->container['to'] = $to;
+
+        return $this;
+    }
+
+    /**
+     * Gets recipient
+     *
+     * @return string|null
+     */
+    public function getRecipient()
+    {
+        return $this->container['recipient'];
+    }
+
+    /**
+     * Sets recipient
+     *
+     * @param string|null $recipient The recipient's WhatsApp Business-scoped user ID (BSUID) or parent BSUID. Required when `to` is not provided.
+     *
+     * @return self
+     */
+    public function setRecipient($recipient)
+    {
+        $this->container['recipient'] = $recipient;
 
         return $this;
     }

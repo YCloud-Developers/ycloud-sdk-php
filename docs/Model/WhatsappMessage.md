@@ -8,7 +8,13 @@ Name | Type | Description | Notes
 **wamid** | **string** | The original message ID on WhatsApp&#39;s platform. | [optional]
 **waba_id** | **string** | WhatsApp Business Account ID. |
 **from** | **string** | The sender&#39;s phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format. |
-**to** | **string** | The recipient&#39;s phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format. |
+**to** | **string** | The recipient&#39;s phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format. | [optional]
+**recipient** | **string** | The recipient value submitted in the request when a BSUID or parent BSUID was used. | [optional]
+**recipient_user_id** | **string** | The recipient&#39;s WhatsApp Business-scoped user ID (BSUID). | [optional]
+**to_user_id** | **string** | Alias of &#x60;recipientUserId&#x60; kept for compatibility. | [optional]
+**parent_recipient_user_id** | **string** | The recipient&#39;s parent WhatsApp Business-scoped user ID. | [optional]
+**to_parent_user_id** | **string** | Alias of &#x60;parentRecipientUserId&#x60; kept for compatibility. | [optional]
+**customer_profile** | [**\YCloud\Client\Model\WhatsappProfile**](WhatsappProfile.md) |  | [optional]
 **conversation** | [**\YCloud\Client\Model\WhatsappConversation**](WhatsappConversation.md) |  | [optional]
 **type** | [**\YCloud\Client\Model\WhatsappMessageType**](WhatsappMessageType.md) |  | [optional]
 **template** | [**\YCloud\Client\Model\WhatsappMessageTemplate**](WhatsappMessageTemplate.md) |  | [optional]

@@ -63,9 +63,10 @@ class WhatsappInboundMessage implements ModelInterface, ArrayAccess, \JsonSerial
         'wamid' => 'string',
         'waba_id' => 'string',
         'from' => 'string',
+        'from_user_id' => 'string',
+        'from_parent_user_id' => 'string',
         'customer_profile' => '\YCloud\Client\Model\WhatsappProfile',
         'to' => 'string',
-        'group_id' => 'string',
         'send_time' => '\DateTime',
         'type' => '\YCloud\Client\Model\WhatsappInboundMessageType',
         'text' => '\YCloud\Client\Model\WhatsappInboundMessageText',
@@ -98,9 +99,10 @@ class WhatsappInboundMessage implements ModelInterface, ArrayAccess, \JsonSerial
         'wamid' => null,
         'waba_id' => null,
         'from' => null,
+        'from_user_id' => null,
+        'from_parent_user_id' => null,
         'customer_profile' => null,
         'to' => null,
-        'group_id' => null,
         'send_time' => 'date-time',
         'type' => null,
         'text' => null,
@@ -152,9 +154,10 @@ class WhatsappInboundMessage implements ModelInterface, ArrayAccess, \JsonSerial
         'wamid' => 'wamid',
         'waba_id' => 'wabaId',
         'from' => 'from',
+        'from_user_id' => 'fromUserId',
+        'from_parent_user_id' => 'fromParentUserId',
         'customer_profile' => 'customerProfile',
         'to' => 'to',
-        'group_id' => 'groupId',
         'send_time' => 'sendTime',
         'type' => 'type',
         'text' => 'text',
@@ -185,9 +188,10 @@ class WhatsappInboundMessage implements ModelInterface, ArrayAccess, \JsonSerial
         'wamid' => 'setWamid',
         'waba_id' => 'setWabaId',
         'from' => 'setFrom',
+        'from_user_id' => 'setFromUserId',
+        'from_parent_user_id' => 'setFromParentUserId',
         'customer_profile' => 'setCustomerProfile',
         'to' => 'setTo',
-        'group_id' => 'setGroupId',
         'send_time' => 'setSendTime',
         'type' => 'setType',
         'text' => 'setText',
@@ -218,9 +222,10 @@ class WhatsappInboundMessage implements ModelInterface, ArrayAccess, \JsonSerial
         'wamid' => 'getWamid',
         'waba_id' => 'getWabaId',
         'from' => 'getFrom',
+        'from_user_id' => 'getFromUserId',
+        'from_parent_user_id' => 'getFromParentUserId',
         'customer_profile' => 'getCustomerProfile',
         'to' => 'getTo',
-        'group_id' => 'getGroupId',
         'send_time' => 'getSendTime',
         'type' => 'getType',
         'text' => 'getText',
@@ -302,9 +307,10 @@ class WhatsappInboundMessage implements ModelInterface, ArrayAccess, \JsonSerial
         $this->container['wamid'] = $data['wamid'] ?? null;
         $this->container['waba_id'] = $data['waba_id'] ?? null;
         $this->container['from'] = $data['from'] ?? null;
+        $this->container['from_user_id'] = $data['from_user_id'] ?? null;
+        $this->container['from_parent_user_id'] = $data['from_parent_user_id'] ?? null;
         $this->container['customer_profile'] = $data['customer_profile'] ?? null;
         $this->container['to'] = $data['to'] ?? null;
-        $this->container['group_id'] = $data['group_id'] ?? null;
         $this->container['send_time'] = $data['send_time'] ?? null;
         $this->container['type'] = $data['type'] ?? null;
         $this->container['text'] = $data['text'] ?? null;
@@ -449,6 +455,54 @@ class WhatsappInboundMessage implements ModelInterface, ArrayAccess, \JsonSerial
     }
 
     /**
+     * Gets from_user_id
+     *
+     * @return string|null
+     */
+    public function getFromUserId()
+    {
+        return $this->container['from_user_id'];
+    }
+
+    /**
+     * Sets from_user_id
+     *
+     * @param string|null $from_user_id The customer's WhatsApp Business-scoped user ID (BSUID).
+     *
+     * @return self
+     */
+    public function setFromUserId($from_user_id)
+    {
+        $this->container['from_user_id'] = $from_user_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets from_parent_user_id
+     *
+     * @return string|null
+     */
+    public function getFromParentUserId()
+    {
+        return $this->container['from_parent_user_id'];
+    }
+
+    /**
+     * Sets from_parent_user_id
+     *
+     * @param string|null $from_parent_user_id The customer's parent WhatsApp Business-scoped user ID.
+     *
+     * @return self
+     */
+    public function setFromParentUserId($from_parent_user_id)
+    {
+        $this->container['from_parent_user_id'] = $from_parent_user_id;
+
+        return $this;
+    }
+
+    /**
      * Gets customer_profile
      *
      * @return \YCloud\Client\Model\WhatsappProfile|null
@@ -492,30 +546,6 @@ class WhatsappInboundMessage implements ModelInterface, ArrayAccess, \JsonSerial
     public function setTo($to)
     {
         $this->container['to'] = $to;
-
-        return $this;
-    }
-
-    /**
-     * Gets group_id
-     *
-     * @return string|null
-     */
-    public function getGroupId()
-    {
-        return $this->container['group_id'];
-    }
-
-    /**
-     * Sets group_id
-     *
-     * @param string|null $group_id WhatsApp group ID. Included when the inbound message was sent in a group.
-     *
-     * @return self
-     */
-    public function setGroupId($group_id)
-    {
-        $this->container['group_id'] = $group_id;
 
         return $this;
     }

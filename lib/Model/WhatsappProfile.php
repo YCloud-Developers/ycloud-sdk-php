@@ -59,7 +59,8 @@ class WhatsappProfile implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'name' => 'string'
+        'name' => 'string',
+        'username' => 'string'
     ];
 
     /**
@@ -70,7 +71,8 @@ class WhatsappProfile implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'name' => null
+        'name' => null,
+        'username' => null
     ];
 
     /**
@@ -100,7 +102,8 @@ class WhatsappProfile implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'name' => 'name'
+        'name' => 'name',
+        'username' => 'username'
     ];
 
     /**
@@ -109,7 +112,8 @@ class WhatsappProfile implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'name' => 'setName'
+        'name' => 'setName',
+        'username' => 'setUsername'
     ];
 
     /**
@@ -118,7 +122,8 @@ class WhatsappProfile implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'name' => 'getName'
+        'name' => 'getName',
+        'username' => 'getUsername'
     ];
 
     /**
@@ -179,6 +184,7 @@ class WhatsappProfile implements ModelInterface, ArrayAccess, \JsonSerializable
     public function __construct(array $data = null)
     {
         $this->container['name'] = $data['name'] ?? null;
+        $this->container['username'] = $data['username'] ?? null;
     }
 
     /**
@@ -225,6 +231,30 @@ class WhatsappProfile implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setName($name)
     {
         $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
+     * Gets username
+     *
+     * @return string|null
+     */
+    public function getUsername()
+    {
+        return $this->container['username'];
+    }
+
+    /**
+     * Sets username
+     *
+     * @param string|null $username WhatsApp username.
+     *
+     * @return self
+     */
+    public function setUsername($username)
+    {
+        $this->container['username'] = $username;
 
         return $this;
     }
