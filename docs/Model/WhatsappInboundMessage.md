@@ -30,5 +30,6 @@ Name | Type | Description | Notes
 **errors** | [**\YCloud\Client\Model\WhatsappInboundMessageError[]**](WhatsappInboundMessageError.md) |  | [optional]
 **context** | [**\YCloud\Client\Model\WhatsappInboundMessageContext**](WhatsappInboundMessageContext.md) |  | [optional]
 **referral** | [**\YCloud\Client\Model\WhatsappInboundMessageReferral**](WhatsappInboundMessageReferral.md) |  | [optional]
+**group_id** | **string** | WhatsApp group ID. This field is included when the inbound message is sent in a WhatsApp group. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

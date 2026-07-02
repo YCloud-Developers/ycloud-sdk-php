@@ -84,7 +84,8 @@ class WhatsappInboundMessage implements ModelInterface, ArrayAccess, \JsonSerial
         'system' => '\YCloud\Client\Model\WhatsappInboundMessageSystem',
         'errors' => '\YCloud\Client\Model\WhatsappInboundMessageError[]',
         'context' => '\YCloud\Client\Model\WhatsappInboundMessageContext',
-        'referral' => '\YCloud\Client\Model\WhatsappInboundMessageReferral'
+        'referral' => '\YCloud\Client\Model\WhatsappInboundMessageReferral',
+        'group_id' => 'string'
     ];
 
     /**
@@ -120,7 +121,8 @@ class WhatsappInboundMessage implements ModelInterface, ArrayAccess, \JsonSerial
         'system' => null,
         'errors' => null,
         'context' => null,
-        'referral' => null
+        'referral' => null,
+        'group_id' => null
     ];
 
     /**
@@ -175,7 +177,8 @@ class WhatsappInboundMessage implements ModelInterface, ArrayAccess, \JsonSerial
         'system' => 'system',
         'errors' => 'errors',
         'context' => 'context',
-        'referral' => 'referral'
+        'referral' => 'referral',
+        'group_id' => 'groupId'
     ];
 
     /**
@@ -209,7 +212,8 @@ class WhatsappInboundMessage implements ModelInterface, ArrayAccess, \JsonSerial
         'system' => 'setSystem',
         'errors' => 'setErrors',
         'context' => 'setContext',
-        'referral' => 'setReferral'
+        'referral' => 'setReferral',
+        'group_id' => 'setGroupId'
     ];
 
     /**
@@ -243,7 +247,8 @@ class WhatsappInboundMessage implements ModelInterface, ArrayAccess, \JsonSerial
         'system' => 'getSystem',
         'errors' => 'getErrors',
         'context' => 'getContext',
-        'referral' => 'getReferral'
+        'referral' => 'getReferral',
+        'group_id' => 'getGroupId'
     ];
 
     /**
@@ -329,6 +334,7 @@ class WhatsappInboundMessage implements ModelInterface, ArrayAccess, \JsonSerial
         $this->container['errors'] = $data['errors'] ?? null;
         $this->container['context'] = $data['context'] ?? null;
         $this->container['referral'] = $data['referral'] ?? null;
+        $this->container['group_id'] = $data['group_id'] ?? null;
     }
 
     /**
@@ -981,6 +987,30 @@ class WhatsappInboundMessage implements ModelInterface, ArrayAccess, \JsonSerial
 
         return $this;
     }
+
+    /**
+     * Gets group_id
+     *
+     * @return string|null
+     */
+    public function getGroupId()
+    {
+        return $this->container['group_id'];
+    }
+
+    /**
+     * Sets group_id
+     *
+     * @param string|null $group_id WhatsApp group ID. This field is included when the inbound message is sent in a WhatsApp group.
+     *
+     * @return self
+     */
+    public function setGroupId($group_id)
+    {
+        $this->container['group_id'] = $group_id;
+
+        return $this;
+    }
     /**
      * Returns true if offset exists. False otherwise.
      *
@@ -1071,5 +1101,3 @@ class WhatsappInboundMessage implements ModelInterface, ArrayAccess, \JsonSerial
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
-
-
