@@ -8,6 +8,7 @@ Method | HTTP request | Description
 [**create()**](ContactsApi.md#create) | **POST** /contact/contacts | Create a contact
 [**delete()**](ContactsApi.md#delete) | **DELETE** /contact/contacts/{id} | Delete a contact
 [**list()**](ContactsApi.md#list) | **GET** /contact/contacts | List contacts
+[**notesList()**](ContactsApi.md#notesList) | **GET** /contact/contacts/{id}/notes | List contact notes
 [**retrieve()**](ContactsApi.md#retrieve) | **GET** /contact/contacts/{id} | Retrieve a contact
 [**update()**](ContactsApi.md#update) | **PATCH** /contact/contacts/{id} | Update a contact
 
@@ -249,6 +250,66 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**\YCloud\Client\Model\ContactPage**](../Model/ContactPage.md)
+
+### Authorization
+
+[api_key](../../README.md#api_key)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `notesList()`
+
+```php
+notesList($id): \YCloud\Client\Model\ContactNote[]
+```
+
+List contact notes
+
+Returns all notes for a contact, ordered by creation time descending. The `{id}` path parameter supports contact ID and phone number. A phone number can be provided in E.164 format, such as `+16315551111`. If a numeric contact ID is not found, the same value is retried as a phone number with a leading `+`, so `861...` can match a stored `+861...` phone number. Contact retrieve, list, and search responses do not include notes; use this endpoint to read contact notes.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: api_key
+$config = YCloud\Client\Configuration::getDefaultConfiguration()->setApiKey('X-API-Key', 'YOUR_API_KEY');
+
+
+$apiInstance = new YCloud\Client\Api\ContactsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$id = 1693364594105000026/+16315551111; // string | ID of the contact. Also support phone number([E.164](https://en.wikipedia.org/wiki/E.164) format, start with character '+'), example: +16315551111
+
+try {
+    $result = $apiInstance->notesList($id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ContactsApi->notesList: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **string**| ID of the contact. Also support phone number([E.164](https://en.wikipedia.org/wiki/E.164) format, start with character &#39;+&#39;), example: +16315551111 |
+
+### Return type
+
+[**\YCloud\Client\Model\ContactNote[]**](../Model/ContactNote.md)
 
 ### Authorization
 

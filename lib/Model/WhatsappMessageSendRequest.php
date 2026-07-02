@@ -77,6 +77,9 @@ class WhatsappMessageSendRequest implements ModelInterface, ArrayAccess, \JsonSe
         'reaction' => '\YCloud\Client\Model\WhatsappMessageReaction',
         'context' => '\YCloud\Client\Model\WhatsappMessageContext',
         'external_id' => 'string',
+        'category' => 'string',
+        'ttl_seconds' => 'int',
+        'use_direct_send' => 'bool',
         'filter_unsubscribed' => 'bool',
         'filter_blocked' => 'bool'
     ];
@@ -107,6 +110,9 @@ class WhatsappMessageSendRequest implements ModelInterface, ArrayAccess, \JsonSe
         'reaction' => null,
         'context' => null,
         'external_id' => null,
+        'category' => null,
+        'ttl_seconds' => null,
+        'use_direct_send' => null,
         'filter_unsubscribed' => null,
         'filter_blocked' => null
     ];
@@ -156,6 +162,9 @@ class WhatsappMessageSendRequest implements ModelInterface, ArrayAccess, \JsonSe
         'reaction' => 'reaction',
         'context' => 'context',
         'external_id' => 'externalId',
+        'category' => 'category',
+        'ttl_seconds' => 'ttlSeconds',
+        'use_direct_send' => 'useDirectSend',
         'filter_unsubscribed' => 'filterUnsubscribed',
         'filter_blocked' => 'filterBlocked'
     ];
@@ -184,6 +193,9 @@ class WhatsappMessageSendRequest implements ModelInterface, ArrayAccess, \JsonSe
         'reaction' => 'setReaction',
         'context' => 'setContext',
         'external_id' => 'setExternalId',
+        'category' => 'setCategory',
+        'ttl_seconds' => 'setTtlSeconds',
+        'use_direct_send' => 'setUseDirectSend',
         'filter_unsubscribed' => 'setFilterUnsubscribed',
         'filter_blocked' => 'setFilterBlocked'
     ];
@@ -212,6 +224,9 @@ class WhatsappMessageSendRequest implements ModelInterface, ArrayAccess, \JsonSe
         'reaction' => 'getReaction',
         'context' => 'getContext',
         'external_id' => 'getExternalId',
+        'category' => 'getCategory',
+        'ttl_seconds' => 'getTtlSeconds',
+        'use_direct_send' => 'getUseDirectSend',
         'filter_unsubscribed' => 'getFilterUnsubscribed',
         'filter_blocked' => 'getFilterBlocked'
     ];
@@ -257,6 +272,21 @@ class WhatsappMessageSendRequest implements ModelInterface, ArrayAccess, \JsonSe
         return self::$openAPIModelName;
     }
 
+    public const CATEGORY_UTILITY = 'utility';
+    public const CATEGORY_AUTHENTICATION = 'authentication';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getCategoryAllowableValues()
+    {
+        return [
+            self::CATEGORY_UTILITY,
+            self::CATEGORY_AUTHENTICATION,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -291,6 +321,9 @@ class WhatsappMessageSendRequest implements ModelInterface, ArrayAccess, \JsonSe
         $this->container['reaction'] = $data['reaction'] ?? null;
         $this->container['context'] = $data['context'] ?? null;
         $this->container['external_id'] = $data['external_id'] ?? null;
+        $this->container['category'] = $data['category'] ?? null;
+        $this->container['ttl_seconds'] = $data['ttl_seconds'] ?? null;
+        $this->container['use_direct_send'] = $data['use_direct_send'] ?? false;
         $this->container['filter_unsubscribed'] = $data['filter_unsubscribed'] ?? null;
         $this->container['filter_blocked'] = $data['filter_blocked'] ?? null;
     }
@@ -310,6 +343,23 @@ class WhatsappMessageSendRequest implements ModelInterface, ArrayAccess, \JsonSe
         if ($this->container['type'] === null) {
             $invalidProperties[] = "'type' can't be null";
         }
+        $allowedValues = $this->getCategoryAllowableValues();
+        if (!is_null($this->container['category']) && !in_array($this->container['category'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'category', must be one of '%s'",
+                $this->container['category'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        if (!is_null($this->container['ttl_seconds']) && ($this->container['ttl_seconds'] > 43200)) {
+            $invalidProperties[] = "invalid value for 'ttl_seconds', must be smaller than or equal to 43200.";
+        }
+
+        if (!is_null($this->container['ttl_seconds']) && ($this->container['ttl_seconds'] < 30)) {
+            $invalidProperties[] = "invalid value for 'ttl_seconds', must be bigger than or equal to 30.";
+        }
+
         return $invalidProperties;
     }
 
@@ -758,6 +808,96 @@ class WhatsappMessageSendRequest implements ModelInterface, ArrayAccess, \JsonSe
     }
 
     /**
+     * Gets category
+     *
+     * @return string|null
+     */
+    public function getCategory()
+    {
+        return $this->container['category'];
+    }
+
+    /**
+     * Sets category
+     *
+     * @param string|null $category **Optional.** Indicates the category of the message to be sent with Direct Send. Supported values are `utility` and `authentication`.  Use `utility` for business-initiated utility messages. Messages sent with `utility` are charged at utility rates.  Use `authentication` for business-initiated authentication messages. Messages sent with `authentication` are charged at authentication rates. Authentication Direct Send only supports `text` messages.
+     *
+     * @return self
+     */
+    public function setCategory($category)
+    {
+        $allowedValues = $this->getCategoryAllowableValues();
+        if (!is_null($category) && !in_array($category, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'category', must be one of '%s'",
+                    $category,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['category'] = $category;
+
+        return $this;
+    }
+
+    /**
+     * Gets ttl_seconds
+     *
+     * @return int|null
+     */
+    public function getTtlSeconds()
+    {
+        return $this->container['ttl_seconds'];
+    }
+
+    /**
+     * Sets ttl_seconds
+     *
+     * @param int|null $ttl_seconds **Optional.** Message time-to-live in seconds for Direct Send `utility` or `authentication` messages.  The supported range is 30 seconds to 43200 seconds (12 hours). If omitted, the default Direct Send TTL is used.
+     *
+     * @return self
+     */
+    public function setTtlSeconds($ttl_seconds)
+    {
+
+        if (!is_null($ttl_seconds) && ($ttl_seconds > 43200)) {
+            throw new \InvalidArgumentException('invalid value for $ttl_seconds when calling WhatsappMessageSendRequest., must be smaller than or equal to 43200.');
+        }
+        if (!is_null($ttl_seconds) && ($ttl_seconds < 30)) {
+            throw new \InvalidArgumentException('invalid value for $ttl_seconds when calling WhatsappMessageSendRequest., must be bigger than or equal to 30.');
+        }
+
+        $this->container['ttl_seconds'] = $ttl_seconds;
+
+        return $this;
+    }
+
+    /**
+     * Gets use_direct_send
+     *
+     * @return bool|null
+     */
+    public function getUseDirectSend()
+    {
+        return $this->container['use_direct_send'];
+    }
+
+    /**
+     * Sets use_direct_send
+     *
+     * @param bool|null $use_direct_send **Optional.** Whether to send the message through Direct Send. Defaults to `false`.  Set this to `true` to send the message through Direct Send when the sender WABA is enabled for Direct Send.  For template messages, the template must be convertible to a Direct Send message type. Supported Direct Send message types for template conversion are:  - Text messages - Interactive Call-to-Action URL button messages - Interactive reply button messages
+     *
+     * @return self
+     */
+    public function setUseDirectSend($use_direct_send)
+    {
+        $this->container['use_direct_send'] = $use_direct_send;
+
+        return $this;
+    }
+
+    /**
      * Gets filter_unsubscribed
      *
      * @return bool|null
@@ -770,7 +910,7 @@ class WhatsappMessageSendRequest implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets filter_unsubscribed
      *
-     * @param bool|null $filter_unsubscribed **Optional.** If set to `true`, the message will not be sent to users who have unsubscribed from your account. Defaults to `false`.  Only use for `POST /v2/whatsapp/messages`. If the user has unsubscribed, we will push webhook notifications with `whatsappMessage.errorCode` set to `RECIPIENT_UNSUBSCRIBED`.  Not applicable to `POST /v2/whatsapp/message/sendDirectly`.
+     * @param bool|null $filter_unsubscribed **Optional.** If set to `true`, the message will not be sent to users who have unsubscribed from your account. Defaults to `false`.  Only use for `POST /v2/whatsapp/messages`. If the user has unsubscribed, we will push webhook notifications with `whatsappMessage.errorCode` set to `RECIPIENT_UNSUBSCRIBED`.  Not applicable to `POST /v2/whatsapp/messages/sendDirectly`.
      *
      * @return self
      */
@@ -794,7 +934,7 @@ class WhatsappMessageSendRequest implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets filter_blocked
      *
-     * @param bool|null $filter_blocked **Optional.** If set to `true`, the message will not be sent to users in your block list. Defaults to `false`.  Only use for `POST /v2/whatsapp/messages`. If the user is in your block list, we will push webhook notifications with `whatsappMessage.errorCode` set to `RECIPIENT_IN_BLOCK_LIST`.  Not applicable to `POST /v2/whatsapp/message/sendDirectly`.
+     * @param bool|null $filter_blocked **Optional.** If set to `true`, the message will not be sent to users in your block list. Defaults to `false`.  Only use for `POST /v2/whatsapp/messages`. If the user is in your block list, we will push webhook notifications with `whatsappMessage.errorCode` set to `RECIPIENT_IN_BLOCK_LIST`.  Not applicable to `POST /v2/whatsapp/messages/sendDirectly`.
      *
      * @return self
      */
@@ -894,5 +1034,3 @@ class WhatsappMessageSendRequest implements ModelInterface, ArrayAccess, \JsonSe
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
-
-

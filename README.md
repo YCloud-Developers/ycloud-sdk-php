@@ -77,6 +77,7 @@ Class | Method | HTTP request | Description
 *ContactsApi* | [**create**](docs/Api/ContactsApi.md#create) | **POST** /contact/contacts | Create a contact
 *ContactsApi* | [**delete**](docs/Api/ContactsApi.md#delete) | **DELETE** /contact/contacts/{id} | Delete a contact
 *ContactsApi* | [**list**](docs/Api/ContactsApi.md#list) | **GET** /contact/contacts | List contacts
+*ContactsApi* | [**notesList**](docs/Api/ContactsApi.md#noteslist) | **GET** /contact/contacts/{id}/notes | List contact notes
 *ContactsApi* | [**retrieve**](docs/Api/ContactsApi.md#retrieve) | **GET** /contact/contacts/{id} | Retrieve a contact
 *ContactsApi* | [**update**](docs/Api/ContactsApi.md#update) | **PATCH** /contact/contacts/{id} | Update a contact
 *CustomEventsApi* | [**createDefinition**](docs/Api/CustomEventsApi.md#createdefinition) | **POST** /event/definitions | Create an event definition
@@ -171,6 +172,7 @@ Class | Method | HTTP request | Description
 - [ContactCreated](docs/Model/ContactCreated.md)
 - [ContactCustomAttribute](docs/Model/ContactCustomAttribute.md)
 - [ContactDeleted](docs/Model/ContactDeleted.md)
+- [ContactNote](docs/Model/ContactNote.md)
 - [ContactPage](docs/Model/ContactPage.md)
 - [ContactSourceType](docs/Model/ContactSourceType.md)
 - [ContactUnsubscribeCreated](docs/Model/ContactUnsubscribeCreated.md)
