@@ -5,7 +5,7 @@ All URIs are relative to https://api.ycloud.com/v2.
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**markAsRead()**](WhatsappInboundMessagesApi.md#markAsRead) | **POST** /whatsapp/inboundMessages/{id}/markAsRead | Mark message as read
-[**typingIndicator()**](WhatsappInboundMessagesApi.md#typingIndicator) | **POST** /whatsapp/inboundMessages/{id}/typingIndicator | Mark message as read and display a typing indicator
+[**typing()**](WhatsappInboundMessagesApi.md#typing) | **POST** /whatsapp/inboundMessages/{id}/typing | Mark message as read and display a typing indicator with a JSON response
 
 
 ## `markAsRead()`
@@ -67,15 +67,15 @@ void (empty response body)
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `typingIndicator()`
+## `typing()`
 
 ```php
-typingIndicator($id)
+typing($id): \YCloud\Client\Model\WhatsappInboundMessageTypingResponse
 ```
 
-Mark message as read and display a typing indicator
+Mark message as read and display a typing indicator with a JSON response
 
-When you receive an inbound message from webhooks, you can use this endpoint to mark the message as read and display a typing indicator so the WhatsApp user knows you are preparing a response. Messages marked as read display two blue check marks alongside their timestamp.The typing indicator will be dismissed once you respond, or after 25 seconds, whichever comes first. To prevent a poor user experience, only display a typing indicator if you are going to respond.  Marking a message as read will also mark earlier messages in the conversation as read.
+Marks an inbound message as read and displays a typing indicator so the WhatsApp user knows you are preparing a response. Messages marked as read display two blue check marks alongside their timestamp. The typing indicator is dismissed once you respond, or after 25 seconds, whichever comes first.  Marking a message as read also marks earlier messages in the conversation as read. Repeating this request sends another typing-indicator request and refreshes the indicator; this endpoint does not provide an idempotency key.  A successful request returns `WhatsappInboundMessageTypingResponse`. Errors reuse the standard `ErrorResponse`.
 
 ### Example
 
@@ -97,9 +97,10 @@ $apiInstance = new YCloud\Client\Api\WhatsappInboundMessagesApi(
 $id = 627c8640675de8fc689ab9d9; // string | ID of the message.  A wamid (i.e., the original message ID on WhatsApp's platform) is also acceptable.
 
 try {
-    $apiInstance->typingIndicator($id);
+    $result = $apiInstance->typing($id);
+    print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling WhatsappInboundMessagesApi->typingIndicator: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling WhatsappInboundMessagesApi->typing: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -111,7 +112,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\YCloud\Client\Model\WhatsappInboundMessageTypingResponse**](../Model/WhatsappInboundMessageTypingResponse.md)
 
 ### Authorization
 

@@ -64,7 +64,8 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable
         'target' => 'string',
         'doc_url' => 'string',
         'request_id' => 'string',
-        'whatsapp_api_error' => '\YCloud\Client\Model\WhatsappApiError'
+        'whatsapp_api_error' => '\YCloud\Client\Model\WhatsappApiError',
+        'meta_business_agent_api_error' => '\YCloud\Client\Model\MetaBusinessAgentApiError'
     ];
 
     /**
@@ -81,7 +82,8 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable
         'target' => null,
         'doc_url' => null,
         'request_id' => null,
-        'whatsapp_api_error' => null
+        'whatsapp_api_error' => null,
+        'meta_business_agent_api_error' => null
     ];
 
     /**
@@ -117,7 +119,8 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable
         'target' => 'target',
         'doc_url' => 'docUrl',
         'request_id' => 'requestId',
-        'whatsapp_api_error' => 'whatsappApiError'
+        'whatsapp_api_error' => 'whatsappApiError',
+        'meta_business_agent_api_error' => 'metaBusinessAgentApiError'
     ];
 
     /**
@@ -132,7 +135,8 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable
         'target' => 'setTarget',
         'doc_url' => 'setDocUrl',
         'request_id' => 'setRequestId',
-        'whatsapp_api_error' => 'setWhatsappApiError'
+        'whatsapp_api_error' => 'setWhatsappApiError',
+        'meta_business_agent_api_error' => 'setMetaBusinessAgentApiError'
     ];
 
     /**
@@ -147,7 +151,8 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable
         'target' => 'getTarget',
         'doc_url' => 'getDocUrl',
         'request_id' => 'getRequestId',
-        'whatsapp_api_error' => 'getWhatsappApiError'
+        'whatsapp_api_error' => 'getWhatsappApiError',
+        'meta_business_agent_api_error' => 'getMetaBusinessAgentApiError'
     ];
 
     /**
@@ -214,6 +219,7 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['doc_url'] = $data['doc_url'] ?? null;
         $this->container['request_id'] = $data['request_id'] ?? null;
         $this->container['whatsapp_api_error'] = $data['whatsapp_api_error'] ?? null;
+        $this->container['meta_business_agent_api_error'] = $data['meta_business_agent_api_error'] ?? null;
     }
 
     /**
@@ -415,6 +421,30 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable
 
         return $this;
     }
+
+    /**
+     * Gets meta_business_agent_api_error
+     *
+     * @return \YCloud\Client\Model\MetaBusinessAgentApiError|null
+     */
+    public function getMetaBusinessAgentApiError()
+    {
+        return $this->container['meta_business_agent_api_error'];
+    }
+
+    /**
+     * Sets meta_business_agent_api_error
+     *
+     * @param \YCloud\Client\Model\MetaBusinessAgentApiError|null $meta_business_agent_api_error meta_business_agent_api_error
+     *
+     * @return self
+     */
+    public function setMetaBusinessAgentApiError($meta_business_agent_api_error)
+    {
+        $this->container['meta_business_agent_api_error'] = $meta_business_agent_api_error;
+
+        return $this;
+    }
     /**
      * Returns true if offset exists. False otherwise.
      *
@@ -505,5 +535,3 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
-
-

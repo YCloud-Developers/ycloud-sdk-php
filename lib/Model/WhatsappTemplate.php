@@ -68,6 +68,7 @@ class WhatsappTemplate implements ModelInterface, ArrayAccess, \JsonSerializable
         'previous_category' => 'string',
         'message_send_ttl_seconds' => 'int',
         'components' => '\YCloud\Client\Model\WhatsappTemplateComponent[]',
+        'cta_url_link_tracking_opted_out' => 'bool',
         'status' => '\YCloud\Client\Model\WhatsappTemplateStatus',
         'quality_rating' => '\YCloud\Client\Model\WhatsappTemplateQualityRating',
         'reason' => 'string',
@@ -95,6 +96,7 @@ class WhatsappTemplate implements ModelInterface, ArrayAccess, \JsonSerializable
         'previous_category' => null,
         'message_send_ttl_seconds' => 'int32',
         'components' => null,
+        'cta_url_link_tracking_opted_out' => null,
         'status' => null,
         'quality_rating' => null,
         'reason' => null,
@@ -141,6 +143,7 @@ class WhatsappTemplate implements ModelInterface, ArrayAccess, \JsonSerializable
         'previous_category' => 'previousCategory',
         'message_send_ttl_seconds' => 'messageSendTtlSeconds',
         'components' => 'components',
+        'cta_url_link_tracking_opted_out' => 'ctaUrlLinkTrackingOptedOut',
         'status' => 'status',
         'quality_rating' => 'qualityRating',
         'reason' => 'reason',
@@ -166,6 +169,7 @@ class WhatsappTemplate implements ModelInterface, ArrayAccess, \JsonSerializable
         'previous_category' => 'setPreviousCategory',
         'message_send_ttl_seconds' => 'setMessageSendTtlSeconds',
         'components' => 'setComponents',
+        'cta_url_link_tracking_opted_out' => 'setCtaUrlLinkTrackingOptedOut',
         'status' => 'setStatus',
         'quality_rating' => 'setQualityRating',
         'reason' => 'setReason',
@@ -191,6 +195,7 @@ class WhatsappTemplate implements ModelInterface, ArrayAccess, \JsonSerializable
         'previous_category' => 'getPreviousCategory',
         'message_send_ttl_seconds' => 'getMessageSendTtlSeconds',
         'components' => 'getComponents',
+        'cta_url_link_tracking_opted_out' => 'getCtaUrlLinkTrackingOptedOut',
         'status' => 'getStatus',
         'quality_rating' => 'getQualityRating',
         'reason' => 'getReason',
@@ -267,6 +272,7 @@ class WhatsappTemplate implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['previous_category'] = $data['previous_category'] ?? null;
         $this->container['message_send_ttl_seconds'] = $data['message_send_ttl_seconds'] ?? null;
         $this->container['components'] = $data['components'] ?? null;
+        $this->container['cta_url_link_tracking_opted_out'] = $data['cta_url_link_tracking_opted_out'] ?? null;
         $this->container['status'] = $data['status'] ?? null;
         $this->container['quality_rating'] = $data['quality_rating'] ?? null;
         $this->container['reason'] = $data['reason'] ?? null;
@@ -546,6 +552,30 @@ class WhatsappTemplate implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('invalid length for $components when calling WhatsappTemplate., number of items must be greater than or equal to 1.');
         }
         $this->container['components'] = $components;
+
+        return $this;
+    }
+
+    /**
+     * Gets cta_url_link_tracking_opted_out
+     *
+     * @return bool|null
+     */
+    public function getCtaUrlLinkTrackingOptedOut()
+    {
+        return $this->container['cta_url_link_tracking_opted_out'];
+    }
+
+    /**
+     * Sets cta_url_link_tracking_opted_out
+     *
+     * @param bool|null $cta_url_link_tracking_opted_out Whether Meta CTA URL click tracking is disabled. Historical `null` values are returned as `true`.
+     *
+     * @return self
+     */
+    public function setCtaUrlLinkTrackingOptedOut($cta_url_link_tracking_opted_out)
+    {
+        $this->container['cta_url_link_tracking_opted_out'] = $cta_url_link_tracking_opted_out;
 
         return $this;
     }
@@ -831,5 +861,3 @@ class WhatsappTemplate implements ModelInterface, ArrayAccess, \JsonSerializable
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
-
-

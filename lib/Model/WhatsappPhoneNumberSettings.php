@@ -59,7 +59,8 @@ class WhatsappPhoneNumberSettings implements ModelInterface, ArrayAccess, \JsonS
       * @var string[]
       */
     protected static $openAPITypes = [
-        'calling' => '\YCloud\Client\Model\WhatsappPhoneNumberSettingsCalling'
+        'calling' => '\YCloud\Client\Model\WhatsappPhoneNumberSettingsCalling',
+        'capture' => '\YCloud\Client\Model\CallingCaptureSettings'
     ];
 
     /**
@@ -70,7 +71,8 @@ class WhatsappPhoneNumberSettings implements ModelInterface, ArrayAccess, \JsonS
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'calling' => null
+        'calling' => null,
+        'capture' => null
     ];
 
     /**
@@ -100,7 +102,8 @@ class WhatsappPhoneNumberSettings implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $attributeMap = [
-        'calling' => 'calling'
+        'calling' => 'calling',
+        'capture' => 'capture'
     ];
 
     /**
@@ -109,7 +112,8 @@ class WhatsappPhoneNumberSettings implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $setters = [
-        'calling' => 'setCalling'
+        'calling' => 'setCalling',
+        'capture' => 'setCapture'
     ];
 
     /**
@@ -118,7 +122,8 @@ class WhatsappPhoneNumberSettings implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $getters = [
-        'calling' => 'getCalling'
+        'calling' => 'getCalling',
+        'capture' => 'getCapture'
     ];
 
     /**
@@ -179,6 +184,7 @@ class WhatsappPhoneNumberSettings implements ModelInterface, ArrayAccess, \JsonS
     public function __construct(array $data = null)
     {
         $this->container['calling'] = $data['calling'] ?? null;
+        $this->container['capture'] = $data['capture'] ?? null;
     }
 
     /**
@@ -225,6 +231,30 @@ class WhatsappPhoneNumberSettings implements ModelInterface, ArrayAccess, \JsonS
     public function setCalling($calling)
     {
         $this->container['calling'] = $calling;
+
+        return $this;
+    }
+
+    /**
+     * Gets capture
+     *
+     * @return \YCloud\Client\Model\CallingCaptureSettings|null
+     */
+    public function getCapture()
+    {
+        return $this->container['capture'];
+    }
+
+    /**
+     * Sets capture
+     *
+     * @param \YCloud\Client\Model\CallingCaptureSettings|null $capture capture
+     *
+     * @return self
+     */
+    public function setCapture($capture)
+    {
+        $this->container['capture'] = $capture;
 
         return $this;
     }
@@ -318,5 +348,3 @@ class WhatsappPhoneNumberSettings implements ModelInterface, ArrayAccess, \JsonS
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
-
-

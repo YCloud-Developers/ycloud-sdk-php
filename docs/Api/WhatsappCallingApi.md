@@ -6,6 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**accept()**](WhatsappCallingApi.md#accept) | **POST** /whatsapp/calls/accept | Accept a call
 [**connect()**](WhatsappCallingApi.md#connect) | **POST** /whatsapp/calls/connect | Connect a call
+[**downloadMedia()**](WhatsappCallingApi.md#downloadMedia) | **GET** /whatsapp/calls/media/{mediaAssetId} | Download call media
 [**preAccept()**](WhatsappCallingApi.md#preAccept) | **POST** /whatsapp/calls/preAccept | Pre-accept a call
 [**reject()**](WhatsappCallingApi.md#reject) | **POST** /whatsapp/calls/reject | Reject a call
 [**terminate()**](WhatsappCallingApi.md#terminate) | **POST** /whatsapp/calls/terminate | Terminate a call
@@ -126,6 +127,66 @@ Name | Type | Description  | Notes
 
 - **Content-Type**: `application/json`
 - **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `downloadMedia()`
+
+```php
+downloadMedia($media_asset_id): \SplFileObject
+```
+
+Download call media
+
+Downloads an available recording or transcription generated for an API-sourced WhatsApp call.  Media can be downloaded only by the owning tenant for 30 days from its creation time. Requests without a Range header or with a blank Range header return the complete file as a download attachment with HTTP 200. A non-empty Range header is rejected with HTTP 400 because byte-range downloads are not supported.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: api_key
+$config = YCloud\Client\Configuration::getDefaultConfiguration()->setApiKey('X-API-Key', 'YOUR_API_KEY');
+
+
+$apiInstance = new YCloud\Client\Api\WhatsappCallingApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$media_asset_id = 66b1f0c2e4b05c2d8f1a3b47; // string | YCloud call media asset ID received in a recording or transcription webhook.
+
+try {
+    $result = $apiInstance->downloadMedia($media_asset_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling WhatsappCallingApi->downloadMedia: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **media_asset_id** | **string**| YCloud call media asset ID received in a recording or transcription webhook. |
+
+### Return type
+
+**\SplFileObject**
+
+### Authorization
+
+[api_key](../../README.md#api_key)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `audio/ogg`, `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)

@@ -9,5 +9,7 @@
 
 * `PENDING_REVIEW` (value: `'pending_review'`)
 
+* `RESERVED` (value: `'reserved'`)
+
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

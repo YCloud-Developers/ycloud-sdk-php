@@ -60,7 +60,9 @@ class Contact implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPITypes = [
         'id' => 'string',
+        'remark_name' => 'string',
         'nickname' => 'string',
+        'meta_username' => 'string',
         'country_code' => 'string',
         'country_name' => 'string',
         'phone_number' => 'string',
@@ -85,7 +87,9 @@ class Contact implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPIFormats = [
         'id' => null,
+        'remark_name' => null,
         'nickname' => null,
+        'meta_username' => null,
         'country_code' => null,
         'country_name' => null,
         'phone_number' => null,
@@ -129,7 +133,9 @@ class Contact implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $attributeMap = [
         'id' => 'id',
+        'remark_name' => 'remarkName',
         'nickname' => 'nickname',
+        'meta_username' => 'metaUsername',
         'country_code' => 'countryCode',
         'country_name' => 'countryName',
         'phone_number' => 'phoneNumber',
@@ -152,7 +158,9 @@ class Contact implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $setters = [
         'id' => 'setId',
+        'remark_name' => 'setRemarkName',
         'nickname' => 'setNickname',
+        'meta_username' => 'setMetaUsername',
         'country_code' => 'setCountryCode',
         'country_name' => 'setCountryName',
         'phone_number' => 'setPhoneNumber',
@@ -175,7 +183,9 @@ class Contact implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $getters = [
         'id' => 'getId',
+        'remark_name' => 'getRemarkName',
         'nickname' => 'getNickname',
+        'meta_username' => 'getMetaUsername',
         'country_code' => 'getCountryCode',
         'country_name' => 'getCountryName',
         'phone_number' => 'getPhoneNumber',
@@ -249,7 +259,9 @@ class Contact implements ModelInterface, ArrayAccess, \JsonSerializable
     public function __construct(array $data = null)
     {
         $this->container['id'] = $data['id'] ?? null;
+        $this->container['remark_name'] = $data['remark_name'] ?? null;
         $this->container['nickname'] = $data['nickname'] ?? null;
+        $this->container['meta_username'] = $data['meta_username'] ?? null;
         $this->container['country_code'] = $data['country_code'] ?? null;
         $this->container['country_name'] = $data['country_name'] ?? null;
         $this->container['phone_number'] = $data['phone_number'] ?? null;
@@ -279,6 +291,10 @@ class Contact implements ModelInterface, ArrayAccess, \JsonSerializable
         }
         if ((mb_strlen($this->container['id']) > 255)) {
             $invalidProperties[] = "invalid value for 'id', the character length must be smaller than or equal to 255.";
+        }
+
+        if (!is_null($this->container['remark_name']) && (mb_strlen($this->container['remark_name']) > 250)) {
+            $invalidProperties[] = "invalid value for 'remark_name', the character length must be smaller than or equal to 250.";
         }
 
         if (!is_null($this->container['tags']) && (count($this->container['tags']) > 50)) {
@@ -341,6 +357,34 @@ class Contact implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
+     * Gets remark_name
+     *
+     * @return string|null
+     */
+    public function getRemarkName()
+    {
+        return $this->container['remark_name'];
+    }
+
+    /**
+     * Sets remark_name
+     *
+     * @param string|null $remark_name The business-managed remark name for the contact.
+     *
+     * @return self
+     */
+    public function setRemarkName($remark_name)
+    {
+        if (!is_null($remark_name) && (mb_strlen($remark_name) > 250)) {
+            throw new \InvalidArgumentException('invalid length for $remark_name when calling Contact., must be smaller than or equal to 250.');
+        }
+
+        $this->container['remark_name'] = $remark_name;
+
+        return $this;
+    }
+
+    /**
      * Gets nickname
      *
      * @return string|null
@@ -353,13 +397,37 @@ class Contact implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets nickname
      *
-     * @param string|null $nickname Contact's nickname.
+     * @param string|null $nickname The read-only nickname obtained from WhatsApp.
      *
      * @return self
      */
     public function setNickname($nickname)
     {
         $this->container['nickname'] = $nickname;
+
+        return $this;
+    }
+
+    /**
+     * Gets meta_username
+     *
+     * @return string|null
+     */
+    public function getMetaUsername()
+    {
+        return $this->container['meta_username'];
+    }
+
+    /**
+     * Sets meta_username
+     *
+     * @param string|null $meta_username The read-only Meta username associated with the contact, without the leading `@`.
+     *
+     * @return self
+     */
+    public function setMetaUsername($meta_username)
+    {
+        $this->container['meta_username'] = $meta_username;
 
         return $this;
     }
@@ -781,5 +849,3 @@ class Contact implements ModelInterface, ArrayAccess, \JsonSerializable
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
-
-

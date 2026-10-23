@@ -72,7 +72,7 @@ class EventType
 
     public const WHATSAPP_SMB_HISTORY = 'whatsapp.smb.history';
 
-    public const WHATSAPP_SMB_MESSAGE_CREATED = 'whatsapp.smb.message.created';
+    public const WHATSAPP_SMB_MESSAGE_ECHOES = 'whatsapp.smb.message.echoes';
 
     public const WHATSAPP_PHONE_NUMBER_DELETED = 'whatsapp.phone_number.deleted';
 
@@ -94,6 +94,10 @@ class EventType
 
     public const WHATSAPP_CALL_STATUS_UPDATED = 'whatsapp.call.status.updated';
 
+    public const WHATSAPP_CALL_RECORDING_UPDATED = 'whatsapp.call.recording.updated';
+
+    public const WHATSAPP_CALL_TRANSCRIPTION_UPDATED = 'whatsapp.call.transcription.updated';
+
     public const WHATSAPP_FLOW_STATUS_CHANGE = 'whatsapp.flow.status_change';
 
     public const WHATSAPP_PAYMENT_UPDATED = 'whatsapp.payment.updated';
@@ -103,6 +107,12 @@ class EventType
     public const CONTACT_CREATED = 'contact.created';
 
     public const CONTACT_DELETED = 'contact.deleted';
+
+    public const CONTACT_NOTE_CREATED = 'contact.note.created';
+
+    public const CONTACT_NOTE_UPDATED = 'contact.note.updated';
+
+    public const CONTACT_NOTE_DELETED = 'contact.note.deleted';
 
     public const CONTACT_UNSUBSCRIBE_CREATED = 'contact.unsubscribe.created';
 
@@ -131,7 +141,7 @@ class EventType
             self::WHATSAPP_GROUP_SETTINGS_UPDATE,
             self::WHATSAPP_GROUP_STATUS_UPDATE,
             self::WHATSAPP_SMB_HISTORY,
-            self::WHATSAPP_SMB_MESSAGE_CREATED,
+            self::WHATSAPP_SMB_MESSAGE_ECHOES,
             self::WHATSAPP_PHONE_NUMBER_DELETED,
             self::WHATSAPP_PHONE_NUMBER_NAME_UPDATED,
             self::WHATSAPP_PHONE_NUMBER_QUALITY_UPDATED,
@@ -142,16 +152,19 @@ class EventType
             self::WHATSAPP_CALL_CONNECT,
             self::WHATSAPP_CALL_TERMINATE,
             self::WHATSAPP_CALL_STATUS_UPDATED,
+            self::WHATSAPP_CALL_RECORDING_UPDATED,
+            self::WHATSAPP_CALL_TRANSCRIPTION_UPDATED,
             self::WHATSAPP_FLOW_STATUS_CHANGE,
             self::WHATSAPP_PAYMENT_UPDATED,
             self::CONTACT_ATTRIBUTES_CHANGED,
             self::CONTACT_CREATED,
             self::CONTACT_DELETED,
+            self::CONTACT_NOTE_CREATED,
+            self::CONTACT_NOTE_UPDATED,
+            self::CONTACT_NOTE_DELETED,
             self::CONTACT_UNSUBSCRIBE_CREATED,
             self::CONTACT_UNSUBSCRIBE_DELETED,
             self::WHATSAPP_USER_PREFERENCES
         ];
     }
 }
-
-

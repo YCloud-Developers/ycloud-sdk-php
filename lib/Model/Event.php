@@ -63,6 +63,8 @@ class Event implements ModelInterface, ArrayAccess, \JsonSerializable
         'type' => '\YCloud\Client\Model\EventType',
         'api_version' => 'string',
         'create_time' => '\DateTime',
+        'phase' => 'int',
+        'progress' => 'int',
         'email_delivery' => '\YCloud\Client\Model\EmailDelivery',
         'sms' => '\YCloud\Client\Model\Sms',
         'sms_inbound' => '\YCloud\Client\Model\SmsInbound',
@@ -77,9 +79,12 @@ class Event implements ModelInterface, ArrayAccess, \JsonSerializable
         'contact_attributes_changed' => '\YCloud\Client\Model\ContactAttributesChanged',
         'contact_created' => '\YCloud\Client\Model\ContactCreated',
         'contact_deleted' => '\YCloud\Client\Model\ContactDeleted',
+        'contact_note' => '\YCloud\Client\Model\ContactNoteWebhookPayload',
         'contact_unsubscribe_created' => '\YCloud\Client\Model\ContactUnsubscribeCreated',
         'contact_unsubscribe_deleted' => '\YCloud\Client\Model\ContactUnsubscribeDeleted',
-        'whatsapp_user_preference' => '\YCloud\Client\Model\WhatsappUserPreference'
+        'whatsapp_user_preference' => '\YCloud\Client\Model\WhatsappUserPreference',
+        'calling_recording' => '\YCloud\Client\Model\CallingMediaUpdated',
+        'calling_transcription' => '\YCloud\Client\Model\CallingMediaUpdated'
     ];
 
     /**
@@ -94,6 +99,8 @@ class Event implements ModelInterface, ArrayAccess, \JsonSerializable
         'type' => null,
         'api_version' => null,
         'create_time' => 'date-time',
+        'phase' => 'int32',
+        'progress' => 'int32',
         'email_delivery' => null,
         'sms' => null,
         'sms_inbound' => null,
@@ -108,9 +115,12 @@ class Event implements ModelInterface, ArrayAccess, \JsonSerializable
         'contact_attributes_changed' => null,
         'contact_created' => null,
         'contact_deleted' => null,
+        'contact_note' => null,
         'contact_unsubscribe_created' => null,
         'contact_unsubscribe_deleted' => null,
-        'whatsapp_user_preference' => null
+        'whatsapp_user_preference' => null,
+        'calling_recording' => null,
+        'calling_transcription' => null
     ];
 
     /**
@@ -144,6 +154,8 @@ class Event implements ModelInterface, ArrayAccess, \JsonSerializable
         'type' => 'type',
         'api_version' => 'apiVersion',
         'create_time' => 'createTime',
+        'phase' => 'phase',
+        'progress' => 'progress',
         'email_delivery' => 'emailDelivery',
         'sms' => 'sms',
         'sms_inbound' => 'smsInbound',
@@ -158,9 +170,12 @@ class Event implements ModelInterface, ArrayAccess, \JsonSerializable
         'contact_attributes_changed' => 'contactAttributesChanged',
         'contact_created' => 'contactCreated',
         'contact_deleted' => 'contactDeleted',
+        'contact_note' => 'contactNote',
         'contact_unsubscribe_created' => 'contactUnsubscribeCreated',
         'contact_unsubscribe_deleted' => 'contactUnsubscribeDeleted',
-        'whatsapp_user_preference' => 'whatsappUserPreference'
+        'whatsapp_user_preference' => 'whatsappUserPreference',
+        'calling_recording' => 'callingRecording',
+        'calling_transcription' => 'callingTranscription'
     ];
 
     /**
@@ -173,6 +188,8 @@ class Event implements ModelInterface, ArrayAccess, \JsonSerializable
         'type' => 'setType',
         'api_version' => 'setApiVersion',
         'create_time' => 'setCreateTime',
+        'phase' => 'setPhase',
+        'progress' => 'setProgress',
         'email_delivery' => 'setEmailDelivery',
         'sms' => 'setSms',
         'sms_inbound' => 'setSmsInbound',
@@ -187,9 +204,12 @@ class Event implements ModelInterface, ArrayAccess, \JsonSerializable
         'contact_attributes_changed' => 'setContactAttributesChanged',
         'contact_created' => 'setContactCreated',
         'contact_deleted' => 'setContactDeleted',
+        'contact_note' => 'setContactNote',
         'contact_unsubscribe_created' => 'setContactUnsubscribeCreated',
         'contact_unsubscribe_deleted' => 'setContactUnsubscribeDeleted',
-        'whatsapp_user_preference' => 'setWhatsappUserPreference'
+        'whatsapp_user_preference' => 'setWhatsappUserPreference',
+        'calling_recording' => 'setCallingRecording',
+        'calling_transcription' => 'setCallingTranscription'
     ];
 
     /**
@@ -202,6 +222,8 @@ class Event implements ModelInterface, ArrayAccess, \JsonSerializable
         'type' => 'getType',
         'api_version' => 'getApiVersion',
         'create_time' => 'getCreateTime',
+        'phase' => 'getPhase',
+        'progress' => 'getProgress',
         'email_delivery' => 'getEmailDelivery',
         'sms' => 'getSms',
         'sms_inbound' => 'getSmsInbound',
@@ -216,9 +238,12 @@ class Event implements ModelInterface, ArrayAccess, \JsonSerializable
         'contact_attributes_changed' => 'getContactAttributesChanged',
         'contact_created' => 'getContactCreated',
         'contact_deleted' => 'getContactDeleted',
+        'contact_note' => 'getContactNote',
         'contact_unsubscribe_created' => 'getContactUnsubscribeCreated',
         'contact_unsubscribe_deleted' => 'getContactUnsubscribeDeleted',
-        'whatsapp_user_preference' => 'getWhatsappUserPreference'
+        'whatsapp_user_preference' => 'getWhatsappUserPreference',
+        'calling_recording' => 'getCallingRecording',
+        'calling_transcription' => 'getCallingTranscription'
     ];
 
     /**
@@ -282,6 +307,8 @@ class Event implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['type'] = $data['type'] ?? null;
         $this->container['api_version'] = $data['api_version'] ?? null;
         $this->container['create_time'] = $data['create_time'] ?? null;
+        $this->container['phase'] = $data['phase'] ?? null;
+        $this->container['progress'] = $data['progress'] ?? null;
         $this->container['email_delivery'] = $data['email_delivery'] ?? null;
         $this->container['sms'] = $data['sms'] ?? null;
         $this->container['sms_inbound'] = $data['sms_inbound'] ?? null;
@@ -296,9 +323,12 @@ class Event implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['contact_attributes_changed'] = $data['contact_attributes_changed'] ?? null;
         $this->container['contact_created'] = $data['contact_created'] ?? null;
         $this->container['contact_deleted'] = $data['contact_deleted'] ?? null;
+        $this->container['contact_note'] = $data['contact_note'] ?? null;
         $this->container['contact_unsubscribe_created'] = $data['contact_unsubscribe_created'] ?? null;
         $this->container['contact_unsubscribe_deleted'] = $data['contact_unsubscribe_deleted'] ?? null;
         $this->container['whatsapp_user_preference'] = $data['whatsapp_user_preference'] ?? null;
+        $this->container['calling_recording'] = $data['calling_recording'] ?? null;
+        $this->container['calling_transcription'] = $data['calling_transcription'] ?? null;
     }
 
     /**
@@ -444,6 +474,54 @@ class Event implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setCreateTime($create_time)
     {
         $this->container['create_time'] = $create_time;
+
+        return $this;
+    }
+
+    /**
+     * Gets phase
+     *
+     * @return int|null
+     */
+    public function getPhase()
+    {
+        return $this->container['phase'];
+    }
+
+    /**
+     * Sets phase
+     *
+     * @param int|null $phase Included when `type` is `whatsapp.smb.history` and the event was generated from a Meta history chunk. Identifies the chunk's synchronization phase.
+     *
+     * @return self
+     */
+    public function setPhase($phase)
+    {
+        $this->container['phase'] = $phase;
+
+        return $this;
+    }
+
+    /**
+     * Gets progress
+     *
+     * @return int|null
+     */
+    public function getProgress()
+    {
+        return $this->container['progress'];
+    }
+
+    /**
+     * Sets progress
+     *
+     * @param int|null $progress Included when `type` is `whatsapp.smb.history` and the event was generated from a Meta history chunk. Reports the chunk's synchronization progress.
+     *
+     * @return self
+     */
+    public function setProgress($progress)
+    {
+        $this->container['progress'] = $progress;
 
         return $this;
     }
@@ -785,6 +863,30 @@ class Event implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
+     * Gets contact_note
+     *
+     * @return \YCloud\Client\Model\ContactNoteWebhookPayload|null
+     */
+    public function getContactNote()
+    {
+        return $this->container['contact_note'];
+    }
+
+    /**
+     * Sets contact_note
+     *
+     * @param \YCloud\Client\Model\ContactNoteWebhookPayload|null $contact_note contact_note
+     *
+     * @return self
+     */
+    public function setContactNote($contact_note)
+    {
+        $this->container['contact_note'] = $contact_note;
+
+        return $this;
+    }
+
+    /**
      * Gets contact_unsubscribe_created
      *
      * @return \YCloud\Client\Model\ContactUnsubscribeCreated|null
@@ -852,6 +954,54 @@ class Event implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setWhatsappUserPreference($whatsapp_user_preference)
     {
         $this->container['whatsapp_user_preference'] = $whatsapp_user_preference;
+
+        return $this;
+    }
+
+    /**
+     * Gets calling_recording
+     *
+     * @return \YCloud\Client\Model\CallingMediaUpdated|null
+     */
+    public function getCallingRecording()
+    {
+        return $this->container['calling_recording'];
+    }
+
+    /**
+     * Sets calling_recording
+     *
+     * @param \YCloud\Client\Model\CallingMediaUpdated|null $calling_recording calling_recording
+     *
+     * @return self
+     */
+    public function setCallingRecording($calling_recording)
+    {
+        $this->container['calling_recording'] = $calling_recording;
+
+        return $this;
+    }
+
+    /**
+     * Gets calling_transcription
+     *
+     * @return \YCloud\Client\Model\CallingMediaUpdated|null
+     */
+    public function getCallingTranscription()
+    {
+        return $this->container['calling_transcription'];
+    }
+
+    /**
+     * Sets calling_transcription
+     *
+     * @param \YCloud\Client\Model\CallingMediaUpdated|null $calling_transcription calling_transcription
+     *
+     * @return self
+     */
+    public function setCallingTranscription($calling_transcription)
+    {
+        $this->container['calling_transcription'] = $calling_transcription;
 
         return $this;
     }
@@ -945,5 +1095,3 @@ class Event implements ModelInterface, ArrayAccess, \JsonSerializable
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
-
-

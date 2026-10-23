@@ -5,7 +5,9 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **string** | Unique ID for the object. |
-**nickname** | **string** | Contact&#39;s nickname. | [optional]
+**remark_name** | **string** | The business-managed remark name for the contact. | [optional]
+**nickname** | **string** | The read-only nickname obtained from WhatsApp. | [optional]
+**meta_username** | **string** | The read-only Meta username associated with the contact, without the leading &#x60;@&#x60;. | [optional]
 **country_code** | **string** | Two-letter country abbreviation. See [ISO 3166-1 alpha-2 country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2). | [optional]
 **country_name** | **string** | Full country name. | [optional]
 **phone_number** | **string** | Unique Phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format. | [optional]

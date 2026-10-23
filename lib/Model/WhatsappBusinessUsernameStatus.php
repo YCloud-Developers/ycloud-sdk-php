@@ -34,7 +34,7 @@ use \YCloud\Client\ObjectSerializer;
  * WhatsappBusinessUsernameStatus Class Doc Comment
  *
  * @category Class
- * @description Business Username state for a WhatsApp business phone number. - &#x60;not_set&#x60;: No active or pending Business Username exists. - &#x60;active&#x60;: A Business Username is active. - &#x60;pending_review&#x60;: A requested Business Username is under Meta review. If an active username exists while a new request is pending, &#x60;businessUsernameStatus&#x60; is &#x60;pending_review&#x60;, &#x60;businessUsername&#x60; contains the still-active username, and &#x60;requestedBusinessUsername&#x60; contains the pending request.
+ * @description Business Username state for a WhatsApp business phone number. - &#x60;not_set&#x60;: No active or pending Business Username exists. - &#x60;active&#x60;: A Business Username is active. - &#x60;reserved&#x60;: A requested Business Username is reserved by Meta and may still be under review. - &#x60;pending_review&#x60;: Legacy compatibility value for an under-review request. New writes use &#x60;reserved&#x60;. If an active username exists while a new request is reserved or under review, &#x60;businessUsernameStatus&#x60; is &#x60;reserved&#x60;, &#x60;businessUsername&#x60; contains the still-active username, and &#x60;requestedBusinessUsername&#x60; contains the requested username.
  * @package  YCloud\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -50,6 +50,8 @@ class WhatsappBusinessUsernameStatus
 
     public const PENDING_REVIEW = 'pending_review';
 
+    public const RESERVED = 'reserved';
+
     /**
      * Gets allowable values of the enum
      * @return string[]
@@ -59,9 +61,8 @@ class WhatsappBusinessUsernameStatus
         return [
             self::NOT_SET,
             self::ACTIVE,
-            self::PENDING_REVIEW
+            self::PENDING_REVIEW,
+            self::RESERVED
         ];
     }
 }
-
-

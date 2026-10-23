@@ -4,6 +4,7 @@ All URIs are relative to https://api.ycloud.com/v2.
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**analytics()**](WhatsappTemplatesApi.md#analytics) | **POST** /whatsapp/templates/analytics | Retrieve WhatsApp template analytics
 [**create()**](WhatsappTemplatesApi.md#create) | **POST** /whatsapp/templates | Create a template
 [**deleteByName()**](WhatsappTemplatesApi.md#deleteByName) | **DELETE** /whatsapp/templates/{wabaId}/{name} | Delete templates by name
 [**deleteByNameAndLanguage()**](WhatsappTemplatesApi.md#deleteByNameAndLanguage) | **DELETE** /whatsapp/templates/{wabaId}/{name}/{language} | Delete a template
@@ -11,6 +12,66 @@ Method | HTTP request | Description
 [**list()**](WhatsappTemplatesApi.md#list) | **GET** /whatsapp/templates | List templates
 [**retrieveByNameAndLanguage()**](WhatsappTemplatesApi.md#retrieveByNameAndLanguage) | **GET** /whatsapp/templates/{wabaId}/{name}/{language} | Retrieve a template
 
+
+## `analytics()`
+
+```php
+analytics($whatsapp_template_analytics_request): \YCloud\Client\Model\WhatsappTemplateAnalytics
+```
+
+Retrieve WhatsApp template analytics
+
+Returns daily YCloud message metrics and, when available, Meta Template Insights for one WhatsApp template. Authenticate with `X-API-Key`. `analyticsStatus` describes Meta Template Insights only; it does not describe YCloud metrics. Dates are interpreted in the WABA timezone, both boundaries are inclusive, and the range must contain between 1 and 90 calendar days.  The selected template must currently exist under the requested WABA. REST resolves and validates the template before querying any statistics. A missing template returns `404`, a template that belongs to another WABA returns `403`, and a template lookup failure returns `500`; none of these errors returns partial statistics.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: api_key
+$config = YCloud\Client\Configuration::getDefaultConfiguration()->setApiKey('X-API-Key', 'YOUR_API_KEY');
+
+
+$apiInstance = new YCloud\Client\Api\WhatsappTemplatesApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$whatsapp_template_analytics_request = new \YCloud\Client\Model\WhatsappTemplateAnalyticsRequest(); // \YCloud\Client\Model\WhatsappTemplateAnalyticsRequest
+
+try {
+    $result = $apiInstance->analytics($whatsapp_template_analytics_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling WhatsappTemplatesApi->analytics: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **whatsapp_template_analytics_request** | [**\YCloud\Client\Model\WhatsappTemplateAnalyticsRequest**](../Model/WhatsappTemplateAnalyticsRequest.md)|  |
+
+### Return type
+
+[**\YCloud\Client\Model\WhatsappTemplateAnalytics**](../Model/WhatsappTemplateAnalytics.md)
+
+### Authorization
+
+[api_key](../../README.md#api_key)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
 
 ## `create()`
 

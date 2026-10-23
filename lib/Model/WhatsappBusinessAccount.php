@@ -80,6 +80,8 @@ class WhatsappBusinessAccount implements ModelInterface, ArrayAccess, \JsonSeria
         'ban_date' => 'string',
         'violation_type' => 'string',
         'restrictions' => '\YCloud\Client\Model\WhatsappBusinessAccountRestrictionInfo[]',
+        'max_phone_numbers_per_business' => 'int',
+        'max_phone_numbers_per_waba' => 'int',
         'auth_intl_rate_eligibility_countries' => '\YCloud\Client\Model\WhatsappAuthIntlRateEligibilityCountry[]',
         'primary_business_location' => 'string',
         'whatsapp_business_manager_messaging_limit' => 'string',
@@ -117,6 +119,8 @@ class WhatsappBusinessAccount implements ModelInterface, ArrayAccess, \JsonSeria
         'ban_date' => null,
         'violation_type' => null,
         'restrictions' => null,
+        'max_phone_numbers_per_business' => 'int32',
+        'max_phone_numbers_per_waba' => 'int32',
         'auth_intl_rate_eligibility_countries' => null,
         'primary_business_location' => null,
         'whatsapp_business_manager_messaging_limit' => null,
@@ -173,6 +177,8 @@ class WhatsappBusinessAccount implements ModelInterface, ArrayAccess, \JsonSeria
         'ban_date' => 'banDate',
         'violation_type' => 'violationType',
         'restrictions' => 'restrictions',
+        'max_phone_numbers_per_business' => 'maxPhoneNumbersPerBusiness',
+        'max_phone_numbers_per_waba' => 'maxPhoneNumbersPerWaba',
         'auth_intl_rate_eligibility_countries' => 'authIntlRateEligibilityCountries',
         'primary_business_location' => 'primaryBusinessLocation',
         'whatsapp_business_manager_messaging_limit' => 'whatsappBusinessManagerMessagingLimit',
@@ -208,6 +214,8 @@ class WhatsappBusinessAccount implements ModelInterface, ArrayAccess, \JsonSeria
         'ban_date' => 'setBanDate',
         'violation_type' => 'setViolationType',
         'restrictions' => 'setRestrictions',
+        'max_phone_numbers_per_business' => 'setMaxPhoneNumbersPerBusiness',
+        'max_phone_numbers_per_waba' => 'setMaxPhoneNumbersPerWaba',
         'auth_intl_rate_eligibility_countries' => 'setAuthIntlRateEligibilityCountries',
         'primary_business_location' => 'setPrimaryBusinessLocation',
         'whatsapp_business_manager_messaging_limit' => 'setWhatsappBusinessManagerMessagingLimit',
@@ -243,6 +251,8 @@ class WhatsappBusinessAccount implements ModelInterface, ArrayAccess, \JsonSeria
         'ban_date' => 'getBanDate',
         'violation_type' => 'getViolationType',
         'restrictions' => 'getRestrictions',
+        'max_phone_numbers_per_business' => 'getMaxPhoneNumbersPerBusiness',
+        'max_phone_numbers_per_waba' => 'getMaxPhoneNumbersPerWaba',
         'auth_intl_rate_eligibility_countries' => 'getAuthIntlRateEligibilityCountries',
         'primary_business_location' => 'getPrimaryBusinessLocation',
         'whatsapp_business_manager_messaging_limit' => 'getWhatsappBusinessManagerMessagingLimit',
@@ -329,6 +339,8 @@ class WhatsappBusinessAccount implements ModelInterface, ArrayAccess, \JsonSeria
         $this->container['ban_date'] = $data['ban_date'] ?? null;
         $this->container['violation_type'] = $data['violation_type'] ?? null;
         $this->container['restrictions'] = $data['restrictions'] ?? null;
+        $this->container['max_phone_numbers_per_business'] = $data['max_phone_numbers_per_business'] ?? null;
+        $this->container['max_phone_numbers_per_waba'] = $data['max_phone_numbers_per_waba'] ?? null;
         $this->container['auth_intl_rate_eligibility_countries'] = $data['auth_intl_rate_eligibility_countries'] ?? null;
         $this->container['primary_business_location'] = $data['primary_business_location'] ?? null;
         $this->container['whatsapp_business_manager_messaging_limit'] = $data['whatsapp_business_manager_messaging_limit'] ?? null;
@@ -866,6 +878,54 @@ class WhatsappBusinessAccount implements ModelInterface, ArrayAccess, \JsonSeria
     }
 
     /**
+     * Gets max_phone_numbers_per_business
+     *
+     * @return int|null
+     */
+    public function getMaxPhoneNumbersPerBusiness()
+    {
+        return $this->container['max_phone_numbers_per_business'];
+    }
+
+    /**
+     * Sets max_phone_numbers_per_business
+     *
+     * @param int|null $max_phone_numbers_per_business Included in a `whatsapp.business_account.updated` webhook with `updateEvent=BUSINESS_CAPABILITY_UPDATE` when Meta reports the Business Portfolio phone-number registration limit.
+     *
+     * @return self
+     */
+    public function setMaxPhoneNumbersPerBusiness($max_phone_numbers_per_business)
+    {
+        $this->container['max_phone_numbers_per_business'] = $max_phone_numbers_per_business;
+
+        return $this;
+    }
+
+    /**
+     * Gets max_phone_numbers_per_waba
+     *
+     * @return int|null
+     */
+    public function getMaxPhoneNumbersPerWaba()
+    {
+        return $this->container['max_phone_numbers_per_waba'];
+    }
+
+    /**
+     * Sets max_phone_numbers_per_waba
+     *
+     * @param int|null $max_phone_numbers_per_waba Included in a `whatsapp.business_account.updated` webhook with `updateEvent=BUSINESS_CAPABILITY_UPDATE` when Meta reports the WABA phone-number registration limit.
+     *
+     * @return self
+     */
+    public function setMaxPhoneNumbersPerWaba($max_phone_numbers_per_waba)
+    {
+        $this->container['max_phone_numbers_per_waba'] = $max_phone_numbers_per_waba;
+
+        return $this;
+    }
+
+    /**
      * Gets auth_intl_rate_eligibility_countries
      *
      * @return \YCloud\Client\Model\WhatsappAuthIntlRateEligibilityCountry[]|null
@@ -1098,5 +1158,3 @@ class WhatsappBusinessAccount implements ModelInterface, ArrayAccess, \JsonSeria
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
-
-

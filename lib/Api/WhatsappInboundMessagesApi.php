@@ -356,35 +356,36 @@ class WhatsappInboundMessagesApi
     }
 
     /**
-     * Operation typingIndicator
+     * Operation typing
      *
-     * Mark message as read and display a typing indicator
+     * Mark message as read and display a typing indicator with a JSON response
      *
      * @param  string $id ID of the message.  A wamid (i.e., the original message ID on WhatsApp&#39;s platform) is also acceptable. (required)
      *
      * @throws \YCloud\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return void
+     * @return \YCloud\Client\Model\WhatsappInboundMessageTypingResponse|\YCloud\Client\Model\ErrorResponse|\YCloud\Client\Model\ErrorResponse|\YCloud\Client\Model\ErrorResponse|\YCloud\Client\Model\ErrorResponse|\YCloud\Client\Model\ErrorResponse|\YCloud\Client\Model\ErrorResponse
      */
-    public function typingIndicator($id)
+    public function typing($id)
     {
-        $this->typingIndicatorWithHttpInfo($id);
+        list($response) = $this->typingWithHttpInfo($id);
+        return $response;
     }
 
     /**
-     * Operation typingIndicatorWithHttpInfo
+     * Operation typingWithHttpInfo
      *
-     * Mark message as read and display a typing indicator
+     * Mark message as read and display a typing indicator with a JSON response
      *
      * @param  string $id ID of the message.  A wamid (i.e., the original message ID on WhatsApp&#39;s platform) is also acceptable. (required)
      *
      * @throws \YCloud\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \YCloud\Client\Model\WhatsappInboundMessageTypingResponse|\YCloud\Client\Model\ErrorResponse|\YCloud\Client\Model\ErrorResponse|\YCloud\Client\Model\ErrorResponse|\YCloud\Client\Model\ErrorResponse|\YCloud\Client\Model\ErrorResponse|\YCloud\Client\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function typingIndicatorWithHttpInfo($id)
+    public function typingWithHttpInfo($id)
     {
-        $request = $this->typingIndicatorRequest($id);
+        $request = $this->typingRequest($id);
 
         try {
             $options = $this->createHttpClientOption();
@@ -421,11 +422,181 @@ class WhatsappInboundMessagesApi
                 );
             }
 
-            return [null, $statusCode, $response->getHeaders()];
+            switch($statusCode) {
+                case 200:
+                    if ('\YCloud\Client\Model\WhatsappInboundMessageTypingResponse' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\YCloud\Client\Model\WhatsappInboundMessageTypingResponse' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\YCloud\Client\Model\WhatsappInboundMessageTypingResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 400:
+                    if ('\YCloud\Client\Model\ErrorResponse' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\YCloud\Client\Model\ErrorResponse' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\YCloud\Client\Model\ErrorResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 401:
+                    if ('\YCloud\Client\Model\ErrorResponse' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\YCloud\Client\Model\ErrorResponse' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\YCloud\Client\Model\ErrorResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 403:
+                    if ('\YCloud\Client\Model\ErrorResponse' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\YCloud\Client\Model\ErrorResponse' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\YCloud\Client\Model\ErrorResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 404:
+                    if ('\YCloud\Client\Model\ErrorResponse' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\YCloud\Client\Model\ErrorResponse' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\YCloud\Client\Model\ErrorResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 429:
+                    if ('\YCloud\Client\Model\ErrorResponse' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\YCloud\Client\Model\ErrorResponse' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\YCloud\Client\Model\ErrorResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 500:
+                    if ('\YCloud\Client\Model\ErrorResponse' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\YCloud\Client\Model\ErrorResponse' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\YCloud\Client\Model\ErrorResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\YCloud\Client\Model\WhatsappInboundMessageTypingResponse';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
 
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\YCloud\Client\Model\WhatsappInboundMessageTypingResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\YCloud\Client\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\YCloud\Client\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\YCloud\Client\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
                 case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\YCloud\Client\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\YCloud\Client\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\YCloud\Client\Model\ErrorResponse',
@@ -439,18 +610,18 @@ class WhatsappInboundMessagesApi
     }
 
     /**
-     * Operation typingIndicatorAsync
+     * Operation typingAsync
      *
-     * Mark message as read and display a typing indicator
+     * Mark message as read and display a typing indicator with a JSON response
      *
      * @param  string $id ID of the message.  A wamid (i.e., the original message ID on WhatsApp&#39;s platform) is also acceptable. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function typingIndicatorAsync($id)
+    public function typingAsync($id)
     {
-        return $this->typingIndicatorAsyncWithHttpInfo($id)
+        return $this->typingAsyncWithHttpInfo($id)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -459,25 +630,38 @@ class WhatsappInboundMessagesApi
     }
 
     /**
-     * Operation typingIndicatorAsyncWithHttpInfo
+     * Operation typingAsyncWithHttpInfo
      *
-     * Mark message as read and display a typing indicator
+     * Mark message as read and display a typing indicator with a JSON response
      *
      * @param  string $id ID of the message.  A wamid (i.e., the original message ID on WhatsApp&#39;s platform) is also acceptable. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function typingIndicatorAsyncWithHttpInfo($id)
+    public function typingAsyncWithHttpInfo($id)
     {
-        $returnType = '';
-        $request = $this->typingIndicatorRequest($id);
+        $returnType = '\YCloud\Client\Model\WhatsappInboundMessageTypingResponse';
+        $request = $this->typingRequest($id);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -497,23 +681,23 @@ class WhatsappInboundMessagesApi
     }
 
     /**
-     * Create request for operation 'typingIndicator'
+     * Create request for operation 'typing'
      *
      * @param  string $id ID of the message.  A wamid (i.e., the original message ID on WhatsApp&#39;s platform) is also acceptable. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function typingIndicatorRequest($id)
+    public function typingRequest($id)
     {
         // verify the required parameter 'id' is set
         if ($id === null || (is_array($id) && count($id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $id when calling typingIndicator'
+                'Missing the required parameter $id when calling typing'
             );
         }
 
-        $resourcePath = '/whatsapp/inboundMessages/{id}/typingIndicator';
+        $resourcePath = '/whatsapp/inboundMessages/{id}/typing';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];

@@ -8,6 +8,8 @@ Name | Type | Description | Notes
 **type** | [**\YCloud\Client\Model\EventType**](EventType.md) |  |
 **api_version** | **string** | The API version used to render this event. |
 **create_time** | **\DateTime** | The time at which this event was created, formatted in [RFC 3339](https://datatracker.ietf.org/doc/html/rfc3339). e.g., &#x60;2022-06-01T12:00:00.000Z&#x60;. |
+**phase** | **int** | Included when &#x60;type&#x60; is &#x60;whatsapp.smb.history&#x60; and the event was generated from a Meta history chunk. Identifies the chunk&#39;s synchronization phase. | [optional]
+**progress** | **int** | Included when &#x60;type&#x60; is &#x60;whatsapp.smb.history&#x60; and the event was generated from a Meta history chunk. Reports the chunk&#39;s synchronization progress. | [optional]
 **email_delivery** | [**\YCloud\Client\Model\EmailDelivery**](EmailDelivery.md) |  | [optional]
 **sms** | [**\YCloud\Client\Model\Sms**](Sms.md) |  | [optional]
 **sms_inbound** | [**\YCloud\Client\Model\SmsInbound**](SmsInbound.md) |  | [optional]
@@ -22,8 +24,11 @@ Name | Type | Description | Notes
 **contact_attributes_changed** | [**\YCloud\Client\Model\ContactAttributesChanged**](ContactAttributesChanged.md) |  | [optional]
 **contact_created** | [**\YCloud\Client\Model\ContactCreated**](ContactCreated.md) |  | [optional]
 **contact_deleted** | [**\YCloud\Client\Model\ContactDeleted**](ContactDeleted.md) |  | [optional]
+**contact_note** | [**\YCloud\Client\Model\ContactNoteWebhookPayload**](ContactNoteWebhookPayload.md) |  | [optional]
 **contact_unsubscribe_created** | [**\YCloud\Client\Model\ContactUnsubscribeCreated**](ContactUnsubscribeCreated.md) |  | [optional]
 **contact_unsubscribe_deleted** | [**\YCloud\Client\Model\ContactUnsubscribeDeleted**](ContactUnsubscribeDeleted.md) |  | [optional]
 **whatsapp_user_preference** | [**\YCloud\Client\Model\WhatsappUserPreference**](WhatsappUserPreference.md) |  | [optional]
+**calling_recording** | [**\YCloud\Client\Model\CallingMediaUpdated**](CallingMediaUpdated.md) |  | [optional]
+**calling_transcription** | [**\YCloud\Client\Model\CallingMediaUpdated**](CallingMediaUpdated.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

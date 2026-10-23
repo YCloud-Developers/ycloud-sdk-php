@@ -60,6 +60,7 @@ class WhatsappPhoneNumberProfile implements ModelInterface, ArrayAccess, \JsonSe
       */
     protected static $openAPITypes = [
         'about' => 'string',
+        'ycloud_name' => 'string',
         'verified_name' => 'string',
         'name_status' => '\YCloud\Client\Model\WhatsappPhoneNumberNameStatus',
         'new_name' => 'string',
@@ -81,6 +82,7 @@ class WhatsappPhoneNumberProfile implements ModelInterface, ArrayAccess, \JsonSe
       */
     protected static $openAPIFormats = [
         'about' => null,
+        'ycloud_name' => null,
         'verified_name' => null,
         'name_status' => null,
         'new_name' => null,
@@ -121,6 +123,7 @@ class WhatsappPhoneNumberProfile implements ModelInterface, ArrayAccess, \JsonSe
      */
     protected static $attributeMap = [
         'about' => 'about',
+        'ycloud_name' => 'ycloudName',
         'verified_name' => 'verifiedName',
         'name_status' => 'nameStatus',
         'new_name' => 'newName',
@@ -140,6 +143,7 @@ class WhatsappPhoneNumberProfile implements ModelInterface, ArrayAccess, \JsonSe
      */
     protected static $setters = [
         'about' => 'setAbout',
+        'ycloud_name' => 'setYcloudName',
         'verified_name' => 'setVerifiedName',
         'name_status' => 'setNameStatus',
         'new_name' => 'setNewName',
@@ -159,6 +163,7 @@ class WhatsappPhoneNumberProfile implements ModelInterface, ArrayAccess, \JsonSe
      */
     protected static $getters = [
         'about' => 'getAbout',
+        'ycloud_name' => 'getYcloudName',
         'verified_name' => 'getVerifiedName',
         'name_status' => 'getNameStatus',
         'new_name' => 'getNewName',
@@ -229,6 +234,7 @@ class WhatsappPhoneNumberProfile implements ModelInterface, ArrayAccess, \JsonSe
     public function __construct(array $data = null)
     {
         $this->container['about'] = $data['about'] ?? null;
+        $this->container['ycloud_name'] = $data['ycloud_name'] ?? null;
         $this->container['verified_name'] = $data['verified_name'] ?? null;
         $this->container['name_status'] = $data['name_status'] ?? null;
         $this->container['new_name'] = $data['new_name'] ?? null;
@@ -301,6 +307,30 @@ class WhatsappPhoneNumberProfile implements ModelInterface, ArrayAccess, \JsonSe
     public function setAbout($about)
     {
         $this->container['about'] = $about;
+
+        return $this;
+    }
+
+    /**
+     * Gets ycloud_name
+     *
+     * @return string|null
+     */
+    public function getYcloudName()
+    {
+        return $this->container['ycloud_name'];
+    }
+
+    /**
+     * Sets ycloud_name
+     *
+     * @param string|null $ycloud_name Optional remark name assigned to this phone number in YCloud. It is populated by the profile GET API and omitted when no remark name is set.
+     *
+     * @return self
+     */
+    public function setYcloudName($ycloud_name)
+    {
+        $this->container['ycloud_name'] = $ycloud_name;
 
         return $this;
     }
@@ -650,5 +680,3 @@ class WhatsappPhoneNumberProfile implements ModelInterface, ArrayAccess, \JsonSe
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
-
-

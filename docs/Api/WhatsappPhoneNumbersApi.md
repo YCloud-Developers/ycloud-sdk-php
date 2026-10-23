@@ -5,6 +5,7 @@ All URIs are relative to https://api.ycloud.com/v2.
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**deleteBusinessUsername()**](WhatsappPhoneNumbersApi.md#deleteBusinessUsername) | **DELETE** /whatsapp/phoneNumbers/{wabaId}/{phoneNumber}/businessUsername | Delete a phone number business username
+[**deleteContactBookEntry()**](WhatsappPhoneNumbersApi.md#deleteContactBookEntry) | **DELETE** /whatsapp/phoneNumbers/{wabaId}/{phoneNumber}/contactBook/{bsuid} | Delete a Meta contact book entry
 [**list()**](WhatsappPhoneNumbersApi.md#list) | **GET** /whatsapp/phoneNumbers | List phone numbers
 [**register()**](WhatsappPhoneNumbersApi.md#register) | **POST** /whatsapp/phoneNumbers/{wabaId}/{phoneNumber}/register | Register a phone number
 [**retrieve()**](WhatsappPhoneNumbersApi.md#retrieve) | **GET** /whatsapp/phoneNumbers/{wabaId}/{phoneNumber} | Retrieve a phone number
@@ -28,7 +29,7 @@ deleteBusinessUsername($waba_id, $phone_number): \YCloud\Client\Model\WhatsappBu
 
 Delete a phone number business username
 
-Deletes the active Business Username for a WhatsApp business phone number. This operation removes the currently active Business Username. It does not cancel or remove a pending Business Username request. If a pending request still exists after deletion, the returned `businessUsernameStatus` remains `pending_review`; otherwise it becomes `not_set`.
+Deletes the active Business Username for a WhatsApp business phone number. This operation removes the currently active Business Username. It does not cancel or remove a reserved Business Username request. If a reserved request still exists after deletion, the returned `businessUsernameStatus` remains `reserved`; otherwise it becomes `not_set`.
 
 ### Example
 
@@ -68,6 +69,70 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**\YCloud\Client\Model\WhatsappBusinessUsernameDeleteResult**](../Model/WhatsappBusinessUsernameDeleteResult.md)
+
+### Authorization
+
+[api_key](../../README.md#api_key)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `deleteContactBookEntry()`
+
+```php
+deleteContactBookEntry($waba_id, $phone_number, $bsuid): \YCloud\Client\Model\WhatsappContactBookEntryDeleteResult
+```
+
+Delete a Meta contact book entry
+
+Deletes the Meta contact book entry that associates a WhatsApp business phone number with a customer's WhatsApp Business-scoped user ID (BSUID).  Only standard BSUIDs such as `US.11815799212886844830` are supported. Parent BSUIDs such as `US.ENT.11815799212886844830` are not supported. The BSUID must be scoped to the same Meta business portfolio as the phone number. The specified WABA must belong to the authenticated YCloud account and be available, and the phone number must be bound to that WABA in YCloud. Use the YCloud account API key in the `X-API-Key` header. Developer App API keys are not supported and return HTTP 403.  An HTTP 200 response always has `success=true`. `deleted=true` means Meta reports that it deleted a matching contact book entry. `deleted=false` means Meta processed the request but found no matching entry to delete. This operation does not delete or modify YCloud Contact, message, or BSUID business records, and it does not bypass Meta's 30-day caching behavior. A later WhatsApp interaction between the same business phone number and customer may cause Meta to create the entry again.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: api_key
+$config = YCloud\Client\Configuration::getDefaultConfiguration()->setApiKey('X-API-Key', 'YOUR_API_KEY');
+
+
+$apiInstance = new YCloud\Client\Api\WhatsappPhoneNumbersApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$waba_id = whatsapp-business-account-id; // string | WhatsApp Business Account ID.
+$phone_number = +16315551111; // string | Phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format, bound to the specified WABA in YCloud. When constructing the path manually, URL-encode the leading `+` as `%2B`.
+$bsuid = US.11815799212886844830; // string | Standard WhatsApp Business-scoped user ID (BSUID) from the same Meta business portfolio as the phone number. Parent BSUIDs containing `.ENT.` are not supported.
+
+try {
+    $result = $apiInstance->deleteContactBookEntry($waba_id, $phone_number, $bsuid);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling WhatsappPhoneNumbersApi->deleteContactBookEntry: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **waba_id** | **string**| WhatsApp Business Account ID. |
+ **phone_number** | **string**| Phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format, bound to the specified WABA in YCloud. When constructing the path manually, URL-encode the leading &#x60;+&#x60; as &#x60;%2B&#x60;. |
+ **bsuid** | **string**| Standard WhatsApp Business-scoped user ID (BSUID) from the same Meta business portfolio as the phone number. Parent BSUIDs containing &#x60;.ENT.&#x60; are not supported. |
+
+### Return type
+
+[**\YCloud\Client\Model\WhatsappContactBookEntryDeleteResult**](../Model/WhatsappContactBookEntryDeleteResult.md)
 
 ### Authorization
 
@@ -525,7 +590,7 @@ Name | Type | Description  | Notes
 ## `retrieveSettings()`
 
 ```php
-retrieveSettings($waba_id, $phone_number): \YCloud\Client\Model\WhatsappPhoneNumberSettings
+retrieveSettings($waba_id, $phone_number, $type): \YCloud\Client\Model\WhatsappPhoneNumberSettings
 ```
 
 Retrieve phone number settings
@@ -551,9 +616,10 @@ $apiInstance = new YCloud\Client\Api\WhatsappPhoneNumbersApi(
 );
 $waba_id = whatsapp-business-account-id; // string | WhatsApp Business Account ID.
 $phone_number = +6283138205170; // string | Phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format.
+$type = 'type_example'; // string | Set to `capture` to retrieve only Calling recording and transcription capture settings. Omit it or set it to `calling` to retrieve the existing Calling settings response.
 
 try {
-    $result = $apiInstance->retrieveSettings($waba_id, $phone_number);
+    $result = $apiInstance->retrieveSettings($waba_id, $phone_number, $type);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling WhatsappPhoneNumbersApi->retrieveSettings: ', $e->getMessage(), PHP_EOL;
@@ -566,6 +632,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **waba_id** | **string**| WhatsApp Business Account ID. |
  **phone_number** | **string**| Phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format. |
+ **type** | **string**| Set to &#x60;capture&#x60; to retrieve only Calling recording and transcription capture settings. Omit it or set it to &#x60;calling&#x60; to retrieve the existing Calling settings response. | [optional]
 
 ### Return type
 
@@ -592,7 +659,7 @@ saveSettings($waba_id, $phone_number, $whatsapp_phone_number_settings): \YCloud\
 
 Save phone number settings
 
-Saves phone number specific settings.
+Saves phone number specific settings. Send `calling`, `capture`, or both. When both are supplied, the service independently attempts both saves after shared authorization and phone-number validation. A failure in either branch does not prevent the other branch from being attempted. If either branch fails, the existing error response is returned and the other setting may already have been saved.
 
 ### Example
 
@@ -656,7 +723,7 @@ updateBusinessUsername($waba_id, $phone_number, $whatsapp_business_username_upda
 
 Update a phone number business username
 
-Requests a Business Username update for a WhatsApp business phone number. The requested username may require Meta review before it becomes active. If Meta accepts the request for review, the response status is usually `pending_review`; if Meta returns an error, YCloud returns the error and does not change the stored Business Username state.  The `username` value is a plain username without `@`. YCloud trims leading and trailing whitespace and normalizes the value to lowercase before validation and submission.
+Requests a Business Username update for a WhatsApp business phone number. The requested username may require Meta review before it becomes active. If Meta accepts or reserves the request for review, the response status is usually `reserved`; `pending_review` is kept only as a legacy compatibility value. If Meta returns an error, YCloud returns the error and does not change the stored Business Username state.  The `username` value is a plain username without `@`. YCloud trims leading and trailing whitespace and normalizes the value to lowercase before validation and submission.
 
 ### Example
 

@@ -59,13 +59,15 @@ class ContactCreateRequest implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var string[]
       */
     protected static $openAPITypes = [
+        'remark_name' => 'string',
         'nickname' => 'string',
         'phone_number' => 'string',
         'country_code' => 'string',
         'email' => 'string',
         'tags' => 'string[]',
         'custom_attributes' => '\YCloud\Client\Model\ContactCustomAttribute[]',
-        'owner_email' => 'string'
+        'owner_email' => 'string',
+        'notes' => '\YCloud\Client\Model\ContactNoteCreateInput[]'
     ];
 
     /**
@@ -76,13 +78,15 @@ class ContactCreateRequest implements ModelInterface, ArrayAccess, \JsonSerializ
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'remark_name' => null,
         'nickname' => null,
         'phone_number' => null,
         'country_code' => null,
         'email' => null,
         'tags' => null,
         'custom_attributes' => null,
-        'owner_email' => null
+        'owner_email' => null,
+        'notes' => null
     ];
 
     /**
@@ -112,13 +116,15 @@ class ContactCreateRequest implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $attributeMap = [
+        'remark_name' => 'remarkName',
         'nickname' => 'nickname',
         'phone_number' => 'phoneNumber',
         'country_code' => 'countryCode',
         'email' => 'email',
         'tags' => 'tags',
         'custom_attributes' => 'customAttributes',
-        'owner_email' => 'ownerEmail'
+        'owner_email' => 'ownerEmail',
+        'notes' => 'notes'
     ];
 
     /**
@@ -127,13 +133,15 @@ class ContactCreateRequest implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $setters = [
+        'remark_name' => 'setRemarkName',
         'nickname' => 'setNickname',
         'phone_number' => 'setPhoneNumber',
         'country_code' => 'setCountryCode',
         'email' => 'setEmail',
         'tags' => 'setTags',
         'custom_attributes' => 'setCustomAttributes',
-        'owner_email' => 'setOwnerEmail'
+        'owner_email' => 'setOwnerEmail',
+        'notes' => 'setNotes'
     ];
 
     /**
@@ -142,13 +150,15 @@ class ContactCreateRequest implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $getters = [
+        'remark_name' => 'getRemarkName',
         'nickname' => 'getNickname',
         'phone_number' => 'getPhoneNumber',
         'country_code' => 'getCountryCode',
         'email' => 'getEmail',
         'tags' => 'getTags',
         'custom_attributes' => 'getCustomAttributes',
-        'owner_email' => 'getOwnerEmail'
+        'owner_email' => 'getOwnerEmail',
+        'notes' => 'getNotes'
     ];
 
     /**
@@ -208,6 +218,7 @@ class ContactCreateRequest implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     public function __construct(array $data = null)
     {
+        $this->container['remark_name'] = $data['remark_name'] ?? null;
         $this->container['nickname'] = $data['nickname'] ?? null;
         $this->container['phone_number'] = $data['phone_number'] ?? null;
         $this->container['country_code'] = $data['country_code'] ?? null;
@@ -215,6 +226,7 @@ class ContactCreateRequest implements ModelInterface, ArrayAccess, \JsonSerializ
         $this->container['tags'] = $data['tags'] ?? null;
         $this->container['custom_attributes'] = $data['custom_attributes'] ?? null;
         $this->container['owner_email'] = $data['owner_email'] ?? null;
+        $this->container['notes'] = $data['notes'] ?? null;
     }
 
     /**
@@ -225,6 +237,10 @@ class ContactCreateRequest implements ModelInterface, ArrayAccess, \JsonSerializ
     public function listInvalidProperties()
     {
         $invalidProperties = [];
+
+        if (!is_null($this->container['remark_name']) && (mb_strlen($this->container['remark_name']) > 250)) {
+            $invalidProperties[] = "invalid value for 'remark_name', the character length must be smaller than or equal to 250.";
+        }
 
         if (!is_null($this->container['nickname']) && (mb_strlen($this->container['nickname']) > 250)) {
             $invalidProperties[] = "invalid value for 'nickname', the character length must be smaller than or equal to 250.";
@@ -245,6 +261,10 @@ class ContactCreateRequest implements ModelInterface, ArrayAccess, \JsonSerializ
             $invalidProperties[] = "invalid value for 'owner_email', the character length must be smaller than or equal to 250.";
         }
 
+        if (!is_null($this->container['notes']) && (count($this->container['notes']) > 50)) {
+            $invalidProperties[] = "invalid value for 'notes', number of items must be less than or equal to 50.";
+        }
+
         return $invalidProperties;
     }
 
@@ -261,9 +281,38 @@ class ContactCreateRequest implements ModelInterface, ArrayAccess, \JsonSerializ
 
 
     /**
+     * Gets remark_name
+     *
+     * @return string|null
+     */
+    public function getRemarkName()
+    {
+        return $this->container['remark_name'];
+    }
+
+    /**
+     * Sets remark_name
+     *
+     * @param string|null $remark_name Contact's remark name. Maximum length: 250 characters.
+     *
+     * @return self
+     */
+    public function setRemarkName($remark_name)
+    {
+        if (!is_null($remark_name) && (mb_strlen($remark_name) > 250)) {
+            throw new \InvalidArgumentException('invalid length for $remark_name when calling ContactCreateRequest., must be smaller than or equal to 250.');
+        }
+
+        $this->container['remark_name'] = $remark_name;
+
+        return $this;
+    }
+
+    /**
      * Gets nickname
      *
      * @return string|null
+     * @deprecated
      */
     public function getNickname()
     {
@@ -273,9 +322,10 @@ class ContactCreateRequest implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets nickname
      *
-     * @param string|null $nickname Contact's nickname. Maximum length: 250 characters.
+     * @param string|null $nickname Deprecated compatibility alias for `remarkName`. When `remarkName` is absent, this value is saved as the contact's remark name. It does not update the read-only WhatsApp nickname. Maximum length: 250 characters.
      *
      * @return self
+     * @deprecated
      */
     public function setNickname($nickname)
     {
@@ -443,6 +493,34 @@ class ContactCreateRequest implements ModelInterface, ArrayAccess, \JsonSerializ
 
         return $this;
     }
+
+    /**
+     * Gets notes
+     *
+     * @return \YCloud\Client\Model\ContactNoteCreateInput[]|null
+     */
+    public function getNotes()
+    {
+        return $this->container['notes'];
+    }
+
+    /**
+     * Sets notes
+     *
+     * @param \YCloud\Client\Model\ContactNoteCreateInput[]|null $notes Optional notes created atomically with the contact. The response remains the Contact schema; use the List Contact Notes endpoint to retrieve generated note IDs.
+     *
+     * @return self
+     */
+    public function setNotes($notes)
+    {
+
+        if (!is_null($notes) && (count($notes) > 50)) {
+            throw new \InvalidArgumentException('invalid value for $notes when calling ContactCreateRequest., number of items must be less than or equal to 50.');
+        }
+        $this->container['notes'] = $notes;
+
+        return $this;
+    }
     /**
      * Returns true if offset exists. False otherwise.
      *
@@ -533,5 +611,3 @@ class ContactCreateRequest implements ModelInterface, ArrayAccess, \JsonSerializ
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
-
-

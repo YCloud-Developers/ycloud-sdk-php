@@ -17,5 +17,7 @@
 
 * `BUSINESS_PRIMARY_LOCATION_COUNTRY_UPDATE` (value: `'BUSINESS_PRIMARY_LOCATION_COUNTRY_UPDATE'`)
 
+* `BUSINESS_CAPABILITY_UPDATE` (value: `'BUSINESS_CAPABILITY_UPDATE'`)
+
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

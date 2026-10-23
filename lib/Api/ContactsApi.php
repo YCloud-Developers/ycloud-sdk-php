@@ -391,7 +391,7 @@ class ContactsApi
      *
      * @throws \YCloud\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \YCloud\Client\Model\Contact
+     * @return \YCloud\Client\Model\Contact|\YCloud\Client\Model\ErrorResponse
      */
     public function create($contact_create_request)
     {
@@ -408,7 +408,7 @@ class ContactsApi
      *
      * @throws \YCloud\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \YCloud\Client\Model\Contact, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \YCloud\Client\Model\Contact|\YCloud\Client\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function createWithHttpInfo($contact_create_request)
     {
@@ -465,6 +465,21 @@ class ContactsApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+                case 400:
+                    if ('\YCloud\Client\Model\ErrorResponse' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\YCloud\Client\Model\ErrorResponse' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\YCloud\Client\Model\ErrorResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
             }
 
             $returnType = '\YCloud\Client\Model\Contact';
@@ -489,6 +504,14 @@ class ContactsApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\YCloud\Client\Model\Contact',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\YCloud\Client\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -670,7 +693,7 @@ class ContactsApi
      *
      * Delete a contact
      *
-     * @param  string $id ID of the contact. Also support phone number([E.164](https://en.wikipedia.org/wiki/E.164) format, start with character &#39;+&#39;), example: +16315551111 (required)
+     * @param  string $id Identifier of the contact. Supports a contact ID, a phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format starting with &#x60;+&#x60; (for example, &#x60;+16315551111&#x60;), or a Meta username without the leading &#x60;@&#x60;. A Meta username must contain 3 to 35 letters, digits, periods, or underscores. If a numeric value can be interpreted as both a Meta username and a contact ID, it is resolved as a Meta username first. If no contact has that Meta username, the value is resolved as a contact ID. (required)
      *
      * @throws \YCloud\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -687,7 +710,7 @@ class ContactsApi
      *
      * Delete a contact
      *
-     * @param  string $id ID of the contact. Also support phone number([E.164](https://en.wikipedia.org/wiki/E.164) format, start with character &#39;+&#39;), example: +16315551111 (required)
+     * @param  string $id Identifier of the contact. Supports a contact ID, a phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format starting with &#x60;+&#x60; (for example, &#x60;+16315551111&#x60;), or a Meta username without the leading &#x60;@&#x60;. A Meta username must contain 3 to 35 letters, digits, periods, or underscores. If a numeric value can be interpreted as both a Meta username and a contact ID, it is resolved as a Meta username first. If no contact has that Meta username, the value is resolved as a contact ID. (required)
      *
      * @throws \YCloud\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -809,7 +832,7 @@ class ContactsApi
      *
      * Delete a contact
      *
-     * @param  string $id ID of the contact. Also support phone number([E.164](https://en.wikipedia.org/wiki/E.164) format, start with character &#39;+&#39;), example: +16315551111 (required)
+     * @param  string $id Identifier of the contact. Supports a contact ID, a phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format starting with &#x60;+&#x60; (for example, &#x60;+16315551111&#x60;), or a Meta username without the leading &#x60;@&#x60;. A Meta username must contain 3 to 35 letters, digits, periods, or underscores. If a numeric value can be interpreted as both a Meta username and a contact ID, it is resolved as a Meta username first. If no contact has that Meta username, the value is resolved as a contact ID. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -829,7 +852,7 @@ class ContactsApi
      *
      * Delete a contact
      *
-     * @param  string $id ID of the contact. Also support phone number([E.164](https://en.wikipedia.org/wiki/E.164) format, start with character &#39;+&#39;), example: +16315551111 (required)
+     * @param  string $id Identifier of the contact. Supports a contact ID, a phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format starting with &#x60;+&#x60; (for example, &#x60;+16315551111&#x60;), or a Meta username without the leading &#x60;@&#x60;. A Meta username must contain 3 to 35 letters, digits, periods, or underscores. If a numeric value can be interpreted as both a Meta username and a contact ID, it is resolved as a Meta username first. If no contact has that Meta username, the value is resolved as a contact ID. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -878,7 +901,7 @@ class ContactsApi
     /**
      * Create request for operation 'delete'
      *
-     * @param  string $id ID of the contact. Also support phone number([E.164](https://en.wikipedia.org/wiki/E.164) format, start with character &#39;+&#39;), example: +16315551111 (required)
+     * @param  string $id Identifier of the contact. Supports a contact ID, a phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format starting with &#x60;+&#x60; (for example, &#x60;+16315551111&#x60;), or a Meta username without the leading &#x60;@&#x60;. A Meta username must contain 3 to 35 letters, digits, periods, or underscores. If a numeric value can be interpreted as both a Meta username and a contact ID, it is resolved as a Meta username first. If no contact has that Meta username, the value is resolved as a contact ID. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -987,6 +1010,7 @@ class ContactsApi
      * @param  int $page Page number of the results to be returned, 1-based. (optional, default to 1)
      * @param  int $limit A limit on the number of results to be returned, or number of results per page, between 1 and 100, defaults to 10. (optional, default to 10)
      * @param  bool $include_total Return results inside an object that contains the total result count or not. (optional, default to false)
+     * @param  string $page_after Contact ID cursor for forward pagination. Use &#x60;0&#x60; to start a new cursor traversal. For each subsequent page, pass the exact &#x60;cursor.after&#x60; value from the previous response. The value must be a non-negative decimal integer in the signed 64-bit range (&#x60;0&#x60; through &#x60;9223372036854775807&#x60;). It cannot be combined with &#x60;page&#x60;, &#x60;pageBefore&#x60;, &#x60;offset&#x60;, or &#x60;sort&#x60;. (optional)
      * @param  string $filter_tags Comma-separated list of tag names. If any tag does not exist, the request fails with a parameter error. (optional)
      * @param  string $filter_country_code Two-letter country abbreviation. See [ISO 3166-1 alpha-2 country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2). (optional)
      * @param  string $filter_phone_number Phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format. (optional)
@@ -994,7 +1018,7 @@ class ContactsApi
      *
      * @throws \YCloud\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \YCloud\Client\Model\ContactPage
+     * @return \YCloud\Client\Model\ContactPage|\YCloud\Client\Model\ErrorResponse
      */
     public function list($associative_array)
     {
@@ -1012,6 +1036,7 @@ class ContactsApi
      * @param  int $page Page number of the results to be returned, 1-based. (optional, default to 1)
      * @param  int $limit A limit on the number of results to be returned, or number of results per page, between 1 and 100, defaults to 10. (optional, default to 10)
      * @param  bool $include_total Return results inside an object that contains the total result count or not. (optional, default to false)
+     * @param  string $page_after Contact ID cursor for forward pagination. Use &#x60;0&#x60; to start a new cursor traversal. For each subsequent page, pass the exact &#x60;cursor.after&#x60; value from the previous response. The value must be a non-negative decimal integer in the signed 64-bit range (&#x60;0&#x60; through &#x60;9223372036854775807&#x60;). It cannot be combined with &#x60;page&#x60;, &#x60;pageBefore&#x60;, &#x60;offset&#x60;, or &#x60;sort&#x60;. (optional)
      * @param  string $filter_tags Comma-separated list of tag names. If any tag does not exist, the request fails with a parameter error. (optional)
      * @param  string $filter_country_code Two-letter country abbreviation. See [ISO 3166-1 alpha-2 country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2). (optional)
      * @param  string $filter_phone_number Phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format. (optional)
@@ -1019,7 +1044,7 @@ class ContactsApi
      *
      * @throws \YCloud\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \YCloud\Client\Model\ContactPage, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \YCloud\Client\Model\ContactPage|\YCloud\Client\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function listWithHttpInfo($associative_array)
     {
@@ -1076,6 +1101,21 @@ class ContactsApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+                case 400:
+                    if ('\YCloud\Client\Model\ErrorResponse' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\YCloud\Client\Model\ErrorResponse' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\YCloud\Client\Model\ErrorResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
             }
 
             $returnType = '\YCloud\Client\Model\ContactPage';
@@ -1104,6 +1144,14 @@ class ContactsApi
                     );
                     $e->setResponseObject($data);
                     break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\YCloud\Client\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
             }
             throw $e;
         }
@@ -1119,6 +1167,7 @@ class ContactsApi
      * @param  int $page Page number of the results to be returned, 1-based. (optional, default to 1)
      * @param  int $limit A limit on the number of results to be returned, or number of results per page, between 1 and 100, defaults to 10. (optional, default to 10)
      * @param  bool $include_total Return results inside an object that contains the total result count or not. (optional, default to false)
+     * @param  string $page_after Contact ID cursor for forward pagination. Use &#x60;0&#x60; to start a new cursor traversal. For each subsequent page, pass the exact &#x60;cursor.after&#x60; value from the previous response. The value must be a non-negative decimal integer in the signed 64-bit range (&#x60;0&#x60; through &#x60;9223372036854775807&#x60;). It cannot be combined with &#x60;page&#x60;, &#x60;pageBefore&#x60;, &#x60;offset&#x60;, or &#x60;sort&#x60;. (optional)
      * @param  string $filter_tags Comma-separated list of tag names. If any tag does not exist, the request fails with a parameter error. (optional)
      * @param  string $filter_country_code Two-letter country abbreviation. See [ISO 3166-1 alpha-2 country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2). (optional)
      * @param  string $filter_phone_number Phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format. (optional)
@@ -1147,6 +1196,7 @@ class ContactsApi
      * @param  int $page Page number of the results to be returned, 1-based. (optional, default to 1)
      * @param  int $limit A limit on the number of results to be returned, or number of results per page, between 1 and 100, defaults to 10. (optional, default to 10)
      * @param  bool $include_total Return results inside an object that contains the total result count or not. (optional, default to false)
+     * @param  string $page_after Contact ID cursor for forward pagination. Use &#x60;0&#x60; to start a new cursor traversal. For each subsequent page, pass the exact &#x60;cursor.after&#x60; value from the previous response. The value must be a non-negative decimal integer in the signed 64-bit range (&#x60;0&#x60; through &#x60;9223372036854775807&#x60;). It cannot be combined with &#x60;page&#x60;, &#x60;pageBefore&#x60;, &#x60;offset&#x60;, or &#x60;sort&#x60;. (optional)
      * @param  string $filter_tags Comma-separated list of tag names. If any tag does not exist, the request fails with a parameter error. (optional)
      * @param  string $filter_country_code Two-letter country abbreviation. See [ISO 3166-1 alpha-2 country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2). (optional)
      * @param  string $filter_phone_number Phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format. (optional)
@@ -1204,6 +1254,7 @@ class ContactsApi
      * @param  int $page Page number of the results to be returned, 1-based. (optional, default to 1)
      * @param  int $limit A limit on the number of results to be returned, or number of results per page, between 1 and 100, defaults to 10. (optional, default to 10)
      * @param  bool $include_total Return results inside an object that contains the total result count or not. (optional, default to false)
+     * @param  string $page_after Contact ID cursor for forward pagination. Use &#x60;0&#x60; to start a new cursor traversal. For each subsequent page, pass the exact &#x60;cursor.after&#x60; value from the previous response. The value must be a non-negative decimal integer in the signed 64-bit range (&#x60;0&#x60; through &#x60;9223372036854775807&#x60;). It cannot be combined with &#x60;page&#x60;, &#x60;pageBefore&#x60;, &#x60;offset&#x60;, or &#x60;sort&#x60;. (optional)
      * @param  string $filter_tags Comma-separated list of tag names. If any tag does not exist, the request fails with a parameter error. (optional)
      * @param  string $filter_country_code Two-letter country abbreviation. See [ISO 3166-1 alpha-2 country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2). (optional)
      * @param  string $filter_phone_number Phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format. (optional)
@@ -1218,6 +1269,7 @@ class ContactsApi
         $page = array_key_exists('page', $associative_array) ? $associative_array['page'] : 1;
         $limit = array_key_exists('limit', $associative_array) ? $associative_array['limit'] : 10;
         $include_total = array_key_exists('include_total', $associative_array) ? $associative_array['include_total'] : false;
+        $page_after = array_key_exists('page_after', $associative_array) ? $associative_array['page_after'] : null;
         $filter_tags = array_key_exists('filter_tags', $associative_array) ? $associative_array['filter_tags'] : null;
         $filter_country_code = array_key_exists('filter_country_code', $associative_array) ? $associative_array['filter_country_code'] : null;
         $filter_phone_number = array_key_exists('filter_phone_number', $associative_array) ? $associative_array['filter_phone_number'] : null;
@@ -1235,6 +1287,10 @@ class ContactsApi
         }
         if ($limit !== null && $limit < 1) {
             throw new \InvalidArgumentException('invalid value for "$limit" when calling ContactsApi.list, must be bigger than or equal to 1.');
+        }
+
+        if ($page_after !== null && !preg_match("/^[0-9]+$/", $page_after)) {
+            throw new \InvalidArgumentException("invalid value for \"page_after\" when calling ContactsApi.list, must conform to the pattern /^[0-9]+$/.");
         }
 
 
@@ -1268,6 +1324,15 @@ class ContactsApi
             $include_total,
             'includeTotal', // param base name
             'boolean', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $page_after,
+            'pageAfter', // param base name
+            'string', // openApiType
             'form', // style
             true, // explode
             false // required
@@ -1375,19 +1440,1070 @@ class ContactsApi
     }
 
     /**
+     * Operation noteCreate
+     *
+     * Create a contact note
+     *
+     * @param  string $contact_identifier Identifier of the contact that owns the note. Supports a contact ID, a username without the leading &#x60;@&#x60;, or a phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format starting with &#x60;+&#x60;. Usernames contain 3 to 35 letters, digits, periods, or underscores. A numeric value is resolved as a username first and then as a contact ID when no matching username exists. (required)
+     * @param  \YCloud\Client\Model\ContactNoteWriteRequest $contact_note_write_request contact_note_write_request (required)
+     *
+     * @throws \YCloud\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \YCloud\Client\Model\ContactNote|\YCloud\Client\Model\ErrorResponse|\YCloud\Client\Model\ErrorResponse
+     */
+    public function noteCreate($contact_identifier, $contact_note_write_request)
+    {
+        list($response) = $this->noteCreateWithHttpInfo($contact_identifier, $contact_note_write_request);
+        return $response;
+    }
+
+    /**
+     * Operation noteCreateWithHttpInfo
+     *
+     * Create a contact note
+     *
+     * @param  string $contact_identifier Identifier of the contact that owns the note. Supports a contact ID, a username without the leading &#x60;@&#x60;, or a phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format starting with &#x60;+&#x60;. Usernames contain 3 to 35 letters, digits, periods, or underscores. A numeric value is resolved as a username first and then as a contact ID when no matching username exists. (required)
+     * @param  \YCloud\Client\Model\ContactNoteWriteRequest $contact_note_write_request (required)
+     *
+     * @throws \YCloud\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \YCloud\Client\Model\ContactNote|\YCloud\Client\Model\ErrorResponse|\YCloud\Client\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function noteCreateWithHttpInfo($contact_identifier, $contact_note_write_request)
+    {
+        $request = $this->noteCreateRequest($contact_identifier, $contact_note_write_request);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\YCloud\Client\Model\ContactNote' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\YCloud\Client\Model\ContactNote' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\YCloud\Client\Model\ContactNote', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 400:
+                    if ('\YCloud\Client\Model\ErrorResponse' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\YCloud\Client\Model\ErrorResponse' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\YCloud\Client\Model\ErrorResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 404:
+                    if ('\YCloud\Client\Model\ErrorResponse' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\YCloud\Client\Model\ErrorResponse' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\YCloud\Client\Model\ErrorResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\YCloud\Client\Model\ContactNote';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\YCloud\Client\Model\ContactNote',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\YCloud\Client\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\YCloud\Client\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation noteCreateAsync
+     *
+     * Create a contact note
+     *
+     * @param  string $contact_identifier Identifier of the contact that owns the note. Supports a contact ID, a username without the leading &#x60;@&#x60;, or a phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format starting with &#x60;+&#x60;. Usernames contain 3 to 35 letters, digits, periods, or underscores. A numeric value is resolved as a username first and then as a contact ID when no matching username exists. (required)
+     * @param  \YCloud\Client\Model\ContactNoteWriteRequest $contact_note_write_request (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function noteCreateAsync($contact_identifier, $contact_note_write_request)
+    {
+        return $this->noteCreateAsyncWithHttpInfo($contact_identifier, $contact_note_write_request)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation noteCreateAsyncWithHttpInfo
+     *
+     * Create a contact note
+     *
+     * @param  string $contact_identifier Identifier of the contact that owns the note. Supports a contact ID, a username without the leading &#x60;@&#x60;, or a phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format starting with &#x60;+&#x60;. Usernames contain 3 to 35 letters, digits, periods, or underscores. A numeric value is resolved as a username first and then as a contact ID when no matching username exists. (required)
+     * @param  \YCloud\Client\Model\ContactNoteWriteRequest $contact_note_write_request (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function noteCreateAsyncWithHttpInfo($contact_identifier, $contact_note_write_request)
+    {
+        $returnType = '\YCloud\Client\Model\ContactNote';
+        $request = $this->noteCreateRequest($contact_identifier, $contact_note_write_request);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'noteCreate'
+     *
+     * @param  string $contact_identifier Identifier of the contact that owns the note. Supports a contact ID, a username without the leading &#x60;@&#x60;, or a phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format starting with &#x60;+&#x60;. Usernames contain 3 to 35 letters, digits, periods, or underscores. A numeric value is resolved as a username first and then as a contact ID when no matching username exists. (required)
+     * @param  \YCloud\Client\Model\ContactNoteWriteRequest $contact_note_write_request (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function noteCreateRequest($contact_identifier, $contact_note_write_request)
+    {
+        // verify the required parameter 'contact_identifier' is set
+        if ($contact_identifier === null || (is_array($contact_identifier) && count($contact_identifier) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $contact_identifier when calling noteCreate'
+            );
+        }
+        if (strlen($contact_identifier) > 255) {
+            throw new \InvalidArgumentException('invalid length for "$contact_identifier" when calling ContactsApi.noteCreate, must be smaller than or equal to 255.');
+        }
+
+        // verify the required parameter 'contact_note_write_request' is set
+        if ($contact_note_write_request === null || (is_array($contact_note_write_request) && count($contact_note_write_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $contact_note_write_request when calling noteCreate'
+            );
+        }
+
+        $resourcePath = '/contact/contacts/{contactIdentifier}/notes';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($contact_identifier !== null) {
+            $resourcePath = str_replace(
+                '{' . 'contactIdentifier' . '}',
+                ObjectSerializer::toPathValue($contact_identifier),
+                $resourcePath
+            );
+        }
+
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                ['application/json']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($contact_note_write_request)) {
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($contact_note_write_request));
+            } else {
+                $httpBody = $contact_note_write_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('X-API-Key');
+        if ($apiKey !== null) {
+            $headers['X-API-Key'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation noteDelete
+     *
+     * Delete a contact note
+     *
+     * @param  string $note_id The 24-character ObjectId of the contact note. (required)
+     *
+     * @throws \YCloud\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \YCloud\Client\Model\ContactNote|\YCloud\Client\Model\ErrorResponse|\YCloud\Client\Model\ErrorResponse
+     */
+    public function noteDelete($note_id)
+    {
+        list($response) = $this->noteDeleteWithHttpInfo($note_id);
+        return $response;
+    }
+
+    /**
+     * Operation noteDeleteWithHttpInfo
+     *
+     * Delete a contact note
+     *
+     * @param  string $note_id The 24-character ObjectId of the contact note. (required)
+     *
+     * @throws \YCloud\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \YCloud\Client\Model\ContactNote|\YCloud\Client\Model\ErrorResponse|\YCloud\Client\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function noteDeleteWithHttpInfo($note_id)
+    {
+        $request = $this->noteDeleteRequest($note_id);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\YCloud\Client\Model\ContactNote' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\YCloud\Client\Model\ContactNote' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\YCloud\Client\Model\ContactNote', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 400:
+                    if ('\YCloud\Client\Model\ErrorResponse' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\YCloud\Client\Model\ErrorResponse' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\YCloud\Client\Model\ErrorResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 404:
+                    if ('\YCloud\Client\Model\ErrorResponse' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\YCloud\Client\Model\ErrorResponse' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\YCloud\Client\Model\ErrorResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\YCloud\Client\Model\ContactNote';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\YCloud\Client\Model\ContactNote',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\YCloud\Client\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\YCloud\Client\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation noteDeleteAsync
+     *
+     * Delete a contact note
+     *
+     * @param  string $note_id The 24-character ObjectId of the contact note. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function noteDeleteAsync($note_id)
+    {
+        return $this->noteDeleteAsyncWithHttpInfo($note_id)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation noteDeleteAsyncWithHttpInfo
+     *
+     * Delete a contact note
+     *
+     * @param  string $note_id The 24-character ObjectId of the contact note. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function noteDeleteAsyncWithHttpInfo($note_id)
+    {
+        $returnType = '\YCloud\Client\Model\ContactNote';
+        $request = $this->noteDeleteRequest($note_id);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'noteDelete'
+     *
+     * @param  string $note_id The 24-character ObjectId of the contact note. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function noteDeleteRequest($note_id)
+    {
+        // verify the required parameter 'note_id' is set
+        if ($note_id === null || (is_array($note_id) && count($note_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $note_id when calling noteDelete'
+            );
+        }
+        if (strlen($note_id) > 24) {
+            throw new \InvalidArgumentException('invalid length for "$note_id" when calling ContactsApi.noteDelete, must be smaller than or equal to 24.');
+        }
+        if (strlen($note_id) < 24) {
+            throw new \InvalidArgumentException('invalid length for "$note_id" when calling ContactsApi.noteDelete, must be bigger than or equal to 24.');
+        }
+        if (!preg_match("/^[0-9a-fA-F]{24}$/", $note_id)) {
+            throw new \InvalidArgumentException("invalid value for \"note_id\" when calling ContactsApi.noteDelete, must conform to the pattern /^[0-9a-fA-F]{24}$/.");
+        }
+
+
+        $resourcePath = '/contact/notes/{noteId}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($note_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'noteId' . '}',
+                ObjectSerializer::toPathValue($note_id),
+                $resourcePath
+            );
+        }
+
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('X-API-Key');
+        if ($apiKey !== null) {
+            $headers['X-API-Key'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'DELETE',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation noteUpdate
+     *
+     * Update a contact note
+     *
+     * @param  string $note_id The 24-character ObjectId of the contact note. (required)
+     * @param  \YCloud\Client\Model\ContactNoteWriteRequest $contact_note_write_request contact_note_write_request (required)
+     *
+     * @throws \YCloud\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \YCloud\Client\Model\ContactNote|\YCloud\Client\Model\ErrorResponse|\YCloud\Client\Model\ErrorResponse
+     */
+    public function noteUpdate($note_id, $contact_note_write_request)
+    {
+        list($response) = $this->noteUpdateWithHttpInfo($note_id, $contact_note_write_request);
+        return $response;
+    }
+
+    /**
+     * Operation noteUpdateWithHttpInfo
+     *
+     * Update a contact note
+     *
+     * @param  string $note_id The 24-character ObjectId of the contact note. (required)
+     * @param  \YCloud\Client\Model\ContactNoteWriteRequest $contact_note_write_request (required)
+     *
+     * @throws \YCloud\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \YCloud\Client\Model\ContactNote|\YCloud\Client\Model\ErrorResponse|\YCloud\Client\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function noteUpdateWithHttpInfo($note_id, $contact_note_write_request)
+    {
+        $request = $this->noteUpdateRequest($note_id, $contact_note_write_request);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\YCloud\Client\Model\ContactNote' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\YCloud\Client\Model\ContactNote' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\YCloud\Client\Model\ContactNote', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 400:
+                    if ('\YCloud\Client\Model\ErrorResponse' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\YCloud\Client\Model\ErrorResponse' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\YCloud\Client\Model\ErrorResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 404:
+                    if ('\YCloud\Client\Model\ErrorResponse' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\YCloud\Client\Model\ErrorResponse' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\YCloud\Client\Model\ErrorResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\YCloud\Client\Model\ContactNote';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\YCloud\Client\Model\ContactNote',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\YCloud\Client\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\YCloud\Client\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation noteUpdateAsync
+     *
+     * Update a contact note
+     *
+     * @param  string $note_id The 24-character ObjectId of the contact note. (required)
+     * @param  \YCloud\Client\Model\ContactNoteWriteRequest $contact_note_write_request (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function noteUpdateAsync($note_id, $contact_note_write_request)
+    {
+        return $this->noteUpdateAsyncWithHttpInfo($note_id, $contact_note_write_request)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation noteUpdateAsyncWithHttpInfo
+     *
+     * Update a contact note
+     *
+     * @param  string $note_id The 24-character ObjectId of the contact note. (required)
+     * @param  \YCloud\Client\Model\ContactNoteWriteRequest $contact_note_write_request (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function noteUpdateAsyncWithHttpInfo($note_id, $contact_note_write_request)
+    {
+        $returnType = '\YCloud\Client\Model\ContactNote';
+        $request = $this->noteUpdateRequest($note_id, $contact_note_write_request);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'noteUpdate'
+     *
+     * @param  string $note_id The 24-character ObjectId of the contact note. (required)
+     * @param  \YCloud\Client\Model\ContactNoteWriteRequest $contact_note_write_request (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function noteUpdateRequest($note_id, $contact_note_write_request)
+    {
+        // verify the required parameter 'note_id' is set
+        if ($note_id === null || (is_array($note_id) && count($note_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $note_id when calling noteUpdate'
+            );
+        }
+        if (strlen($note_id) > 24) {
+            throw new \InvalidArgumentException('invalid length for "$note_id" when calling ContactsApi.noteUpdate, must be smaller than or equal to 24.');
+        }
+        if (strlen($note_id) < 24) {
+            throw new \InvalidArgumentException('invalid length for "$note_id" when calling ContactsApi.noteUpdate, must be bigger than or equal to 24.');
+        }
+        if (!preg_match("/^[0-9a-fA-F]{24}$/", $note_id)) {
+            throw new \InvalidArgumentException("invalid value for \"note_id\" when calling ContactsApi.noteUpdate, must conform to the pattern /^[0-9a-fA-F]{24}$/.");
+        }
+
+        // verify the required parameter 'contact_note_write_request' is set
+        if ($contact_note_write_request === null || (is_array($contact_note_write_request) && count($contact_note_write_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $contact_note_write_request when calling noteUpdate'
+            );
+        }
+
+        $resourcePath = '/contact/notes/{noteId}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($note_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'noteId' . '}',
+                ObjectSerializer::toPathValue($note_id),
+                $resourcePath
+            );
+        }
+
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                ['application/json']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($contact_note_write_request)) {
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($contact_note_write_request));
+            } else {
+                $httpBody = $contact_note_write_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('X-API-Key');
+        if ($apiKey !== null) {
+            $headers['X-API-Key'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'PATCH',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation notesList
      *
      * List contact notes
      *
-     * @param  string $id ID of the contact. Also support phone number([E.164](https://en.wikipedia.org/wiki/E.164) format, start with character &#39;+&#39;), example: +16315551111 (required)
+     * @param  string $contact_identifier Identifier of the contact that owns the note. Supports a contact ID, a username without the leading &#x60;@&#x60;, or a phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format starting with &#x60;+&#x60;. Usernames contain 3 to 35 letters, digits, periods, or underscores. A numeric value is resolved as a username first and then as a contact ID when no matching username exists. (required)
      *
      * @throws \YCloud\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \YCloud\Client\Model\ContactNote[]|\YCloud\Client\Model\ErrorResponse
+     * @return \YCloud\Client\Model\ContactNote[]|\YCloud\Client\Model\ErrorResponse|\YCloud\Client\Model\ErrorResponse
      */
-    public function notesList($id)
+    public function notesList($contact_identifier)
     {
-        list($response) = $this->notesListWithHttpInfo($id);
+        list($response) = $this->notesListWithHttpInfo($contact_identifier);
         return $response;
     }
 
@@ -1396,15 +2512,15 @@ class ContactsApi
      *
      * List contact notes
      *
-     * @param  string $id ID of the contact. Also support phone number([E.164](https://en.wikipedia.org/wiki/E.164) format, start with character &#39;+&#39;), example: +16315551111 (required)
+     * @param  string $contact_identifier Identifier of the contact that owns the note. Supports a contact ID, a username without the leading &#x60;@&#x60;, or a phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format starting with &#x60;+&#x60;. Usernames contain 3 to 35 letters, digits, periods, or underscores. A numeric value is resolved as a username first and then as a contact ID when no matching username exists. (required)
      *
      * @throws \YCloud\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \YCloud\Client\Model\ContactNote[]|\YCloud\Client\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \YCloud\Client\Model\ContactNote[]|\YCloud\Client\Model\ErrorResponse|\YCloud\Client\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function notesListWithHttpInfo($id)
+    public function notesListWithHttpInfo($contact_identifier)
     {
-        $request = $this->notesListRequest($id);
+        $request = $this->notesListRequest($contact_identifier);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1457,6 +2573,21 @@ class ContactsApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+                case 400:
+                    if ('\YCloud\Client\Model\ErrorResponse' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\YCloud\Client\Model\ErrorResponse' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\YCloud\Client\Model\ErrorResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 case 404:
                     if ('\YCloud\Client\Model\ErrorResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
@@ -1500,6 +2631,14 @@ class ContactsApi
                     );
                     $e->setResponseObject($data);
                     break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\YCloud\Client\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -1518,14 +2657,14 @@ class ContactsApi
      *
      * List contact notes
      *
-     * @param  string $id ID of the contact. Also support phone number([E.164](https://en.wikipedia.org/wiki/E.164) format, start with character &#39;+&#39;), example: +16315551111 (required)
+     * @param  string $contact_identifier Identifier of the contact that owns the note. Supports a contact ID, a username without the leading &#x60;@&#x60;, or a phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format starting with &#x60;+&#x60;. Usernames contain 3 to 35 letters, digits, periods, or underscores. A numeric value is resolved as a username first and then as a contact ID when no matching username exists. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function notesListAsync($id)
+    public function notesListAsync($contact_identifier)
     {
-        return $this->notesListAsyncWithHttpInfo($id)
+        return $this->notesListAsyncWithHttpInfo($contact_identifier)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1538,15 +2677,15 @@ class ContactsApi
      *
      * List contact notes
      *
-     * @param  string $id ID of the contact. Also support phone number([E.164](https://en.wikipedia.org/wiki/E.164) format, start with character &#39;+&#39;), example: +16315551111 (required)
+     * @param  string $contact_identifier Identifier of the contact that owns the note. Supports a contact ID, a username without the leading &#x60;@&#x60;, or a phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format starting with &#x60;+&#x60;. Usernames contain 3 to 35 letters, digits, periods, or underscores. A numeric value is resolved as a username first and then as a contact ID when no matching username exists. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function notesListAsyncWithHttpInfo($id)
+    public function notesListAsyncWithHttpInfo($contact_identifier)
     {
         $returnType = '\YCloud\Client\Model\ContactNote[]';
-        $request = $this->notesListRequest($id);
+        $request = $this->notesListRequest($contact_identifier);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1587,25 +2726,25 @@ class ContactsApi
     /**
      * Create request for operation 'notesList'
      *
-     * @param  string $id ID of the contact. Also support phone number([E.164](https://en.wikipedia.org/wiki/E.164) format, start with character &#39;+&#39;), example: +16315551111 (required)
+     * @param  string $contact_identifier Identifier of the contact that owns the note. Supports a contact ID, a username without the leading &#x60;@&#x60;, or a phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format starting with &#x60;+&#x60;. Usernames contain 3 to 35 letters, digits, periods, or underscores. A numeric value is resolved as a username first and then as a contact ID when no matching username exists. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function notesListRequest($id)
+    public function notesListRequest($contact_identifier)
     {
-        // verify the required parameter 'id' is set
-        if ($id === null || (is_array($id) && count($id) === 0)) {
+        // verify the required parameter 'contact_identifier' is set
+        if ($contact_identifier === null || (is_array($contact_identifier) && count($contact_identifier) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $id when calling notesList'
+                'Missing the required parameter $contact_identifier when calling notesList'
             );
         }
-        if (strlen($id) > 255) {
-            throw new \InvalidArgumentException('invalid length for "$id" when calling ContactsApi.notesList, must be smaller than or equal to 255.');
+        if (strlen($contact_identifier) > 255) {
+            throw new \InvalidArgumentException('invalid length for "$contact_identifier" when calling ContactsApi.notesList, must be smaller than or equal to 255.');
         }
 
 
-        $resourcePath = '/contact/contacts/{id}/notes';
+        $resourcePath = '/contact/contacts/{contactIdentifier}/notes';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -1615,10 +2754,10 @@ class ContactsApi
 
 
         // path params
-        if ($id !== null) {
+        if ($contact_identifier !== null) {
             $resourcePath = str_replace(
-                '{' . 'id' . '}',
-                ObjectSerializer::toPathValue($id),
+                '{' . 'contactIdentifier' . '}',
+                ObjectSerializer::toPathValue($contact_identifier),
                 $resourcePath
             );
         }
@@ -1691,7 +2830,7 @@ class ContactsApi
      *
      * Retrieve a contact
      *
-     * @param  string $id ID of the contact. Also support phone number([E.164](https://en.wikipedia.org/wiki/E.164) format, start with character &#39;+&#39;), example: +16315551111 (required)
+     * @param  string $id Identifier of the contact. Supports a contact ID, a phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format starting with &#x60;+&#x60; (for example, &#x60;+16315551111&#x60;), or a Meta username without the leading &#x60;@&#x60;. A Meta username must contain 3 to 35 letters, digits, periods, or underscores. If a numeric value can be interpreted as both a Meta username and a contact ID, it is resolved as a Meta username first. If no contact has that Meta username, the value is resolved as a contact ID. (required)
      *
      * @throws \YCloud\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1708,7 +2847,7 @@ class ContactsApi
      *
      * Retrieve a contact
      *
-     * @param  string $id ID of the contact. Also support phone number([E.164](https://en.wikipedia.org/wiki/E.164) format, start with character &#39;+&#39;), example: +16315551111 (required)
+     * @param  string $id Identifier of the contact. Supports a contact ID, a phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format starting with &#x60;+&#x60; (for example, &#x60;+16315551111&#x60;), or a Meta username without the leading &#x60;@&#x60;. A Meta username must contain 3 to 35 letters, digits, periods, or underscores. If a numeric value can be interpreted as both a Meta username and a contact ID, it is resolved as a Meta username first. If no contact has that Meta username, the value is resolved as a contact ID. (required)
      *
      * @throws \YCloud\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1830,7 +2969,7 @@ class ContactsApi
      *
      * Retrieve a contact
      *
-     * @param  string $id ID of the contact. Also support phone number([E.164](https://en.wikipedia.org/wiki/E.164) format, start with character &#39;+&#39;), example: +16315551111 (required)
+     * @param  string $id Identifier of the contact. Supports a contact ID, a phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format starting with &#x60;+&#x60; (for example, &#x60;+16315551111&#x60;), or a Meta username without the leading &#x60;@&#x60;. A Meta username must contain 3 to 35 letters, digits, periods, or underscores. If a numeric value can be interpreted as both a Meta username and a contact ID, it is resolved as a Meta username first. If no contact has that Meta username, the value is resolved as a contact ID. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1850,7 +2989,7 @@ class ContactsApi
      *
      * Retrieve a contact
      *
-     * @param  string $id ID of the contact. Also support phone number([E.164](https://en.wikipedia.org/wiki/E.164) format, start with character &#39;+&#39;), example: +16315551111 (required)
+     * @param  string $id Identifier of the contact. Supports a contact ID, a phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format starting with &#x60;+&#x60; (for example, &#x60;+16315551111&#x60;), or a Meta username without the leading &#x60;@&#x60;. A Meta username must contain 3 to 35 letters, digits, periods, or underscores. If a numeric value can be interpreted as both a Meta username and a contact ID, it is resolved as a Meta username first. If no contact has that Meta username, the value is resolved as a contact ID. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1899,7 +3038,7 @@ class ContactsApi
     /**
      * Create request for operation 'retrieve'
      *
-     * @param  string $id ID of the contact. Also support phone number([E.164](https://en.wikipedia.org/wiki/E.164) format, start with character &#39;+&#39;), example: +16315551111 (required)
+     * @param  string $id Identifier of the contact. Supports a contact ID, a phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format starting with &#x60;+&#x60; (for example, &#x60;+16315551111&#x60;), or a Meta username without the leading &#x60;@&#x60;. A Meta username must contain 3 to 35 letters, digits, periods, or underscores. If a numeric value can be interpreted as both a Meta username and a contact ID, it is resolved as a Meta username first. If no contact has that Meta username, the value is resolved as a contact ID. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -2003,12 +3142,12 @@ class ContactsApi
      *
      * Update a contact
      *
-     * @param  string $id ID of the contact. Also support phone number([E.164](https://en.wikipedia.org/wiki/E.164) format, start with character &#39;+&#39;), example: +16315551111 (required)
+     * @param  string $id Identifier of the contact. Supports a contact ID, a phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format starting with &#x60;+&#x60; (for example, &#x60;+16315551111&#x60;), or a Meta username without the leading &#x60;@&#x60;. A Meta username must contain 3 to 35 letters, digits, periods, or underscores. If a numeric value can be interpreted as both a Meta username and a contact ID, it is resolved as a Meta username first. If no contact has that Meta username, the value is resolved as a contact ID. (required)
      * @param  \YCloud\Client\Model\ContactUpdateRequest $contact_update_request contact_update_request (optional)
      *
      * @throws \YCloud\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \YCloud\Client\Model\Contact|\YCloud\Client\Model\ErrorResponse
+     * @return \YCloud\Client\Model\Contact|\YCloud\Client\Model\ErrorResponse|\YCloud\Client\Model\ErrorResponse
      */
     public function update($id, $contact_update_request = null)
     {
@@ -2021,12 +3160,12 @@ class ContactsApi
      *
      * Update a contact
      *
-     * @param  string $id ID of the contact. Also support phone number([E.164](https://en.wikipedia.org/wiki/E.164) format, start with character &#39;+&#39;), example: +16315551111 (required)
+     * @param  string $id Identifier of the contact. Supports a contact ID, a phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format starting with &#x60;+&#x60; (for example, &#x60;+16315551111&#x60;), or a Meta username without the leading &#x60;@&#x60;. A Meta username must contain 3 to 35 letters, digits, periods, or underscores. If a numeric value can be interpreted as both a Meta username and a contact ID, it is resolved as a Meta username first. If no contact has that Meta username, the value is resolved as a contact ID. (required)
      * @param  \YCloud\Client\Model\ContactUpdateRequest $contact_update_request (optional)
      *
      * @throws \YCloud\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \YCloud\Client\Model\Contact|\YCloud\Client\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \YCloud\Client\Model\Contact|\YCloud\Client\Model\ErrorResponse|\YCloud\Client\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function updateWithHttpInfo($id, $contact_update_request = null)
     {
@@ -2083,6 +3222,21 @@ class ContactsApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+                case 400:
+                    if ('\YCloud\Client\Model\ErrorResponse' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\YCloud\Client\Model\ErrorResponse' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\YCloud\Client\Model\ErrorResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 case 404:
                     if ('\YCloud\Client\Model\ErrorResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
@@ -2126,6 +3280,14 @@ class ContactsApi
                     );
                     $e->setResponseObject($data);
                     break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\YCloud\Client\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -2144,7 +3306,7 @@ class ContactsApi
      *
      * Update a contact
      *
-     * @param  string $id ID of the contact. Also support phone number([E.164](https://en.wikipedia.org/wiki/E.164) format, start with character &#39;+&#39;), example: +16315551111 (required)
+     * @param  string $id Identifier of the contact. Supports a contact ID, a phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format starting with &#x60;+&#x60; (for example, &#x60;+16315551111&#x60;), or a Meta username without the leading &#x60;@&#x60;. A Meta username must contain 3 to 35 letters, digits, periods, or underscores. If a numeric value can be interpreted as both a Meta username and a contact ID, it is resolved as a Meta username first. If no contact has that Meta username, the value is resolved as a contact ID. (required)
      * @param  \YCloud\Client\Model\ContactUpdateRequest $contact_update_request (optional)
      *
      * @throws \InvalidArgumentException
@@ -2165,7 +3327,7 @@ class ContactsApi
      *
      * Update a contact
      *
-     * @param  string $id ID of the contact. Also support phone number([E.164](https://en.wikipedia.org/wiki/E.164) format, start with character &#39;+&#39;), example: +16315551111 (required)
+     * @param  string $id Identifier of the contact. Supports a contact ID, a phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format starting with &#x60;+&#x60; (for example, &#x60;+16315551111&#x60;), or a Meta username without the leading &#x60;@&#x60;. A Meta username must contain 3 to 35 letters, digits, periods, or underscores. If a numeric value can be interpreted as both a Meta username and a contact ID, it is resolved as a Meta username first. If no contact has that Meta username, the value is resolved as a contact ID. (required)
      * @param  \YCloud\Client\Model\ContactUpdateRequest $contact_update_request (optional)
      *
      * @throws \InvalidArgumentException
@@ -2215,7 +3377,7 @@ class ContactsApi
     /**
      * Create request for operation 'update'
      *
-     * @param  string $id ID of the contact. Also support phone number([E.164](https://en.wikipedia.org/wiki/E.164) format, start with character &#39;+&#39;), example: +16315551111 (required)
+     * @param  string $id Identifier of the contact. Supports a contact ID, a phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format starting with &#x60;+&#x60; (for example, &#x60;+16315551111&#x60;), or a Meta username without the leading &#x60;@&#x60;. A Meta username must contain 3 to 35 letters, digits, periods, or underscores. If a numeric value can be interpreted as both a Meta username and a contact ID, it is resolved as a Meta username first. If no contact has that Meta username, the value is resolved as a contact ID. (required)
      * @param  \YCloud\Client\Model\ContactUpdateRequest $contact_update_request (optional)
      *
      * @throws \InvalidArgumentException

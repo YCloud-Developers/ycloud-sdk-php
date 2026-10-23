@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **string** | Unique ID for the contact note. |
+**id** | **string** | Unique 24-character ObjectId for the contact note. IDs remain unchanged after storage migration. |
 **contact_id** | **string** | Unique ID of the contact that owns this note. |
 **content** | **string** | Note content. |
 **operator_id** | **string** | ID of the actor who created the note. | [optional]
