@@ -36,7 +36,7 @@ use \YCloud\Client\ObjectSerializer;
  * CustomEventSendRequest Class Doc Comment
  *
  * @category Class
- * @description Contains the properties of the custom event data to be sent.
+ * @description Contains the properties of the custom event data to be sent. For events defined with &#x60;objectType&#x60; as &#x60;CONTACT&#x60;, provide one of &#x60;objectId&#x60;, &#x60;contactPhoneNumber&#x60;, or &#x60;contactUsername&#x60; to identify the contact. Only one identifier is used per event. If multiple identifiers are provided, a numeric &#x60;objectId&#x60; takes precedence, followed by a non-blank &#x60;contactPhoneNumber&#x60;, then &#x60;contactUsername&#x60;. Contact identifier requirements and precedence are validated by the server.
  * @package  YCloud\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -63,6 +63,7 @@ class CustomEventSendRequest implements ModelInterface, ArrayAccess, \JsonSerial
         'occur_time' => '\DateTime',
         'object_id' => 'string',
         'contact_phone_number' => 'string',
+        'contact_username' => 'string',
         'properties' => 'array<string,object>'
     ];
 
@@ -78,6 +79,7 @@ class CustomEventSendRequest implements ModelInterface, ArrayAccess, \JsonSerial
         'occur_time' => 'date-time',
         'object_id' => null,
         'contact_phone_number' => null,
+        'contact_username' => null,
         'properties' => null
     ];
 
@@ -112,6 +114,7 @@ class CustomEventSendRequest implements ModelInterface, ArrayAccess, \JsonSerial
         'occur_time' => 'occurTime',
         'object_id' => 'objectId',
         'contact_phone_number' => 'contactPhoneNumber',
+        'contact_username' => 'contactUsername',
         'properties' => 'properties'
     ];
 
@@ -125,6 +128,7 @@ class CustomEventSendRequest implements ModelInterface, ArrayAccess, \JsonSerial
         'occur_time' => 'setOccurTime',
         'object_id' => 'setObjectId',
         'contact_phone_number' => 'setContactPhoneNumber',
+        'contact_username' => 'setContactUsername',
         'properties' => 'setProperties'
     ];
 
@@ -138,6 +142,7 @@ class CustomEventSendRequest implements ModelInterface, ArrayAccess, \JsonSerial
         'occur_time' => 'getOccurTime',
         'object_id' => 'getObjectId',
         'contact_phone_number' => 'getContactPhoneNumber',
+        'contact_username' => 'getContactUsername',
         'properties' => 'getProperties'
     ];
 
@@ -202,6 +207,7 @@ class CustomEventSendRequest implements ModelInterface, ArrayAccess, \JsonSerial
         $this->container['occur_time'] = $data['occur_time'] ?? null;
         $this->container['object_id'] = $data['object_id'] ?? null;
         $this->container['contact_phone_number'] = $data['contact_phone_number'] ?? null;
+        $this->container['contact_username'] = $data['contact_username'] ?? null;
         $this->container['properties'] = $data['properties'] ?? null;
     }
 
@@ -293,7 +299,7 @@ class CustomEventSendRequest implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets object_id
      *
-     * @param string|null $object_id ID of the object that the event is associated with. For events defined with `objectType` as `CONTACT`, the `objectId` should be a `contact` ID. Alternatively, you can use the `contactPhoneNumber` field to specify the contact.
+     * @param string|null $object_id ID of the object that the event is associated with. For events defined with `objectType` as `CONTACT`, provide the numeric ID of an existing contact in your account. A numeric `objectId` takes precedence over `contactPhoneNumber` and `contactUsername`. If that contact is not found, the request fails without trying another identifier.
      *
      * @return self
      */
@@ -317,13 +323,37 @@ class CustomEventSendRequest implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets contact_phone_number
      *
-     * @param string|null $contact_phone_number The phone number of the contact for events defined with `objectType` as `CONTACT`.
+     * @param string|null $contact_phone_number The contact's phone number in E.164 format for events defined with `objectType` as `CONTACT`. Used when no numeric `objectId` is provided. Looks up a contact in your account by phone number and creates one if no match exists. Takes precedence over `contactUsername`.
      *
      * @return self
      */
     public function setContactPhoneNumber($contact_phone_number)
     {
         $this->container['contact_phone_number'] = $contact_phone_number;
+
+        return $this;
+    }
+
+    /**
+     * Gets contact_username
+     *
+     * @return string|null
+     */
+    public function getContactUsername()
+    {
+        return $this->container['contact_username'];
+    }
+
+    /**
+     * Sets contact_username
+     *
+     * @param string|null $contact_username The Meta username of an existing contact in your account for events defined with `objectType` as `CONTACT`. Provide the username saved on the contact, without the leading `@`. Used when neither a numeric `objectId` nor a non-blank `contactPhoneNumber` is provided. If no matching contact exists, the request fails. A username does not automatically create a contact.
+     *
+     * @return self
+     */
+    public function setContactUsername($contact_username)
+    {
+        $this->container['contact_username'] = $contact_username;
 
         return $this;
     }
@@ -441,5 +471,3 @@ class CustomEventSendRequest implements ModelInterface, ArrayAccess, \JsonSerial
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
-
-

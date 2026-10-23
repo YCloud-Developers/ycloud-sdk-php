@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **message** | **string** | A human-readable description of the error. |
 **code** | **string** | An error code. |
 **type** | **string** | Error type. | [optional]
+**is_transient** | **bool** | Whether the error is transient. | [optional]
 **error_subcode** | **string** | Additional code about the error. | [optional]
 **error_user_msg** | **string** | The message to display to the user. The language of the message is based on the locale of the API request. | [optional]
 **error_user_title** | **string** | The title of the dialog, if shown. The language of the message is based on the locale of the API request. | [optional]

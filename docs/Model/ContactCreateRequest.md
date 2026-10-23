@@ -4,12 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**nickname** | **string** | Contact&#39;s nickname. Maximum length: 250 characters. | [optional]
+**remark_name** | **string** | Contact&#39;s remark name. Maximum length: 250 characters. | [optional]
+**nickname** | **string** | Deprecated compatibility alias for &#x60;remarkName&#x60;. When &#x60;remarkName&#x60; is absent, this value is saved as the contact&#39;s remark name. It does not update the read-only WhatsApp nickname. Maximum length: 250 characters. | [optional]
 **phone_number** | **string** | Unique Phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format. |
 **country_code** | **string** | Two-letter country abbreviation. See [ISO 3166-1 alpha-2 country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2). | [optional]
 **email** | **string** | Contact&#39;s email address. If present, the email address must be unique. | [optional]
 **tags** | **string[]** | Contact&#39;s tags. Max items: 50. Max characters per tag: 50. | [optional]
 **custom_attributes** | [**\YCloud\Client\Model\ContactCustomAttribute[]**](ContactCustomAttribute.md) | Contact&#39;s custom attributes. | [optional]
 **owner_email** | **string** | The email address of the contact&#39;s owner. | [optional]
+**notes** | [**\YCloud\Client\Model\ContactNoteCreateInput[]**](ContactNoteCreateInput.md) | Optional notes created atomically with the contact. The response remains the Contact schema; use the List Contact Notes endpoint to retrieve generated note IDs. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

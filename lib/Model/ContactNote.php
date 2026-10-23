@@ -229,6 +229,18 @@ class ContactNote implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['id'] === null) {
             $invalidProperties[] = "'id' can't be null";
         }
+        if ((mb_strlen($this->container['id']) > 24)) {
+            $invalidProperties[] = "invalid value for 'id', the character length must be smaller than or equal to 24.";
+        }
+
+        if ((mb_strlen($this->container['id']) < 24)) {
+            $invalidProperties[] = "invalid value for 'id', the character length must be bigger than or equal to 24.";
+        }
+
+        if (!preg_match("/^[0-9a-fA-F]{24}$/", $this->container['id'])) {
+            $invalidProperties[] = "invalid value for 'id', must be conform to the pattern /^[0-9a-fA-F]{24}$/.";
+        }
+
         if ($this->container['contact_id'] === null) {
             $invalidProperties[] = "'contact_id' can't be null";
         }
@@ -267,12 +279,22 @@ class ContactNote implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets id
      *
-     * @param string $id Unique ID for the contact note.
+     * @param string $id Unique 24-character ObjectId for the contact note. IDs remain unchanged after storage migration.
      *
      * @return self
      */
     public function setId($id)
     {
+        if ((mb_strlen($id) > 24)) {
+            throw new \InvalidArgumentException('invalid length for $id when calling ContactNote., must be smaller than or equal to 24.');
+        }
+        if ((mb_strlen($id) < 24)) {
+            throw new \InvalidArgumentException('invalid length for $id when calling ContactNote., must be bigger than or equal to 24.');
+        }
+        if ((!preg_match("/^[0-9a-fA-F]{24}$/", $id))) {
+            throw new \InvalidArgumentException("invalid value for \$id when calling ContactNote., must conform to the pattern /^[0-9a-fA-F]{24}$/.");
+        }
+
         $this->container['id'] = $id;
 
         return $this;

@@ -36,7 +36,7 @@ use \YCloud\Client\ObjectSerializer;
  * ContactPage Class Doc Comment
  *
  * @category Class
- * @description Represents a given page of contacts.
+ * @description Represents a given page of contacts. In cursor mode, &#x60;offset&#x60; is &#x60;0&#x60;, items are ordered by contact ID in ascending order, and &#x60;cursor&#x60; is returned only when another page exists. When &#x60;includeTotal&#x3D;true&#x60;, &#x60;total&#x60; is the complete filtered count and is not reduced by the cursor position.
  * @package  YCloud\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -60,6 +60,7 @@ class ContactPage implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPITypes = [
         'items' => '\YCloud\Client\Model\Contact[]',
+        'cursor' => '\YCloud\Client\Model\ContactPageCursor',
         'offset' => 'int',
         'limit' => 'int',
         'length' => 'int',
@@ -75,6 +76,7 @@ class ContactPage implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPIFormats = [
         'items' => null,
+        'cursor' => null,
         'offset' => 'int32',
         'limit' => 'int32',
         'length' => 'int32',
@@ -109,6 +111,7 @@ class ContactPage implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $attributeMap = [
         'items' => 'items',
+        'cursor' => 'cursor',
         'offset' => 'offset',
         'limit' => 'limit',
         'length' => 'length',
@@ -122,6 +125,7 @@ class ContactPage implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $setters = [
         'items' => 'setItems',
+        'cursor' => 'setCursor',
         'offset' => 'setOffset',
         'limit' => 'setLimit',
         'length' => 'setLength',
@@ -135,6 +139,7 @@ class ContactPage implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $getters = [
         'items' => 'getItems',
+        'cursor' => 'getCursor',
         'offset' => 'getOffset',
         'limit' => 'getLimit',
         'length' => 'getLength',
@@ -199,6 +204,7 @@ class ContactPage implements ModelInterface, ArrayAccess, \JsonSerializable
     public function __construct(array $data = null)
     {
         $this->container['items'] = $data['items'] ?? null;
+        $this->container['cursor'] = $data['cursor'] ?? null;
         $this->container['offset'] = $data['offset'] ?? null;
         $this->container['limit'] = $data['limit'] ?? null;
         $this->container['length'] = $data['length'] ?? null;
@@ -274,6 +280,30 @@ class ContactPage implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setItems($items)
     {
         $this->container['items'] = $items;
+
+        return $this;
+    }
+
+    /**
+     * Gets cursor
+     *
+     * @return \YCloud\Client\Model\ContactPageCursor|null
+     */
+    public function getCursor()
+    {
+        return $this->container['cursor'];
+    }
+
+    /**
+     * Sets cursor
+     *
+     * @param \YCloud\Client\Model\ContactPageCursor|null $cursor cursor
+     *
+     * @return self
+     */
+    public function setCursor($cursor)
+    {
+        $this->container['cursor'] = $cursor;
 
         return $this;
     }
@@ -483,5 +513,3 @@ class ContactPage implements ModelInterface, ArrayAccess, \JsonSerializable
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
-
-

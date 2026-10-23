@@ -36,7 +36,7 @@ use \YCloud\Client\ObjectSerializer;
  * WhatsappBusinessUsernameDeleteResult Class Doc Comment
  *
  * @category Class
- * @description Business Username deletion result. Deleting the active username does not cancel a pending Business Username request. If a pending request still exists, the returned &#x60;businessUsernameStatus&#x60; is &#x60;pending_review&#x60;; otherwise it is &#x60;not_set&#x60;.
+ * @description Business Username deletion result. Deleting the active username does not cancel a reserved Business Username request. If a reserved request still exists, the returned &#x60;businessUsernameStatus&#x60; is &#x60;reserved&#x60;; otherwise it is &#x60;not_set&#x60;.
  * @package  YCloud\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -468,5 +468,3 @@ class WhatsappBusinessUsernameDeleteResult implements ModelInterface, ArrayAcces
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
-
-

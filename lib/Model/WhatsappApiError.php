@@ -62,6 +62,7 @@ class WhatsappApiError implements ModelInterface, ArrayAccess, \JsonSerializable
         'message' => 'string',
         'code' => 'string',
         'type' => 'string',
+        'is_transient' => 'bool',
         'error_subcode' => 'string',
         'error_user_msg' => 'string',
         'error_user_title' => 'string',
@@ -80,6 +81,7 @@ class WhatsappApiError implements ModelInterface, ArrayAccess, \JsonSerializable
         'message' => null,
         'code' => null,
         'type' => null,
+        'is_transient' => null,
         'error_subcode' => null,
         'error_user_msg' => null,
         'error_user_title' => null,
@@ -117,6 +119,7 @@ class WhatsappApiError implements ModelInterface, ArrayAccess, \JsonSerializable
         'message' => 'message',
         'code' => 'code',
         'type' => 'type',
+        'is_transient' => 'is_transient',
         'error_subcode' => 'error_subcode',
         'error_user_msg' => 'error_user_msg',
         'error_user_title' => 'error_user_title',
@@ -133,6 +136,7 @@ class WhatsappApiError implements ModelInterface, ArrayAccess, \JsonSerializable
         'message' => 'setMessage',
         'code' => 'setCode',
         'type' => 'setType',
+        'is_transient' => 'setIsTransient',
         'error_subcode' => 'setErrorSubcode',
         'error_user_msg' => 'setErrorUserMsg',
         'error_user_title' => 'setErrorUserTitle',
@@ -149,6 +153,7 @@ class WhatsappApiError implements ModelInterface, ArrayAccess, \JsonSerializable
         'message' => 'getMessage',
         'code' => 'getCode',
         'type' => 'getType',
+        'is_transient' => 'getIsTransient',
         'error_subcode' => 'getErrorSubcode',
         'error_user_msg' => 'getErrorUserMsg',
         'error_user_title' => 'getErrorUserTitle',
@@ -216,6 +221,7 @@ class WhatsappApiError implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['message'] = $data['message'] ?? null;
         $this->container['code'] = $data['code'] ?? null;
         $this->container['type'] = $data['type'] ?? null;
+        $this->container['is_transient'] = $data['is_transient'] ?? null;
         $this->container['error_subcode'] = $data['error_subcode'] ?? null;
         $this->container['error_user_msg'] = $data['error_user_msg'] ?? null;
         $this->container['error_user_title'] = $data['error_user_title'] ?? null;
@@ -321,6 +327,30 @@ class WhatsappApiError implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setType($type)
     {
         $this->container['type'] = $type;
+
+        return $this;
+    }
+
+    /**
+     * Gets is_transient
+     *
+     * @return bool|null
+     */
+    public function getIsTransient()
+    {
+        return $this->container['is_transient'];
+    }
+
+    /**
+     * Sets is_transient
+     *
+     * @param bool|null $is_transient Whether the error is transient.
+     *
+     * @return self
+     */
+    public function setIsTransient($is_transient)
+    {
+        $this->container['is_transient'] = $is_transient;
 
         return $this;
     }
@@ -534,5 +564,3 @@ class WhatsappApiError implements ModelInterface, ArrayAccess, \JsonSerializable
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
-
-

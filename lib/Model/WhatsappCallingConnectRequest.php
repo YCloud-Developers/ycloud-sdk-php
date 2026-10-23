@@ -36,7 +36,7 @@ use \YCloud\Client\ObjectSerializer;
  * WhatsappCallingConnectRequest Class Doc Comment
  *
  * @category Class
- * @description Provide exactly one of &#x60;to&#x60; or &#x60;recipient&#x60;. If both are provided, &#x60;to&#x60; takes precedence and &#x60;recipient&#x60; is ignored.
+ * @description Provide at least one of &#x60;to&#x60; or &#x60;recipient&#x60;. If both are provided, &#x60;to&#x60; takes precedence and &#x60;recipient&#x60; is ignored.
  * @package  YCloud\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -479,5 +479,3 @@ class WhatsappCallingConnectRequest implements ModelInterface, ArrayAccess, \Jso
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
-
-

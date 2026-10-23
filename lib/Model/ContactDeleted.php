@@ -60,6 +60,7 @@ class ContactDeleted implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPITypes = [
         'id' => 'string',
+        'remark_name' => 'string',
         'nick_name' => 'string',
         'phone_number' => 'string',
         'update_time' => '\DateTime'
@@ -74,6 +75,7 @@ class ContactDeleted implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPIFormats = [
         'id' => null,
+        'remark_name' => null,
         'nick_name' => null,
         'phone_number' => null,
         'update_time' => 'date-time'
@@ -107,6 +109,7 @@ class ContactDeleted implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $attributeMap = [
         'id' => 'id',
+        'remark_name' => 'remarkName',
         'nick_name' => 'nickName',
         'phone_number' => 'phoneNumber',
         'update_time' => 'updateTime'
@@ -119,6 +122,7 @@ class ContactDeleted implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $setters = [
         'id' => 'setId',
+        'remark_name' => 'setRemarkName',
         'nick_name' => 'setNickName',
         'phone_number' => 'setPhoneNumber',
         'update_time' => 'setUpdateTime'
@@ -131,6 +135,7 @@ class ContactDeleted implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $getters = [
         'id' => 'getId',
+        'remark_name' => 'getRemarkName',
         'nick_name' => 'getNickName',
         'phone_number' => 'getPhoneNumber',
         'update_time' => 'getUpdateTime'
@@ -194,6 +199,7 @@ class ContactDeleted implements ModelInterface, ArrayAccess, \JsonSerializable
     public function __construct(array $data = null)
     {
         $this->container['id'] = $data['id'] ?? null;
+        $this->container['remark_name'] = $data['remark_name'] ?? null;
         $this->container['nick_name'] = $data['nick_name'] ?? null;
         $this->container['phone_number'] = $data['phone_number'] ?? null;
         $this->container['update_time'] = $data['update_time'] ?? null;
@@ -246,6 +252,30 @@ class ContactDeleted implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setId($id)
     {
         $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Gets remark_name
+     *
+     * @return string|null
+     */
+    public function getRemarkName()
+    {
+        return $this->container['remark_name'];
+    }
+
+    /**
+     * Sets remark_name
+     *
+     * @param string|null $remark_name The business-managed remark name from the deleted contact snapshot.
+     *
+     * @return self
+     */
+    public function setRemarkName($remark_name)
+    {
+        $this->container['remark_name'] = $remark_name;
 
         return $this;
     }
@@ -411,5 +441,3 @@ class ContactDeleted implements ModelInterface, ArrayAccess, \JsonSerializable
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
-
-

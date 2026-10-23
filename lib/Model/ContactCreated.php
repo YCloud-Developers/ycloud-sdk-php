@@ -60,6 +60,7 @@ class ContactCreated implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPITypes = [
         'id' => 'string',
+        'remark_name' => 'string',
         'nick_name' => 'string',
         'real_name' => 'string',
         'phone_number' => 'string',
@@ -88,6 +89,7 @@ class ContactCreated implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPIFormats = [
         'id' => null,
+        'remark_name' => null,
         'nick_name' => null,
         'real_name' => null,
         'phone_number' => null,
@@ -135,6 +137,7 @@ class ContactCreated implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $attributeMap = [
         'id' => 'id',
+        'remark_name' => 'remarkName',
         'nick_name' => 'nickName',
         'real_name' => 'realName',
         'phone_number' => 'phoneNumber',
@@ -161,6 +164,7 @@ class ContactCreated implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $setters = [
         'id' => 'setId',
+        'remark_name' => 'setRemarkName',
         'nick_name' => 'setNickName',
         'real_name' => 'setRealName',
         'phone_number' => 'setPhoneNumber',
@@ -187,6 +191,7 @@ class ContactCreated implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $getters = [
         'id' => 'getId',
+        'remark_name' => 'getRemarkName',
         'nick_name' => 'getNickName',
         'real_name' => 'getRealName',
         'phone_number' => 'getPhoneNumber',
@@ -264,6 +269,7 @@ class ContactCreated implements ModelInterface, ArrayAccess, \JsonSerializable
     public function __construct(array $data = null)
     {
         $this->container['id'] = $data['id'] ?? null;
+        $this->container['remark_name'] = $data['remark_name'] ?? null;
         $this->container['nick_name'] = $data['nick_name'] ?? null;
         $this->container['real_name'] = $data['real_name'] ?? null;
         $this->container['phone_number'] = $data['phone_number'] ?? null;
@@ -330,6 +336,30 @@ class ContactCreated implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setId($id)
     {
         $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Gets remark_name
+     *
+     * @return string|null
+     */
+    public function getRemarkName()
+    {
+        return $this->container['remark_name'];
+    }
+
+    /**
+     * Sets remark_name
+     *
+     * @param string|null $remark_name The business-managed remark name for the contact.
+     *
+     * @return self
+     */
+    public function setRemarkName($remark_name)
+    {
+        $this->container['remark_name'] = $remark_name;
 
         return $this;
     }
@@ -831,5 +861,3 @@ class ContactCreated implements ModelInterface, ArrayAccess, \JsonSerializable
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
-
-

@@ -236,7 +236,7 @@ class WhatsappMessageMedia implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets id
      *
-     * @param string|null $id **Use this when media is uploaded to WhatsApp servers.**  Provide the media object ID obtained from WhatsApp media upload API (https://docs.ycloud.com/update/reference/whatsapp_media-upload#/).  Note: Either `id` or `link` must be provided. If both are provided, `id` takes precedence.
+     * @param string|null $id **Use this when media is uploaded to WhatsApp servers.**  Provide the media object ID obtained from WhatsApp media upload API (https://docs.ycloud.com/reference/whatsapp_media-upload#/).  Note: Either `id` or `link` must be provided. If both are provided, `id` takes precedence.
      *
      * @return self
      */
@@ -408,5 +408,3 @@ class WhatsappMessageMedia implements ModelInterface, ArrayAccess, \JsonSerializ
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
-
-

@@ -458,7 +458,7 @@ class WhatsappTemplateCreateRequest implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets cta_url_link_tracking_opted_out
      *
-     * @param bool|null $cta_url_link_tracking_opted_out **Optional.** Indicates if template button click tracking is disabled. Set to `true` to disable button click tracking on the template, or `false` to enable. You can disable button click tracking on an individual template by setting this field to `true`. Once disabled, button engagement/clicks will not be displayed in the WhatsApp Manager when viewing the template's insights. If not provided, this value defaults to `false`, which means button click tracking is enabled by default.
+     * @param bool|null $cta_url_link_tracking_opted_out **Optional.** Indicates if template button click tracking is disabled. Set to `true` to disable button click tracking on the template, or `false` to enable. You can disable button click tracking on an individual template by setting this field to `true`. Once disabled, button engagement/clicks will not be displayed in the WhatsApp Manager when viewing the template's insights. If not provided or set to `null`, this value defaults to `true`, which means button click tracking is disabled by default.
      *
      * @return self
      */
@@ -558,5 +558,3 @@ class WhatsappTemplateCreateRequest implements ModelInterface, ArrayAccess, \Jso
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
-
-

@@ -36,7 +36,7 @@ use \YCloud\Client\ObjectSerializer;
  * ContactAttributesChanged Class Doc Comment
  *
  * @category Class
- * @description Represents a contact attributes changed event. Contains information about which contact attributes were modified and their old/new values.
+ * @description Represents a contact attributes changed event. Contains information about which contact attributes were modified and their old/new values. This event is emitted only when at least one persisted contact field actually changes; note-only and contact no-op updates do not emit it.
  * @package  YCloud\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -60,6 +60,7 @@ class ContactAttributesChanged implements ModelInterface, ArrayAccess, \JsonSeri
       */
     protected static $openAPITypes = [
         'id' => 'string',
+        'phone_number' => 'string',
         'update_time' => '\DateTime',
         'changed_attributes' => 'array<string,\YCloud\Client\Model\ContactAttributeChange>'
     ];
@@ -73,6 +74,7 @@ class ContactAttributesChanged implements ModelInterface, ArrayAccess, \JsonSeri
       */
     protected static $openAPIFormats = [
         'id' => null,
+        'phone_number' => null,
         'update_time' => 'date-time',
         'changed_attributes' => null
     ];
@@ -105,6 +107,7 @@ class ContactAttributesChanged implements ModelInterface, ArrayAccess, \JsonSeri
      */
     protected static $attributeMap = [
         'id' => 'id',
+        'phone_number' => 'phoneNumber',
         'update_time' => 'updateTime',
         'changed_attributes' => 'changedAttributes'
     ];
@@ -116,6 +119,7 @@ class ContactAttributesChanged implements ModelInterface, ArrayAccess, \JsonSeri
      */
     protected static $setters = [
         'id' => 'setId',
+        'phone_number' => 'setPhoneNumber',
         'update_time' => 'setUpdateTime',
         'changed_attributes' => 'setChangedAttributes'
     ];
@@ -127,6 +131,7 @@ class ContactAttributesChanged implements ModelInterface, ArrayAccess, \JsonSeri
      */
     protected static $getters = [
         'id' => 'getId',
+        'phone_number' => 'getPhoneNumber',
         'update_time' => 'getUpdateTime',
         'changed_attributes' => 'getChangedAttributes'
     ];
@@ -189,6 +194,7 @@ class ContactAttributesChanged implements ModelInterface, ArrayAccess, \JsonSeri
     public function __construct(array $data = null)
     {
         $this->container['id'] = $data['id'] ?? null;
+        $this->container['phone_number'] = $data['phone_number'] ?? null;
         $this->container['update_time'] = $data['update_time'] ?? null;
         $this->container['changed_attributes'] = $data['changed_attributes'] ?? null;
     }
@@ -246,6 +252,30 @@ class ContactAttributesChanged implements ModelInterface, ArrayAccess, \JsonSeri
     public function setId($id)
     {
         $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Gets phone_number
+     *
+     * @return string|null
+     */
+    public function getPhoneNumber()
+    {
+        return $this->container['phone_number'];
+    }
+
+    /**
+     * Sets phone_number
+     *
+     * @param string|null $phone_number The contact's phone number in E.164 format.
+     *
+     * @return self
+     */
+    public function setPhoneNumber($phone_number)
+    {
+        $this->container['phone_number'] = $phone_number;
 
         return $this;
     }
@@ -387,5 +417,3 @@ class ContactAttributesChanged implements ModelInterface, ArrayAccess, \JsonSeri
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
-
-

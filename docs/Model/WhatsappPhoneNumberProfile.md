@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **about** | **string** | The business&#39;s **About** text. This text appears in the business&#39;s profile, beneath its profile image, phone number, and contact buttons. | [optional]
+**ycloud_name** | **string** | Optional remark name assigned to this phone number in YCloud. It is populated by the profile GET API and omitted when no remark name is set. | [optional] [readonly]
 **verified_name** | **string** | The verified name | [optional]
 **name_status** | [**\YCloud\Client\Model\WhatsappPhoneNumberNameStatus**](WhatsappPhoneNumberNameStatus.md) |  | [optional]
 **new_name** | **string** | The modified name | [optional]

@@ -71,6 +71,7 @@ class WhatsappPhoneNumber implements ModelInterface, ArrayAccess, \JsonSerializa
         'messaging_limit' => 'string',
         'whatsapp_business_manager_messaging_limit' => 'string',
         'verified_name' => 'string',
+        'ycloud_name' => 'string',
         'new_name' => 'string',
         'code_verification_status' => '\YCloud\Client\Model\WhatsappPhoneNumberCodeVerificationStatus',
         'is_official_business_account' => 'bool',
@@ -81,7 +82,8 @@ class WhatsappPhoneNumber implements ModelInterface, ArrayAccess, \JsonSerializa
         'requested_verified_name' => 'string',
         'rejection_reason' => 'string',
         'quality_update_event' => '\YCloud\Client\Model\WhatsappPhoneNumberQualityUpdateEventEnum',
-        'update_event' => 'string'
+        'update_event' => 'string',
+        'throughput_level' => 'string'
     ];
 
     /**
@@ -104,6 +106,7 @@ class WhatsappPhoneNumber implements ModelInterface, ArrayAccess, \JsonSerializa
         'messaging_limit' => null,
         'whatsapp_business_manager_messaging_limit' => null,
         'verified_name' => null,
+        'ycloud_name' => null,
         'new_name' => null,
         'code_verification_status' => null,
         'is_official_business_account' => null,
@@ -114,7 +117,8 @@ class WhatsappPhoneNumber implements ModelInterface, ArrayAccess, \JsonSerializa
         'requested_verified_name' => null,
         'rejection_reason' => null,
         'quality_update_event' => null,
-        'update_event' => null
+        'update_event' => null,
+        'throughput_level' => null
     ];
 
     /**
@@ -156,6 +160,7 @@ class WhatsappPhoneNumber implements ModelInterface, ArrayAccess, \JsonSerializa
         'messaging_limit' => 'messagingLimit',
         'whatsapp_business_manager_messaging_limit' => 'whatsappBusinessManagerMessagingLimit',
         'verified_name' => 'verifiedName',
+        'ycloud_name' => 'ycloudName',
         'new_name' => 'newName',
         'code_verification_status' => 'codeVerificationStatus',
         'is_official_business_account' => 'isOfficialBusinessAccount',
@@ -166,7 +171,8 @@ class WhatsappPhoneNumber implements ModelInterface, ArrayAccess, \JsonSerializa
         'requested_verified_name' => 'requestedVerifiedName',
         'rejection_reason' => 'rejectionReason',
         'quality_update_event' => 'qualityUpdateEvent',
-        'update_event' => 'updateEvent'
+        'update_event' => 'updateEvent',
+        'throughput_level' => 'throughputLevel'
     ];
 
     /**
@@ -187,6 +193,7 @@ class WhatsappPhoneNumber implements ModelInterface, ArrayAccess, \JsonSerializa
         'messaging_limit' => 'setMessagingLimit',
         'whatsapp_business_manager_messaging_limit' => 'setWhatsappBusinessManagerMessagingLimit',
         'verified_name' => 'setVerifiedName',
+        'ycloud_name' => 'setYcloudName',
         'new_name' => 'setNewName',
         'code_verification_status' => 'setCodeVerificationStatus',
         'is_official_business_account' => 'setIsOfficialBusinessAccount',
@@ -197,7 +204,8 @@ class WhatsappPhoneNumber implements ModelInterface, ArrayAccess, \JsonSerializa
         'requested_verified_name' => 'setRequestedVerifiedName',
         'rejection_reason' => 'setRejectionReason',
         'quality_update_event' => 'setQualityUpdateEvent',
-        'update_event' => 'setUpdateEvent'
+        'update_event' => 'setUpdateEvent',
+        'throughput_level' => 'setThroughputLevel'
     ];
 
     /**
@@ -218,6 +226,7 @@ class WhatsappPhoneNumber implements ModelInterface, ArrayAccess, \JsonSerializa
         'messaging_limit' => 'getMessagingLimit',
         'whatsapp_business_manager_messaging_limit' => 'getWhatsappBusinessManagerMessagingLimit',
         'verified_name' => 'getVerifiedName',
+        'ycloud_name' => 'getYcloudName',
         'new_name' => 'getNewName',
         'code_verification_status' => 'getCodeVerificationStatus',
         'is_official_business_account' => 'getIsOfficialBusinessAccount',
@@ -228,7 +237,8 @@ class WhatsappPhoneNumber implements ModelInterface, ArrayAccess, \JsonSerializa
         'requested_verified_name' => 'getRequestedVerifiedName',
         'rejection_reason' => 'getRejectionReason',
         'quality_update_event' => 'getQualityUpdateEvent',
-        'update_event' => 'getUpdateEvent'
+        'update_event' => 'getUpdateEvent',
+        'throughput_level' => 'getThroughputLevel'
     ];
 
     /**
@@ -274,6 +284,9 @@ class WhatsappPhoneNumber implements ModelInterface, ArrayAccess, \JsonSerializa
 
     public const UPDATE_EVENT_RECONNECTED = 'ACCOUNT_RECONNECTED';
     public const UPDATE_EVENT_OFFBOARDED = 'ACCOUNT_OFFBOARDED';
+    public const THROUGHPUT_LEVEL_STANDARD = 'STANDARD';
+    public const THROUGHPUT_LEVEL_HIGH = 'HIGH';
+    public const THROUGHPUT_LEVEL_NOT_APPLICABLE = 'NOT_APPLICABLE';
 
     /**
      * Gets allowable values of the enum
@@ -285,6 +298,20 @@ class WhatsappPhoneNumber implements ModelInterface, ArrayAccess, \JsonSerializa
         return [
             self::UPDATE_EVENT_RECONNECTED,
             self::UPDATE_EVENT_OFFBOARDED,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getThroughputLevelAllowableValues()
+    {
+        return [
+            self::THROUGHPUT_LEVEL_STANDARD,
+            self::THROUGHPUT_LEVEL_HIGH,
+            self::THROUGHPUT_LEVEL_NOT_APPLICABLE,
         ];
     }
 
@@ -315,6 +342,7 @@ class WhatsappPhoneNumber implements ModelInterface, ArrayAccess, \JsonSerializa
         $this->container['messaging_limit'] = $data['messaging_limit'] ?? null;
         $this->container['whatsapp_business_manager_messaging_limit'] = $data['whatsapp_business_manager_messaging_limit'] ?? null;
         $this->container['verified_name'] = $data['verified_name'] ?? null;
+        $this->container['ycloud_name'] = $data['ycloud_name'] ?? null;
         $this->container['new_name'] = $data['new_name'] ?? null;
         $this->container['code_verification_status'] = $data['code_verification_status'] ?? null;
         $this->container['is_official_business_account'] = $data['is_official_business_account'] ?? null;
@@ -326,6 +354,7 @@ class WhatsappPhoneNumber implements ModelInterface, ArrayAccess, \JsonSerializa
         $this->container['rejection_reason'] = $data['rejection_reason'] ?? null;
         $this->container['quality_update_event'] = $data['quality_update_event'] ?? null;
         $this->container['update_event'] = $data['update_event'] ?? null;
+        $this->container['throughput_level'] = $data['throughput_level'] ?? null;
     }
 
     /**
@@ -342,6 +371,15 @@ class WhatsappPhoneNumber implements ModelInterface, ArrayAccess, \JsonSerializa
             $invalidProperties[] = sprintf(
                 "invalid value '%s' for 'update_event', must be one of '%s'",
                 $this->container['update_event'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        $allowedValues = $this->getThroughputLevelAllowableValues();
+        if (!is_null($this->container['throughput_level']) && !in_array($this->container['throughput_level'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'throughput_level', must be one of '%s'",
+                $this->container['throughput_level'],
                 implode("', '", $allowedValues)
             );
         }
@@ -650,6 +688,30 @@ class WhatsappPhoneNumber implements ModelInterface, ArrayAccess, \JsonSerializa
     }
 
     /**
+     * Gets ycloud_name
+     *
+     * @return string|null
+     */
+    public function getYcloudName()
+    {
+        return $this->container['ycloud_name'];
+    }
+
+    /**
+     * Sets ycloud_name
+     *
+     * @param string|null $ycloud_name Optional remark name assigned to this phone number in YCloud. It is populated by the phone-number list, retrieve, and profile GET APIs, and omitted when no remark name is set.
+     *
+     * @return self
+     */
+    public function setYcloudName($ycloud_name)
+    {
+        $this->container['ycloud_name'] = $ycloud_name;
+
+        return $this;
+    }
+
+    /**
      * Gets new_name
      *
      * @return string|null
@@ -922,6 +984,40 @@ class WhatsappPhoneNumber implements ModelInterface, ArrayAccess, \JsonSerializa
 
         return $this;
     }
+
+    /**
+     * Gets throughput_level
+     *
+     * @return string|null
+     */
+    public function getThroughputLevel()
+    {
+        return $this->container['throughput_level'];
+    }
+
+    /**
+     * Sets throughput_level
+     *
+     * @param string|null $throughput_level Current Meta throughput level of the WhatsApp phone number. - `STANDARD`: Default Cloud API throughput level, currently up to 80 messages per second. - `HIGH`: Upgraded Cloud API throughput level, currently up to 1,000 messages per second, subject to Meta's current Cloud API throughput rules. - `NOT_APPLICABLE`: Throughput level is not applicable to this phone number.
+     *
+     * @return self
+     */
+    public function setThroughputLevel($throughput_level)
+    {
+        $allowedValues = $this->getThroughputLevelAllowableValues();
+        if (!is_null($throughput_level) && !in_array($throughput_level, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'throughput_level', must be one of '%s'",
+                    $throughput_level,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['throughput_level'] = $throughput_level;
+
+        return $this;
+    }
     /**
      * Returns true if offset exists. False otherwise.
      *
@@ -1012,5 +1108,3 @@ class WhatsappPhoneNumber implements ModelInterface, ArrayAccess, \JsonSerializa
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
-
-

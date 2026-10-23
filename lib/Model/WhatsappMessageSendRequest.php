@@ -80,6 +80,7 @@ class WhatsappMessageSendRequest implements ModelInterface, ArrayAccess, \JsonSe
         'category' => 'string',
         'ttl_seconds' => 'int',
         'use_direct_send' => 'bool',
+        'template_name' => 'string',
         'filter_unsubscribed' => 'bool',
         'filter_blocked' => 'bool'
     ];
@@ -113,6 +114,7 @@ class WhatsappMessageSendRequest implements ModelInterface, ArrayAccess, \JsonSe
         'category' => null,
         'ttl_seconds' => null,
         'use_direct_send' => null,
+        'template_name' => null,
         'filter_unsubscribed' => null,
         'filter_blocked' => null
     ];
@@ -165,6 +167,7 @@ class WhatsappMessageSendRequest implements ModelInterface, ArrayAccess, \JsonSe
         'category' => 'category',
         'ttl_seconds' => 'ttlSeconds',
         'use_direct_send' => 'useDirectSend',
+        'template_name' => 'templateName',
         'filter_unsubscribed' => 'filterUnsubscribed',
         'filter_blocked' => 'filterBlocked'
     ];
@@ -196,6 +199,7 @@ class WhatsappMessageSendRequest implements ModelInterface, ArrayAccess, \JsonSe
         'category' => 'setCategory',
         'ttl_seconds' => 'setTtlSeconds',
         'use_direct_send' => 'setUseDirectSend',
+        'template_name' => 'setTemplateName',
         'filter_unsubscribed' => 'setFilterUnsubscribed',
         'filter_blocked' => 'setFilterBlocked'
     ];
@@ -227,6 +231,7 @@ class WhatsappMessageSendRequest implements ModelInterface, ArrayAccess, \JsonSe
         'category' => 'getCategory',
         'ttl_seconds' => 'getTtlSeconds',
         'use_direct_send' => 'getUseDirectSend',
+        'template_name' => 'getTemplateName',
         'filter_unsubscribed' => 'getFilterUnsubscribed',
         'filter_blocked' => 'getFilterBlocked'
     ];
@@ -324,6 +329,7 @@ class WhatsappMessageSendRequest implements ModelInterface, ArrayAccess, \JsonSe
         $this->container['category'] = $data['category'] ?? null;
         $this->container['ttl_seconds'] = $data['ttl_seconds'] ?? null;
         $this->container['use_direct_send'] = $data['use_direct_send'] ?? false;
+        $this->container['template_name'] = $data['template_name'] ?? null;
         $this->container['filter_unsubscribed'] = $data['filter_unsubscribed'] ?? null;
         $this->container['filter_blocked'] = $data['filter_blocked'] ?? null;
     }
@@ -893,6 +899,30 @@ class WhatsappMessageSendRequest implements ModelInterface, ArrayAccess, \JsonSe
     public function setUseDirectSend($use_direct_send)
     {
         $this->container['use_direct_send'] = $use_direct_send;
+
+        return $this;
+    }
+
+    /**
+     * Gets template_name
+     *
+     * @return string|null
+     */
+    public function getTemplateName()
+    {
+        return $this->container['template_name'];
+    }
+
+    /**
+     * Sets template_name
+     *
+     * @param string|null $template_name **Optional.** Business-defined template name for a Utility Direct Send message submitted through synchronous `POST /v2/whatsapp/messages/sendDirectly` or asynchronous `POST /v2/whatsapp/messages`.  The value is case-sensitive and may contain only lowercase letters, digits, and underscores. It does not enable Direct Send by itself. When Direct Send is not selected, this field is ignored.  The name must not already be used by a non-Direct-Send template in the sender WABA. A conflict is rejected before the synchronous provider call or asynchronous acceptance, so an asynchronous conflict does not return a message ID. This field is not supported for Authentication Direct Send.
+     *
+     * @return self
+     */
+    public function setTemplateName($template_name)
+    {
+        $this->container['template_name'] = $template_name;
 
         return $this;
     }

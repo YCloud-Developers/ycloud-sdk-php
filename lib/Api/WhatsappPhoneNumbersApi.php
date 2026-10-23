@@ -444,6 +444,402 @@ class WhatsappPhoneNumbersApi
     }
 
     /**
+     * Operation deleteContactBookEntry
+     *
+     * Delete a Meta contact book entry
+     *
+     * @param  string $waba_id WhatsApp Business Account ID. (required)
+     * @param  string $phone_number Phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format, bound to the specified WABA in YCloud. When constructing the path manually, URL-encode the leading &#x60;+&#x60; as &#x60;%2B&#x60;. (required)
+     * @param  string $bsuid Standard WhatsApp Business-scoped user ID (BSUID) from the same Meta business portfolio as the phone number. Parent BSUIDs containing &#x60;.ENT.&#x60; are not supported. (required)
+     *
+     * @throws \YCloud\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \YCloud\Client\Model\WhatsappContactBookEntryDeleteResult|\YCloud\Client\Model\ErrorResponse|\YCloud\Client\Model\ErrorResponse|\YCloud\Client\Model\ErrorResponse
+     */
+    public function deleteContactBookEntry($waba_id, $phone_number, $bsuid)
+    {
+        list($response) = $this->deleteContactBookEntryWithHttpInfo($waba_id, $phone_number, $bsuid);
+        return $response;
+    }
+
+    /**
+     * Operation deleteContactBookEntryWithHttpInfo
+     *
+     * Delete a Meta contact book entry
+     *
+     * @param  string $waba_id WhatsApp Business Account ID. (required)
+     * @param  string $phone_number Phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format, bound to the specified WABA in YCloud. When constructing the path manually, URL-encode the leading &#x60;+&#x60; as &#x60;%2B&#x60;. (required)
+     * @param  string $bsuid Standard WhatsApp Business-scoped user ID (BSUID) from the same Meta business portfolio as the phone number. Parent BSUIDs containing &#x60;.ENT.&#x60; are not supported. (required)
+     *
+     * @throws \YCloud\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \YCloud\Client\Model\WhatsappContactBookEntryDeleteResult|\YCloud\Client\Model\ErrorResponse|\YCloud\Client\Model\ErrorResponse|\YCloud\Client\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function deleteContactBookEntryWithHttpInfo($waba_id, $phone_number, $bsuid)
+    {
+        $request = $this->deleteContactBookEntryRequest($waba_id, $phone_number, $bsuid);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\YCloud\Client\Model\WhatsappContactBookEntryDeleteResult' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\YCloud\Client\Model\WhatsappContactBookEntryDeleteResult' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\YCloud\Client\Model\WhatsappContactBookEntryDeleteResult', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 400:
+                    if ('\YCloud\Client\Model\ErrorResponse' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\YCloud\Client\Model\ErrorResponse' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\YCloud\Client\Model\ErrorResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 403:
+                    if ('\YCloud\Client\Model\ErrorResponse' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\YCloud\Client\Model\ErrorResponse' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\YCloud\Client\Model\ErrorResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 404:
+                    if ('\YCloud\Client\Model\ErrorResponse' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\YCloud\Client\Model\ErrorResponse' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\YCloud\Client\Model\ErrorResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\YCloud\Client\Model\WhatsappContactBookEntryDeleteResult';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\YCloud\Client\Model\WhatsappContactBookEntryDeleteResult',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\YCloud\Client\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\YCloud\Client\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\YCloud\Client\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation deleteContactBookEntryAsync
+     *
+     * Delete a Meta contact book entry
+     *
+     * @param  string $waba_id WhatsApp Business Account ID. (required)
+     * @param  string $phone_number Phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format, bound to the specified WABA in YCloud. When constructing the path manually, URL-encode the leading &#x60;+&#x60; as &#x60;%2B&#x60;. (required)
+     * @param  string $bsuid Standard WhatsApp Business-scoped user ID (BSUID) from the same Meta business portfolio as the phone number. Parent BSUIDs containing &#x60;.ENT.&#x60; are not supported. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function deleteContactBookEntryAsync($waba_id, $phone_number, $bsuid)
+    {
+        return $this->deleteContactBookEntryAsyncWithHttpInfo($waba_id, $phone_number, $bsuid)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation deleteContactBookEntryAsyncWithHttpInfo
+     *
+     * Delete a Meta contact book entry
+     *
+     * @param  string $waba_id WhatsApp Business Account ID. (required)
+     * @param  string $phone_number Phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format, bound to the specified WABA in YCloud. When constructing the path manually, URL-encode the leading &#x60;+&#x60; as &#x60;%2B&#x60;. (required)
+     * @param  string $bsuid Standard WhatsApp Business-scoped user ID (BSUID) from the same Meta business portfolio as the phone number. Parent BSUIDs containing &#x60;.ENT.&#x60; are not supported. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function deleteContactBookEntryAsyncWithHttpInfo($waba_id, $phone_number, $bsuid)
+    {
+        $returnType = '\YCloud\Client\Model\WhatsappContactBookEntryDeleteResult';
+        $request = $this->deleteContactBookEntryRequest($waba_id, $phone_number, $bsuid);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'deleteContactBookEntry'
+     *
+     * @param  string $waba_id WhatsApp Business Account ID. (required)
+     * @param  string $phone_number Phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format, bound to the specified WABA in YCloud. When constructing the path manually, URL-encode the leading &#x60;+&#x60; as &#x60;%2B&#x60;. (required)
+     * @param  string $bsuid Standard WhatsApp Business-scoped user ID (BSUID) from the same Meta business portfolio as the phone number. Parent BSUIDs containing &#x60;.ENT.&#x60; are not supported. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function deleteContactBookEntryRequest($waba_id, $phone_number, $bsuid)
+    {
+        // verify the required parameter 'waba_id' is set
+        if ($waba_id === null || (is_array($waba_id) && count($waba_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $waba_id when calling deleteContactBookEntry'
+            );
+        }
+        // verify the required parameter 'phone_number' is set
+        if ($phone_number === null || (is_array($phone_number) && count($phone_number) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $phone_number when calling deleteContactBookEntry'
+            );
+        }
+        // verify the required parameter 'bsuid' is set
+        if ($bsuid === null || (is_array($bsuid) && count($bsuid) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $bsuid when calling deleteContactBookEntry'
+            );
+        }
+        if (!preg_match("/^[A-Z]{2}\\.[0-9]+$/", $bsuid)) {
+            throw new \InvalidArgumentException("invalid value for \"bsuid\" when calling WhatsappPhoneNumbersApi.deleteContactBookEntry, must conform to the pattern /^[A-Z]{2}\\.[0-9]+$/.");
+        }
+
+
+        $resourcePath = '/whatsapp/phoneNumbers/{wabaId}/{phoneNumber}/contactBook/{bsuid}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($waba_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'wabaId' . '}',
+                ObjectSerializer::toPathValue($waba_id),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($phone_number !== null) {
+            $resourcePath = str_replace(
+                '{' . 'phoneNumber' . '}',
+                ObjectSerializer::toPathValue($phone_number),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($bsuid !== null) {
+            $resourcePath = str_replace(
+                '{' . 'bsuid' . '}',
+                ObjectSerializer::toPathValue($bsuid),
+                $resourcePath
+            );
+        }
+
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('X-API-Key');
+        if ($apiKey !== null) {
+            $headers['X-API-Key'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'DELETE',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation list
      *
      * List phone numbers
@@ -2764,14 +3160,15 @@ class WhatsappPhoneNumbersApi
      *
      * @param  string $waba_id WhatsApp Business Account ID. (required)
      * @param  string $phone_number Phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format. (required)
+     * @param  string $type Set to &#x60;capture&#x60; to retrieve only Calling recording and transcription capture settings. Omit it or set it to &#x60;calling&#x60; to retrieve the existing Calling settings response. (optional)
      *
      * @throws \YCloud\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \YCloud\Client\Model\WhatsappPhoneNumberSettings|\YCloud\Client\Model\ErrorResponse
+     * @return \YCloud\Client\Model\WhatsappPhoneNumberSettings|\YCloud\Client\Model\ErrorResponse|\YCloud\Client\Model\ErrorResponse
      */
-    public function retrieveSettings($waba_id, $phone_number)
+    public function retrieveSettings($waba_id, $phone_number, $type = null)
     {
-        list($response) = $this->retrieveSettingsWithHttpInfo($waba_id, $phone_number);
+        list($response) = $this->retrieveSettingsWithHttpInfo($waba_id, $phone_number, $type);
         return $response;
     }
 
@@ -2782,14 +3179,15 @@ class WhatsappPhoneNumbersApi
      *
      * @param  string $waba_id WhatsApp Business Account ID. (required)
      * @param  string $phone_number Phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format. (required)
+     * @param  string $type Set to &#x60;capture&#x60; to retrieve only Calling recording and transcription capture settings. Omit it or set it to &#x60;calling&#x60; to retrieve the existing Calling settings response. (optional)
      *
      * @throws \YCloud\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \YCloud\Client\Model\WhatsappPhoneNumberSettings|\YCloud\Client\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \YCloud\Client\Model\WhatsappPhoneNumberSettings|\YCloud\Client\Model\ErrorResponse|\YCloud\Client\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function retrieveSettingsWithHttpInfo($waba_id, $phone_number)
+    public function retrieveSettingsWithHttpInfo($waba_id, $phone_number, $type = null)
     {
-        $request = $this->retrieveSettingsRequest($waba_id, $phone_number);
+        $request = $this->retrieveSettingsRequest($waba_id, $phone_number, $type);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2842,6 +3240,21 @@ class WhatsappPhoneNumbersApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+                case 400:
+                    if ('\YCloud\Client\Model\ErrorResponse' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\YCloud\Client\Model\ErrorResponse' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\YCloud\Client\Model\ErrorResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 case 404:
                     if ('\YCloud\Client\Model\ErrorResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
@@ -2885,6 +3298,14 @@ class WhatsappPhoneNumbersApi
                     );
                     $e->setResponseObject($data);
                     break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\YCloud\Client\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -2905,13 +3326,14 @@ class WhatsappPhoneNumbersApi
      *
      * @param  string $waba_id WhatsApp Business Account ID. (required)
      * @param  string $phone_number Phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format. (required)
+     * @param  string $type Set to &#x60;capture&#x60; to retrieve only Calling recording and transcription capture settings. Omit it or set it to &#x60;calling&#x60; to retrieve the existing Calling settings response. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function retrieveSettingsAsync($waba_id, $phone_number)
+    public function retrieveSettingsAsync($waba_id, $phone_number, $type = null)
     {
-        return $this->retrieveSettingsAsyncWithHttpInfo($waba_id, $phone_number)
+        return $this->retrieveSettingsAsyncWithHttpInfo($waba_id, $phone_number, $type)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2926,14 +3348,15 @@ class WhatsappPhoneNumbersApi
      *
      * @param  string $waba_id WhatsApp Business Account ID. (required)
      * @param  string $phone_number Phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format. (required)
+     * @param  string $type Set to &#x60;capture&#x60; to retrieve only Calling recording and transcription capture settings. Omit it or set it to &#x60;calling&#x60; to retrieve the existing Calling settings response. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function retrieveSettingsAsyncWithHttpInfo($waba_id, $phone_number)
+    public function retrieveSettingsAsyncWithHttpInfo($waba_id, $phone_number, $type = null)
     {
         $returnType = '\YCloud\Client\Model\WhatsappPhoneNumberSettings';
-        $request = $this->retrieveSettingsRequest($waba_id, $phone_number);
+        $request = $this->retrieveSettingsRequest($waba_id, $phone_number, $type);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2976,11 +3399,12 @@ class WhatsappPhoneNumbersApi
      *
      * @param  string $waba_id WhatsApp Business Account ID. (required)
      * @param  string $phone_number Phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format. (required)
+     * @param  string $type Set to &#x60;capture&#x60; to retrieve only Calling recording and transcription capture settings. Omit it or set it to &#x60;calling&#x60; to retrieve the existing Calling settings response. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function retrieveSettingsRequest($waba_id, $phone_number)
+    public function retrieveSettingsRequest($waba_id, $phone_number, $type = null)
     {
         // verify the required parameter 'waba_id' is set
         if ($waba_id === null || (is_array($waba_id) && count($waba_id) === 0)) {
@@ -3002,6 +3426,15 @@ class WhatsappPhoneNumbersApi
         $httpBody = '';
         $multipart = false;
 
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $type,
+            'type', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
 
 
         // path params
@@ -3095,7 +3528,7 @@ class WhatsappPhoneNumbersApi
      *
      * @throws \YCloud\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \YCloud\Client\Model\WhatsappPhoneNumberSettings|\YCloud\Client\Model\ErrorResponse
+     * @return \YCloud\Client\Model\WhatsappPhoneNumberSettings|\YCloud\Client\Model\ErrorResponse|\YCloud\Client\Model\ErrorResponse
      */
     public function saveSettings($waba_id, $phone_number, $whatsapp_phone_number_settings)
     {
@@ -3114,7 +3547,7 @@ class WhatsappPhoneNumbersApi
      *
      * @throws \YCloud\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \YCloud\Client\Model\WhatsappPhoneNumberSettings|\YCloud\Client\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \YCloud\Client\Model\WhatsappPhoneNumberSettings|\YCloud\Client\Model\ErrorResponse|\YCloud\Client\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function saveSettingsWithHttpInfo($waba_id, $phone_number, $whatsapp_phone_number_settings)
     {
@@ -3171,6 +3604,21 @@ class WhatsappPhoneNumbersApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+                case 400:
+                    if ('\YCloud\Client\Model\ErrorResponse' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\YCloud\Client\Model\ErrorResponse' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\YCloud\Client\Model\ErrorResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 case 404:
                     if ('\YCloud\Client\Model\ErrorResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
@@ -3210,6 +3658,14 @@ class WhatsappPhoneNumbersApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\YCloud\Client\Model\WhatsappPhoneNumberSettings',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\YCloud\Client\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);

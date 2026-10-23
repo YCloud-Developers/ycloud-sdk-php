@@ -328,7 +328,7 @@ sendEvent($custom_event_send_request)
 
 Send an event
 
-Sends an event.
+Sends an occurrence of a previously defined custom event. For contact events, identify the contact using one of a contact ID, phone number, or Meta username.
 
 ### Example
 
@@ -347,7 +347,7 @@ $apiInstance = new YCloud\Client\Api\CustomEventsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$custom_event_send_request = new \YCloud\Client\Model\CustomEventSendRequest(); // \YCloud\Client\Model\CustomEventSendRequest
+$custom_event_send_request = {"eventName":"unique_event_name","objectId":"123456789"}; // \YCloud\Client\Model\CustomEventSendRequest
 
 try {
     $apiInstance->sendEvent($custom_event_send_request);

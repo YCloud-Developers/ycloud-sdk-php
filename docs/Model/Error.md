@@ -11,5 +11,6 @@ Name | Type | Description | Notes
 **doc_url** | **string** | A URL to more information about the error. | [optional]
 **request_id** | **string** | Each API request has an associated request ID. It conveys the response header &#x60;YCloud-Request-ID&#x60; used for the convenience of the consumer. | [optional]
 **whatsapp_api_error** | [**\YCloud\Client\Model\WhatsappApiError**](WhatsappApiError.md) |  | [optional]
+**meta_business_agent_api_error** | [**\YCloud\Client\Model\MetaBusinessAgentApiError**](MetaBusinessAgentApiError.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

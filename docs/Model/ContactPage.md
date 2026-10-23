@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **items** | [**\YCloud\Client\Model\Contact[]**](Contact.md) | An array containing contact objects. | [optional]
+**cursor** | [**\YCloud\Client\Model\ContactPageCursor**](ContactPageCursor.md) |  | [optional]
 **offset** | **int** | The position of the item this page starts from, zero-based. e.g., the 11th item is at offset 10. |
 **limit** | **int** | A limit on the number of items to be returned, between 1 and 100, defaults to 10. |
 **length** | **int** | The actual number of items in the page. |

@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **string** | Unique ID for the object. |
+**remark_name** | **string** | The business-managed remark name for the contact. | [optional]
 **nick_name** | **string** | Contact&#39;s nickname. | [optional]
 **real_name** | **string** | Contact&#39;s real name. | [optional]
 **phone_number** | **string** | Unique Phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format. | [optional]
