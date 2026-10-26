@@ -101,7 +101,7 @@ class Configuration
      *
      * @var string
      */
-    protected $userAgent = 'ycloud-sdk-php/1.17.0';
+    protected $userAgent = 'ycloud-sdk-php/1.17.1';
 
     /**
      * Debug switch (default set to false)

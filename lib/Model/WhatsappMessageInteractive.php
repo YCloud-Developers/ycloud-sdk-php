@@ -194,6 +194,7 @@ class WhatsappMessageInteractive implements ModelInterface, ArrayAccess, \JsonSe
     public const TYPE_VOICE_CALL = 'voice_call';
     public const TYPE_FLOW = 'flow';
     public const TYPE_CAROUSEL = 'carousel';
+    public const TYPE_REQUEST_CONTACT_INFO = 'request_contact_info';
 
     /**
      * Gets allowable values of the enum
@@ -215,6 +216,7 @@ class WhatsappMessageInteractive implements ModelInterface, ArrayAccess, \JsonSe
             self::TYPE_VOICE_CALL,
             self::TYPE_FLOW,
             self::TYPE_CAROUSEL,
+            self::TYPE_REQUEST_CONTACT_INFO,
         ];
     }
 
@@ -286,7 +288,7 @@ class WhatsappMessageInteractive implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets type
      *
-     * @param string|null $type **Required.** The type of interactive message you want to send. - `button`: Use for Reply Buttons. - `list`: Use for List Messages. - `cta_url`: Use for Call-To-Action (CTA) URL Button Messages. - `product`: Use for Single Product Messages. - `product_list`: Use for Multi-Product Messages. - `catalog_message`: Use for Catalog Messages. - `location_request_message`: Use for Location Request Messages. - `order_details`: Use for Order Details Messages. - `order_status`: Use for Order Status Messages. - `voice_call`: Use for Voice Call Messages. - `flow`: Use for Flow Messages. - `carousel`: Use for media carousel message.
+     * @param string|null $type **Required.** The type of interactive message you want to send. - `button`: Use for Reply Buttons. - `list`: Use for List Messages. - `cta_url`: Use for Call-To-Action (CTA) URL Button Messages. - `product`: Use for Single Product Messages. - `product_list`: Use for Multi-Product Messages. - `catalog_message`: Use for Catalog Messages. - `location_request_message`: Use for Location Request Messages. - `order_details`: Use for Order Details Messages. - `order_status`: Use for Order Status Messages. - `voice_call`: Use for Voice Call Messages. - `flow`: Use for Flow Messages. - `carousel`: Use for media carousel message. - `request_contact_info`: Use for request phone numbers.
      *
      * @return self
      */
@@ -492,5 +494,3 @@ class WhatsappMessageInteractive implements ModelInterface, ArrayAccess, \JsonSe
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
-
-
