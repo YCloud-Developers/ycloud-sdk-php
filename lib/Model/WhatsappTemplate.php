@@ -76,7 +76,8 @@ class WhatsappTemplate implements ModelInterface, ArrayAccess, \JsonSerializable
         'update_time' => '\DateTime',
         'status_update_event' => '\YCloud\Client\Model\WhatsappTemplateStatusUpdateEventEnum',
         'disable_date' => 'string',
-        'whatsapp_api_error' => '\YCloud\Client\Model\WhatsappApiError'
+        'whatsapp_api_error' => '\YCloud\Client\Model\WhatsappApiError',
+        'bid_spec' => '\YCloud\Client\Model\WhatsappTemplateBidSpecResponse'
     ];
 
     /**
@@ -104,7 +105,8 @@ class WhatsappTemplate implements ModelInterface, ArrayAccess, \JsonSerializable
         'update_time' => 'date-time',
         'status_update_event' => null,
         'disable_date' => null,
-        'whatsapp_api_error' => null
+        'whatsapp_api_error' => null,
+        'bid_spec' => null
     ];
 
     /**
@@ -151,7 +153,8 @@ class WhatsappTemplate implements ModelInterface, ArrayAccess, \JsonSerializable
         'update_time' => 'updateTime',
         'status_update_event' => 'statusUpdateEvent',
         'disable_date' => 'disableDate',
-        'whatsapp_api_error' => 'whatsappApiError'
+        'whatsapp_api_error' => 'whatsappApiError',
+        'bid_spec' => 'bidSpec'
     ];
 
     /**
@@ -177,7 +180,8 @@ class WhatsappTemplate implements ModelInterface, ArrayAccess, \JsonSerializable
         'update_time' => 'setUpdateTime',
         'status_update_event' => 'setStatusUpdateEvent',
         'disable_date' => 'setDisableDate',
-        'whatsapp_api_error' => 'setWhatsappApiError'
+        'whatsapp_api_error' => 'setWhatsappApiError',
+        'bid_spec' => 'setBidSpec'
     ];
 
     /**
@@ -203,7 +207,8 @@ class WhatsappTemplate implements ModelInterface, ArrayAccess, \JsonSerializable
         'update_time' => 'getUpdateTime',
         'status_update_event' => 'getStatusUpdateEvent',
         'disable_date' => 'getDisableDate',
-        'whatsapp_api_error' => 'getWhatsappApiError'
+        'whatsapp_api_error' => 'getWhatsappApiError',
+        'bid_spec' => 'getBidSpec'
     ];
 
     /**
@@ -281,6 +286,7 @@ class WhatsappTemplate implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['status_update_event'] = $data['status_update_event'] ?? null;
         $this->container['disable_date'] = $data['disable_date'] ?? null;
         $this->container['whatsapp_api_error'] = $data['whatsapp_api_error'] ?? null;
+        $this->container['bid_spec'] = $data['bid_spec'] ?? null;
     }
 
     /**
@@ -768,6 +774,30 @@ class WhatsappTemplate implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setWhatsappApiError($whatsapp_api_error)
     {
         $this->container['whatsapp_api_error'] = $whatsapp_api_error;
+
+        return $this;
+    }
+
+    /**
+     * Gets bid_spec
+     *
+     * @return \YCloud\Client\Model\WhatsappTemplateBidSpecResponse|null
+     */
+    public function getBidSpec()
+    {
+        return $this->container['bid_spec'];
+    }
+
+    /**
+     * Sets bid_spec
+     *
+     * @param \YCloud\Client\Model\WhatsappTemplateBidSpecResponse|null $bid_spec bid_spec
+     *
+     * @return self
+     */
+    public function setBidSpec($bid_spec)
+    {
+        $this->container['bid_spec'] = $bid_spec;
 
         return $this;
     }

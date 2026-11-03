@@ -100,7 +100,7 @@ $apiInstance = new YCloud\Client\Api\WhatsappTemplatesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$whatsapp_template_create_request = new \YCloud\Client\Model\WhatsappTemplateCreateRequest(); // \YCloud\Client\Model\WhatsappTemplateCreateRequest
+$whatsapp_template_create_request = {"wabaId":"<WABA_ID>","name":"order_confirmation","language":"en_US","category":"UTILITY","components":[{"type":"BODY","text":"Your order {{1}} for a total of {{2}} is confirmed. The expected delivery is {{3}}.","example":{"body_text":[["ORDER-5555","99 USD","February 25, 2023"]]}}]}; // \YCloud\Client\Model\WhatsappTemplateCreateRequest
 
 try {
     $result = $apiInstance->create($whatsapp_template_create_request);
@@ -289,7 +289,7 @@ $apiInstance = new YCloud\Client\Api\WhatsappTemplatesApi(
 $waba_id = whatsapp-business-account-id; // string | WhatsApp Business Account ID.
 $name = sample_whatsapp_template; // string | Name of the template.
 $language = en; // string | Language code of the template. See [Supported Languages](https://developers.facebook.com/documentation/business-messaging/whatsapp/templates/supported-languages) for all codes.
-$whatsapp_template_edit_request = new \YCloud\Client\Model\WhatsappTemplateEditRequest(); // \YCloud\Client\Model\WhatsappTemplateEditRequest
+$whatsapp_template_edit_request = {"components":[{"type":"BODY","text":"Our seasonal offers are now available."}]}; // \YCloud\Client\Model\WhatsappTemplateEditRequest
 
 try {
     $result = $apiInstance->editByNameAndLanguage($waba_id, $name, $language, $whatsapp_template_edit_request);

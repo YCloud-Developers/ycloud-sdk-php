@@ -66,7 +66,8 @@ class WhatsappTemplateCreateRequest implements ModelInterface, ArrayAccess, \Jso
         'sub_category' => '\YCloud\Client\Model\WhatsappTemplateSubCategory',
         'message_send_ttl_seconds' => 'int',
         'components' => '\YCloud\Client\Model\WhatsappTemplateComponent[]',
-        'cta_url_link_tracking_opted_out' => 'bool'
+        'cta_url_link_tracking_opted_out' => 'bool',
+        'bid_spec' => '\YCloud\Client\Model\WhatsappTemplateBidSpec'
     ];
 
     /**
@@ -84,7 +85,8 @@ class WhatsappTemplateCreateRequest implements ModelInterface, ArrayAccess, \Jso
         'sub_category' => null,
         'message_send_ttl_seconds' => 'int32',
         'components' => null,
-        'cta_url_link_tracking_opted_out' => null
+        'cta_url_link_tracking_opted_out' => null,
+        'bid_spec' => null
     ];
 
     /**
@@ -121,7 +123,8 @@ class WhatsappTemplateCreateRequest implements ModelInterface, ArrayAccess, \Jso
         'sub_category' => 'subCategory',
         'message_send_ttl_seconds' => 'messageSendTtlSeconds',
         'components' => 'components',
-        'cta_url_link_tracking_opted_out' => 'ctaUrlLinkTrackingOptedOut'
+        'cta_url_link_tracking_opted_out' => 'ctaUrlLinkTrackingOptedOut',
+        'bid_spec' => 'bidSpec'
     ];
 
     /**
@@ -137,7 +140,8 @@ class WhatsappTemplateCreateRequest implements ModelInterface, ArrayAccess, \Jso
         'sub_category' => 'setSubCategory',
         'message_send_ttl_seconds' => 'setMessageSendTtlSeconds',
         'components' => 'setComponents',
-        'cta_url_link_tracking_opted_out' => 'setCtaUrlLinkTrackingOptedOut'
+        'cta_url_link_tracking_opted_out' => 'setCtaUrlLinkTrackingOptedOut',
+        'bid_spec' => 'setBidSpec'
     ];
 
     /**
@@ -153,7 +157,8 @@ class WhatsappTemplateCreateRequest implements ModelInterface, ArrayAccess, \Jso
         'sub_category' => 'getSubCategory',
         'message_send_ttl_seconds' => 'getMessageSendTtlSeconds',
         'components' => 'getComponents',
-        'cta_url_link_tracking_opted_out' => 'getCtaUrlLinkTrackingOptedOut'
+        'cta_url_link_tracking_opted_out' => 'getCtaUrlLinkTrackingOptedOut',
+        'bid_spec' => 'getBidSpec'
     ];
 
     /**
@@ -221,6 +226,7 @@ class WhatsappTemplateCreateRequest implements ModelInterface, ArrayAccess, \Jso
         $this->container['message_send_ttl_seconds'] = $data['message_send_ttl_seconds'] ?? null;
         $this->container['components'] = $data['components'] ?? null;
         $this->container['cta_url_link_tracking_opted_out'] = $data['cta_url_link_tracking_opted_out'] ?? null;
+        $this->container['bid_spec'] = $data['bid_spec'] ?? null;
     }
 
     /**
@@ -465,6 +471,30 @@ class WhatsappTemplateCreateRequest implements ModelInterface, ArrayAccess, \Jso
     public function setCtaUrlLinkTrackingOptedOut($cta_url_link_tracking_opted_out)
     {
         $this->container['cta_url_link_tracking_opted_out'] = $cta_url_link_tracking_opted_out;
+
+        return $this;
+    }
+
+    /**
+     * Gets bid_spec
+     *
+     * @return \YCloud\Client\Model\WhatsappTemplateBidSpec|null
+     */
+    public function getBidSpec()
+    {
+        return $this->container['bid_spec'];
+    }
+
+    /**
+     * Sets bid_spec
+     *
+     * @param \YCloud\Client\Model\WhatsappTemplateBidSpec|null $bid_spec bid_spec
+     *
+     * @return self
+     */
+    public function setBidSpec($bid_spec)
+    {
+        $this->container['bid_spec'] = $bid_spec;
 
         return $this;
     }

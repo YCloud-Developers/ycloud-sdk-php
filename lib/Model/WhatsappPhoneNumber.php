@@ -64,6 +64,7 @@ class WhatsappPhoneNumber implements ModelInterface, ArrayAccess, \JsonSerializa
         'display_phone_number' => 'string',
         'waba_id' => 'string',
         'business_username' => 'string',
+        'business_username_context' => 'string',
         'business_username_status' => '\YCloud\Client\Model\WhatsappBusinessUsernameStatus',
         'requested_business_username' => 'string',
         'business_username_updated_at' => '\DateTime',
@@ -99,6 +100,7 @@ class WhatsappPhoneNumber implements ModelInterface, ArrayAccess, \JsonSerializa
         'display_phone_number' => null,
         'waba_id' => null,
         'business_username' => null,
+        'business_username_context' => null,
         'business_username_status' => null,
         'requested_business_username' => null,
         'business_username_updated_at' => 'date-time',
@@ -153,6 +155,7 @@ class WhatsappPhoneNumber implements ModelInterface, ArrayAccess, \JsonSerializa
         'display_phone_number' => 'displayPhoneNumber',
         'waba_id' => 'wabaId',
         'business_username' => 'businessUsername',
+        'business_username_context' => 'businessUsernameContext',
         'business_username_status' => 'businessUsernameStatus',
         'requested_business_username' => 'requestedBusinessUsername',
         'business_username_updated_at' => 'businessUsernameUpdatedAt',
@@ -186,6 +189,7 @@ class WhatsappPhoneNumber implements ModelInterface, ArrayAccess, \JsonSerializa
         'display_phone_number' => 'setDisplayPhoneNumber',
         'waba_id' => 'setWabaId',
         'business_username' => 'setBusinessUsername',
+        'business_username_context' => 'setBusinessUsernameContext',
         'business_username_status' => 'setBusinessUsernameStatus',
         'requested_business_username' => 'setRequestedBusinessUsername',
         'business_username_updated_at' => 'setBusinessUsernameUpdatedAt',
@@ -219,6 +223,7 @@ class WhatsappPhoneNumber implements ModelInterface, ArrayAccess, \JsonSerializa
         'display_phone_number' => 'getDisplayPhoneNumber',
         'waba_id' => 'getWabaId',
         'business_username' => 'getBusinessUsername',
+        'business_username_context' => 'getBusinessUsernameContext',
         'business_username_status' => 'getBusinessUsernameStatus',
         'requested_business_username' => 'getRequestedBusinessUsername',
         'business_username_updated_at' => 'getBusinessUsernameUpdatedAt',
@@ -335,6 +340,7 @@ class WhatsappPhoneNumber implements ModelInterface, ArrayAccess, \JsonSerializa
         $this->container['display_phone_number'] = $data['display_phone_number'] ?? null;
         $this->container['waba_id'] = $data['waba_id'] ?? null;
         $this->container['business_username'] = $data['business_username'] ?? null;
+        $this->container['business_username_context'] = $data['business_username_context'] ?? null;
         $this->container['business_username_status'] = $data['business_username_status'] ?? null;
         $this->container['requested_business_username'] = $data['requested_business_username'] ?? null;
         $this->container['business_username_updated_at'] = $data['business_username_updated_at'] ?? null;
@@ -515,6 +521,30 @@ class WhatsappPhoneNumber implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setBusinessUsername($business_username)
     {
         $this->container['business_username'] = $business_username;
+
+        return $this;
+    }
+
+    /**
+     * Gets business_username_context
+     *
+     * @return string|null
+     */
+    public function getBusinessUsernameContext()
+    {
+        return $this->container['business_username_context'];
+    }
+
+    /**
+     * Sets business_username_context
+     *
+     * @param string|null $business_username_context Optional context of this username notification. revoked is included only when the username from a successful current Meta query matches this revoked notification. Omitted for an obsolete revocation or a notification without context; it does not expose historical page warnings.
+     *
+     * @return self
+     */
+    public function setBusinessUsernameContext($business_username_context)
+    {
+        $this->container['business_username_context'] = $business_username_context;
 
         return $this;
     }

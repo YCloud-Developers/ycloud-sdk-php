@@ -6,19 +6,34 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**budgetReplace()**](MetaBusinessAgentApi.md#budgetReplace) | **PUT** /metaBusinessAgents/{entityId}/budgets | Replace Meta Business Agent budgets
 [**budgetRetrieve()**](MetaBusinessAgentApi.md#budgetRetrieve) | **GET** /metaBusinessAgents/{entityId}/budgets | Retrieve Meta Business Agent budgets
+[**businessAgentCreateAllowlistEntry()**](MetaBusinessAgentApi.md#businessAgentCreateAllowlistEntry) | **POST** /metaBusinessAgents/{entityId}/allowListEntries | Create Allowlist Entry
 [**businessAgentCreateConnector()**](MetaBusinessAgentApi.md#businessAgentCreateConnector) | **POST** /metaBusinessAgents/{entityId}/connectors | Create Connector
 [**businessAgentCreateConnectorTool()**](MetaBusinessAgentApi.md#businessAgentCreateConnectorTool) | **POST** /metaBusinessAgents/{entityId}/connectors/{connectorId}/tools | Create Connector Tool
+[**businessAgentCreateFaq()**](MetaBusinessAgentApi.md#businessAgentCreateFaq) | **POST** /metaBusinessAgents/{entityId}/faqs | Create Faq
+[**businessAgentCreateWebsite()**](MetaBusinessAgentApi.md#businessAgentCreateWebsite) | **POST** /metaBusinessAgents/{entityId}/websites | Create Website
+[**businessAgentDeleteAllowlistEntry()**](MetaBusinessAgentApi.md#businessAgentDeleteAllowlistEntry) | **DELETE** /metaBusinessAgents/{entityId}/allowListEntries/{entryId} | Delete Allowlist Entry
 [**businessAgentDeleteConnector()**](MetaBusinessAgentApi.md#businessAgentDeleteConnector) | **DELETE** /metaBusinessAgents/{entityId}/connectors/{connectorId} | Delete Connector
 [**businessAgentDeleteConnectorTool()**](MetaBusinessAgentApi.md#businessAgentDeleteConnectorTool) | **DELETE** /metaBusinessAgents/{entityId}/connectors/{connectorId}/tools/{toolId} | Delete Connector Tool
+[**businessAgentDeleteFaq()**](MetaBusinessAgentApi.md#businessAgentDeleteFaq) | **DELETE** /metaBusinessAgents/{entityId}/faqs/{faqId} | Delete Faq
+[**businessAgentDeleteWebsite()**](MetaBusinessAgentApi.md#businessAgentDeleteWebsite) | **DELETE** /metaBusinessAgents/{entityId}/websites/{websiteId} | Delete Website
+[**businessAgentGetAgentEventStatus()**](MetaBusinessAgentApi.md#businessAgentGetAgentEventStatus) | **GET** /metaBusinessAgents/{entityId}/events/{agentEventId} | Get Agent Event Status
 [**businessAgentGetConnector()**](MetaBusinessAgentApi.md#businessAgentGetConnector) | **GET** /metaBusinessAgents/{entityId}/connectors/{connectorId} | Get Connector
 [**businessAgentGetConnectorTool()**](MetaBusinessAgentApi.md#businessAgentGetConnectorTool) | **GET** /metaBusinessAgents/{entityId}/connectors/{connectorId}/tools/{toolId} | Get Connector Tool
+[**businessAgentGetFaq()**](MetaBusinessAgentApi.md#businessAgentGetFaq) | **GET** /metaBusinessAgents/{entityId}/faqs/{faqId} | Get Faq
+[**businessAgentGetWebsite()**](MetaBusinessAgentApi.md#businessAgentGetWebsite) | **GET** /metaBusinessAgents/{entityId}/websites/{websiteId} | Get Website
+[**businessAgentListAllowlist()**](MetaBusinessAgentApi.md#businessAgentListAllowlist) | **GET** /metaBusinessAgents/{entityId}/allowListEntries | List Allowlist
 [**businessAgentListConnectorLogs()**](MetaBusinessAgentApi.md#businessAgentListConnectorLogs) | **GET** /metaBusinessAgents/{entityId}/connectors/{connectorId}/logs | List Connector Logs
 [**businessAgentListConnectorTools()**](MetaBusinessAgentApi.md#businessAgentListConnectorTools) | **GET** /metaBusinessAgents/{entityId}/connectors/{connectorId}/tools | List Connector Tools
 [**businessAgentListConnectors()**](MetaBusinessAgentApi.md#businessAgentListConnectors) | **GET** /metaBusinessAgents/{entityId}/connectors | List Connectors
+[**businessAgentListFaqs()**](MetaBusinessAgentApi.md#businessAgentListFaqs) | **GET** /metaBusinessAgents/{entityId}/faqs | List Faqs
+[**businessAgentListWebsites()**](MetaBusinessAgentApi.md#businessAgentListWebsites) | **GET** /metaBusinessAgents/{entityId}/websites | List Websites
 [**businessAgentRefreshConnectorMcpTools()**](MetaBusinessAgentApi.md#businessAgentRefreshConnectorMcpTools) | **POST** /metaBusinessAgents/{entityId}/connectors/{connectorId}/refreshMCPTools | Refresh MCP Connector Tools
 [**businessAgentRunConnectorTool()**](MetaBusinessAgentApi.md#businessAgentRunConnectorTool) | **POST** /metaBusinessAgents/{entityId}/connectors/{connectorId}/tools/{toolId}/runs | Run Connector Tool
+[**businessAgentSubmitAgentEvent()**](MetaBusinessAgentApi.md#businessAgentSubmitAgentEvent) | **POST** /metaBusinessAgents/{entityId}/events | Submit Agent Event
 [**businessAgentUpdateConnector()**](MetaBusinessAgentApi.md#businessAgentUpdateConnector) | **PATCH** /metaBusinessAgents/{entityId}/connectors/{connectorId} | Update Connector
 [**businessAgentUpdateConnectorTool()**](MetaBusinessAgentApi.md#businessAgentUpdateConnectorTool) | **PATCH** /metaBusinessAgents/{entityId}/connectors/{connectorId}/tools/{toolId} | Update Connector Tool
+[**businessAgentUpdateFaq()**](MetaBusinessAgentApi.md#businessAgentUpdateFaq) | **PATCH** /metaBusinessAgents/{entityId}/faqs/{faqId} | Update Faq
+[**businessAgentUpdateWebsite()**](MetaBusinessAgentApi.md#businessAgentUpdateWebsite) | **PATCH** /metaBusinessAgents/{entityId}/websites/{websiteId} | Update Website
 [**businessAgentUpsertConnectorApiKey()**](MetaBusinessAgentApi.md#businessAgentUpsertConnectorApiKey) | **PUT** /metaBusinessAgents/{entityId}/connectors/{connectorId}/credentials/apiKey | Upsert Connector Api Key
 [**businessAgentUpsertConnectorCertificate()**](MetaBusinessAgentApi.md#businessAgentUpsertConnectorCertificate) | **PUT** /metaBusinessAgents/{entityId}/connectors/{connectorId}/credentials/certificate | Upsert Connector Certificate
 [**businessAgentUpsertConnectorOAuth()**](MetaBusinessAgentApi.md#businessAgentUpsertConnectorOAuth) | **PUT** /metaBusinessAgents/{entityId}/connectors/{connectorId}/credentials/oauth | Upsert Connector O Auth
@@ -143,6 +158,68 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `businessAgentCreateAllowlistEntry()`
+
+```php
+businessAgentCreateAllowlistEntry($entity_id, $public_create_allowlist_entry_request): \YCloud\Client\Model\AgentAllowlistEntryDTO
+```
+
+Create Allowlist Entry
+
+Adds exactly one explicitly supplied WhatsApp identity: consumer_phone_number or consumer_bsuid. This public API does not look up a BSUID from a phone number. Phone and BSUID entries have distinct IDs and each counts toward the shared limit of 20.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: api_key
+$config = YCloud\Client\Configuration::getDefaultConfiguration()->setApiKey('X-API-Key', 'YOUR_API_KEY');
+
+
+$apiInstance = new YCloud\Client\Api\MetaBusinessAgentApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$entity_id = 'entity_id_example'; // string | WhatsApp Business Phone Number ID that owns the Meta Business Agent.
+$public_create_allowlist_entry_request = {"consumer_phone_number":"+15551234567"}; // \YCloud\Client\Model\PublicCreateAllowlistEntryRequest
+
+try {
+    $result = $apiInstance->businessAgentCreateAllowlistEntry($entity_id, $public_create_allowlist_entry_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling MetaBusinessAgentApi->businessAgentCreateAllowlistEntry: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **entity_id** | **string**| WhatsApp Business Phone Number ID that owns the Meta Business Agent. |
+ **public_create_allowlist_entry_request** | [**\YCloud\Client\Model\PublicCreateAllowlistEntryRequest**](../Model/PublicCreateAllowlistEntryRequest.md)|  |
+
+### Return type
+
+[**\YCloud\Client\Model\AgentAllowlistEntryDTO**](../Model/AgentAllowlistEntryDTO.md)
+
+### Authorization
+
+[api_key](../../README.md#api_key)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
@@ -275,6 +352,191 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `businessAgentCreateFaq()`
+
+```php
+businessAgentCreateFaq($entity_id, $public_create_faq_request): \YCloud\Client\Model\FaqDTO
+```
+
+Create Faq
+
+Creates a question-and-answer entry in the agent knowledge base and returns the created FAQ.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: api_key
+$config = YCloud\Client\Configuration::getDefaultConfiguration()->setApiKey('X-API-Key', 'YOUR_API_KEY');
+
+
+$apiInstance = new YCloud\Client\Api\MetaBusinessAgentApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$entity_id = 1249005978294267; // string | Endpoint-specific Meta Business Agent entity ID. Budget and Conversation Turns operations use the tenant-owned WhatsApp Business Phone Number ID.
+$public_create_faq_request = new \YCloud\Client\Model\PublicCreateFaqRequest(); // \YCloud\Client\Model\PublicCreateFaqRequest
+
+try {
+    $result = $apiInstance->businessAgentCreateFaq($entity_id, $public_create_faq_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling MetaBusinessAgentApi->businessAgentCreateFaq: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **entity_id** | **string**| Endpoint-specific Meta Business Agent entity ID. Budget and Conversation Turns operations use the tenant-owned WhatsApp Business Phone Number ID. |
+ **public_create_faq_request** | [**\YCloud\Client\Model\PublicCreateFaqRequest**](../Model/PublicCreateFaqRequest.md)|  |
+
+### Return type
+
+[**\YCloud\Client\Model\FaqDTO**](../Model/FaqDTO.md)
+
+### Authorization
+
+[api_key](../../README.md#api_key)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `businessAgentCreateWebsite()`
+
+```php
+businessAgentCreateWebsite($entity_id, $public_create_website_request): \YCloud\Client\Model\WebsiteDTO
+```
+
+Create Website
+
+Adds a website URL for Meta to crawl and ingest into the agent knowledge base and returns the created crawl entry.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: api_key
+$config = YCloud\Client\Configuration::getDefaultConfiguration()->setApiKey('X-API-Key', 'YOUR_API_KEY');
+
+
+$apiInstance = new YCloud\Client\Api\MetaBusinessAgentApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$entity_id = 1249005978294267; // string | Endpoint-specific Meta Business Agent entity ID. Budget and Conversation Turns operations use the tenant-owned WhatsApp Business Phone Number ID.
+$public_create_website_request = new \YCloud\Client\Model\PublicCreateWebsiteRequest(); // \YCloud\Client\Model\PublicCreateWebsiteRequest
+
+try {
+    $result = $apiInstance->businessAgentCreateWebsite($entity_id, $public_create_website_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling MetaBusinessAgentApi->businessAgentCreateWebsite: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **entity_id** | **string**| Endpoint-specific Meta Business Agent entity ID. Budget and Conversation Turns operations use the tenant-owned WhatsApp Business Phone Number ID. |
+ **public_create_website_request** | [**\YCloud\Client\Model\PublicCreateWebsiteRequest**](../Model/PublicCreateWebsiteRequest.md)|  |
+
+### Return type
+
+[**\YCloud\Client\Model\WebsiteDTO**](../Model/WebsiteDTO.md)
+
+### Authorization
+
+[api_key](../../README.md#api_key)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `businessAgentDeleteAllowlistEntry()`
+
+```php
+businessAgentDeleteAllowlistEntry($entity_id, $entry_id)
+```
+
+Delete Allowlist Entry
+
+Deletes only the entry identified by entryId. Other phone or BSUID entries remain unchanged.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: api_key
+$config = YCloud\Client\Configuration::getDefaultConfiguration()->setApiKey('X-API-Key', 'YOUR_API_KEY');
+
+
+$apiInstance = new YCloud\Client\Api\MetaBusinessAgentApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$entity_id = 'entity_id_example'; // string | WhatsApp Business Phone Number ID that owns the Meta Business Agent.
+$entry_id = 'entry_id_example'; // string | Allowlist entry ID.
+
+try {
+    $apiInstance->businessAgentDeleteAllowlistEntry($entity_id, $entry_id);
+} catch (Exception $e) {
+    echo 'Exception when calling MetaBusinessAgentApi->businessAgentDeleteAllowlistEntry: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **entity_id** | **string**| WhatsApp Business Phone Number ID that owns the Meta Business Agent. |
+ **entry_id** | **string**| Allowlist entry ID. |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[api_key](../../README.md#api_key)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `businessAgentDeleteConnector()`
 
 ```php
@@ -385,6 +647,190 @@ Name | Type | Description  | Notes
 ### Return type
 
 void (empty response body)
+
+### Authorization
+
+[api_key](../../README.md#api_key)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `businessAgentDeleteFaq()`
+
+```php
+businessAgentDeleteFaq($entity_id, $faq_id)
+```
+
+Delete Faq
+
+Deletes the FAQ identified by `faqId`. Returns HTTP `204` when deletion succeeds or Meta explicitly reports that the FAQ does not exist. Other `404` errors remain errors.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: api_key
+$config = YCloud\Client\Configuration::getDefaultConfiguration()->setApiKey('X-API-Key', 'YOUR_API_KEY');
+
+
+$apiInstance = new YCloud\Client\Api\MetaBusinessAgentApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$entity_id = 1249005978294267; // string | Endpoint-specific Meta Business Agent entity ID. Budget and Conversation Turns operations use the tenant-owned WhatsApp Business Phone Number ID.
+$faq_id = 'faq_id_example'; // string | FAQ resource ID.
+
+try {
+    $apiInstance->businessAgentDeleteFaq($entity_id, $faq_id);
+} catch (Exception $e) {
+    echo 'Exception when calling MetaBusinessAgentApi->businessAgentDeleteFaq: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **entity_id** | **string**| Endpoint-specific Meta Business Agent entity ID. Budget and Conversation Turns operations use the tenant-owned WhatsApp Business Phone Number ID. |
+ **faq_id** | **string**| FAQ resource ID. |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[api_key](../../README.md#api_key)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `businessAgentDeleteWebsite()`
+
+```php
+businessAgentDeleteWebsite($entity_id, $website_id)
+```
+
+Delete Website
+
+Removes the website crawl entry identified by `websiteId` from the agent knowledge base.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: api_key
+$config = YCloud\Client\Configuration::getDefaultConfiguration()->setApiKey('X-API-Key', 'YOUR_API_KEY');
+
+
+$apiInstance = new YCloud\Client\Api\MetaBusinessAgentApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$entity_id = 1249005978294267; // string | Endpoint-specific Meta Business Agent entity ID. Budget and Conversation Turns operations use the tenant-owned WhatsApp Business Phone Number ID.
+$website_id = 'website_id_example'; // string | Website resource ID.
+
+try {
+    $apiInstance->businessAgentDeleteWebsite($entity_id, $website_id);
+} catch (Exception $e) {
+    echo 'Exception when calling MetaBusinessAgentApi->businessAgentDeleteWebsite: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **entity_id** | **string**| Endpoint-specific Meta Business Agent entity ID. Budget and Conversation Turns operations use the tenant-owned WhatsApp Business Phone Number ID. |
+ **website_id** | **string**| Website resource ID. |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[api_key](../../README.md#api_key)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `businessAgentGetAgentEventStatus()`
+
+```php
+businessAgentGetAgentEventStatus($entity_id, $agent_event_id): \YCloud\Client\Model\AgentEventStatusDTO
+```
+
+Get Agent Event Status
+
+Retrieves the current processing status, timestamps, and any error or skip reason for the event identified by `agentEventId`.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: api_key
+$config = YCloud\Client\Configuration::getDefaultConfiguration()->setApiKey('X-API-Key', 'YOUR_API_KEY');
+
+
+$apiInstance = new YCloud\Client\Api\MetaBusinessAgentApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$entity_id = 'entity_id_example'; // string | WhatsApp Business Phone Number ID that owns the Meta Business Agent.
+$agent_event_id = 'agent_event_id_example'; // string | Agent event ID returned when the event was submitted.
+
+try {
+    $result = $apiInstance->businessAgentGetAgentEventStatus($entity_id, $agent_event_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling MetaBusinessAgentApi->businessAgentGetAgentEventStatus: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **entity_id** | **string**| WhatsApp Business Phone Number ID that owns the Meta Business Agent. |
+ **agent_event_id** | **string**| Agent event ID returned when the event was submitted. |
+
+### Return type
+
+[**\YCloud\Client\Model\AgentEventStatusDTO**](../Model/AgentEventStatusDTO.md)
 
 ### Authorization
 
@@ -511,6 +957,190 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**\YCloud\Client\Model\ConnectorToolDTO**](../Model/ConnectorToolDTO.md)
+
+### Authorization
+
+[api_key](../../README.md#api_key)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `businessAgentGetFaq()`
+
+```php
+businessAgentGetFaq($entity_id, $faq_id): \YCloud\Client\Model\FaqDTO
+```
+
+Get Faq
+
+Retrieves the FAQ knowledge entry identified by `faqId`.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: api_key
+$config = YCloud\Client\Configuration::getDefaultConfiguration()->setApiKey('X-API-Key', 'YOUR_API_KEY');
+
+
+$apiInstance = new YCloud\Client\Api\MetaBusinessAgentApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$entity_id = 1249005978294267; // string | Endpoint-specific Meta Business Agent entity ID. Budget and Conversation Turns operations use the tenant-owned WhatsApp Business Phone Number ID.
+$faq_id = 'faq_id_example'; // string | FAQ resource ID.
+
+try {
+    $result = $apiInstance->businessAgentGetFaq($entity_id, $faq_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling MetaBusinessAgentApi->businessAgentGetFaq: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **entity_id** | **string**| Endpoint-specific Meta Business Agent entity ID. Budget and Conversation Turns operations use the tenant-owned WhatsApp Business Phone Number ID. |
+ **faq_id** | **string**| FAQ resource ID. |
+
+### Return type
+
+[**\YCloud\Client\Model\FaqDTO**](../Model/FaqDTO.md)
+
+### Authorization
+
+[api_key](../../README.md#api_key)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `businessAgentGetWebsite()`
+
+```php
+businessAgentGetWebsite($entity_id, $website_id): \YCloud\Client\Model\WebsiteDTO
+```
+
+Get Website
+
+Retrieves the website knowledge entry identified by `websiteId`, including its URL and crawl status information.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: api_key
+$config = YCloud\Client\Configuration::getDefaultConfiguration()->setApiKey('X-API-Key', 'YOUR_API_KEY');
+
+
+$apiInstance = new YCloud\Client\Api\MetaBusinessAgentApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$entity_id = 1249005978294267; // string | Endpoint-specific Meta Business Agent entity ID. Budget and Conversation Turns operations use the tenant-owned WhatsApp Business Phone Number ID.
+$website_id = 'website_id_example'; // string | Website resource ID.
+
+try {
+    $result = $apiInstance->businessAgentGetWebsite($entity_id, $website_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling MetaBusinessAgentApi->businessAgentGetWebsite: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **entity_id** | **string**| Endpoint-specific Meta Business Agent entity ID. Budget and Conversation Turns operations use the tenant-owned WhatsApp Business Phone Number ID. |
+ **website_id** | **string**| Website resource ID. |
+
+### Return type
+
+[**\YCloud\Client\Model\WebsiteDTO**](../Model/WebsiteDTO.md)
+
+### Authorization
+
+[api_key](../../README.md#api_key)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `businessAgentListAllowlist()`
+
+```php
+businessAgentListAllowlist($entity_id): \YCloud\Client\Model\AgentAllowlistEntryDTO[]
+```
+
+List Allowlist
+
+Lists allowlist entries that may receive agent replies when `ai_audience` is set to `ALLOWLISTED_ONLY`. Identity fields may be absent.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: api_key
+$config = YCloud\Client\Configuration::getDefaultConfiguration()->setApiKey('X-API-Key', 'YOUR_API_KEY');
+
+
+$apiInstance = new YCloud\Client\Api\MetaBusinessAgentApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$entity_id = 'entity_id_example'; // string | WhatsApp Business Phone Number ID that owns the Meta Business Agent.
+
+try {
+    $result = $apiInstance->businessAgentListAllowlist($entity_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling MetaBusinessAgentApi->businessAgentListAllowlist: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **entity_id** | **string**| WhatsApp Business Phone Number ID that owns the Meta Business Agent. |
+
+### Return type
+
+[**\YCloud\Client\Model\AgentAllowlistEntryDTO[]**](../Model/AgentAllowlistEntryDTO.md)
 
 ### Authorization
 
@@ -723,6 +1353,126 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `businessAgentListFaqs()`
+
+```php
+businessAgentListFaqs($entity_id): \YCloud\Client\Model\FaqDTO[]
+```
+
+List Faqs
+
+Lists all FAQ question-and-answer entries currently available to the agent as knowledge.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: api_key
+$config = YCloud\Client\Configuration::getDefaultConfiguration()->setApiKey('X-API-Key', 'YOUR_API_KEY');
+
+
+$apiInstance = new YCloud\Client\Api\MetaBusinessAgentApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$entity_id = 1249005978294267; // string | Endpoint-specific Meta Business Agent entity ID. Budget and Conversation Turns operations use the tenant-owned WhatsApp Business Phone Number ID.
+
+try {
+    $result = $apiInstance->businessAgentListFaqs($entity_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling MetaBusinessAgentApi->businessAgentListFaqs: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **entity_id** | **string**| Endpoint-specific Meta Business Agent entity ID. Budget and Conversation Turns operations use the tenant-owned WhatsApp Business Phone Number ID. |
+
+### Return type
+
+[**\YCloud\Client\Model\FaqDTO[]**](../Model/FaqDTO.md)
+
+### Authorization
+
+[api_key](../../README.md#api_key)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `businessAgentListWebsites()`
+
+```php
+businessAgentListWebsites($entity_id): \YCloud\Client\Model\WebsiteDTO[]
+```
+
+List Websites
+
+Lists the website URLs configured for Meta to crawl and ingest into the agent knowledge base, including each crawl entry's current state.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: api_key
+$config = YCloud\Client\Configuration::getDefaultConfiguration()->setApiKey('X-API-Key', 'YOUR_API_KEY');
+
+
+$apiInstance = new YCloud\Client\Api\MetaBusinessAgentApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$entity_id = 1249005978294267; // string | Endpoint-specific Meta Business Agent entity ID. Budget and Conversation Turns operations use the tenant-owned WhatsApp Business Phone Number ID.
+
+try {
+    $result = $apiInstance->businessAgentListWebsites($entity_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling MetaBusinessAgentApi->businessAgentListWebsites: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **entity_id** | **string**| Endpoint-specific Meta Business Agent entity ID. Budget and Conversation Turns operations use the tenant-owned WhatsApp Business Phone Number ID. |
+
+### Return type
+
+[**\YCloud\Client\Model\WebsiteDTO[]**](../Model/WebsiteDTO.md)
+
+### Authorization
+
+[api_key](../../README.md#api_key)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `businessAgentRefreshConnectorMcpTools()`
 
 ```php
@@ -837,6 +1587,68 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**\YCloud\Client\Model\ConnectorToolRunResultDTO**](../Model/ConnectorToolRunResultDTO.md)
+
+### Authorization
+
+[api_key](../../README.md#api_key)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `businessAgentSubmitAgentEvent()`
+
+```php
+businessAgentSubmitAgentEvent($entity_id, $public_submit_agent_event_request): \YCloud\Client\Model\AgentEventResultDTO
+```
+
+Submit Agent Event
+
+Submits a business event for a consumer and enqueues it for asynchronous agent processing. The immediate response contains `status` and `agent_event_id` for later polling.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: api_key
+$config = YCloud\Client\Configuration::getDefaultConfiguration()->setApiKey('X-API-Key', 'YOUR_API_KEY');
+
+
+$apiInstance = new YCloud\Client\Api\MetaBusinessAgentApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$entity_id = 'entity_id_example'; // string | WhatsApp Business Phone Number ID that owns the Meta Business Agent.
+$public_submit_agent_event_request = new \YCloud\Client\Model\PublicSubmitAgentEventRequest(); // \YCloud\Client\Model\PublicSubmitAgentEventRequest
+
+try {
+    $result = $apiInstance->businessAgentSubmitAgentEvent($entity_id, $public_submit_agent_event_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling MetaBusinessAgentApi->businessAgentSubmitAgentEvent: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **entity_id** | **string**| WhatsApp Business Phone Number ID that owns the Meta Business Agent. |
+ **public_submit_agent_event_request** | [**\YCloud\Client\Model\PublicSubmitAgentEventRequest**](../Model/PublicSubmitAgentEventRequest.md)|  |
+
+### Return type
+
+[**\YCloud\Client\Model\AgentEventResultDTO**](../Model/AgentEventResultDTO.md)
 
 ### Authorization
 
@@ -967,6 +1779,134 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**\YCloud\Client\Model\ConnectorToolDTO**](../Model/ConnectorToolDTO.md)
+
+### Authorization
+
+[api_key](../../README.md#api_key)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `businessAgentUpdateFaq()`
+
+```php
+businessAgentUpdateFaq($entity_id, $faq_id, $public_update_faq_request): \YCloud\Client\Model\FaqDTO
+```
+
+Update Faq
+
+Send both `question` and `answer` to update the FAQ. You can also include `metadata`. The response may contain a new `id`. Use the returned ID for subsequent reads, updates, and deletes. If the ID changes, `created_at` resets to the update time. A timeout or HTTP `502` response does not necessarily mean that the update failed. Do not automatically retry the update or create a replacement FAQ.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: api_key
+$config = YCloud\Client\Configuration::getDefaultConfiguration()->setApiKey('X-API-Key', 'YOUR_API_KEY');
+
+
+$apiInstance = new YCloud\Client\Api\MetaBusinessAgentApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$entity_id = 1249005978294267; // string | Endpoint-specific Meta Business Agent entity ID. Budget and Conversation Turns operations use the tenant-owned WhatsApp Business Phone Number ID.
+$faq_id = 'faq_id_example'; // string | FAQ resource ID.
+$public_update_faq_request = new \YCloud\Client\Model\PublicUpdateFaqRequest(); // \YCloud\Client\Model\PublicUpdateFaqRequest
+
+try {
+    $result = $apiInstance->businessAgentUpdateFaq($entity_id, $faq_id, $public_update_faq_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling MetaBusinessAgentApi->businessAgentUpdateFaq: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **entity_id** | **string**| Endpoint-specific Meta Business Agent entity ID. Budget and Conversation Turns operations use the tenant-owned WhatsApp Business Phone Number ID. |
+ **faq_id** | **string**| FAQ resource ID. |
+ **public_update_faq_request** | [**\YCloud\Client\Model\PublicUpdateFaqRequest**](../Model/PublicUpdateFaqRequest.md)|  |
+
+### Return type
+
+[**\YCloud\Client\Model\FaqDTO**](../Model/FaqDTO.md)
+
+### Authorization
+
+[api_key](../../README.md#api_key)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `businessAgentUpdateWebsite()`
+
+```php
+businessAgentUpdateWebsite($entity_id, $website_id, $public_update_website_request): \YCloud\Client\Model\WebsiteDTO
+```
+
+Update Website
+
+Updates the URL and optional crawl scope of the website identified by `websiteId`. The response may contain a new `id`. Use the returned ID for subsequent reads, updates, and deletes. Do not automatically retry an update whose outcome is uncertain.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: api_key
+$config = YCloud\Client\Configuration::getDefaultConfiguration()->setApiKey('X-API-Key', 'YOUR_API_KEY');
+
+
+$apiInstance = new YCloud\Client\Api\MetaBusinessAgentApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$entity_id = 1249005978294267; // string | Endpoint-specific Meta Business Agent entity ID. Budget and Conversation Turns operations use the tenant-owned WhatsApp Business Phone Number ID.
+$website_id = 'website_id_example'; // string | Website resource ID.
+$public_update_website_request = new \YCloud\Client\Model\PublicUpdateWebsiteRequest(); // \YCloud\Client\Model\PublicUpdateWebsiteRequest
+
+try {
+    $result = $apiInstance->businessAgentUpdateWebsite($entity_id, $website_id, $public_update_website_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling MetaBusinessAgentApi->businessAgentUpdateWebsite: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **entity_id** | **string**| Endpoint-specific Meta Business Agent entity ID. Budget and Conversation Turns operations use the tenant-owned WhatsApp Business Phone Number ID. |
+ **website_id** | **string**| Website resource ID. |
+ **public_update_website_request** | [**\YCloud\Client\Model\PublicUpdateWebsiteRequest**](../Model/PublicUpdateWebsiteRequest.md)|  |
+
+### Return type
+
+[**\YCloud\Client\Model\WebsiteDTO**](../Model/WebsiteDTO.md)
 
 ### Authorization
 

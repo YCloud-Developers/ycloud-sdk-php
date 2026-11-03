@@ -101,7 +101,8 @@ class WhatsappMessage implements ModelInterface, ArrayAccess, \JsonSerializable
         'pricing_type' => '\YCloud\Client\Model\WhatsappPricingType',
         'whatsapp_api_error' => '\YCloud\Client\Model\WhatsappApiError',
         'biz_type' => 'string',
-        'verification_id' => 'string'
+        'verification_id' => 'string',
+        'bid_pricing_flag' => 'bool'
     ];
 
     /**
@@ -154,7 +155,8 @@ class WhatsappMessage implements ModelInterface, ArrayAccess, \JsonSerializable
         'pricing_type' => null,
         'whatsapp_api_error' => null,
         'biz_type' => null,
-        'verification_id' => null
+        'verification_id' => null,
+        'bid_pricing_flag' => null
     ];
 
     /**
@@ -226,7 +228,8 @@ class WhatsappMessage implements ModelInterface, ArrayAccess, \JsonSerializable
         'pricing_type' => 'pricingType',
         'whatsapp_api_error' => 'whatsappApiError',
         'biz_type' => 'bizType',
-        'verification_id' => 'verificationId'
+        'verification_id' => 'verificationId',
+        'bid_pricing_flag' => 'bidPricingFlag'
     ];
 
     /**
@@ -277,7 +280,8 @@ class WhatsappMessage implements ModelInterface, ArrayAccess, \JsonSerializable
         'pricing_type' => 'setPricingType',
         'whatsapp_api_error' => 'setWhatsappApiError',
         'biz_type' => 'setBizType',
-        'verification_id' => 'setVerificationId'
+        'verification_id' => 'setVerificationId',
+        'bid_pricing_flag' => 'setBidPricingFlag'
     ];
 
     /**
@@ -328,7 +332,8 @@ class WhatsappMessage implements ModelInterface, ArrayAccess, \JsonSerializable
         'pricing_type' => 'getPricingType',
         'whatsapp_api_error' => 'getWhatsappApiError',
         'biz_type' => 'getBizType',
-        'verification_id' => 'getVerificationId'
+        'verification_id' => 'getVerificationId',
+        'bid_pricing_flag' => 'getBidPricingFlag'
     ];
 
     /**
@@ -431,6 +436,7 @@ class WhatsappMessage implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['whatsapp_api_error'] = $data['whatsapp_api_error'] ?? null;
         $this->container['biz_type'] = $data['biz_type'] ?? null;
         $this->container['verification_id'] = $data['verification_id'] ?? null;
+        $this->container['bid_pricing_flag'] = $data['bid_pricing_flag'] ?? null;
     }
 
     /**
@@ -1295,7 +1301,7 @@ class WhatsappMessage implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets total_price
      *
-     * @param double|null $total_price Total price of this message. **Note: It's only an estimated price when the `status` is `accepted` or `sent`. It becomes the final price after the message is delivered, i.e., the `status` is `delivered` or `read`.**
+     * @param double|null $total_price Total price of this message. **Note: It's only an estimated price when the `status` is `accepted` or `sent`. It becomes the final price after the message is delivered, i.e., the `status` is `delivered` or `read`.**  For Max Price messages, the send-time amount is an estimate. Use the delivered/read whatsapp.message.updated event for the final charge; maxBid is not the final charged amount.
      *
      * @return self
      */
@@ -1497,6 +1503,30 @@ class WhatsappMessage implements ModelInterface, ArrayAccess, \JsonSerializable
 
         return $this;
     }
+
+    /**
+     * Gets bid_pricing_flag
+     *
+     * @return bool|null
+     */
+    public function getBidPricingFlag()
+    {
+        return $this->container['bid_pricing_flag'];
+    }
+
+    /**
+     * Sets bid_pricing_flag
+     *
+     * @param bool|null $bid_pricing_flag True when the message is identified as a Marketing Lite bidding message. Its pricingCategory is marketing_lite_bidding.
+     *
+     * @return self
+     */
+    public function setBidPricingFlag($bid_pricing_flag)
+    {
+        $this->container['bid_pricing_flag'] = $bid_pricing_flag;
+
+        return $this;
+    }
     /**
      * Returns true if offset exists. False otherwise.
      *
@@ -1587,5 +1617,3 @@ class WhatsappMessage implements ModelInterface, ArrayAccess, \JsonSerializable
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
-
-
