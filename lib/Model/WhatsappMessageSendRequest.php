@@ -82,7 +82,8 @@ class WhatsappMessageSendRequest implements ModelInterface, ArrayAccess, \JsonSe
         'use_direct_send' => 'bool',
         'template_name' => 'string',
         'filter_unsubscribed' => 'bool',
-        'filter_blocked' => 'bool'
+        'filter_blocked' => 'bool',
+        'bid_spec' => '\YCloud\Client\Model\WhatsappMessageBidSpec'
     ];
 
     /**
@@ -116,7 +117,8 @@ class WhatsappMessageSendRequest implements ModelInterface, ArrayAccess, \JsonSe
         'use_direct_send' => null,
         'template_name' => null,
         'filter_unsubscribed' => null,
-        'filter_blocked' => null
+        'filter_blocked' => null,
+        'bid_spec' => null
     ];
 
     /**
@@ -169,7 +171,8 @@ class WhatsappMessageSendRequest implements ModelInterface, ArrayAccess, \JsonSe
         'use_direct_send' => 'useDirectSend',
         'template_name' => 'templateName',
         'filter_unsubscribed' => 'filterUnsubscribed',
-        'filter_blocked' => 'filterBlocked'
+        'filter_blocked' => 'filterBlocked',
+        'bid_spec' => 'bidSpec'
     ];
 
     /**
@@ -201,7 +204,8 @@ class WhatsappMessageSendRequest implements ModelInterface, ArrayAccess, \JsonSe
         'use_direct_send' => 'setUseDirectSend',
         'template_name' => 'setTemplateName',
         'filter_unsubscribed' => 'setFilterUnsubscribed',
-        'filter_blocked' => 'setFilterBlocked'
+        'filter_blocked' => 'setFilterBlocked',
+        'bid_spec' => 'setBidSpec'
     ];
 
     /**
@@ -233,7 +237,8 @@ class WhatsappMessageSendRequest implements ModelInterface, ArrayAccess, \JsonSe
         'use_direct_send' => 'getUseDirectSend',
         'template_name' => 'getTemplateName',
         'filter_unsubscribed' => 'getFilterUnsubscribed',
-        'filter_blocked' => 'getFilterBlocked'
+        'filter_blocked' => 'getFilterBlocked',
+        'bid_spec' => 'getBidSpec'
     ];
 
     /**
@@ -332,6 +337,7 @@ class WhatsappMessageSendRequest implements ModelInterface, ArrayAccess, \JsonSe
         $this->container['template_name'] = $data['template_name'] ?? null;
         $this->container['filter_unsubscribed'] = $data['filter_unsubscribed'] ?? null;
         $this->container['filter_blocked'] = $data['filter_blocked'] ?? null;
+        $this->container['bid_spec'] = $data['bid_spec'] ?? null;
     }
 
     /**
@@ -971,6 +977,30 @@ class WhatsappMessageSendRequest implements ModelInterface, ArrayAccess, \JsonSe
     public function setFilterBlocked($filter_blocked)
     {
         $this->container['filter_blocked'] = $filter_blocked;
+
+        return $this;
+    }
+
+    /**
+     * Gets bid_spec
+     *
+     * @return \YCloud\Client\Model\WhatsappMessageBidSpec|null
+     */
+    public function getBidSpec()
+    {
+        return $this->container['bid_spec'];
+    }
+
+    /**
+     * Sets bid_spec
+     *
+     * @param \YCloud\Client\Model\WhatsappMessageBidSpec|null $bid_spec bid_spec
+     *
+     * @return self
+     */
+    public function setBidSpec($bid_spec)
+    {
+        $this->container['bid_spec'] = $bid_spec;
 
         return $this;
     }

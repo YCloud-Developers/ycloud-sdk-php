@@ -17,5 +17,7 @@
 
 * `SERVICE` (value: `'service'`)
 
+* `MARKETING_LITE_BIDDING` (value: `'marketing_lite_bidding'`)
+
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

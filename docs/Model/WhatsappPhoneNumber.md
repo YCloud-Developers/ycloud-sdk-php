@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **display_phone_number** | **string** | Display phone number. | [optional]
 **waba_id** | **string** | WhatsApp Business Account ID. | [optional]
 **business_username** | **string** | Active Business Username for this phone number. The value is a plain username without &#x60;@&#x60;. | [optional]
+**business_username_context** | **string** | Optional context of this username notification. revoked is included only when the username from a successful current Meta query matches this revoked notification. Omitted for an obsolete revocation or a notification without context; it does not expose historical page warnings. | [optional]
 **business_username_status** | [**\YCloud\Client\Model\WhatsappBusinessUsernameStatus**](WhatsappBusinessUsernameStatus.md) |  | [optional]
 **requested_business_username** | **string** | Last requested Business Username that is still under review. This value can coexist with an active &#x60;businessUsername&#x60; while the new request is pending. | [optional]
 **business_username_updated_at** | **\DateTime** | The time when the Business Username state was last updated. | [optional]

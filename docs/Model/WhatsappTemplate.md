@@ -22,5 +22,6 @@ Name | Type | Description | Notes
 **status_update_event** | [**\YCloud\Client\Model\WhatsappTemplateStatusUpdateEventEnum**](WhatsappTemplateStatusUpdateEventEnum.md) |  | [optional]
 **disable_date** | **string** | The date at which the template will be disabled. When a WhatsApp template &#x60;FLAGGED&#x60; event is received, this field is set. | [optional]
 **whatsapp_api_error** | [**\YCloud\Client\Model\WhatsappApiError**](WhatsappApiError.md) |  | [optional]
+**bid_spec** | [**\YCloud\Client\Model\WhatsappTemplateBidSpecResponse**](WhatsappTemplateBidSpecResponse.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

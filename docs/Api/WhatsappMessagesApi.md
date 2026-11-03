@@ -96,7 +96,7 @@ $apiInstance = new YCloud\Client\Api\WhatsappMessagesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$whatsapp_message_send_request = new \YCloud\Client\Model\WhatsappMessageSendRequest(); // \YCloud\Client\Model\WhatsappMessageSendRequest
+$whatsapp_message_send_request = {"from":"+15550001111","to":"+15550002222","type":"template","template":{"name":"seasonal_offer","language":{"code":"en_US"}},"bidSpec":{"per_message_bid_multiplier":"1.1"}}; // \YCloud\Client\Model\WhatsappMessageSendRequest
 
 try {
     $result = $apiInstance->send($whatsapp_message_send_request);
@@ -156,7 +156,7 @@ $apiInstance = new YCloud\Client\Api\WhatsappMessagesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$whatsapp_message_send_request = new \YCloud\Client\Model\WhatsappMessageSendRequest(); // \YCloud\Client\Model\WhatsappMessageSendRequest
+$whatsapp_message_send_request = {"from":"+15550001111","to":"+15550002222","type":"template","template":{"name":"seasonal_offer","language":{"code":"en_US"}},"bidSpec":{"per_message_bid_multiplier":"1.1"}}; // \YCloud\Client\Model\WhatsappMessageSendRequest
 
 try {
     $result = $apiInstance->sendDirectly($whatsapp_message_send_request);

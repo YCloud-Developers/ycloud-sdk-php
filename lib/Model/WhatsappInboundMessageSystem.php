@@ -59,6 +59,11 @@ class WhatsappInboundMessageSystem implements ModelInterface, ArrayAccess, \Json
       * @var string[]
       */
     protected static $openAPITypes = [
+        'wa_id' => 'string',
+        'user_id' => 'string',
+        'parent_user_id' => 'string',
+        'previous_user_id' => 'string',
+        'previous_parent_user_id' => 'string',
         'body' => 'string',
         'new_wa_id' => 'string',
         'type' => 'string',
@@ -73,6 +78,11 @@ class WhatsappInboundMessageSystem implements ModelInterface, ArrayAccess, \Json
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'wa_id' => null,
+        'user_id' => null,
+        'parent_user_id' => null,
+        'previous_user_id' => null,
+        'previous_parent_user_id' => null,
         'body' => null,
         'new_wa_id' => null,
         'type' => null,
@@ -106,6 +116,11 @@ class WhatsappInboundMessageSystem implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static $attributeMap = [
+        'wa_id' => 'wa_id',
+        'user_id' => 'user_id',
+        'parent_user_id' => 'parent_user_id',
+        'previous_user_id' => 'previous_user_id',
+        'previous_parent_user_id' => 'previous_parent_user_id',
         'body' => 'body',
         'new_wa_id' => 'new_wa_id',
         'type' => 'type',
@@ -118,6 +133,11 @@ class WhatsappInboundMessageSystem implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static $setters = [
+        'wa_id' => 'setWaId',
+        'user_id' => 'setUserId',
+        'parent_user_id' => 'setParentUserId',
+        'previous_user_id' => 'setPreviousUserId',
+        'previous_parent_user_id' => 'setPreviousParentUserId',
         'body' => 'setBody',
         'new_wa_id' => 'setNewWaId',
         'type' => 'setType',
@@ -130,6 +150,11 @@ class WhatsappInboundMessageSystem implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static $getters = [
+        'wa_id' => 'getWaId',
+        'user_id' => 'getUserId',
+        'parent_user_id' => 'getParentUserId',
+        'previous_user_id' => 'getPreviousUserId',
+        'previous_parent_user_id' => 'getPreviousParentUserId',
         'body' => 'getBody',
         'new_wa_id' => 'getNewWaId',
         'type' => 'getType',
@@ -193,6 +218,11 @@ class WhatsappInboundMessageSystem implements ModelInterface, ArrayAccess, \Json
      */
     public function __construct(array $data = null)
     {
+        $this->container['wa_id'] = $data['wa_id'] ?? null;
+        $this->container['user_id'] = $data['user_id'] ?? null;
+        $this->container['parent_user_id'] = $data['parent_user_id'] ?? null;
+        $this->container['previous_user_id'] = $data['previous_user_id'] ?? null;
+        $this->container['previous_parent_user_id'] = $data['previous_parent_user_id'] ?? null;
         $this->container['body'] = $data['body'] ?? null;
         $this->container['new_wa_id'] = $data['new_wa_id'] ?? null;
         $this->container['type'] = $data['type'] ?? null;
@@ -222,6 +252,126 @@ class WhatsappInboundMessageSystem implements ModelInterface, ArrayAccess, \Json
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets wa_id
+     *
+     * @return string|null
+     */
+    public function getWaId()
+    {
+        return $this->container['wa_id'];
+    }
+
+    /**
+     * Sets wa_id
+     *
+     * @param string|null $wa_id Phone number supplied by Meta, without the leading `+`. It can be unchanged or omitted for a BSUID change.
+     *
+     * @return self
+     */
+    public function setWaId($wa_id)
+    {
+        $this->container['wa_id'] = $wa_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets user_id
+     *
+     * @return string|null
+     */
+    public function getUserId()
+    {
+        return $this->container['user_id'];
+    }
+
+    /**
+     * Sets user_id
+     *
+     * @param string|null $user_id New business-scoped user ID supplied by Meta.
+     *
+     * @return self
+     */
+    public function setUserId($user_id)
+    {
+        $this->container['user_id'] = $user_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets parent_user_id
+     *
+     * @return string|null
+     */
+    public function getParentUserId()
+    {
+        return $this->container['parent_user_id'];
+    }
+
+    /**
+     * Sets parent_user_id
+     *
+     * @param string|null $parent_user_id New Parent BSUID, only when enabled and supplied by Meta.
+     *
+     * @return self
+     */
+    public function setParentUserId($parent_user_id)
+    {
+        $this->container['parent_user_id'] = $parent_user_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets previous_user_id
+     *
+     * @return string|null
+     */
+    public function getPreviousUserId()
+    {
+        return $this->container['previous_user_id'];
+    }
+
+    /**
+     * Sets previous_user_id
+     *
+     * @param string|null $previous_user_id Previous business-scoped user ID supplied by Meta.
+     *
+     * @return self
+     */
+    public function setPreviousUserId($previous_user_id)
+    {
+        $this->container['previous_user_id'] = $previous_user_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets previous_parent_user_id
+     *
+     * @return string|null
+     */
+    public function getPreviousParentUserId()
+    {
+        return $this->container['previous_parent_user_id'];
+    }
+
+    /**
+     * Sets previous_parent_user_id
+     *
+     * @param string|null $previous_parent_user_id Previous Parent BSUID, only when enabled and supplied by Meta.
+     *
+     * @return self
+     */
+    public function setPreviousParentUserId($previous_parent_user_id)
+    {
+        $this->container['previous_parent_user_id'] = $previous_parent_user_id;
+
+        return $this;
+    }
 
     /**
      * Gets body
@@ -284,7 +434,7 @@ class WhatsappInboundMessageSystem implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets type
      *
-     * @param string|null $type Supported types are: - `user_changed_number`: for a user changed number notification. - `user_identity_changed`: for user identity changed notification.
+     * @param string|null $type Supported types are: - `user_changed_user_id`: notification that a user changed their BSUID. - `user_changed_number`: for a user changed number notification. - `user_identity_changed`: for user identity changed notification.
      *
      * @return self
      */
@@ -408,5 +558,3 @@ class WhatsappInboundMessageSystem implements ModelInterface, ArrayAccess, \Json
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
-
-

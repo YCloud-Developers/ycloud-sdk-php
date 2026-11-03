@@ -6,6 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**deleteBusinessUsername()**](WhatsappPhoneNumbersApi.md#deleteBusinessUsername) | **DELETE** /whatsapp/phoneNumbers/{wabaId}/{phoneNumber}/businessUsername | Delete a phone number business username
 [**deleteContactBookEntry()**](WhatsappPhoneNumbersApi.md#deleteContactBookEntry) | **DELETE** /whatsapp/phoneNumbers/{wabaId}/{phoneNumber}/contactBook/{bsuid} | Delete a Meta contact book entry
+[**getContactBookEntry()**](WhatsappPhoneNumbersApi.md#getContactBookEntry) | **GET** /whatsapp/phoneNumbers/{wabaId}/{phoneNumber}/contactBook/{bsuid} | Check a Meta contact book entry
 [**list()**](WhatsappPhoneNumbersApi.md#list) | **GET** /whatsapp/phoneNumbers | List phone numbers
 [**register()**](WhatsappPhoneNumbersApi.md#register) | **POST** /whatsapp/phoneNumbers/{wabaId}/{phoneNumber}/register | Register a phone number
 [**retrieve()**](WhatsappPhoneNumbersApi.md#retrieve) | **GET** /whatsapp/phoneNumbers/{wabaId}/{phoneNumber} | Retrieve a phone number
@@ -133,6 +134,70 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**\YCloud\Client\Model\WhatsappContactBookEntryDeleteResult**](../Model/WhatsappContactBookEntryDeleteResult.md)
+
+### Authorization
+
+[api_key](../../README.md#api_key)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getContactBookEntry()`
+
+```php
+getContactBookEntry($waba_id, $phone_number, $bsuid): \YCloud\Client\Model\WhatsappContactBookEntryResult
+```
+
+Check a Meta contact book entry
+
+Checks whether Meta has a phone number entry for this standard BSUID in this business phone number contact book, without returning the phone number. Uses the same account API key, available WABA ownership and bound phone checks as DELETE. Parent BSUIDs are unsupported; Developer App API keys return 403. Successful responses contain required boolean present; provider failures are not converted to false.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: api_key
+$config = YCloud\Client\Configuration::getDefaultConfiguration()->setApiKey('X-API-Key', 'YOUR_API_KEY');
+
+
+$apiInstance = new YCloud\Client\Api\WhatsappPhoneNumbersApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$waba_id = whatsapp-business-account-id; // string | WhatsApp Business Account ID.
+$phone_number = +16315551111; // string | Phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format, bound to the specified WABA in YCloud. When constructing the path manually, URL-encode the leading `+` as `%2B`.
+$bsuid = US.11815799212886844830; // string | Standard WhatsApp Business-scoped user ID (BSUID) from the same Meta business portfolio as the phone number. Parent BSUIDs containing `.ENT.` are not supported.
+
+try {
+    $result = $apiInstance->getContactBookEntry($waba_id, $phone_number, $bsuid);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling WhatsappPhoneNumbersApi->getContactBookEntry: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **waba_id** | **string**| WhatsApp Business Account ID. |
+ **phone_number** | **string**| Phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format, bound to the specified WABA in YCloud. When constructing the path manually, URL-encode the leading &#x60;+&#x60; as &#x60;%2B&#x60;. |
+ **bsuid** | **string**| Standard WhatsApp Business-scoped user ID (BSUID) from the same Meta business portfolio as the phone number. Parent BSUIDs containing &#x60;.ENT.&#x60; are not supported. |
+
+### Return type
+
+[**\YCloud\Client\Model\WhatsappContactBookEntryResult**](../Model/WhatsappContactBookEntryResult.md)
 
 ### Authorization
 

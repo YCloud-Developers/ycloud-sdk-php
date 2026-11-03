@@ -38,7 +38,7 @@ Name | Type | Description | Notes
 **send_time** | **\DateTime** | The time at which this message &#x60;status&#x60; changed to &#x60;sent&#x60;, formatted in [RFC 3339](https://datatracker.ietf.org/doc/html/rfc3339). e.g., &#x60;2022-06-01T12:00:00.000Z&#x60;. | [optional]
 **deliver_time** | **\DateTime** | The time at which this message &#x60;status&#x60; changed to &#x60;delivered&#x60;, formatted in [RFC 3339](https://datatracker.ietf.org/doc/html/rfc3339). e.g., &#x60;2022-06-01T12:00:00.000Z&#x60;. | [optional]
 **read_time** | **\DateTime** | The time at which this message &#x60;status&#x60; changed to &#x60;read&#x60;, formatted in [RFC 3339](https://datatracker.ietf.org/doc/html/rfc3339). e.g., &#x60;2022-06-01T12:00:00.000Z&#x60;. | [optional]
-**total_price** | **double** | Total price of this message. **Note: It&#39;s only an estimated price when the &#x60;status&#x60; is &#x60;accepted&#x60; or &#x60;sent&#x60;. It becomes the final price after the message is delivered, i.e., the &#x60;status&#x60; is &#x60;delivered&#x60; or &#x60;read&#x60;.** | [optional]
+**total_price** | **double** | Total price of this message. **Note: It&#39;s only an estimated price when the &#x60;status&#x60; is &#x60;accepted&#x60; or &#x60;sent&#x60;. It becomes the final price after the message is delivered, i.e., the &#x60;status&#x60; is &#x60;delivered&#x60; or &#x60;read&#x60;.**  For Max Price messages, the send-time amount is an estimate. Use the delivered/read whatsapp.message.updated event for the final charge; maxBid is not the final charged amount. | [optional]
 **currency** | **string** | Price currency. [ISO 4217 currency code](https://en.wikipedia.org/wiki/ISO_4217). | [optional]
 **region_code** | **string** | The [region code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) of the recipient phone number. | [optional]
 **pricing_category** | [**\YCloud\Client\Model\WhatsappPricingCategory**](WhatsappPricingCategory.md) |  | [optional]
@@ -47,5 +47,6 @@ Name | Type | Description | Notes
 **whatsapp_api_error** | [**\YCloud\Client\Model\WhatsappApiError**](WhatsappApiError.md) |  | [optional]
 **biz_type** | **string** | This can be either empty or one of &#x60;whatsapp&#x60;, or &#x60;verify&#x60;. Defaults to &#x60;whatsapp&#x60;. - &#x60;whatsapp&#x60;: Indicates that the message is sent via the **WhatsApp** product. - &#x60;verify&#x60;: Indicates that the message is sent via the **Verify** product. | [optional]
 **verification_id** | **string** | The verification ID. Included only when &#x60;bizType&#x60; is &#x60;verify&#x60;. | [optional]
+**bid_pricing_flag** | **bool** | True when the message is identified as a Marketing Lite bidding message. Its pricingCategory is marketing_lite_bidding. | [optional] [readonly]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

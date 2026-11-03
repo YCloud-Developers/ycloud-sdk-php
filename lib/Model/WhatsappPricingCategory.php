@@ -34,7 +34,7 @@ use \YCloud\Client\ObjectSerializer;
  * WhatsappPricingCategory Class Doc Comment
  *
  * @category Class
- * @description WhatsApp pricing category. - &#x60;referral_conversion&#x60;: Indicates a [free entry point conversation](https://developers.facebook.com/docs/whatsapp/pricing#free-entry-point-conversations). - &#x60;authentication&#x60;: Indicates the conversation was billed at authentication rate. - &#x60;authentication_international&#x60;: Indicates the conversation was conversation was billed at the [authentication-international rate](https://developers.facebook.com/docs/whatsapp/pricing/authentication-international-rates). - &#x60;marketing&#x60;: Indicates the conversation was billed at authentication rate. - &#x60;marketing_lite&#x60;: Indicates the conversation was billed at marketing-lite rate. - &#x60;utility&#x60;: Indicates the conversation was billed at utility rate. - &#x60;service&#x60;: Indicates the conversation was billed at service rate.  See also [Conversation-Based Pricing](https://developers.facebook.com/docs/whatsapp/pricing).
+ * @description WhatsApp pricing category. - &#x60;referral_conversion&#x60;: Indicates a [free entry point conversation](https://developers.facebook.com/docs/whatsapp/pricing#free-entry-point-conversations). - &#x60;authentication&#x60;: Indicates the conversation was billed at authentication rate. - &#x60;authentication_international&#x60;: Indicates the conversation was conversation was billed at the [authentication-international rate](https://developers.facebook.com/docs/whatsapp/pricing/authentication-international-rates). - &#x60;marketing&#x60;: Indicates the conversation was billed at authentication rate. - &#x60;marketing_lite&#x60;: Indicates the conversation was billed at marketing-lite rate. - &#x60;utility&#x60;: Indicates the conversation was billed at utility rate. - &#x60;service&#x60;: Indicates the conversation was billed at service rate.  See also [Conversation-Based Pricing](https://developers.facebook.com/docs/whatsapp/pricing). - &#x60;marketing_lite_bidding&#x60;: A marketing message billed through Marketing Lite bidding (Max Price).
  * @package  YCloud\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -58,6 +58,8 @@ class WhatsappPricingCategory
 
     public const SERVICE = 'service';
 
+    public const MARKETING_LITE_BIDDING = 'marketing_lite_bidding';
+
     /**
      * Gets allowable values of the enum
      * @return string[]
@@ -71,9 +73,8 @@ class WhatsappPricingCategory
             self::MARKETING,
             self::MARKETING_LITE,
             self::UTILITY,
-            self::SERVICE
+            self::SERVICE,
+            self::MARKETING_LITE_BIDDING
         ];
     }
 }
-
-
